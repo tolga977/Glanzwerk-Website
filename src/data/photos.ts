@@ -14,13 +14,21 @@ export const photos = {
     src: unsplash("photo-1763116146508-5a052fce3461"),
     alt: "Moderne Glasfassade eines Bürogebäudes",
   },
+  heroCleaningTeam: {
+    src: unsplash("photo-1696592877184-ae59bf25fdd4"),
+    alt: "Zwei Fensterreiniger mit Schutzausrüstung auf einer Hebebühne reinigen die Glasfassade eines Bürogebäudes",
+  },
   officeCleaning: {
     src: unsplash("photo-1781637590564-01c65dbf2039"),
     alt: "Reinigungskraft saugt einen Büroboden",
   },
   windowCleaning: {
-    src: unsplash("photo-1782864840610-51d4c135a405"),
-    alt: "Fensterreiniger an einer modernen Glasfassade",
+    src: unsplash("photo-1746905205773-3ea50c8cd808"),
+    alt: "Fensterreiniger säubert eine Glasscheibe mit dem Abzieher",
+  },
+  facadeCleaning: {
+    src: unsplash("photo-1776617130431-de13d5b4cbfe"),
+    alt: "Arbeiter reinigen die Glasfassade eines modernen Hochhauses",
   },
   practiceWaitingRoom: {
     src: unsplash("photo-1762625570087-6d98fca29531"),

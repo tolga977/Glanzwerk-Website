@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/95 backdrop-blur">
       <div className="container-page flex h-24 items-center justify-between gap-6">
-        <Logo height={44} className="shrink-0" />
+        <Logo height={56} className="shrink-0" />
 
         <nav aria-label="Hauptnavigation" className="hidden lg:block">
           <ul className="flex items-center gap-1">

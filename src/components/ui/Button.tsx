@@ -1,12 +1,14 @@
+"use client";
+
 import Link from "next/link";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { useRef, useState, type ButtonHTMLAttributes, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "md" | "lg";
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "shine-sweep shine-sweep-auto bg-brand-500 text-white shadow-sm hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline-brand-500",
+    "shine-sweep shine-sweep-auto bg-brand-500 text-white shadow-sm hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline-brand-500",
   secondary:
     "shine-sweep shine-sweep-auto bg-brand-900 text-white shadow-sm hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-lg hover:shadow-brand-900/25 focus-visible:outline-brand-900",
   outline:
@@ -43,6 +45,32 @@ interface ButtonAsButton
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
+/**
+ * Signature detail: primary buttons pull gently toward the cursor within a
+ * small radius (max ~6px) instead of sitting static — a "magnetic" touch
+ * used sparingly on premium sites. Kept subtle on purpose and only applied
+ * to the primary variant, not every button on the page.
+ */
+function useMagnetic() {
+  const ref = useRef<HTMLElement | null>(null);
+  const [style, setStyle] = useState<CSSProperties>({});
+
+  function onMouseMove(event: MouseEvent<HTMLElement>) {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left - rect.width / 2) * 0.2;
+    const y = (event.clientY - rect.top - rect.height / 2) * 0.3 - 2;
+    setStyle({ transform: `translate(${x}px, ${y}px)` });
+  }
+
+  function onMouseLeave() {
+    setStyle({ transform: "translate(0, 0)" });
+  }
+
+  return { ref, style, onMouseMove, onMouseLeave };
+}
+
 export default function Button(props: ButtonProps) {
   const {
     variant = "primary",
@@ -51,18 +79,32 @@ export default function Button(props: ButtonProps) {
     children,
   } = props;
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const magnetic = useMagnetic();
+  // The same ref/handlers are shared across the <a>/Link/<button> render
+  // branches below (only one ever mounts per instance), so a single
+  // HTMLElement-typed ref is intentionally reused across all three —
+  // hence the cast, since each target element is a valid HTMLElement.
+  const magneticProps =
+    variant === "primary"
+      ? {
+          ref: magnetic.ref as never,
+          style: magnetic.style,
+          onMouseMove: magnetic.onMouseMove,
+          onMouseLeave: magnetic.onMouseLeave,
+        }
+      : {};
 
   if ("href" in props && props.href) {
     const { href, external } = props;
     if (external) {
       return (
-        <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
+        <a href={href} className={classes} target="_blank" rel="noopener noreferrer" {...magneticProps}>
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} {...magneticProps}>
         {children}
       </Link>
     );
@@ -71,7 +113,7 @@ export default function Button(props: ButtonProps) {
   const { href: _href, ...buttonProps } = props as ButtonAsButton;
   void _href;
   return (
-    <button className={classes} {...buttonProps}>
+    <button className={classes} {...buttonProps} {...magneticProps}>
       {children}
     </button>
   );

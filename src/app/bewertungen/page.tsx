@@ -20,7 +20,7 @@ export default function BewertungenPage() {
         <SectionHeading
           as="h1"
           eyebrow="Bewertungen"
-          title="Erfahrungen unserer Kunden"
+          title="Erfahrungen unserer Kunden in Berlin"
           subtitle="Wir sammeln fortlaufend Rückmeldungen unserer Kunden zu unserer Arbeit."
         />
         <div className="mt-10">

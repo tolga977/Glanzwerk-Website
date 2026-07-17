@@ -27,7 +27,7 @@ export default function ProcessSteps({ steps = defaultSteps }: { steps?: Process
     <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {steps.map((step, index) => (
         <li key={step.title} className="relative rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-white">
+          <span className="font-display flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-800 to-brand-900 text-base font-medium text-white shadow-sm">
             {index + 1}
           </span>
           <h3 className="mt-4 text-base font-semibold text-brand-900">{step.title}</h3>

@@ -5,7 +5,7 @@ export default function ArticleCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/wissen/${article.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.06]"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.06]"
     >
       <span
         aria-hidden="true"

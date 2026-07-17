@@ -19,7 +19,7 @@ export default function PreisrechnerPage() {
       <Section background="white" className="pt-12">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-            Preisrechner
+            Preisrechner für Gebäudereinigung in Berlin
           </h1>
           <p className="mt-4 text-lg text-ink-soft">
             Erhalten Sie in wenigen Schritten eine erste, unverbindliche

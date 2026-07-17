@@ -9,8 +9,9 @@ import CTASection from "@/components/ui/CTASection";
 import FAQ from "@/components/ui/FAQ";
 import Reviews from "@/components/ui/Reviews";
 import FadeIn from "@/components/ui/FadeIn";
+import GlanzMark from "@/components/ui/GlanzMark";
 import HeroPhoto from "@/components/home/HeroPhoto";
-import { getServiceBySlug } from "@/data/services";
+import { getServiceBySlug, services } from "@/data/services";
 import { districts } from "@/data/districts";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
@@ -21,12 +22,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/",
 });
 
-const heroTrustHints = [
-  "Fester Ansprechpartner",
-  "Ganz Berlin",
-  "Flexible Termine",
-];
-
 const homepageServiceSlugs = [
   "gebaeudereinigung-berlin",
   "bueroreinigung-berlin",
@@ -36,29 +31,6 @@ const homepageServiceSlugs = [
   "grundreinigung-berlin",
   "kita-und-schulreinigung-berlin",
 ] as const;
-
-const whyGlanzwerk = [
-  {
-    title: "Ein Ansprechpartner, der Ihr Objekt kennt",
-    description:
-      "Statt wechselnder Reinigungskräfte über ein Callcenter arbeiten Sie mit einer festen Kontaktperson zusammen.",
-  },
-  {
-    title: "Klare, nachvollziehbare Angebote",
-    description:
-      "Sie erhalten ein Angebot, das auf Ihr Objekt zugeschnitten ist – ohne versteckte Zusatzkosten.",
-  },
-  {
-    title: "Reinigungskonzepte statt Standardpaketen",
-    description:
-      "Reinigungsintervalle und Leistungsumfang richten sich nach Ihrem tatsächlichen Bedarf.",
-  },
-  {
-    title: "Erfahrung mit unterschiedlichen Gewerbeobjekten",
-    description:
-      "Von Büros über Praxen bis zu Kitas kennen wir die jeweiligen Anforderungen an Hygiene und Ablauf.",
-  },
-];
 
 const homeFaqItems = [
   {
@@ -104,50 +76,66 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-white">
-        <div className="container-page grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:py-24">
-          <div>
-            <p className="mb-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
-              <span className="glanz-divider !w-8" />
+      {/* 1. Hero — volltonige, langsam bewegte Hintergrundfläche (Ken-Burns-
+          Zoom statt Video), als moderne Weiterentwicklung des bisherigen
+          Glanzwerk-Hero-Konzepts mit Hintergrundvideo. */}
+      <section className="relative isolate overflow-hidden bg-brand-950">
+        <HeroPhoto />
+        <div className="container-page relative z-10 py-24 sm:py-28 lg:py-36">
+          <div className="max-w-2xl">
+            <p className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
               Gebäudereinigung für Unternehmen in Berlin
             </p>
-            <h1 className="font-display text-4xl font-medium leading-[1.08] tracking-tight text-brand-900 sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
               Gebäudereinigung, die Ihrem Berliner Unternehmen gerecht wird
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
               Als inhabergeführtes Unternehmen kümmern wir uns persönlich um
               die Reinigung Ihrer Büros, Praxen, Kanzleien und Gewerbeobjekte
               in Berlin – zuverlässig, diskret und mit einem festen
               Ansprechpartner, der Ihr Objekt kennt.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" size="lg">
                 Preis berechnen
               </Button>
-              <Button href="/kontakt" variant="outline" size="lg">
+              <Button
+                href="/kontakt"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-brand-900"
+              >
                 Kontakt aufnehmen
               </Button>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-gray-100 pt-6">
-              {heroTrustHints.map((hint) => (
-                <li key={hint} className="flex items-center gap-1.5 text-sm text-ink-soft">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-brand-500">
-                    <path
-                      d="M5 13l4 4L19 7"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {hint}
-                </li>
-              ))}
-            </ul>
           </div>
+        </div>
+      </section>
 
-          <HeroPhoto />
+      {/* Kennzahlen — bewusst als eigenständiges, kräftiges Marken-Blau statt
+          einer weiteren hellen Fläche, für mehr Selbstbewusstsein direkt nach
+          dem Hero. */}
+      <section className="relative overflow-hidden bg-brand-900 py-10">
+        <GlanzMark className="pointer-events-none absolute -right-6 -top-10 h-40 w-40 opacity-[0.12] sm:h-56 sm:w-56" />
+        <div className="container-page relative">
+          <dl className="grid grid-cols-2 gap-6 text-center sm:grid-cols-4 sm:text-left">
+            <div>
+              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">{districts.length}</dt>
+              <dd className="mt-1 text-sm text-brand-200">Berliner Bezirke im Einsatzgebiet</dd>
+            </div>
+            <div>
+              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">{services.length}</dt>
+              <dd className="mt-1 text-sm text-brand-200">Reinigungsleistungen aus einer Hand</dd>
+            </div>
+            <div>
+              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">5 Mio. €</dt>
+              <dd className="mt-1 text-sm text-brand-200">Betriebshaftpflicht (Allianz)</dd>
+            </div>
+            <div>
+              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">Inhabergeführt</dt>
+              <dd className="mt-1 text-sm text-brand-200">Fester Ansprechpartner statt Callcenter</dd>
+            </div>
+          </dl>
         </div>
       </section>
 
@@ -187,24 +175,6 @@ export default function HomePage() {
           <Button href="/leistungen" variant="ghost">
             Alle Leistungen im Überblick
           </Button>
-        </div>
-      </Section>
-
-      {/* 4. Warum Glanzwerk */}
-      <Section background="white">
-        <SectionHeading eyebrow="Warum Glanzwerk" title="Was uns von anderen Anbietern unterscheidet" />
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
-          {whyGlanzwerk.map((item, index) => (
-            <FadeIn key={item.title} delay={index * 90} className="flex gap-4">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-500" />
-              <div>
-                <p className="text-base font-semibold text-brand-900">{item.title}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-                  {item.description}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
         </div>
       </Section>
 
@@ -253,7 +223,7 @@ export default function HomePage() {
       </Section>
 
       {/* 8. Bewertungen */}
-      <Section background="white">
+      <Section background="warm">
         <SectionHeading eyebrow="Bewertungen" title="Was Kunden über uns sagen" />
         <FadeIn className="mt-10">
           <Reviews reviews={[]} />
@@ -261,7 +231,7 @@ export default function HomePage() {
       </Section>
 
       {/* 9. FAQ */}
-      <Section background="muted">
+      <Section background="muted" id="faq">
         <SectionHeading eyebrow="FAQ" title="Häufige Fragen" align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={homeFaqItems} />
@@ -271,6 +241,7 @@ export default function HomePage() {
       {/* 10. Abschluss-CTA */}
       <Section background="white">
         <FadeIn className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-14 text-center shadow-2xl shadow-brand-950/30 sm:px-12 sm:py-16">
+          <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
           <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">
             Bereit für Ihre Gebäudereinigung?
           </h2>

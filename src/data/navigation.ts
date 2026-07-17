@@ -13,11 +13,14 @@ export interface NavItem {
 }
 
 /**
- * Primary header navigation. Kept deliberately short — "Leistungen" and
- * "Standorte" carry their full lists via mega menus, "Unternehmen" bundles
- * the lower-traffic pages. "Preisrechner" lives in the header as the primary
- * CTA button instead of a plain nav link (see Header.tsx), and the logo
- * itself is the home link, so neither appears again here.
+ * Primary header navigation: Leistungen, Standorte, Glanzwerk Wissen, Über
+ * uns, Kontakt as plain top-level links, "Mehr" bundling the lower-traffic
+ * pages. "Preisrechner" is intentionally NOT a plain text link here — it's
+ * the header's primary CTA button (see Header.tsx), which is a more
+ * prominent treatment than a text link, not a demotion. FAQ is deliberately
+ * not a nav destination — FAQs live embedded on their respective pages
+ * (Leistungen, Standorte, Startseite, Reinigungsfirma Berlin) rather than
+ * as one central page.
  */
 export const mainNav: NavItem[] = [
   {
@@ -37,14 +40,14 @@ export const mainNav: NavItem[] = [
     })),
   },
   { label: "Glanzwerk Wissen", href: "/wissen" },
+  { label: "Über uns", href: "/ueber-uns" },
+  { label: "Kontakt", href: "/kontakt" },
   {
-    label: "Unternehmen",
-    href: "/ueber-uns",
+    label: "Mehr",
+    href: "/bewertungen",
     children: [
-      { label: "Über uns", href: "/ueber-uns" },
       { label: "Bewertungen", href: "/bewertungen" },
       { label: "Reinigungsfirma Berlin", href: "/reinigungsfirma-berlin" },
-      { label: "Kontakt", href: "/kontakt" },
     ],
   },
 ];

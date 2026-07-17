@@ -32,7 +32,7 @@ export default function KontaktPage() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Angebot anfordern
+              Angebot für Ihre Gebäudereinigung in Berlin anfordern
             </h1>
             <p className="mt-4 max-w-xl text-lg text-ink-soft">
               Beschreiben Sie kurz Ihr Objekt – wir melden uns zeitnah mit

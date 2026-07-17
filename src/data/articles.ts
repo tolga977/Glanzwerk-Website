@@ -59,7 +59,7 @@ export const articles: Article[] = [
   },
   {
     slug: "wie-oft-buero-reinigen",
-    title: "Wie oft sollte ein Büro gereinigt werden?",
+    title: "Wie oft sollte ein Büro in Berlin gereinigt werden?",
     metaDescription:
       "Wie häufig ein Büro gereinigt werden sollte, hängt von Mitarbeiterzahl, Publikumsverkehr und Nutzung ab – eine praktische Orientierung.",
     excerpt:
@@ -96,7 +96,7 @@ export const articles: Article[] = [
   },
   {
     slug: "unterhaltsreinigung-oder-grundreinigung",
-    title: "Unterhaltsreinigung oder Grundreinigung – was ist der Unterschied?",
+    title: "Unterhaltsreinigung oder Grundreinigung in Berlin – was ist der Unterschied?",
     metaDescription:
       "Der Unterschied zwischen Unterhalts- und Grundreinigung und wann welche Leistung sinnvoll ist.",
     excerpt:
@@ -133,7 +133,7 @@ export const articles: Article[] = [
   },
   {
     slug: "reinigung-arztpraxen",
-    title: "Reinigung in Arztpraxen: Worauf es ankommt",
+    title: "Reinigung in Berliner Arztpraxen: Worauf es ankommt",
     metaDescription:
       "Was bei der Reinigung von Arztpraxen besonders wichtig ist – von Terminplanung bis Flächenhygiene.",
     excerpt:
@@ -170,7 +170,7 @@ export const articles: Article[] = [
   },
   {
     slug: "glasreinigung-tipps",
-    title: "Glasreinigung: So bleiben Fenster und Fassaden lange sauber",
+    title: "Glasreinigung in Berlin: So bleiben Fenster und Fassaden lange sauber",
     metaDescription:
       "Praktische Hinweise zur Glas- und Fensterreinigung für Gewerbeobjekte – Rhythmus, Witterung und typische Problembereiche.",
     excerpt:
@@ -207,7 +207,7 @@ export const articles: Article[] = [
   },
   {
     slug: "buerohygiene-massnahmen",
-    title: "Bürohygiene: Einfache Maßnahmen mit großer Wirkung",
+    title: "Bürohygiene in Berlin: Einfache Maßnahmen mit großer Wirkung",
     metaDescription:
       "Welche Hygienemaßnahmen im Büroalltag den größten Unterschied machen – jenseits der reinen Reinigungsfrequenz.",
     excerpt:
@@ -244,7 +244,7 @@ export const articles: Article[] = [
   },
   {
     slug: "nachhaltige-gebaeudereinigung",
-    title: "Nachhaltige Gebäudereinigung: Was Unternehmen wirklich bewirken können",
+    title: "Nachhaltige Gebäudereinigung in Berlin: Was Unternehmen wirklich bewirken können",
     metaDescription:
       "Welche konkreten, nachvollziehbaren Maßnahmen bei der gewerblichen Gebäudereinigung tatsächlich zu weniger Chemie- und Ressourcenverbrauch führen.",
     excerpt:
@@ -287,7 +287,7 @@ export const articles: Article[] = [
   },
   {
     slug: "reinigungsdienstleister-auswaehlen",
-    title: "Reinigungsdienstleister auswählen: Worauf Unternehmen wirklich achten sollten",
+    title: "Reinigungsdienstleister in Berlin auswählen: Worauf Unternehmen wirklich achten sollten",
     metaDescription:
       "Eine praktische Checkliste für Unternehmen, die einen gewerblichen Reinigungsdienstleister in Berlin auswählen – jenseits des reinen Stundenpreises.",
     excerpt:

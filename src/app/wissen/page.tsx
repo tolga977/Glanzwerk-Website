@@ -25,7 +25,7 @@ export default function WissenPage() {
         <SectionHeading
           as="h1"
           eyebrow="Glanzwerk Wissen"
-          title="Praxiswissen rund um Reinigung und Hygiene"
+          title="Praxiswissen rund um Reinigung und Hygiene in Berlin"
           subtitle="Verständliche Antworten auf Fragen, die uns Gewerbekunden häufig stellen – ohne Werbefloskeln, dafür mit echtem Nutzen."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

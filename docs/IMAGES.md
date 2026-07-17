@@ -10,23 +10,28 @@ Die Website nutzt zwei Bildquellen:
    (`src/components/ui/ServiceIcon.tsx`), Signature-Element „Glanzstreifen"
    (`src/components/ui/GlanzMark.tsx`).
 2. **Kuratierte, lizenzfreie Unsplash-Fotos** (`src/data/photos.ts`) – jede
-   URL wurde vor Einbindung per HTTP-Statuscheck verifiziert und zeigt einen
-   tatsächlich passenden Bildinhalt (z. B. „Fensterreiniger an einer
-   modernen Glasfassade" für die Glas-/Fensterreinigung). Alle 12
-   Leistungsseiten haben inzwischen ein eigenes, passendes Foto.
+   URL wurde vor Einbindung per HTTP-Statuscheck verifiziert und zeigt eine
+   konkrete, zum jeweiligen Leistungsinhalt passende Tätigkeit statt reiner
+   Architektur (z. B. „Fensterreiniger säubert eine Glasscheibe mit dem
+   Abzieher" für die Fensterreinigung statt eines bloßen Fassadenfotos).
+   Alle 12 Leistungsseiten haben ein eigenes, passendes Foto; Fenster- und
+   Glasreinigung wurden bewusst mit zwei unterschiedlichen Fotos
+   differenziert (Nahaufnahme Abzieher vs. Hochhausfassade), passend zur
+   inhaltlichen Abgrenzung der beiden Leistungen.
 
 Verwendete Unsplash-Fotos (Unsplash-Lizenz, kostenlose kommerzielle Nutzung,
 keine Zuschreibung verpflichtend):
 
 | Verwendung | Foto-ID |
 |---|---|
-| Hero (Startseite) | `photo-1763116146508-5a052fce3461` |
+| Hero (Startseite, Vollflächen-Hintergrund) | `photo-1696592877184-ae59bf25fdd4` |
 | Gebäudereinigung | `photo-1540762693098-50320eb8a752` |
 | Büroreinigung | `photo-1781637590564-01c65dbf2039` |
 | Praxisreinigung | `photo-1762625570087-6d98fca29531` |
 | Unterhaltsreinigung | `photo-1774494168068-0f716c3aafcf` |
 | Treppenhausreinigung | `photo-1563201189-8a32607c079b` |
-| Fenster-/Glasreinigung | `photo-1782864840610-51d4c135a405` |
+| Fensterreinigung | `photo-1746905205773-3ea50c8cd808` |
+| Glasreinigung (Fassade) | `photo-1776617130431-de13d5b4cbfe` |
 | Grundreinigung | `photo-1542081403278-ba5973c25c7a` |
 | Kita- & Schulreinigung | `photo-1751704623306-fefadee241a9` |
 | Kanzleireinigung | `photo-1638786246810-39870f0e77d9` |

@@ -35,7 +35,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-xl"
       >
         <div className="mb-6 flex items-center justify-between">
-          <Logo height={36} onClick={onClose} />
+          <Logo height={40} onClick={onClose} />
           <button
             type="button"
             onClick={onClose}

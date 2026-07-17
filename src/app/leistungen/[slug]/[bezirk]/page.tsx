@@ -120,7 +120,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
         <FadeIn className="grid gap-6 sm:grid-cols-2">
           <Link
             href={`/leistungen/${service.slug}`}
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
               Mehr zur {service.shortTitle} in Berlin
@@ -129,7 +129,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
           </Link>
           <Link
             href={`/standorte/${district.slug}`}
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
               Alle Leistungen in {district.name}

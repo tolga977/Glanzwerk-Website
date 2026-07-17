@@ -47,6 +47,14 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Signature detail: brand-colored text selection instead of the browser
+   default — noticed by almost every visitor who selects text, at near-zero
+   cost. */
+::selection {
+  background-color: var(--color-brand-500);
+  color: #ffffff;
+}
+
 @layer utilities {
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
@@ -136,6 +144,28 @@ body {
       transparent
     );
     opacity: 0.7;
+  }
+}
+
+@layer utilities {
+  /*
+   * Signature hero treatment: a slow, clearly visible Ken Burns zoom on the
+   * full-bleed hero background photo — the modern equivalent of the
+   * previous video hero's motion, without the payload/licensing cost of an
+   * actual video file. 16s per half-cycle and a wider scale range keep the
+   * movement plainly noticeable within the first seconds, not just ambient.
+   */
+  .hero-kenburns {
+    animation: hero-kenburns 16s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes hero-kenburns {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.18);
+    }
   }
 }
 

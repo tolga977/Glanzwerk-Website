@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-brand-900 text-brand-100">
       <div className="glanz-divider absolute inset-x-0 top-0" />
-      <GlanzMark className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-[0.07]" />
+      <GlanzMark className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-[0.12]" />
       <div className="container-page relative grid gap-10 py-14 md:grid-cols-4">
         <div>
           <Logo variant="light" height={52} />

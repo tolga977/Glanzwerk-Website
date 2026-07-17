@@ -23,7 +23,7 @@ export default function LeistungenPage() {
         <SectionHeading
           as="h1"
           eyebrow="Leistungen"
-          title="Reinigungsleistungen für Gewerbeobjekte"
+          title="Reinigungsleistungen für Gewerbeobjekte in Berlin"
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – wählen Sie die passende Leistung für Ihr Objekt."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

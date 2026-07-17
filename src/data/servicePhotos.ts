@@ -11,7 +11,7 @@ export const servicePhotos: Record<string, (typeof photos)[keyof typeof photos]>
   "unterhaltsreinigung-berlin": photos.modernOfficeInterior,
   "treppenhausreinigung-berlin": photos.staircase,
   "fensterreinigung-berlin": photos.windowCleaning,
-  "glasreinigung-berlin": photos.windowCleaning,
+  "glasreinigung-berlin": photos.facadeCleaning,
   "grundreinigung-berlin": photos.emptyOfficeRoom,
   "kita-und-schulreinigung-berlin": photos.classroom,
   "kanzleireinigung-berlin": photos.conferenceRoom,
