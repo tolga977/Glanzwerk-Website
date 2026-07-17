@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+import Breadcrumb from "@/components/ui/Breadcrumb";
+import Section from "@/components/ui/Section";
+import PriceCalculator from "@/components/calculator/PriceCalculator";
+import { buildMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Preisrechner",
+  description:
+    "Berechnen Sie eine unverbindliche Richtpreis-Schätzung für die Gebäudereinigung Ihres Objekts.",
+  path: "/preisrechner",
+});
+
+export default function PreisrechnerPage() {
+  return (
+    <>
+      <Breadcrumb items={[{ label: "Preisrechner" }]} />
+
+      <Section background="white" className="pt-12">
+        <div className="mx-auto max-w-2xl text-center">
+          <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
+            Preisrechner
+          </h1>
+          <p className="mt-4 text-lg text-ink-soft">
+            Erhalten Sie in wenigen Schritten eine erste, unverbindliche
+            Richtpreis-Schätzung für die Reinigung Ihres Objekts.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+          <PriceCalculator />
+        </div>
+      </Section>
+    </>
+  );
+}
