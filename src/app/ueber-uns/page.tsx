@@ -13,7 +13,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 
 const description =
-  "Glanzwerk Reinigungsservice Berlin – inhabergeführter Reinigungsdienstleister für Gewerbeobjekte in Berlin.";
+  "Glanzwerk Reinigungsservice Berlin – Reinigungsdienstleister für Gewerbeobjekte in Berlin.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Über uns",
@@ -67,15 +67,15 @@ const workingMethodPoints = [
     icon: "equipment" as const,
   },
   {
-    title: "Dokumentierte Arbeitsabläufe",
+    title: "Klare Arbeitsabläufe",
     description:
-      "Jedes Objekt hat einen festgelegten Ablauf, keine spontane Improvisation – so bleibt die Qualität auch bei wechselnden Terminen gleich.",
+      "Jedes Objekt hat einen abgestimmten Ablauf statt spontaner Improvisation – so bleibt die Qualität auch bei wechselnden Terminen gleich.",
     icon: "process" as const,
   },
   {
-    title: "Feste, geschulte Teams",
+    title: "Fester Ansprechpartner",
     description:
-      "Wer bei Ihnen reinigt, kennt Ihr Objekt und wurde für die jeweilige Umgebung eingewiesen – von der Praxis bis zum Autohaus-Showroom.",
+      "Wer bei Ihnen reinigt, kennt Ihr Objekt und macht sich mit den Besonderheiten vertraut – von der Praxis bis zum Autohaus-Showroom.",
     icon: "team" as const,
   },
 ];
@@ -173,10 +173,10 @@ export default function UeberUnsPage() {
               Über Glanzwerk Reinigungsservice Berlin
             </h1>
             <p className="mt-4 text-lg text-ink-soft">
-              Glanzwerk ist ein inhabergeführtes Reinigungsunternehmen mit Sitz
-              in Berlin. Wir haben uns auf die Gebäudereinigung für
-              gewerbliche Kunden spezialisiert – von Büros und Praxen über
-              Kanzleien bis hin zu Kitas, Fitnessstudios und Autohäusern.
+              Glanzwerk ist ein Reinigungsunternehmen mit Sitz in Berlin. Wir
+              haben uns auf die Gebäudereinigung für gewerbliche Kunden
+              spezialisiert – von Büros und Praxen über Kanzleien bis hin zu
+              Kitas, Fitnessstudios und Autohäusern.
             </p>
             <p className="mt-4 text-lg text-ink-soft">
               Uns ist wichtig, dass Sie wissen, wer bei Ihnen reinigt und wen

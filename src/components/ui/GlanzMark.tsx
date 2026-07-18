@@ -2,12 +2,7 @@ interface GlanzMarkProps {
   className?: string;
 }
 
-/**
- * Signature brand motif: a stylised "shine glint" (three tapering diagonal
- * strokes) echoing "Glanz" (shine/polish). Used as a small recurring accent
- * next to eyebrow labels and as a subtle watermark in the hero — dezent, not
- * a mascot.
- */
+/** Signature brand motif: stylised "shine glint" echoing "Glanz". */
 export default function GlanzMark({ className = "" }: GlanzMarkProps) {
   return (
     <svg

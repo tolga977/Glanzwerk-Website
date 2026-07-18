@@ -1,11 +1,4 @@
-/**
- * Zentrale Preiskonfiguration für den Preisrechner.
- *
- * Alle Werte sind Richtwerte auf Basis grober Erfahrungswerte für die
- * gewerbliche Unterhaltsreinigung in Berlin. Sie ersetzen keine Kalkulation
- * nach Objektbesichtigung und sollten bei Bedarf hier zentral angepasst
- * werden, statt im UI-Code verstreute Zahlen zu ändern.
- */
+/** Zentrale Preiskonfiguration — Richtwerte, ersetzen keine Kalkulation vor Ort. */
 
 export const pricingConfig = {
   /** Durchschnittliche Reinigungsleistung in m² pro Stunde (Richtwert 150–160). */
@@ -34,22 +27,9 @@ export const pricingConfig = {
   weeksPerMonth: 4.33,
 
   /**
-   * Progressive Stundensatz-Bänder auf Basis der wöchentlichen
-   * Reinigungsstunden (Zeit pro Einsatz × Reinigungshäufigkeit).
-   *
-   * Größere Flächen UND häufigere Reinigung erhöhen beide das wöchentliche
-   * Stundenvolumen und damit den erreichten Rabatt – wie bei einer
-   * Steuerprogression wird aber nur der Teil der Stunden, der eine Schwelle
-   * überschreitet, zum günstigeren Satz abgerechnet. Dadurch kann ein
-   * einziger zusätzlicher Quadratmeter oder ein Werktag mehr Reinigung
-   * niemals zu einem geringeren Gesamtpreis führen (keine unlogischen
-   * Preissprünge), anders als bei einer harten Schwelle.
-   *
-   * Richtwerte laut Vorgabe:
-   * - bis ca. 300 m² / 1x Woche: 36–37 €/h
-   * - ab 2x Woche oder ab 301 m²: 34–35 €/h
-   * - größere, häufig gereinigte Objekte: 31–33 €/h
-   * - sehr große Objekte ab ca. 600 m² und 5x/Woche: ca. 30 €/h
+   * Progressive Stundensatz-Bänder (wie Steuerprogression): nur der
+   * Stundenanteil oberhalb einer Schwelle wird günstiger abgerechnet, damit
+   * ein zusätzlicher m² oder Tag nie zu einem niedrigeren Gesamtpreis führt.
    */
   progressiveRateBands: [
     { uptoWeeklyHours: 2.27, rate: 36.5 },

@@ -21,12 +21,7 @@ interface BrandPhotoProps {
   overlay?: boolean;
 }
 
-/**
- * Consistent premium treatment for stock photography: a soft brand-tinted
- * duotone wash unifies otherwise-unrelated stock photos into one coherent
- * visual system, plus a shared rounding/shadow language used everywhere a
- * photo appears (hero, service/district pages, Über uns).
- */
+/** Shared photo treatment: brand-tinted overlay + consistent rounding/shadow. */
 export default function BrandPhoto({
   photo,
   aspect = "aspect-[4/3]",

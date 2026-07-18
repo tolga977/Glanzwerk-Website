@@ -48,9 +48,6 @@ interface SectionProps {
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
   white: "bg-white",
   muted: "bg-brand-50/60",
-  // Warm neutral variant — alternated with "muted" across the page so
-  // sections don't all read as the same blue wash; keeps the palette calm
-  // (no color, just a temperature shift) while adding rhythm.
   warm: "bg-graphite-50",
   navy: "bg-brand-900 text-white",
 };
@@ -62,7 +59,7 @@ export default function Section({
   id,
 }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-24 ${backgroundClasses[background]} py-16 sm:py-20`}>
+    <section id={id} className={`scroll-mt-24 ${backgroundClasses[background]} py-20 sm:py-24`}>
       <div className={`container-page ${className}`}>{children}</div>
     </section>
   );

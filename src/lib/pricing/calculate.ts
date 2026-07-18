@@ -15,12 +15,7 @@ function kitchenSurchargeFor(kitchens: number): number {
   return pricingConfig.kitchenSurcharge.threeOrMore;
 }
 
-/**
- * Rechnet Stunden progressiv über die konfigurierten Stundensatz-Bänder ab
- * (wie bei einer Steuerprogression): Nur der Stundenanteil oberhalb einer
- * Schwelle wird zum günstigeren Satz abgerechnet. Das garantiert, dass der
- * Gesamtpreis mit wachsendem Stundenvolumen niemals sinkt.
- */
+/** Progressive Abrechnung (wie Steuerprogression) — Preis sinkt nie bei mehr Stunden. */
 function progressiveLaborCost(totalHours: number): number {
   let remainingHours = totalHours;
   let previousThreshold = 0;

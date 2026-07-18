@@ -89,7 +89,7 @@ export const services: Service[] = [
     bullets: [
       "Reinigung außerhalb der Geschäftszeiten möglich",
       "Schreibtische, Böden, Sanitär- und Teeküchenbereiche",
-      "Diskrete, geschulte Reinigungskräfte",
+      "Diskrete, zuverlässige Reinigungskräfte",
     ],
     description: [
       "Büroflächen werden täglich genutzt und sollten entsprechend regelmäßig gepflegt werden, ohne den Arbeitsablauf zu stören. Aus diesem Grund findet die Büroreinigung in der Regel früh morgens, abends oder an Wochenenden statt – Zutritt und Ablauf stimmen wir vorab mit Ihnen ab, etwa über Schlüssel, Zugangscodes oder feste Zeitfenster.",

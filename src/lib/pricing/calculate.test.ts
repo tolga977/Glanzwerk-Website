@@ -74,6 +74,81 @@ describe("calculateGeneralPrice", () => {
     expect(estimate.monthlyPriceNet).toBeGreaterThan(1000);
     expect(estimate.monthlyPriceNet).toBeLessThan(15000);
   });
+
+  // Named scenarios from the pricing brief — plausibility bounds rather than
+  // exact figures, since the general calculator intentionally prices by
+  // area/kitchens/toilets/frequency and not by the object-type label itself.
+  it("Praxis 300 m², 5x pro Woche bleibt in einem plausiblen Rahmen", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 300,
+      floorType: "hartboden",
+      kitchens: 1,
+      toilets: 3,
+      visitsPerWeek: 5,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(800);
+    expect(estimate.monthlyPriceNet).toBeLessThan(6000);
+  });
+
+  it("Büro 300 m², 1x pro Woche bleibt in einem plausiblen Rahmen", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 300,
+      floorType: "hartboden",
+      kitchens: 1,
+      toilets: 2,
+      visitsPerWeek: 1,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(200);
+    expect(estimate.monthlyPriceNet).toBeLessThan(1500);
+  });
+
+  it("Büro 600 m², 5x pro Woche erreicht den günstigsten Stundensatz-Bereich", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 600,
+      floorType: "hartboden",
+      kitchens: 1,
+      toilets: 4,
+      visitsPerWeek: 5,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(1000);
+    expect(estimate.monthlyPriceNet).toBeLessThan(15000);
+  });
+
+  it("keine Küche bedeutet keinen Küchenzuschlag", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 400,
+      floorType: "hartboden",
+      kitchens: 0,
+      toilets: 2,
+      visitsPerWeek: 2,
+    });
+    const withOneKitchen = calculateGeneralPrice({
+      areaSqm: 400,
+      floorType: "hartboden",
+      kitchens: 1,
+      toilets: 2,
+      visitsPerWeek: 2,
+    });
+    expect(estimate.monthlyPriceNet).toBeLessThan(withOneKitchen.monthlyPriceNet);
+  });
+
+  it("viele Toiletten erhöhen den Preis spürbar gegenüber wenigen", () => {
+    const fewToilets = calculateGeneralPrice({
+      areaSqm: 400,
+      floorType: "hartboden",
+      kitchens: 0,
+      toilets: 1,
+      visitsPerWeek: 2,
+    });
+    const manyToilets = calculateGeneralPrice({
+      areaSqm: 400,
+      floorType: "hartboden",
+      kitchens: 0,
+      toilets: 12,
+      visitsPerWeek: 2,
+    });
+    expect(manyToilets.monthlyPriceNet).toBeGreaterThan(fewToilets.monthlyPriceNet);
+  });
 });
 
 describe("calculateStaircasePrice", () => {

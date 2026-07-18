@@ -12,16 +12,7 @@ export interface NavItem {
   children?: NavChild[];
 }
 
-/**
- * Primary header navigation: Leistungen, Standorte, Glanzwerk Wissen, Über
- * uns, Kontakt as plain top-level links, "Mehr" bundling the lower-traffic
- * pages. "Preisrechner" is intentionally NOT a plain text link here — it's
- * the header's primary CTA button (see Header.tsx), which is a more
- * prominent treatment than a text link, not a demotion. FAQ is deliberately
- * not a nav destination — FAQs live embedded on their respective pages
- * (Leistungen, Standorte, Startseite, Reinigungsfirma Berlin) rather than
- * as one central page.
- */
+/** Preisrechner ist bewusst kein Textlink, sondern der CTA-Button im Header. */
 export const mainNav: NavItem[] = [
   {
     label: "Leistungen",

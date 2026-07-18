@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 
 const description =
-  "Worauf Sie bei der Wahl einer Reinigungsfirma in Berlin achten sollten – und wie Glanzwerk als inhabergeführter Anbieter für Gewerbekunden arbeitet.";
+  "Worauf Sie bei der Wahl einer Reinigungsfirma in Berlin achten sollten – und wie Glanzwerk für Gewerbekunden arbeitet.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Reinigungsfirma Berlin für Gewerbekunden",
@@ -96,8 +96,8 @@ export default function ReinigungsfirmaBerlinPage() {
             Bei der Suche nach einer Reinigungsfirma in Berlin stehen
             Unternehmen meist vor einer unübersichtlichen Auswahl. Diese
             Seite zeigt, worauf es bei der Wahl eines Reinigungsdienstleisters
-            ankommt – und wie Glanzwerk als inhabergeführte Reinigungsfirma
-            für Gewerbekunden arbeitet.
+            ankommt – und wie Glanzwerk als Reinigungsfirma für Gewerbekunden
+            arbeitet.
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

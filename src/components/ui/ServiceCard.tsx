@@ -26,7 +26,7 @@ export default function ServiceCard({
   return (
     <Link
       href={hrefOverride ?? `/leistungen/${service.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+      className="group relative flex flex-col overflow-hidden rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-[0_20px_40px_-12px_rgb(7_26_58/0.12)]"
     >
       <span
         aria-hidden="true"

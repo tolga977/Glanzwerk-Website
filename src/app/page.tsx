@@ -7,7 +7,6 @@ import TrustBadges from "@/components/ui/TrustBadges";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import CTASection from "@/components/ui/CTASection";
 import FAQ from "@/components/ui/FAQ";
-import Reviews from "@/components/ui/Reviews";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
 import HeroPhoto from "@/components/home/HeroPhoto";
@@ -87,13 +86,12 @@ export default function HomePage() {
               Gebäudereinigung für Unternehmen in Berlin
             </p>
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
-              Gebäudereinigung, die Ihrem Berliner Unternehmen gerecht wird
+              Professionelle Gebäudereinigung in Berlin für Unternehmen
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
-              Als inhabergeführtes Unternehmen kümmern wir uns persönlich um
-              die Reinigung Ihrer Büros, Praxen, Kanzleien und Gewerbeobjekte
-              in Berlin – zuverlässig, diskret und mit einem festen
-              Ansprechpartner, der Ihr Objekt kennt.
+              Wir reinigen Büros, Praxen, Kanzleien und weitere Gewerbeobjekte
+              in Berlin – mit persönlichem Ansprechpartner, klaren Abläufen
+              und Terminen, die sich nach Ihrem Betrieb richten.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" size="lg">
@@ -112,9 +110,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Kennzahlen — bewusst als eigenständiges, kräftiges Marken-Blau statt
-          einer weiteren hellen Fläche, für mehr Selbstbewusstsein direkt nach
-          dem Hero. */}
+      {/* Kennzahlen */}
       <section className="relative overflow-hidden bg-brand-900 py-10">
         <GlanzMark className="pointer-events-none absolute -right-6 -top-10 h-40 w-40 opacity-[0.12] sm:h-56 sm:w-56" />
         <div className="container-page relative">
@@ -132,8 +128,8 @@ export default function HomePage() {
               <dd className="mt-1 text-sm text-brand-200">Betriebshaftpflicht (Allianz)</dd>
             </div>
             <div>
-              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">Inhabergeführt</dt>
-              <dd className="mt-1 text-sm text-brand-200">Fester Ansprechpartner statt Callcenter</dd>
+              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">1</dt>
+              <dd className="mt-1 text-sm text-brand-200">Fester Ansprechpartner pro Kunde</dd>
             </div>
           </dl>
         </div>
@@ -222,14 +218,6 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 8. Bewertungen */}
-      <Section background="warm">
-        <SectionHeading eyebrow="Bewertungen" title="Was Kunden über uns sagen" />
-        <FadeIn className="mt-10">
-          <Reviews reviews={[]} />
-        </FadeIn>
-      </Section>
-
       {/* 9. FAQ */}
       <Section background="muted" id="faq">
         <SectionHeading eyebrow="FAQ" title="Häufige Fragen" align="center" />
@@ -250,17 +238,17 @@ export default function HomePage() {
             Wählen Sie den für Sie passenden Weg – wir melden uns zeitnah
             zurück.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/kontakt" variant="primary" size="lg">
-              Angebot anfragen
-            </Button>
-            <Button href="/preisrechner" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-900">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button href="/preisrechner" variant="primary" size="lg">
               Preis berechnen
             </Button>
-            <Button href={siteConfig.phoneHref} variant="ghost" size="lg" className="text-white hover:bg-white/10">
-              Kontakt aufnehmen: {siteConfig.phone}
+            <Button href="/kontakt" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-900">
+              Angebot anfragen
             </Button>
           </div>
+          <a href={siteConfig.phoneHref} className="mt-5 inline-block text-sm text-brand-200 hover:text-white">
+            Oder rufen Sie uns an: {siteConfig.phone}
+          </a>
         </FadeIn>
       </Section>
     </>

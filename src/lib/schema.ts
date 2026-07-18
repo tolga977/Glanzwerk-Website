@@ -1,14 +1,8 @@
 import { siteConfig } from "@/data/site";
 
 /**
- * Centralized JSON-LD builders. Company data (name, address, phone, email,
- * URL) is sourced exclusively from `siteConfig` so it never has to be
- * maintained in more than one place.
- *
- * Deliberately no LocalBusiness/AggregateRating: Glanzwerk serves customers
- * at their premises rather than a walk-in storefront, and there are no real
- * published reviews yet. Using those types here would misrepresent the
- * business, so we stick to Organization + Service instead.
+ * Centralized JSON-LD builders, sourced from `siteConfig`. Deliberately no
+ * LocalBusiness/AggregateRating — no walk-in storefront, no real reviews yet.
  */
 
 export function organizationSchema() {

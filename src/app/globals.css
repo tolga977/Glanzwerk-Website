@@ -148,13 +148,7 @@ body {
 }
 
 @layer utilities {
-  /*
-   * Signature hero treatment: a slow, clearly visible Ken Burns zoom on the
-   * full-bleed hero background photo — the modern equivalent of the
-   * previous video hero's motion, without the payload/licensing cost of an
-   * actual video file. 16s per half-cycle and a wider scale range keep the
-   * movement plainly noticeable within the first seconds, not just ambient.
-   */
+  /* Slow zoom on the hero background photo, replacing the previous video hero. */
   .hero-kenburns {
     animation: hero-kenburns 16s ease-in-out infinite alternate;
     will-change: transform;
@@ -191,5 +185,10 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .hero-kenburns {
+    animation: none !important;
+    transform: none !important;
   }
 }

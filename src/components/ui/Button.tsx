@@ -45,12 +45,7 @@ interface ButtonAsButton
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
-/**
- * Signature detail: primary buttons pull gently toward the cursor within a
- * small radius (max ~6px) instead of sitting static — a "magnetic" touch
- * used sparingly on premium sites. Kept subtle on purpose and only applied
- * to the primary variant, not every button on the page.
- */
+/** Primary buttons pull gently toward the cursor (~6px max); other variants stay static. */
 function useMagnetic() {
   const ref = useRef<HTMLElement | null>(null);
   const [style, setStyle] = useState<CSSProperties>({});
@@ -80,10 +75,7 @@ export default function Button(props: ButtonProps) {
   } = props;
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
   const magnetic = useMagnetic();
-  // The same ref/handlers are shared across the <a>/Link/<button> render
-  // branches below (only one ever mounts per instance), so a single
-  // HTMLElement-typed ref is intentionally reused across all three —
-  // hence the cast, since each target element is a valid HTMLElement.
+  // Cast: same ref reused across the <a>/Link/<button> branches below.
   const magneticProps =
     variant === "primary"
       ? {

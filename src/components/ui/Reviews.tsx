@@ -31,7 +31,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
     return (
       <div className="rounded-3xl border border-dashed border-gray-200 bg-graphite-50/60 p-10 text-center">
         <p className="text-sm text-ink-soft">
-          Hier erscheinen in Kürze Bewertungen unserer Kunden.
+          Bewertungen unserer Kunden veröffentlichen wir hier, sobald sie vorliegen.
         </p>
       </div>
     );
