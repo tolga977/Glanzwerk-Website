@@ -21,19 +21,23 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="border-b border-gray-100 bg-brand-50/60">
+    <nav aria-label="Breadcrumb" className="border-b border-gray-100">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ol className="container-page flex flex-wrap items-center gap-1.5 py-3 text-xs text-ink-soft">
+      <ol className="container-page flex flex-wrap items-center gap-1.5 py-3.5 text-xs text-ink-soft/80">
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1;
           return (
             <li key={`${item.label}-${index}`} className="flex items-center gap-1.5">
-              {index > 0 && <span aria-hidden="true">/</span>}
+              {index > 0 && (
+                <span aria-hidden="true" className="text-ink-soft/40">
+                  /
+                </span>
+              )}
               {item.href && !isLast ? (
-                <Link href={item.href} className="hover:text-brand-500">
+                <Link href={item.href} className="transition-colors hover:text-brand-500">
                   {item.label}
                 </Link>
               ) : (

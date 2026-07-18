@@ -126,7 +126,7 @@ export default async function ServicePage({ params }: Props) {
       <Section background="white">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900">
+            <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
               Typische Reinigungsaufgaben
             </h2>
             <ul className="mt-5 space-y-2.5">
@@ -154,7 +154,7 @@ export default async function ServicePage({ params }: Props) {
             </ul>
           </div>
           <div>
-            <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900">
+            <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
               Für wen eignet sich diese Leistung
             </h2>
             <ul className="mt-5 space-y-2.5">
@@ -190,6 +190,19 @@ export default async function ServicePage({ params }: Props) {
             </li>
           ))}
         </FadeIn>
+      </Section>
+
+      <Section background="warm">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">Nachhaltigkeit</p>
+          <p className="mt-3 text-base leading-relaxed text-ink-soft">
+            Bei der {service.shortTitle} setzen wir auf hochwertige, materialschonende Reinigungsmittel
+            und dosieren sie nach Herstellerangabe statt pauschal maximal. Wo möglich kommt
+            wiederverwendbare Mikrofasertechnik zum Einsatz, und der Reinigungsrhythmus richtet sich
+            nach dem tatsächlichen Bedarf Ihres Objekts – das schont Flächen, Ressourcen und Kosten
+            gleichermaßen.
+          </p>
+        </div>
       </Section>
 
       {districtCombos.length > 0 && (

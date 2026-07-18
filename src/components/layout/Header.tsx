@@ -17,6 +17,18 @@ const chevron = (
   </svg>
 );
 
+const pinIcon = (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M12 22s7-7.4 7-12.4A7 7 0 0 0 5 9.6C5 14.6 12 22 12 22Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <circle cx="12" cy="9.6" r="2.4" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -59,13 +71,21 @@ export default function Header() {
                     }`}
                   >
                     {item.label}
-                    {item.children && chevron}
+                    {item.children && (
+                      <span
+                        className={`transition-transform duration-200 ${
+                          openDropdown === item.label ? "rotate-180" : ""
+                        }`}
+                      >
+                        {chevron}
+                      </span>
+                    )}
                   </Link>
 
                   {item.children && openDropdown === item.label && (
                     <div
                       className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-3xl border border-black/[0.06] bg-white p-5 shadow-2xl shadow-brand-950/[0.08] ${
-                        isMega ? "w-[560px]" : "w-64"
+                        item.label === "Standorte" ? "w-[640px]" : isMega ? "w-[560px]" : "w-64"
                       }`}
                     >
                       {item.label === "Leistungen" && (
@@ -100,14 +120,17 @@ export default function Header() {
                       )}
 
                       {item.label === "Standorte" && (
-                        <div>
-                          <ul className="grid grid-cols-3 gap-1">
+                        <div className="grid grid-cols-[1fr_auto] gap-5">
+                          <ul className="grid grid-cols-2 gap-1">
                             {districts.map((district) => (
                               <li key={district.slug}>
                                 <Link
                                   href={`/standorte/${district.slug}`}
-                                  className="block rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-brand-50 hover:text-brand-500"
+                                  className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm text-ink-soft hover:bg-brand-50 hover:text-brand-500"
                                 >
+                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-500">
+                                    {pinIcon}
+                                  </span>
                                   {district.name}
                                 </Link>
                               </li>
@@ -115,9 +138,14 @@ export default function Header() {
                           </ul>
                           <Link
                             href="/standorte"
-                            className="mt-2 inline-block px-3 text-sm font-semibold text-brand-500 hover:underline"
+                            className="flex w-40 flex-col justify-between rounded-xl bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white transition-transform hover:-translate-y-0.5"
                           >
-                            Alle Standorte ansehen
+                            <span className="text-sm font-semibold">
+                              Alle 12 Bezirke im Überblick
+                            </span>
+                            <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-200">
+                              Standorte ansehen {chevron}
+                            </span>
                           </Link>
                         </div>
                       )}

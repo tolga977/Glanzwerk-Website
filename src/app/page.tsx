@@ -113,25 +113,23 @@ export default function HomePage() {
       {/* Kennzahlen */}
       <section className="relative overflow-hidden bg-brand-900 py-10">
         <GlanzMark className="pointer-events-none absolute -right-6 -top-10 h-40 w-40 opacity-[0.12] sm:h-56 sm:w-56" />
-        <div className="container-page relative">
-          <dl className="grid grid-cols-2 gap-6 text-center sm:grid-cols-4 sm:text-left">
-            <div>
-              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">{districts.length}</dt>
-              <dd className="mt-1 text-sm text-brand-200">Berliner Bezirke im Einsatzgebiet</dd>
-            </div>
-            <div>
-              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">{services.length}</dt>
-              <dd className="mt-1 text-sm text-brand-200">Reinigungsleistungen aus einer Hand</dd>
-            </div>
-            <div>
-              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">5 Mio. €</dt>
-              <dd className="mt-1 text-sm text-brand-200">Betriebshaftpflicht (Allianz)</dd>
-            </div>
-            <div>
-              <dt className="font-display text-3xl font-medium text-white sm:text-4xl">1</dt>
-              <dd className="mt-1 text-sm text-brand-200">Fester Ansprechpartner pro Kunde</dd>
-            </div>
-          </dl>
+        <div className="container-page relative grid grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:text-left">
+          <div>
+            <p className="font-display text-3xl font-medium text-white sm:text-4xl">{districts.length}</p>
+            <p className="mt-1 text-sm text-brand-200">Berliner Bezirke im Einsatzgebiet</p>
+          </div>
+          <div>
+            <p className="font-display text-3xl font-medium text-white sm:text-4xl">{services.length}</p>
+            <p className="mt-1 text-sm text-brand-200">Reinigungsleistungen aus einer Hand</p>
+          </div>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3.5l7 2.6v5.4c0 4.5-3 8-7 9.4-4-1.4-7-4.9-7-9.4V6.1l7-2.6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <span className="text-sm font-medium text-white">Betriebshaftpflichtversichert</span>
+          </div>
         </div>
       </section>
 

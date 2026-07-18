@@ -102,7 +102,7 @@ export default async function DistrictPage({ params }: Props) {
       </Section>
 
       <Section background="muted">
-        <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900">
+        <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
           Reinigung in {district.name}
         </h2>
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">

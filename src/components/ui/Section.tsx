@@ -30,7 +30,11 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <Heading className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
+      <Heading
+        className={`font-display font-medium tracking-tight text-brand-900 ${
+          Heading === "h1" ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
+        }`}
+      >
         {title}
       </Heading>
       {subtitle && <p className="mt-3.5 text-base leading-relaxed text-ink-soft">{subtitle}</p>}

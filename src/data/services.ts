@@ -1,6 +1,7 @@
 export interface ServiceFaqItem {
   question: string;
   answer: string;
+  relatedLink?: { label: string; href: string };
 }
 
 export interface Service {
@@ -73,6 +74,12 @@ export const services: Service[] = [
         answer:
           "Ja, das ist der eigentliche Zweck der Gebäudereinigung: Unterhalts-, Treppenhaus-, Fenster- und bei Bedarf Grundreinigung lassen sich in einem Vertrag bündeln.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "treppenhausreinigung-berlin"],
   },
@@ -104,9 +111,9 @@ export const services: Service[] = [
       "Leerung von Papierkörben und Mülleimern",
     ],
     audiences: [
-      "Kleinere Büros und Praxisverwaltungen",
-      "Gemeinschaftlich genutzte Büroflächen",
-      "Größere Verwaltungs- und Empfangsbereiche",
+      "Einzelbüros bis große Verwaltungsflächen",
+      "Gemeinschaftlich genutzte Büroflächen und Co-Working",
+      "Empfangs- und Kundenbereiche mit hohem Anspruch",
     ],
     benefits: [
       "Reinigung außerhalb der Kernarbeitszeit möglich",
@@ -128,6 +135,12 @@ export const services: Service[] = [
         question: "Werden eigene Reinigungsmittel verwendet?",
         answer:
           "In der Regel bringt unser Team eigenes Material und Reinigungsmittel mit. Besondere Vorgaben zu Produkten besprechen wir gerne vorab mit Ihnen.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["unterhaltsreinigung-berlin", "glasreinigung-berlin", "kanzleireinigung-berlin"],
@@ -184,6 +197,12 @@ export const services: Service[] = [
         answer:
           "Feste Teams sind bei uns die Regel. Bei Ausfall organisieren wir eine Vertretung, damit Ihr Reinigungstermin zuverlässig stattfindet.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["grundreinigung-berlin", "unterhaltsreinigung-berlin", "kita-und-schulreinigung-berlin"],
   },
@@ -238,6 +257,12 @@ export const services: Service[] = [
         question: "Lässt sich der Umfang bei Bedarf anpassen?",
         answer:
           "Ja, bei saisonal höherem Aufkommen oder verändertem Bedarf passen wir Rhythmus und Umfang gemeinsam mit Ihnen an.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["gebaeudereinigung-berlin", "bueroreinigung-berlin", "grundreinigung-berlin"],
@@ -294,6 +319,12 @@ export const services: Service[] = [
         answer:
           "Bei mehreren Treppenhäusern im selben Objekt kalkulieren wir gemeinsame Anfahrt und Organisation ein, wodurch der Preis pro einzelnem Treppenhaus sinken kann.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["gebaeudereinigung-berlin", "fensterreinigung-berlin", "grundreinigung-berlin"],
   },
@@ -346,6 +377,12 @@ export const services: Service[] = [
         question: "Was passiert bei schlechtem Wetter?",
         answer:
           "Bei starkem Regen oder Frost verschieben wir den Termin kurzfristig und stimmen einen Ersatztermin mit Ihnen ab.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["glasreinigung-berlin", "treppenhausreinigung-berlin", "gebaeudereinigung-berlin"],
@@ -401,6 +438,12 @@ export const services: Service[] = [
         answer:
           "In vielen Fällen ja, insbesondere bei kurzen, gezielten Einsätzen. Für umfangreichere Arbeiten empfehlen sich Zeiten außerhalb des Kundenverkehrs.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["fensterreinigung-berlin", "bueroreinigung-berlin", "autohausreinigung-berlin"],
   },
@@ -454,6 +497,12 @@ export const services: Service[] = [
         question: "Ist eine Bauendreinigung enthalten?",
         answer:
           "Die Grundreinigung deckt die intensive Aufbereitung von Flächen ab. Ob eine klassische Bauendreinigung mit Entfernung von Bauschutt und Folien benötigt wird, klären wir vorab mit Ihnen.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["unterhaltsreinigung-berlin", "praxisreinigung-berlin", "gebaeudereinigung-berlin"],
@@ -510,6 +559,12 @@ export const services: Service[] = [
         answer:
           "Wir sprechen Zutritt, Zeitfenster und Zuständigkeiten direkt mit Trägern und vorhandenen Hausmeisterdiensten ab, damit es keine Überschneidungen gibt.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "praxisreinigung-berlin"],
   },
@@ -563,6 +618,12 @@ export const services: Service[] = [
         question: "Ist Zutritt außerhalb der Kanzleizeiten möglich?",
         answer:
           "Ja, wir stimmen Zugang und Zeitfenster individuell mit Ihnen ab, etwa über Schlüssel oder Zugangscodes.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin", "glasreinigung-berlin"],
@@ -618,6 +679,12 @@ export const services: Service[] = [
         answer:
           "Ja, wir richten den Reinigungsplan nach den tatsächlichen Öffnungszeiten Ihres Studios, auch am Wochenende.",
       },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "glasreinigung-berlin"],
   },
@@ -671,6 +738,12 @@ export const services: Service[] = [
         question: "Wie oft werden Glasflächen im Showroom gereinigt?",
         answer:
           "Das hängt vom Kundenverkehr ab. Bei starker Frequentierung empfehlen sich mehrfache Reinigungstermine pro Woche.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     relatedSlugs: ["glasreinigung-berlin", "unterhaltsreinigung-berlin", "gebaeudereinigung-berlin"],

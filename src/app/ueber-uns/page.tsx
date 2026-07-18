@@ -248,7 +248,7 @@ export default function UeberUnsPage() {
         </FadeIn>
       </Section>
 
-      <Section background="white">
+      <Section background="white" id="garantie">
         <SectionHeading
           eyebrow="Qualitätssicherung"
           title="Abgesichert und mit klarem Versprechen"
@@ -262,13 +262,12 @@ export default function UeberUnsPage() {
               </svg>
             </span>
             <p className="font-display mt-4 text-base font-medium text-brand-900">
-              5 Mio. € Betriebshaftpflicht
+              Betriebshaftpflichtversichert
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-              Glanzwerk ist mit einer Betriebshaftpflichtversicherung in Höhe
-              von 5 Mio. € bei der Allianz abgesichert – für den Fall, dass
-              bei der Arbeit an Ihrem Objekt tatsächlich einmal etwas
-              schiefgeht.
+              Glanzwerk ist bei der Allianz betriebshaftpflichtversichert
+              (Deckungssumme 5 Mio. €) – für den Fall, dass bei der Arbeit an
+              Ihrem Objekt tatsächlich einmal etwas schiefgeht.
             </p>
           </FadeIn>
           <FadeIn delay={80} className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
