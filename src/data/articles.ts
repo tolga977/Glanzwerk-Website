@@ -1,3 +1,5 @@
+import { photos } from "@/data/photos";
+
 export interface ArticleSection {
   heading: string;
   paragraphs: string[];
@@ -11,6 +13,8 @@ export interface Article {
   intro: string;
   sections: ArticleSection[];
   relatedServiceSlugs: string[];
+  category: string;
+  image: (typeof photos)[keyof typeof photos];
 }
 
 export const articles: Article[] = [
@@ -56,6 +60,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin"],
+    category: "Kosten",
+    image: photos.buildingFacade,
   },
   {
     slug: "wie-oft-buero-reinigen",
@@ -93,6 +99,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin"],
+    category: "Reinigungsintervalle",
+    image: photos.officeCleaningTeam,
   },
   {
     slug: "unterhaltsreinigung-oder-grundreinigung",
@@ -130,6 +138,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin"],
+    category: "Reinigungsarten",
+    image: photos.moppingFloor,
   },
   {
     slug: "reinigung-arztpraxen",
@@ -167,6 +177,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["praxisreinigung-berlin", "grundreinigung-berlin"],
+    category: "Praxisreinigung",
+    image: photos.medicalPracticeInterior,
   },
   {
     slug: "glasreinigung-tipps",
@@ -204,6 +216,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["glasreinigung-berlin", "fensterreinigung-berlin"],
+    category: "Glas & Fenster",
+    image: photos.facadeCleaning,
   },
   {
     slug: "buerohygiene-massnahmen",
@@ -241,6 +255,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin"],
+    category: "Bürohygiene",
+    image: photos.routineCleaningTeam,
   },
   {
     slug: "nachhaltige-gebaeudereinigung",
@@ -284,6 +300,8 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["unterhaltsreinigung-berlin", "gebaeudereinigung-berlin"],
+    category: "Nachhaltigkeit",
+    image: photos.dosingLiquid,
   },
   {
     slug: "reinigungsdienstleister-auswaehlen",
@@ -333,6 +351,53 @@ export const articles: Article[] = [
       },
     ],
     relatedServiceSlugs: ["gebaeudereinigung-berlin", "bueroreinigung-berlin"],
+    category: "Anbieterwahl",
+    image: photos.businessHandshake,
+  },
+  {
+    slug: "objektbesichtigung-vorbereiten",
+    title: "Objektbesichtigung vor der Gebäudereinigung: So bereiten Sie sich vor",
+    metaDescription:
+      "Was Sie vor einer Objektbesichtigung für die Gebäudereinigung klären sollten, damit das anschließende Angebot wirklich passt.",
+    excerpt:
+      "Eine kurze Vorbereitung sorgt dafür, dass das Angebot nach der Besichtigung tatsächlich zu Ihrem Objekt passt.",
+    intro:
+      "Ein Preisrechner liefert eine erste Richtpreis-Schätzung, doch für ein verbindliches Angebot lohnt sich meist eine kurze Objektbesichtigung vor Ort. Mit etwas Vorbereitung wird dieser Termin für beide Seiten deutlich effizienter.",
+    sections: [
+      {
+        heading: "Zugänglichkeit klären",
+        paragraphs: [
+          "Sind alle relevanten Bereiche am Besichtigungstermin zugänglich – inklusive Technikräumen, Lager oder Dachterrasse? Ein kurzer Hinweis vorab erspart einen zweiten Termin.",
+        ],
+      },
+      {
+        heading: "Besonderheiten benennen",
+        paragraphs: [
+          "Empfindliche Bodenbeläge, stark frequentierte Bereiche oder sensible Zonen wie Serverräume sollten Sie aktiv ansprechen – das fließt direkt in ein realistisches Angebot ein, statt später für Überraschungen zu sorgen.",
+        ],
+      },
+      {
+        heading: "Gewünschte Zeiten mitteilen",
+        paragraphs: [
+          "Wenn die Reinigung außerhalb der Kernarbeitszeit stattfinden soll, ist es hilfreich, das schon bei der Besichtigung zu erwähnen – das beeinflusst sowohl die Planung als auch mögliche Zugangsregelungen.",
+        ],
+      },
+      {
+        heading: "Bestehende Unterlagen bereithalten",
+        paragraphs: [
+          "Grundrisse oder eine grobe Flächenaufstellung beschleunigen die Besichtigung, sind aber kein Muss – vor Ort lässt sich die Fläche in der Regel auch gemeinsam einschätzen.",
+        ],
+      },
+      {
+        heading: "Fragen vorbereiten",
+        paragraphs: [
+          "Nutzen Sie den Termin auch, um eigene Fragen zu klären – etwa zu Ansprechpartnern, Vertretungsregelungen im Urlaubsfall oder dem Ablauf bei kurzfristigen Sonderwünschen.",
+        ],
+      },
+    ],
+    relatedServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin"],
+    category: "Objektbesichtigung",
+    image: photos.brightStaircase,
   },
 ];
 

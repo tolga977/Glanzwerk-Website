@@ -7,6 +7,11 @@ interface CTASectionProps {
   subtitle?: string;
   primaryLabel?: string;
   primaryHref?: string;
+  /** Optional zweiter CTA (z. B. "3 Monate flexibel testen"), ersetzt die Telefonnummer als zweite Option. */
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  /** Optionales Hintergrundbild statt des reinen Verlaufs, für Abschluss-CTAs mit atmosphärischem Bezug. */
+  backgroundImageUrl?: string;
 }
 
 export default function CTASection({
@@ -14,9 +19,23 @@ export default function CTASection({
   subtitle = "Fordern Sie in wenigen Minuten ein individuelles Angebot für Ihr Objekt an.",
   primaryLabel = "Angebot anfragen",
   primaryHref = "/kontakt",
+  secondaryLabel,
+  secondaryHref,
+  backgroundImageUrl,
 }: CTASectionProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-14 text-center shadow-2xl shadow-brand-950/25 sm:px-12 sm:py-16">
+    <div
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-14 text-center shadow-2xl shadow-brand-950/25 sm:px-12 sm:py-16"
+      style={
+        backgroundImageUrl
+          ? {
+              backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.92), rgb(11 30 61 / 0.88)), url(${backgroundImageUrl})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
+    >
       <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
       <div className="relative">
         <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">{title}</h2>
@@ -27,12 +46,12 @@ export default function CTASection({
             {primaryLabel}
           </Button>
           <Button
-            href={siteConfig.phoneHref}
+            href={secondaryLabel ? secondaryHref! : siteConfig.phoneHref}
             variant="outline"
             size="lg"
             className="border-white text-white hover:bg-white hover:text-brand-900"
           >
-            {siteConfig.phone}
+            {secondaryLabel ?? siteConfig.phone}
           </Button>
         </div>
       </div>

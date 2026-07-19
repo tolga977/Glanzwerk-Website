@@ -14,7 +14,7 @@ const variantClasses: Record<Variant, string> = {
   outline:
     "border-2 border-brand-900 text-brand-900 hover:-translate-y-0.5 hover:bg-brand-900 hover:text-white focus-visible:outline-brand-900",
   ghost:
-    "text-brand-900 hover:bg-brand-50 focus-visible:outline-brand-900",
+    "border border-brand-200 text-brand-500 hover:border-brand-500 hover:bg-brand-50 focus-visible:outline-brand-900",
 };
 
 const sizeClasses: Record<Size, string> = {

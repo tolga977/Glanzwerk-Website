@@ -30,17 +30,9 @@ export const mainNav: NavItem[] = [
       href: `/standorte/${district.slug}`,
     })),
   },
+  { label: "Umwelt & Verantwortung", href: "/umwelt-verantwortung" },
   { label: "Glanzwerk Wissen", href: "/wissen" },
-  { label: "Über uns", href: "/ueber-uns" },
   { label: "Kontakt", href: "/kontakt" },
-  {
-    label: "Mehr",
-    href: "/bewertungen",
-    children: [
-      { label: "Bewertungen", href: "/bewertungen" },
-      { label: "Reinigungsfirma Berlin", href: "/reinigungsfirma-berlin" },
-    ],
-  },
 ];
 
 export const footerServiceLinks: NavChild[] = services.map((service) => ({

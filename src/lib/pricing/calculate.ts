@@ -15,6 +15,28 @@ function kitchenSurchargeFor(kitchens: number): number {
   return pricingConfig.kitchenSurcharge.threeOrMore;
 }
 
+/** Progressive Flächen-Zeit (wie Steuerprogression): nur der Flächenanteil
+ * oberhalb einer Schwelle nutzt die schnellere Reinigungsleistung, damit mehr
+ * Fläche nie zu weniger Zeit führt. */
+function progressiveCleaningMinutes(areaSqm: number): number {
+  let remainingSqm = areaSqm;
+  let previousThreshold = 0;
+  let minutes = 0;
+
+  for (const band of pricingConfig.areaSpeedBands) {
+    const bandCapacity = band.uptoSqm - previousThreshold;
+    const sqmInBand = Math.min(remainingSqm, bandCapacity);
+    if (sqmInBand > 0) {
+      minutes += (sqmInBand / band.sqmPerHour) * 60;
+      remainingSqm -= sqmInBand;
+    }
+    previousThreshold = band.uptoSqm;
+    if (remainingSqm <= 0) break;
+  }
+
+  return minutes;
+}
+
 /** Progressive Abrechnung (wie Steuerprogression) — Preis sinkt nie bei mehr Stunden. */
 function progressiveLaborCost(totalHours: number): number {
   let remainingHours = totalHours;
@@ -42,7 +64,7 @@ function progressiveLaborCost(totalHours: number): number {
 export function calculateGeneralPrice(input: GeneralCalculationInput): PriceEstimate {
   const { areaSqm, kitchens, toilets, visitsPerWeek } = input;
 
-  const cleaningMinutes = (areaSqm / pricingConfig.sqmPerHour) * 60;
+  const cleaningMinutes = progressiveCleaningMinutes(areaSqm);
   const toiletMinutes = toilets * pricingConfig.minutesPerToilet;
   const totalMinutesPerVisit = pricingConfig.baseOverheadMinutes + cleaningMinutes + toiletMinutes;
   const hoursPerVisit = totalMinutesPerVisit / 60;

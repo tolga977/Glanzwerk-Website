@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section from "@/components/ui/Section";
 import ContactForm from "@/components/forms/ContactForm";
+import BrandPhoto from "@/components/ui/BrandPhoto";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site";
+import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 
@@ -49,6 +51,12 @@ export default function KontaktPage() {
           </div>
 
           <div className="lg:col-span-2">
+            <BrandPhoto
+              photo={photos.businessHandshake}
+              priority
+              aspect="aspect-[4/3]"
+              className="mb-6 shadow-xl shadow-brand-950/15"
+            />
             <div className="rounded-3xl bg-brand-900 p-8 text-white">
               <h2 className="text-lg font-semibold">Direkt erreichbar</h2>
               <ul className="mt-5 space-y-4 text-sm text-brand-100">

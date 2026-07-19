@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PromoBar from "@/components/layout/PromoBar";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -55,6 +56,11 @@ export default function RootLayout({
         >
           Zum Inhalt springen
         </a>
+        <PromoBar
+          text="Neu: Glanzwerk 3 Monate flexibel testen – ohne langfristige Bindung"
+          shortText="Neu: 3 Monate flexibel testen"
+          href="/3-monate-testen"
+        />
         <Header />
         <main id="main-content" className="flex-1">
           {children}

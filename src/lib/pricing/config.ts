@@ -1,8 +1,22 @@
 /** Zentrale Preiskonfiguration — Richtwerte, ersetzen keine Kalkulation vor Ort. */
 
 export const pricingConfig = {
-  /** Durchschnittliche Reinigungsleistung in m² pro Stunde (Richtwert 150–160). */
-  sqmPerHour: 155,
+  /**
+   * Reinigungsleistung in m² pro Stunde, progressiv nach Fläche gestaffelt
+   * (wie die Stundensatz-Bänder unten): größere, offenere Flächen werden pro
+   * m² schneller gereinigt (weniger Ecken/Wände/Möblierung pro Quadratmeter).
+   * Nur der Flächenanteil oberhalb einer Schwelle nutzt die schnellere Stufe,
+   * damit mehr Fläche nie zu weniger Zeit/einem niedrigeren Preis führt.
+   * Richtwerte orientieren sich an marktüblichen Leistungswerten für
+   * Büroreinigung in Berlin (ca. 155–160 m²/h im Basisbereich bis ca.
+   * 250–330 m²/h bei sehr großen, einfachen Flächen).
+   */
+  areaSpeedBands: [
+    { uptoSqm: 200, sqmPerHour: 155 },
+    { uptoSqm: 600, sqmPerHour: 220 },
+    { uptoSqm: 1500, sqmPerHour: 280 },
+    { uptoSqm: Infinity, sqmPerHour: 330 },
+  ],
 
   /** Pauschaler Zeitaufwand pro Einsatz in Minuten (Rüstzeit, Material, Wege). */
   baseOverheadMinutes: 20,

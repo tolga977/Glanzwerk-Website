@@ -114,6 +114,52 @@ describe("calculateGeneralPrice", () => {
     expect(estimate.monthlyPriceNet).toBeLessThan(15000);
   });
 
+  it("bleibt an den Flächen-Geschwindigkeits-Bandgrenzen monoton (kein Preissprung nach unten)", () => {
+    const boundaries = [200, 600, 1500];
+    for (const boundary of boundaries) {
+      const below = calculateGeneralPrice({
+        areaSqm: boundary - 1,
+        floorType: "hartboden",
+        kitchens: 0,
+        toilets: 0,
+        visitsPerWeek: 3,
+      });
+      const at = calculateGeneralPrice({
+        areaSqm: boundary,
+        floorType: "hartboden",
+        kitchens: 0,
+        toilets: 0,
+        visitsPerWeek: 3,
+      });
+      const above = calculateGeneralPrice({
+        areaSqm: boundary + 1,
+        floorType: "hartboden",
+        kitchens: 0,
+        toilets: 0,
+        visitsPerWeek: 3,
+      });
+      expect(at.monthlyPriceNet).toBeGreaterThanOrEqual(below.monthlyPriceNet);
+      expect(above.monthlyPriceNet).toBeGreaterThanOrEqual(at.monthlyPriceNet);
+    }
+  });
+
+  it("Große, häufig gereinigte Fläche (1000 m², 5x/Woche) bleibt wettbewerbsfähig gegenüber Berliner Vergleichsanbietern", () => {
+    // Vergleichsbasis: reale Berliner Anbieter kalkulieren ein 1.000 m²
+    // Bürogebäude bei 5x wöchentlicher Reinigung auf ca. 2.700–2.800 EUR/Monat
+    // (42 EUR/h, ~330 m²/h Leistungswert). Glanzwerk positioniert sich mit
+    // persönlicher Betreuung bewusst etwas darüber, darf aber nicht das
+    // Vielfache kosten.
+    const estimate = calculateGeneralPrice({
+      areaSqm: 1000,
+      floorType: "hartboden",
+      kitchens: 2,
+      toilets: 4,
+      visitsPerWeek: 5,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(2700);
+    expect(estimate.monthlyPriceNet).toBeLessThan(4500);
+  });
+
   it("keine Küche bedeutet keinen Küchenzuschlag", () => {
     const estimate = calculateGeneralPrice({
       areaSqm: 400,

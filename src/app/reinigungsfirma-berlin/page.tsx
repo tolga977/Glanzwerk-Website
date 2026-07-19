@@ -5,8 +5,10 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import TrustBadges from "@/components/ui/TrustBadges";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
+import BrandPhoto from "@/components/ui/BrandPhoto";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
+import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 
@@ -88,31 +90,34 @@ export default function ReinigungsfirmaBerlinPage() {
       />
 
       <Section background="white" className="pt-12">
-        <div className="max-w-3xl">
-          <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-            Reinigungsfirma Berlin für Gewerbekunden
-          </h1>
-          <p className="mt-4 text-lg text-ink-soft">
-            Bei der Suche nach einer Reinigungsfirma in Berlin stehen
-            Unternehmen meist vor einer unübersichtlichen Auswahl. Diese
-            Seite zeigt, worauf es bei der Wahl eines Reinigungsdienstleisters
-            ankommt – und wie Glanzwerk als Reinigungsfirma für Gewerbekunden
-            arbeitet.
-          </p>
-        </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-          >
-            Preis berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-          >
-            Angebot anfragen
-          </Link>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="max-w-xl">
+            <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
+              Reinigungsfirma Berlin für Gewerbekunden
+            </h1>
+            <p className="mt-4 text-lg text-ink-soft">
+              Bei der Suche nach einer Reinigungsfirma in Berlin stehen
+              Unternehmen meist vor einer unübersichtlichen Auswahl. Diese
+              Seite zeigt, worauf es bei der Wahl eines
+              Reinigungsdienstleisters ankommt – und wie Glanzwerk als
+              Reinigungsfirma für Gewerbekunden arbeitet.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/preisrechner"
+                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+              >
+                Preis berechnen
+              </Link>
+              <Link
+                href="/kontakt"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
+              >
+                Angebot anfragen
+              </Link>
+            </div>
+          </div>
+          <BrandPhoto photo={photos.windowCleaning} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
       </Section>
 

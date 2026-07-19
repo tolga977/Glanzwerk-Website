@@ -140,3 +140,75 @@ Lint:       0 Fehler, 0 Warnungen
 2. Entscheidung zu P2-3 (LoadingSkeleton behalten/entfernen).
 3. Google-Search-Console-Daten einbinden, sobald die Seite live ist (echte
    Klick-/Impressionsdaten schlagen jede Annahme).
+
+---
+
+## Nachtrag: Durchgang vom 2026-07-18
+
+### Preisrechner vs. Berliner Wettbewerb (neu geprüft)
+- **Befund:** 11 Testszenarien durch den Rechner laufen lassen und mit
+  Preisen realer Berliner Anbieter verglichen (v. a. deva-reinigung.de, das
+  seine Beispielrechnungen offenlegt und damit einen Methodik-Vergleich
+  erlaubt). Kleine/seltene Objekte lagen bereits im Marktrahmen. Größere,
+  mehrmals wöchentlich gereinigte Objekte waren dagegen deutlich zu teuer:
+  Büro 600 m²/5×Woche +44 %, Praxis 400 m²/3×Woche +30–40 %, Büro
+  1.000 m²/5×Woche +92 % gegenüber vergleichbaren Anbietern. Ursache: die
+  Reinigungsgeschwindigkeit (`sqmPerHour`) war unabhängig von der
+  Objektgröße fest auf 155 m²/h gesetzt, während reale Anbieter bei
+  größeren, offeneren Flächen mit höheren Leistungswerten (bis 250–330 m²/h)
+  kalkulieren.
+- **Umsetzung:** `sqmPerHour` durch progressiv gestaffelte
+  `areaSpeedBands` ersetzt (155 m²/h bis 200 m², steigend auf 220/280/330
+  m²/h bei größeren Flächen), nach demselben "Steuerprogression"-Prinzip wie
+  die bestehenden Stundensatz-Bänder – nur der Flächenanteil oberhalb einer
+  Schwelle nutzt die schnellere Stufe. Das garantiert weiterhin, dass mehr
+  Fläche nie zu einem niedrigeren Preis führt (per Test abgesichert).
+- **Ergebnis nach Fix:** große/häufige Objekte liegen jetzt bei ca.
+  +16–46 % über dem Vergleichsanbieter statt +30–92 % – eine bewusste,
+  moderate Abweichung nach oben, passend zur Positionierung von Glanzwerk
+  (persönliche Betreuung, feste Termine, kein anonymer Callcenter-Anbieter).
+  Kleine/seltene Objekte sind unverändert (Mindestpreis greift weiterhin).
+- **Tests:** 2 neue Testfälle ergänzt (Monotonie an allen drei
+  Bandgrenzen, Wettbewerbsfähigkeits-Korridor für 1.000 m²/5×Woche) –
+  20/20 Tests grün.
+- **Status:** ✅ umgesetzt.
+
+### P2-2: Objektart-Preisfaktor — weiterhin offen
+- Bewusst nicht umgesetzt. Der neue Flächen-Geschwindigkeits-Fix und die
+  bereits bestehende Zeitzuschlag-Logik pro Toilette decken einen Teil des
+  ursprünglichen Anliegens bereits ab (Praxen/Kitas mit mehr
+  Sanitärbereichen zahlen automatisch mehr). Ein pauschaler
+  Objektart-Multiplikator bleibt eine eigenständige Preisentscheidung mit
+  realer finanzieller Wirkung und wurde nicht ungefragt ergänzt.
+- **Status:** offen, Rückfrage weiterhin nötig, falls gewünscht.
+
+### P2-3: LoadingSkeleton — entschieden
+- Entfernt (`src/components/ui/LoadingSkeleton.tsx`). War nirgends
+  importiert, die Seite ist vollständig statisch (SSG) ohne
+  client-seitigen Ladezustand, der die Komponente gebraucht hätte.
+- **Status:** ✅ erledigt.
+
+### WIP-Änderungen (Foto-Überarbeitung, EditorialIntro) fertiggestellt
+- Mehrere leere Raum-Unsplash-Fotos durch Pexels-Fotos mit Personen bei der
+  Reinigungstätigkeit ersetzt (Büro-, Praxis-, Unterhalts-, Treppenhaus-,
+  Grund-, Kita/Schul- und Kanzleireinigung). Alle 7 neuen Pexels-URLs per
+  HTTP-Statuscheck verifiziert (200 OK).
+- Neue `EditorialIntro`-Komponente (schmale linke Spalte statt gestapeltem
+  Layout) auf Startseite, Leistungs- und Standortseiten eingesetzt, um die
+  Abschnitts-Rhythmik aufzulockern.
+- `ServiceCard` zeigt jetzt oben ein passendes Foto.
+- Startseite zeigt jetzt alle 12 Leistungen statt einer kuratierten
+  7er-Auswahl; Hintergrundfarben-Rhythmus (weiß/grau) über die ganze Seite
+  geprüft und konsistent.
+- Kleine Aufräumarbeiten: doppelte Leerzeile entfernt, Abschnitts-Kommentare
+  in `page.tsx` durchnummeriert (waren 1,2,3,5,6,7,9,10 – jetzt 1–8).
+- **Verifikation:** 20/20 Tests, Typecheck, Lint und `next build`
+  (107 Routen) fehlerfrei.
+- **Status:** ✅ erledigt.
+
+### Nicht bearbeitet in diesem Durchgang
+- **Visuelles Design-Feintuning:** Der Screenshot-Mechanismus der
+  Browser-Vorschau in dieser Session hing reproduzierbar in einem
+  Timeout (auch bei neutralen externen Testseiten), während Textauslesen,
+  Konsole und Interaktionen einwandfrei funktionierten. Design-Änderungen,
+  die visuelle Kontrolle brauchen, wurden deshalb zurückgestellt.

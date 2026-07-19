@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
+import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import ProcessSteps from "@/components/ui/ProcessSteps";
@@ -20,6 +21,18 @@ import { serviceSchema } from "@/lib/schema";
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+/** Ehrliches Arbeitsprinzip statt Fantasiebezeichnung – gilt für jede Leistung gleichermaßen. */
+const glanzwerkPrinciple = [
+  { title: "Bedarf verstehen", description: "Wir klären Fläche, Nutzung und Anforderungen Ihres Objekts, bevor wir etwas anbieten." },
+  { title: "Leistungen klar festlegen", description: "Der Leistungsumfang steht vorher fest – keine versteckten Zusatzkosten im Nachhinein." },
+  { title: "Sorgfältig ausführen", description: "Feste Teams arbeiten nach abgestimmtem Ablauf statt spontaner Improvisation." },
+  { title: "Qualität kontrollieren", description: "Mängel melden Sie uns direkt – wir bessern in der Regel innerhalb von 24 Stunden nach." },
+  { title: "Persönlich abstimmen", description: "Änderungen am Bedarf besprechen Sie mit Ihrem festen Ansprechpartner, nicht mit wechselndem Personal." },
+];
+
+/** Einmalige Sonderleistungen ohne wiederkehrenden Rhythmus – für diese ist der 3-Monate-Test nicht relevant. */
+const oneOffServiceSlugs = ["grundreinigung-berlin"];
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -115,12 +128,13 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       <Section background="muted">
-        <SectionHeading eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          {service.description.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
+        <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
+          <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+            {service.description.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </EditorialIntro>
       </Section>
 
       <Section background="white">
@@ -179,17 +193,43 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       <Section background="white">
-        <SectionHeading eyebrow="Vorteile" title={`Warum Glanzwerk für die ${service.shortTitle}`} />
-        <FadeIn as="ul" className="mt-8 grid gap-5 sm:grid-cols-3">
-          {service.benefits.map((benefit) => (
-            <li
-              key={benefit}
-              className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
-              {benefit}
-            </li>
-          ))}
-        </FadeIn>
+        <SectionHeading eyebrow="Unser Prinzip" title="Das Glanzwerk-Prinzip" />
+        <div className="mt-10">
+          <ProcessSteps steps={glanzwerkPrinciple} />
+        </div>
+      </Section>
+
+      <Section background="muted">
+        <CTASection
+          title={`Was kostet die ${service.shortTitle} für Ihr Objekt?`}
+          subtitle="Nutzen Sie unseren Preisrechner für eine erste, unverbindliche Einschätzung – in wenigen Minuten."
+          primaryLabel="Preis berechnen"
+          primaryHref="/preisrechner"
+          backgroundImageUrl={photo?.src}
+        />
+      </Section>
+
+      <Section background="muted">
+        <EditorialIntro eyebrow="Vorteile" title={`Warum Glanzwerk für die ${service.shortTitle}`}>
+          <FadeIn as="ul" className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {service.benefits.map((benefit) => (
+              <li key={benefit} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M5 13l4 4L19 7"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span className="text-sm font-medium text-brand-900">{benefit}</span>
+              </li>
+            ))}
+          </FadeIn>
+        </EditorialIntro>
       </Section>
 
       <Section background="warm">
@@ -240,13 +280,26 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {relatedServices.length > 0 && (
-        <Section background="white">
+        <Section background={districtCombos.length > 0 ? "muted" : "white"}>
           <SectionHeading eyebrow="Weitere Leistungen" title="Das könnte Sie auch interessieren" />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {relatedServices.map((related) => (
               <ServiceCard key={related.slug} service={related} />
             ))}
           </div>
+        </Section>
+      )}
+
+      {!oneOffServiceSlugs.includes(service.slug) && (
+        <Section background="white">
+          <CTASection
+            title="Glanzwerk 3 Monate flexibel testen"
+            subtitle={`Lernen Sie die ${service.shortTitle} im laufenden Betrieb kennen – regulär bezahlt, ohne langfristige Bindung.`}
+            primaryLabel="Testphase anfragen"
+            primaryHref="/3-monate-testen"
+            secondaryLabel="Preis berechnen"
+            secondaryHref="/preisrechner"
+          />
         </Section>
       )}
 

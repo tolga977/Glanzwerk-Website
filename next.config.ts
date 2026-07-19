@@ -32,7 +32,7 @@ const cspHeader = {
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline'",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https://images.unsplash.com",
+    "img-src 'self' data: https://images.unsplash.com https://images.pexels.com",
     "font-src 'self' data:",
     "connect-src 'self'",
     "frame-ancestors 'self'",
@@ -52,12 +52,16 @@ const nextConfig: NextConfig = {
   // sondern vom gewählten Hosting bereitgestellt – siehe docs/DEPLOYMENT.md.
   images: {
     formats: ["image/avif", "image/webp"],
-    // Lizenzfreie Unsplash-Platzhalterfotos für Hero/Leistungsbereiche,
+    // Lizenzfreie Unsplash-/Pexels-Platzhalterfotos für Hero/Leistungsbereiche,
     // siehe docs/IMAGES.md für die vollständige Bildquellen-Liste.
     remotePatterns: [
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
       },
     ],
   },

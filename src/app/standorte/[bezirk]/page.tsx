@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
+import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
 import LocationCard from "@/components/ui/LocationCard";
 import FAQ from "@/components/ui/FAQ";
@@ -102,15 +103,14 @@ export default async function DistrictPage({ params }: Props) {
       </Section>
 
       <Section background="muted">
-        <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
-          Reinigung in {district.name}
-        </h2>
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          {district.localContext.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
-          ))}
-        </div>
-        <div className="mt-8">
+        <EditorialIntro title={`Reinigung in ${district.name}`}>
+          <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+            {district.localContext.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </EditorialIntro>
+        <div className="mt-10">
           <h3 className="text-lg font-semibold text-brand-900">
             Typische Kunden in {district.name}
           </h3>

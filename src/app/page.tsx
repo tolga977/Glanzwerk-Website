@@ -1,35 +1,82 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Section, { SectionHeading } from "@/components/ui/Section";
+import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
 import TrustBadges from "@/components/ui/TrustBadges";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import CTASection from "@/components/ui/CTASection";
+import ArticleCard from "@/components/ui/ArticleCard";
+import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
 import HeroPhoto from "@/components/home/HeroPhoto";
-import { getServiceBySlug, services } from "@/data/services";
+import { services } from "@/data/services";
 import { districts } from "@/data/districts";
+import { articles } from "@/data/articles";
+import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
+
+const expectationIcons = {
+  agreement: (
+    <>
+      <rect x="4.5" y="3.5" width="15" height="17" rx="1.8" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8 8.5l1.5 1.5 3-3M8 15l1.5 1.5 3-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14.5 9h2M14.5 15.5h2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </>
+  ),
+  team: (
+    <>
+      <circle cx="9" cy="8" r="2.6" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M4 19c.6-3 2.6-4.8 5-4.8s4.4 1.8 5 4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="16.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M15 14.6c1.7.3 3 1.7 3.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </>
+  ),
+  refresh: (
+    <>
+      <path d="M5 11a7 7 0 0 1 12-4.9M19 13a7 7 0 0 1-12 4.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M17 3.5V6.5H14M7 20.5V17.5H10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  products: (
+    <>
+      <path d="M10 3h4M11 3v4.2L7 13v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6l-4-5.8V3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8.5 15h7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </>
+  ),
+} as const;
+
+const expectations = [
+  {
+    title: "Klare Absprachen statt Kleingedrucktem",
+    description: "Feste Teams statt ständig wechselndem Personal – und ein transparentes Angebot ohne versteckte Kosten.",
+    icon: "agreement" as const,
+  },
+  {
+    title: "Fester Ansprechpartner",
+    description: "Wer bei Ihnen reinigt, kennt Ihr Objekt und macht sich mit den Besonderheiten vertraut.",
+    icon: "team" as const,
+  },
+  {
+    title: "Schnelle Reaktion bei Beanstandungen",
+    description: "Melden Sie einen konkreten Mangel innerhalb von 24 Stunden, beheben wir ihn in der Regel kostenlos nach.",
+    icon: "refresh" as const,
+  },
+  {
+    title: "Sorgfältiger Umgang mit Materialien",
+    description: "Für Glas, Boden, Sanitär und empfindliche Oberflächen kommen jeweils passende Profimittel zum Einsatz.",
+    icon: "products" as const,
+  },
+];
 
 export const metadata: Metadata = buildMetadata({
   title: "Gebäudereinigung Berlin für Unternehmen",
   description: siteConfig.description,
   path: "/",
 });
-
-const homepageServiceSlugs = [
-  "gebaeudereinigung-berlin",
-  "bueroreinigung-berlin",
-  "praxisreinigung-berlin",
-  "unterhaltsreinigung-berlin",
-  "treppenhausreinigung-berlin",
-  "grundreinigung-berlin",
-  "kita-und-schulreinigung-berlin",
-] as const;
 
 const homeFaqItems = [
   {
@@ -68,11 +115,6 @@ const homeFaqItems = [
 ];
 
 export default function HomePage() {
-  const homepageServices = homepageServiceSlugs
-    .map((slug) => getServiceBySlug(slug))
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
-  const fensterreinigung = getServiceBySlug("fensterreinigung-berlin")!;
-
   return (
     <>
       {/* 1. Hero — volltonige, langsam bewegte Hintergrundfläche (Ken-Burns-
@@ -95,56 +137,48 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" size="lg">
-                Preis berechnen
+                Preis kostenlos berechnen
               </Button>
               <Button
-                href="/kontakt"
+                href="/3-monate-testen"
                 variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-brand-900"
               >
-                Kontakt aufnehmen
+                3 Monate flexibel testen
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Kennzahlen */}
-      <section className="relative overflow-hidden bg-brand-900 py-10">
-        <GlanzMark className="pointer-events-none absolute -right-6 -top-10 h-40 w-40 opacity-[0.12] sm:h-56 sm:w-56" />
-        <div className="container-page relative grid grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:text-left">
-          <div>
-            <p className="font-display text-3xl font-medium text-white sm:text-4xl">{districts.length}</p>
-            <p className="mt-1 text-sm text-brand-200">Berliner Bezirke im Einsatzgebiet</p>
-          </div>
-          <div>
-            <p className="font-display text-3xl font-medium text-white sm:text-4xl">{services.length}</p>
-            <p className="mt-1 text-sm text-brand-200">Reinigungsleistungen aus einer Hand</p>
-          </div>
-          <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3.5l7 2.6v5.4c0 4.5-3 8-7 9.4-4-1.4-7-4.9-7-9.4V6.1l7-2.6Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-              </svg>
-            </span>
-            <span className="text-sm font-medium text-white">Betriebshaftpflichtversichert</span>
-          </div>
+      {/* Fakten-Leiste: eine ruhige Zeile statt konkurrierender Schriftgrößen. */}
+      <section className="border-y border-white/10 bg-brand-900 py-4">
+        <div className="container-page flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center sm:justify-center">
+          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+            {districts.length} Berliner Bezirke
+          </span>
+          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
+          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+            {services.length} Reinigungsleistungen
+          </span>
+          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
+          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+            Betriebshaftpflichtversichert
+          </span>
         </div>
       </section>
 
       {/* 2. Vertrauensbereich */}
       <Section background="white">
-        <SectionHeading
-          eyebrow="Darauf können Sie sich verlassen"
-          title="Verlässliche Gebäudereinigung für Gewerbekunden"
-        />
-        <FadeIn className="mt-10">
-          <TrustBadges />
-        </FadeIn>
+        <EditorialIntro eyebrow="Darauf können Sie sich verlassen" title="Verlässliche Gebäudereinigung für Gewerbekunden">
+          <FadeIn>
+            <TrustBadges />
+          </FadeIn>
+        </EditorialIntro>
       </Section>
 
-      {/* 3. Leistungsübersicht */}
+      {/* 3. Leistungen */}
       <Section background="muted">
         <SectionHeading
           eyebrow="Leistungen"
@@ -152,16 +186,7 @@ export default function HomePage() {
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – abgestimmt auf Ihr Objekt."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {homepageServices.slice(0, 5).map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
-          <ServiceCard
-            service={fensterreinigung}
-            titleOverride="Fenster- und Glasreinigung"
-            summaryOverride="Streifenfreie Reinigung von Fenstern, Glasfassaden und Vitrinen innen und außen."
-            ctaLabelOverride="Zur Fenster- und Glasreinigung"
-          />
-          {homepageServices.slice(5).map((service) => (
+          {services.map((service) => (
             <ServiceCard key={service.slug} service={service} />
           ))}
         </FadeIn>
@@ -169,6 +194,32 @@ export default function HomePage() {
           <Button href="/leistungen" variant="ghost">
             Alle Leistungen im Überblick
           </Button>
+        </div>
+      </Section>
+
+      {/* 4. Das dürfen Sie von Glanzwerk erwarten */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Versprechen"
+          title="Das dürfen Sie von Glanzwerk erwarten"
+          subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
+        />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {expectations.map((point, index) => (
+            <FadeIn
+              key={point.title}
+              delay={index * 80}
+              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  {expectationIcons[point.icon]}
+                </svg>
+              </span>
+              <p className="font-display mt-4 text-base font-medium text-brand-900">{point.title}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
+            </FadeIn>
+          ))}
         </div>
       </Section>
 
@@ -180,40 +231,54 @@ export default function HomePage() {
         </FadeIn>
       </Section>
 
-      {/* 6. Preisrechner-Teaser */}
+      {/* 6. Umwelt-Teaser */}
       <Section background="white">
-        <CTASection
-          title="Was kostet Ihre Reinigung?"
-          subtitle="Nutzen Sie unseren Preisrechner für eine erste, unverbindliche Einschätzung – in wenigen Minuten."
-          primaryLabel="Preis berechnen"
-          primaryHref="/preisrechner"
-        />
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <BrandPhoto photo={photos.dosingLiquid} className="shadow-2xl shadow-brand-950/20 lg:order-2" />
+          <div className="lg:order-1">
+            <SectionHeading
+              eyebrow="Umwelt & Verantwortung"
+              title="Bewusster Ressourceneinsatz statt Chemie-Maximum"
+              subtitle="Bedarfsgerechte Dosierung, passende Profimittel statt Universallösung und Mülltrennung, wo im Objekt möglich – nachvollziehbare Handgriffe statt Siegel."
+            />
+            <div className="mt-6">
+              <Button href="/umwelt-verantwortung" variant="ghost">
+                Alle Grundsätze ansehen
+              </Button>
+            </div>
+          </div>
+        </div>
       </Section>
 
-      {/* 7. Standorte */}
+      {/* 7. Glanzwerk Wissen */}
       <Section background="muted">
         <SectionHeading
-          eyebrow="Standorte"
-          title="In allen Berliner Bezirken im Einsatz"
-          subtitle="Wählen Sie Ihren Bezirk für Ansprechpartner und Leistungen vor Ort."
+          eyebrow="Glanzwerk Wissen"
+          title="Praxiswissen rund um Reinigung und Hygiene"
+          subtitle="Verständliche Antworten auf Fragen, die uns Gewerbekunden häufig stellen."
         />
-        <FadeIn as="ul" className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {districts.map((district) => (
-            <li key={district.slug}>
-              <Link
-                href={`/standorte/${district.slug}`}
-                className="flex min-h-11 items-center justify-center rounded-full border border-gray-200 bg-white px-4 py-2.5 text-center text-sm font-medium text-brand-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-500 hover:shadow-md"
-              >
-                {district.name}
-              </Link>
-            </li>
+        <FadeIn className="mt-10 grid gap-5 sm:grid-cols-3">
+          {articles.slice(0, 3).map((article) => (
+            <ArticleCard key={article.slug} article={article} />
           ))}
         </FadeIn>
         <div className="mt-8">
-          <Button href="/standorte" variant="ghost">
-            Alle Standorte im Detail ansehen
+          <Button href="/wissen" variant="ghost">
+            Alle Artikel im Glanzwerk Wissen
           </Button>
         </div>
+      </Section>
+
+      {/* 8. 3 Monate flexibel testen */}
+      <Section background="white">
+        <CTASection
+          title="Glanzwerk 3 Monate flexibel testen"
+          subtitle="Reguläre Reinigung zu vereinbarten Konditionen, ohne dass Sie sich vorab langfristig binden – keine automatische Verlängerung danach."
+          primaryLabel="Testphase anfragen"
+          primaryHref="/3-monate-testen"
+          secondaryLabel="Preis berechnen"
+          secondaryHref="/preisrechner"
+        />
       </Section>
 
       {/* 9. FAQ */}
@@ -224,30 +289,39 @@ export default function HomePage() {
         </FadeIn>
       </Section>
 
-      {/* 10. Abschluss-CTA */}
+      {/* 10. Abschluss-CTA mit Bildhintergrund */}
       <Section background="white">
-        <FadeIn className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-14 text-center shadow-2xl shadow-brand-950/30 sm:px-12 sm:py-16">
-          <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
-          <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">
-            Bereit für Ihre Gebäudereinigung?
-          </h2>
-          <div className="glanz-divider mx-auto mt-4 max-w-[120px]" />
-          <p className="mx-auto mt-4 max-w-xl text-brand-200">
-            Wählen Sie den für Sie passenden Weg – wir melden uns zeitnah
-            zurück.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href="/preisrechner" variant="primary" size="lg">
-              Preis berechnen
-            </Button>
-            <Button href="/kontakt" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-900">
-              Angebot anfragen
-            </Button>
-          </div>
-          <a href={siteConfig.phoneHref} className="mt-5 inline-block text-sm text-brand-200 hover:text-white">
-            Oder rufen Sie uns an: {siteConfig.phone}
-          </a>
-        </FadeIn>
+        <div
+          className="relative overflow-hidden rounded-3xl"
+          style={{
+            backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.93), rgb(11 30 61 / 0.9)), url(${photos.buildingFacade.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <FadeIn className="px-6 py-14 text-center shadow-2xl shadow-brand-950/30 sm:px-12 sm:py-16">
+            <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
+            <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">
+              Bereit für Ihre Gebäudereinigung?
+            </h2>
+            <div className="glanz-divider mx-auto mt-4 max-w-[120px]" />
+            <p className="mx-auto mt-4 max-w-xl text-brand-200">
+              Wählen Sie den für Sie passenden Weg – wir melden uns zeitnah
+              zurück.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button href="/preisrechner" variant="primary" size="lg">
+                Preis berechnen
+              </Button>
+              <Button href="/kontakt" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-900">
+                Angebot anfragen
+              </Button>
+            </div>
+            <a href={siteConfig.phoneHref} className="mt-5 inline-block text-sm text-brand-200 hover:text-white">
+              Oder rufen Sie uns an: {siteConfig.phone}
+            </a>
+          </FadeIn>
+        </div>
       </Section>
     </>
   );

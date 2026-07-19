@@ -86,6 +86,16 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/umwelt-verantwortung" className="text-brand-200 hover:text-white">
+                Umwelt &amp; Verantwortung
+              </Link>
+            </li>
+            <li>
+              <Link href="/3-monate-testen" className="text-brand-200 hover:text-white">
+                3 Monate flexibel testen
+              </Link>
+            </li>
+            <li>
               <Link href="/kontakt" className="text-brand-200 hover:text-white">
                 Kontakt
               </Link>

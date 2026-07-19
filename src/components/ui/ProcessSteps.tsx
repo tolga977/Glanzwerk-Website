@@ -24,12 +24,20 @@ const defaultSteps: ProcessStep[] = [
 
 export default function ProcessSteps({ steps = defaultSteps }: { steps?: ProcessStep[] }) {
   return (
-    <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       {steps.map((step, index) => (
-        <li key={step.title} className="relative rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
-          <span className="font-display flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-800 to-brand-900 text-base font-medium text-white shadow-sm">
-            {index + 1}
-          </span>
+        <li key={step.title}>
+          <div className="flex items-center">
+            <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-800 to-brand-900 text-base font-medium text-white shadow-sm">
+              {index + 1}
+            </span>
+            {index < steps.length - 1 && (
+              <span
+                aria-hidden="true"
+                className="ml-3 hidden h-px flex-1 bg-gradient-to-r from-brand-200 to-brand-100 lg:block"
+              />
+            )}
+          </div>
           <h3 className="mt-4 text-base font-semibold text-brand-900">{step.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.description}</p>
         </li>

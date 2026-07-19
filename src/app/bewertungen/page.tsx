@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import Section, { SectionHeading } from "@/components/ui/Section";
+import Section from "@/components/ui/Section";
 import Reviews from "@/components/ui/Reviews";
+import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
+import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -17,13 +19,23 @@ export default function BewertungenPage() {
       <Breadcrumb items={[{ label: "Bewertungen" }]} />
 
       <Section background="white" className="pt-12">
-        <SectionHeading
-          as="h1"
-          eyebrow="Bewertungen"
-          title="Erfahrungen unserer Kunden in Berlin"
-          subtitle="Wir sammeln fortlaufend Rückmeldungen unserer Kunden zu unserer Arbeit."
-        />
-        <div className="mt-10">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="max-w-xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+              Bewertungen
+            </p>
+            <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
+              Erfahrungen unserer Kunden in Berlin
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              Wir sammeln fortlaufend Rückmeldungen unserer Kunden zu
+              unserer Arbeit und veröffentlichen sie hier, sobald sie
+              vorliegen.
+            </p>
+          </div>
+          <BrandPhoto photo={photos.cleaningEquipment} priority className="shadow-2xl shadow-brand-950/20" />
+        </div>
+        <div className="mt-14">
           <Reviews reviews={[]} />
         </div>
       </Section>

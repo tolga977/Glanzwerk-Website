@@ -105,61 +105,6 @@ const assuranceIcons = {
   ),
 } as const;
 
-const sustainabilityIcons = {
-  dosing: (
-    <>
-      <path d="M9 3h6M10 3v4.5L5.5 16a2 2 0 0 0 1.8 2.9h9.4a2 2 0 0 0 1.8-2.9L14 7.5V3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M7.5 14.5h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
-  microfiber: (
-    <>
-      <path d="M5 5.5h9a3 3 0 0 1 3 3v.5a2 2 0 0 1-2 2h-.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M5 5.5v11a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 9.5h5M8 13h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
-  rhythm: (
-    <>
-      <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </>
-  ),
-  selection: (
-    <>
-      <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M8.3 12.3l2.4 2.4 5-5.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </>
-  ),
-} as const;
-
-const sustainabilityPoints = [
-  {
-    title: "Dosierung statt Verschwendung",
-    description:
-      "Wir dosieren Reinigungsmittel nach Herstellerangabe statt „auf Verdacht“ – das schont Flächen, Kosten und Umwelt gleichermaßen.",
-    icon: "dosing" as const,
-  },
-  {
-    title: "Mikrofasertechnik",
-    description:
-      "Wo möglich, setzen wir Mikrofasertücher und -mopps ein, die mit weniger Chemie auskommen und mehrfach wiederverwendbar sind.",
-    icon: "microfiber" as const,
-  },
-  {
-    title: "Bedarfsgerechte Intervalle",
-    description:
-      "Ein passender Reinigungsrhythmus statt pauschaler Maximalreinigung vermeidet unnötigen Wasser-, Material- und Energieverbrauch.",
-    icon: "rhythm" as const,
-  },
-  {
-    title: "Bewusste Produktwahl",
-    description:
-      "Bei der Auswahl unserer Reinigungsmittel achten wir auf Verträglichkeit und Wirksamkeit, ohne pauschal zum stärksten Mittel zu greifen.",
-    icon: "selection" as const,
-  },
-];
-
 export default function UeberUnsPage() {
   return (
     <>
@@ -291,47 +236,28 @@ export default function UeberUnsPage() {
       </Section>
 
       <Section background="warm">
-        <SectionHeading
-          eyebrow="Nachhaltigkeit"
-          title="Nachhaltiger reinigen, wo es wirklich etwas bringt"
-          subtitle="Keine Zertifikate, keine Siegel – sondern nachvollziehbare Handgriffe im Alltag, die wir tatsächlich umsetzen."
-        />
-        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-            {sustainabilityPoints.map((point, index) => (
-              <FadeIn
-                key={point.title}
-                delay={index * 80}
-                className="flex gap-3 rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    {sustainabilityIcons[point.icon]}
-                  </svg>
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-brand-900">{point.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </ul>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <BrandPhoto
-              photo={photos.cleaningEquipment}
-              className="shadow-2xl shadow-brand-950/20"
-            >
-              <div className="absolute bottom-4 left-4 rounded-xl bg-white/95 px-3 py-2 shadow-lg backdrop-blur">
-                <Logo height={22} />
-              </div>
-            </BrandPhoto>
+            <SectionHeading
+              eyebrow="Nachhaltigkeit"
+              title="Nachhaltiger reinigen, wo es wirklich etwas bringt"
+              subtitle="Keine Zertifikate, keine Siegel – sondern nachvollziehbare Handgriffe im Alltag, die wir tatsächlich umsetzen: von bedarfsgerechter Dosierung bis zur Mülltrennung, wo im Objekt möglich."
+            />
             <Link
-              href="/wissen/nachhaltige-gebaeudereinigung"
-              className="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline"
+              href="/umwelt-verantwortung"
+              className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline"
             >
-              Mehr zu nachhaltiger Gebäudereinigung im Glanzwerk Wissen
+              Alle Grundsätze auf der Umwelt-&-Verantwortung-Seite
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
+          <BrandPhoto photo={photos.cleaningEquipment} className="shadow-2xl shadow-brand-950/20">
+            <div className="absolute bottom-4 left-4 rounded-xl bg-white/95 px-3 py-2 shadow-lg backdrop-blur">
+              <Logo height={22} />
+            </div>
+          </BrandPhoto>
         </div>
       </Section>
 

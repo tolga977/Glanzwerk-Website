@@ -6,15 +6,15 @@ import { photos } from "@/data/photos";
  */
 export const servicePhotos: Record<string, (typeof photos)[keyof typeof photos]> = {
   "gebaeudereinigung-berlin": photos.buildingFacade,
-  "bueroreinigung-berlin": photos.officeCleaning,
-  "praxisreinigung-berlin": photos.practiceWaitingRoom,
-  "unterhaltsreinigung-berlin": photos.modernOfficeInterior,
-  "treppenhausreinigung-berlin": photos.staircase,
+  "bueroreinigung-berlin": photos.officeCleaningTeam,
+  "praxisreinigung-berlin": photos.medicalPracticeInterior,
+  "unterhaltsreinigung-berlin": photos.routineCleaningTeam,
+  "treppenhausreinigung-berlin": photos.brightStaircase,
   "fensterreinigung-berlin": photos.windowCleaning,
   "glasreinigung-berlin": photos.facadeCleaning,
-  "grundreinigung-berlin": photos.emptyOfficeRoom,
-  "kita-und-schulreinigung-berlin": photos.classroom,
-  "kanzleireinigung-berlin": photos.conferenceRoom,
+  "grundreinigung-berlin": photos.moppingFloor,
+  "kita-und-schulreinigung-berlin": photos.kitaInterior,
+  "kanzleireinigung-berlin": photos.lawOfficeReception,
   "fitnessstudioreinigung-berlin": photos.gymInterior,
   "autohausreinigung-berlin": photos.carShowroom,
 };
