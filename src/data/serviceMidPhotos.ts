@@ -7,8 +7,11 @@ import { photos } from "@/data/photos";
  * bereits geprüft, keine neue Bildbeschaffung nötig. Gastronomiereinigung
  * ist neu und hat kein Alt-Foto zum Wiederverwenden.
  */
-export const serviceMidPhotos: Record<string, (typeof photos)[keyof typeof photos]> = {
-  "bueroreinigung-berlin": photos.officeCleaningTeam,
+export const serviceMidPhotos: Record<string, { src: string; alt: string }> = {
+  "bueroreinigung-berlin": {
+    src: "/images/leistungen/bueroreinigung-berlin/mittelbereich.webp",
+    alt: "Helles, modernes Büro mit gepflegten Arbeitsplätzen",
+  },
   "praxisreinigung-berlin": photos.medicalPracticeInterior,
   "kita-und-schulreinigung-berlin": photos.kitaInterior,
   "treppenhausreinigung-berlin": photos.brightStaircase,

@@ -7,12 +7,16 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
-import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 
 const description =
   "Wie Glanzwerk Reinigungsservice Berlin Ressourcen im Reinigungsalltag bewusst einsetzt – konkrete Handgriffe statt Umweltversprechen.";
+
+const dosierungPhoto = {
+  src: "/images/umwelt-verantwortung/dosierung.webp",
+  alt: "Wiederverwendbare Reinigungsutensilien für einen bewussten Ressourceneinsatz",
+};
 
 export const metadata: Metadata = buildMetadata({
   title: "Umwelt & Verantwortung",
@@ -124,7 +128,7 @@ export default function UmweltVerantwortungPage() {
               pauschal maximal.
             </p>
           </div>
-          <BrandPhoto photo={photos.dosingLiquid} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={dosierungPhoto} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
       </Section>
 

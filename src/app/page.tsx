@@ -20,6 +20,11 @@ import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
 
+const dosierungPhoto = {
+  src: "/images/umwelt-verantwortung/dosierung.webp",
+  alt: "Wiederverwendbare Reinigungsutensilien für einen bewussten Ressourceneinsatz",
+};
+
 export const metadata: Metadata = buildMetadata({
   title: "Gebäudereinigung Berlin für Unternehmen",
   description: siteConfig.description,
@@ -183,7 +188,7 @@ export default function HomePage() {
       {/* 6. Umwelt-Teaser */}
       <Section background="warm">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <BrandPhoto photo={photos.dosingLiquid} className="shadow-2xl shadow-brand-950/20 lg:order-2" />
+          <BrandPhoto photo={dosierungPhoto} className="shadow-2xl shadow-brand-950/20 lg:order-2" />
           <div className="lg:order-1">
             <SectionHeading
               eyebrow="Umwelt & Verantwortung"

@@ -131,7 +131,7 @@ export default function UeberUnsPage() {
             </p>
           </div>
           <BrandPhoto
-            photo={photos.professionalCleaner}
+            photo={photos.buildingFacade}
             className="shadow-2xl shadow-brand-950/20"
           />
         </div>

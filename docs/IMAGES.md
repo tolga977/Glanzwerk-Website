@@ -34,12 +34,12 @@ Die Website nutzt vier Bildquellen:
    | Artikel-Slug | Bilddatei | Vorheriges Foto (weiterhin anderswo verwendet) |
    |---|---|---|
    | was-kostet-gebaeudereinigung | `was-kostet-gebaeudereinigung.png` | buildingFacade (Standorte-Hero, Homepage) |
-   | wie-oft-buero-reinigen | `wie-oft-buero-reinigen.png` | officeCleaningTeam (serviceMidPhotos Büroreinigung) |
+   | wie-oft-buero-reinigen | `wie-oft-buero-reinigen.png` | officeCleaningTeam (**seit 21.07. entfernt** – falsches Motiv mit Personen in roter/orangefarbener Arbeitskleidung, siehe Korrektur-Abschnitt unten) |
    | unterhaltsreinigung-oder-grundreinigung | `unterhaltsreinigung-oder-grundreinigung.png` | moppingFloor (serviceMidPhotos Grundreinigung) |
    | reinigung-arztpraxen | `reinigung-arztpraxen.png` | medicalPracticeInterior (serviceMidPhotos Praxisreinigung) |
    | glasreinigung-tipps | `glasreinigung-tipps.png` | facadeCleaning (**entfernt, war verwaist**) |
    | buerohygiene-massnahmen | `buerohygiene-massnahmen.png` | routineCleaningTeam (serviceMidPhotos Unterhaltsreinigung) |
-   | nachhaltige-gebaeudereinigung | `nachhaltige-gebaeudereinigung.png` | dosingLiquid (Umwelt-Seite, Homepage-Teaser) |
+   | nachhaltige-gebaeudereinigung | `nachhaltige-gebaeudereinigung.png` | dosingLiquid (**seit 21.07. entfernt**, siehe Korrektur-Abschnitt unten) |
    | reinigungsdienstleister-auswaehlen | `reinigungsdienstleister-auswaehlen.png` | businessHandshake (3-Monate-Seite, Kontakt) |
    | objektbesichtigung-vorbereiten | `objektbesichtigung-vorbereiten.png` | brightStaircase (serviceMidPhotos Treppenhausreinigung) |
 
@@ -111,15 +111,16 @@ Beschriftung oder unpassendem Ton/Kontext ausgetauscht wurden:
 
 | Verwendung | Foto-ID |
 |---|---|
-| Büroreinigung | `6196684` |
 | Praxisreinigung | `6812461` (Behandlungsraum, premium/editorial, keine Personen) |
 | Unterhaltsreinigung | `9462109` |
 | Treppenhausreinigung | `6345073` (helles Treppenhaus, premium/editorial, keine Personen) |
-| Grundreinigung | `3769711` |
+| Grundreinigung | `3769711` (**seit 21.07. nur noch als serviceMidPhotos-Bild geplant, siehe Korrektur-Abschnitt unten**) |
 | Kita- & Schulreinigung | `8535620` (Gruppenzimmer, premium/editorial, keine Personen) |
 | Kanzleireinigung | `36631639` (Empfang, premium/editorial, keine Personen) |
-| Über uns (Team/Reinigung) | `9462192` |
 | Über uns (Equipment, mit Logo-Badge) | `34516664` |
+
+Die bisherigen Büroreinigungs- und Über-uns/Team-Fotos wurden am 21.07.2026
+vollständig entfernt – siehe Korrektur-Abschnitt unten.
 
 Das Equipment-Foto auf der Über-uns-Seite trägt ein kleines, klar als
 UI-Element erkennbares Logo-Badge (weiße Karte, Schatten, wie das
@@ -136,14 +137,12 @@ Download, visuelle Prüfung auf Fremd-Branding vor Einbindung):
 
 | Verwendung | Foto-ID | Hinweis |
 |---|---|---|
-| Umwelt & Verantwortung (Hero) | `7262739` (`dosingLiquid`) | Hand dosiert Flüssigkeit – belegt „bedarfsgerechte Dosierung" bildlich, keine Personen/Logos im Bild |
+| Umwelt & Verantwortung (Hero) | `dosingLiquid` | **Seit 21.07. entfernt und ersetzt**, siehe Korrektur-Abschnitt unten |
 | 3 Monate flexibel testen (Hero) | `6918529` (`businessHandshake`) | Handschlag zweier Geschäftspartner – passt zum Thema „Zusammenarbeit testen", keine erkennbaren Fremdmarken |
 
-Zusätzlich wurde `professionalCleaner` (`9462192`, bisher nur auf
-Über-uns) als Hero-Bild für den neuen, zweispaltigen Einleitungsbereich
-der Wissen-Hub-Seite (`/wissen`) wiederverwendet – Mehrfachverwendung
-bestehender, bereits geprüfter Fotos statt Beschaffung eines neuen Fotos
-pro einzelner Seite, wie auch an anderen Stellen der Seite üblich.
+`professionalCleaner` wurde ursprünglich sowohl auf Über-uns als auch als
+Hero-Bild von `/wissen` wiederverwendet – seit 21.07.2026 vollständig
+entfernt, siehe Korrektur-Abschnitt unten.
 
 ## Stufe 5b: Bilderpaket Leistungsseiten (Juli 2026, vom Betreiber geliefert, korrigiert am 20.07.)
 
@@ -190,13 +189,58 @@ neuen Seiten – ausschließlich Wiederverwendung bereits geprüfter Fotos:
 | `/bewertungen` | `cleaningEquipment` |
 | `/reinigungsfirma-berlin` | `windowCleaning` |
 
-Die 9 Wissen-Artikel (`src/data/articles.ts`) haben seit Stufe 4 jeweils
-ein eigenes `image`-Feld für die Artikelkarten (`ArticleCard.tsx`) –
-ausschließlich Wiederverwendung bereits vorhandener, geprüfter Fotos aus
-`photos.ts` (u. a. `buildingFacade`, `officeCleaningTeam`, `moppingFloor`,
-`medicalPracticeInterior`, `facadeCleaning`, `routineCleaningTeam`,
-`dosingLiquid`, `businessHandshake`, `brightStaircase`), passend zum
-jeweiligen Artikelthema zugeordnet.
+Die 9 Wissen-Artikel (`src/data/articles.ts`) hatten in Stufe 4 zunächst
+ein `image`-Feld mit Wiederverwendung vorhandener `photos.ts`-Fotos;
+seit der vollständigen Bilderneuerung „Glanzwerk Wissen" (siehe Bullet 3
+oben) zeigen alle 9 Artikel eigene, lokale Illustrationen statt
+Stock-Fotos.
+
+## Korrektur falscher Stockfotos (21.07.2026)
+
+Drei vom Betreiber als fachlich/inhaltlich falsch identifizierte Stockfotos
+wurden vollständig ersetzt und aus dem Repository entfernt (Registry-Einträge
+in `photos.ts` gelöscht, keine der drei alten Pexels-IDs kommt danach noch
+irgendwo im Repository vor). Alle drei Ersatzbilder wurden heruntergeladen,
+lokal zugeschnitten und als WebP unter `public/images/` abgelegt (kein
+Hotlinking mehr für diese drei Motive):
+
+| Bisher | Ersetzt durch | Neuer Pfad | Einsatzort(e) |
+|---|---|---|---|
+| `officeCleaningTeam` (Personen in roter/oranger Arbeitskleidung – falsches Motiv) | Pexels [1170412](https://www.pexels.com/photo/modern-office-space-with-desktops-1170412/), zugeschnitten auf 16:10 | `public/images/leistungen/bueroreinigung-berlin/mittelbereich.webp` | Mittelbereich „So läuft die Büroreinigung ab“ |
+| `professionalCleaner` (Frau mit Staubwedel/Sprühflasche – falsches Motiv) | Pexels [10567236](https://www.pexels.com/photo/rag-and-cleaner-on-desk-10567236/), zugeschnitten auf 4:3 | `public/images/wissen/hero-wissen.webp` | Hero-Bild `/wissen` |
+| `dosingLiquid` (Abfüllbild) | Pexels [5217779](https://www.pexels.com/photo/green-detergent-bottle-with-sprayer-and-sponge-with-plate-5217779/), zugeschnitten auf 4:3 | `public/images/umwelt-verantwortung/dosierung.webp` | Startseite „Bewusster Ressourceneinsatz statt Chemie-Maximum“, Hero `/umwelt-verantwortung` |
+
+Die drei bisherigen Pexels-Bild-IDs kommen nach dieser Korrektur an keiner
+Stelle im Repository mehr vor (Registry-Einträge in `photos.ts` gelöscht,
+projektweite Suche bestätigt).
+
+Alt-Texte: „Helles, modernes Büro mit gepflegten Arbeitsplätzen“ /
+„Reinigungsmittel und Reinigungstuch an einem gepflegten Arbeitsplatz“ /
+„Wiederverwendbare Reinigungsutensilien für einen bewussten
+Ressourceneinsatz“.
+
+**Ungeplante Zusatzänderung – Über-uns-Hero:** `professionalCleaner` wurde
+zusätzlich (ohne dass es Teil des Auftrags war) als Hero-Bild von
+`/ueber-uns` verwendet. Da die alte Foto-ID vollständig verschwinden musste,
+war an dieser Stelle zwangsläufig ein Ersatz nötig. Der naheliegende
+Rückgriff auf `routineCleaningTeam` (bereits im Projekt vorhanden) wurde
+geprüft und verworfen: Ein direkter Bildvergleich zeigt nachweislich
+dieselbe Person/denselben Fotoshoot wie das zu entfernende Bild (beide aus
+derselben Pexels-Foto-Serie desselben Fotografen). Stattdessen wird auf
+`/ueber-uns` jetzt
+`buildingFacade` verwendet (bereits an anderer Stelle im Projekt geprüft und
+im Einsatz). Rückmeldung dazu ausdrücklich erwünscht, falls ein anderes
+Motiv gewünscht ist.
+
+**Offen: Grundreinigung-Mittelbereich.** `moppingFloor` (Pexels `3769711`,
+Mann mit normalem Wischmopp) soll durch ein vom Betreiber bereitgestelltes
+Foto „Professionelle Grundreinigung mit Poliermaschine“ ersetzt werden.
+Die Bilddatei lag zum Zeitpunkt dieser Korrektur noch nicht als tatsächliche
+Datei vor (nur ein bereits anderweitig verwendetes Foto war im
+Downloads-Ordner auffindbar) – `moppingFloor` bleibt daher vorerst in
+`photos.ts` bestehen und wird entfernt, sobald das Ersatzbild vorliegt und
+unter `public/images/leistungen/grundreinigung-berlin/grundreinigung-einscheibenmaschine.webp`
+eingebaut wurde.
 
 ## Konzept für zukünftige echte Projektfotos
 

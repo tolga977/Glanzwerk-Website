@@ -22,10 +22,6 @@ export const photos = {
     src: unsplash("photo-1746905205773-3ea50c8cd808"),
     alt: "Fensterreiniger säubert eine Glasscheibe mit dem Abzieher",
   },
-  professionalCleaner: {
-    src: pexels("9462192/pexels-photo-9462192.jpeg"),
-    alt: "Lächelnde Reinigungskraft mit Staubwedel und Sprühflasche",
-  },
   buildingFacade: {
     src: unsplash("photo-1540762693098-50320eb8a752"),
     alt: "Moderne Vorhangfassade eines Gewerbegebäudes",
@@ -41,10 +37,6 @@ export const photos = {
   cleaningEquipment: {
     src: pexels("34516664/pexels-photo-34516664.jpeg"),
     alt: "Vollständig ausgestatteter Reinigungswagen mit Staubsauger, Mopps und Mülltonne",
-  },
-  officeCleaningTeam: {
-    src: pexels("6196684/pexels-photo-6196684.jpeg"),
-    alt: "Reinigungsteam in Arbeitskleidung mit Staubsauger im Büro im Einsatz",
   },
   routineCleaningTeam: {
     src: pexels("9462109/pexels-photo-9462109.jpeg"),
@@ -69,10 +61,6 @@ export const photos = {
   moppingFloor: {
     src: pexels("3769711/pexels-photo-3769711.jpeg"),
     alt: "Reinigungskraft in Arbeitskleidung wischt gründlich einen Boden",
-  },
-  dosingLiquid: {
-    src: pexels("7262739/pexels-photo-7262739.jpeg"),
-    alt: "Hand dosiert kontrolliert Flüssigkeit aus einem Spender in eine Glasflasche",
   },
   businessHandshake: {
     src: pexels("6918529/pexels-photo-6918529.jpeg"),

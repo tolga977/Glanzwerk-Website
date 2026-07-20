@@ -6,8 +6,12 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import { articles } from "@/data/articles";
-import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
+
+const wissenHeroPhoto = {
+  src: "/images/wissen/hero-wissen.webp",
+  alt: "Reinigungsmittel und Reinigungstuch an einem gepflegten Arbeitsplatz",
+};
 
 const description =
   "Praxisnahes Wissen rund um Gebäudereinigung, Hygiene und Kosten – verständlich erklärt von Glanzwerk Reinigungsservice Berlin.";
@@ -39,7 +43,7 @@ export default function WissenPage() {
               für Büros, Praxen, Kanzleien und Unternehmen in Berlin.
             </p>
           </div>
-          <BrandPhoto photo={photos.professionalCleaner} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={wissenHeroPhoto} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
       </Section>
 
