@@ -58,10 +58,6 @@ export const photos = {
     src: pexels("6345073/pexels-photo-6345073.jpeg"),
     alt: "Helles, gepflegtes Treppenhaus mit Holzgeländer und Pflanze",
   },
-  moppingFloor: {
-    src: pexels("3769711/pexels-photo-3769711.jpeg"),
-    alt: "Reinigungskraft in Arbeitskleidung wischt gründlich einen Boden",
-  },
   businessHandshake: {
     src: pexels("6918529/pexels-photo-6918529.jpeg"),
     alt: "Zwei Geschäftspartner besiegeln eine Vereinbarung mit Handschlag",

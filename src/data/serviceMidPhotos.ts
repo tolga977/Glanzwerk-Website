@@ -16,7 +16,10 @@ export const serviceMidPhotos: Record<string, { src: string; alt: string }> = {
   "kita-und-schulreinigung-berlin": photos.kitaInterior,
   "treppenhausreinigung-berlin": photos.brightStaircase,
   "glas-und-fensterreinigung-berlin": photos.windowCleaning,
-  "grundreinigung-berlin": photos.moppingFloor,
+  "grundreinigung-berlin": {
+    src: "/images/leistungen/grundreinigung-berlin/grundreinigung-einscheibenmaschine.webp",
+    alt: "Professionelle Grundreinigung eines Bodens mit einer Einscheibenmaschine",
+  },
   "autohausreinigung-berlin": photos.carShowroom,
   "unterhaltsreinigung-berlin": photos.routineCleaningTeam,
   "gebaeudereinigung-berlin": photos.buildingFacade,

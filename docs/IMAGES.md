@@ -35,7 +35,7 @@ Die Website nutzt vier Bildquellen:
    |---|---|---|
    | was-kostet-gebaeudereinigung | `was-kostet-gebaeudereinigung.png` | buildingFacade (Standorte-Hero, Homepage) |
    | wie-oft-buero-reinigen | `wie-oft-buero-reinigen.png` | officeCleaningTeam (**seit 21.07. entfernt** – falsches Motiv mit Personen in roter/orangefarbener Arbeitskleidung, siehe Korrektur-Abschnitt unten) |
-   | unterhaltsreinigung-oder-grundreinigung | `unterhaltsreinigung-oder-grundreinigung.png` | moppingFloor (serviceMidPhotos Grundreinigung) |
+   | unterhaltsreinigung-oder-grundreinigung | `unterhaltsreinigung-oder-grundreinigung.png` | moppingFloor (**seit 21.07. entfernt**, siehe Korrektur-Abschnitt unten) |
    | reinigung-arztpraxen | `reinigung-arztpraxen.png` | medicalPracticeInterior (serviceMidPhotos Praxisreinigung) |
    | glasreinigung-tipps | `glasreinigung-tipps.png` | facadeCleaning (**entfernt, war verwaist**) |
    | buerohygiene-massnahmen | `buerohygiene-massnahmen.png` | routineCleaningTeam (serviceMidPhotos Unterhaltsreinigung) |
@@ -114,7 +114,7 @@ Beschriftung oder unpassendem Ton/Kontext ausgetauscht wurden:
 | Praxisreinigung | `6812461` (Behandlungsraum, premium/editorial, keine Personen) |
 | Unterhaltsreinigung | `9462109` |
 | Treppenhausreinigung | `6345073` (helles Treppenhaus, premium/editorial, keine Personen) |
-| Grundreinigung | `3769711` (**seit 21.07. nur noch als serviceMidPhotos-Bild geplant, siehe Korrektur-Abschnitt unten**) |
+| Grundreinigung | (**seit 21.07. entfernt und ersetzt**, siehe Korrektur-Abschnitt unten) |
 | Kita- & Schulreinigung | `8535620` (Gruppenzimmer, premium/editorial, keine Personen) |
 | Kanzleireinigung | `36631639` (Empfang, premium/editorial, keine Personen) |
 | Über uns (Equipment, mit Logo-Badge) | `34516664` |
@@ -197,27 +197,30 @@ Stock-Fotos.
 
 ## Korrektur falscher Stockfotos (21.07.2026)
 
-Drei vom Betreiber als fachlich/inhaltlich falsch identifizierte Stockfotos
+Vier vom Betreiber als fachlich/inhaltlich falsch identifizierte Stockfotos
 wurden vollständig ersetzt und aus dem Repository entfernt (Registry-Einträge
-in `photos.ts` gelöscht, keine der drei alten Pexels-IDs kommt danach noch
-irgendwo im Repository vor). Alle drei Ersatzbilder wurden heruntergeladen,
-lokal zugeschnitten und als WebP unter `public/images/` abgelegt (kein
-Hotlinking mehr für diese drei Motive):
+in `photos.ts` gelöscht, keine der alten Pexels-IDs kommt danach noch
+irgendwo im Repository vor). Drei Ersatzbilder wurden von Pexels
+heruntergeladen und lokal zugeschnitten, eines wurde vom Betreiber direkt
+als Datei geliefert; alle vier liegen als WebP unter `public/images/` (kein
+Hotlinking mehr für diese vier Motive):
 
 | Bisher | Ersetzt durch | Neuer Pfad | Einsatzort(e) |
 |---|---|---|---|
 | `officeCleaningTeam` (Personen in roter/oranger Arbeitskleidung – falsches Motiv) | Pexels [1170412](https://www.pexels.com/photo/modern-office-space-with-desktops-1170412/), zugeschnitten auf 16:10 | `public/images/leistungen/bueroreinigung-berlin/mittelbereich.webp` | Mittelbereich „So läuft die Büroreinigung ab“ |
 | `professionalCleaner` (Frau mit Staubwedel/Sprühflasche – falsches Motiv) | Pexels [10567236](https://www.pexels.com/photo/rag-and-cleaner-on-desk-10567236/), zugeschnitten auf 4:3 | `public/images/wissen/hero-wissen.webp` | Hero-Bild `/wissen` |
 | `dosingLiquid` (Abfüllbild) | Pexels [5217779](https://www.pexels.com/photo/green-detergent-bottle-with-sprayer-and-sponge-with-plate-5217779/), zugeschnitten auf 4:3 | `public/images/umwelt-verantwortung/dosierung.webp` | Startseite „Bewusster Ressourceneinsatz statt Chemie-Maximum“, Hero `/umwelt-verantwortung` |
+| `moppingFloor` (Mann mit normalem Wischmopp – falsches Motiv) | vom Betreiber geliefertes Foto einer Einscheibenmaschine in Nahaufnahme (keine Person im Bild, vom Betreiber ausdrücklich bestätigt), zugeschnitten auf 16:10 mit Erhalt des vollständigen Maschinen-Ausschnitts | `public/images/leistungen/grundreinigung-berlin/grundreinigung-einscheibenmaschine.webp` | Mittelbereich „So läuft die Grundreinigung ab“ |
 
-Die drei bisherigen Pexels-Bild-IDs kommen nach dieser Korrektur an keiner
+Die vier bisherigen Pexels-Bild-IDs kommen nach dieser Korrektur an keiner
 Stelle im Repository mehr vor (Registry-Einträge in `photos.ts` gelöscht,
 projektweite Suche bestätigt).
 
 Alt-Texte: „Helles, modernes Büro mit gepflegten Arbeitsplätzen“ /
 „Reinigungsmittel und Reinigungstuch an einem gepflegten Arbeitsplatz“ /
 „Wiederverwendbare Reinigungsutensilien für einen bewussten
-Ressourceneinsatz“.
+Ressourceneinsatz“ / „Professionelle Grundreinigung eines Bodens mit einer
+Einscheibenmaschine“.
 
 **Ungeplante Zusatzänderung – Über-uns-Hero:** `professionalCleaner` wurde
 zusätzlich (ohne dass es Teil des Auftrags war) als Hero-Bild von
@@ -232,15 +235,10 @@ derselben Pexels-Foto-Serie desselben Fotografen). Stattdessen wird auf
 im Einsatz). Rückmeldung dazu ausdrücklich erwünscht, falls ein anderes
 Motiv gewünscht ist.
 
-**Offen: Grundreinigung-Mittelbereich.** `moppingFloor` (Pexels `3769711`,
-Mann mit normalem Wischmopp) soll durch ein vom Betreiber bereitgestelltes
-Foto „Professionelle Grundreinigung mit Poliermaschine“ ersetzt werden.
-Die Bilddatei lag zum Zeitpunkt dieser Korrektur noch nicht als tatsächliche
-Datei vor (nur ein bereits anderweitig verwendetes Foto war im
-Downloads-Ordner auffindbar) – `moppingFloor` bleibt daher vorerst in
-`photos.ts` bestehen und wird entfernt, sobald das Ersatzbild vorliegt und
-unter `public/images/leistungen/grundreinigung-berlin/grundreinigung-einscheibenmaschine.webp`
-eingebaut wurde.
+Das Grundreinigung-Ersatzfoto zeigt bewusst nur die Maschine ohne Person
+im Bild (vom Betreiber nach Rückfrage ausdrücklich bestätigt) – der
+vorgesehene Alt-Text „Professionelle Grundreinigung eines Bodens mit einer
+Einscheibenmaschine“ beschreibt entsprechend nur die Maschine, keine Person.
 
 ## Konzept für zukünftige echte Projektfotos
 
