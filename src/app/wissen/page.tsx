@@ -30,7 +30,8 @@ export default function WissenPage() {
               Glanzwerk Wissen
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Praxiswissen rund um Reinigung und Hygiene in Berlin
+              Praxiswissen rund um <span className="text-brand-500">Reinigung und Hygiene</span> in
+              Berlin
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Verständliche Antworten auf Fragen, die uns Gewerbekunden
@@ -40,7 +41,10 @@ export default function WissenPage() {
           </div>
           <BrandPhoto photo={photos.professionalCleaner} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
-        <FadeIn className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      </Section>
+
+      <Section background="tint" decor>
+        <FadeIn className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}

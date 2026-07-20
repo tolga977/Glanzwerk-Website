@@ -73,6 +73,33 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Glasreinigung und Fensterreinigung wurden im Juli 2026 zu einer
+  // gemeinsamen Leistung "Glas- und Fensterreinigung" zusammengeführt.
+  // Permanente Redirects erhalten bestehende Rankings und Backlinks.
+  async redirects() {
+    return [
+      {
+        source: "/leistungen/glasreinigung-berlin",
+        destination: "/leistungen/glas-und-fensterreinigung-berlin",
+        permanent: true,
+      },
+      {
+        source: "/leistungen/fensterreinigung-berlin",
+        destination: "/leistungen/glas-und-fensterreinigung-berlin",
+        permanent: true,
+      },
+      {
+        source: "/leistungen/glasreinigung-berlin/:bezirk",
+        destination: "/leistungen/glas-und-fensterreinigung-berlin/:bezirk",
+        permanent: true,
+      },
+      {
+        source: "/leistungen/fensterreinigung-berlin/:bezirk",
+        destination: "/leistungen/glas-und-fensterreinigung-berlin/:bezirk",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

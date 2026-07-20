@@ -12,6 +12,8 @@ export interface Service {
   summary: string;
   intro: string;
   bullets: string[];
+  /** Drei kurze, konkrete Probleme aus Kundensicht für den Problem-Abschnitt der Leistungsseite. */
+  challenges: string[];
   description: string[];
   tasks: string[];
   audiences: string[];
@@ -31,6 +33,11 @@ export const services: Service[] = [
       "Umfassende Reinigung für Gewerbeimmobilien – von der laufenden Pflege bis zur Grundreinigung.",
     intro:
       "Als Generalunternehmen für die Gebäudereinigung übernimmt Glanzwerk die komplette Pflege Ihrer Gewerbeimmobilie in Berlin – abgestimmt auf Nutzung, Frequentierung und Budget.",
+    challenges: [
+      "Mehrere Dienstleister für Fenster, Treppenhaus und Unterhalt bedeuten Abstimmungsaufwand und unklare Zuständigkeiten.",
+      "Unregelmäßig gepflegte Gemeinschaftsflächen wirken schnell ungepflegt und schaden dem Gesamteindruck der Immobilie.",
+      "Ohne festen Ansprechpartner bleiben Rückfragen zu Umfang und Rhythmus oft unbeantwortet.",
+    ],
     bullets: [
       "Individuelle Reinigungskonzepte je nach Objekt",
       "Feste Ansprechpartner und Reinigungsteams",
@@ -93,6 +100,11 @@ export const services: Service[] = [
       "Saubere Arbeitsplätze für Mitarbeitende und Kunden – diskret, zuverlässig, außerhalb der Kernarbeitszeit.",
     intro:
       "Ein gepflegtes Büro wirkt sich direkt auf Konzentration, Wohlbefinden und den ersten Eindruck bei Kunden aus. Glanzwerk reinigt Ihre Büroflächen in Berlin nach einem festen, mit Ihnen abgestimmten Plan.",
+    challenges: [
+      "Verschmutzte Arbeitsplätze wirken sich spürbar auf Konzentration und den Eindruck bei Kunden aus.",
+      "Reinigungstermine während der Kernarbeitszeit stören den Betriebsablauf.",
+      "Wechselndes Reinigungspersonal kennt Ihre Räume und Abläufe nicht.",
+    ],
     bullets: [
       "Reinigung außerhalb der Geschäftszeiten möglich",
       "Schreibtische, Böden, Sanitär- und Teeküchenbereiche",
@@ -143,7 +155,7 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["unterhaltsreinigung-berlin", "glasreinigung-berlin", "kanzleireinigung-berlin"],
+    relatedSlugs: ["unterhaltsreinigung-berlin", "glas-und-fensterreinigung-berlin", "kanzleireinigung-berlin"],
   },
   {
     slug: "praxisreinigung-berlin",
@@ -155,6 +167,11 @@ export const services: Service[] = [
       "Hygienegerechte Reinigung für Arztpraxen und medizinische Einrichtungen.",
     intro:
       "Arztpraxen stellen besondere Anforderungen an Hygiene und einen reibungslosen Praxisablauf. Glanzwerk reinigt Warte-, Empfangs- und Behandlungsräume in Berlin nach einem auf Ihre Sprechzeiten abgestimmten Ablauf.",
+    challenges: [
+      "Unzureichend gereinigte Warte- und Behandlungsräume wirken sich direkt auf das Vertrauen der Patienten aus.",
+      "Reinigungstermine, die nicht zu den Sprechzeiten passen, stören den Praxisablauf.",
+      "Sensible Bereiche erfordern sorgfältigen, eingespielten Umgang statt improvisierter Einsätze.",
+    ],
     bullets: [
       "Reinigung von Warte-, Empfangs- und Behandlungsräumen",
       "Abstimmung auf Praxisöffnungszeiten",
@@ -216,6 +233,11 @@ export const services: Service[] = [
       "Regelmäßige Pflegereinigung, damit Ihr Gewerbeobjekt dauerhaft gepflegt bleibt.",
     intro:
       "Die Unterhaltsreinigung sorgt für einen gleichbleibend gepflegten Zustand Ihrer Räume – als wiederkehrender Service in dem von Ihnen gewünschten Rhythmus.",
+    challenges: [
+      "Unregelmäßige Reinigung lässt Verschmutzung sich erst richtig festsetzen, statt sie gar nicht entstehen zu lassen.",
+      "Spontane Einzeleinsätze sind schwer zu planen und schwanken in der Qualität.",
+      "Ohne festen Rhythmus bleibt der Pflegezustand des Objekts unvorhersehbar.",
+    ],
     bullets: [
       "Wiederkehrende Reinigung nach festem Rhythmus",
       "Boden-, Oberflächen- und Sanitärpflege",
@@ -277,6 +299,11 @@ export const services: Service[] = [
       "Gepflegte Treppenhäuser und Eingangsbereiche für Wohn- und Gewerbeobjekte.",
     intro:
       "Ein sauberes Treppenhaus ist die Visitenkarte eines jeden Gebäudes. Glanzwerk übernimmt die regelmäßige Reinigung von Treppen, Fluren und Eingangsbereichen in Berlin.",
+    challenges: [
+      "Ein vernachlässigtes Treppenhaus ist oft der erste Eindruck, den Besucher und Mieter vom Gebäude bekommen.",
+      "Unklare Zuständigkeiten zwischen mehreren Parteien führen häufig dazu, dass sich niemand verantwortlich fühlt.",
+      "Handläufe, Briefkastenanlagen und Fensterbänke werden bei oberflächlicher Reinigung häufig übersehen.",
+    ],
     bullets: [
       "Treppen, Handläufe, Böden und Briefkastenanlagen",
       "Abstimmung mit Hausverwaltungen möglich",
@@ -326,47 +353,59 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["gebaeudereinigung-berlin", "fensterreinigung-berlin", "grundreinigung-berlin"],
+    relatedSlugs: ["gebaeudereinigung-berlin", "glas-und-fensterreinigung-berlin", "grundreinigung-berlin"],
   },
   {
-    slug: "fensterreinigung-berlin",
-    title: "Fensterreinigung Berlin",
-    shortTitle: "Fensterreinigung",
+    slug: "glas-und-fensterreinigung-berlin",
+    title: "Glas- und Fensterreinigung Berlin",
+    shortTitle: "Glas- und Fensterreinigung",
     metaDescription:
-      "Fensterreinigung in Berlin für Gewerbeobjekte – innen und außen, streifenfrei. Auch für höhere Stockwerke. Jetzt Angebot anfragen.",
-    summary: "Streifenfreie Fensterreinigung innen und außen für Gewerbeobjekte.",
+      "Glas- und Fensterreinigung in Berlin für Gewerbeobjekte – Fenster, Fassaden, Trennwände und Vitrinen, innen und außen, streifenfrei. Jetzt Angebot anfragen.",
+    summary:
+      "Streifenfreie Reinigung von Fenstern, Glasfassaden, Trennwänden und Vitrinen für Gewerbeobjekte.",
     intro:
-      "Klare Fenster verbessern Lichteinfall und Außenwirkung Ihres Objekts. Glanzwerk reinigt Fensterflächen in Berlin innen und außen, auch in größeren Höhen.",
+      "Klare Fenster und makellose Glasflächen prägen den Lichteinfall und die Außenwirkung Ihres Objekts. Glanzwerk reinigt Fenster, Glasfassaden, Trennwände und Vitrinen in Berlin innen und außen, auch in größeren Höhen.",
+    challenges: [
+      "Verschmutzte Fenster und Glasflächen mindern sichtbar den Lichteinfall und das Erscheinungsbild des Objekts.",
+      "Kalk- und Wasserflecken setzen sich ohne regelmäßigen Rhythmus zunehmend hartnäckiger fest.",
+      "Höhere Stockwerke und Fassaden erfordern Ausrüstung, über die viele Betriebe selbst nicht verfügen.",
+    ],
     bullets: [
-      "Innen- und Außenreinigung",
-      "Rahmen, Fensterbänke und Falze inklusive",
+      "Fenster innen und außen, inklusive Rahmen und Fensterbänke",
+      "Glasfassaden, Trennwände und Vitrinen im Innenbereich",
       "Auch für höhere Gebäude mit geeigneter Ausrüstung",
     ],
     description: [
       "Fenster verschmutzen durch Witterung, Straßenstaub und – im Innenbereich – durch normale Nutzung sichtbar schneller als andere Flächen. Ein regelmäßiger Reinigungsrhythmus verhindert hartnäckige Kalk- und Wasserflecken und hält den Lichteinfall in Ihren Räumen konstant hoch.",
-      "Für höhere Stockwerke arbeiten wir mit geeigneter Ausrüstung; die genaue Vorgehensweise besprechen wir vorab abhängig von Gebäudehöhe und Zugänglichkeit. Witterungsabhängige Verschiebungen einzelner Termine sind möglich und werden mit Ihnen abgestimmt.",
+      "Über die klassische Fensterreinigung hinaus reinigen wir auch Glasfassaden, Glastrennwände und Vitrinen im Innenbereich – etwa in Büros, Ausstellungsräumen oder Eingangsbereichen, wo Fingerabdrücke und Fettspuren besonders deutlich auffallen. Für höhere Stockwerke und großflächige Fassaden arbeiten wir mit geeigneter Ausrüstung; die genaue Vorgehensweise besprechen wir vorab abhängig von Gebäudehöhe und Zugänglichkeit. Witterungsabhängige Verschiebungen einzelner Termine sind möglich und werden mit Ihnen abgestimmt.",
     ],
     tasks: [
-      "Reinigung der Glasflächen innen und außen",
-      "Reinigung von Rahmen und Fensterfalzen",
-      "Reinigung von Fensterbänken",
+      "Reinigung der Fensterglasflächen innen und außen",
+      "Reinigung von Rahmen, Fensterfalzen und Fensterbänken",
       "Reinigung von Lüftungsflügeln und Oberlichtern",
+      "Reinigung von Glasfassaden und Glaseingangstüren",
+      "Reinigung von Glastrennwänden, Vitrinen und Schaukästen im Innenbereich",
     ],
     audiences: [
-      "Bürogebäude mit großen Fensterflächen",
-      "Ladenflächen mit Schaufenstern",
-      "Mehrgeschossige Gewerbeobjekte",
+      "Bürogebäude mit großen Fensterflächen und Glastrennwänden",
+      "Ladenflächen mit Schaufenstern und Vitrinen",
+      "Autohäuser und mehrgeschossige Gewerbeobjekte mit Glasfassaden",
     ],
     benefits: [
-      "Streifenfreies Ergebnis innen und außen",
+      "Streifenfreies, rückstandsfreies Ergebnis innen und außen",
       "Regelmäßiger Rhythmus verhindert hartnäckige Verschmutzungen",
-      "Geeignete Ausrüstung auch für höhere Stockwerke",
+      "Geeignete Ausrüstung auch für höhere Stockwerke und Fassaden",
     ],
     faq: [
       {
-        question: "Wie oft sollte eine Fensterreinigung stattfinden?",
+        question: "Wie oft sollte eine Glas- und Fensterreinigung stattfinden?",
         answer:
           "Das hängt von Lage und Nutzung ab. Für die meisten Gewerbeobjekte empfiehlt sich ein Rhythmus von mehreren Terminen pro Jahr, den wir individuell mit Ihnen abstimmen.",
+      },
+      {
+        question: "Werden auch Glasfassaden, Trennwände und Vitrinen gereinigt?",
+        answer:
+          "Ja, neben klassischen Fenstern reinigen wir auch Glasfassaden, Innentrennwände, Vitrinen und Glaseingangstüren – je nach Material und Verschmutzung mit passenden, schonenden Reinigungsmitteln.",
       },
       {
         question: "Wie werden höhere Stockwerke gereinigt?",
@@ -385,67 +424,7 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["glasreinigung-berlin", "treppenhausreinigung-berlin", "gebaeudereinigung-berlin"],
-  },
-  {
-    slug: "glasreinigung-berlin",
-    title: "Glasreinigung Berlin",
-    shortTitle: "Glasreinigung",
-    metaDescription:
-      "Glasreinigung in Berlin für Fassaden, Trennwände und Vitrinen – streifenfrei und rückstandsfrei. Jetzt Angebot für Ihr Objekt anfragen.",
-    summary:
-      "Professionelle Reinigung von Glasfassaden, Trennwänden und Vitrinen.",
-    intro:
-      "Über die klassische Fensterreinigung hinaus reinigt Glanzwerk Glasfassaden, Glastrennwände und Vitrinen in Berliner Gewerbeobjekten für ein durchgängig hochwertiges Erscheinungsbild.",
-    bullets: [
-      "Glasfassaden und Eingangsbereiche",
-      "Trennwände und Vitrinen im Innenbereich",
-      "Rückstandsfreie, streifenfreie Reinigung",
-    ],
-    description: [
-      "Glasflächen im Innenbereich – etwa Trennwände in Büros, Vitrinen in Ausstellungsräumen oder Glastüren im Eingangsbereich – zeigen Fingerabdrücke und Fettspuren besonders deutlich. Anders als die klassische Fensterreinigung liegt der Fokus hier auf stark frequentierten, oft repräsentativen Innenflächen.",
-      "Auch großflächige Glasfassaden gehören zum Leistungsspektrum. Je nach Höhe und Zugänglichkeit stimmen wir Ausrüstung und Vorgehensweise individuell ab.",
-    ],
-    tasks: [
-      "Reinigung von Glasfassaden",
-      "Reinigung von Glastrennwänden im Innenbereich",
-      "Reinigung von Vitrinen und Schaukästen",
-      "Reinigung von Glaseingangstüren",
-    ],
-    audiences: [
-      "Autohäuser mit Glasfronten",
-      "Ladengeschäfte mit Vitrinen",
-      "Bürogebäude mit Glastrennwänden im Innenbereich",
-    ],
-    benefits: [
-      "Rückstandsfreies Ergebnis auch bei Fingerabdrücken",
-      "Geeignet für repräsentative, stark frequentierte Bereiche",
-      "Abstimmung auf Öffnungszeiten möglich",
-    ],
-    faq: [
-      {
-        question: "Worin unterscheidet sich die Glasreinigung von der Fensterreinigung?",
-        answer:
-          "Die Fensterreinigung bezieht sich auf klassische Fenster. Die Glasreinigung deckt zusätzlich Glasfassaden, Innentrennwände und Vitrinen ab, die andere Anforderungen an Reinigungsmittel und Technik stellen.",
-      },
-      {
-        question: "Werden spezielle Reiniger für Vitrinen verwendet?",
-        answer:
-          "Ja, je nach Material und Verschmutzung setzen wir passende, schonende Reinigungsmittel ein, damit Oberflächen nicht beschädigt werden.",
-      },
-      {
-        question: "Ist eine Reinigung während der Öffnungszeiten möglich?",
-        answer:
-          "In vielen Fällen ja, insbesondere bei kurzen, gezielten Einsätzen. Für umfangreichere Arbeiten empfehlen sich Zeiten außerhalb des Kundenverkehrs.",
-      },
-      {
-        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
-        answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
-        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
-      },
-    ],
-    relatedSlugs: ["fensterreinigung-berlin", "bueroreinigung-berlin", "autohausreinigung-berlin"],
+    relatedSlugs: ["treppenhausreinigung-berlin", "bueroreinigung-berlin", "autohausreinigung-berlin"],
   },
   {
     slug: "grundreinigung-berlin",
@@ -457,6 +436,11 @@ export const services: Service[] = [
       "Intensive Tiefenreinigung für Neubezug, Sanierung oder nach längerer Zeit ohne Pflege.",
     intro:
       "Bei der Grundreinigung werden Flächen intensiv und vollständig aufbereitet – etwa vor dem Bezug neuer Räume, nach Bauarbeiten oder in größeren Abständen zur Auffrischung.",
+    challenges: [
+      "Nach Bauarbeiten oder längerer Zeit ohne Pflege reicht eine normale Reinigung oft nicht mehr aus.",
+      "Fugen, Sockelleisten und schwer zugängliche Bereiche werden im laufenden Betrieb selten gründlich mitgereinigt.",
+      "Ohne sauberen Ausgangspunkt lässt sich ein neuer Unterhaltsreinigungsrhythmus schwer etablieren.",
+    ],
     bullets: [
       "Ideal bei Neubezug oder nach Renovierung",
       "Intensivreinigung von Böden und Oberflächen",
@@ -517,6 +501,11 @@ export const services: Service[] = [
       "Gründliche Reinigung für Kitas und Schulen mit besonderem Augenmerk auf Hygiene.",
     intro:
       "In Kitas und Schulen sind Hygiene und ein gepflegtes Umfeld besonders wichtig. Glanzwerk reinigt Gruppen- und Klassenräume, Sanitärbereiche und Gemeinschaftsflächen in Berlin zuverlässig außerhalb des Betreuungsbetriebs.",
+    challenges: [
+      "Stark genutzte Gruppen- und Sanitärräume erfordern besonders zuverlässige Hygiene.",
+      "Reinigungstermine während der Betreuungs- oder Unterrichtszeit sind kaum umsetzbar.",
+      "Häufig berührte Oberflächen werden bei oberflächlicher Reinigung leicht übersehen.",
+    ],
     bullets: [
       "Reinigung außerhalb der Betreuungs- und Unterrichtszeiten",
       "Besonderer Fokus auf Sanitär- und Gemeinschaftsräume",
@@ -578,6 +567,11 @@ export const services: Service[] = [
       "Diskrete, zuverlässige Reinigung für Kanzleien mit hohem Anspruch an Vertraulichkeit.",
     intro:
       "Kanzleien benötigen einen Reinigungspartner, der Vertraulichkeit ernst nimmt. Glanzwerk reinigt Büro-, Empfangs- und Besprechungsräume in Berlin zuverlässig und diskret.",
+    challenges: [
+      "Vertrauliche Unterlagen auf Schreibtischen erfordern einen diskreten, eingespielten Umgang bei der Reinigung.",
+      "Ein ungepflegter Empfangsbereich wirkt sich direkt auf den Eindruck bei Mandanten aus.",
+      "Wechselndes Reinigungspersonal passt schlecht zum Vertraulichkeitsanspruch einer Kanzlei.",
+    ],
     bullets: [
       "Diskrete, vertrauenswürdige Reinigungsteams",
       "Empfangs-, Büro- und Besprechungsräume",
@@ -626,7 +620,7 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin", "glasreinigung-berlin"],
+    relatedSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin", "glas-und-fensterreinigung-berlin"],
   },
   {
     slug: "fitnessstudioreinigung-berlin",
@@ -638,6 +632,11 @@ export const services: Service[] = [
       "Hygienische Reinigung von Trainingsflächen, Geräten und Umkleiden.",
     intro:
       "Fitnessstudios sind stark frequentiert und benötigen häufige, hygienische Reinigung. Glanzwerk reinigt Trainingsflächen, Geräte, Umkleiden und Sanitärbereiche in Berlin zuverlässig.",
+    challenges: [
+      "Trainingsgeräte und Matten werden von vielen Personen nacheinander genutzt und erfordern häufige Reinigung.",
+      "Umkleiden und Duschen entwickeln ohne regelmäßige Pflege schnell unangenehme Gerüche.",
+      "Reinigungsintervalle, die nicht zur Frequentierung passen, wirken sich direkt auf die hygienische Wahrnehmung aus.",
+    ],
     bullets: [
       "Trainingsflächen und Gerätereinigung",
       "Umkleiden, Duschen und Sanitärbereiche",
@@ -686,7 +685,7 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "glasreinigung-berlin"],
+    relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "glas-und-fensterreinigung-berlin"],
   },
   {
     slug: "autohausreinigung-berlin",
@@ -698,6 +697,11 @@ export const services: Service[] = [
       "Gepflegte Showrooms, Werkstatt- und Kundenbereiche für Autohäuser.",
     intro:
       "Ein makelloser Showroom ist für Autohäuser Teil der Markenwirkung. Glanzwerk reinigt Ausstellungsflächen, Kundenbereiche und angrenzende Büros in Berlin nach Ihren Vorgaben.",
+    challenges: [
+      "Fingerabdrücke auf Glasflächen und Fußspuren auf glänzenden Böden fallen im Showroom besonders schnell auf.",
+      "Ein ungepflegter Ausstellungsbereich wirkt sich unmittelbar auf die Markenwirkung aus.",
+      "Reinigungstermine, die nicht zu Öffnungs- und Werkstattzeiten passen, stören den Kundenverkehr.",
+    ],
     bullets: [
       "Showroom- und Glasflächenreinigung",
       "Kunden- und Empfangsbereiche",
@@ -746,7 +750,80 @@ export const services: Service[] = [
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
-    relatedSlugs: ["glasreinigung-berlin", "unterhaltsreinigung-berlin", "gebaeudereinigung-berlin"],
+    relatedSlugs: ["glas-und-fensterreinigung-berlin", "unterhaltsreinigung-berlin", "gebaeudereinigung-berlin"],
+  },
+  /**
+   * Neue Leistung (Juli 2026). Inhalte bewusst vorsichtig formuliert, ohne
+   * Zertifizierungen (z. B. HACCP) oder sonstige nicht bestätigte
+   * Zusicherungen zu erfinden. Vor Veröffentlichung fachlich vom Betreiber
+   * zu bestätigen: tatsächlicher Leistungsumfang, verwendete Mittel für
+   * Küchenbereiche, ob Fettabscheider/Dunstabzugsreinigung angeboten wird.
+   */
+  {
+    slug: "gastronomiereinigung-berlin",
+    title: "Gastronomiereinigung Berlin",
+    shortTitle: "Gastronomiereinigung",
+    metaDescription:
+      "Gastronomiereinigung in Berlin für Küchen, Gastbereiche und Theken – gründlich und außerhalb der Betriebszeiten. Jetzt Angebot anfragen.",
+    summary:
+      "Gründliche Reinigung von Küchen, Gast- und Thekenbereichen für gastronomische Betriebe.",
+    intro:
+      "In der Gastronomie zählen Sauberkeit und ein gepflegter Gastraum unmittelbar zum Gästeerlebnis. Glanzwerk reinigt Küchen-, Gast- und Thekenbereiche in Berlin zuverlässig außerhalb Ihrer Öffnungs- und Servicezeiten.",
+    challenges: [
+      "Verschmutzte Arbeitsflächen und Böden in der Küche wirken sich direkt auf Hygiene und Betriebsablauf aus.",
+      "Reinigungstermine während der Service- und Stoßzeiten sind im laufenden Betrieb kaum möglich.",
+      "Unklare Zuständigkeiten zwischen Küchenpersonal und Reinigungsteam führen zu Lücken im Reinigungsumfang.",
+    ],
+    bullets: [
+      "Reinigung außerhalb der Öffnungs- und Servicezeiten",
+      "Küchenoberflächen, Gastraum und Thekenbereiche",
+      "Abstimmung auf betriebliche Abläufe und Stoßzeiten",
+    ],
+    description: [
+      "Küchen und Gasträume werden im laufenden Betrieb stark beansprucht und benötigen eine regelmäßige, gründliche Reinigung, die den Serviceablauf nicht stört. Wir reinigen Arbeitsflächen, Böden und Kontaktflächen in der Küche sowie Gastraum, Theke und Sanitärbereiche nach Betriebsschluss oder vor Öffnung.",
+      "Den genauen Leistungsumfang – etwa ob Küchengeräte von außen, Fliesenflächen oder besonders fettige Bereiche einbezogen werden – stimmen wir vorab konkret mit Ihnen ab, damit Zuständigkeiten klar zwischen Küchenpersonal und Reinigungsteam getrennt sind.",
+    ],
+    tasks: [
+      "Reinigung von Arbeitsflächen und Edelstahlflächen in der Küche",
+      "Bodenreinigung in Küche und Gastraum",
+      "Reinigung von Theke, Tischen und Sitzbereichen",
+      "Reinigung von Sanitärbereichen für Gäste und Personal",
+      "Reinigung von Küchengeräten von außen nach Absprache",
+    ],
+    audiences: [
+      "Restaurants und Cafés",
+      "Kantinen und Betriebsgastronomie",
+      "Catering-Küchen und Imbissbetriebe",
+    ],
+    benefits: [
+      "Termine außerhalb von Service- und Stoßzeiten",
+      "Klar abgestimmter Leistungsumfang zwischen Küche und Reinigungsteam",
+      "Fester Ansprechpartner statt wechselndem Personal",
+    ],
+    faq: [
+      {
+        question: "Wird auch die Küche selbst gereinigt oder nur der Gastraum?",
+        answer:
+          "Beides ist möglich. Den genauen Umfang für Küche, Gastraum und Thekenbereich stimmen wir vorab konkret mit Ihnen ab.",
+      },
+      {
+        question: "Findet die Reinigung während der Öffnungszeiten statt?",
+        answer:
+          "In der Regel reinigen wir außerhalb Ihrer Service- und Stoßzeiten, etwa nach Betriebsschluss oder vor Öffnung, damit der laufende Betrieb nicht gestört wird.",
+      },
+      {
+        question: "Werden Küchengeräte wie Öfen oder Fritteusen gereinigt?",
+        answer:
+          "Die äußere Reinigung von Küchengeräten ist nach Absprache möglich. Die genaue Abgrenzung zur Zuständigkeit des Küchenpersonals klären wir vorab individuell mit Ihnen.",
+      },
+      {
+        question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    relatedSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin", "gebaeudereinigung-berlin"],
   },
 ];
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import GlanzMark from "@/components/ui/GlanzMark";
 import { siteConfig } from "@/data/site";
@@ -12,6 +13,8 @@ interface CTASectionProps {
   secondaryHref?: string;
   /** Optionales Hintergrundbild statt des reinen Verlaufs, für Abschluss-CTAs mit atmosphärischem Bezug. */
   backgroundImageUrl?: string;
+  /** Wie backgroundImageUrl, aber über next/image ausgeliefert (Optimierung/Lazy Loading) – für große lokale Bilddateien. */
+  backgroundImage?: { src: string; alt: string };
 }
 
 export default function CTASection({
@@ -22,10 +25,11 @@ export default function CTASection({
   secondaryLabel,
   secondaryHref,
   backgroundImageUrl,
+  backgroundImage,
 }: CTASectionProps) {
   return (
     <div
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-14 text-center shadow-2xl shadow-brand-950/25 sm:px-12 sm:py-16"
+      className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-16 text-center shadow-2xl shadow-brand-950/40 ring-1 ring-white/10 sm:px-12 sm:py-20"
       style={
         backgroundImageUrl
           ? {
@@ -36,13 +40,39 @@ export default function CTASection({
           : undefined
       }
     >
+      {backgroundImage && (
+        <>
+          <Image
+            src={backgroundImage.src}
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-800/85" />
+        </>
+      )}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-16 -top-24 h-64 w-64 rounded-full bg-brand-400/20 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-accent-500/10 blur-3xl"
+      />
       <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
       <div className="relative">
-        <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">{title}</h2>
-        <div className="glanz-divider mx-auto mt-4 max-w-[120px]" />
-        <p className="mx-auto mt-4 max-w-xl text-brand-200">{subtitle}</p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href={primaryHref} variant="primary" size="lg">
+        <h2 className="font-display text-3xl font-medium text-white sm:text-4xl">{title}</h2>
+        <div className="glanz-divider mx-auto mt-5 max-w-[140px]" />
+        <p className="mx-auto mt-5 max-w-xl text-brand-200">{subtitle}</p>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button
+            href={primaryHref}
+            variant="primary"
+            size="lg"
+            className="shadow-lg shadow-brand-500/30"
+          >
             {primaryLabel}
           </Button>
           <Button

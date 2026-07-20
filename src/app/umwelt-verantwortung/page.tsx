@@ -115,7 +115,7 @@ export default function UmweltVerantwortungPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Umweltbewusste Gebäudereinigung in Berlin
+              <span className="text-brand-500">Umweltbewusste</span> Gebäudereinigung in Berlin
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Nachhaltigkeit ist bei Glanzwerk kein Siegel und kein
@@ -128,7 +128,7 @@ export default function UmweltVerantwortungPage() {
         </div>
       </Section>
 
-      <Section background="muted">
+      <Section background="tint" decor>
         <SectionHeading
           eyebrow="Unsere Grundsätze"
           title="Was wir im Arbeitsalltag tatsächlich anders machen"

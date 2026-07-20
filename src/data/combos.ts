@@ -89,18 +89,6 @@ export const combos: Combo[] = [
       "In gemischt genutzten Gebäuden mit Wohnungen und Gewerbe in Pankow reinigen wir Treppenhäuser mit Rücksicht auf Anwohner und in enger Abstimmung mit der jeweiligen Hausverwaltung.",
   },
   {
-    serviceSlug: "fensterreinigung-berlin",
-    districtSlug: "charlottenburg-wilmersdorf",
-    intro:
-      "Große Schaufensterflächen entlang des Kurfürstendamms verschmutzen durch Straßenstaub und Fingerabdrücke sichtbar schnell. Wir reinigen diese Fensterflächen in einem regelmäßigen, auf den Kundenverkehr abgestimmten Rhythmus.",
-  },
-  {
-    serviceSlug: "fensterreinigung-berlin",
-    districtSlug: "mitte",
-    intro:
-      "Bürogebäude in Mitte mit großen Fensterflächen profitieren von einem regelmäßigen Reinigungsrhythmus, der Kalk- und Wasserflecken vorbeugt und den Lichteinfall in den Innenräumen erhält.",
-  },
-  {
     serviceSlug: "kanzleireinigung-berlin",
     districtSlug: "mitte",
     intro:
@@ -197,10 +185,10 @@ export const combos: Combo[] = [
       "Rund um die neu entstandenen Bürokomplexe und Gewerbeparks in Lichtenberg kombinieren wir Unterhalts-, Glas- und Treppenhausreinigung, um das moderne Erscheinungsbild dieser technisch anders ausgestatteten Gebäude zu erhalten.",
   },
   {
-    serviceSlug: "glasreinigung-berlin",
+    serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "lichtenberg",
     intro:
-      "Die neueren Bürokomplexe in Lichtenberg setzen häufig auf große Glasflächen und offene Bürolandschaften – dafür kombinieren wir Glasreinigung regelmäßig mit der laufenden Unterhaltsreinigung, um das moderne Erscheinungsbild dauerhaft zu erhalten.",
+      "Die neueren Bürokomplexe in Lichtenberg setzen häufig auf große Glasflächen und offene Bürolandschaften – dafür kombinieren wir Glas- und Fensterreinigung regelmäßig mit der laufenden Unterhaltsreinigung, um das moderne Erscheinungsbild dauerhaft zu erhalten.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -227,22 +215,22 @@ export const combos: Combo[] = [
       "Für die klassischen Praxen und kleineren Büros in den Wohngebieten Reinickendorfs reinigen wir mit einem kompakteren, auf die tatsächliche Größe abgestimmten Umfang – abseits der größeren Gewerbeparks am Stadtrand.",
   },
   {
-    serviceSlug: "glasreinigung-berlin",
+    serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
-      "Die Schaufenster und Vitrinen von Ladengeschäften und Showrooms am Kurfürstendamm zeigen Fingerabdrücke und Fettspuren besonders deutlich – hier legen wir bei der Glasreinigung Wert auf ein rückstandsfreies, repräsentatives Ergebnis.",
+      "Große Schaufensterflächen, Vitrinen und Showrooms entlang des Kurfürstendamms zeigen Straßenstaub, Fingerabdrücke und Fettspuren besonders deutlich. Wir reinigen diese Flächen in einem regelmäßigen, auf den Kundenverkehr abgestimmten Rhythmus und legen dabei besonderen Wert auf ein rückstandsfreies, repräsentatives Ergebnis.",
   },
   {
-    serviceSlug: "glasreinigung-berlin",
+    serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "mitte",
     intro:
-      "In den modernen Bürogebäuden und Verwaltungsflächen in Mitte gehören großflächige Glastrennwände und Eingangsbereiche zum Alltag – wir reinigen sie rückstandsfrei, ohne den laufenden Betrieb zu stören.",
+      "Bürogebäude in Mitte mit großen Fensterflächen und Glastrennwänden profitieren von einem regelmäßigen Reinigungsrhythmus, der Kalk- und Wasserflecken vorbeugt und den Lichteinfall in den Innenräumen erhält – wir reinigen rückstandsfrei, ohne den laufenden Betrieb zu stören.",
   },
   {
-    serviceSlug: "glasreinigung-berlin",
+    serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "tempelhof-schoeneberg",
     intro:
-      "In den Gewerbegebäuden rund um Tempelhof mit mehreren Mietparteien gehören Glastrennwände und Eingangsbereiche zu den am stärksten frequentierten Flächen – wir stimmen die Glasreinigung häufig direkt mit der Hausverwaltung ab.",
+      "In den Gewerbegebäuden rund um Tempelhof mit mehreren Mietparteien gehören Glastrennwände und Eingangsbereiche zu den am stärksten frequentierten Flächen – wir stimmen die Glas- und Fensterreinigung häufig direkt mit der Hausverwaltung ab.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",

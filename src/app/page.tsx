@@ -6,6 +6,7 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import TrustBadges from "@/components/ui/TrustBadges";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import CTASection from "@/components/ui/CTASection";
+import ExpectationCards from "@/components/ui/ExpectationCards";
 import ArticleCard from "@/components/ui/ArticleCard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
@@ -18,59 +19,6 @@ import { articles } from "@/data/articles";
 import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
-
-const expectationIcons = {
-  agreement: (
-    <>
-      <rect x="4.5" y="3.5" width="15" height="17" rx="1.8" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M8 8.5l1.5 1.5 3-3M8 15l1.5 1.5 3-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M14.5 9h2M14.5 15.5h2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
-  team: (
-    <>
-      <circle cx="9" cy="8" r="2.6" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M4 19c.6-3 2.6-4.8 5-4.8s4.4 1.8 5 4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <circle cx="16.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M15 14.6c1.7.3 3 1.7 3.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
-  refresh: (
-    <>
-      <path d="M5 11a7 7 0 0 1 12-4.9M19 13a7 7 0 0 1-12 4.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M17 3.5V6.5H14M7 20.5V17.5H10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </>
-  ),
-  products: (
-    <>
-      <path d="M10 3h4M11 3v4.2L7 13v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6l-4-5.8V3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8.5 15h7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
-} as const;
-
-const expectations = [
-  {
-    title: "Klare Absprachen statt Kleingedrucktem",
-    description: "Feste Teams statt ständig wechselndem Personal – und ein transparentes Angebot ohne versteckte Kosten.",
-    icon: "agreement" as const,
-  },
-  {
-    title: "Fester Ansprechpartner",
-    description: "Wer bei Ihnen reinigt, kennt Ihr Objekt und macht sich mit den Besonderheiten vertraut.",
-    icon: "team" as const,
-  },
-  {
-    title: "Schnelle Reaktion bei Beanstandungen",
-    description: "Melden Sie einen konkreten Mangel innerhalb von 24 Stunden, beheben wir ihn in der Regel kostenlos nach.",
-    icon: "refresh" as const,
-  },
-  {
-    title: "Sorgfältiger Umgang mit Materialien",
-    description: "Für Glas, Boden, Sanitär und empfindliche Oberflächen kommen jeweils passende Profimittel zum Einsatz.",
-    icon: "products" as const,
-  },
-];
 
 export const metadata: Metadata = buildMetadata({
   title: "Gebäudereinigung Berlin für Unternehmen",
@@ -128,7 +76,8 @@ export default function HomePage() {
               Gebäudereinigung für Unternehmen in Berlin
             </p>
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
-              Professionelle Gebäudereinigung in Berlin für Unternehmen
+              Professionelle <span className="text-brand-300">Gebäudereinigung</span> in Berlin
+              für Unternehmen
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
               Wir reinigen Büros, Praxen, Kanzleien und weitere Gewerbeobjekte
@@ -179,10 +128,14 @@ export default function HomePage() {
       </Section>
 
       {/* 3. Leistungen */}
-      <Section background="muted">
+      <Section background="tint" decor>
         <SectionHeading
           eyebrow="Leistungen"
-          title="Reinigungsleistungen aus einer Hand"
+          title={
+            <>
+              Reinigungsleistungen aus <span className="text-brand-500">einer Hand</span>
+            </>
+          }
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – abgestimmt auf Ihr Objekt."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -201,38 +154,34 @@ export default function HomePage() {
       <Section background="white">
         <SectionHeading
           eyebrow="Versprechen"
-          title="Das dürfen Sie von Glanzwerk erwarten"
+          title={
+            <>
+              Das dürfen Sie von <span className="text-brand-500">Glanzwerk</span> erwarten
+            </>
+          }
           subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
         />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {expectations.map((point, index) => (
-            <FadeIn
-              key={point.title}
-              delay={index * 80}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  {expectationIcons[point.icon]}
-                </svg>
-              </span>
-              <p className="font-display mt-4 text-base font-medium text-brand-900">{point.title}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
-            </FadeIn>
-          ))}
-        </div>
+        <ExpectationCards />
       </Section>
 
-      {/* 5. Ablauf */}
-      <Section background="muted">
-        <SectionHeading eyebrow="Ablauf" title="So einfach kommen Sie zu Ihrer Reinigung" />
+      {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte */}
+      <Section background="brand" decor>
+        <SectionHeading
+          eyebrow="Ablauf"
+          title={
+            <>
+              So <span className="text-brand-200">einfach</span> kommen Sie zu Ihrer Reinigung
+            </>
+          }
+          light
+        />
         <FadeIn className="mt-10">
-          <ProcessSteps />
+          <ProcessSteps light />
         </FadeIn>
       </Section>
 
       {/* 6. Umwelt-Teaser */}
-      <Section background="white">
+      <Section background="warm">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <BrandPhoto photo={photos.dosingLiquid} className="shadow-2xl shadow-brand-950/20 lg:order-2" />
           <div className="lg:order-1">
@@ -251,7 +200,7 @@ export default function HomePage() {
       </Section>
 
       {/* 7. Glanzwerk Wissen */}
-      <Section background="muted">
+      <Section background="tint" decor>
         <SectionHeading
           eyebrow="Glanzwerk Wissen"
           title="Praxiswissen rund um Reinigung und Hygiene"
@@ -270,7 +219,7 @@ export default function HomePage() {
       </Section>
 
       {/* 8. 3 Monate flexibel testen */}
-      <Section background="white">
+      <Section background="muted">
         <CTASection
           title="Glanzwerk 3 Monate flexibel testen"
           subtitle="Reguläre Reinigung zu vereinbarten Konditionen, ohne dass Sie sich vorab langfristig binden – keine automatische Verlängerung danach."
@@ -282,7 +231,7 @@ export default function HomePage() {
       </Section>
 
       {/* 9. FAQ */}
-      <Section background="muted" id="faq">
+      <Section background="white" id="faq">
         <SectionHeading eyebrow="FAQ" title="Häufige Fragen" align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={homeFaqItems} />
@@ -290,7 +239,7 @@ export default function HomePage() {
       </Section>
 
       {/* 10. Abschluss-CTA mit Bildhintergrund */}
-      <Section background="white">
+      <Section background="muted">
         <div
           className="relative overflow-hidden rounded-3xl"
           style={{

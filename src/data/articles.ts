@@ -1,8 +1,11 @@
-import { photos } from "@/data/photos";
-
 export interface ArticleSection {
   heading: string;
   paragraphs: string[];
+}
+
+export interface ArticleImage {
+  src: string;
+  alt: string;
 }
 
 export interface Article {
@@ -14,7 +17,7 @@ export interface Article {
   sections: ArticleSection[];
   relatedServiceSlugs: string[];
   category: string;
-  image: (typeof photos)[keyof typeof photos];
+  image: ArticleImage;
 }
 
 export const articles: Article[] = [
@@ -61,7 +64,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin"],
     category: "Kosten",
-    image: photos.buildingFacade,
+    image: {
+      src: "/images/wissen/was-kostet-gebaeudereinigung.png",
+      alt: "Illustration eines nachdenklichen Geschäftsmanns umgeben von Euro-Zeichen, Fragezeichen und einem Taschenrechner",
+    },
   },
   {
     slug: "wie-oft-buero-reinigen",
@@ -100,7 +106,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin"],
     category: "Reinigungsintervalle",
-    image: photos.officeCleaningTeam,
+    image: {
+      src: "/images/wissen/wie-oft-buero-reinigen.png",
+      alt: "Illustration eines nachdenklichen Mannes vor einer Tafel mit Reinigungssymbolen, im Hintergrund eine Reinigungskraft beim Wischen",
+    },
   },
   {
     slug: "unterhaltsreinigung-oder-grundreinigung",
@@ -139,7 +148,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["unterhaltsreinigung-berlin", "grundreinigung-berlin"],
     category: "Reinigungsarten",
-    image: photos.moppingFloor,
+    image: {
+      src: "/images/wissen/unterhaltsreinigung-oder-grundreinigung.png",
+      alt: "Gegenüberstellung von Wischen mit einem Mopp und intensiver Bodenreinigung mit einer Einscheibenmaschine",
+    },
   },
   {
     slug: "reinigung-arztpraxen",
@@ -178,7 +190,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["praxisreinigung-berlin", "grundreinigung-berlin"],
     category: "Praxisreinigung",
-    image: photos.medicalPracticeInterior,
+    image: {
+      src: "/images/wissen/reinigung-arztpraxen.png",
+      alt: "Illustration einer Reinigungskraft, die eine Behandlungsliege in einer Arztpraxis desinfiziert",
+    },
   },
   {
     slug: "glasreinigung-tipps",
@@ -215,9 +230,12 @@ export const articles: Article[] = [
         ],
       },
     ],
-    relatedServiceSlugs: ["glasreinigung-berlin", "fensterreinigung-berlin"],
+    relatedServiceSlugs: ["glas-und-fensterreinigung-berlin"],
     category: "Glas & Fenster",
-    image: photos.facadeCleaning,
+    image: {
+      src: "/images/wissen/glasreinigung-tipps.png",
+      alt: "Illustration eines Fensterreinigers mit Abzieher vor einer Glasfront mit Blick auf die Berliner Skyline",
+    },
   },
   {
     slug: "buerohygiene-massnahmen",
@@ -256,7 +274,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["bueroreinigung-berlin", "unterhaltsreinigung-berlin"],
     category: "Bürohygiene",
-    image: photos.routineCleaningTeam,
+    image: {
+      src: "/images/wissen/buerohygiene-massnahmen.png",
+      alt: "Illustration mit Desinfektionsmittel und Hygiene-Symbolen für Fenster, Türgriff und Mülleimer im Büro",
+    },
   },
   {
     slug: "nachhaltige-gebaeudereinigung",
@@ -301,7 +322,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["unterhaltsreinigung-berlin", "gebaeudereinigung-berlin"],
     category: "Nachhaltigkeit",
-    image: photos.dosingLiquid,
+    image: {
+      src: "/images/wissen/nachhaltige-gebaeudereinigung.png",
+      alt: "Illustration zur bedarfsgerechten Dosierung von Reinigungsmitteln mit Symbolen für Wasser, Mikrofasertuch und Messbecher",
+    },
   },
   {
     slug: "reinigungsdienstleister-auswaehlen",
@@ -352,7 +376,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["gebaeudereinigung-berlin", "bueroreinigung-berlin"],
     category: "Anbieterwahl",
-    image: photos.businessHandshake,
+    image: {
+      src: "/images/wissen/reinigungsdienstleister-auswaehlen.png",
+      alt: "Illustration eines Handschlags zwischen Kunde und Reinigungsdienstleister nach Vertragsabschluss",
+    },
   },
   {
     slug: "objektbesichtigung-vorbereiten",
@@ -397,7 +424,10 @@ export const articles: Article[] = [
     ],
     relatedServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin"],
     category: "Objektbesichtigung",
-    image: photos.brightStaircase,
+    image: {
+      src: "/images/wissen/objektbesichtigung-vorbereiten.png",
+      alt: "Illustration einer Objektbesichtigung mit Grundriss-, Kamera- und Checklisten-Symbolen",
+    },
   },
 ];
 

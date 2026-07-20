@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
-import BrandPhoto from "@/components/ui/BrandPhoto";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
+import ExpectationCards from "@/components/ui/ExpectationCards";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
@@ -15,6 +17,8 @@ import { services, getServiceBySlug, getRelatedServices } from "@/data/services"
 import { getCombosForService } from "@/data/combos";
 import { getDistrictBySlug } from "@/data/districts";
 import { servicePhotos } from "@/data/servicePhotos";
+import { serviceContentPhotos } from "@/data/serviceContentPhotos";
+import { serviceMidPhotos } from "@/data/serviceMidPhotos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
 
@@ -22,7 +26,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-/** Ehrliches Arbeitsprinzip statt Fantasiebezeichnung – gilt für jede Leistung gleichermaßen. */
+/** Ehrliches Arbeitsprinzip statt Fantasiebezeichnung – gilt für jede Leistung gleichermaßen. Dient zugleich als 5-Schritt-Ablauf (01–05). */
 const glanzwerkPrinciple = [
   { title: "Bedarf verstehen", description: "Wir klären Fläche, Nutzung und Anforderungen Ihres Objekts, bevor wir etwas anbieten." },
   { title: "Leistungen klar festlegen", description: "Der Leistungsumfang steht vorher fest – keine versteckten Zusatzkosten im Nachhinein." },
@@ -33,6 +37,70 @@ const glanzwerkPrinciple = [
 
 /** Einmalige Sonderleistungen ohne wiederkehrenden Rhythmus – für diese ist der 3-Monate-Test nicht relevant. */
 const oneOffServiceSlugs = ["grundreinigung-berlin"];
+
+/** Trust-Leiste am unteren Hero-Rand: drei sitewide bereits bestätigte Aussagen mit Icon. */
+const heroTrustBar = [
+  {
+    label: "Kostenlose Anfrage in wenigen Minuten",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: "Fester Ansprechpartner statt Callcenter",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="8" r="2.6" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M4 19c.6-3 2.6-4.8 5-4.8s4.4 1.8 5 4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="16.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M15 14.6c1.7.3 3 1.7 3.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    label: "Transparentes Angebot ohne versteckte Kosten",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3.5 19 6.5V11c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6.5L12 3.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+];
+
+/** Drei einheitliche, zyklisch zugeordnete Icons für die "Schnelle Vorteile"-Karten (Uhr, Schild, Team). */
+const quickBenefitIcons = [
+  <svg key="clock" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
+  <svg key="shield" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 3.5 19 6.5V11c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6.5L12 3.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+    <path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>,
+  <svg key="team" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="9" cy="8" r="2.6" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M4 19c.6-3 2.6-4.8 5-4.8s4.4 1.8 5 4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="16.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.8" />
+    <path d="M15 14.6c1.7.3 3 1.7 3.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>,
+];
+
+/** Hebt den Leistungsnamen in Glanzwerk-Hellblau hervor, "Berlin" bleibt dunkel. Alle Titel folgen dem Muster "<Leistung> Berlin". */
+function renderHeroTitle(title: string) {
+  const suffix = " Berlin";
+  if (title.endsWith(suffix)) {
+    return (
+      <>
+        <span className="text-brand-500">{title.slice(0, -suffix.length)}</span> Berlin
+      </>
+    );
+  }
+  return title;
+}
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -56,6 +124,10 @@ export default async function ServicePage({ params }: Props) {
 
   const relatedServices = getRelatedServices(service);
   const photo = servicePhotos[service.slug];
+  const contentPhotos = serviceContentPhotos[service.slug];
+  const midPhoto = serviceMidPhotos[service.slug];
+  const serviceIndex = services.findIndex((s) => s.slug === service.slug);
+  const imageLeftOnDesktop = serviceIndex % 2 === 0;
   const districtCombos = getCombosForService(service.slug)
     .map((combo) => ({ combo, district: getDistrictBySlug(combo.districtSlug) }))
     .filter((entry): entry is { combo: typeof entry.combo; district: NonNullable<typeof entry.district> } =>
@@ -78,64 +150,147 @@ export default async function ServicePage({ params }: Props) {
         })}
       />
 
-      <Section background="white" className="pt-12">
-        <div className={photo ? "grid gap-10 lg:grid-cols-2 lg:items-center" : ""}>
-          <div>
-            <div className="max-w-3xl">
-              <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-                {service.title}
-              </h1>
-              <p className="mt-4 text-lg leading-relaxed text-ink-soft">{service.intro}</p>
-            </div>
+      {/* 1. Hero: vollflächiges Hintergrundbild, Text darüber, helle Verlaufsmaske, Trust-Leiste am unteren Rand */}
+      <section className="relative isolate overflow-hidden bg-white">
+        {photo && (
+          <div className="absolute inset-0">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: contentPhotos?.hero.objectPosition ?? "center" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/15 sm:from-white sm:via-white/75 sm:to-white/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/10 to-transparent sm:hidden" />
+          </div>
+        )}
 
-            <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-              {service.bullets.map((bullet) => (
-                <li
-                  key={bullet}
-                  className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-                >
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/preisrechner"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-              >
-                Preis berechnen
-              </Link>
-              <Link
-                href="/kontakt"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-              >
-                Kontakt aufnehmen
-              </Link>
-            </div>
+        <div
+          className={`relative z-[1] container-page flex flex-col justify-center py-16 lg:py-20 ${
+            photo ? "min-h-[520px] lg:min-h-[620px]" : ""
+          }`}
+        >
+          <div className="max-w-xl">
+            <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
+              {renderHeroTitle(service.title)}
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">{service.intro}</p>
           </div>
 
-          {photo && (
-            <BrandPhoto
-              photo={photo}
-              aspect="aspect-[4/3]"
-              priority
-              sizes="(min-width: 1024px) 520px, 100vw"
-              className="shadow-2xl shadow-brand-950/20"
-            />
-          )}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/kontakt"
+              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            >
+              Reinigung anfragen
+            </Link>
+            <Link
+              href="/preisrechner"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
+            >
+              Preis berechnen
+            </Link>
+          </div>
+        </div>
+
+        {/* Trust-Leiste am unteren Hero-Rand */}
+        <div className="relative z-[1] border-t border-black/[0.06] bg-white/85 backdrop-blur-sm">
+          <div className="container-page grid grid-cols-1 gap-3 py-4 sm:grid-cols-3 sm:gap-4">
+            {heroTrustBar.map((point) => (
+              <div key={point.label} className="flex items-center gap-2.5 text-sm font-medium text-brand-900">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+                  {point.icon}
+                </span>
+                {point.label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Schnelle Vorteile mit Symbolen */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Auf einen Blick" title={`Vorteile der ${service.shortTitle}`} />
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          {service.bullets.map((bullet, index) => (
+            <FadeIn
+              key={bullet}
+              delay={index * 80}
+              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-transform duration-300 ease-out hover:-translate-y-0.5"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+                {quickBenefitIcons[index % quickBenefitIcons.length]}
+              </span>
+              <p className="text-sm font-medium leading-relaxed text-brand-900">{bullet}</p>
+            </FadeIn>
+          ))}
         </div>
       </Section>
 
-      <Section background="muted">
-        <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
-          <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-            {service.description.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+      {/* 3. Problem/Herausforderung - optisch hervorgehoben */}
+      <Section background="white">
+        <div className="relative overflow-hidden rounded-3xl bg-graphite-50 p-8 sm:p-10">
+          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-accent-500" />
+          <div className="flex items-start gap-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4 21 19H3L12 4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                <path d="M12 10v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                <circle cx="12" cy="16.5" r="0.9" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+            <div>
+              <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
+                Typische Herausforderungen bei der {service.shortTitle}
+              </h2>
+              <ul className="mt-5 space-y-3">
+                {service.challenges.map((challenge) => (
+                  <li key={challenge} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink-soft">
+                    <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" />
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </EditorialIntro>
+        </div>
       </Section>
+
+      {/* 4. Lösung im Mittelbereich: eigenes, vom Hero verschiedenes Bild (dezenter Scroll-Tiefeneffekt), alternierend links/rechts */}
+      {midPhoto ? (
+        <Section background="muted">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className={imageLeftOnDesktop ? "lg:order-2" : ""}>
+              <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
+                <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+                  {service.description.map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+              </EditorialIntro>
+            </div>
+            <ParallaxImage
+              photo={midPhoto}
+              aspect="aspect-[16/10]"
+              sizes="(min-width: 1024px) 560px, 100vw"
+              className={`shadow-xl shadow-brand-950/15 ${imageLeftOnDesktop ? "lg:order-1" : ""}`}
+            />
+          </div>
+        </Section>
+      ) : (
+        <Section background="muted">
+          <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              {service.description.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </EditorialIntro>
+        </Section>
+      )}
 
       <Section background="white">
         <div className="grid gap-10 lg:grid-cols-2">
@@ -185,51 +340,34 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </Section>
 
-      <Section background="muted">
-        <SectionHeading eyebrow="Ablauf" title="Ablauf der Zusammenarbeit" />
-        <div className="mt-10">
-          <ProcessSteps />
-        </div>
-      </Section>
-
-      <Section background="white">
-        <SectionHeading eyebrow="Unser Prinzip" title="Das Glanzwerk-Prinzip" />
-        <div className="mt-10">
-          <ProcessSteps steps={glanzwerkPrinciple} />
-        </div>
-      </Section>
-
-      <Section background="muted">
-        <CTASection
-          title={`Was kostet die ${service.shortTitle} für Ihr Objekt?`}
-          subtitle="Nutzen Sie unseren Preisrechner für eine erste, unverbindliche Einschätzung – in wenigen Minuten."
-          primaryLabel="Preis berechnen"
-          primaryHref="/preisrechner"
-          backgroundImageUrl={photo?.src}
+      {/* 5. Ablauf: fünf nummerierte Schritte 01-05 (Glanzwerk-Prinzip) — kräftiger Blauton als visueller Anker */}
+      <Section background="brand" decor>
+        <SectionHeading
+          eyebrow="Ablauf"
+          title={
+            <>
+              Das <span className="text-brand-200">Glanzwerk</span>-Prinzip
+            </>
+          }
+          light
         />
+        <div className="mt-10">
+          <ProcessSteps steps={glanzwerkPrinciple} light />
+        </div>
       </Section>
 
-      <Section background="muted">
-        <EditorialIntro eyebrow="Vorteile" title={`Warum Glanzwerk für die ${service.shortTitle}`}>
-          <FadeIn as="ul" className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
-            {service.benefits.map((benefit) => (
-              <li key={benefit} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                      d="M5 13l4 4L19 7"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <span className="text-sm font-medium text-brand-900">{benefit}</span>
-              </li>
-            ))}
-          </FadeIn>
-        </EditorialIntro>
+      {/* 6. Vertrauen/Garantie: vier Karten, sitewide wiederverwendet */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Vertrauen"
+          title={
+            <>
+              Das dürfen Sie von <span className="text-brand-500">Glanzwerk</span> erwarten
+            </>
+          }
+          subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
+        />
+        <ExpectationCards />
       </Section>
 
       <Section background="warm">
@@ -246,7 +384,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {districtCombos.length > 0 && (
-        <Section background="muted">
+        <Section background="white">
           <SectionHeading
             eyebrow="Standorte"
             title={`${service.shortTitle} in ausgewählten Berliner Bezirken`}
@@ -272,7 +410,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       )}
 
-      <Section background={districtCombos.length > 0 ? "white" : "muted"}>
+      <Section background={districtCombos.length > 0 ? "muted" : "white"}>
         <SectionHeading eyebrow="FAQ" title="Häufige Fragen" />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={service.faq} idPrefix={`service-${service.slug}`} />
@@ -280,7 +418,7 @@ export default async function ServicePage({ params }: Props) {
       </Section>
 
       {relatedServices.length > 0 && (
-        <Section background={districtCombos.length > 0 ? "muted" : "white"}>
+        <Section background={districtCombos.length > 0 ? "white" : "muted"}>
           <SectionHeading eyebrow="Weitere Leistungen" title="Das könnte Sie auch interessieren" />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {relatedServices.map((related) => (
@@ -291,7 +429,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       {!oneOffServiceSlugs.includes(service.slug) && (
-        <Section background="white">
+        <Section background="muted">
           <CTASection
             title="Glanzwerk 3 Monate flexibel testen"
             subtitle={`Lernen Sie die ${service.shortTitle} im laufenden Betrieb kennen – regulär bezahlt, ohne langfristige Bindung.`}
@@ -303,12 +441,25 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       )}
 
-      <Section background="muted">
-        <CTASection
-          title={`Angebot für ${service.shortTitle} anfragen`}
-          subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
-          primaryLabel="Reinigung anfragen"
-        />
+      {/* 7. Abschluss-CTA mit unterem Bild vor dem Footer */}
+      <Section background="white">
+        {contentPhotos ? (
+          <CTASection
+            title="Überzeugen Sie sich selbst"
+            subtitle={`Fordern Sie ein kostenloses Angebot für die ${service.shortTitle} an – unverbindlich und in wenigen Minuten.`}
+            primaryLabel="Kostenloses Angebot anfordern"
+            primaryHref="/kontakt"
+            secondaryLabel="Preis berechnen"
+            secondaryHref="/preisrechner"
+            backgroundImage={contentPhotos.ctaUnten}
+          />
+        ) : (
+          <CTASection
+            title={`Angebot für ${service.shortTitle} anfragen`}
+            subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
+            primaryLabel="Reinigung anfragen"
+          />
+        )}
       </Section>
     </>
   );

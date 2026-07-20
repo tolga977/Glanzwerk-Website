@@ -27,17 +27,17 @@ const paths: Record<string, React.ReactNode> = {
   "treppenhausreinigung-berlin": (
     <path d="M4 20h4v-4h4v-4h4V8h4V4M4 20V4" />
   ),
-  "fensterreinigung-berlin": (
+  "glas-und-fensterreinigung-berlin": (
     <>
       <rect x="4" y="4" width="16" height="16" rx="1.5" />
       <path d="M12 4v16M4 12h16" />
     </>
   ),
-  "glasreinigung-berlin": (
+  "gastronomiereinigung-berlin": (
     <>
-      <path d="M4 3.5h16M6 3.5v17M18 3.5v17" />
-      <path d="M9 8l2.2 2.2L15 6" />
-      <path d="M6 15.5h4" />
+      <path d="M4 11h16l-1.2 7.2A2 2 0 0 1 16.8 20H7.2a2 2 0 0 1-2-1.8L4 11Z" />
+      <path d="M2 11h20" />
+      <path d="M9 8c0-1.5.8-3 3-3s3 1.5 3 3" />
     </>
   ),
   "grundreinigung-berlin": (

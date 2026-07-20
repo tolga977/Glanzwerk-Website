@@ -1,20 +1,30 @@
 import { photos } from "@/data/photos";
+import { serviceContentPhotos } from "@/data/serviceContentPhotos";
+
+interface Photo {
+  src: string;
+  alt: string;
+}
 
 /**
- * Featured photo per service — each maps to a genuinely fitting, verified
- * stock photo (see docs/IMAGES.md for the full source list).
+ * Featured (hero) photo per service. As of Juli 2026 (korrigiertes
+ * Bilderpaket) the 10 services covered by the package use their dedicated
+ * local `hero.png` from `serviceContentPhotos.ts`, explicitly replacing
+ * the previous Unsplash/Pexels hero photo per the operator's correction.
+ * "kanzleireinigung-berlin" and "fitnessstudioreinigung-berlin" were not
+ * part of the package and keep their existing photo unchanged.
  */
-export const servicePhotos: Record<string, (typeof photos)[keyof typeof photos]> = {
-  "gebaeudereinigung-berlin": photos.buildingFacade,
-  "bueroreinigung-berlin": photos.officeCleaningTeam,
-  "praxisreinigung-berlin": photos.medicalPracticeInterior,
-  "unterhaltsreinigung-berlin": photos.routineCleaningTeam,
-  "treppenhausreinigung-berlin": photos.brightStaircase,
-  "fensterreinigung-berlin": photos.windowCleaning,
-  "glasreinigung-berlin": photos.facadeCleaning,
-  "grundreinigung-berlin": photos.moppingFloor,
-  "kita-und-schulreinigung-berlin": photos.kitaInterior,
+export const servicePhotos: Record<string, Photo> = {
+  "gebaeudereinigung-berlin": serviceContentPhotos["gebaeudereinigung-berlin"].hero,
+  "bueroreinigung-berlin": serviceContentPhotos["bueroreinigung-berlin"].hero,
+  "praxisreinigung-berlin": serviceContentPhotos["praxisreinigung-berlin"].hero,
+  "unterhaltsreinigung-berlin": serviceContentPhotos["unterhaltsreinigung-berlin"].hero,
+  "treppenhausreinigung-berlin": serviceContentPhotos["treppenhausreinigung-berlin"].hero,
+  "glas-und-fensterreinigung-berlin": serviceContentPhotos["glas-und-fensterreinigung-berlin"].hero,
+  "grundreinigung-berlin": serviceContentPhotos["grundreinigung-berlin"].hero,
+  "kita-und-schulreinigung-berlin": serviceContentPhotos["kita-und-schulreinigung-berlin"].hero,
   "kanzleireinigung-berlin": photos.lawOfficeReception,
   "fitnessstudioreinigung-berlin": photos.gymInterior,
-  "autohausreinigung-berlin": photos.carShowroom,
+  "autohausreinigung-berlin": serviceContentPhotos["autohausreinigung-berlin"].hero,
+  "gastronomiereinigung-berlin": serviceContentPhotos["gastronomiereinigung-berlin"].hero,
 };

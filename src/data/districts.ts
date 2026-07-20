@@ -141,7 +141,7 @@ export const districts: District[] = [
       "Kanzleien und Praxen in Altbaulagen",
       "Repräsentative Büroflächen",
     ],
-    featuredServiceSlugs: ["autohausreinigung-berlin", "glasreinigung-berlin", "kanzleireinigung-berlin"],
+    featuredServiceSlugs: ["autohausreinigung-berlin", "glas-und-fensterreinigung-berlin", "kanzleireinigung-berlin"],
     faq: [
       {
         question: "Reinigt Glanzwerk auch Schaufenster und Glasflächen am Kurfürstendamm?",
@@ -381,7 +381,7 @@ export const districts: District[] = [
       "Offene Bürolandschaften mit großen Glasflächen",
       "Wachsende Unternehmen mit neuem Bürostandort",
     ],
-    featuredServiceSlugs: ["gebaeudereinigung-berlin", "glasreinigung-berlin", "unterhaltsreinigung-berlin"],
+    featuredServiceSlugs: ["gebaeudereinigung-berlin", "glas-und-fensterreinigung-berlin", "unterhaltsreinigung-berlin"],
     faq: [
       {
         question: "Sind moderne Bürokomplexe mit viel Glas kein Problem?",

@@ -22,10 +22,6 @@ export const photos = {
     src: unsplash("photo-1746905205773-3ea50c8cd808"),
     alt: "Fensterreiniger säubert eine Glasscheibe mit dem Abzieher",
   },
-  facadeCleaning: {
-    src: unsplash("photo-1776617130431-de13d5b4cbfe"),
-    alt: "Arbeiter reinigen die Glasfassade eines modernen Hochhauses",
-  },
   professionalCleaner: {
     src: pexels("9462192/pexels-photo-9462192.jpeg"),
     alt: "Lächelnde Reinigungskraft mit Staubwedel und Sprühflasche",

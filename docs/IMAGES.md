@@ -2,14 +2,48 @@
 
 ## Aktueller Stand
 
-Die Website nutzt zwei Bildquellen:
+Die Website nutzt vier Bildquellen:
 
 1. **Markenbezogene Grafiken**: Das echte Original-Logo (`public/brand/`,
    direkt von der bestehenden Live-Website heruntergeladen, 3830×1948px,
    nicht zugeschnitten oder nachgebaut), Service-Icons
    (`src/components/ui/ServiceIcon.tsx`), Signature-Element „Glanzstreifen"
    (`src/components/ui/GlanzMark.tsx`).
-2. **Kuratierte, lizenzfreie Fotos von Unsplash und Pexels**
+2. **Vom Betreiber geliefertes Bilderpaket** (`public/images/leistungen/`,
+   Juli 2026, korrigierte Fassung vom 20.07.) – 20 lokale PNGs (zwei je
+   Leistungsseite: `hero.png` **ersetzt das bisherige Hero-Motiv** der
+   Leistungsseite, `cta-unten.png` als Hintergrund des Abschluss-CTA),
+   zugeordnet über `src/data/serviceContentPhotos.ts`. Die erste Paketfassung
+   hatte dieselben Bilder fälschlich als "Mittelbereich"-Bild neben dem
+   Hero eingesetzt; das wurde korrigiert – Mittelbereich zeigt jetzt
+   ausschließlich Text, keine Bildwiederholung. Anders als die
+   Unsplash/Pexels-Fotos werden diese lokal über `next/image` ausgeliefert
+   (automatische WebP/AVIF-Optimierung, responsive Größen, individuelles
+   `object-position` je Bild), ohne `remotePatterns`-Eintrag nötig. Siehe
+   Abschnitt „Stufe 5b" weiter unten für die vollständige Zuordnung.
+3. **Vom Betreiber geliefertes Bilderpaket „Glanzwerk Wissen"** (`public/images/wissen/`,
+   Juli 2026) – 9 lokale, im Illustrationsstil gehaltene Grafiken (eine je
+   Wissen-Artikel), zugeordnet über das `image`-Feld in `src/data/articles.ts`
+   (`ArticleImage`-Typ: `{src, alt}`, lokal statt Unsplash/Pexels-URL).
+   Ersetzen vollständig die vorher dort verwendeten Stock-Fotos – keines der
+   alten Bilder erscheint in „Glanzwerk Wissen" noch weiter. Das dadurch
+   verwaiste `facadeCleaning`-Foto wurde aus `src/data/photos.ts` entfernt,
+   da es nirgendwo sonst mehr referenziert wurde (alle anderen bisher für
+   Wissen-Artikel genutzten Fotos bleiben in Verwendung, siehe Tabelle):
+
+   | Artikel-Slug | Bilddatei | Vorheriges Foto (weiterhin anderswo verwendet) |
+   |---|---|---|
+   | was-kostet-gebaeudereinigung | `was-kostet-gebaeudereinigung.png` | buildingFacade (Standorte-Hero, Homepage) |
+   | wie-oft-buero-reinigen | `wie-oft-buero-reinigen.png` | officeCleaningTeam (serviceMidPhotos Büroreinigung) |
+   | unterhaltsreinigung-oder-grundreinigung | `unterhaltsreinigung-oder-grundreinigung.png` | moppingFloor (serviceMidPhotos Grundreinigung) |
+   | reinigung-arztpraxen | `reinigung-arztpraxen.png` | medicalPracticeInterior (serviceMidPhotos Praxisreinigung) |
+   | glasreinigung-tipps | `glasreinigung-tipps.png` | facadeCleaning (**entfernt, war verwaist**) |
+   | buerohygiene-massnahmen | `buerohygiene-massnahmen.png` | routineCleaningTeam (serviceMidPhotos Unterhaltsreinigung) |
+   | nachhaltige-gebaeudereinigung | `nachhaltige-gebaeudereinigung.png` | dosingLiquid (Umwelt-Seite, Homepage-Teaser) |
+   | reinigungsdienstleister-auswaehlen | `reinigungsdienstleister-auswaehlen.png` | businessHandshake (3-Monate-Seite, Kontakt) |
+   | objektbesichtigung-vorbereiten | `objektbesichtigung-vorbereiten.png` | brightStaircase (serviceMidPhotos Treppenhausreinigung) |
+
+4. **Kuratierte, lizenzfreie Fotos von Unsplash und Pexels**
    (`src/data/photos.ts`) – jede URL wurde vor Einbindung per
    HTTP-Statuscheck verifiziert und zeigt, wo immer verfügbar, eine
    Person bei der eigentlichen Reinigungstätigkeit statt eines leeren
@@ -110,6 +144,38 @@ Zusätzlich wurde `professionalCleaner` (`9462192`, bisher nur auf
 der Wissen-Hub-Seite (`/wissen`) wiederverwendet – Mehrfachverwendung
 bestehender, bereits geprüfter Fotos statt Beschaffung eines neuen Fotos
 pro einzelner Seite, wie auch an anderen Stellen der Seite üblich.
+
+## Stufe 5b: Bilderpaket Leistungsseiten (Juli 2026, vom Betreiber geliefert, korrigiert am 20.07.)
+
+Herkunft: vom Betreiber als `Glanzwerk_Bilderpaket_fuer_Claude.zip` bereitgestellt,
+Lizenz-/Nutzungsrecht liegt beim Betreiber (nicht recherchiert, sondern
+direkt übergeben). Alle 20 Bilder vor Einbau visuell auf Fremd-Branding,
+Text-in-Bild und Logos geprüft – unauffällig.
+
+**Korrektur 20.07.2026:** Die erste Fassung hatte die `01-*`-Bilder als
+zusätzliches Mittelbereich-Bild neben dem bestehenden Hero eingesetzt.
+Auf ausdrückliche Anweisung des Betreibers wurde das korrigiert: Die
+Dateien (identisch zur ersten Fassung, nur umbenannt von
+`mittelbereich.png` zu `hero.png`) **ersetzen jetzt das bisherige
+Hero-Motiv** jeder Leistungsseite; der Mittelbereich zeigt nur noch Text
+(kein Bildduplikat). Vollständige Zuordnung:
+
+| Leistungsseite | Hero-Datei (ersetzt bisheriges Hero-Foto) | CTA-unten-Datei | object-position |
+|---|---|---|---|
+| Büroreinigung | `bueroreinigung-berlin/hero.png` | `.../cta-unten.png` | 30% 45% |
+| Praxisreinigung | `praxisreinigung-berlin/hero.png` | `.../cta-unten.png` | 30% 55% |
+| Kita- & Schulreinigung | `kita-und-schulreinigung-berlin/hero.png` | `.../cta-unten.png` | 65% 60% |
+| Gastronomiereinigung (neu) | `gastronomiereinigung-berlin/hero-kitchen.png` (**vom Betreiber am 20.07. ersetzt** – identisch zum bisherigen CTA-unten-Bild, jetzt zusätzlich als Hero; eigener Dateiname statt `hero.png` wegen `immutable`-Cache-Headern von `next/image` – gleicher Dateiname hätte alte Browser-Caches nicht invalidiert) | `.../cta-unten.png` (unverändert, zeigt jetzt dasselbe Motiv wie der Hero) | 80% 55% |
+| Treppenhausreinigung | `treppenhausreinigung-berlin/hero.png` | `.../cta-unten.png` | 20% 55% |
+| Glas- und Fensterreinigung (fusioniert) | `glas-und-fensterreinigung-berlin/hero.png` | `.../cta-unten.png` | 70% 40% |
+| Grundreinigung | `grundreinigung-berlin/hero.png` | `.../cta-unten.png` | 55% 55% |
+| Autohausreinigung | `autohausreinigung-berlin/hero.webp` (**vom Betreiber am 20.07. manuell ersetzt** – Mitarbeiter mit Wischmopp im Autohaus-Showroom, CTA-unten unverändert aus dem Paket) | `.../cta-unten.png` | 78% 55% |
+| Unterhaltsreinigung | `unterhaltsreinigung-berlin/hero.png` | `.../cta-unten.png` | 45% 50% |
+| Gebäudereinigung | `gebaeudereinigung-berlin/hero.png` | `.../cta-unten.png` | 65% 50% |
+
+Kanzleireinigung und Fitnessstudioreinigung waren nicht Teil des Pakets –
+ihr bisheriges Hero-Foto (Unsplash/Pexels) bleibt unverändert, der übrige
+Seitenaufbau (Vorteile, Problem, Ablauf, Vertrauen) ist identisch.
 
 ## Stufe 5: verbleibende Hauptseiten bebildert
 
