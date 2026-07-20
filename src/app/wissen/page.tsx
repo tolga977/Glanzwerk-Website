@@ -30,7 +30,7 @@ export default function WissenPage() {
               Glanzwerk Wissen
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Praxiswissen rund um <span className="text-brand-500">Reinigung und Hygiene</span> in
+              Praxiswissen rund um <span className="text-brand-600">Reinigung und Hygiene</span> in
               Berlin
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">

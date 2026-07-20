@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Glanzwerk Reinigungsservice Berlin",
   shortName: "Glanzwerk",
-  url: "https://www.glanzwerk-berlin.de",
+  url: "https://www.glanzwerkberlin.de",
   description:
     "Professionelle Gebäudereinigung für Unternehmen in Berlin – Büros, Praxen, Kanzleien und Gewerbeobjekte. Feste Ansprechpartner, flexible Reinigungsintervalle.",
   phone: "030 83756816",

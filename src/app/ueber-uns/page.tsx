@@ -193,44 +193,48 @@ export default function UeberUnsPage() {
         </FadeIn>
       </Section>
 
-      <Section background="white" id="garantie">
+      <Section background="tint" decor id="garantie">
         <SectionHeading
           eyebrow="Qualitätssicherung"
           title="Abgesichert und mit klarem Versprechen"
           subtitle="Zwei konkrete Zusagen statt vager Werbeaussagen."
         />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2">
-          <FadeIn className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <div className="mt-10 divide-y divide-brand-900/[0.06] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <FadeIn className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 {assuranceIcons.shield}
               </svg>
             </span>
-            <p className="font-display mt-4 text-base font-medium text-brand-900">
-              Betriebshaftpflichtversichert
-            </p>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-              Glanzwerk ist bei der Allianz betriebshaftpflichtversichert
-              (Deckungssumme 5 Mio. €) – für den Fall, dass bei der Arbeit an
-              Ihrem Objekt tatsächlich einmal etwas schiefgeht.
-            </p>
+            <div>
+              <p className="font-display text-lg font-medium text-brand-900">
+                Betriebshaftpflichtversichert
+              </p>
+              <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-ink-soft">
+                Glanzwerk ist bei der Allianz betriebshaftpflichtversichert
+                (Deckungssumme 5 Mio. €) – für den Fall, dass bei der Arbeit an
+                Ihrem Objekt tatsächlich einmal etwas schiefgeht.
+              </p>
+            </div>
           </FadeIn>
-          <FadeIn delay={80} className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <FadeIn delay={80} className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 {assuranceIcons.refresh}
               </svg>
             </span>
-            <p className="font-display mt-4 text-base font-medium text-brand-900">
-              Nachbesserung oder Geld zurück
-            </p>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-              Melden Sie einen konkreten Mangel innerhalb von 24 Stunden nach
-              dem Termin, beheben wir ihn in der Regel kostenlos nach. Ist das
-              im Einzelfall nicht möglich oder nicht zumutbar, erstatten wir
-              den anteiligen Betrag für die betroffene Leistung zurück. Die
-              genauen Bedingungen regeln unsere Vertragsunterlagen.
-            </p>
+            <div>
+              <p className="font-display text-lg font-medium text-brand-900">
+                Nachbesserung oder Geld zurück
+              </p>
+              <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-ink-soft">
+                Melden Sie einen konkreten Mangel innerhalb von 24 Stunden nach
+                dem Termin, beheben wir ihn in der Regel kostenlos nach. Ist das
+                im Einzelfall nicht möglich oder nicht zumutbar, erstatten wir
+                den anteiligen Betrag für die betroffene Leistung zurück. Die
+                genauen Bedingungen regeln unsere Vertragsunterlagen.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </Section>

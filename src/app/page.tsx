@@ -133,7 +133,7 @@ export default function HomePage() {
           eyebrow="Leistungen"
           title={
             <>
-              Reinigungsleistungen aus <span className="text-brand-500">einer Hand</span>
+              Reinigungsleistungen aus <span className="text-brand-700">einer Hand</span>
             </>
           }
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – abgestimmt auf Ihr Objekt."
@@ -156,7 +156,7 @@ export default function HomePage() {
           eyebrow="Versprechen"
           title={
             <>
-              Das dürfen Sie von <span className="text-brand-500">Glanzwerk</span> erwarten
+              Das dürfen Sie von <span className="text-brand-600">Glanzwerk</span> erwarten
             </>
           }
           subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."

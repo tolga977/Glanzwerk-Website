@@ -115,7 +115,7 @@ export default function UmweltVerantwortungPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              <span className="text-brand-500">Umweltbewusste</span> Gebäudereinigung in Berlin
+              <span className="text-brand-600">Umweltbewusste</span> Gebäudereinigung in Berlin
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Nachhaltigkeit ist bei Glanzwerk kein Siegel und kein
@@ -186,14 +186,14 @@ export default function UmweltVerantwortungPage() {
 
       <Section background="warm">
         <SectionHeading eyebrow="Für Ihr Unternehmen" title="Was das für Ihr Unternehmen bedeutet" />
-        <FadeIn className="mt-10 grid gap-5 sm:grid-cols-3">
-          {benefits.map((benefit) => (
-            <li
-              key={benefit}
-              className="list-none rounded-2xl border border-black/[0.06] bg-white p-6 text-sm leading-relaxed text-ink-soft shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
-              {benefit}
-            </li>
+        <FadeIn className="mt-10 grid divide-y divide-brand-900/[0.08] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {benefits.map((benefit, index) => (
+            <div key={benefit} className="flex gap-4 p-6 sm:flex-col sm:gap-3">
+              <span className="font-display shrink-0 text-2xl font-medium text-brand-300 sm:text-3xl">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p className="text-sm leading-relaxed text-ink-soft">{benefit}</p>
+            </div>
           ))}
         </FadeIn>
         <p className="mt-6 text-sm text-ink-soft">

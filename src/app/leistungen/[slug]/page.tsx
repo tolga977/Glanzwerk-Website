@@ -95,7 +95,7 @@ function renderHeroTitle(title: string) {
   if (title.endsWith(suffix)) {
     return (
       <>
-        <span className="text-brand-500">{title.slice(0, -suffix.length)}</span> Berlin
+        <span className="text-brand-600">{title.slice(0, -suffix.length)}</span> Berlin
       </>
     );
   }
@@ -362,7 +362,7 @@ export default async function ServicePage({ params }: Props) {
           eyebrow="Vertrauen"
           title={
             <>
-              Das dürfen Sie von <span className="text-brand-500">Glanzwerk</span> erwarten
+              Das dürfen Sie von <span className="text-brand-600">Glanzwerk</span> erwarten
             </>
           }
           subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
