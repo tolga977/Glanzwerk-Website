@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!combo || !service || !district) return {};
   return buildMetadata({
     title: `${service.shortTitle} ${district.name}`,
-    description: `${service.shortTitle} in ${district.name}: ${combo.intro.slice(0, 130).replace(/\s+\S*$/, "")}…`,
+    description:
+      combo.metaDescription ??
+      `${service.shortTitle} in ${district.name}: ${combo.intro.slice(0, 130).replace(/\s+\S*$/, "")}…`,
     path: `/leistungen/${service.slug}/${district.slug}`,
   });
 }
@@ -50,7 +52,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
       Boolean(entry.combo),
     );
 
-  const faqItems = [
+  const faqItems = combo.faq ?? [
     {
       question: `Bietet Glanzwerk ${service.shortTitle} auch in ${district.name} an?`,
       answer: `Ja, ${service.shortTitle} gehört in ${district.name} zu unserem Einsatzgebiet. ${combo.intro}`,
@@ -86,6 +88,9 @@ export default async function ServiceDistrictPage({ params }: Props) {
             {service.shortTitle} {district.name}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">{combo.intro}</p>
+          {combo.introSecondParagraph && (
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">{combo.introSecondParagraph}</p>
+          )}
         </div>
 
         <FadeIn as="ul" className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -115,6 +120,83 @@ export default async function ServiceDistrictPage({ params }: Props) {
           </Link>
         </div>
       </Section>
+
+      {combo.localAngle && combo.localAngle.length > 0 && (
+        <Section background="tint" decor>
+          <SectionHeading
+            eyebrow="Vor Ort"
+            title={`Was ${service.shortTitle} in ${district.name} besonders macht`}
+          />
+          <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+            {combo.localAngle.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {(combo.scopeBullets || combo.processText) && (
+        <Section background="white">
+          <div className="grid gap-10 lg:grid-cols-2">
+            {combo.scopeBullets && (
+              <div>
+                <SectionHeading eyebrow="Umfang" title="Leistungsumfang auf einen Blick" />
+                <ul className="mt-6 space-y-2.5">
+                  {combo.scopeBullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                        className="mt-0.5 shrink-0 text-brand-500"
+                      >
+                        <path
+                          d="M5 13l4 4L19 7"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/leistungen/${service.slug}`}
+                  className="mt-5 inline-block text-sm font-semibold text-brand-500 hover:underline"
+                >
+                  Vollständigen Leistungsumfang der {service.shortTitle} ansehen
+                </Link>
+              </div>
+            )}
+            {combo.processText && (
+              <div>
+                <SectionHeading eyebrow="Ablauf" title={`So starten Sie in ${district.name}`} />
+                <p className="mt-6 text-base leading-relaxed text-ink-soft">{combo.processText}</p>
+              </div>
+            )}
+          </div>
+        </Section>
+      )}
+
+      {combo.localAngle && combo.localAngle.length > 0 && (
+        <Section background="white">
+          <SectionHeading eyebrow="Zielgruppe" title={`Passende Objekte in ${district.name}`} />
+          <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">
+            {district.audiences.map((audience) => (
+              <li
+                key={audience}
+                className="rounded-xl border border-black/[0.06] bg-white px-4 py-2.5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              >
+                {audience}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <Section background="muted">
         <FadeIn className="grid gap-6 sm:grid-cols-2">
@@ -169,7 +251,10 @@ export default async function ServiceDistrictPage({ params }: Props) {
       <Section background={neighborCombos.length > 0 ? "white" : "muted"}>
         <CTASection
           title={`Angebot für ${service.shortTitle} in ${district.name}`}
-          subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
+          subtitle={
+            combo.ctaSubtitle ??
+            "Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
+          }
           primaryLabel="Reinigung anfragen"
         />
       </Section>

@@ -1,7 +1,26 @@
+export interface ComboFaqItem {
+  question: string;
+  answer: string;
+  relatedLink?: { label: string; href: string };
+}
+
 export interface Combo {
   serviceSlug: string;
   districtSlug: string;
   intro: string;
+  /**
+   * Optionale Vertiefung für einzelne, redaktionell ausgebaute Kombi-Seiten.
+   * Bleiben diese Felder leer, rendert die Seite exakt wie zuvor (generische
+   * FAQ, Standard-CTA-Text) – so bleiben alle nicht ausgebauten Kombi-Seiten
+   * unverändert.
+   */
+  metaDescription?: string;
+  introSecondParagraph?: string;
+  localAngle?: string[];
+  scopeBullets?: string[];
+  processText?: string;
+  faq?: ComboFaqItem[];
+  ctaSubtitle?: string;
 }
 
 /**
@@ -14,7 +33,48 @@ export const combos: Combo[] = [
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "mitte",
     intro:
-      "Rund um Regierungsviertel und Alexanderplatz liegen viele Bürostandorte auf engem Raum. Wir reinigen Büroflächen in Mitte meist in kurzen Zeitfenstern außerhalb der Geschäftszeiten, um den dichten Terminplan vieler Unternehmen im Bezirk nicht zu stören.",
+      "In Mitte liegen Büros, Kanzleien und Verwaltungen dichter beieinander als in den meisten anderen Berliner Bezirken – rund um Regierungsviertel, Alexanderplatz und die angrenzenden Geschäftsstraßen. Glanzwerk reinigt diese Standorte zuverlässig und mit festen Ansprechpartnern statt wechselndem Personal.",
+    metaDescription:
+      "Büroreinigung für Kanzleien, Verwaltungen und Büros in Berlin-Mitte – zuverlässig, mit festen Ansprechpartnern und flexiblen Zeitfenstern. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Für die Büroreinigung bedeutet das vor allem eines: wenig Spielraum während der Kernarbeitszeit. Wir legen Reinigungstermine in Mitte deshalb meist in enge Zeitfenster außerhalb der Geschäftszeiten und stimmen Zutritt über Schlüssel, Code oder ein festes Zeitfenster individuell mit Ihnen ab.",
+    localAngle: [
+      "Kanzleietagen im Altbau und große, offene Verwaltungsflächen im Neubau kommen in Mitte auf engstem Raum vor. Beides bringt einen unterschiedlichen Zuschnitt der Reinigung mit sich, etwa bei Grundriss oder der Zahl der Ansprechpartner pro Objekt – das legen wir vorab gemeinsam mit Ihnen fest.",
+      "Wer im Zentrum ein Büro betreibt, hat selten ungenutzte Randzeiten für die Reinigung. Deshalb reinigen wir hier überwiegend früh morgens, abends oder am Wochenende, statt während des laufenden Betriebs.",
+    ],
+    scopeBullets: [
+      "Schreibtische, Ablageflächen und Bildschirme außen",
+      "Böden in Büro- und Gemeinschaftsflächen",
+      "Teeküchen und Pausenräume",
+      "Sanitär-, Empfangs- und Besprechungsräume",
+    ],
+    processText:
+      "Nach einer kurzen Abstimmung zu Fläche, Zugang und gewünschtem Rhythmus erhalten Sie ein individuelles Angebot. Nach Bestätigung legen wir Zeitfenster und Zutritt gemeinsam fest, bevor die Reinigung nach dem vereinbarten Plan beginnt.",
+    faq: [
+      {
+        question: "Bietet Glanzwerk Büroreinigung auch für kleinere Kanzleiflächen in Mitte an?",
+        answer:
+          "Ja. Neben größeren Verwaltungsflächen reinigen wir in Mitte auch kleinere Kanzlei- und Büroeinheiten in Altbauten – der Leistungsumfang wird auf die tatsächliche Fläche und Nutzung abgestimmt.",
+      },
+      {
+        question: "Wie kurzfristig lässt sich ein Termin für die Büroreinigung in Mitte einrichten?",
+        answer:
+          "Das hängt von Ihrem gewünschten Zeitfenster und unserer aktuellen Teamplanung ab. Sprechen Sie uns über den Preisrechner oder das Kontaktformular an, dann nennen wir Ihnen einen realistischen Starttermin.",
+      },
+      {
+        question: "Ist eine Reinigung außerhalb der Bürozeiten in Mitte möglich, etwa früh morgens oder abends?",
+        answer:
+          "Ja, das ist in Mitte sogar die Regel: Viele Büros hier haben dicht getaktete Tagesabläufe, deshalb reinigen wir überwiegend früh morgens, abends oder am Wochenende – Zutritt und Zeitfenster stimmen wir vorher mit Ihnen ab.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns direkt an. Berechtigte Beanstandungen prüfen wir und bessern in der Regel zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Büro in Mitte – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
