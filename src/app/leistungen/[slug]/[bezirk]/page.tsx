@@ -170,6 +170,20 @@ export default async function ServiceDistrictPage({ params }: Props) {
                 >
                   Vollständigen Leistungsumfang der {service.shortTitle} ansehen
                 </Link>
+                {combo.additionalLinks && combo.additionalLinks.length > 0 && (
+                  <ul className="mt-3 space-y-1.5">
+                    {combo.additionalLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="inline-block text-sm font-semibold text-brand-500 hover:underline"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
             {combo.processText && (
@@ -182,11 +196,21 @@ export default async function ServiceDistrictPage({ params }: Props) {
         </Section>
       )}
 
+      {combo.priceFactorsText && (
+        <Section background="tint" decor>
+          <SectionHeading
+            eyebrow="Preisfaktoren"
+            title={`Was die ${service.shortTitle} in ${district.name} kostet`}
+          />
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">{combo.priceFactorsText}</p>
+        </Section>
+      )}
+
       {combo.localAngle && combo.localAngle.length > 0 && (
         <Section background="white">
           <SectionHeading eyebrow="Zielgruppe" title={`Passende Objekte in ${district.name}`} />
           <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">
-            {district.audiences.map((audience) => (
+            {service.audiences.map((audience) => (
               <li
                 key={audience}
                 className="rounded-xl border border-black/[0.06] bg-white px-4 py-2.5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
