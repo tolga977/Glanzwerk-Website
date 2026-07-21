@@ -8,9 +8,13 @@ import { siteConfig } from "@/data/site";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/kontakt"];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Kontakt",
+  title: heading.metaTitle ?? heading.h1,
   description:
     "Kontaktieren Sie Glanzwerk Reinigungsservice Berlin für ein individuelles Angebot zur Gebäudereinigung.",
   path: "/kontakt",
@@ -34,7 +38,7 @@ export default function KontaktPage() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Angebot für Ihre Gebäudereinigung in Berlin anfordern
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 max-w-xl text-lg text-ink-soft">
               Beschreiben Sie kurz Ihr Objekt – wir melden uns zeitnah mit
@@ -58,7 +62,7 @@ export default function KontaktPage() {
               className="mb-6 shadow-xl shadow-brand-950/15"
             />
             <div className="rounded-3xl bg-brand-900 p-8 text-white">
-              <h2 className="text-lg font-semibold">Direkt erreichbar</h2>
+              <h2 className="text-lg font-semibold">{heading.sectionHeadings[0]}</h2>
               <ul className="mt-5 space-y-4 text-sm text-brand-100">
                 <li>
                   <span className="block text-xs uppercase tracking-wide text-brand-300">

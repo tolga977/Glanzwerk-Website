@@ -9,6 +9,10 @@ import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/umwelt-verantwortung"];
 
 const description =
   "Wie Glanzwerk Reinigungsservice Berlin Ressourcen im Reinigungsalltag bewusst einsetzt – konkrete Handgriffe statt Umweltversprechen.";
@@ -19,7 +23,7 @@ const dosierungPhoto = {
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Umwelt & Verantwortung",
+  title: heading.metaTitle ?? heading.h1,
   description,
   path: "/umwelt-verantwortung",
 });
@@ -119,7 +123,7 @@ export default function UmweltVerantwortungPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              <span className="text-brand-600">Umweltbewusste</span> Gebäudereinigung in Berlin
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Nachhaltigkeit ist bei Glanzwerk kein Siegel und kein
@@ -135,7 +139,7 @@ export default function UmweltVerantwortungPage() {
       <Section background="tint" decor>
         <SectionHeading
           eyebrow="Unsere Grundsätze"
-          title="Was wir im Arbeitsalltag tatsächlich anders machen"
+          title={heading.sectionHeadings[0]}
           subtitle="Keine Zertifikate, keine Siegel – dafür konkrete Prinzipien, die sich in jedem Einsatz wiederfinden."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -162,7 +166,7 @@ export default function UmweltVerantwortungPage() {
       <Section background="white">
         <EditorialIntro
           eyebrow="Produkte"
-          title="Hochwertige Produkte statt Chemie-Maximum"
+          title={heading.sectionHeadings[1]}
           subtitle="Weniger, aber gezielter eingesetzte Reinigungsmittel sind wirksamer und ressourcenschonender als ein pauschal starkes Universalmittel."
         >
           <div className="rounded-2xl border border-black/[0.06] bg-graphite-50 p-6">
@@ -189,7 +193,7 @@ export default function UmweltVerantwortungPage() {
       </Section>
 
       <Section background="warm">
-        <SectionHeading eyebrow="Für Ihr Unternehmen" title="Was das für Ihr Unternehmen bedeutet" />
+        <SectionHeading eyebrow="Für Ihr Unternehmen" title={heading.sectionHeadings[2]} />
         <FadeIn className="mt-10 grid divide-y divide-brand-900/[0.08] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {benefits.map((benefit, index) => (
             <div key={benefit} className="flex gap-4 p-6 sm:flex-col sm:gap-3">
@@ -219,7 +223,7 @@ export default function UmweltVerantwortungPage() {
 
       <Section background="muted">
         <CTASection
-          title="Fragen zu unserem Umgang mit Ressourcen?"
+          title={heading.ctaHeading}
           subtitle="Sprechen Sie uns direkt an oder berechnen Sie in wenigen Minuten einen ersten Richtpreis für Ihr Objekt."
           primaryLabel="Preis berechnen"
           primaryHref="/preisrechner"

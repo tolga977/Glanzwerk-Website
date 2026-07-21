@@ -6,9 +6,13 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/bewertungen"];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Bewertungen",
+  title: heading.metaTitle ?? heading.h1,
   description: "Erfahrungen und Bewertungen von Glanzwerk Reinigungsservice Berlin.",
   path: "/bewertungen",
 });
@@ -25,7 +29,7 @@ export default function BewertungenPage() {
               Bewertungen
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Erfahrungen unserer Kunden in Berlin
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Wir sammeln fortlaufend Rückmeldungen unserer Kunden zu
@@ -41,7 +45,7 @@ export default function BewertungenPage() {
       </Section>
 
       <Section background="muted">
-        <CTASection />
+        <CTASection title={heading.ctaHeading} />
       </Section>
     </>
   );

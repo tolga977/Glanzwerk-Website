@@ -11,6 +11,10 @@ import JsonLd from "@/components/seo/JsonLd";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/3-monate-testen"];
 
 /**
  * HINWEIS: Die genaue Vertragsmechanik (Kündigungsfrist, was nach den 3
@@ -24,7 +28,7 @@ const description =
   "Glanzwerk 3 Monate flexibel testen – reguläre Gebäudereinigung für Ihr Berliner Gewerbeobjekt, ohne langfristige Vertragsbindung.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "3 Monate flexibel testen",
+  title: heading.metaTitle ?? heading.h1,
   description,
   path: "/3-monate-testen",
 });
@@ -149,7 +153,7 @@ export default function DreiMonateTestenPage() {
               Neu bei Glanzwerk
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Gebäudereinigung in Berlin 3 Monate flexibel testen
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Lernen Sie Glanzwerk im laufenden Betrieb kennen – ohne dass Sie
@@ -179,7 +183,7 @@ export default function DreiMonateTestenPage() {
       <Section background="muted">
         <SectionHeading
           eyebrow="Was „testen“ bedeutet"
-          title="Ein echter Probelauf, keine Gratis-Reinigung"
+          title={heading.sectionHeadings[0]}
           subtitle="Drei Monate lang arbeiten wir so zusammen, wie es dauerhaft aussehen würde – zu regulären, vorher festgelegten Konditionen."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -204,7 +208,7 @@ export default function DreiMonateTestenPage() {
       </Section>
 
       <Section background="white">
-        <EditorialIntro eyebrow="Ablauf" title="So läuft die Pilotphase ab">
+        <EditorialIntro eyebrow="Ablauf" title={heading.sectionHeadings[1]}>
           <ProcessSteps steps={steps} />
         </EditorialIntro>
       </Section>
@@ -227,7 +231,7 @@ export default function DreiMonateTestenPage() {
       </Section>
 
       <Section background="muted">
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen zur Testphase" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading} />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={faqItems} idPrefix="trial-faq" />
         </div>
@@ -235,7 +239,7 @@ export default function DreiMonateTestenPage() {
 
       <Section background="white">
         <CTASection
-          title="Bereit, die Zusammenarbeit mit Glanzwerk zu testen?"
+          title={heading.ctaHeading}
           subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot für die dreimonatige Pilotphase."
           primaryLabel="Testphase anfragen"
           primaryHref="/kontakt"

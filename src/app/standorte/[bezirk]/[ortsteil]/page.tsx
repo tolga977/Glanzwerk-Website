@@ -11,6 +11,8 @@ import { districts, getOrtsteil } from "@/data/districts";
 import { getServiceBySlug } from "@/data/services";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
 
 interface Props {
   params: Promise<{ bezirk: string; ortsteil: string }>;
@@ -30,8 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = getOrtsteil(bezirk, ortsteil);
   if (!result) return {};
   const description = `Gebäudereinigung für Gewerbeobjekte in ${result.ortsteil.name} (${result.district.name}). Glanzwerk als Reinigungspartner vor Ort. Jetzt Angebot anfragen.`;
+  const heading = seoHeadings[`/standorte/${result.district.slug}/${result.ortsteil.slug}`];
   return buildMetadata({
-    title: `Gebäudereinigung ${result.ortsteil.name}`,
+    title: heading?.metaTitle ?? heading?.h1 ?? `Gebäudereinigung ${result.ortsteil.name}`,
     description,
     path: `/standorte/${result.district.slug}/${result.ortsteil.slug}`,
   });
@@ -41,6 +44,8 @@ export default async function OrtsteilPage({ params }: Props) {
   const { bezirk, ortsteil } = await params;
   const result = getOrtsteil(bezirk, ortsteil);
   if (!result) notFound();
+  const heading = seoHeadings[`/standorte/${result.district.slug}/${result.ortsteil.slug}`];
+  if (!heading) notFound();
 
   const { district, ortsteil: ortsteilData } = result;
   const featuredServices = district.featuredServiceSlugs
@@ -68,7 +73,7 @@ export default async function OrtsteilPage({ params }: Props) {
       <Section background="white" className="pt-12">
         <div className="max-w-3xl">
           <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-            Gebäudereinigung {ortsteilData.name}
+            {renderHighlightedH1(heading.h1, heading.h1Highlight)}
           </h1>
           <p className="mt-4 text-lg text-ink-soft">
             Reinigungsservice für Büros, Praxen und Gewerbeobjekte in{" "}
@@ -93,10 +98,7 @@ export default async function OrtsteilPage({ params }: Props) {
 
       {featuredServices.length > 0 && (
         <Section background="muted">
-          <SectionHeading
-            eyebrow="Leistungen"
-            title={`Gefragte Reinigungsleistungen in ${ortsteilData.name}`}
-          />
+          <SectionHeading eyebrow="Leistungen" title={heading.sectionHeadings[0]} />
           <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featuredServices.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -107,7 +109,7 @@ export default async function OrtsteilPage({ params }: Props) {
 
       <Section background="white">
         <CTASection
-          title={`Angebot für Ihr Objekt in ${ortsteilData.name}`}
+          title={heading.ctaHeading ?? `Angebot für Ihr Objekt in ${ortsteilData.name}`}
           subtitle="Fordern Sie ein unverbindliches Angebot für Ihre Gebäudereinigung an."
         />
       </Section>

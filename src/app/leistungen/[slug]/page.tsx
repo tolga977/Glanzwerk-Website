@@ -21,6 +21,8 @@ import { serviceContentPhotos } from "@/data/serviceContentPhotos";
 import { serviceMidPhotos } from "@/data/serviceMidPhotos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1, renderGlanzwerkHeading } from "@/lib/renderHeading";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -89,19 +91,6 @@ const quickBenefitIcons = [
   </svg>,
 ];
 
-/** Hebt den Leistungsnamen in Glanzwerk-Hellblau hervor, "Berlin" bleibt dunkel. Alle Titel folgen dem Muster "<Leistung> Berlin". */
-function renderHeroTitle(title: string) {
-  const suffix = " Berlin";
-  if (title.endsWith(suffix)) {
-    return (
-      <>
-        <span className="text-brand-600">{title.slice(0, -suffix.length)}</span> Berlin
-      </>
-    );
-  }
-  return title;
-}
-
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -110,8 +99,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return {};
+  const heading = seoHeadings[`/leistungen/${service.slug}`];
   return buildMetadata({
-    title: service.title,
+    title: heading?.metaTitle ?? heading?.h1 ?? service.title,
     description: service.metaDescription,
     path: `/leistungen/${service.slug}`,
   });
@@ -121,6 +111,8 @@ export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
+  const heading = seoHeadings[`/leistungen/${service.slug}`];
+  if (!heading) notFound();
 
   const relatedServices = getRelatedServices(service);
   const photo = servicePhotos[service.slug];
@@ -175,7 +167,7 @@ export default async function ServicePage({ params }: Props) {
         >
           <div className="max-w-xl">
             <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
-              {renderHeroTitle(service.title)}
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-ink-soft">{service.intro}</p>
           </div>
@@ -213,7 +205,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* 2. Schnelle Vorteile mit Symbolen */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Auf einen Blick" title={`Vorteile der ${service.shortTitle}`} />
+        <SectionHeading eyebrow="Auf einen Blick" title={heading.sectionHeadings[0]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {service.bullets.map((bullet, index) => (
             <FadeIn
@@ -244,7 +236,7 @@ export default async function ServicePage({ params }: Props) {
             </span>
             <div>
               <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
-                Typische Herausforderungen bei der {service.shortTitle}
+                {heading.sectionHeadings[1]}
               </h2>
               <ul className="mt-5 space-y-3">
                 {service.challenges.map((challenge) => (
@@ -264,7 +256,7 @@ export default async function ServicePage({ params }: Props) {
         <Section background="muted">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className={imageLeftOnDesktop ? "lg:order-2" : ""}>
-              <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
+              <EditorialIntro eyebrow="Leistungsbeschreibung" title={heading.sectionHeadings[2]}>
                 <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
                   {service.description.map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
@@ -282,7 +274,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       ) : (
         <Section background="muted">
-          <EditorialIntro eyebrow="Leistungsbeschreibung" title={`So läuft die ${service.shortTitle} ab`}>
+          <EditorialIntro eyebrow="Leistungsbeschreibung" title={heading.sectionHeadings[2]}>
             <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
               {service.description.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
@@ -296,7 +288,7 @@ export default async function ServicePage({ params }: Props) {
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
-              Typische Reinigungsaufgaben
+              {heading.sectionHeadings[3]}
             </h2>
             <ul className="mt-5 space-y-2.5">
               {service.tasks.map((task) => (
@@ -324,7 +316,7 @@ export default async function ServicePage({ params }: Props) {
           </div>
           <div>
             <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
-              Für wen eignet sich diese Leistung
+              {heading.sectionHeadings[4]}
             </h2>
             <ul className="mt-5 space-y-2.5">
               {service.audiences.map((audience) => (
@@ -344,11 +336,7 @@ export default async function ServicePage({ params }: Props) {
       <Section background="brand" decor>
         <SectionHeading
           eyebrow="Ablauf"
-          title={
-            <>
-              Das <span className="text-brand-200">Glanzwerk</span>-Prinzip
-            </>
-          }
+          title={renderGlanzwerkHeading(heading.sectionHeadings[5], "text-brand-200")}
           light
         />
         <div className="mt-10">
@@ -360,11 +348,7 @@ export default async function ServicePage({ params }: Props) {
       <Section background="white">
         <SectionHeading
           eyebrow="Vertrauen"
-          title={
-            <>
-              Das dürfen Sie von <span className="text-brand-600">Glanzwerk</span> erwarten
-            </>
-          }
+          title={renderGlanzwerkHeading(heading.sectionHeadings[6])}
           subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
         />
         <ExpectationCards />
@@ -387,7 +371,7 @@ export default async function ServicePage({ params }: Props) {
         <Section background="white">
           <SectionHeading
             eyebrow="Standorte"
-            title={`${service.shortTitle} in ausgewählten Berliner Bezirken`}
+            title={heading.sectionHeadings[7]}
           />
           <div className="mt-8 flex flex-wrap gap-2">
             {districtCombos.map(({ district }) => (
@@ -411,7 +395,7 @@ export default async function ServicePage({ params }: Props) {
       )}
 
       <Section background={districtCombos.length > 0 ? "muted" : "white"}>
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading ?? "Häufige Fragen"} />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={service.faq} idPrefix={`service-${service.slug}`} />
         </div>
@@ -431,7 +415,7 @@ export default async function ServicePage({ params }: Props) {
       {!oneOffServiceSlugs.includes(service.slug) && (
         <Section background="muted">
           <CTASection
-            title="Glanzwerk 3 Monate flexibel testen"
+            title={heading.secondaryCtaHeading ?? "Glanzwerk 3 Monate flexibel testen"}
             subtitle={`Lernen Sie die ${service.shortTitle} im laufenden Betrieb kennen – regulär bezahlt, ohne langfristige Bindung.`}
             primaryLabel="Testphase anfragen"
             primaryHref="/3-monate-testen"
@@ -445,7 +429,7 @@ export default async function ServicePage({ params }: Props) {
       <Section background="white">
         {contentPhotos ? (
           <CTASection
-            title="Überzeugen Sie sich selbst"
+            title={heading.ctaHeading ?? "Überzeugen Sie sich selbst"}
             subtitle={`Fordern Sie ein kostenloses Angebot für die ${service.shortTitle} an – unverbindlich und in wenigen Minuten.`}
             primaryLabel="Kostenloses Angebot anfordern"
             primaryHref="/kontakt"
@@ -455,7 +439,7 @@ export default async function ServicePage({ params }: Props) {
           />
         ) : (
           <CTASection
-            title={`Angebot für ${service.shortTitle} anfragen`}
+            title={heading.ctaHeading ?? `Angebot für ${service.shortTitle} anfragen`}
             subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
             primaryLabel="Reinigung anfragen"
           />

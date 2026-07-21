@@ -15,6 +15,8 @@ import { getServiceBySlug } from "@/data/services";
 import { getCombosForDistrict } from "@/data/combos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
 
 interface Props {
   params: Promise<{ bezirk: string }>;
@@ -28,8 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { bezirk } = await params;
   const district = getDistrictBySlug(bezirk);
   if (!district) return {};
+  const heading = seoHeadings[`/standorte/${district.slug}`];
   return buildMetadata({
-    title: `Gebäudereinigung ${district.name}`,
+    title: heading?.metaTitle ?? heading?.h1 ?? `Gebäudereinigung ${district.name}`,
     description: district.metaDescription,
     path: `/standorte/${district.slug}`,
   });
@@ -39,6 +42,8 @@ export default async function DistrictPage({ params }: Props) {
   const { bezirk } = await params;
   const district = getDistrictBySlug(bezirk);
   if (!district) notFound();
+  const heading = seoHeadings[`/standorte/${district.slug}`];
+  if (!heading) notFound();
 
   const featuredServices = district.featuredServiceSlugs
     .map((slug) => getServiceBySlug(slug))
@@ -67,7 +72,7 @@ export default async function DistrictPage({ params }: Props) {
       <Section background="white" className="pt-12">
         <div className="max-w-3xl">
           <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-            Gebäudereinigung {district.name}
+            {renderHighlightedH1(heading.h1, heading.h1Highlight)}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">{district.intro}</p>
         </div>
@@ -103,7 +108,7 @@ export default async function DistrictPage({ params }: Props) {
       </Section>
 
       <Section background="muted">
-        <EditorialIntro title={`Reinigung in ${district.name}`}>
+        <EditorialIntro title={heading.sectionHeadings[0]}>
           <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
             {district.localContext.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
@@ -112,7 +117,7 @@ export default async function DistrictPage({ params }: Props) {
         </EditorialIntro>
         <div className="mt-10">
           <h3 className="text-lg font-semibold text-brand-900">
-            Typische Kunden in {district.name}
+            {heading.sectionHeadings[1]}
           </h3>
           <ul className="mt-4 grid gap-2.5 sm:grid-cols-3">
             {district.audiences.map((audience) => (
@@ -129,10 +134,7 @@ export default async function DistrictPage({ params }: Props) {
 
       {featuredServices.length > 0 && (
         <Section background="white">
-          <SectionHeading
-            eyebrow="Leistungen"
-            title={`Gefragte Reinigungsleistungen in ${district.name}`}
-          />
+          <SectionHeading eyebrow="Leistungen" title={heading.sectionHeadings[2]} />
           <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featuredServices.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -148,10 +150,7 @@ export default async function DistrictPage({ params }: Props) {
 
       {districtCombos.length > 0 && (
         <Section background="muted">
-          <SectionHeading
-            eyebrow="Spezialisierte Seiten"
-            title={`Leistungen mit direktem Bezug zu ${district.name}`}
-          />
+          <SectionHeading eyebrow="Spezialisierte Seiten" title={heading.sectionHeadings[3]} />
           <div className="mt-8 flex flex-wrap gap-2">
             {districtCombos.map(({ combo, service }) => (
               <Link
@@ -167,7 +166,7 @@ export default async function DistrictPage({ params }: Props) {
       )}
 
       <Section background={districtCombos.length > 0 ? "white" : "muted"}>
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading ?? "Häufige Fragen"} />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={district.faq} idPrefix={`district-${district.slug}`} />
         </div>
@@ -186,7 +185,7 @@ export default async function DistrictPage({ params }: Props) {
 
       <Section background="muted">
         <CTASection
-          title={`Angebot für Ihr Objekt in ${district.name}`}
+          title={heading.ctaHeading ?? `Angebot für Ihr Objekt in ${district.name}`}
           subtitle="Fordern Sie ein unverbindliches Angebot für Ihre Gebäudereinigung an."
         />
       </Section>

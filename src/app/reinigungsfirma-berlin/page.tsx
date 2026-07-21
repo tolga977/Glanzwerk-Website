@@ -11,12 +11,16 @@ import JsonLd from "@/components/seo/JsonLd";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/reinigungsfirma-berlin"];
 
 const description =
   "Worauf Sie bei der Wahl einer Reinigungsfirma in Berlin achten sollten – und wie Glanzwerk für Gewerbekunden arbeitet.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Reinigungsfirma Berlin für Gewerbekunden",
+  title: heading.metaTitle ?? heading.h1,
   description,
   path: "/reinigungsfirma-berlin",
 });
@@ -93,7 +97,7 @@ export default function ReinigungsfirmaBerlinPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
             <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Reinigungsfirma Berlin für Gewerbekunden
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg text-ink-soft">
               Bei der Suche nach einer Reinigungsfirma in Berlin stehen
@@ -124,7 +128,7 @@ export default function ReinigungsfirmaBerlinPage() {
       <Section background="muted">
         <SectionHeading
           eyebrow="Auswahlkriterien"
-          title="Worauf Sie bei einer Reinigungsfirma achten sollten"
+          title={heading.sectionHeadings[0]}
         />
         <FadeIn className="mt-10 grid gap-6 sm:grid-cols-2">
           {selectionCriteria.map((item, index) => (
@@ -146,7 +150,7 @@ export default function ReinigungsfirmaBerlinPage() {
       </Section>
 
       <Section background="white">
-        <SectionHeading eyebrow="Glanzwerk" title="Wie wir als Reinigungsfirma arbeiten" />
+        <SectionHeading eyebrow="Glanzwerk" title={heading.sectionHeadings[1]} />
         <FadeIn className="mt-10">
           <TrustBadges />
         </FadeIn>
@@ -158,7 +162,7 @@ export default function ReinigungsfirmaBerlinPage() {
             href="/leistungen"
             className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
-            <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">Unsere Leistungen im Überblick</h2>
+            <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">{heading.sectionHeadings[2]}</h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
               Von der Büroreinigung bis zur Grundreinigung – alle Leistungen auf einen Blick.
             </p>
@@ -167,7 +171,7 @@ export default function ReinigungsfirmaBerlinPage() {
             href="/standorte"
             className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
-            <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">Unser Einsatzgebiet</h2>
+            <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">{heading.sectionHeadings[3]}</h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
               Als Reinigungsfirma in allen zwölf Berliner Bezirken vor Ort.
             </p>
@@ -176,7 +180,7 @@ export default function ReinigungsfirmaBerlinPage() {
       </Section>
 
       <Section background="white">
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen zur Auswahl einer Reinigungsfirma" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading} />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={faqItems} idPrefix="reinigungsfirma" />
         </div>
@@ -184,7 +188,7 @@ export default function ReinigungsfirmaBerlinPage() {
 
       <Section background="muted">
         <CTASection
-          title="Lernen Sie Glanzwerk als Reinigungsfirma kennen"
+          title={heading.ctaHeading}
           subtitle="Fordern Sie ein unverbindliches Angebot an oder nutzen Sie unseren Preisrechner für eine erste Einschätzung."
         />
       </Section>

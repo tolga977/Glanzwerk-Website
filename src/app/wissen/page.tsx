@@ -7,6 +7,10 @@ import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import { articles } from "@/data/articles";
 import { buildMetadata } from "@/lib/metadata";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/wissen"];
 
 const wissenHeroPhoto = {
   src: "/images/wissen/hero-wissen.webp",
@@ -17,7 +21,7 @@ const description =
   "Praxisnahes Wissen rund um Gebäudereinigung, Hygiene und Kosten – verständlich erklärt von Glanzwerk Reinigungsservice Berlin.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Glanzwerk Wissen",
+  title: heading.metaTitle ?? heading.h1,
   description,
   path: "/wissen",
 });
@@ -34,8 +38,7 @@ export default function WissenPage() {
               Glanzwerk Wissen
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Praxiswissen rund um <span className="text-brand-600">Reinigung und Hygiene</span> in
-              Berlin
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Verständliche Antworten auf Fragen, die uns Gewerbekunden
@@ -56,7 +59,7 @@ export default function WissenPage() {
       </Section>
 
       <Section background="muted">
-        <CTASection />
+        <CTASection title={heading.ctaHeading} />
       </Section>
     </>
   );

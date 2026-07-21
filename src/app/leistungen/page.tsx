@@ -6,9 +6,12 @@ import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import { services } from "@/data/services";
 import { buildMetadata } from "@/lib/metadata";
+import { seoHeadings } from "@/data/seoHeadings";
+
+const heading = seoHeadings["/leistungen"];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Leistungen",
+  title: heading.metaTitle ?? heading.h1,
   description:
     "Alle Reinigungsleistungen von Glanzwerk für Unternehmen in Berlin – von der Büroreinigung bis zur Grundreinigung.",
   path: "/leistungen",
@@ -23,7 +26,7 @@ export default function LeistungenPage() {
         <SectionHeading
           as="h1"
           eyebrow="Leistungen"
-          title="Reinigungsleistungen für Gewerbeobjekte in Berlin"
+          title={heading.h1}
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – wählen Sie die passende Leistung für Ihr Objekt."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -34,7 +37,7 @@ export default function LeistungenPage() {
       </Section>
 
       <Section background="muted">
-        <CTASection />
+        <CTASection title={heading.ctaHeading} />
       </Section>
     </>
   );

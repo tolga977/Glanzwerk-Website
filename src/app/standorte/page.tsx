@@ -8,9 +8,13 @@ import FadeIn from "@/components/ui/FadeIn";
 import { districts } from "@/data/districts";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/standorte"];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Standorte",
+  title: heading.metaTitle ?? heading.h1,
   description:
     "Glanzwerk reinigt Gewerbeobjekte in allen 12 Berliner Bezirken – von Mitte bis Reinickendorf.",
   path: "/standorte",
@@ -28,7 +32,7 @@ export default function StandortePage() {
               Standorte
             </p>
             <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Gebäudereinigung in allen Berliner Bezirken
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
               Wir betreuen Gewerbeobjekte in ganz Berlin. Wählen Sie Ihren
@@ -46,7 +50,7 @@ export default function StandortePage() {
       </Section>
 
       <Section background="muted">
-        <CTASection />
+        <CTASection title={heading.ctaHeading} />
       </Section>
     </>
   );

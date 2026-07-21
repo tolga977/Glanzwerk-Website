@@ -11,12 +11,15 @@ import JsonLd from "@/components/seo/JsonLd";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+
+const heading = seoHeadings["/ueber-uns"];
 
 const description =
   "Glanzwerk Reinigungsservice Berlin – Reinigungsdienstleister für Gewerbeobjekte in Berlin.";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Über uns",
+  title: heading.metaTitle ?? heading.h1,
   description,
   path: "/ueber-uns",
 });
@@ -115,7 +118,7 @@ export default function UeberUnsPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
             <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">
-              Über Glanzwerk Reinigungsservice Berlin
+              {heading.h1}
             </h1>
             <p className="mt-4 text-lg text-ink-soft">
               Glanzwerk ist ein Reinigungsunternehmen mit Sitz in Berlin. Wir
@@ -138,7 +141,7 @@ export default function UeberUnsPage() {
       </Section>
 
       <Section background="muted">
-        <SectionHeading eyebrow="Unsere Werte" title="Wofür wir stehen" />
+        <SectionHeading eyebrow="Unsere Werte" title={heading.sectionHeadings[0]} />
         <FadeIn className="mt-10">
           <TrustBadges />
         </FadeIn>
@@ -147,7 +150,7 @@ export default function UeberUnsPage() {
       <Section background="white">
         <SectionHeading
           eyebrow="Wie wir arbeiten"
-          title="Handwerkliche Sorgfalt statt Marketingversprechen"
+          title={heading.sectionHeadings[1]}
           subtitle="Konkrete Prinzipien statt Werbefloskeln – und die professionellen Produkte, mit denen wir tatsächlich arbeiten."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -196,7 +199,7 @@ export default function UeberUnsPage() {
       <Section background="tint" decor id="garantie">
         <SectionHeading
           eyebrow="Qualitätssicherung"
-          title="Abgesichert und mit klarem Versprechen"
+          title={heading.sectionHeadings[2]}
           subtitle="Zwei konkrete Zusagen statt vager Werbeaussagen."
         />
         <div className="mt-10 divide-y divide-brand-900/[0.06] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
@@ -244,7 +247,7 @@ export default function UeberUnsPage() {
           <div>
             <SectionHeading
               eyebrow="Nachhaltigkeit"
-              title="Nachhaltiger reinigen, wo es wirklich etwas bringt"
+              title={heading.sectionHeadings[3]}
               subtitle="Keine Zertifikate, keine Siegel – sondern nachvollziehbare Handgriffe im Alltag, die wir tatsächlich umsetzen: von bedarfsgerechter Dosierung bis zur Mülltrennung, wo im Objekt möglich."
             />
             <Link
@@ -267,7 +270,7 @@ export default function UeberUnsPage() {
 
       <Section background="muted">
         <CTASection
-          title="Lernen Sie uns kennen"
+          title={heading.ctaHeading}
           subtitle="Nehmen Sie Kontakt auf – wir beraten Sie unverbindlich zu Ihrem Reinigungsbedarf."
           primaryLabel="Kontakt aufnehmen"
           primaryHref="/kontakt"

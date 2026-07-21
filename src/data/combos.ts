@@ -108,7 +108,7 @@ export const combos: Combo[] = [
     introSecondParagraph:
       "Der genaue Zuschnitt hängt vom Objekt ab: Ein einzelnes Büro benötigt ein anderes Bündel als ein mehrstöckiges Verwaltungsgebäude mit eigenem Treppenhaus und Empfang. Wir legen das vorab gemeinsam mit Ihnen fest, abgestimmt auf die engen Zeitfenster, die der dichte Terminplan vieler zentraler Standorte in Mitte mit sich bringt.",
     localAngle: [
-      "Die Gebäudereinigung bündelt für Gewerbeobjekte in Mitte typischerweise mehrere Teilleistungen in einem Vertrag: Unterhaltsreinigung der Büro- und Gemeinschaftsflächen, Pflege des Treppenhauses und regelmäßige Fensterreinigung. Welche Teilleistungen tatsächlich sinnvoll sind, hängt von Grundriss und Nutzung des Objekts ab – ein reines Bürohaus benötigt selten eine Grundreinigung, während ein frisch übernommenes Gebäude oft zunächst eine intensive Aufbereitung braucht, bevor der laufende Rhythmus beginnt.",
+      "Die Gebäudereinigung bündelt für Gewerbeobjekte in Mitte typischerweise mehrere Teilleistungen in einem Vertrag: Unterhaltsreinigung der Büro- und Gemeinschaftsflächen, Pflege des Treppenhauses und regelmäßige Fensterreinigung. Ob zusätzlich zur laufenden Reinigung eine Grundreinigung sinnvoll ist, hängt vom Zustand, von der Nutzung und von den vorhandenen Oberflächen ab.",
       "In Mitte kommt hinzu, dass viele Gebäude von mehreren Mietparteien gleichzeitig genutzt werden – von einzelnen Kanzleietagen bis zu ganzen Verwaltungsflächen. Das erfordert eine klare Abstimmung, welche Bereiche zum gemeinsamen Vertrag gehören und welche die einzelne Mietpartei selbst regelt. Bei Bürogemeinschaften mit mehreren kleinen Mietern übernimmt häufig die Hausverwaltung die Koordination, bei einem einzelnen großen Nutzer meist eine interne Ansprechperson vor Ort.",
     ],
     scopeBullets: [
@@ -123,9 +123,9 @@ export const combos: Combo[] = [
       { label: "Glas- und Fensterreinigung separat anfragen", href: "/leistungen/glas-und-fensterreinigung-berlin" },
     ],
     processText:
-      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab. Ihr fester Ansprechpartner bleibt über die gesamte Zusammenarbeit hinweg derselbe – Beanstandungen können Sie jederzeit direkt bei ihm melden, statt sie über mehrere Dienstleister verteilen zu müssen.",
+      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab. Für organisatorische Fragen und Beanstandungen erhalten Sie eine klar geregelte Kontaktmöglichkeit, statt sie über mehrere Dienstleister verteilen zu müssen.",
     priceFactorsText:
-      "Der Preis richtet sich vor allem nach der Anzahl der gebündelten Teilleistungen, der Gesamtfläche und dem gewünschten Rhythmus. Ein Objekt, das nur Unterhalts- und Treppenhausreinigung benötigt, kalkuliert sich anders als eines, das zusätzlich regelmäßige Fensterreinigung einbezieht. Eine erste Einschätzung liefert unser Preisrechner, das endgültige Angebot erstellen wir nach kurzer Abstimmung zu Ihrem Objekt. Auch die Zahl der Mietparteien spielt eine Rolle: Je mehr getrennte Ansprechpartner ein Gebäude hat, desto wichtiger ist eine klare vorherige Abgrenzung der Zuständigkeiten, damit am Ende keine Fläche doppelt oder gar nicht eingeplant wird.",
+      "Der Preis richtet sich vor allem nach der zu reinigenden Fläche, dem vereinbarten Leistungsumfang und dem gewünschten Reinigungsrhythmus. Auch Nutzungsintensität, Zugänglichkeit und die Beschaffenheit der Flächen fließen ein: Ein Objekt, das nur Unterhalts- und Treppenhausreinigung benötigt, kalkuliert sich anders als eines, das zusätzlich regelmäßige Fensterreinigung einbezieht. Eine erste Einschätzung liefert unser Preisrechner, das endgültige Angebot erstellen wir nach kurzer Abstimmung zu Ihrem Objekt.",
     faq: [
       {
         question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Mitte?",
@@ -139,9 +139,9 @@ export const combos: Combo[] = [
         relatedLink: { label: "Zur Treppenhausreinigung", href: "/leistungen/treppenhausreinigung-berlin" },
       },
       {
-        question: "Wie wirkt sich die Anzahl der Mietparteien in einem Gebäude auf den Preis aus?",
+        question: "Wie wird die Zuständigkeit geklärt, wenn ein Gebäude mehrere Mietparteien hat?",
         answer:
-          "Bei mehreren Mietparteien klären wir vorab, welche Flächen zum gemeinsamen Vertrag gehören – etwa über die Hausverwaltung – und kalkulieren Aufwand und Preis entsprechend.",
+          "Bei mehreren Mietparteien klären wir vorab, welche Flächen zum gemeinsamen Vertrag gehören und welche Fläche die einzelne Partei selbst regelt – etwa in Abstimmung mit der Hausverwaltung.",
       },
       {
         question: "Kann ich die Gebäudereinigung in Mitte zunächst unverbindlich testen?",
@@ -181,19 +181,14 @@ export const combos: Combo[] = [
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
-      "Viele Arztpraxen in Charlottenburg-Wilmersdorf sind in Altbauten untergebracht, in deren oberen Stockwerken Menschen wohnen. Das unterscheidet die Praxisreinigung hier von einem reinen Gewerbeobjekt: Reinigungszeiten und Lautstärke wirken sich direkt auf die Hausgemeinschaft aus, nicht nur auf den Praxisbetrieb und das Zusammenleben im ganzen Haus. Zugang zur Praxis erfolgt in solchen Häusern häufig über einen gemeinsamen Hauseingang statt über einen separaten Gewerbezugang.",
+      "Glanzwerk reinigt Arztpraxen in Charlottenburg-Wilmersdorf zuverlässig und mit Rücksicht auf einen ungestörten Praxisbetrieb. Reinigungstermine stimmen wir konkret auf Ihre Sprechzeiten ab.",
     metaDescription:
-      "Praxisreinigung für Arztpraxen in Altbaulagen in Charlottenburg-Wilmersdorf – diskret, mit Rücksicht auf Patienten und Nachbarschaft. Jetzt Angebot anfragen.",
+      "Praxisreinigung für Arztpraxen in Charlottenburg-Wilmersdorf – abgestimmt auf Ihre Sprechzeiten, mit klar geregeltem Leistungsumfang. Jetzt Angebot anfragen.",
     introSecondParagraph:
-      "Glanzwerk reinigt Warte-, Empfangs- und Behandlungsräume in diesen Objekten diskret und mit einem auf das Haus abgestimmten Zeitfenster – meist nach Praxisschluss oder früh morgens vor der ersten Sprechstunde, abgestimmt auf das, was im jeweiligen Haus tatsächlich möglich ist. Gerade bei Gemeinschaftspraxen mit mehreren Ärzten sprechen wir den genauen Ablauf zusätzlich mit der Praxisleitung ab.",
-    localAngle: [
-      "In Charlottenburg-Wilmersdorf teilen sich Praxis und Wohnungen oft ein Treppenhaus und einen Eingang. Reinigungsgeräusche, die in einem reinen Bürogebäude niemanden stören, können hier zu einer ungünstigen Zeit die Nachbarschaft wecken – deshalb legen wir Termine bewusst außerhalb üblicher Ruhezeiten und in Abstimmung mit der Hausgemeinschaft fest. Staubsaugen oder das Verschieben von Möbeln verschieben wir in solchen Häusern grundsätzlich auf die vereinbarten Zeitfenster statt auf die sonst üblichen frühen Morgenstunden. Das gilt besonders dann, wenn Praxis und Wohnungen denselben Aufzug oder dasselbe enge Treppenhaus nutzen.",
-      "Für Patienten zählt zusätzlich der erste Eindruck: Ein gepflegter Empfang und Wartebereich wirkt sich unmittelbar auf das Vertrauen in die Praxis aus, gerade in den historisch geprägten Altbaulagen, wie sie im Bezirk häufig vorkommen. Aufwendig gestaltete Eingangsbereiche und historische Bausubstanz erfordern zudem einen behutsameren Umgang als ein moderner Verwaltungsbau.",
-      "Bei historischen Fassaden, empfindlichen Böden und Oberflächen in Altbauten setzen wir auf professionelle Reinigungsmittel, die auf das jeweilige Material abgestimmt sind, statt auf ein aggressives Universalmittel für alles – ein Aspekt, der bei modernen Gewerbebauten seltener eine Rolle spielt.",
-    ],
+      "Wir reinigen Warte-, Empfangs- und Behandlungsräume diskret und mit einem auf Ihre Sprechzeiten abgestimmten Zeitfenster – meist nach Praxisschluss oder früh morgens vor der ersten Sprechstunde.",
     scopeBullets: [
       "Warte- und Empfangsbereiche",
-      "Flächendesinfektion in Behandlungsräumen",
+      "Reinigung der vereinbarten Flächen in Behandlungsräumen",
       "Bodenpflege in allen Praxisräumen",
       "Sanitärbereiche und Kontaktflächen wie Türgriffe",
     ],
@@ -201,27 +196,22 @@ export const combos: Combo[] = [
       { label: "Praxishygiene im Glanzwerk-Wissen nachlesen", href: "/wissen/reinigung-arztpraxen" },
     ],
     processText:
-      "Reinigungstermine stimmen wir konkret auf Ihre Sprechzeiten ab – üblich sind die Mittagspause, der Feierabend oder die Zeit vor Praxisöffnung. Bei mehreren Praxen im selben Haus sprechen wir Zutritt und Zeitfenster bei Bedarf mit der Hausverwaltung ab, damit sich niemand im Ablauf stört. Ihr fester Ansprechpartner kennt die Besonderheiten Ihres Hauses und bleibt auch bei wiederkehrenden Terminen derselbe, statt dass sich Ihre Praxis jedes Mal auf neues Personal einstellen muss.",
+      "Bei Gemeinschaftspraxen mit mehreren Ärzten legen wir den genauen Ablauf gemeinsam mit der Praxisleitung fest. Für organisatorische Fragen und Beanstandungen erhalten Sie eine klar geregelte Kontaktmöglichkeit.",
     faq: [
       {
-        question: "Wird bei der Reinigung Rücksicht auf die Bewohner in den oberen Etagen genommen?",
+        question: "Passt die Reinigung zu den Sprechzeiten meiner Praxis?",
         answer:
-          "Ja. Da viele Praxisgebäude in Charlottenburg-Wilmersdorf auch bewohnt sind, legen wir Reinigungszeiten bewusst außerhalb üblicher Ruhezeiten fest und sprechen lautere Arbeiten wie Staubsaugen gezielt mit Ihnen ab.",
+          "Ja, wir stimmen den Reinigungstermin individuell auf Ihre tatsächlichen Sprechzeiten ab – das klären wir bereits bei der ersten Anfrage gemeinsam mit Ihnen.",
       },
       {
-        question: "Passt die Reinigung zu unseren Sprechzeiten am Kurfürstendamm oder in ruhigeren Altbaulagen?",
+        question: "Werden auch einzelne, kleinere Praxen bedient, nicht nur größere Gemeinschaftspraxen?",
         answer:
-          "Ja, unabhängig von der genauen Lage im Bezirk stimmen wir den Termin auf Ihre tatsächlichen Sprechzeiten ab. Bei stark frequentierten Lagen wie am Kurfürstendamm ist oft ein früherer Termin sinnvoll, in ruhigeren Lagen besteht mehr Spielraum. Den genauen Termin klären wir bereits bei der ersten Anfrage gemeinsam mit Ihnen.",
+          "Ja, wir reinigen sowohl einzelne Praxisräume als auch größere Gemeinschaftspraxen – der Leistungsumfang wird auf die tatsächliche Fläche abgestimmt. Eine Einzelpraxis mit zwei Behandlungsräumen benötigt spürbar weniger Zeit als eine Gemeinschaftspraxis mit mehreren Ärzten.",
       },
       {
-        question: "Werden auch einzelne, kleinere Praxen in Altbauten bedient, nicht nur größere Gemeinschaftspraxen?",
+        question: "Werden Behandlungsräume auch desinfiziert?",
         answer:
-          "Ja, wir reinigen sowohl einzelne Praxisräume in Altbauten als auch größere Gemeinschaftspraxen – der Leistungsumfang wird auf die tatsächliche Fläche abgestimmt. Eine Einzelpraxis mit zwei Behandlungsräumen benötigt spürbar weniger Zeit als eine Gemeinschaftspraxis mit mehreren Ärzten.",
-      },
-      {
-        question: "Wird auch die Aufbereitung von Instrumenten übernommen?",
-        answer:
-          "Nein, die medizinische Aufbereitung von Instrumenten und die Sterilisation bleiben Aufgabe des Praxispersonals. Wir übernehmen die allgemeine Flächenreinigung und -desinfektion der Warte-, Empfangs- und Behandlungsräume.",
+          "Wir reinigen die vereinbarten Oberflächen und Kontaktbereiche. Desinfektionsmaßnahmen führen wir nur durch, wenn sie ausdrücklich beauftragt und nach den Vorgaben Ihrer Praxis festgelegt wurden. Die medizinische Aufbereitung und Sterilisation von Instrumenten bleibt in jedem Fall ausgeschlossen und Aufgabe des Praxispersonals.",
       },
       {
         question: "Gilt für die Praxisreinigung auch das Modell „3 Monate flexibel testen“?",

@@ -19,6 +19,10 @@ import { articles } from "@/data/articles";
 import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1, renderGlanzwerkHeading } from "@/lib/renderHeading";
+
+const heading = seoHeadings["/"];
 
 const dosierungPhoto = {
   src: "/images/umwelt-verantwortung/dosierung.webp",
@@ -26,7 +30,7 @@ const dosierungPhoto = {
 };
 
 export const metadata: Metadata = buildMetadata({
-  title: "Gebäudereinigung Berlin für Unternehmen",
+  title: heading.metaTitle ?? heading.h1,
   description: siteConfig.description,
   path: "/",
 });
@@ -81,8 +85,7 @@ export default function HomePage() {
               Gebäudereinigung für Unternehmen in Berlin
             </p>
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
-              Professionelle <span className="text-brand-300">Gebäudereinigung</span> in Berlin
-              für Unternehmen
+              {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
               Wir reinigen Büros, Praxen, Kanzleien und weitere Gewerbeobjekte
@@ -125,7 +128,7 @@ export default function HomePage() {
 
       {/* 2. Vertrauensbereich */}
       <Section background="white">
-        <EditorialIntro eyebrow="Darauf können Sie sich verlassen" title="Verlässliche Gebäudereinigung für Gewerbekunden">
+        <EditorialIntro eyebrow="Darauf können Sie sich verlassen" title={heading.sectionHeadings[0]}>
           <FadeIn>
             <TrustBadges />
           </FadeIn>
@@ -136,11 +139,7 @@ export default function HomePage() {
       <Section background="tint" decor>
         <SectionHeading
           eyebrow="Leistungen"
-          title={
-            <>
-              Reinigungsleistungen aus <span className="text-brand-700">einer Hand</span>
-            </>
-          }
+          title={renderHighlightedH1(heading.sectionHeadings[1], "einer Hand", "text-brand-700")}
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – abgestimmt auf Ihr Objekt."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -159,11 +158,7 @@ export default function HomePage() {
       <Section background="white">
         <SectionHeading
           eyebrow="Versprechen"
-          title={
-            <>
-              Das dürfen Sie von <span className="text-brand-600">Glanzwerk</span> erwarten
-            </>
-          }
+          title={renderGlanzwerkHeading(heading.sectionHeadings[2])}
           subtitle="Keine unbelegten Garantien – vier konkrete Zusagen, die wir im Alltag tatsächlich einhalten."
         />
         <ExpectationCards />
@@ -173,11 +168,7 @@ export default function HomePage() {
       <Section background="brand" decor>
         <SectionHeading
           eyebrow="Ablauf"
-          title={
-            <>
-              So <span className="text-brand-200">einfach</span> kommen Sie zu Ihrer Reinigung
-            </>
-          }
+          title={renderHighlightedH1(heading.sectionHeadings[3], "einfach", "text-brand-200")}
           light
         />
         <FadeIn className="mt-10">
@@ -192,7 +183,7 @@ export default function HomePage() {
           <div className="lg:order-1">
             <SectionHeading
               eyebrow="Umwelt & Verantwortung"
-              title="Bewusster Ressourceneinsatz statt Chemie-Maximum"
+              title={heading.sectionHeadings[4]}
               subtitle="Bedarfsgerechte Dosierung, passende Profimittel statt Universallösung und Mülltrennung, wo im Objekt möglich – nachvollziehbare Handgriffe statt Siegel."
             />
             <div className="mt-6">
@@ -208,7 +199,7 @@ export default function HomePage() {
       <Section background="tint" decor>
         <SectionHeading
           eyebrow="Glanzwerk Wissen"
-          title="Praxiswissen rund um Reinigung und Hygiene"
+          title={heading.sectionHeadings[5]}
           subtitle="Verständliche Antworten auf Fragen, die uns Gewerbekunden häufig stellen."
         />
         <FadeIn className="mt-10 grid gap-5 sm:grid-cols-3">
@@ -226,7 +217,7 @@ export default function HomePage() {
       {/* 8. 3 Monate flexibel testen */}
       <Section background="muted">
         <CTASection
-          title="Glanzwerk 3 Monate flexibel testen"
+          title={heading.secondaryCtaHeading ?? "Glanzwerk 3 Monate flexibel testen"}
           subtitle="Reguläre Reinigung zu vereinbarten Konditionen, ohne dass Sie sich vorab langfristig binden – keine automatische Verlängerung danach."
           primaryLabel="Testphase anfragen"
           primaryHref="/3-monate-testen"
@@ -237,7 +228,7 @@ export default function HomePage() {
 
       {/* 9. FAQ */}
       <Section background="white" id="faq">
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen" align="center" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading ?? "Häufige Fragen"} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={homeFaqItems} />
         </FadeIn>
@@ -256,7 +247,7 @@ export default function HomePage() {
           <FadeIn className="px-6 py-14 text-center shadow-2xl shadow-brand-950/30 sm:px-12 sm:py-16">
             <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
             <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">
-              Bereit für Ihre Gebäudereinigung?
+              {heading.ctaHeading}
             </h2>
             <div className="glanz-divider mx-auto mt-4 max-w-[120px]" />
             <p className="mx-auto mt-4 max-w-xl text-brand-200">

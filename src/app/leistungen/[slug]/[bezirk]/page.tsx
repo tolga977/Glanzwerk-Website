@@ -12,6 +12,8 @@ import { getDistrictBySlug, getNeighborDistricts } from "@/data/districts";
 import { combos, getCombo } from "@/data/combos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
 
 interface Props {
   params: Promise<{ slug: string; bezirk: string }>;
@@ -27,8 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   const district = getDistrictBySlug(bezirk);
   if (!combo || !service || !district) return {};
+  const heading = seoHeadings[`/leistungen/${service.slug}/${district.slug}`];
   return buildMetadata({
-    title: `${service.shortTitle} ${district.name}`,
+    title: heading?.metaTitle ?? heading?.h1 ?? `${service.shortTitle} ${district.name}`,
     description:
       combo.metaDescription ??
       `${service.shortTitle} in ${district.name}: ${combo.intro.slice(0, 130).replace(/\s+\S*$/, "")}…`,
@@ -42,6 +45,18 @@ export default async function ServiceDistrictPage({ params }: Props) {
   const service = getServiceBySlug(slug);
   const district = getDistrictBySlug(bezirk);
   if (!combo || !service || !district) notFound();
+  const heading = seoHeadings[`/leistungen/${service.slug}/${district.slug}`];
+  if (!heading) notFound();
+
+  let headingIdx = 0;
+  const hasLocalAngle = Boolean(combo.localAngle && combo.localAngle.length > 0);
+  const vorOrtHeading = hasLocalAngle ? heading.sectionHeadings[headingIdx++] : undefined;
+  const scopeHeading = combo.scopeBullets ? heading.sectionHeadings[headingIdx++] : undefined;
+  const processHeading = combo.processText ? heading.sectionHeadings[headingIdx++] : undefined;
+  const priceHeading = combo.priceFactorsText ? heading.sectionHeadings[headingIdx++] : undefined;
+  const passendeObjekteHeading = hasLocalAngle ? heading.sectionHeadings[headingIdx++] : undefined;
+  const mehrZurLeistungHeading = heading.sectionHeadings[headingIdx++];
+  const alleLeistungenHeading = heading.sectionHeadings[headingIdx++];
 
   const neighborCombos = getNeighborDistricts(district)
     .map((neighbor) => ({
@@ -85,7 +100,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
       <Section background="white" className="pt-12">
         <div className="max-w-3xl">
           <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-            {service.shortTitle} {district.name}
+            {renderHighlightedH1(heading.h1, heading.h1Highlight)}
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-soft">{combo.intro}</p>
           {combo.introSecondParagraph && (
@@ -123,10 +138,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
 
       {combo.localAngle && combo.localAngle.length > 0 && (
         <Section background="tint" decor>
-          <SectionHeading
-            eyebrow="Vor Ort"
-            title={`Was ${service.shortTitle} in ${district.name} besonders macht`}
-          />
+          <SectionHeading eyebrow="Vor Ort" title={vorOrtHeading} />
           <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
             {combo.localAngle.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
@@ -140,7 +152,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
           <div className="grid gap-10 lg:grid-cols-2">
             {combo.scopeBullets && (
               <div>
-                <SectionHeading eyebrow="Umfang" title="Leistungsumfang auf einen Blick" />
+                <SectionHeading eyebrow="Umfang" title={scopeHeading} />
                 <ul className="mt-6 space-y-2.5">
                   {combo.scopeBullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2.5 text-sm text-ink-soft">
@@ -188,7 +200,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
             )}
             {combo.processText && (
               <div>
-                <SectionHeading eyebrow="Ablauf" title={`So starten Sie in ${district.name}`} />
+                <SectionHeading eyebrow="Ablauf" title={processHeading} />
                 <p className="mt-6 text-base leading-relaxed text-ink-soft">{combo.processText}</p>
               </div>
             )}
@@ -198,17 +210,14 @@ export default async function ServiceDistrictPage({ params }: Props) {
 
       {combo.priceFactorsText && (
         <Section background="tint" decor>
-          <SectionHeading
-            eyebrow="Preisfaktoren"
-            title={`Was die ${service.shortTitle} in ${district.name} kostet`}
-          />
+          <SectionHeading eyebrow="Preisfaktoren" title={priceHeading} />
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">{combo.priceFactorsText}</p>
         </Section>
       )}
 
       {combo.localAngle && combo.localAngle.length > 0 && (
         <Section background="white">
-          <SectionHeading eyebrow="Zielgruppe" title={`Passende Objekte in ${district.name}`} />
+          <SectionHeading eyebrow="Zielgruppe" title={passendeObjekteHeading} />
           <ul className="mt-8 grid gap-2.5 sm:grid-cols-3">
             {service.audiences.map((audience) => (
               <li
@@ -229,7 +238,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
             className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
-              Mehr zur {service.shortTitle} in Berlin
+              {mehrZurLeistungHeading}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{service.summary}</p>
           </Link>
@@ -238,7 +247,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
             className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
-              Alle Leistungen in {district.name}
+              {alleLeistungenHeading}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{district.summary}</p>
           </Link>
@@ -246,7 +255,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
       </Section>
 
       <Section background="white">
-        <SectionHeading eyebrow="FAQ" title="Häufige Fragen" />
+        <SectionHeading eyebrow="FAQ" title={heading.faqHeading ?? "Häufige Fragen"} />
         <div className="mx-auto mt-8 max-w-2xl">
           <FAQ items={faqItems} idPrefix={`combo-${service.slug}-${district.slug}`} />
         </div>
@@ -274,7 +283,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
 
       <Section background={neighborCombos.length > 0 ? "white" : "muted"}>
         <CTASection
-          title={`Angebot für ${service.shortTitle} in ${district.name}`}
+          title={heading.ctaHeading ?? `Angebot für ${service.shortTitle} in ${district.name}`}
           subtitle={
             combo.ctaSubtitle ??
             "Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."

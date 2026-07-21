@@ -11,6 +11,7 @@ import { articles, getArticleBySlug } from "@/data/articles";
 import { getServiceBySlug } from "@/data/services";
 import { buildMetadata } from "@/lib/metadata";
 import { articleSchema } from "@/lib/schema";
+import { seoHeadings } from "@/data/seoHeadings";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -35,6 +36,8 @@ export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) notFound();
+  const heading = seoHeadings[`/wissen/${article.slug}`];
+  if (!heading) notFound();
 
   const relatedServices = article.relatedServiceSlugs
     .map((s) => getServiceBySlug(s))
@@ -86,7 +89,7 @@ export default async function ArticlePage({ params }: Props) {
       {relatedServices.length > 0 && (
         <Section background="white">
           <h2 className="text-2xl font-display font-medium tracking-tight text-brand-900">
-            Passende Leistungen
+            {heading.relatedServicesHeading}
           </h2>
           <FadeIn className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {relatedServices.map((service) => (
@@ -99,7 +102,7 @@ export default async function ArticlePage({ params }: Props) {
       {moreArticles.length > 0 && (
         <Section background="muted">
           <h2 className="text-2xl font-display font-medium tracking-tight text-brand-900">
-            Weitere Artikel
+            {heading.moreArticlesHeading}
           </h2>
           <FadeIn className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {moreArticles.map((a) => (
@@ -111,7 +114,7 @@ export default async function ArticlePage({ params }: Props) {
 
       <Section background="white">
         <CTASection
-          title="Fragen zu Ihrem Objekt?"
+          title={heading.ctaHeading}
           subtitle="Wir beraten Sie unverbindlich und erstellen ein individuelles Angebot."
         />
       </Section>
