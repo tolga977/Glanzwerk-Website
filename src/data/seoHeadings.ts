@@ -47,19 +47,21 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   // ZENTRALE SEITEN
   // ==========================================================
   "/": {
-    h1: "Professionelle Gebäudereinigung für Unternehmen in Berlin",
-    h1Highlight: "Gebäudereinigung",
+    h1: "Gebäudereinigung Berlin für Unternehmen mit klaren Abläufen",
+    h1Highlight: "Gebäudereinigung Berlin",
     sectionHeadings: [
-      "Verlässliche Gebäudereinigung für Gewerbekunden",
-      "Reinigungsleistungen aus einer Hand",
-      "Das dürfen Sie von Glanzwerk erwarten",
-      "So einfach kommen Sie zu Ihrer Reinigung",
-      "Bewusster Ressourceneinsatz statt Chemie-Maximum",
-      "Praxiswissen rund um Reinigung und Hygiene",
+      "Eine Gebäudereinigung muss vor allem zuverlässig funktionieren",
+      "Reinigung passend zu Objekt, Nutzung und Besucheraufkommen",
+      "Keine pauschalen Versprechen, sondern nachvollziehbare Abläufe",
+      "In vier Schritten zu einem passenden Reinigungsplan",
+      "Sorgsamer Einsatz von Wasser, Reinigungsmitteln und Materialien",
+      "In allen zwölf Berliner Bezirken für Unternehmen im Einsatz",
+      "Antworten auf praktische Fragen zur gewerblichen Reinigung",
     ],
-    faqHeading: "Häufige Fragen",
-    ctaHeading: "Bereit für Ihre Gebäudereinigung?",
-    secondaryCtaHeading: "Glanzwerk 3 Monate flexibel testen",
+    faqHeading: "Fragen zur Gebäudereinigung in Berlin",
+    ctaHeading: "Lassen Sie uns über Ihr Objekt sprechen",
+    secondaryCtaHeading: "Glanzwerk drei Monate flexibel testen",
+    metaTitle: "Gebäudereinigung Berlin für Unternehmen | Glanzwerk",
     mainTopic: "Markenübersicht: Einstieg in alle zentralen Leistungen, Standorte und Vertrauenssignale",
     mostSimilarUrl: "/leistungen/gebaeudereinigung-berlin",
     differentiation:

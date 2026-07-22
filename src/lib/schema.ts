@@ -23,6 +23,29 @@ export function organizationSchema() {
   };
 }
 
+/** Homepage-only: more specific than the sitewide Organization schema, without inventing ratings, hours or certifications. */
+export function professionalServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.street,
+      postalCode: siteConfig.address.zip,
+      addressLocality: siteConfig.address.city,
+      addressCountry: "DE",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Berlin",
+    },
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",

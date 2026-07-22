@@ -57,8 +57,8 @@ export default function RootLayout({
           Zum Inhalt springen
         </a>
         <PromoBar
-          text="Neu: Glanzwerk 3 Monate flexibel testen – ohne langfristige Bindung"
-          shortText="Neu: 3 Monate flexibel testen"
+          text="Glanzwerk drei Monate flexibel testen – ohne langfristige Bindung"
+          shortText="Drei Monate flexibel testen"
           href="/3-monate-testen"
         />
         <Header />

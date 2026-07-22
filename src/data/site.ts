@@ -4,7 +4,7 @@ export const siteConfig = {
   url: "https://www.glanzwerkberlin.de",
   description:
     "Professionelle Gebäudereinigung für Unternehmen in Berlin – Büros, Praxen, Kanzleien und Gewerbeobjekte. Feste Ansprechpartner, flexible Reinigungsintervalle.",
-  phone: "030 83756816",
+  phone: "030 837 56816",
   phoneHref: "tel:+493083756816",
   email: "info@glanzwerkberlin.de",
   address: {
