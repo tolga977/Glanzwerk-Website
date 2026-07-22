@@ -1,0 +1,408 @@
+import Image from "next/image";
+import Link from "next/link";
+import Breadcrumb from "@/components/ui/Breadcrumb";
+import Section, { SectionHeading } from "@/components/ui/Section";
+import ParallaxImage from "@/components/ui/ParallaxImage";
+import ProcessSteps from "@/components/ui/ProcessSteps";
+import FAQ from "@/components/ui/FAQ";
+import CTASection from "@/components/ui/CTASection";
+import FadeIn from "@/components/ui/FadeIn";
+import JsonLd from "@/components/seo/JsonLd";
+import type { Service } from "@/data/services";
+import type { SeoHeadingSet } from "@/data/seoHeadings";
+import { districts } from "@/data/districts";
+import { siteConfig } from "@/data/site";
+import { servicePhotos } from "@/data/servicePhotos";
+import { serviceContentPhotos } from "@/data/serviceContentPhotos";
+import { serviceMidPhotos } from "@/data/serviceMidPhotos";
+import { serviceSchema } from "@/lib/schema";
+import { renderHighlightedH1 } from "@/lib/renderHeading";
+
+/**
+ * Eigenständiger, vollständiger Seiteninhalt für /leistungen/autohausreinigung-berlin.
+ * Bewusst getrennt vom generischen [slug]-Template, aus demselben Grund wie
+ * die übrigen individuell verfassten Leistungsseiten. Anders als die meisten
+ * anderen Leistungen enthält der Auftrag hier bewusst keine Testphasen-Sektion.
+ */
+
+const scopeCards = [
+  {
+    title: "Showroom-Böden",
+    description: "Reinigung großflächiger Bodenbereiche passend zum vorhandenen Belag.",
+  },
+  {
+    title: "Empfang und Beratung",
+    description: "Pflege von Theken, Sitzbereichen, Tischen und frei zugänglichen Oberflächen.",
+  },
+  {
+    title: "Glasflächen",
+    description: "Reinigung von Glastüren, Trennwänden und vereinbarten Schaufensterflächen.",
+  },
+  {
+    title: "Kundenbereiche",
+    description: "Reinigung von Wartezonen, Lounges und weiteren Besucherflächen.",
+  },
+  {
+    title: "Büros",
+    description: "Regelmäßige Reinigung von Arbeitsplätzen, Besprechungsräumen und Gemeinschaftsflächen.",
+  },
+  {
+    title: "Sanitäranlagen",
+    description: "Reinigung von Toiletten, Waschbecken, Armaturen und Spiegeln.",
+  },
+  {
+    title: "Küchen und Sozialräume",
+    description: "Pflege von Arbeitsflächen, Spülen, Tischen und Böden.",
+  },
+  {
+    title: "Eingangsbereiche",
+    description: "Reinigung von Fußmatten, Türen, Laufwegen und stark frequentierten Flächen.",
+  },
+];
+
+const supplementaryLinks = [
+  { label: "Glas- und Fensterreinigung", href: "/leistungen/glas-und-fensterreinigung-berlin" },
+  { label: "Grundreinigung", href: "/leistungen/grundreinigung-berlin" },
+  { label: "Büroreinigung", href: "/leistungen/bueroreinigung-berlin" },
+  { label: "Gebäudereinigung", href: "/leistungen/gebaeudereinigung-berlin" },
+  { label: "Unterhaltsreinigung", href: "/leistungen/unterhaltsreinigung-berlin" },
+];
+
+const processSteps = [
+  {
+    title: "Anfrage",
+    description: "Teilen Sie uns Standort, Größe und Bereiche Ihres Autohauses mit.",
+  },
+  {
+    title: "Bereiche und Öffnungszeiten klären",
+    description: "Wir stimmen Showroom, Kundenbereiche, Büros und gewünschte Einsatzzeiten ab.",
+  },
+  {
+    title: "Leistungsumfang festlegen",
+    description: "Der vereinbarte Umfang wird eindeutig beschrieben.",
+  },
+  {
+    title: "Angebot erhalten",
+    description: "Sie erhalten ein Angebot auf Grundlage der abgestimmten Leistungen.",
+  },
+  {
+    title: "Reinigung starten",
+    description: "Nach Ihrer Freigabe beginnt die Reinigung zum vereinbarten Termin.",
+  },
+];
+
+const costFactors = [
+  "Größe des Showrooms",
+  "Bodenbeläge",
+  "Glasflächen",
+  "Anzahl der Kunden- und Büroräume",
+  "Sanitärbereiche",
+  "Öffnungszeiten",
+  "Intervall",
+  "ergänzende Leistungen",
+];
+
+const faqItems = [
+  {
+    question: "Welche Bereiche eines Autohauses werden gereinigt?",
+    answer: "Je nach Vereinbarung Showroom, Empfang, Beratungsplätze, Büros, Sanitäranlagen, Küchen und Eingänge.",
+  },
+  {
+    question: "Werden ausgestellte Fahrzeuge gereinigt?",
+    answer: "Fahrzeugaufbereitung gehört nicht automatisch zur Gebäudereinigung und muss gegebenenfalls separat vereinbart werden.",
+  },
+  {
+    question: "Kann außerhalb der Öffnungszeiten gereinigt werden?",
+    answer: "Ja, abhängig von Objekt und Einsatzplanung.",
+  },
+  {
+    question: "Werden große Glasflächen gereinigt?",
+    answer: "Ja, sofern Zugänglichkeit und Umfang vorab abgestimmt wurden.",
+  },
+  {
+    question: "Wie häufig sollte ein Showroom gereinigt werden?",
+    answer: "Das hängt von Kundenverkehr, Fläche, Bodenbelag und gewünschtem Erscheinungsbild ab.",
+  },
+  {
+    question: "Sind Grundreinigungen möglich?",
+    answer: "Ja, für stark beanspruchte Böden oder besondere Anlässe.",
+  },
+  {
+    question: "Wie wird der Preis berechnet?",
+    answer: "Nach Fläche, Bereichen, Intervall, Materialien und Reinigungszeiten.",
+  },
+  {
+    question: "Wie kann ich ein Angebot anfordern?",
+    answer: `Unter ${siteConfig.phone} oder ${siteConfig.email}.`,
+  },
+];
+
+export default function AutohausreinigungBerlinContent({
+  service,
+  heading,
+}: {
+  service: Service;
+  heading: SeoHeadingSet;
+}) {
+  const photo = servicePhotos[service.slug];
+  const contentPhotos = serviceContentPhotos[service.slug];
+  const midPhoto = serviceMidPhotos[service.slug];
+
+  return (
+    <>
+      <Breadcrumb items={[{ label: "Leistungen", href: "/leistungen" }, { label: service.shortTitle }]} />
+      <JsonLd
+        data={serviceSchema({
+          name: heading.metaTitle ?? heading.h1,
+          description: service.metaDescription,
+          path: `/leistungen/${service.slug}`,
+        })}
+      />
+
+      {/* Hero */}
+      <section className="relative isolate overflow-hidden bg-white">
+        {photo && (
+          <div className="absolute inset-0">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: contentPhotos?.hero.objectPosition ?? "center" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/15 sm:from-white sm:via-white/75 sm:to-white/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/10 to-transparent sm:hidden" />
+          </div>
+        )}
+        <div
+          className={`relative z-[1] container-page flex flex-col justify-center py-16 lg:py-20 ${
+            photo ? "min-h-[520px] lg:min-h-[620px]" : ""
+          }`}
+        >
+          <div className="max-w-xl">
+            <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+              Glanzwerk übernimmt die regelmäßige Reinigung von Autohäusern,
+              Fahrzeugausstellungen, Verkaufsbereichen, Büros und Kundenflächen in Berlin. Der
+              Reinigungsplan wird an Öffnungszeiten, Besucheraufkommen und die unterschiedlichen
+              Bereiche des Betriebs angepasst.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/kontakt"
+              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            >
+              Unverbindliches Angebot anfragen
+            </Link>
+            <Link
+              href="/preisrechner"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
+            >
+              Preis kostenlos berechnen
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Einleitung */}
+      <Section background="tint" decor>
+        <div className={midPhoto ? "grid gap-10 lg:grid-cols-2 lg:items-center" : undefined}>
+          <div>
+            <SectionHeading eyebrow="Gepflegter Gesamteindruck" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                In Autohäusern treffen großflächige Böden, Glasflächen, Fahrzeuge, Kundenverkehr
+                und interne Arbeitsbereiche aufeinander. Staub, Reifenabrieb, Straßenschmutz und
+                sichtbare Gebrauchsspuren können den Eindruck des Showrooms beeinträchtigen.
+              </p>
+              <p>
+                Deshalb werden Ausstellungsflächen, Empfang, Beratungsplätze, Sanitäranlagen und
+                Büros nicht automatisch nach demselben Rhythmus gereinigt.
+              </p>
+            </div>
+          </div>
+          {midPhoto && (
+            <ParallaxImage
+              photo={midPhoto}
+              aspect="aspect-[16/10]"
+              sizes="(min-width: 1024px) 560px, 100vw"
+              className="shadow-xl shadow-brand-950/15"
+            />
+          )}
+        </div>
+      </Section>
+
+      {/* Leistungen */}
+      <Section background="white">
+        <SectionHeading eyebrow="Möglicher Leistungsumfang" title={heading.sectionHeadings[1]} />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {scopeCards.map((card, index) => (
+            <FadeIn
+              key={card.title}
+              delay={index * 60}
+              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+            >
+              <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
+            </FadeIn>
+          ))}
+        </div>
+      </Section>
+
+      {/* Showroom */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Besondere Aufmerksamkeit" title={heading.sectionHeadings[2]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Große, offene Flächen und helle Beleuchtung machen Staub, Schlieren und Laufspuren
+            schnell sichtbar. Gleichzeitig muss die Reinigung so geplant werden, dass
+            Fahrzeugpräsentation und Kundenverkehr möglichst wenig beeinträchtigt werden.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abgrenzung Fahrzeuge */}
+      <Section background="white">
+        <SectionHeading eyebrow="Klare Unterscheidung" title={heading.sectionHeadings[3]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Die Autohausreinigung bezieht sich auf Räume, Böden, Glasflächen, Sanitäranlagen und
+            vereinbarte Betriebsbereiche. Eine Fahrzeugaufbereitung oder Innen- und
+            Außenreinigung ausgestellter Fahrzeuge ist nur Bestandteil des Angebots, wenn dies
+            ausdrücklich separat vereinbart und tatsächlich angeboten wird.
+          </p>
+        </div>
+      </Section>
+
+      {/* Einsatzzeiten */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Flexible Einsatzplanung" title={heading.sectionHeadings[4]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Je nach Betrieb kann die Reinigung vor Öffnung, nach Geschäftsschluss oder in
+            abgestimmten Zeitfenstern erfolgen. Besondere Veranstaltungen, Fahrzeugpräsentationen
+            oder saisonale Aktionen können bei rechtzeitiger Abstimmung berücksichtigt werden.
+          </p>
+        </div>
+      </Section>
+
+      {/* Materialschutz */}
+      <Section background="white">
+        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Showrooms kombinieren häufig Fliesen, Naturstein, beschichtete Böden, Glas, Metall
+            und hochwertige Einrichtung. Glanzwerk verwendet geeignete Verfahren und
+            professionelle Produkte, unter anderem von Kiehl, Dr. Schnell und Buzil.
+          </p>
+        </div>
+        <FadeIn className="mt-8 flex flex-wrap gap-2">
+          {supplementaryLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </FadeIn>
+      </Section>
+
+      {/* Ablauf */}
+      <Section background="brand" decor>
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[6]} light />
+        <div className="mt-10">
+          <ProcessSteps steps={processSteps} light />
+        </div>
+      </Section>
+
+      {/* Kosten */}
+      <Section background="warm">
+        <SectionHeading eyebrow="Preis der Autohausreinigung" title={heading.sectionHeadings[7]} />
+        <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
+        <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
+          {costFactors.map((factor) => (
+            <li key={factor} className="flex items-start gap-2.5 text-sm text-ink-soft">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-brand-500">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {factor}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/preisrechner"
+            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+          >
+            Preis kostenlos berechnen
+          </Link>
+          <Link
+            href="/kontakt"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
+          >
+            Individuelles Angebot anfragen
+          </Link>
+        </div>
+      </Section>
+
+      {/* Berlin */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[8]} />
+        <FadeIn className="mt-8 flex flex-wrap gap-2">
+          {districts.map((district) => (
+            <Link
+              key={district.slug}
+              href={`/standorte/${district.slug}`}
+              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
+            >
+              {district.name}
+            </Link>
+          ))}
+        </FadeIn>
+        <p className="mt-6 max-w-2xl text-sm text-ink-soft">
+          Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
+          erreichbaren Orten im Berliner Umland.
+        </p>
+      </Section>
+
+      {/* FAQ */}
+      <Section background="white">
+        <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
+        <FadeIn className="mx-auto mt-10 max-w-2xl">
+          <FAQ items={faqItems} idPrefix="autohausreinigung" />
+        </FadeIn>
+      </Section>
+
+      {/* Abschluss-CTA */}
+      <Section background="muted">
+        <CTASection
+          title={heading.ctaHeading}
+          subtitle="Nennen Sie uns Größe, Bereiche, Öffnungszeiten und gewünschten Rhythmus. Wir prüfen die Angaben und stimmen die nächsten Schritte ab."
+          primaryLabel="Unverbindliches Angebot anfragen"
+          primaryHref="/kontakt"
+          secondaryLabel="Preis kostenlos berechnen"
+          secondaryHref="/preisrechner"
+          backgroundImage={contentPhotos?.ctaUnten}
+        />
+        <p className="mt-6 text-center text-sm text-ink-soft">
+          Telefon:{" "}
+          <a href={siteConfig.phoneHref} className="font-semibold text-brand-500 hover:underline">
+            {siteConfig.phone}
+          </a>
+          {" · "}
+          E-Mail:{" "}
+          <a href={`mailto:${siteConfig.email}`} className="font-semibold text-brand-500 hover:underline">
+            {siteConfig.email}
+          </a>
+        </p>
+      </Section>
+    </>
+  );
+}

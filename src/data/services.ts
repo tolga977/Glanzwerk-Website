@@ -28,7 +28,7 @@ export const services: Service[] = [
     title: "Gebäudereinigung Berlin",
     shortTitle: "Gebäudereinigung",
     metaDescription:
-      "Gebäudereinigung in Berlin für Gewerbeimmobilien: laufende Pflege, Treppenhaus, Fenster und Grundreinigung aus einer Hand. Individuelles Angebot anfragen.",
+      "Professionelle Gebäudereinigung in Berlin für Büros, Praxen, Kanzleien, Gewerbeobjekte und Hausverwaltungen. Flexible Zeiten und klar abgestimmte Leistungen.",
     summary:
       "Umfassende Reinigung für Gewerbeimmobilien – von der laufenden Pflege bis zur Grundreinigung.",
     intro:
@@ -95,7 +95,7 @@ export const services: Service[] = [
     title: "Büroreinigung Berlin",
     shortTitle: "Büroreinigung",
     metaDescription:
-      "Büroreinigung in Berlin außerhalb der Geschäftszeiten – Schreibtische, Böden, Sanitär- und Teeküchenbereiche. Jetzt Angebot für Ihr Büro anfragen.",
+      "Professionelle Büroreinigung in Berlin für Unternehmen, Kanzleien und Gewerbebetriebe. Flexible Reinigungszeiten, klare Leistungen und feste Ansprechpartner.",
     summary:
       "Saubere Arbeitsplätze für Mitarbeitende und Kunden – diskret, zuverlässig, außerhalb der Kernarbeitszeit.",
     intro:
@@ -162,7 +162,7 @@ export const services: Service[] = [
     title: "Praxisreinigung Berlin",
     shortTitle: "Praxisreinigung",
     metaDescription:
-      "Praxisreinigung in Berlin für Arztpraxen und medizinische Einrichtungen – abgestimmt auf Sprechzeiten, diskret durchgeführt. Jetzt Angebot anfragen.",
+      "Professionelle Praxisreinigung in Berlin für Arztpraxen, Therapiezentren und medizinische Einrichtungen. Klare Abläufe, flexible Zeiten und abgestimmte Leistungen.",
     summary:
       "Hygienegerechte Reinigung für Arztpraxen und medizinische Einrichtungen.",
     intro:
@@ -228,7 +228,7 @@ export const services: Service[] = [
     title: "Unterhaltsreinigung Berlin",
     shortTitle: "Unterhaltsreinigung",
     metaDescription:
-      "Regelmäßige Unterhaltsreinigung für Gewerbeobjekte in Berlin – fester Rhythmus, planbare Kosten. Jetzt individuelles Angebot anfragen.",
+      "Regelmäßige Unterhaltsreinigung in Berlin für Büros, Praxen, Kanzleien und Gewerbeobjekte. Flexible Intervalle und klar vereinbarte Leistungen.",
     summary:
       "Regelmäßige Pflegereinigung, damit Ihr Gewerbeobjekt dauerhaft gepflegt bleibt.",
     intro:
@@ -294,7 +294,7 @@ export const services: Service[] = [
     title: "Treppenhausreinigung Berlin",
     shortTitle: "Treppenhausreinigung",
     metaDescription:
-      "Treppenhausreinigung in Berlin für Hausverwaltungen und WEG – Treppen, Handläufe, Briefkastenanlagen. Jetzt Angebot für Ihr Treppenhaus anfragen.",
+      "Treppenhausreinigung in Berlin für Hausverwaltungen, Gewerbeimmobilien und Eigentümergemeinschaften. Klare Intervalle und zuverlässig abgestimmte Leistungen.",
     summary:
       "Gepflegte Treppenhäuser und Eingangsbereiche für Wohn- und Gewerbeobjekte.",
     intro:
@@ -360,7 +360,7 @@ export const services: Service[] = [
     title: "Glas- und Fensterreinigung Berlin",
     shortTitle: "Glas- und Fensterreinigung",
     metaDescription:
-      "Glas- und Fensterreinigung in Berlin für Gewerbeobjekte – Fenster, Fassaden, Trennwände und Vitrinen, innen und außen, streifenfrei. Jetzt Angebot anfragen.",
+      "Glas- und Fensterreinigung in Berlin für Büros, Praxen, Kanzleien, Geschäfte und Gewerbeobjekte. Fenster, Rahmen und Glasflächen nach Vereinbarung.",
     summary:
       "Streifenfreie Reinigung von Fenstern, Glasfassaden, Trennwänden und Vitrinen für Gewerbeobjekte.",
     intro:
@@ -431,7 +431,7 @@ export const services: Service[] = [
     title: "Grundreinigung Berlin",
     shortTitle: "Grundreinigung",
     metaDescription:
-      "Grundreinigung in Berlin für Neubezug, nach Renovierung oder als Auffrischung – intensive Tiefenreinigung. Jetzt Angebot anfragen.",
+      "Grundreinigung in Berlin für Büros, Praxen und Gewerbeflächen. Intensive Reinigung bei hartnäckigen Rückständen, Übergaben oder besonderem Bedarf.",
     summary:
       "Intensive Tiefenreinigung für Neubezug, Sanierung oder nach längerer Zeit ohne Pflege.",
     intro:
@@ -562,7 +562,7 @@ export const services: Service[] = [
     title: "Kanzleireinigung Berlin",
     shortTitle: "Kanzleireinigung",
     metaDescription:
-      "Kanzleireinigung in Berlin für Rechtsanwälte, Steuerberater und Notariate – diskret und mit festen Teams. Jetzt Angebot anfragen.",
+      "Professionelle Kanzleireinigung in Berlin für Rechtsanwälte, Notare, Steuerberater und Beratungsunternehmen. Flexible Zeiten und klar abgestimmte Leistungen.",
     summary:
       "Diskrete, zuverlässige Reinigung für Kanzleien mit hohem Anspruch an Vertraulichkeit.",
     intro:
@@ -692,7 +692,7 @@ export const services: Service[] = [
     title: "Autohausreinigung Berlin",
     shortTitle: "Autohausreinigung",
     metaDescription:
-      "Autohausreinigung in Berlin für Showroom, Kundenbereiche und Glasflächen – repräsentativ und zuverlässig. Jetzt Angebot anfragen.",
+      "Autohausreinigung in Berlin für Showrooms, Verkaufsbereiche, Büros und Kundenflächen. Flexible Einsatzzeiten und abgestimmte Reinigungsleistungen.",
     summary:
       "Gepflegte Showrooms, Werkstatt- und Kundenbereiche für Autohäuser.",
     intro:
@@ -764,7 +764,7 @@ export const services: Service[] = [
     title: "Gastronomiereinigung Berlin",
     shortTitle: "Gastronomiereinigung",
     metaDescription:
-      "Gastronomiereinigung in Berlin für Küchen, Gastbereiche und Theken – gründlich und außerhalb der Betriebszeiten. Jetzt Angebot anfragen.",
+      "Gastronomiereinigung in Berlin für Restaurants, Cafés, Bars und Kantinen. Gasträume, Sanitärbereiche und betriebliche Flächen nach Vereinbarung.",
     summary:
       "Gründliche Reinigung von Küchen, Gast- und Thekenbereichen für gastronomische Betriebe.",
     intro:

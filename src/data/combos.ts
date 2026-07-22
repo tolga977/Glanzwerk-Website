@@ -104,7 +104,7 @@ export const combos: Combo[] = [
     intro:
       "Ein Gewerbeobjekt in Mitte besteht selten nur aus einer Bodenfläche. Büroetagen, Treppenhaus, Sanitärräume und oft auch Fensterflächen kommen zusammen – und jeder Teilbereich hat einen eigenen Pflegebedarf. Glanzwerk bündelt diese Teilleistungen für Gewerbeobjekte in Mitte in einem Vertrag mit einem festen Ansprechpartner.",
     metaDescription:
-      "Gebündelte Gebäudereinigung für Bürogebäude, Kanzleien und Verwaltungen in Berlin-Mitte – Unterhalt, Treppenhaus und Fenster aus einer Hand. Jetzt Angebot anfragen.",
+      "Gebäudereinigung in Berlin-Mitte für Büros, Praxen, Kanzleien, Gewerbeobjekte und Hausverwaltungen. Flexible Zeiten und abgestimmte Leistungen.",
     introSecondParagraph:
       "Der genaue Zuschnitt hängt vom Objekt ab: Ein einzelnes Büro benötigt ein anderes Bündel als ein mehrstöckiges Verwaltungsgebäude mit eigenem Treppenhaus und Empfang. Wir legen das vorab gemeinsam mit Ihnen fest, abgestimmt auf die engen Zeitfenster, die der dichte Terminplan vieler zentraler Standorte in Mitte mit sich bringt.",
     localAngle: [
@@ -170,6 +170,8 @@ export const combos: Combo[] = [
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
       "Für Gewerbeobjekte mit mehreren Nutzungsbereichen entlang des Kurfürstendamms und in den umliegenden Altbaulagen kombinieren wir Unterhalts-, Treppenhaus- und Fensterreinigung in einem gemeinsamen Konzept.",
+    metaDescription:
+      "Gebäudereinigung in Charlottenburg-Wilmersdorf für Büros, Praxen, Kanzleien und Gewerbeobjekte. Flexible Zeiten und abgestimmte Leistungen.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -420,6 +422,16 @@ export const combos: Combo[] = [
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "Friedrichshain-Kreuzberg ist geprägt von Altbauten, umgenutzten Gewerbehöfen und gemeinschaftlich genutzten Bürohäusern – wir bündeln Unterhalts-, Treppenhaus- und Fensterreinigung in einem Konzept, das sich an unregelmäßige Grundrisse anpasst.",
+    metaDescription:
+      "Gebäudereinigung in Friedrichshain-Kreuzberg für Büros, Praxen, Gastronomie und Gewerbeobjekte. Flexible Zeiten und klar abgestimmte Leistungen.",
+  },
+  {
+    serviceSlug: "gebaeudereinigung-berlin",
+    districtSlug: "pankow",
+    intro:
+      "Pankow reicht von dicht bebauten Geschäfts- und Wohnquartieren bis zu Gewerbegebieten und ruhigeren äußeren Ortsteilen – wir bündeln Unterhalts-, Treppenhaus- und Fensterreinigung passend zur jeweiligen Objektnutzung.",
+    metaDescription:
+      "Gebäudereinigung in Berlin-Pankow für Büros, Praxen, Kanzleien, Treppenhäuser und Gewerbeobjekte. Klare Leistungen und flexible Reinigungszeiten.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",

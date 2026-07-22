@@ -23,6 +23,30 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1, renderGlanzwerkHeading } from "@/lib/renderHeading";
+import GebaeudereinigungBerlinContent from "./GebaeudereinigungBerlinContent";
+import BueroreinigungBerlinContent from "./BueroreinigungBerlinContent";
+import PraxisreinigungBerlinContent from "./PraxisreinigungBerlinContent";
+import KanzleireinigungBerlinContent from "./KanzleireinigungBerlinContent";
+import TreppenhausreinigungBerlinContent from "./TreppenhausreinigungBerlinContent";
+import GrundreinigungBerlinContent from "./GrundreinigungBerlinContent";
+import UnterhaltsreinigungBerlinContent from "./UnterhaltsreinigungBerlinContent";
+import AutohausreinigungBerlinContent from "./AutohausreinigungBerlinContent";
+import GlasUndFensterreinigungBerlinContent from "./GlasUndFensterreinigungBerlinContent";
+import GastronomiereinigungBerlinContent from "./GastronomiereinigungBerlinContent";
+
+/** Leistungsseiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
+const customContentSlugs = {
+  "gebaeudereinigung-berlin": GebaeudereinigungBerlinContent,
+  "bueroreinigung-berlin": BueroreinigungBerlinContent,
+  "praxisreinigung-berlin": PraxisreinigungBerlinContent,
+  "kanzleireinigung-berlin": KanzleireinigungBerlinContent,
+  "treppenhausreinigung-berlin": TreppenhausreinigungBerlinContent,
+  "grundreinigung-berlin": GrundreinigungBerlinContent,
+  "unterhaltsreinigung-berlin": UnterhaltsreinigungBerlinContent,
+  "autohausreinigung-berlin": AutohausreinigungBerlinContent,
+  "glas-und-fensterreinigung-berlin": GlasUndFensterreinigungBerlinContent,
+  "gastronomiereinigung-berlin": GastronomiereinigungBerlinContent,
+} as const;
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -100,11 +124,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   if (!service) return {};
   const heading = seoHeadings[`/leistungen/${service.slug}`];
-  return buildMetadata({
+  const base = buildMetadata({
     title: heading?.metaTitle ?? heading?.h1 ?? service.title,
     description: service.metaDescription,
     path: `/leistungen/${service.slug}`,
   });
+  // Leistungsseiten mit eigenständigem Inhalt haben einen abweichenden, kurzen
+  // Meta-Title-Suffix ("| Glanzwerk" statt "| Glanzwerk Reinigungsservice Berlin")
+  // und müssen deshalb das Root-Template umgehen.
+  if (service.slug in customContentSlugs && heading?.metaTitle) {
+    return { ...base, title: { absolute: heading.metaTitle } };
+  }
+  return base;
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -113,6 +144,11 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
   const heading = seoHeadings[`/leistungen/${service.slug}`];
   if (!heading) notFound();
+
+  const CustomContent = customContentSlugs[service.slug as keyof typeof customContentSlugs];
+  if (CustomContent) {
+    return <CustomContent service={service} heading={heading} />;
+  }
 
   const relatedServices = getRelatedServices(service);
   const photo = servicePhotos[service.slug];

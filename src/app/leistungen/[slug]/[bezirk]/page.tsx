@@ -14,6 +14,18 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import GebaeudereinigungMitteContent from "./GebaeudereinigungMitteContent";
+import GebaeudereinigungFriedrichshainKreuzbergContent from "./GebaeudereinigungFriedrichshainKreuzbergContent";
+import GebaeudereinigungPankowContent from "./GebaeudereinigungPankowContent";
+import GebaeudereinigungCharlottenburgWilmersdorfContent from "./GebaeudereinigungCharlottenburgWilmersdorfContent";
+
+/** Kombi-Seiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
+const customContentCombos = {
+  "gebaeudereinigung-berlin/mitte": GebaeudereinigungMitteContent,
+  "gebaeudereinigung-berlin/friedrichshain-kreuzberg": GebaeudereinigungFriedrichshainKreuzbergContent,
+  "gebaeudereinigung-berlin/pankow": GebaeudereinigungPankowContent,
+  "gebaeudereinigung-berlin/charlottenburg-wilmersdorf": GebaeudereinigungCharlottenburgWilmersdorfContent,
+} as const;
 
 interface Props {
   params: Promise<{ slug: string; bezirk: string }>;
@@ -30,13 +42,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const district = getDistrictBySlug(bezirk);
   if (!combo || !service || !district) return {};
   const heading = seoHeadings[`/leistungen/${service.slug}/${district.slug}`];
-  return buildMetadata({
+  const base = buildMetadata({
     title: heading?.metaTitle ?? heading?.h1 ?? `${service.shortTitle} ${district.name}`,
     description:
       combo.metaDescription ??
       `${service.shortTitle} in ${district.name}: ${combo.intro.slice(0, 130).replace(/\s+\S*$/, "")}…`,
     path: `/leistungen/${service.slug}/${district.slug}`,
   });
+  // Kombi-Seiten mit eigenständigem Inhalt haben einen abweichenden, kurzen
+  // Meta-Title-Suffix ("| Glanzwerk" statt "| Glanzwerk Reinigungsservice Berlin")
+  // und müssen deshalb das Root-Template umgehen.
+  const comboKey = `${service.slug}/${district.slug}`;
+  if (comboKey in customContentCombos && heading?.metaTitle) {
+    return { ...base, title: { absolute: heading.metaTitle } };
+  }
+  return base;
 }
 
 export default async function ServiceDistrictPage({ params }: Props) {
@@ -47,6 +67,11 @@ export default async function ServiceDistrictPage({ params }: Props) {
   if (!combo || !service || !district) notFound();
   const heading = seoHeadings[`/leistungen/${service.slug}/${district.slug}`];
   if (!heading) notFound();
+
+  const CustomContent = customContentCombos[`${service.slug}/${district.slug}` as keyof typeof customContentCombos];
+  if (CustomContent) {
+    return <CustomContent service={service} district={district} combo={combo} heading={heading} />;
+  }
 
   let headingIdx = 0;
   const hasLocalAngle = Boolean(combo.localAngle && combo.localAngle.length > 0);
