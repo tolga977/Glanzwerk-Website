@@ -64,7 +64,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Friedrichshain-Kreuzberg für Büros, Coworking-Flächen und Gewerbeobjekte. Glanzwerk als zuverlässiger Reinigungspartner. Angebot anfragen.",
     intro:
-      "Friedrichshain-Kreuzberg ist geprägt von einer wachsenden Zahl kleinerer Unternehmen, Agenturen und gemeinschaftlich genutzter Büroflächen. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Friedrichshain-Kreuzberg ist geprägt von einer wachsenden Zahl kleinerer Unternehmen, Agenturen und gemeinschaftlich genutzter Büroflächen, häufig in umgenutzten Altbauten und Gewerbehöfen.",
     localContext: [
       "Viele Unternehmen im Bezirk sind in Altbauten, umgenutzten Gewerbehöfen oder gemeinschaftlich genutzten Bürohäusern untergebracht. Das bringt oft unregelmäßige Grundrisse und unterschiedliche Zugangswege mit sich, auf die wir uns individuell einstellen.",
       "Da in vielen Objekten mehrere kleinere Firmen unter einem Dach arbeiten, stimmen wir Reinigungszeiten häufig mit mehreren Ansprechpartnern oder einer gemeinsamen Hausverwaltung ab.",
@@ -97,7 +97,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Pankow für Kitas, Praxen und Gewerbeobjekte. Glanzwerk reinigt zuverlässig im Einsatzgebiet Pankow. Jetzt Angebot anfragen.",
     intro:
-      "Pankow verbindet gewachsene Wohnlagen mit einer steigenden Zahl an Kitas, Praxen und kleineren Gewerbebetrieben. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Pankow verbindet gewachsene Wohnlagen mit einer steigenden Zahl an Kitas, Praxen und kleineren Gewerbebetrieben – oft in Gebäuden, in denen sich Gewerbe und Wohnungen die Etagen teilen.",
     localContext: [
       "Mit dem Bevölkerungswachstum im Bezirk ist auch die Zahl an Kindertagesstätten, Arztpraxen und kleineren Gewerbeflächen in Wohnnähe gestiegen. Für diese Objekte ist eine Reinigung außerhalb der Betreuungs- beziehungsweise Sprechzeiten besonders wichtig.",
       "Viele Gewerbeeinheiten in Pankow liegen in gemischt genutzten Gebäuden mit Wohnungen in den oberen Etagen, was bei der Terminplanung und der Rücksicht auf Anwohner berücksichtigt wird.",
@@ -131,7 +131,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Charlottenburg-Wilmersdorf für Büros, Kanzleien, Praxen und Autohäuser rund um den Kurfürstendamm. Jetzt Angebot anfragen.",
     intro:
-      "Charlottenburg-Wilmersdorf ist einer der etabliertesten Geschäftsstandorte Berlins, mit repräsentativen Büro- und Geschäftsflächen rund um den Kurfürstendamm. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Charlottenburg-Wilmersdorf ist einer der etabliertesten Geschäftsstandorte Berlins, mit repräsentativen Büro- und Geschäftsflächen rund um den Kurfürstendamm sowie zahlreichen Kanzleien und Praxen in den angrenzenden Altbaulagen.",
     localContext: [
       "Entlang von Kurfürstendamm und angrenzenden Geschäftsstraßen liegen zahlreiche Ladengeschäfte, Autohäuser und repräsentative Büroflächen, bei denen ein gepflegtes Erscheinungsbild direkt auf Kunden und Mandanten wirkt.",
       "Gleichzeitig prägen viele Altbauten mit Kanzleien, Arztpraxen und Wohn-Geschäftshäusern den Bezirk – hier zählt neben der Optik auch die Abstimmung auf Sprechzeiten und einen ruhigen, störungsarmen Ablauf.",
@@ -167,7 +167,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Spandau für Gewerbeflächen, Autohäuser und Büros. Glanzwerk reinigt zuverlässig im Einsatzgebiet Spandau. Angebot anfragen.",
     intro:
-      "Spandau bietet mit seinen Gewerbegebieten und Betrieben am Stadtrand Platz für größere Gewerbeflächen. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Spandau bietet mit seinen Gewerbegebieten und Betrieben am Stadtrand Platz für größere, zusammenhängende Gewerbeflächen. Glanzwerk übernimmt hier die Reinigung für Autohäuser, Werkstätten und Bürostandorte.",
     localContext: [
       "Neben der historischen Altstadt prägen vor allem Gewerbegebiete und größere Betriebsflächen den Bezirk – von Autohäusern über Werkstätten bis zu Bürostandorten mit angeschlossenen Lager- oder Ausstellungsflächen.",
       "Für diese Objekte ist häufig eine Kombination mehrerer Reinigungsleistungen sinnvoll, etwa Unterhaltsreinigung der Büroflächen zusammen mit Glasreinigung für Ausstellungsbereiche.",
@@ -200,7 +200,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Steglitz-Zehlendorf für Praxen, Kanzleien und Schulen in ruhiger Lage. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Steglitz-Zehlendorf ist geprägt von ruhigen Wohnlagen mit vielen Arztpraxen, Kanzleien und Bildungseinrichtungen. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Steglitz-Zehlendorf ist geprägt von ruhigen, villenartigen Wohnlagen mit vielen Arztpraxen, Kanzleien und Bildungseinrichtungen.",
     localContext: [
       "In den villenartigen Wohngebieten und entlang der Geschäftsstraßen finden sich überdurchschnittlich viele Arztpraxen, kleinere Kanzleien und Schulen. Diskretion und ein ruhiger, unauffälliger Reinigungsablauf stehen hier meist im Vordergrund.",
       "Da viele Objekte in Wohnnähe liegen, planen wir Reinigungstermine so, dass sie sich unauffällig in den Tagesablauf des Umfelds einfügen.",
@@ -236,7 +236,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Tempelhof-Schöneberg für Büros, Kanzleien und Gewerbegebiete. Glanzwerk als zuverlässiger Reinigungspartner. Angebot anfragen.",
     intro:
-      "Tempelhof-Schöneberg vereint das urbane Schöneberg mit den Gewerbegebieten rund um Tempelhof. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Tempelhof-Schöneberg vereint das urbane Schöneberg mit den Gewerbegebieten rund um Tempelhof – von kleineren Büros in Wohn-Geschäftshäusern bis zu größeren Gebäuden mit mehreren Mietparteien.",
     localContext: [
       "In Schöneberg dominieren Büros, Kanzleien und Wohn-Geschäftshäuser mit gemischter Nutzung, während im Tempelhofer Teil des Bezirks größere Gewerbe- und Bürogebäude mit mehreren Mietparteien üblich sind.",
       "Bei mehrstöckigen Objekten mit mehreren Mietern spielt die Treppenhausreinigung neben der klassischen Büroreinigung eine wichtige Rolle, die wir häufig gemeinsam mit Hausverwaltungen abstimmen.",
@@ -272,7 +272,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Neukölln für Büros, Fitnessstudios und Gewerbeflächen, auch in Rudow. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Neukölln entwickelt sich mit einer wachsenden Zahl kleinerer Unternehmen, Studios und Gewerbeflächen dynamisch weiter. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Neukölln entwickelt sich mit einer wachsenden Zahl kleinerer Unternehmen, Studios und Gewerbeflächen dynamisch weiter – vom dichten Kern des Bezirks bis zu den größeren Gewerbeflächen in Rudow.",
     localContext: [
       "Neben dem dicht bebauten Kern des Bezirks liegen im südlichen Teil, etwa in Rudow, größere Gewerbeflächen mit Bürogebäuden und Gewerbeparks. Beide Lagen unterscheiden sich deutlich in Objektgröße und Zugänglichkeit.",
       "In den vergangenen Jahren sind zudem mehr Fitnessstudios und Gemeinschaftsbüros entstanden, für die eine hygienische, gut getaktete Reinigung besonders relevant ist.",
@@ -305,7 +305,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Treptow-Köpenick für Gewerbeflächen und Büros, auch in Köpenick. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Treptow-Köpenick ist der flächenmäßig größte Berliner Bezirk mit Gewerbegebieten, Wasserlage und einem eigenständigen Ortskern in Köpenick. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Treptow-Köpenick ist der flächenmäßig größte Berliner Bezirk mit Gewerbegebieten, Wasserlage und einem eigenständigen Ortskern in Köpenick, dessen weitläufige Grundrisse eigene Anforderungen an die Reinigungsplanung stellen.",
     localContext: [
       "Neben klassischen Bürostandorten prägen größere Gewerbe- und Betriebsflächen mit teils weitläufigen Grundrissen den Bezirk. Anfahrtswege und Objektgröße spielen bei der Planung eine größere Rolle als in dichter bebauten Innenstadtbezirken.",
       "Der Ortskern Köpenick mit seinen Geschäften und Praxen bildet einen eigenen Schwerpunkt innerhalb des Bezirks, den wir bei der Terminplanung separat berücksichtigen.",
@@ -338,7 +338,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Marzahn-Hellersdorf für Gewerbeflächen, Büros und Einkaufszentren. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Marzahn-Hellersdorf bietet mit großzügig geschnittenen Gewerbegebieten Platz für größere Flächen und Einkaufszentren. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Marzahn-Hellersdorf bietet mit großzügig geschnittenen Gewerbegebieten Platz für größere Flächen und Einkaufszentren, daneben aber auch kleinere Praxen und Dienstleister in den Wohngebieten.",
     localContext: [
       "Die Gewerbegebiete des Bezirks sind häufig großzügiger geschnitten als in der Innenstadt, mit größeren zusammenhängenden Büro- und Verkaufsflächen. Das erlaubt effiziente, gut planbare Reinigungseinsätze mit klar abgegrenzten Bereichen.",
       "Gleichzeitig gibt es eine wachsende Zahl kleinerer Dienstleister und Praxen in den Wohngebieten, für die ein flexibler, kleinerer Reinigungsumfang passender ist.",
@@ -371,7 +371,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Lichtenberg für Büros und Gewerbeflächen in wachsenden Standorten. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Lichtenberg hat sich in den vergangenen Jahren zu einem wachsenden Bürostandort mit vielen neuen Gewerbeflächen entwickelt. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Lichtenberg hat sich in den vergangenen Jahren zu einem wachsenden Bürostandort mit vielen neuen Gewerbeflächen entwickelt – technisch anders ausgestattet als in gewachsenen Innenstadtlagen.",
     localContext: [
       "Rund um neu entstandene Bürokomplexe und Gewerbeparks hat sich in Lichtenberg in den letzten Jahren einiges getan. Viele Objekte sind neuer und technisch anders ausgestattet als in gewachsenen Innenstadtlagen, etwa mit größeren Glasflächen oder offenen Bürolandschaften.",
       "Für diese neueren Gebäude lohnt sich häufig eine Kombination aus Unterhalts- und Glasreinigung, um das moderne Erscheinungsbild dauerhaft zu erhalten.",
@@ -404,7 +404,7 @@ export const districts: District[] = [
     metaDescription:
       "Gebäudereinigung in Reinickendorf für Gewerbeparks, Büros und mittelständische Betriebe. Glanzwerk als Reinigungspartner. Jetzt Angebot anfragen.",
     intro:
-      "Reinickendorf ist geprägt von Gewerbeparks und mittelständischen Betrieben rund um das Gebiet des ehemaligen Flughafens Tegel. Glanzwerk reinigt Gewerbeobjekte in diesem Einsatzgebiet zuverlässig.",
+      "Reinickendorf ist geprägt von Gewerbeparks und mittelständischen Betrieben rund um das Gebiet des ehemaligen Flughafens Tegel, daneben stehen klassische Praxen und kleinere Büros in den Wohngebieten.",
     localContext: [
       "Rund um die ehemalige Flughafenfläche und angrenzende Gewerbegebiete haben sich zahlreiche mittelständische Betriebe mit eigenen Büro- und Lagerflächen angesiedelt. Diese Objekte sind häufig größer geschnitten als in dicht bebauten Innenstadtlagen.",
       "Daneben gibt es in den Wohngebieten des Bezirks weiterhin klassische Praxen und kleinere Büros, für die ein kompakterer Reinigungsumfang ausreicht.",

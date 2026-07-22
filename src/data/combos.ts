@@ -73,7 +73,7 @@ export const combos: Combo[] = [
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns direkt an. Berechtigte Beanstandungen prüfen wir und bessern in der Regel zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -152,7 +152,7 @@ export const combos: Combo[] = [
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns direkt an. Berechtigte Beanstandungen prüfen wir und bessern in der Regel zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Geben Sie uns direkt Bescheid. Ist die Beanstandung berechtigt, bessern wir zeitnah nach – Näheres dazu auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -175,7 +175,7 @@ export const combos: Combo[] = [
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "steglitz-zehlendorf",
     intro:
-      "In den ruhigen Wohnlagen von Steglitz-Zehlendorf sind überdurchschnittlich viele Arztpraxen ansässig. Wir reinigen diese Praxen diskret außerhalb der Sprechzeiten und mit besonderer Rücksicht auf das ruhige Umfeld.",
+      "Steglitz-Zehlendorf hat in seinen ruhigen Wohnlagen überdurchschnittlich viele Arztpraxen. Wir reinigen diese Praxen diskret außerhalb der Sprechzeiten und mit besonderer Rücksicht auf das ruhige Umfeld.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -222,7 +222,7 @@ export const combos: Combo[] = [
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns direkt an. Berechtigte Beanstandungen prüfen wir und bessern in der Regel zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -299,7 +299,7 @@ export const combos: Combo[] = [
     serviceSlug: "fitnessstudioreinigung-berlin",
     districtSlug: "friedrichshain-kreuzberg",
     intro:
-      "In den zahlreichen Studios und Kursräumen in Friedrichshain-Kreuzberg reinigen wir Trainingsflächen, Geräte und Umkleiden in einem an die Frequentierung angepassten Rhythmus.",
+      "Friedrichshain-Kreuzberg hat zahlreiche Studios und Kursräume, deren Trainingsflächen, Geräte und Umkleiden wir in einem an die Frequentierung angepassten Rhythmus reinigen.",
   },
   {
     serviceSlug: "autohausreinigung-berlin",
@@ -311,13 +311,13 @@ export const combos: Combo[] = [
     serviceSlug: "gebaeudereinigung-berlin",
     districtSlug: "treptow-koepenick",
     intro:
-      "Für die weitläufigen Gewerbeflächen in Treptow-Köpenick und den eigenständigen Ortskern Köpenick bündeln wir Unterhalts-, Fenster- und Grundreinigung in einem gemeinsamen Konzept, das auf größere Grundrisse und längere Anfahrtswege abgestimmt ist.",
+      "Treptow-Köpenick bringt weitläufige Gewerbeflächen und einen eigenständigen Ortskern in Köpenick mit – dafür bündeln wir Unterhalts-, Fenster- und Grundreinigung in einem Konzept, das auf größere Grundrisse und längere Anfahrtswege abgestimmt ist.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "treptow-koepenick",
     intro:
-      "In den weitläufigen Gewerbe- und Betriebsflächen des flächenmäßig größten Berliner Bezirks richten wir den Reinigungsrhythmus nach der tatsächlichen Nutzung aus, statt pauschal jeden Winkel gleich intensiv zu bedenken.",
+      "Der flächenmäßig größte Berliner Bezirk bringt weitläufige Gewerbe- und Betriebsflächen mit sich – wir richten den Reinigungsrhythmus nach der tatsächlichen Nutzung aus, statt pauschal jeden Winkel gleich intensiv zu bedenken.",
   },
   {
     serviceSlug: "grundreinigung-berlin",
@@ -335,13 +335,13 @@ export const combos: Combo[] = [
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "marzahn-hellersdorf",
     intro:
-      "Für die großzügig geschnittenen Büro- und Verkaufsflächen in Marzahn-Hellersdorf planen wir Reinigungseinsätze mit klar abgegrenzten Bereichen, während kleinere Praxen und Dienstleister in Wohnnähe einen kompakteren Rhythmus erhalten.",
+      "Marzahn-Hellersdorf bietet großzügig geschnittene Büro- und Verkaufsflächen, für die wir Reinigungseinsätze mit klar abgegrenzten Bereichen planen – kleinere Praxen und Dienstleister in Wohnnähe erhalten dagegen einen kompakteren Rhythmus.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "marzahn-hellersdorf",
     intro:
-      "Für die wachsende Zahl kleinerer Praxen in den Wohngebieten von Marzahn-Hellersdorf passen wir den Reinigungsumfang an die tatsächliche Größe der Praxis an, statt ein Standardpaket für größere Gewerbeflächen zu berechnen.",
+      "Kleinere Praxen in den Wohngebieten von Marzahn-Hellersdorf berechnen wir nicht nach einem Standardpaket für größere Gewerbeflächen – wir passen den Reinigungsumfang an die tatsächliche Größe der Praxis an.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -359,7 +359,7 @@ export const combos: Combo[] = [
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "lichtenberg",
     intro:
-      "Für die wachsende Zahl neuerer Gewerbeflächen in Lichtenberg richten wir die Unterhaltsreinigung auf offene Bürolandschaften und größere Glasflächen aus, die anders gepflegt werden müssen als klassisch aufgeteilte Altbau-Büros.",
+      "Lichtenberg hat eine wachsende Zahl neuerer Gewerbeflächen mit offenen Bürolandschaften und größeren Glasflächen, die anders gepflegt werden müssen als klassisch aufgeteilte Altbau-Büros – darauf richten wir die Unterhaltsreinigung aus.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -371,13 +371,13 @@ export const combos: Combo[] = [
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "reinickendorf",
     intro:
-      "Für die größer geschnittenen Büro- und Lagerflächen mittelständischer Betriebe rund um das ehemalige Flughafengelände in Reinickendorf planen wir einen Reinigungsrhythmus, der sich nach der tatsächlichen Nutzung richtet.",
+      "Rund um das ehemalige Flughafengelände in Reinickendorf haben viele mittelständische Betriebe größer geschnittene Büro- und Lagerflächen – dafür planen wir einen Reinigungsrhythmus, der sich nach der tatsächlichen Nutzung richtet.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "reinickendorf",
     intro:
-      "Für die klassischen Praxen und kleineren Büros in den Wohngebieten Reinickendorfs reinigen wir mit einem kompakteren, auf die tatsächliche Größe abgestimmten Umfang – abseits der größeren Gewerbeparks am Stadtrand.",
+      "Abseits der größeren Gewerbeparks am Stadtrand liegen in den Wohngebieten Reinickendorfs klassische Praxen und kleinere Büros, die wir mit einem kompakteren, auf die tatsächliche Größe abgestimmten Umfang reinigen.",
   },
   {
     serviceSlug: "glas-und-fensterreinigung-berlin",
@@ -395,37 +395,37 @@ export const combos: Combo[] = [
     serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "tempelhof-schoeneberg",
     intro:
-      "In den Gewerbegebäuden rund um Tempelhof mit mehreren Mietparteien gehören Glastrennwände und Eingangsbereiche zu den am stärksten frequentierten Flächen – wir stimmen die Glas- und Fensterreinigung häufig direkt mit der Hausverwaltung ab.",
+      "Rund um Tempelhof gehören Glastrennwände und Eingangsbereiche in Gewerbegebäuden mit mehreren Mietparteien zu den am stärksten frequentierten Flächen – wir stimmen die Glas- und Fensterreinigung häufig direkt mit der Hausverwaltung ab.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "neukoelln",
     intro:
-      "Für die wachsende Zahl kleinerer Büros und Gemeinschaftsbüros im dicht bebauten Kern Neuköllns sowie in den größeren Bürogebäuden Rudows richten wir die Büroreinigung nach der jeweiligen Objektgröße aus.",
+      "Im dicht bebauten Kern Neuköllns wächst die Zahl kleinerer Büros und Gemeinschaftsbüros, während Rudow eher größere Bürogebäude bietet – wir richten die Büroreinigung nach der jeweiligen Objektgröße aus.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "pankow",
     intro:
-      "Für die kleineren Gewerbeflächen und Büros in gemischt genutzten Gebäuden in Pankow reinigen wir mit Rücksicht auf die Wohnungen in den oberen Etagen – Termine stimmen wir entsprechend leise und unauffällig ab.",
+      "Viele Gewerbeflächen und Büros in Pankow liegen in gemischt genutzten Gebäuden mit Wohnungen in den oberen Etagen – wir reinigen entsprechend leise und unauffällig und stimmen Termine darauf ab.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "steglitz-zehlendorf",
     intro:
-      "In den ruhigen Wohnlagen von Steglitz-Zehlendorf reinigen wir Büroflächen diskret und unauffällig, damit sich die Reinigung in den Tagesablauf des überwiegend ruhigen Umfelds einfügt.",
+      "Steglitz-Zehlendorf ist überwiegend ruhig geprägt – wir reinigen Büroflächen hier entsprechend diskret und unauffällig, damit sich die Termine in den Tagesablauf des Umfelds einfügen.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
     districtSlug: "friedrichshain-kreuzberg",
     intro:
-      "In den Altbauten, umgenutzten Gewerbehöfen und gemeinschaftlich genutzten Bürohäusern Friedrichshain-Kreuzbergs bündeln wir Unterhalts-, Treppenhaus- und Fensterreinigung in einem Konzept, das sich an unregelmäßige Grundrisse anpasst.",
+      "Friedrichshain-Kreuzberg ist geprägt von Altbauten, umgenutzten Gewerbehöfen und gemeinschaftlich genutzten Bürohäusern – wir bündeln Unterhalts-, Treppenhaus- und Fensterreinigung in einem Konzept, das sich an unregelmäßige Grundrisse anpasst.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
     districtSlug: "tempelhof-schoeneberg",
     intro:
-      "Für die größeren Gewerbe- und Bürogebäude mit mehreren Mietparteien im Tempelhofer Teil des Bezirks bündeln wir Unterhalts-, Treppenhaus- und Fensterreinigung in einem gemeinsamen, mit der Hausverwaltung abgestimmten Konzept.",
+      "Im Tempelhofer Teil des Bezirks stehen größere Gewerbe- und Bürogebäude mit mehreren Mietparteien – wir bündeln Unterhalts-, Treppenhaus- und Fensterreinigung in einem gemeinsamen, mit der Hausverwaltung abgestimmten Konzept.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -443,13 +443,13 @@ export const combos: Combo[] = [
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "pankow",
     intro:
-      "Für die wachsende Zahl an Arztpraxen in Wohnnähe in Pankow reinigen wir außerhalb der Sprechzeiten und mit Rücksicht auf die Wohnungen in den oberen Etagen vieler gemischt genutzter Gebäude.",
+      "In Pankow wächst die Zahl an Arztpraxen in Wohnnähe – wir reinigen außerhalb der Sprechzeiten und mit Rücksicht auf die Wohnungen in den oberen Etagen vieler gemischt genutzter Gebäude.",
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
-      "In den Altbauten und Wohn-Geschäftshäusern Charlottenburg-Wilmersdorfs sind gepflegte Treppenhäuser Teil des repräsentativen Erscheinungsbilds, das Kanzleien und Praxen im Bezirk ihren Mandanten und Patienten bieten möchten.",
+      "Charlottenburg-Wilmersdorf ist geprägt von Altbauten und Wohn-Geschäftshäusern, in denen ein gepflegtes Treppenhaus Teil des repräsentativen Erscheinungsbilds ist, das Kanzleien und Praxen ihren Mandanten und Patienten bieten möchten.",
   },
 ];
 

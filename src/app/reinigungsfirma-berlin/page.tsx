@@ -34,7 +34,7 @@ const selectionCriteria = [
   {
     title: "Transparentes Angebot",
     description:
-      "Ein gutes Angebot listet Leistungsumfang, Rhythmus und Preis nachvollziehbar auf – ohne unklare Pauschalen oder versteckte Zusatzkosten.",
+      "Leistungsumfang, Rhythmus und Preis sollten nachvollziehbar aufgelistet sein – ohne unklare Pauschalen oder versteckte Zusatzkosten.",
   },
   {
     title: "Erfahrung mit vergleichbaren Objekten",
@@ -44,7 +44,7 @@ const selectionCriteria = [
   {
     title: "Flexibilität bei Terminen",
     description:
-      "Ob früh morgens, abends oder am Wochenende: Eine gute Reinigungsfirma richtet sich nach Ihrem Betriebsablauf, nicht umgekehrt.",
+      "Früh morgens, abends oder am Wochenende: Der Reinigungstermin sollte sich nach Ihrem Betriebsablauf richten, nicht umgekehrt.",
   },
   {
     title: "Klare Vertragslaufzeiten",
@@ -54,7 +54,7 @@ const selectionCriteria = [
   {
     title: "Versicherungsschutz",
     description:
-      "Eine Betriebshaftpflichtversicherung sollte für jede professionelle Reinigungsfirma selbstverständlich sein – fragen Sie im Zweifel gezielt danach.",
+      "Fragen Sie gezielt nach einer Betriebshaftpflichtversicherung – für einen professionellen Anbieter sollte das selbstverständlich sein.",
   },
 ];
 

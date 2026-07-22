@@ -55,7 +55,7 @@ const homeFaqItems = [
   {
     question: "Wie wird der Preis berechnet?",
     answer:
-      "Der Preis richtet sich nach Fläche, Reinigungshäufigkeit und gewünschten Zusatzleistungen. Mit unserem Preisrechner erhalten Sie eine erste, unverbindliche Richtpreis-Schätzung – das endgültige Angebot erstellen wir nach Besprechung Ihres Objekts.",
+      "Ausschlaggebend sind vor allem die Fläche, wie oft gereinigt werden soll und welche Zusatzleistungen dazukommen. Unser Preisrechner gibt Ihnen dazu eine erste, unverbindliche Einschätzung – das endgültige Angebot erstellen wir, nachdem wir Ihr Objekt besprochen haben.",
     relatedLink: { label: "Zum Preisrechner", href: "/preisrechner" },
   },
   {
@@ -89,7 +89,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
               Wir reinigen Büros, Praxen, Kanzleien und weitere Gewerbeobjekte
-              in Berlin – mit persönlichem Ansprechpartner, klaren Abläufen
+              in Berlin – mit festem Ansprechpartner, transparenten Abläufen
               und Terminen, die sich nach Ihrem Betrieb richten.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

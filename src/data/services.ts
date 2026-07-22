@@ -39,7 +39,7 @@ export const services: Service[] = [
       "Ohne festen Ansprechpartner bleiben Rückfragen zu Umfang und Rhythmus oft unbeantwortet.",
     ],
     bullets: [
-      "Individuelle Reinigungskonzepte je nach Objekt",
+      "Leistungsumfang wird auf das jeweilige Objekt abgestimmt",
       "Feste Ansprechpartner und Reinigungsteams",
       "Flexible Intervalle von täglich bis wöchentlich",
     ],
@@ -84,7 +84,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Wir prüfen die Beanstandung und bessern bei berechtigten Fällen zeitnah nach – Details zu unserem Nachbesserungs-Versprechen stehen auf der Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -151,7 +151,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Geben Sie uns kurz Bescheid, was nicht gepasst hat. Ist die Beanstandung berechtigt, bessern wir zeitnah nach – die genauen Bedingungen dazu stehen auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -217,7 +217,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie den Mangel direkt Ihrem Ansprechpartner. Bei berechtigten Fällen bessern wir zeitnah nach – Näheres zu unserem Nachbesserungs-Versprechen finden Sie auf der Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -283,7 +283,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Sagen Sie uns kurz Bescheid. Berechtigte Beanstandungen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -349,7 +349,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -420,7 +420,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Kontaktieren Sie einfach Ihren Ansprechpartner. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – Details dazu stehen auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -485,7 +485,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Geben Sie uns direkt Bescheid. Ist die Beanstandung berechtigt, bessern wir zeitnah nach – die Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf der Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -551,7 +551,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Sprechen Sie uns direkt an. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die genauen Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -616,7 +616,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie den Punkt Ihrem Ansprechpartner. Berechtigte Beanstandungen bessern wir zeitnah nach – die Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -681,7 +681,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Sagen Sie uns Bescheid, was nicht gestimmt hat. Ist die Beanstandung berechtigt, bessern wir zeitnah nach – Näheres dazu auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -746,7 +746,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
@@ -819,7 +819,7 @@ export const services: Service[] = [
       {
         question: "Was passiert, wenn ich einmal nicht zufrieden bin?",
         answer:
-          "Sprechen Sie uns einfach an. Berechtigte Beanstandungen prüfen wir selbstverständlich und bessern sie zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens finden Sie auf unserer Über-uns-Seite.",
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald etwas nicht passt. Berechtigte Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu stehen auf unserer Über-uns-Seite.",
         relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
