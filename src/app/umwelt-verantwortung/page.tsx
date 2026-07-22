@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import EditorialIntro from "@/components/ui/EditorialIntro";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
+import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
@@ -15,20 +15,23 @@ import { renderHighlightedH1 } from "@/lib/renderHeading";
 const heading = seoHeadings["/umwelt-verantwortung"];
 
 const description =
-  "Wie Glanzwerk Reinigungsservice Berlin Ressourcen im Reinigungsalltag bewusst einsetzt – konkrete Handgriffe statt Umweltversprechen.";
+  "Erfahren Sie, wie Glanzwerk Reinigungsservice Berlin Reinigungsmittel, Wasser und Materialien verantwortungsvoll einsetzt und warum nachhaltige Reinigung mit durchdachten Abläufen beginnt.";
 
 const dosierungPhoto = {
   src: "/images/umwelt-verantwortung/dosierung.webp",
   alt: "Wiederverwendbare Reinigungsutensilien für einen bewussten Ressourceneinsatz",
 };
 
-export const metadata: Metadata = buildMetadata({
-  title: heading.metaTitle ?? heading.h1,
-  description,
-  path: "/umwelt-verantwortung",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: heading.metaTitle ?? heading.h1,
+    description,
+    path: "/umwelt-verantwortung",
+  }),
+  title: { absolute: heading.metaTitle ?? heading.h1 },
+};
 
-const principleIcons = {
+const productIcons = {
   dosing: (
     <>
       <path d="M9 3h6M10 3v4.5L5.5 16a2 2 0 0 0 1.8 2.9h9.4a2 2 0 0 0 1.8-2.9L14 7.5V3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -46,20 +49,6 @@ const principleIcons = {
       <path d="M8.7 12.2l2.3 2.3 4.3-4.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
-  rhythm: (
-    <>
-      <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </>
-  ),
-  sorting: (
-    <>
-      <path d="M7 7l-2.5 2.5L7 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M4.5 9.5h8a4 4 0 0 1 4 4V15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M17 17l2.5-2.5L17 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M19.5 14.5h-8a4 4 0 0 1-4-4V9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </>
-  ),
   selection: (
     <>
       <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
@@ -68,43 +57,42 @@ const principleIcons = {
   ),
 } as const;
 
-const principles = [
+const productCards = [
   {
-    title: "Dosierung statt Verschwendung",
-    description:
-      "Reinigungsmittel werden nach Herstellerangabe dosiert statt „auf Verdacht“ eingesetzt – das schont Flächen, Kosten und Umwelt gleichermaßen.",
+    title: "Bedarfsgerechte Dosierung",
+    description: "Reinigungsmittel werden entsprechend den Herstellerangaben und dem tatsächlichen Bedarf eingesetzt.",
     icon: "dosing" as const,
   },
   {
-    title: "Schonender Umgang mit Oberflächen",
-    description:
-      "Für Glas, Boden, Sanitär und empfindliche Materialien kommen jeweils passende, professionelle Mittel zum Einsatz – nicht ein aggressives Universalmittel für alles.",
+    title: "Passend zur Oberfläche",
+    description: "Glas, Stein, Kunststoff, Holz oder empfindliche Bodenbeläge benötigen unterschiedliche Verfahren.",
     icon: "surface" as const,
   },
   {
-    title: "Kein unnötiger Verbrauch",
-    description:
-      "Der Reinigungsrhythmus richtet sich nach dem tatsächlichen Bedarf des Objekts statt nach pauschaler Maximalreinigung – das vermeidet unnötigen Wasser-, Material- und Energieverbrauch.",
-    icon: "rhythm" as const,
-  },
-  {
-    title: "Mülltrennung, wo im Objekt möglich",
-    description:
-      "Wo im Kundenobjekt eine Mülltrennung eingerichtet ist, wird sie bei der Reinigung berücksichtigt statt pauschal in einer Tonne gesammelt.",
-    icon: "sorting" as const,
-  },
-  {
-    title: "Bewusste Produktwahl",
-    description:
-      "Bei der Auswahl der Reinigungsmittel zählen Verträglichkeit und Wirksamkeit – nicht automatisch das stärkste verfügbare Mittel.",
+    title: "Materialschonende Reinigung",
+    description: "Unser Ziel ist nicht nur Sauberkeit, sondern auch der langfristige Erhalt der gereinigten Oberflächen.",
     icon: "selection" as const,
   },
 ];
 
-const benefits = [
-  "Materialschonende Reinigung verlängert die Lebensdauer von Böden, Oberflächen und Einrichtung in Ihrem Objekt.",
-  "Bedarfsgerechte Dosierung bedeutet weniger Chemie- und Geruchsbelastung für Mitarbeitende und Besucher.",
-  "Eine nachvollziehbare, ehrliche Antwort, wenn Kunden oder Vermieter nach dem Umgang mit Ressourcen fragen.",
+const faqItems = [
+  {
+    question: "Welche Reinigungsmittel verwendet Glanzwerk?",
+    answer: "Je nach Oberfläche und Einsatzbereich arbeiten wir unter anderem mit Produkten von Kiehl, Dr. Schnell und Buzil.",
+  },
+  {
+    question: "Arbeitet Glanzwerk klimaneutral?",
+    answer:
+      "Wir machen keine Aussagen, die wir nicht nachweisen können. Unser Fokus liegt auf einem verantwortungsvollen Umgang mit Wasser, Reinigungsmitteln und Materialien.",
+  },
+  {
+    question: "Wird bei jeder Reinigung desinfiziert?",
+    answer: "Nein. Desinfektionsmittel werden nur eingesetzt, wenn dies hygienisch notwendig oder ausdrücklich vereinbart ist.",
+  },
+  {
+    question: "Achtet Glanzwerk auf materialschonende Reinigung?",
+    answer: "Ja. Reinigungsmittel und Verfahren werden auf die jeweilige Oberfläche abgestimmt, um Materialien langfristig zu erhalten.",
+  },
 ];
 
 export default function UmweltVerantwortungPage() {
@@ -113,12 +101,13 @@ export default function UmweltVerantwortungPage() {
       <Breadcrumb items={[{ label: "Umwelt & Verantwortung" }]} />
       <JsonLd
         data={webPageSchema({
-          name: "Umwelt & Verantwortung",
+          name: heading.metaTitle ?? heading.h1,
           description,
           path: "/umwelt-verantwortung",
         })}
       />
 
+      {/* Hero */}
       <Section background="white" className="pt-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
@@ -126,24 +115,58 @@ export default function UmweltVerantwortungPage() {
               {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-              Nachhaltigkeit ist bei Glanzwerk kein Siegel und kein
-              Werbeversprechen, sondern eine Reihe nachvollziehbarer
-              Handgriffe im Reinigungsalltag – konsequent bedarfsgerecht statt
-              pauschal maximal.
+              Nachhaltigkeit bedeutet für uns nicht, möglichst viele Umweltbegriffe zu verwenden. Sie
+              zeigt sich im täglichen Umgang mit Reinigungsmitteln, Wasser, Materialien und den
+              Gebäuden unserer Kunden. Deshalb setzen wir auf sorgfältige Arbeitsabläufe, eine
+              bedarfsgerechte Dosierung und Reinigungsverfahren, die Oberflächen langfristig schonen.
             </p>
+            <div className="mt-8">
+              <Link
+                href="/kontakt"
+                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+              >
+                Unverbindliches Angebot anfragen
+              </Link>
+            </div>
           </div>
           <BrandPhoto photo={dosierungPhoto} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
       </Section>
 
+      {/* H2 1 */}
       <Section background="tint" decor>
-        <SectionHeading
-          eyebrow="Unsere Grundsätze"
-          title={heading.sectionHeadings[0]}
-          subtitle="Keine Zertifikate, keine Siegel – dafür konkrete Prinzipien, die sich in jedem Einsatz wiederfinden."
-        />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {principles.map((point, index) => (
+        <SectionHeading eyebrow="Unser Ansatz" title={heading.sectionHeadings[0]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Eine professionelle Reinigung muss gründlich sein und gleichzeitig Materialien schützen.
+            Deshalb wählen wir Reinigungsmittel und Verfahren passend zur jeweiligen Oberfläche aus.
+            Nicht jede Verschmutzung benötigt dieselbe Chemie und nicht jede Fläche dieselbe
+            Behandlung.
+          </p>
+          <p>
+            Unser Ziel ist ein sauberes Ergebnis mit einem sinnvollen Einsatz von Wasser,
+            Reinigungsmitteln und Arbeitsmaterialien.
+          </p>
+        </div>
+      </Section>
+
+      {/* H2 2 */}
+      <Section background="white">
+        <SectionHeading eyebrow="Produkte" title={heading.sectionHeadings[1]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Je nach Einsatzbereich verwenden wir Reinigungsprodukte von Kiehl, Dr. Schnell und Buzil.
+            Welches Produkt eingesetzt wird, richtet sich nach Material, Verschmutzung und Nutzung
+            der Fläche.
+          </p>
+          <p>
+            Durch die richtige Dosierung lassen sich Reinigungsergebnisse erzielen, ohne unnötig
+            viele Reinigungsmittel einzusetzen. Das schont Oberflächen und verhindert vermeidbare
+            Rückstände.
+          </p>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          {productCards.map((point, index) => (
             <FadeIn
               key={point.title}
               delay={index * 80}
@@ -151,7 +174,7 @@ export default function UmweltVerantwortungPage() {
             >
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  {principleIcons[point.icon]}
+                  {productIcons[point.icon]}
                 </svg>
               </span>
               <div>
@@ -163,72 +186,98 @@ export default function UmweltVerantwortungPage() {
         </div>
       </Section>
 
-      <Section background="white">
-        <EditorialIntro
-          eyebrow="Produkte"
-          title={heading.sectionHeadings[1]}
-          subtitle="Weniger, aber gezielter eingesetzte Reinigungsmittel sind wirksamer und ressourcenschonender als ein pauschal starkes Universalmittel."
-        >
-          <div className="rounded-2xl border border-black/[0.06] bg-graphite-50 p-6">
-            <p className="max-w-2xl text-sm leading-relaxed text-ink-soft">
-              Im Arbeitsalltag setzen wir unter anderem auf professionelle
-              Reinigungsmittel und -systeme von Dr. Schnell und Kiehl,
-              abgestimmt auf die jeweilige Fläche und Verschmutzung. Diese
-              Hersteller sind keine Kooperations- oder Vertriebspartner von
-              Glanzwerk; genannt werden ausschließlich Produkte, die wir im
-              eigenen Arbeitsalltag tatsächlich einsetzen.
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {["Dr. Schnell", "Kiehl"].map((brand) => (
-                <li
-                  key={brand}
-                  className="rounded-full border border-black/[0.08] bg-white px-4 py-1.5 text-sm font-medium text-brand-900"
-                >
-                  {brand}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </EditorialIntro>
+      {/* H2 3 */}
+      <Section background="warm">
+        <SectionHeading eyebrow="Ressourcen" title={heading.sectionHeadings[2]} />
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Auch Wasser ist eine Ressource. Deshalb achten wir darauf, Arbeitsabläufe so zu gestalten,
+          dass unnötiger Wasserverbrauch vermieden wird. Moderne Reinigungstechniken und sinnvoll
+          vorbereitete Arbeitsprozesse helfen dabei, Ressourcen effizient einzusetzen, ohne die
+          Reinigungsqualität zu beeinträchtigen.
+        </p>
       </Section>
 
+      {/* H2 4 */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Entsorgung" title={heading.sectionHeadings[3]} />
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im
+          Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll
+          zu unterstützen und Arbeitsbereiche sauber zu halten.
+        </p>
+      </Section>
+
+      {/* H2 5 */}
+      <Section background="white">
+        <SectionHeading eyebrow="Hygiene" title={heading.sectionHeadings[4]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Nicht jede Fläche muss desinfiziert werden. In medizinischen Einrichtungen oder anderen
+            hygienisch sensiblen Bereichen kann eine Desinfektion notwendig sein. In vielen anderen
+            Bereichen reicht eine fachgerechte Reinigung vollkommen aus.
+          </p>
+          <p>
+            Deshalb unterscheiden wir bewusst zwischen Reinigung und Desinfektion und setzen
+            Desinfektionsmittel nur dort ein, wo sie erforderlich oder vereinbart sind.
+          </p>
+        </div>
+      </Section>
+
+      {/* H2 6 */}
       <Section background="warm">
-        <SectionHeading eyebrow="Für Ihr Unternehmen" title={heading.sectionHeadings[2]} />
-        <FadeIn className="mt-10 grid divide-y divide-brand-900/[0.08] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {benefits.map((benefit, index) => (
-            <div key={benefit} className="flex gap-4 p-6 sm:flex-col sm:gap-3">
-              <span className="font-display shrink-0 text-2xl font-medium text-brand-300 sm:text-3xl">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <p className="text-sm leading-relaxed text-ink-soft">{benefit}</p>
-            </div>
-          ))}
-        </FadeIn>
-        <p className="mt-6 text-sm text-ink-soft">
-          Mehr zu den handwerklichen Prinzipien hinter unserer Arbeit finden
-          Sie auf der{" "}
-          <Link href="/ueber-uns" className="font-semibold text-brand-500 hover:underline">
-            Über-uns-Seite
+        <SectionHeading eyebrow="Gesamtbild" title={heading.sectionHeadings[5]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Eine zuverlässige Gebäudereinigung besteht aus vielen kleinen Entscheidungen. Dazu
+            gehören sorgfältige Arbeitsabläufe, ein respektvoller Umgang mit den Räumlichkeiten
+            unserer Kunden, eine klare Kommunikation und die Auswahl geeigneter
+            Reinigungsverfahren.
+          </p>
+          <p>
+            Unser Anspruch ist eine Reinigung, die Gebäude langfristig pflegt und den täglichen
+            Betrieb zuverlässig unterstützt.
+          </p>
+        </div>
+        <p className="mt-6 max-w-3xl text-sm text-ink-soft">
+          Mehr zu einzelnen Leistungen:{" "}
+          <Link href="/leistungen/gebaeudereinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+            Gebäudereinigung
+          </Link>
+          ,{" "}
+          <Link href="/leistungen/unterhaltsreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+            Unterhaltsreinigung
+          </Link>
+          ,{" "}
+          <Link href="/leistungen/bueroreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+            Büroreinigung
+          </Link>
+          ,{" "}
+          <Link href="/leistungen/praxisreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+            Praxisreinigung
           </Link>{" "}
-          sowie im Glanzwerk-Wissen-Artikel{" "}
-          <Link
-            href="/wissen/nachhaltige-gebaeudereinigung"
-            className="font-semibold text-brand-500 hover:underline"
-          >
-            Nachhaltige Gebäudereinigung
+          und{" "}
+          <Link href="/leistungen/glas-und-fensterreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+            Glas- und Fensterreinigung
           </Link>
           .
         </p>
       </Section>
 
+      {/* FAQ */}
+      <Section background="white">
+        <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
+        <FadeIn className="mx-auto mt-10 max-w-2xl">
+          <FAQ items={faqItems} idPrefix="umwelt" />
+        </FadeIn>
+      </Section>
+
+      {/* CTA */}
       <Section background="muted">
         <CTASection
           title={heading.ctaHeading}
-          subtitle="Sprechen Sie uns direkt an oder berechnen Sie in wenigen Minuten einen ersten Richtpreis für Ihr Objekt."
-          primaryLabel="Preis berechnen"
-          primaryHref="/preisrechner"
-          secondaryLabel="Kontakt aufnehmen"
-          secondaryHref="/kontakt"
+          subtitle="Sprechen Sie mit uns über Ihr Objekt. Gemeinsam finden wir den passenden Reinigungsumfang für Ihr Unternehmen."
+          primaryLabel="Jetzt unverbindlich anfragen"
+          primaryHref="/kontakt"
         />
       </Section>
     </>

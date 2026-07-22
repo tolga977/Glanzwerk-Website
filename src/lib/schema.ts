@@ -23,7 +23,7 @@ export function organizationSchema() {
   };
 }
 
-/** Homepage-only: more specific than the sitewide Organization schema, without inventing ratings, hours or certifications. */
+/** More specific than the sitewide Organization schema, without inventing ratings, hours or certifications. Used on the homepage and Über-uns page. */
 export function professionalServiceSchema() {
   return {
     "@context": "https://schema.org",
