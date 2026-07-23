@@ -18,6 +18,8 @@ import GebaeudereinigungMitteContent from "./GebaeudereinigungMitteContent";
 import GebaeudereinigungFriedrichshainKreuzbergContent from "./GebaeudereinigungFriedrichshainKreuzbergContent";
 import GebaeudereinigungPankowContent from "./GebaeudereinigungPankowContent";
 import GebaeudereinigungCharlottenburgWilmersdorfContent from "./GebaeudereinigungCharlottenburgWilmersdorfContent";
+import GebaeudereinigungTempelhofSchoenebergContent from "./GebaeudereinigungTempelhofSchoenebergContent";
+import GebaeudereinigungNeukoellnContent from "./GebaeudereinigungNeukoellnContent";
 
 /** Kombi-Seiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
 const customContentCombos = {
@@ -25,6 +27,8 @@ const customContentCombos = {
   "gebaeudereinigung-berlin/friedrichshain-kreuzberg": GebaeudereinigungFriedrichshainKreuzbergContent,
   "gebaeudereinigung-berlin/pankow": GebaeudereinigungPankowContent,
   "gebaeudereinigung-berlin/charlottenburg-wilmersdorf": GebaeudereinigungCharlottenburgWilmersdorfContent,
+  "gebaeudereinigung-berlin/tempelhof-schoeneberg": GebaeudereinigungTempelhofSchoenebergContent,
+  "gebaeudereinigung-berlin/neukoelln": GebaeudereinigungNeukoellnContent,
 } as const;
 
 interface Props {

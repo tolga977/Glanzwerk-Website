@@ -164,6 +164,8 @@ export const combos: Combo[] = [
     districtSlug: "neukoelln",
     intro:
       "In Neukölln reichen Gewerbeobjekte von kleineren Einheiten im dicht bebauten Kern bis zu größeren Flächen in Rudow. Die Gebäudereinigung fasst je nach Objekt mehrere Teilleistungen in einem gemeinsamen Konzept zusammen.",
+    metaDescription:
+      "Gebäudereinigung in Neukölln für Büros, Praxen, Kanzleien und Gewerbeobjekte. Individuelle Reinigungskonzepte und flexible Einsatzzeiten.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -438,6 +440,8 @@ export const combos: Combo[] = [
     districtSlug: "tempelhof-schoeneberg",
     intro:
       "Im Tempelhofer Teil des Bezirks stehen größere Gewerbe- und Bürogebäude mit mehreren Mietparteien – wir bündeln Unterhalts-, Treppenhaus- und Fensterreinigung in einem gemeinsamen, mit der Hausverwaltung abgestimmten Konzept.",
+    metaDescription:
+      "Gebäudereinigung in Tempelhof-Schöneberg für Büros, Praxen, Kanzleien und Gewerbeobjekte. Flexible Reinigungszeiten und individuell abgestimmte Leistungen.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
