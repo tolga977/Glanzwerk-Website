@@ -6,6 +6,8 @@ import CTASection from "@/components/ui/CTASection";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import BrandPhoto from "@/components/ui/BrandPhoto";
+import PremiumCard from "@/components/premium/PremiumCard";
+import PremiumButton from "@/components/premium/PremiumButton";
 import Logo from "@/components/layout/Logo";
 import JsonLd from "@/components/seo/JsonLd";
 import { districts } from "@/data/districts";
@@ -213,18 +215,10 @@ export default function UeberUnsPage() {
               Termine sollen funktionieren und Rückfragen sollen schnell geklärt werden können.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-              >
-                Unverbindliches Angebot anfragen
-              </Link>
-              <Link
-                href="/leistungen"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-              >
+              <PremiumButton href="/kontakt">Unverbindliches Angebot anfragen</PremiumButton>
+              <PremiumButton href="/leistungen" variant="outline">
                 Unsere Leistungen ansehen
-              </Link>
+              </PremiumButton>
             </div>
           </div>
           <BrandPhoto photo={photos.buildingFacade} className="shadow-2xl shadow-brand-950/20" />
@@ -234,7 +228,7 @@ export default function UeberUnsPage() {
       {/* 2. Vorstellung */}
       <Section background="muted">
         <SectionHeading eyebrow="Über Glanzwerk" title={heading.sectionHeadings[0]} />
-        <div className="mt-8 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+        <FadeIn className="mt-8 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Gebäudereinigung findet meist dann statt, wenn andere gerade arbeiten, Feierabend machen
             oder ihren Betrieb für den nächsten Tag vorbereiten. Damit Reinigung in diesem Umfeld
@@ -253,7 +247,7 @@ export default function UeberUnsPage() {
             die im Alltag verlässlich bleibt. Dazu gehören klare Absprachen, eine feste Kontaktperson
             und die Bereitschaft, Abläufe anzupassen, wenn sich Anforderungen im Objekt verändern.
           </p>
-        </div>
+        </FadeIn>
       </Section>
 
       {/* 3. Haltung und Arbeitsweise */}
@@ -265,12 +259,8 @@ export default function UeberUnsPage() {
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
           {approachPoints.map((point, index) => (
-            <FadeIn
-              key={point.title}
-              delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+            <PremiumCard key={point.title} delay={index * 80} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500 transition-transform duration-300 ease-out group-hover:scale-105">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {approachIcons[point.icon]}
                 </svg>
@@ -279,7 +269,7 @@ export default function UeberUnsPage() {
                 <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
               </div>
-            </FadeIn>
+            </PremiumCard>
           ))}
         </div>
       </Section>
@@ -297,11 +287,7 @@ export default function UeberUnsPage() {
         </p>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {audienceGroups.map((group, index) => (
-            <FadeIn
-              key={group.title}
-              delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
+            <PremiumCard key={group.title} delay={index * 60}>
               <p className="font-display text-base font-medium text-brand-900">{group.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{group.description}</p>
               <ul className="mt-3 space-y-1">
@@ -313,7 +299,7 @@ export default function UeberUnsPage() {
                   </li>
                 ))}
               </ul>
-            </FadeIn>
+            </PremiumCard>
           ))}
         </div>
       </Section>
@@ -321,7 +307,7 @@ export default function UeberUnsPage() {
       {/* 5. Zusammenarbeit */}
       <Section background="white">
         <SectionHeading eyebrow="Im laufenden Betrieb" title={heading.sectionHeadings[3]} />
-        <div className="mt-8 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+        <FadeIn className="mt-8 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Ein Reinigungsdienst wird beauftragt, damit sich Unternehmen nicht täglich selbst um
             Sauberkeit, Verbrauchsmaterialien und wiederkehrende Reinigungsaufgaben kümmern müssen.
@@ -338,7 +324,7 @@ export default function UeberUnsPage() {
             erfüllen. Wir prüfen jedoch, was organisatorisch möglich ist, und geben eine klare
             Rückmeldung.
           </p>
-        </div>
+        </FadeIn>
       </Section>
 
       {/* 6. Qualität im Alltag */}
@@ -359,14 +345,11 @@ export default function UeberUnsPage() {
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
-          {qualityPoints.map((point) => (
-            <div
-              key={point.title}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
+          {qualityPoints.map((point, index) => (
+            <PremiumCard key={point.title} delay={index * 60}>
               <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
-            </div>
+            </PremiumCard>
           ))}
         </div>
 
@@ -421,7 +404,7 @@ export default function UeberUnsPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <SectionHeading eyebrow="Verantwortung im Reinigungsalltag" title={heading.sectionHeadings[5]} />
-            <div className="mt-5 max-w-xl space-y-4 text-base leading-relaxed text-ink-soft">
+            <FadeIn className="mt-5 max-w-xl space-y-4 text-base leading-relaxed text-ink-soft">
               <p>
                 Wirksame Reinigung hängt von der passenden Kombination aus Mittel, Dosierung,
                 Einwirkzeit und Arbeitsverfahren ab. Ein übermäßiger Einsatz von Reinigungschemie
@@ -438,7 +421,7 @@ export default function UeberUnsPage() {
                 Desinfektionsmittel werden dort eingesetzt, wo sie vereinbart oder hygienisch
                 erforderlich sind. Auf anderen Flächen genügt häufig eine materialgerechte Reinigung.
               </p>
-            </div>
+            </FadeIn>
             <Link
               href="/umwelt-verantwortung"
               className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline"

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/layout/Logo";
+import PremiumButton from "@/components/premium/PremiumButton";
 import { mainNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 
@@ -12,6 +13,12 @@ interface MobileNavProps {
   onClose: () => void;
 }
 
+/**
+ * Premium-Designstudie: echte Slide-/Fade-Transition statt abruptem
+ * Erscheinen/Verschwinden. Bleibt permanent im DOM (statt bei `!open` ganz zu
+ * unmounten) und wird rein über CSS ein-/ausgeblendet — dadurch kein
+ * Mount-Timing-State/-Effect nötig, nur `transform`/`opacity`.
+ */
 export default function MobileNav({ open, onClose }: MobileNavProps) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const pathname = usePathname();
@@ -20,19 +27,25 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
     return href === "/" ? pathname === "/" : pathname.startsWith(href);
   }
 
-  if (!open) return null;
-
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div
+      className={`fixed inset-0 z-50 lg:hidden ${open ? "visible" : "invisible"}`}
+      aria-hidden={!open}
+      inert={!open}
+    >
       <button
         type="button"
         aria-label="Menü schließen"
         onClick={onClose}
-        className="absolute inset-0 bg-brand-950/50"
+        className={`absolute inset-0 bg-brand-950/50 transition-opacity duration-300 ease-out ${
+          open ? "opacity-100" : "opacity-0"
+        }`}
       />
       <nav
         aria-label="Mobile Navigation"
-        className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-xl"
+        className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-xl transition-transform duration-300 ease-out ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="mb-6 flex items-center justify-between">
           <Logo height={40} onClick={onClose} />
@@ -76,7 +89,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
                         viewBox="0 0 24 24"
                         fill="none"
                         aria-hidden="true"
-                        className={`transition-transform ${
+                        className={`transition-transform duration-300 ease-out ${
                           expanded === item.label ? "rotate-180" : ""
                         }`}
                       >
@@ -134,19 +147,12 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         </ul>
 
         <div className="mt-6 flex flex-col gap-3">
-          <a
-            href={siteConfig.phoneHref}
-            className="flex items-center justify-center gap-2 rounded-full border-2 border-brand-900 px-5 py-3 text-sm font-semibold text-brand-900"
-          >
+          <PremiumButton href={siteConfig.phoneHref} variant="outline" className="w-full" onClick={onClose}>
             {siteConfig.phone}
-          </a>
-          <Link
-            href="/preisrechner"
-            onClick={onClose}
-            className="flex items-center justify-center rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white"
-          >
+          </PremiumButton>
+          <PremiumButton href="/preisrechner" className="w-full" onClick={onClose}>
             Preis berechnen
-          </Link>
+          </PremiumButton>
         </div>
       </nav>
     </div>

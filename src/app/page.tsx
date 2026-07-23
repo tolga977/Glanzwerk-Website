@@ -273,7 +273,7 @@ export default function HomePage() {
             <p className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
               Gebäudereinigung für Gewerbekunden in Berlin
             </p>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
+            <h1 className="font-display text-4xl font-medium leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
@@ -301,17 +301,17 @@ export default function HomePage() {
       </section>
 
       {/* Vertrauenszeile unter dem Hero. */}
-      <section className="border-y border-white/10 bg-brand-900 py-4">
-        <div className="container-page flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center sm:justify-center">
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+      <section className="border-y border-white/10 bg-brand-900 py-5">
+        <div className="container-page flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-center sm:justify-center">
+          <span className="text-xs font-medium uppercase tracking-[0.12em] text-brand-200">
             In allen zwölf Berliner Bezirken im Einsatz
           </span>
-          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+          <span aria-hidden="true" className="h-1 w-1 rounded-full bg-white/25" />
+          <span className="text-xs font-medium uppercase tracking-[0.12em] text-brand-200">
             Flexible Reinigungszeiten
           </span>
-          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
+          <span aria-hidden="true" className="h-1 w-1 rounded-full bg-white/25" />
+          <span className="text-xs font-medium uppercase tracking-[0.12em] text-brand-200">
             Betriebshaftpflichtversichert
           </span>
         </div>
@@ -324,7 +324,7 @@ export default function HomePage() {
           title={heading.sectionHeadings[0]}
           subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
         >
-          <FadeIn>
+          <FadeIn className="mt-2 sm:mt-4">
             <TrustBadges badges={trustSectionBadges} />
           </FadeIn>
         </EditorialIntro>
@@ -361,9 +361,9 @@ export default function HomePage() {
           title={heading.sectionHeadings[2]}
           subtitle="Ob eine Reinigung dauerhaft funktioniert, zeigt sich im Alltag. Deshalb setzen wir nicht auf allgemeine Werbeversprechen, sondern auf klare Zuständigkeiten und praktische Vereinbarungen. Ihr Objekt wird vor dem Start besprochen, Leistungen werden festgehalten und Besonderheiten dokumentiert."
         />
-        <div className="mt-10">
+        <FadeIn className="mt-10">
           <TrustBadges badges={workingMethodBadges} />
-        </div>
+        </FadeIn>
       </Section>
 
       {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte */}

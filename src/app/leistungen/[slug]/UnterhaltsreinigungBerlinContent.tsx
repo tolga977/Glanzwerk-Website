@@ -7,6 +7,8 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import PremiumCard from "@/components/premium/PremiumCard";
+import PremiumButton from "@/components/premium/PremiumButton";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -233,18 +235,26 @@ export default function UnterhaltsreinigungBerlinContent({
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/kontakt"
-              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-            >
-              Unverbindliches Angebot anfragen
-            </Link>
-            <Link
-              href="/preisrechner"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
-            >
+            <PremiumButton href="/kontakt">Unverbindliches Angebot anfragen</PremiumButton>
+            <PremiumButton href="/preisrechner" variant="outline" className="bg-white/70 backdrop-blur-sm">
               Preis kostenlos berechnen
-            </Link>
+            </PremiumButton>
+          </div>
+        </div>
+        <div className="relative z-[1] border-t border-black/[0.06] bg-white/85 backdrop-blur-sm">
+          <div className="container-page grid grid-cols-1 gap-3 py-4 sm:grid-cols-3 sm:gap-4">
+            {["Kostenlose Anfrage in wenigen Minuten", "Fester Ansprechpartner statt Callcenter", "Klare Absprachen ohne versteckte Kosten"].map(
+              (label) => (
+                <div key={label} className="flex items-center gap-2.5 text-sm font-medium text-brand-900">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {label}
+                </div>
+              ),
+            )}
           </div>
         </div>
       </section>
@@ -283,14 +293,10 @@ export default function UnterhaltsreinigungBerlinContent({
         <SectionHeading eyebrow="Möglicher Leistungsumfang" title={heading.sectionHeadings[1]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {scopeCards.map((card, index) => (
-            <FadeIn
-              key={card.title}
-              delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
+            <PremiumCard key={card.title} delay={index * 60}>
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
-            </FadeIn>
+            </PremiumCard>
           ))}
         </div>
       </Section>
@@ -300,14 +306,10 @@ export default function UnterhaltsreinigungBerlinContent({
         <SectionHeading eyebrow="Passender Rhythmus" title={heading.sectionHeadings[2]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {frequencyCards.map((card, index) => (
-            <FadeIn
-              key={card.title}
-              delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
+            <PremiumCard key={card.title} delay={index * 60}>
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
-            </FadeIn>
+            </PremiumCard>
           ))}
         </div>
       </Section>
@@ -332,13 +334,14 @@ export default function UnterhaltsreinigungBerlinContent({
       <Section background="tint" decor>
         <SectionHeading eyebrow="Klare Abstimmung vor Beginn" title={heading.sectionHeadings[4]} />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {planItems.map((item) => (
-            <div
+          {planItems.map((item, index) => (
+            <FadeIn
               key={item}
-              className="rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-medium text-brand-900"
+              delay={index * 60}
+              className="rounded-xl border border-gray-100 bg-white px-4 py-3 text-sm font-medium text-brand-900 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-[0_8px_20px_-8px_rgb(7_26_58/0.12)]"
             >
               {item}
-            </div>
+            </FadeIn>
           ))}
         </div>
       </Section>
@@ -378,9 +381,9 @@ export default function UnterhaltsreinigungBerlinContent({
       {/* Ablauf */}
       <Section background="brand" decor>
         <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[7]} light />
-        <div className="mt-10">
+        <FadeIn className="mt-10">
           <ProcessSteps steps={processSteps} light />
-        </div>
+        </FadeIn>
       </Section>
 
       {/* Kosten */}
@@ -398,18 +401,10 @@ export default function UnterhaltsreinigungBerlinContent({
           ))}
         </ul>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-          >
-            Preis kostenlos berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-          >
+          <PremiumButton href="/preisrechner">Preis kostenlos berechnen</PremiumButton>
+          <PremiumButton href="/kontakt" variant="outline">
             Individuelles Angebot anfragen
-          </Link>
+          </PremiumButton>
         </div>
       </Section>
 

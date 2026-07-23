@@ -6,6 +6,8 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
+import PremiumCard from "@/components/premium/PremiumCard";
+import PremiumButton from "@/components/premium/PremiumButton";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
@@ -121,12 +123,7 @@ export default function UmweltVerantwortungPage() {
               bedarfsgerechte Dosierung und Reinigungsverfahren, die Oberflächen langfristig schonen.
             </p>
             <div className="mt-8">
-              <Link
-                href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-              >
-                Unverbindliches Angebot anfragen
-              </Link>
+              <PremiumButton href="/kontakt">Unverbindliches Angebot anfragen</PremiumButton>
             </div>
           </div>
           <BrandPhoto photo={dosierungPhoto} priority className="shadow-2xl shadow-brand-950/20" />
@@ -136,7 +133,7 @@ export default function UmweltVerantwortungPage() {
       {/* H2 1 */}
       <Section background="tint" decor>
         <SectionHeading eyebrow="Unser Ansatz" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+        <FadeIn className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Eine professionelle Reinigung muss gründlich sein und gleichzeitig Materialien schützen.
             Deshalb wählen wir Reinigungsmittel und Verfahren passend zur jeweiligen Oberfläche aus.
@@ -147,7 +144,7 @@ export default function UmweltVerantwortungPage() {
             Unser Ziel ist ein sauberes Ergebnis mit einem sinnvollen Einsatz von Wasser,
             Reinigungsmitteln und Arbeitsmaterialien.
           </p>
-        </div>
+        </FadeIn>
       </Section>
 
       {/* H2 2 */}
@@ -167,12 +164,8 @@ export default function UmweltVerantwortungPage() {
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-3">
           {productCards.map((point, index) => (
-            <FadeIn
-              key={point.title}
-              delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+            <PremiumCard key={point.title} delay={index * 80} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500 transition-transform duration-300 ease-out group-hover:scale-105">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {productIcons[point.icon]}
                 </svg>
@@ -181,7 +174,7 @@ export default function UmweltVerantwortungPage() {
                 <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
               </div>
-            </FadeIn>
+            </PremiumCard>
           ))}
         </div>
       </Section>
@@ -189,28 +182,32 @@ export default function UmweltVerantwortungPage() {
       {/* H2 3 */}
       <Section background="warm">
         <SectionHeading eyebrow="Ressourcen" title={heading.sectionHeadings[2]} />
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Auch Wasser ist eine Ressource. Deshalb achten wir darauf, Arbeitsabläufe so zu gestalten,
-          dass unnötiger Wasserverbrauch vermieden wird. Moderne Reinigungstechniken und sinnvoll
-          vorbereitete Arbeitsprozesse helfen dabei, Ressourcen effizient einzusetzen, ohne die
-          Reinigungsqualität zu beeinträchtigen.
-        </p>
+        <FadeIn as="div">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+            Auch Wasser ist eine Ressource. Deshalb achten wir darauf, Arbeitsabläufe so zu gestalten,
+            dass unnötiger Wasserverbrauch vermieden wird. Moderne Reinigungstechniken und sinnvoll
+            vorbereitete Arbeitsprozesse helfen dabei, Ressourcen effizient einzusetzen, ohne die
+            Reinigungsqualität zu beeinträchtigen.
+          </p>
+        </FadeIn>
       </Section>
 
       {/* H2 4 */}
       <Section background="tint" decor>
         <SectionHeading eyebrow="Entsorgung" title={heading.sectionHeadings[3]} />
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im
-          Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll
-          zu unterstützen und Arbeitsbereiche sauber zu halten.
-        </p>
+        <FadeIn as="div">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+            Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im
+            Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll
+            zu unterstützen und Arbeitsbereiche sauber zu halten.
+          </p>
+        </FadeIn>
       </Section>
 
       {/* H2 5 */}
       <Section background="white">
         <SectionHeading eyebrow="Hygiene" title={heading.sectionHeadings[4]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+        <FadeIn className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Nicht jede Fläche muss desinfiziert werden. In medizinischen Einrichtungen oder anderen
             hygienisch sensiblen Bereichen kann eine Desinfektion notwendig sein. In vielen anderen
@@ -220,13 +217,13 @@ export default function UmweltVerantwortungPage() {
             Deshalb unterscheiden wir bewusst zwischen Reinigung und Desinfektion und setzen
             Desinfektionsmittel nur dort ein, wo sie erforderlich oder vereinbart sind.
           </p>
-        </div>
+        </FadeIn>
       </Section>
 
       {/* H2 6 */}
       <Section background="warm">
         <SectionHeading eyebrow="Gesamtbild" title={heading.sectionHeadings[5]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+        <FadeIn className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Eine zuverlässige Gebäudereinigung besteht aus vielen kleinen Entscheidungen. Dazu
             gehören sorgfältige Arbeitsabläufe, ein respektvoller Umgang mit den Räumlichkeiten
@@ -237,7 +234,7 @@ export default function UmweltVerantwortungPage() {
             Unser Anspruch ist eine Reinigung, die Gebäude langfristig pflegt und den täglichen
             Betrieb zuverlässig unterstützt.
           </p>
-        </div>
+        </FadeIn>
         <p className="mt-6 max-w-3xl text-sm text-ink-soft">
           Mehr zu einzelnen Leistungen:{" "}
           <Link href="/leistungen/gebaeudereinigung-berlin" className="font-semibold text-brand-500 hover:underline">
