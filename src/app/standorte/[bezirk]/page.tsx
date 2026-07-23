@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
@@ -13,6 +14,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import { districts, getDistrictBySlug, getNeighborDistricts } from "@/data/districts";
 import { getServiceBySlug } from "@/data/services";
 import { getCombosForDistrict } from "@/data/combos";
+import { districtPhotos } from "@/data/districtPhotos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
@@ -48,6 +50,7 @@ export default async function DistrictPage({ params }: Props) {
   const featuredServices = district.featuredServiceSlugs
     .map((slug) => getServiceBySlug(slug))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const photo = districtPhotos[district.slug];
   const neighbors = getNeighborDistricts(district);
   const districtCombos = getCombosForDistrict(district.slug)
     .map((combo) => ({ combo, service: getServiceBySlug(combo.serviceSlug) }))
@@ -69,43 +72,65 @@ export default async function DistrictPage({ params }: Props) {
         })}
       />
 
-      <Section background="white" className="pt-12">
-        <div className="max-w-3xl">
-          <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-            {renderHighlightedH1(heading.h1, heading.h1Highlight)}
-          </h1>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">{district.intro}</p>
-        </div>
-
-        {district.ortsteile.length > 0 && (
-          <div className="mt-8 flex flex-wrap gap-2">
-            {district.ortsteile.map((ortsteil) => (
-              <Link
-                key={ortsteil.slug}
-                href={`/standorte/${district.slug}/${ortsteil.slug}`}
-                className="rounded-full border border-gray-200 px-4 py-1.5 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
-              >
-                {ortsteil.name}
-              </Link>
-            ))}
+      {/* Hero: vollflächiges Hintergrundbild, Text darüber, helle Verlaufsmaske — identisch zum Hero-System der Leistungsseiten (leistungen/[slug]/page.tsx) */}
+      <section className="relative isolate overflow-hidden bg-white">
+        {photo && (
+          <div className="absolute inset-0">
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: photo.objectPosition }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/15 sm:from-white sm:via-white/75 sm:to-white/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/10 to-transparent sm:hidden" />
           </div>
         )}
+        <div
+          className={`relative z-[1] container-page flex flex-col justify-center py-16 lg:py-20 ${
+            photo ? "min-h-[520px] lg:min-h-[620px]" : ""
+          }`}
+        >
+          <div className="max-w-xl">
+            <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
+              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">{district.intro}</p>
+          </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
-          >
-            Preis berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-          >
-            Angebot anfragen
-          </Link>
+          {district.ortsteile.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-2">
+              {district.ortsteile.map((ortsteil) => (
+                <Link
+                  key={ortsteil.slug}
+                  href={`/standorte/${district.slug}/${ortsteil.slug}`}
+                  className="rounded-full border border-gray-200 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-900 backdrop-blur-sm hover:border-brand-500 hover:text-brand-500"
+                >
+                  {ortsteil.name}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/preisrechner"
+              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            >
+              Preis berechnen
+            </Link>
+            <Link
+              href="/kontakt"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
+            >
+              Angebot anfragen
+            </Link>
+          </div>
         </div>
-      </Section>
+      </section>
 
       <Section background="muted">
         <EditorialIntro title={heading.sectionHeadings[0]}>

@@ -17,9 +17,14 @@ const heading = seoHeadings["/umwelt-verantwortung"];
 const description =
   "Erfahren Sie, wie Glanzwerk Reinigungsservice Berlin Reinigungsmittel, Wasser und Materialien verantwortungsvoll einsetzt und warum nachhaltige Reinigung mit durchdachten Abläufen beginnt.";
 
-const dosierungPhoto = {
-  src: "/images/umwelt-verantwortung/dosierung.webp",
-  alt: "Wiederverwendbare Reinigungsutensilien für einen bewussten Ressourceneinsatz",
+const heroPhoto = {
+  src: "/images/umwelt-verantwortung/umwelt-hippie-peace.webp",
+  alt: "Illustrierter umweltbewusster Mann mit Peace-Zeichen in einem begrünten Büro",
+};
+
+const baumPhoto = {
+  src: "/images/umwelt-verantwortung/umwelt-hippie-baum.webp",
+  alt: "Illustration eines Mannes, der einen Baum als Symbol für Umweltverantwortung umarmt",
 };
 
 export const metadata: Metadata = {
@@ -129,7 +134,7 @@ export default function UmweltVerantwortungPage() {
               </Link>
             </div>
           </div>
-          <BrandPhoto photo={dosierungPhoto} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={heroPhoto} priority className="shadow-2xl shadow-brand-950/20" />
         </div>
       </Section>
 
@@ -197,14 +202,19 @@ export default function UmweltVerantwortungPage() {
         </p>
       </Section>
 
-      {/* H2 4 */}
+      {/* H2 4 — Bild-Text-Komposition, Bild links (alternierend zum Hero, wo das Bild rechts steht) */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Entsorgung" title={heading.sectionHeadings[3]} />
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im
-          Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll
-          zu unterstützen und Arbeitsbereiche sauber zu halten.
-        </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <BrandPhoto photo={baumPhoto} className="shadow-2xl shadow-brand-950/20" />
+          <div>
+            <SectionHeading eyebrow="Entsorgung" title={heading.sectionHeadings[3]} />
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
+              Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im
+              Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll
+              zu unterstützen und Arbeitsbereiche sauber zu halten.
+            </p>
+          </div>
+        </div>
       </Section>
 
       {/* H2 5 */}
