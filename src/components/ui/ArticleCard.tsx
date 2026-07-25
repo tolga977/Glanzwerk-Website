@@ -2,34 +2,44 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Article } from "@/data/articles";
 
+/**
+ * Redaktionelle Darstellung — bewusst KEINE Karte mit Rahmen und Schatten.
+ * Ratgeberbeiträge sollen sich vom Leistungsangebot unterscheiden: Bildfläche,
+ * Kategorie-Label mit feiner Linie, Seriftitel, ruhiger Textblock. Dadurch
+ * liest sich der Wissensbereich als Magazinstrecke statt als weitere
+ * Kartenreihe.
+ */
 export default function ArticleCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/wissen/${article.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.06]"
+      className="group flex flex-col rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-card">
         <Image
           src={article.image.src}
           alt={article.image.alt}
           fill
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
       </div>
-      <div className="relative flex flex-1 flex-col p-6">
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-400 via-brand-500 to-accent-500 transition-transform duration-300 ease-out group-hover:scale-x-100"
-        />
-        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-500">
-          {article.category}
-        </p>
-        <h3 className="mt-1.5 text-lg font-semibold text-brand-900 group-hover:text-brand-500">
+
+      <div className="flex flex-1 flex-col pt-5">
+        <div className="flex items-center gap-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+            {article.category}
+          </p>
+          <span
+            aria-hidden="true"
+            className="h-px flex-1 origin-left bg-line-strong transition-colors duration-300 ease-out group-hover:bg-brand-300"
+          />
+        </div>
+        <h3 className="font-display display-lg mt-3 text-lg font-medium text-brand-900 transition-colors duration-200 group-hover:text-brand-500">
           {article.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{article.excerpt}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500">
+        <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">{article.excerpt}</p>
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-500">
           Weiterlesen
           <svg
             width="16"

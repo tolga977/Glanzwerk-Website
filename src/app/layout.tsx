@@ -48,6 +48,11 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink">
+        {/* Fallback für Browser ohne Unterstützung der scripting-Media-Query:
+            ohne JavaScript dürfen Scroll-Einblendungen keine Inhalte verbergen. */}
+        <noscript>
+          <style>{`.fade-in-up{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <a

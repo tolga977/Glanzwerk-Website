@@ -39,6 +39,59 @@
   --color-graphite-900: #1e1e26;
   --color-graphite-100: #f4f3f1;
   --color-graphite-50: #faf9f7;
+
+  /*
+   * ── Semantische Rollen ────────────────────────────────────────────────
+   * Zweckgebundene Aliase auf die Primitiven oben. Komponenten sollen diese
+   * Rollen verwenden, damit ein Flächen- oder Linienwert einmal zentral
+   * geändert werden kann statt in Dutzenden Dateien.
+   */
+  /* Flächen */
+  --color-surface: #ffffff; /* Seitenhintergrund / Karten */
+  --color-surface-warm: #faf9f7; /* warme Premium-Oberfläche (graphite-50) */
+  --color-surface-cool: #f2fafd; /* kühle Markenoberfläche (brand-50) */
+  --color-surface-deep: #071a3a; /* dunkle Vertrauensfläche (brand-900) */
+
+  /* Linien — deckend statt transparent, damit Tailwind-Opacity-Modifier
+     und Kontrastprüfungen zuverlässig funktionieren. */
+  --color-line: #e7eaef; /* dezenter Rahmen auf hellen Flächen */
+  --color-line-strong: #d2d8e1; /* stärkerer Rahmen / Trennlinie */
+
+  /* Umwelt-Akzent — ausschließlich für "Umwelt und Verantwortung".
+     Entsättigtes Waldgrün, harmoniert mit dem Navy und erreicht auf Weiß
+     ~6.3:1 (AA für Fließtext, kein plakatives Öko-Grün). */
+  --color-eco-600: #2f6b52;
+  --color-eco-50: #eef4f0;
+
+  /*
+   * ── Radiusfamilie ────────────────────────────────────────────────────
+   * Bewusst klein gehalten: drei Stufen statt beliebiger Rundungen.
+   */
+  --radius-control: 0.625rem; /* Controls, Icon-Flächen, kleine Elemente */
+  --radius-card: 1.125rem; /* Karten */
+  --radius-panel: 1.75rem; /* große Bildkompositionen und Flächen */
+
+  /*
+   * ── Elevation ────────────────────────────────────────────────────────
+   * Drei Stufen, räumlich plausibel. Kein blauer Glow, keine diffusen
+   * SaaS-Schatten.
+   */
+  --shadow-raise: 0 1px 2px rgb(7 26 58 / 0.05);
+  --shadow-float: 0 18px 38px -20px rgb(7 26 58 / 0.22);
+  --shadow-deep: 0 34px 70px -34px rgb(3 13 30 / 0.45);
+
+  /*
+   * ── Motion ───────────────────────────────────────────────────────────
+   * Zwei Kurven für alles. Werte aus review-animations/STANDARDS.md.
+   * Dauern kommen aus Tailwinds Skala und sind bewusst auf vier Gruppen
+   * begrenzt:
+   *   duration-150 → Press-/Interaktionsfeedback
+   *   duration-200 → kleiner UI-Übergang (Farbe, Chevron)
+   *   duration-300 → Zustandswechsel (Hover-Komposition, Karten)
+   *   duration-700 → große Bildbewegung (Bild-Zoom in Karten)
+   */
+  --ease-signature: cubic-bezier(0.23, 1, 0.32, 1); /* Ein-/Austritt, Feedback */
+  --ease-move: cubic-bezier(0.77, 0, 0.175, 1); /* Bewegung auf dem Schirm */
 }
 
 body {
@@ -64,6 +117,26 @@ body {
   .font-display {
     font-family: var(--font-display), Georgia, serif;
     font-feature-settings: "ss01" 1;
+    font-optical-sizing: auto;
+  }
+
+  /*
+   * Optisches Tracking nach apple-design §15: je größer der Schriftgrad,
+   * desto enger die Laufweite. Ein fester letter-spacing-Wert wäre bei
+   * mindestens einer Größe falsch.
+   */
+  .display-xl {
+    letter-spacing: -0.024em;
+    line-height: 1.05;
+  }
+  .display-lg {
+    letter-spacing: -0.018em;
+    line-height: 1.12;
+  }
+
+  /* Kontrollierte Lesebreite für redaktionelle Absätze (~65 Zeichen). */
+  .measure {
+    max-width: 64ch;
   }
 
   /*
@@ -71,69 +144,59 @@ body {
    * stock photography so unrelated images read as one coherent brand
    * system instead of generic stock. Sits on the ::before of BrandPhoto's
    * wrapper, above the image, below any caption/badge content.
+   *
+   * Bewusst zurückgenommen (vorher 0.32/0.04/0.22): der frühere Wert hat
+   * Hauttöne und weiße Oberflächen sichtbar abgedunkelt und Reinigungs-
+   * situationen kühler wirken lassen, als sie sind.
    */
   .brand-photo-overlay::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(165deg, rgb(7 26 58 / 0.32) 0%, rgb(7 26 58 / 0.04) 55%, rgb(7 26 58 / 0.22) 100%);
+    background: linear-gradient(165deg, rgb(7 26 58 / 0.2) 0%, rgb(7 26 58 / 0.02) 55%, rgb(7 26 58 / 0.14) 100%);
     mix-blend-mode: multiply;
     pointer-events: none;
   }
 
   /*
    * Signature brand motif ("Glanzstreifen"): a soft diagonal shine that
-   * sweeps across primary buttons and cards on hover/focus — a nod to
-   * "Glanz" (shine/polish) that stays subtle and premium, not gimmicky.
+   * sweeps across primary buttons on hover/focus — a nod to "Glanz"
+   * (shine/polish) that stays subtle and premium, not gimmicky.
+   *
+   * Nur auf Zeigergeräten: auf Touch gibt es kein Hover, dort soll der
+   * Effekt nicht durch einen falsch ausgelösten Tap-Hover erscheinen.
    */
   .shine-sweep {
     position: relative;
     overflow: hidden;
     isolation: isolate;
   }
-  .shine-sweep::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    left: -60%;
-    width: 40%;
-    background: linear-gradient(
-      115deg,
-      transparent,
-      rgb(255 255 255 / 0.35),
-      transparent
-    );
-    transform: skewX(-18deg);
-    transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-    pointer-events: none;
-  }
-  .shine-sweep:hover::after,
-  .shine-sweep:focus-visible::after {
-    left: 130%;
-  }
-
-  /*
-   * Plays the same sweep once automatically shortly after the element
-   * mounts, then reverts so hover/focus keep working normally. This is what
-   * makes the signature effect visible on mobile too, where there is no
-   * hover state to discover it.
-   */
-  .shine-sweep-auto::after {
-    animation: glanz-auto-sweep 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s 1;
-  }
-  @keyframes glanz-auto-sweep {
-    0% {
+  @media (hover: hover) and (pointer: fine) {
+    .shine-sweep::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       left: -60%;
+      width: 40%;
+      background: linear-gradient(115deg, transparent, rgb(255 255 255 / 0.3), transparent);
+      transform: skewX(-18deg);
+      transition: left 0.6s var(--ease-signature);
+      pointer-events: none;
     }
-    100% {
+    .shine-sweep:hover::after,
+    .shine-sweep:focus-visible::after {
       left: 130%;
     }
   }
 
-  /* Thin gradient divider reusing the same brand streak, for section breaks. */
+  /*
+   * Thin gradient divider reusing the same brand streak, for section breaks.
+   * Das warme Gelb erscheint hier bewusst nur als schmaler Kern des
+   * Verlaufs — die einzige regelmäßige Verwendung der Akzentfarbe.
+   */
   .glanz-divider {
-    height: 3px;
+    height: 2px;
     width: 100%;
     border-radius: 999px;
     background: linear-gradient(
@@ -145,20 +208,88 @@ body {
     );
     opacity: 0.7;
   }
+
+  /*
+   * ── Zwei Interaktions-Primitive ──────────────────────────────────────
+   * Statt in jeder Komponente eigene Hover-/Press-Werte zu wiederholen,
+   * kapseln diese beiden Klassen die Regeln einmal:
+   *  .lift  — Hebung auf Zeigergeräten (kein Layout-Einfluss, nur transform)
+   *  .press — sofortiges Druckfeedback, 150 ms (emil-design-eng)
+   */
+  .lift {
+    transition:
+      transform 0.3s var(--ease-signature),
+      box-shadow 0.3s var(--ease-signature),
+      border-color 0.3s var(--ease-signature);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .lift:hover {
+      transform: translateY(-3px);
+    }
+  }
+  .press {
+    transition: transform 0.15s var(--ease-signature);
+  }
+  .press:active {
+    transform: scale(0.97);
+  }
+
+  /*
+   * Lichtkante: feine helle Oberkante auf dunklen Flächen. Ersetzt die
+   * früheren großflächigen Blur-Orbs als Tiefenmittel — Licht statt Nebel.
+   */
+  .light-edge {
+    position: relative;
+  }
+  .light-edge::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.28), transparent);
+    pointer-events: none;
+  }
 }
 
 @layer utilities {
-  /* Slow zoom on the hero background photo, replacing the previous video hero. */
-  .hero-kenburns {
-    animation: hero-kenburns 16s ease-in-out infinite alternate;
-    will-change: transform;
+  /*
+   * Hero-Bild: einmaliger, sehr langsamer Drift beim Eintritt statt der
+   * früheren 16-Sekunden-Endlosschleife. Eine dauerhaft oszillierende
+   * Vollbildfläche erzeugt Unruhe und fällt unter die von apple-design §14
+   * genannten langsamen Dauerschleifen.
+   */
+  .hero-drift {
+    transform-origin: center 60%;
+    animation: hero-drift 18s var(--ease-move) 0.15s 1 forwards;
   }
-  @keyframes hero-kenburns {
-    0% {
+  @keyframes hero-drift {
+    from {
+      transform: scale(1.07);
+    }
+    to {
       transform: scale(1);
     }
-    100% {
-      transform: scale(1.18);
+  }
+}
+
+@layer utilities {
+  /*
+   * Einblendung geöffneter Accordion-Inhalte. Bewusst nur opacity und
+   * transform — die Höhe ändert sich sofort, damit keine Layout-Eigenschaft
+   * animiert wird (review-animations Standard 7).
+   */
+  .panel-reveal {
+    animation: panel-reveal 0.2s var(--ease-signature) 1;
+  }
+  @keyframes panel-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
@@ -166,10 +297,10 @@ body {
 @layer utilities {
   .fade-in-up {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
     transition:
-      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.5s var(--ease-signature),
+      transform 0.5s var(--ease-signature);
   }
   .fade-in-up.is-visible {
     opacity: 1;
@@ -177,18 +308,46 @@ body {
   }
 }
 
+/*
+ * Ohne JavaScript würde .fade-in-up dauerhaft auf opacity:0 stehen und
+ * Inhalte verbergen. Diese Regel stellt sicher, dass die Seite auch mit
+ * deaktiviertem JavaScript vollständig lesbar bleibt.
+ */
+@media (scripting: none) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /*
+   * Reduced Motion heißt sanfter, nicht null: Farb- und Opacity-Übergänge
+   * bleiben erhalten (sie helfen beim Verstehen), Bewegung entfällt.
+   */
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 
-  .hero-kenburns {
+  .hero-drift {
     animation: none !important;
+    transform: none !important;
+  }
+
+  .fade-in-up,
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Bewegung entfällt, Farb- und Schattenwechsel bleiben erhalten. */
+  .lift:hover,
+  .press:active {
     transform: none !important;
   }
 }

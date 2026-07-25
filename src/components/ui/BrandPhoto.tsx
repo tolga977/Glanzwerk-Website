@@ -29,7 +29,7 @@ export default function BrandPhoto({
   aspect = "aspect-[4/3]",
   sizes = "(min-width: 1024px) 560px, 100vw",
   priority = false,
-  rounded = "rounded-3xl",
+  rounded = "rounded-panel",
   className = "",
   children,
   overlay = true,

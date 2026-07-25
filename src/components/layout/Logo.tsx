@@ -22,7 +22,7 @@ export default function Logo({ className = "", variant = "dark", height = 48, on
     <Link
       href="/"
       onClick={onClick}
-      className={`inline-flex items-center ${className}`}
+      className={`inline-flex items-center rounded-control focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${className}`}
       aria-label="Glanzwerk Reinigungsservice Berlin – Startseite"
     >
       <Image

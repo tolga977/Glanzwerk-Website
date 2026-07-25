@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
-import TrustBadges from "@/components/ui/TrustBadges";
+import { TrustIcon } from "@/components/ui/TrustBadges";
 import ProcessSteps from "@/components/ui/ProcessSteps";
-import CTASection from "@/components/ui/CTASection";
 import ArticleCard from "@/components/ui/ArticleCard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
@@ -105,7 +103,7 @@ const homepageServiceCopy: Record<string, { description: string; linkText: strin
   },
 };
 
-/** Section 2 — sechs Vertrauenskarten, homepage-eigen (nicht die sitewide TrustBadges-Standardliste). */
+/** Section 2 — sechs Vertrauenspunkte, homepage-eigen (nicht die sitewide TrustBadges-Standardliste). */
 const trustSectionBadges = [
   {
     title: "Fester Ansprechpartner",
@@ -145,31 +143,27 @@ const trustSectionBadges = [
   },
 ];
 
-/** Section 4 — vier Karten zur konkreten Arbeitsweise, homepage-eigen. */
-const workingMethodBadges = [
+/** Section 4 — vier Aussagen zur konkreten Arbeitsweise, homepage-eigen. */
+const workingMethodPoints = [
   {
     title: "Ihr Objekt wird vorab eingeordnet",
     description:
       "Wir klären Flächen, Nutzung, Besucheraufkommen, sensible Bereiche und gewünschte Reinigungszeiten.",
-    icon: "specialized" as const,
   },
   {
     title: "Die Leistungen werden eindeutig festgelegt",
     description:
       "Sie wissen, welche Arbeiten regelmäßig ausgeführt werden und welche Leistungen bei Bedarf ergänzt werden können.",
-    icon: "transparent" as const,
   },
   {
     title: "Das eingesetzte Team kennt die Anforderungen",
     description:
       "Wiederkehrende Abläufe und objektspezifische Hinweise werden so organisiert, dass nicht bei jedem Einsatz neu begonnen werden muss.",
-    icon: "personal" as const,
   },
   {
     title: "Beanstandungen werden direkt geklärt",
     description:
       "Sollte eine vereinbarte Leistung einmal nicht wie erwartet ausgeführt worden sein, prüfen wir den konkreten Fall und kümmern uns um eine zeitnahe Lösung.",
-    icon: "reliable" as const,
   },
 ];
 
@@ -198,21 +192,18 @@ const homeProcessSteps = [
 ];
 
 /** Section 6 — drei kurze Umweltpunkte, homepage-eigen. */
-const environmentBadges = [
+const environmentPoints = [
   {
     title: "Bedarfsgerechte Dosierung",
     description: "Reinigungsmittel werden entsprechend dem tatsächlichen Bedarf und den Herstellerangaben eingesetzt.",
-    icon: "transparent" as const,
   },
   {
     title: "Materialschonende Verfahren",
     description: "Das Verfahren wird an Bodenbeläge, Glas, Mobiliar und weitere Oberflächen angepasst.",
-    icon: "specialized" as const,
   },
   {
     title: "Mülltrennung im Objekt",
     description: "Bestehende Trennsysteme berücksichtigen wir im Rahmen der vereinbarten Leistungen.",
-    icon: "reliable" as const,
   },
 ];
 
@@ -258,32 +249,59 @@ const homeFaqItems = [
   },
 ];
 
+/**
+ * Section 3 — Rhythmus im Leistungsraster: die vier breitesten Leistungen
+ * bekommen die größere Kartenfläche, die acht spezialisierten die kompakte.
+ * Beide Gruppen behalten Foto und Beschreibung; die Reihenfolge entspricht
+ * unverändert der Datenreihenfolge in services.ts (keine Umsortierung).
+ * 4 + 8 füllt das 2er- bzw. 4er-Raster restlos auf — kein ausgefranstes
+ * letztes Raster und kein Bento-Zufallsmuster.
+ */
+const broadServices = services.slice(0, 4);
+const specialisedServices = services.slice(4);
+
+const arrowIcon = (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+    className="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
+  >
+    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export default function HomePage() {
   return (
     <>
       <JsonLd data={professionalServiceSchema()} />
 
-      {/* 1. Hero — volltonige, langsam bewegte Hintergrundfläche (Ken-Burns-
-          Zoom statt Video), als moderne Weiterentwicklung des bisherigen
-          Glanzwerk-Hero-Konzepts mit Hintergrundvideo. */}
+      {/*
+        1. Hero — vollflächiges Foto als räumliche Basis, Textblock links auf
+        einer kontrollierten Verlaufskante. Kein Glaspanel, kein Badge-Cluster,
+        keine Kennzahlen. Das Bild driftet einmalig langsam in seine Ruhelage.
+      */}
       <section className="relative isolate overflow-hidden bg-brand-950">
         <HeroPhoto />
         <div className="container-page relative z-10 py-24 sm:py-28 lg:py-36">
           <div className="max-w-2xl">
-            <p className="mb-4 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
+            <p className="mb-6 inline-flex items-center gap-2.5 rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+              <GlanzMark className="h-3.5 w-3.5 shrink-0" />
               Gebäudereinigung für Gewerbekunden in Berlin
             </p>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
+            <h1 className="font-display display-xl text-4xl font-medium text-white sm:text-5xl lg:text-6xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/85">
               Glanzwerk Reinigungsservice Berlin reinigt Büros, Praxen, Kanzleien, Autohäuser,
               Gastronomiebetriebe und weitere Gewerbeobjekte in ganz Berlin. Wir stimmen Leistungen,
               Reinigungszeiten und Intervalle auf Ihren Betrieb ab. Sie erhalten einen festen
               Ansprechpartner, nachvollziehbare Absprachen und eine Reinigung, die Ihren Arbeitsalltag
               möglichst wenig beeinträchtigt.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" size="lg">
                 Preis kostenlos berechnen
               </Button>
@@ -300,93 +318,189 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Vertrauenszeile unter dem Hero. */}
-      <section className="border-y border-white/10 bg-brand-900 py-4">
-        <div className="container-page flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center sm:justify-center">
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
-            In allen zwölf Berliner Bezirken im Einsatz
-          </span>
-          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
-            Flexible Reinigungszeiten
-          </span>
-          <span aria-hidden="true" className="h-3 w-px bg-white/15" />
-          <span className="text-xs font-medium uppercase tracking-[0.14em] text-brand-200">
-            Betriebshaftpflichtversichert
-          </span>
+      {/* Vertrauenszeile: ruhiges Band, das den Hero abschließt statt eines Badge-Clusters im Bild. */}
+      <section className="light-edge border-b border-white/10 bg-brand-900 py-5">
+        <div className="container-page flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center">
+          {[
+            "In allen zwölf Berliner Bezirken im Einsatz",
+            "Flexible Reinigungszeiten",
+            "Betriebshaftpflichtversichert",
+          ].map((item) => (
+            <span
+              key={item}
+              className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-brand-100"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+                className="shrink-0 text-brand-300"
+              >
+                <path
+                  d="M5 13l4 4L19 7"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {item}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* 2. Vertrauensbereich */}
-      <Section background="white">
-        <EditorialIntro
-          eyebrow="Darauf kommt es im Reinigungsalltag an"
-          title={heading.sectionHeadings[0]}
-          subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
-        >
-          <FadeIn>
-            <TrustBadges badges={trustSectionBadges} />
+      {/*
+        2. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
+        die sechs Punkte rechts als Matrix aus feinen Trennlinien. Bewusst
+        keine sechs gleichen Container.
+      */}
+      <Section background="warm" spacing="roomy">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
+          <div>
+            <SectionHeading
+              eyebrow="Darauf kommt es im Reinigungsalltag an"
+              title={heading.sectionHeadings[0]}
+              subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
+            />
+            <BrandPhoto
+              photo={photos.routineCleaningTeam}
+              aspect="aspect-[4/3]"
+              sizes="(min-width: 1024px) 416px, 100vw"
+              className="mt-9 shadow-float"
+            />
+          </div>
+
+          <FadeIn as="ul" className="grid border-t border-line sm:grid-cols-2 sm:gap-x-12">
+            {trustSectionBadges.map((badge) => (
+              <li key={badge.title} className="flex gap-4 border-b border-line py-6">
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-white text-brand-500 shadow-raise">
+                  <TrustIcon name={badge.icon} />
+                </span>
+                <div>
+                  <p className="font-display text-base font-medium text-brand-900">{badge.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
+                </div>
+              </li>
+            ))}
           </FadeIn>
-        </EditorialIntro>
+        </div>
       </Section>
 
-      {/* 3. Leistungsbereich */}
-      <Section background="tint" decor>
+      {/*
+        3. Leistungsbereich — alle zwölf Leistungen mit Foto nebeneinander.
+        Rhythmus über zwei Kartengrößen statt über zwölf identische Kacheln.
+      */}
+      <Section background="white" decor>
         <SectionHeading
           eyebrow="Unsere Reinigungsleistungen"
           title={heading.sectionHeadings[1]}
           subtitle="Ein Büro stellt andere Anforderungen als eine Arztpraxis, ein Autohaus oder ein gastronomischer Betrieb. Deshalb betrachten wir nicht nur die Fläche, sondern auch die Nutzung des Gebäudes. Gemeinsam legen wir fest, welche Bereiche regelmäßig gereinigt werden, wo hygienisch sensible Zonen liegen und welche Arbeiten in größeren Abständen sinnvoll sind."
         />
-        <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
+
+        <FadeIn className="mt-12 grid gap-6 sm:grid-cols-2">
+          {broadServices.map((service) => (
             <ServiceCard
               key={service.slug}
               service={service}
+              variant="feature"
               summaryOverride={homepageServiceCopy[service.slug]?.description}
               ctaLabelOverride={homepageServiceCopy[service.slug]?.linkText}
             />
           ))}
         </FadeIn>
-        <div className="mt-8">
+
+        <FadeIn className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          {specialisedServices.map((service) => (
+            <ServiceCard
+              key={service.slug}
+              service={service}
+              variant="compact"
+              summaryOverride={homepageServiceCopy[service.slug]?.description}
+              ctaLabelOverride={homepageServiceCopy[service.slug]?.linkText}
+            />
+          ))}
+        </FadeIn>
+
+        <div className="mt-10">
           <Button href="/leistungen" variant="ghost">
             Alle Reinigungsleistungen ansehen
           </Button>
         </div>
       </Section>
 
-      {/* 4. Konkrete Arbeitsweise */}
-      <Section background="white">
-        <SectionHeading
-          eyebrow="So arbeitet Glanzwerk"
-          title={heading.sectionHeadings[2]}
-          subtitle="Ob eine Reinigung dauerhaft funktioniert, zeigt sich im Alltag. Deshalb setzen wir nicht auf allgemeine Werbeversprechen, sondern auf klare Zuständigkeiten und praktische Vereinbarungen. Ihr Objekt wird vor dem Start besprochen, Leistungen werden festgehalten und Besonderheiten dokumentiert."
-        />
-        <div className="mt-10">
-          <TrustBadges badges={workingMethodBadges} />
+      {/*
+        4. Konkrete Arbeitsweise — bewusst KEIN zweiter Kartenbereich: großes
+        Betriebsfoto plus vier Betriebsprinzipien an einer durchgehenden Kante.
+      */}
+      <Section background="muted">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:gap-16">
+          <BrandPhoto
+            photo={photos.cleaningEquipment}
+            aspect="aspect-[4/5]"
+            sizes="(min-width: 1024px) 480px, 100vw"
+            className="shadow-float"
+          />
+          <div>
+            <SectionHeading
+              eyebrow="So arbeitet Glanzwerk"
+              title={heading.sectionHeadings[2]}
+              subtitle="Ob eine Reinigung dauerhaft funktioniert, zeigt sich im Alltag. Deshalb setzen wir nicht auf allgemeine Werbeversprechen, sondern auf klare Zuständigkeiten und praktische Vereinbarungen. Ihr Objekt wird vor dem Start besprochen, Leistungen werden festgehalten und Besonderheiten dokumentiert."
+            />
+            <FadeIn as="ul" className="mt-9 space-y-7 border-l-2 border-brand-200 pl-7">
+              {workingMethodPoints.map((point) => (
+                <li key={point.title} className="relative">
+                  <span
+                    aria-hidden="true"
+                    className="absolute -left-[calc(1.75rem+3px)] top-2 h-1.5 w-1.5 rounded-full bg-brand-500"
+                  />
+                  <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
+                  <p className="measure mt-1.5 text-sm leading-relaxed text-ink-soft">
+                    {point.description}
+                  </p>
+                </li>
+              ))}
+            </FadeIn>
+          </div>
         </div>
       </Section>
 
-      {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte */}
+      {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte. */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[3]} light />
-        <FadeIn className="mt-10">
+        <SectionHeading
+          eyebrow="Von der Anfrage bis zum Reinigungsstart"
+          title={heading.sectionHeadings[3]}
+          light
+        />
+        <FadeIn className="mt-12">
           <ProcessSteps steps={homeProcessSteps} light />
         </FadeIn>
       </Section>
 
-      {/* 6. Umwelt und Verantwortung */}
+      {/*
+        6. Umwelt und Verantwortung — warme Graphitfläche und ein sehr
+        zurückhaltender Grünakzent, der ausschließlich hier vorkommt.
+      */}
       <Section background="warm">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <BrandPhoto photo={dosierungPhoto} className="shadow-2xl shadow-brand-950/20 lg:order-2" />
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
+          <BrandPhoto
+            photo={dosierungPhoto}
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-float lg:order-2"
+          />
           <div className="lg:order-1">
             <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
-            <div className="mt-5 max-w-xl space-y-4 text-base leading-relaxed text-ink-soft">
+            <div className="measure mt-5 space-y-4 text-base leading-relaxed text-ink-soft">
               <p>
-                Wirksame Reinigung bedeutet nicht, möglichst viel Chemie einzusetzen. Entscheidend sind
-                das passende Mittel, die richtige Dosierung und ein Verfahren, das zur Oberfläche passt.
-                Glanzwerk arbeitet unter anderem mit professionellen Reinigungsprodukten von Kiehl, Dr.
-                Schnell und Buzil. Welches Produkt eingesetzt wird, richtet sich nach Material,
-                Verschmutzung und Nutzungsbereich.
+                <strong className="font-semibold text-brand-900">
+                  Wirksame Reinigung bedeutet nicht, möglichst viel Chemie einzusetzen.
+                </strong>{" "}
+                Entscheidend sind das passende Mittel, die richtige Dosierung und ein Verfahren, das
+                zur Oberfläche passt. Glanzwerk arbeitet unter anderem mit professionellen
+                Reinigungsprodukten von Kiehl, Dr. Schnell und Buzil. Welches Produkt eingesetzt wird,
+                richtet sich nach Material, Verschmutzung und Nutzungsbereich.
               </p>
               <p>
                 Wo es im Objekt möglich und sinnvoll ist, achten wir auf einen sparsamen
@@ -396,10 +510,20 @@ export default function HomePage() {
                 vereinbart oder hygienisch erforderlich sind – nicht pauschal auf jeder Fläche.
               </p>
             </div>
-            <div className="mt-6">
-              <TrustBadges badges={environmentBadges} />
-            </div>
-            <div className="mt-6">
+
+            <ul className="mt-8 divide-y divide-line border-y border-line">
+              {environmentPoints.map((point) => (
+                <li key={point.title} className="flex gap-3.5 py-4">
+                  <span aria-hidden="true" className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-eco-600" />
+                  <p className="text-sm leading-relaxed">
+                    <span className="font-semibold text-eco-600">{point.title}</span>{" "}
+                    <span className="text-ink-soft">— {point.description}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
               <Button href="/umwelt-verantwortung" variant="ghost">
                 Mehr über Umwelt und Verantwortung
               </Button>
@@ -408,108 +532,164 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 7. Einsatzgebiet */}
-      <Section background="tint" decor>
+      {/*
+        7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
+        liest sich als Einsatzverzeichnis, nicht als Ortsnamen-SEO-Block.
+      */}
+      <Section background="white">
         <SectionHeading
           eyebrow="Gebäudereinigung vor Ort"
           title={heading.sectionHeadings[5]}
           subtitle="Glanzwerk betreut gewerblich genutzte Objekte in ganz Berlin. Dazu gehören zentrale Bürostandorte ebenso wie Praxen, Kanzleien, Gastronomiebetriebe, Autohäuser und Gewerbeflächen in den äußeren Bezirken. Kurze Abstimmungswege und eine realistische Einsatzplanung sind dabei wichtiger als künstlich eingebaute Ortsnamen."
         />
-        <FadeIn className="mt-8 flex flex-wrap gap-2">
+        <FadeIn className="mt-10 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
           {districts.map((district) => (
             <Link
               key={district.slug}
               href={`/standorte/${district.slug}`}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
+              className="group flex items-center justify-between gap-4 border-b border-line py-4 text-base font-medium text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
             >
-              {district.name}
+              <span>{district.name}</span>
+              <span className="text-brand-300 transition-colors duration-200 ease-out group-hover:text-brand-500">
+                {arrowIcon}
+              </span>
             </Link>
           ))}
         </FadeIn>
-        <p className="mt-6 max-w-2xl text-sm text-ink-soft">
+        <p className="measure mt-8 text-sm leading-relaxed text-ink-soft">
           Nach Absprache übernehmen wir auch Reinigungsaufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von Objektgröße,
           Leistungsumfang und Reinigungsintervall ab.
         </p>
       </Section>
 
-      {/* 8. Wissensbereich */}
-      <Section background="white">
+      {/* 8. Wissensbereich — redaktionelle Strecke, deutlich anders als die Leistungskarten. */}
+      <Section background="muted">
         <SectionHeading
           eyebrow="Glanzwerk Wissen"
           title={heading.sectionHeadings[6]}
           subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
         />
-        <FadeIn className="mt-10 grid gap-5 sm:grid-cols-3">
+        <FadeIn className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-7">
           {articles.slice(0, 3).map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
         </FadeIn>
-        <div className="mt-8">
+        <div className="mt-10">
           <Button href="/wissen" variant="ghost">
             Alle Ratgeber ansehen
           </Button>
         </div>
       </Section>
 
-      {/* 9. Dreimonatige Testphase */}
-      <Section background="muted">
-        <CTASection
-          title={heading.secondaryCtaHeading}
-          subtitle="Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär angebotenen Konditionen. Nach Ablauf entsteht keine automatische langfristige Verlängerung. Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten."
-          primaryLabel="Testphase anfragen"
-          primaryHref="/3-monate-testen"
-          secondaryLabel="Preis berechnen"
-          secondaryHref="/preisrechner"
-        />
+      {/*
+        9. Dreimonatige Testphase — markantes horizontales Band auf dunkler
+        Fläche. Bewusst kein Preisschild, kein Countdown, keine Dringlichkeit.
+      */}
+      <Section background="navy" decor>
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_auto] lg:items-center lg:gap-20">
+          <div>
+            <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl">
+              {heading.secondaryCtaHeading}
+            </h2>
+            <div className="glanz-divider mt-5 max-w-[120px]" />
+            <p className="measure mt-6 text-base leading-relaxed text-brand-100">
+              Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
+              Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
+              angebotenen Konditionen. Nach Ablauf entsteht keine automatische langfristige
+              Verlängerung. Die genauen Leistungen und Termine werden vor Beginn schriftlich
+              festgehalten.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <Button href="/3-monate-testen" size="lg">
+              Testphase anfragen
+            </Button>
+            <Button
+              href="/preisrechner"
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white hover:text-brand-900"
+            >
+              Preis berechnen
+            </Button>
+          </div>
+        </div>
       </Section>
 
-      {/* 10. FAQ */}
+      {/* 10. FAQ — ruhiger Abschnitt, der die Seite vor dem Abschluss entlastet. */}
       <Section background="white" id="faq">
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
-        <FadeIn className="mx-auto mt-10 max-w-2xl">
+        <FadeIn className="mx-auto mt-12 max-w-3xl">
           <FAQ items={homeFaqItems} />
         </FadeIn>
       </Section>
 
-      {/* 11. Abschließender Kontaktbereich — Abschluss-CTA mit Bildhintergrund */}
-      <Section background="muted">
-        <div
-          className="relative overflow-hidden rounded-3xl"
-          style={{
-            backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.93), rgb(11 30 61 / 0.9)), url(${photos.buildingFacade.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <FadeIn className="px-6 py-14 text-center shadow-2xl shadow-brand-950/30 sm:px-12 sm:py-16">
-            <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
-            <h2 className="font-display text-2xl font-medium text-white sm:text-3xl">
-              {heading.ctaHeading}
-            </h2>
-            <div className="glanz-divider mx-auto mt-4 max-w-[120px]" />
-            <p className="mx-auto mt-4 max-w-xl text-brand-200">
-              Beschreiben Sie kurz, welche Räume gereinigt werden sollen und wie häufig Sie
-              Unterstützung benötigen. Wir prüfen Ihre Angaben und melden uns mit den nächsten
-              Schritten. Bei größeren oder besonders genutzten Objekten stimmen wir bei Bedarf einen
-              Besichtigungstermin ab.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href="/preisrechner" variant="primary" size="lg">
-                Preis kostenlos berechnen
-              </Button>
-              <Button href="/kontakt" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-900">
-                Angebot anfragen
-              </Button>
+      {/* 11. Abschließender Kontaktbereich — greift die Bildsprache des Heros wieder auf. */}
+      <Section background="warm" spacing="roomy">
+        <FadeIn>
+          <div
+            className="relative overflow-hidden rounded-panel shadow-deep"
+            style={{
+              backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.93), rgb(11 30 61 / 0.9)), url(${photos.buildingFacade.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="light-edge relative px-6 py-16 text-center sm:px-12 sm:py-20">
+              <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-25 sm:h-32 sm:w-32" />
+              <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl">
+                {heading.ctaHeading}
+              </h2>
+              <div className="glanz-divider mx-auto mt-5 max-w-[120px]" />
+              <p className="measure mx-auto mt-6 text-base leading-relaxed text-brand-100">
+                Beschreiben Sie kurz, welche Räume gereinigt werden sollen und wie häufig Sie
+                Unterstützung benötigen. Wir prüfen Ihre Angaben und melden uns mit den nächsten
+                Schritten. Bei größeren oder besonders genutzten Objekten stimmen wir bei Bedarf einen
+                Besichtigungstermin ab.
+              </p>
+              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button href="/preisrechner" variant="primary" size="lg">
+                  Preis kostenlos berechnen
+                </Button>
+                <Button
+                  href="/kontakt"
+                  variant="outline"
+                  size="lg"
+                  className="border-white text-white hover:bg-white hover:text-brand-900"
+                >
+                  Angebot anfragen
+                </Button>
+              </div>
+              <div className="mt-8 flex flex-col items-center justify-center gap-1 sm:flex-row sm:gap-8">
+                <a
+                  href={siteConfig.phoneHref}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Oder direkt anrufen: {siteConfig.phone}
+                </a>
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                    <path d="m3.5 6.5 8.5 6 8.5-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+                  </svg>
+                  {siteConfig.email}
+                </a>
+              </div>
             </div>
-            <a href={siteConfig.phoneHref} className="mt-5 block text-sm text-brand-200 hover:text-white">
-              Oder direkt anrufen: {siteConfig.phone}
-            </a>
-            <a href={`mailto:${siteConfig.email}`} className="mt-1 block text-sm text-brand-200 hover:text-white">
-              {siteConfig.email}
-            </a>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
       </Section>
     </>
   );

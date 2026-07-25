@@ -22,7 +22,16 @@ const defaultSteps: ProcessStep[] = [
   },
 ];
 
-/** `light`: use on dark ("navy"/"brand") Section backgrounds — inverts the number badge and lightens text. */
+/**
+ * Der Ablauf wird als zusammenhängender Weg dargestellt, nicht als vier
+ * unabhängige Karten:
+ *  - Mobil: senkrechte Schiene links neben den Nummern. Die Linie liegt bei
+ *    20 px, der Text beginnt bei 56 px — sie schneidet also nie Text.
+ *  - Tablet: 2×2, Reihenfolge über die zweistelligen Nummern eindeutig.
+ *  - Desktop: vier Stationen auf einer durchgehenden Linie.
+ *
+ * `light`: für dunkle ("navy"/"brand") Section-Hintergründe.
+ */
 export default function ProcessSteps({
   steps = defaultSteps,
   light = false,
@@ -31,38 +40,50 @@ export default function ProcessSteps({
   light?: boolean;
 }) {
   return (
-    <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-      {steps.map((step, index) => (
-        <li key={step.title}>
-          <div className="flex items-center">
+    <ol className="relative grid gap-9 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
+      {/* Durchgehende Linie zwischen den Stationen — nur im vierspaltigen Layout. */}
+      <span
+        aria-hidden="true"
+        className={`absolute left-5 right-5 top-5 hidden h-px lg:block ${
+          light ? "bg-white/25" : "bg-line-strong"
+        }`}
+      />
+
+      {steps.map((step, index) => {
+        const isLast = index === steps.length - 1;
+        return (
+          <li key={step.title} className="relative pl-16 sm:pl-0">
+            {/* Senkrechte Schiene zum nächsten Schritt (nur mobil). */}
+            {!isLast && (
+              <span
+                aria-hidden="true"
+                className={`absolute left-5 top-12 -bottom-9 w-px sm:hidden ${
+                  light ? "bg-white/25" : "bg-line-strong"
+                }`}
+              />
+            )}
+
             <span
-              className={`font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-medium shadow-sm ${
-                light
-                  ? "bg-white text-brand-900"
-                  : "bg-gradient-to-br from-brand-800 to-brand-900 text-white"
+              className={`font-display absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full text-base font-medium sm:relative sm:mb-5 ${
+                light ? "bg-white text-brand-900" : "bg-brand-900 text-white"
               }`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
-            {index < steps.length - 1 && (
-              <span
-                aria-hidden="true"
-                className={`ml-3 hidden h-px flex-1 lg:block ${
-                  light
-                    ? "bg-gradient-to-r from-white/40 to-white/10"
-                    : "bg-gradient-to-r from-brand-200 to-brand-100"
-                }`}
-              />
-            )}
-          </div>
-          <h3 className={`mt-4 text-base font-semibold ${light ? "text-white" : "text-brand-900"}`}>
-            {step.title}
-          </h3>
-          <p className={`mt-2 text-sm leading-relaxed ${light ? "text-brand-100" : "text-ink-soft"}`}>
-            {step.description}
-          </p>
-        </li>
-      ))}
+
+            <h3
+              className={`text-base font-semibold sm:mt-0 ${light ? "text-white" : "text-brand-900"}`}
+            >
+              {step.title}
+            </h3>
+            <p
+              className={`mt-2 text-sm leading-relaxed ${light ? "text-brand-100" : "text-ink-soft"}`}
+            >
+              {step.description}
+            </p>
+          </li>
+        );
+      })}
     </ol>
   );
 }

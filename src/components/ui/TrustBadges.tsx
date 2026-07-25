@@ -87,6 +87,24 @@ const icons = {
   ),
 } as const;
 
+export type TrustIconName = keyof typeof icons;
+
+/** Einzelnes Vertrauens-Icon, damit Seiten eigene Kompositionen mit demselben
+ *  Icon-Satz bauen können, ohne die Rasterdarstellung von TrustBadges zu erben. */
+export function TrustIcon({
+  name,
+  className = "h-[18px] w-[18px]",
+}: {
+  name?: TrustIconName;
+  className?: string;
+}) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      {icons[name ?? "reliable"]}
+    </svg>
+  );
+}
+
 const defaultBadges: TrustBadge[] = [
   {
     title: "Persönliche Betreuung",
@@ -129,9 +147,7 @@ export default function TrustBadges({ badges = defaultBadges }: { badges?: Trust
           className="group flex gap-3 rounded-2xl p-3 transition-colors duration-300 hover:bg-brand-50/60"
         >
           <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500 transition-transform duration-300 ease-out group-hover:scale-105">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              {icons[badge.icon ?? "reliable"]}
-            </svg>
+            <TrustIcon name={badge.icon} />
           </span>
           <div>
             <p className="text-sm font-semibold text-brand-900">{badge.title}</p>

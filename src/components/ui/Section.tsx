@@ -35,14 +35,18 @@ export function SectionHeading({
         </p>
       )}
       <Heading
-        className={`font-display font-medium tracking-tight ${light ? "text-white" : "text-brand-900"} ${
+        className={`font-display display-lg font-medium ${light ? "text-white" : "text-brand-900"} ${
           Heading === "h1" ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
         }`}
       >
         {title}
       </Heading>
       {subtitle && (
-        <p className={`mt-3.5 text-base leading-relaxed ${light ? "text-brand-100" : "text-ink-soft"}`}>
+        <p
+          className={`measure mt-4 text-base leading-relaxed ${
+            light ? "text-brand-100" : "text-ink-soft"
+          } ${centered ? "mx-auto" : ""}`}
+        >
           {subtitle}
         </p>
       )}
@@ -61,8 +65,15 @@ interface SectionProps {
    */
   background?: "white" | "muted" | "tint" | "brand" | "warm" | "navy";
   id?: string;
-  /** Adds soft, contained blurred blue shapes in the background for extra depth. */
+  /**
+   * Zurückhaltende Tiefenebene: eine feine Lichtkante an der Oberkante und
+   * ein sehr schwacher diagonaler Glanzstreifen. Bewusst KEINE großflächigen
+   * weichgezeichneten Kreise mehr — die lasen sich als generische
+   * KI-/SaaS-Dekoration und haben auf jeder Section gleich ausgesehen.
+   */
   decor?: boolean;
+  /** Vertikaler Rhythmus: compact (dichter), normal (Standard), roomy (Atempause). */
+  spacing?: "compact" | "normal" | "roomy";
 }
 
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
@@ -74,32 +85,47 @@ const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string>
   navy: "bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 text-white",
 };
 
+const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
+  compact: "py-14 sm:py-16",
+  normal: "py-20 sm:py-24",
+  roomy: "py-24 sm:py-32",
+};
+
 export default function Section({
   children,
   className = "",
   background = "white",
   id,
   decor = false,
+  spacing = "normal",
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} py-20 sm:py-24`}
+      className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
     >
       {decor && (
         <>
+          {/* Lichtkante: markiert den Beginn der Fläche, ohne Nebel zu erzeugen. */}
           <div
             aria-hidden="true"
-            className={`pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl ${
-              dark ? "bg-white/10" : "bg-brand-200/40"
-            }`}
+            className="pointer-events-none absolute inset-x-0 top-0 h-px"
+            style={{
+              background: dark
+                ? "linear-gradient(90deg, transparent, rgb(255 255 255 / 0.22), transparent)"
+                : "linear-gradient(90deg, transparent, rgb(47 166 206 / 0.35), transparent)",
+            }}
           />
+          {/* Glanzstreifen: ein einzelner, sehr schwacher diagonaler Lichtverlauf. */}
           <div
             aria-hidden="true"
-            className={`pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full blur-3xl ${
-              dark ? "bg-brand-400/10" : "bg-brand-100/60"
-            }`}
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: dark
+                ? "linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.045) 50%, transparent 62%)"
+                : "linear-gradient(115deg, transparent 38%, rgb(47 166 206 / 0.06) 50%, transparent 62%)",
+            }}
           />
         </>
       )}

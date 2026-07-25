@@ -45,8 +45,8 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/95 backdrop-blur">
-      <div className="container-page flex h-24 items-center justify-between gap-6">
+    <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur-md">
+      <div className="container-page flex h-20 items-center justify-between gap-6 lg:h-24">
         <Logo height={56} className="shrink-0" />
 
         <nav aria-label="Hauptnavigation" className="hidden lg:block">
@@ -66,7 +66,7 @@ export default function Header() {
                     aria-current={isActive(item.href) ? "page" : undefined}
                     aria-expanded={item.children ? openDropdown === item.label : undefined}
                     onFocus={() => item.children && setOpenDropdown(item.label)}
-                    className={`flex items-center gap-1 rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-brand-50 ${
+                    className={`flex min-h-11 items-center gap-1 rounded-control px-4 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
                       isActive(item.href) ? "bg-brand-50 text-brand-500" : "text-brand-900"
                     }`}
                   >
@@ -84,7 +84,7 @@ export default function Header() {
 
                   {item.children && openDropdown === item.label && (
                     <div
-                      className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-3xl border border-black/[0.06] bg-white p-5 shadow-2xl shadow-brand-950/[0.08] ${
+                      className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-card border border-line bg-white p-5 shadow-float ${
                         item.label === "Standorte" ? "w-[640px]" : isMega ? "w-[560px]" : "w-64"
                       }`}
                     >
@@ -95,9 +95,9 @@ export default function Header() {
                               <li key={service.slug}>
                                 <Link
                                   href={`/leistungen/${service.slug}`}
-                                  className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-brand-50 hover:text-brand-500"
+                                  className="flex items-center gap-2.5 rounded-control px-3 py-2 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
                                 >
-                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-500">
+                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                                     <ServiceIcon slug={service.slug} className="h-4 w-4" />
                                   </span>
                                   {service.shortTitle}
@@ -107,7 +107,7 @@ export default function Header() {
                           </ul>
                           <Link
                             href="/preisrechner"
-                            className="flex w-40 flex-col justify-between rounded-xl bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white transition-transform hover:-translate-y-0.5"
+                            className="lift flex w-40 flex-col justify-between rounded-control bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                           >
                             <span className="text-sm font-semibold">
                               Nicht sicher, was Sie brauchen?
@@ -126,9 +126,9 @@ export default function Header() {
                               <li key={district.slug}>
                                 <Link
                                   href={`/standorte/${district.slug}`}
-                                  className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm text-ink-soft hover:bg-brand-50 hover:text-brand-500"
+                                  className="flex items-center gap-2.5 rounded-control px-3 py-2.5 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
                                 >
-                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-500">
+                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                                     {pinIcon}
                                   </span>
                                   {district.name}
@@ -138,7 +138,7 @@ export default function Header() {
                           </ul>
                           <Link
                             href="/standorte"
-                            className="flex w-40 flex-col justify-between rounded-xl bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white transition-transform hover:-translate-y-0.5"
+                            className="lift flex w-40 flex-col justify-between rounded-control bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                           >
                             <span className="text-sm font-semibold">
                               Alle 12 Bezirke im Überblick
@@ -156,7 +156,7 @@ export default function Header() {
                             <li key={child.href}>
                               <Link
                                 href={child.href}
-                                className="block rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-brand-50 hover:text-brand-500"
+                                className="block rounded-control px-3 py-2 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
                               >
                                 {child.label}
                               </Link>
@@ -175,7 +175,7 @@ export default function Header() {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href={siteConfig.phoneHref}
-            className="flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-brand-500"
+            className="flex min-h-11 items-center gap-1.5 rounded-control px-1 text-sm text-ink-soft transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -189,7 +189,7 @@ export default function Header() {
           </a>
           <Link
             href="/preisrechner"
-            className="shine-sweep inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            className="shine-sweep lift press inline-flex min-h-11 items-center justify-center rounded-control bg-brand-500 px-5 text-sm font-semibold text-white shadow-raise hover:bg-brand-600 hover:shadow-float focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
           >
             Preis berechnen
           </Link>
@@ -199,7 +199,7 @@ export default function Header() {
           <a
             href={siteConfig.phoneHref}
             aria-label={`Anrufen: ${siteConfig.phone}`}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-brand-900 hover:bg-brand-50"
+            className="press flex h-11 w-11 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -214,7 +214,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Menü öffnen"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-brand-900 hover:bg-brand-50"
+            className="press flex h-11 w-11 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

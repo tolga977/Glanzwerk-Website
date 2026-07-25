@@ -29,7 +29,7 @@ export default function CTASection({
 }: CTASectionProps) {
   return (
     <div
-      className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-16 text-center shadow-2xl shadow-brand-950/40 ring-1 ring-white/10 sm:px-12 sm:py-20"
+      className="relative overflow-hidden rounded-panel bg-gradient-to-br from-brand-900 via-brand-900 to-brand-800 px-6 py-16 text-center shadow-deep ring-1 ring-white/10 sm:px-12 sm:py-20"
       style={
         backgroundImageUrl
           ? {
@@ -53,15 +53,13 @@ export default function CTASection({
           <div className="absolute inset-0 bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-800/85" />
         </>
       )}
+      {/* Lichtkante statt der früheren großflächigen Blur-Kreise: markiert die
+          Oberkante der Fläche, ohne Nebel auf den Text zu legen. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-16 -top-24 h-64 w-64 rounded-full bg-brand-400/20 blur-3xl"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-accent-500/10 blur-3xl"
-      />
-      <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-30 sm:h-32 sm:w-32" />
+      <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-25 sm:h-32 sm:w-32" />
       <div className="relative">
         <h2 className="font-display text-3xl font-medium text-white sm:text-4xl">{title}</h2>
         <div className="glanz-divider mx-auto mt-5 max-w-[140px]" />
