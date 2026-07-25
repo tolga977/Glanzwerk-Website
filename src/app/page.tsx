@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Section, { SectionHeading } from "@/components/ui/Section";
@@ -142,6 +143,18 @@ const trustSectionBadges = [
     icon: "berlin" as const,
   },
 ];
+
+/**
+ * Der feste Ansprechpartner ist die konkreteste Aussage der Liste und der
+ * Punkt, den Interessenten zuerst wissen wollen. Er wird deshalb sichtbar
+ * vorgezogen, die uebrigen fuenf folgen als Band. Reihenfolge und Wortlaut
+ * der Daten bleiben unveraendert.
+ */
+const [leadTrustPoint, ...supportingTrustPoints] = trustSectionBadges;
+
+/** Section 8 — ein fuehrender Ratgeber, zwei begleitende. Auswahl und
+ *  Reihenfolge entsprechen unveraendert den ersten drei Artikeln. */
+const [leadArticle, ...supportingArticles] = articles.slice(0, 3);
 
 /** Section 4 — vier Aussagen zur konkreten Arbeitsweise, homepage-eigen. */
 const workingMethodPoints = [
@@ -358,42 +371,62 @@ export default function HomePage() {
         keine sechs gleichen Container.
       */}
       <Section background="warm" spacing="roomy">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
-          <div>
+        {/*
+          Komposition: schmale Textspalte gegen eine bewusst grosse, hochformatige
+          Bildflaeche, die vertikal versetzt sitzt — keine mittige Zweiteilung.
+          Die staerkste Einzelaussage steht direkt hier oben; die uebrigen fuenf
+          folgen als ruhiges Band darunter, statt alle sechs gleich zu gewichten.
+        */}
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,30rem)_1fr] lg:gap-20">
+          <div className="lg:pt-10">
             <SectionHeading
               eyebrow="Darauf kommt es im Reinigungsalltag an"
               title={heading.sectionHeadings[0]}
               subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
             />
-            <BrandPhoto
-              photo={photos.routineCleaningTeam}
-              aspect="aspect-[4/3]"
-              sizes="(min-width: 1024px) 416px, 100vw"
-              className="mt-9 shadow-float"
-            />
+
+            <div className="mt-10 border-l-2 border-brand-500 pl-7">
+              <p className="font-display display-lg text-xl font-medium text-brand-900 sm:text-2xl">
+                {leadTrustPoint.title}
+              </p>
+              <p className="measure mt-3 text-base leading-relaxed text-ink-soft">
+                {leadTrustPoint.description}
+              </p>
+            </div>
           </div>
 
-          <FadeIn as="ul" className="grid border-t border-line sm:grid-cols-2 sm:gap-x-12">
-            {trustSectionBadges.map((badge) => (
-              <li key={badge.title} className="flex gap-4 border-b border-line py-6">
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-white text-brand-500 shadow-raise">
-                  <TrustIcon name={badge.icon} />
-                </span>
-                <div>
-                  <p className="font-display text-base font-medium text-brand-900">{badge.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
-                </div>
-              </li>
-            ))}
-          </FadeIn>
+          <BrandPhoto
+            photo={photos.routineCleaningTeam}
+            aspect="aspect-[4/3] lg:aspect-[4/5]"
+            sizes="(min-width: 1024px) 640px, 100vw"
+            objectPosition="center 40%"
+            className="shadow-deep lg:-mt-16"
+          />
         </div>
+
+        <FadeIn
+          as="ul"
+          className="mt-16 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:mt-20 lg:grid-cols-3"
+        >
+          {supportingTrustPoints.map((badge) => (
+            <li key={badge.title} className="flex gap-4 border-b border-line py-6">
+              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-white text-brand-500 shadow-raise">
+                <TrustIcon name={badge.icon} />
+              </span>
+              <div>
+                <p className="font-display text-base font-medium text-brand-900">{badge.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
+              </div>
+            </li>
+          ))}
+        </FadeIn>
       </Section>
 
       {/*
         3. Leistungsbereich — alle zwölf Leistungen mit Foto nebeneinander.
         Rhythmus über zwei Kartengrößen statt über zwölf identische Kacheln.
       */}
-      <Section background="white" decor>
+      <Section background="tint" decor>
         <SectionHeading
           eyebrow="Unsere Reinigungsleistungen"
           title={heading.sectionHeadings[1]}
@@ -435,15 +468,30 @@ export default function HomePage() {
         4. Konkrete Arbeitsweise — bewusst KEIN zweiter Kartenbereich: großes
         Betriebsfoto plus vier Betriebsprinzipien an einer durchgehenden Kante.
       */}
-      <Section background="muted">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:gap-16">
-          <BrandPhoto
-            photo={photos.cleaningEquipment}
-            aspect="aspect-[4/5]"
-            sizes="(min-width: 1024px) 480px, 100vw"
-            className="shadow-float"
+      {/*
+        Komposition: randloses Bildband ueber die volle Fensterbreite, darueber
+        ein versetztes Textpanel. Das Layout entsteht hier um das Bild herum
+        statt das Bild in eine Spalte zu setzen — die einzige Stelle der Seite,
+        an der eine Flaeche den Raster verlaesst.
+      */}
+      <Section background="white" spacing="roomy" contained={false}>
+        <div className="relative aspect-[3/2] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+          <Image
+            src={photos.cleaningEquipment.src}
+            alt={photos.cleaningEquipment.alt}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: "center 45%" }}
           />
-          <div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-brand-950/35 via-transparent to-transparent"
+          />
+        </div>
+
+        <div className="container-page">
+          <div className="relative z-[1] -mt-14 max-w-2xl rounded-panel bg-graphite-50 p-8 shadow-deep sm:-mt-24 sm:p-11 lg:-mt-40 lg:ml-auto lg:p-12">
             <SectionHeading
               eyebrow="So arbeitet Glanzwerk"
               title={heading.sectionHeadings[2]}
@@ -457,9 +505,7 @@ export default function HomePage() {
                     className="absolute -left-[calc(1.75rem+3px)] top-2 h-1.5 w-1.5 rounded-full bg-brand-500"
                   />
                   <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
-                  <p className="measure mt-1.5 text-sm leading-relaxed text-ink-soft">
-                    {point.description}
-                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
                 </li>
               ))}
             </FadeIn>
@@ -483,16 +529,19 @@ export default function HomePage() {
         6. Umwelt und Verantwortung — warme Graphitfläche und ein sehr
         zurückhaltender Grünakzent, der ausschließlich hier vorkommt.
       */}
-      <Section background="warm">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
-          <BrandPhoto
-            photo={dosierungPhoto}
-            sizes="(min-width: 1024px) 560px, 100vw"
-            className="shadow-float lg:order-2"
-          />
-          <div className="lg:order-1">
-            <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
-            <div className="measure mt-5 space-y-4 text-base leading-relaxed text-ink-soft">
+      {/*
+        Komposition: als einziger Abschnitt textgefuehrt. Ueberschrift ueber
+        die volle Breite, darunter zwei ungleiche Spalten — links der
+        Fliesstext, rechts ein kleines Belegbild ueber der Punkteliste.
+        Das Foto ist eine Nahaufnahme (1600x1200) und bleibt deshalb bewusst
+        klein: grossformatig wuerde es koernig und grell wirken.
+      */}
+      <Section background="warm" spacing="roomy">
+        <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <div>
+            <div className="space-y-4 text-base leading-relaxed text-ink-soft">
               <p>
                 <strong className="font-semibold text-brand-900">
                   Wirksame Reinigung bedeutet nicht, möglichst viel Chemie einzusetzen.
@@ -511,10 +560,27 @@ export default function HomePage() {
               </p>
             </div>
 
-            <ul className="mt-8 divide-y divide-line border-y border-line">
+            <div className="mt-8">
+              <Button href="/umwelt-verantwortung" variant="ghost">
+                Mehr über Umwelt und Verantwortung
+              </Button>
+            </div>
+          </div>
+
+          <div>
+            <BrandPhoto
+              photo={dosierungPhoto}
+              aspect="aspect-[4/3]"
+              sizes="(min-width: 1024px) 420px, 100vw"
+              className="shadow-float"
+            />
+            <ul className="mt-8 divide-y divide-line border-t border-line">
               {environmentPoints.map((point) => (
-                <li key={point.title} className="flex gap-3.5 py-4">
-                  <span aria-hidden="true" className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-eco-600" />
+                <li key={point.title} className="flex gap-3.5 py-5">
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-eco-600"
+                  />
                   <p className="text-sm leading-relaxed">
                     <span className="font-semibold text-eco-600">{point.title}</span>{" "}
                     <span className="text-ink-soft">— {point.description}</span>
@@ -522,12 +588,6 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-8">
-              <Button href="/umwelt-verantwortung" variant="ghost">
-                Mehr über Umwelt und Verantwortung
-              </Button>
-            </div>
           </div>
         </div>
       </Section>
@@ -536,7 +596,7 @@ export default function HomePage() {
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
         liest sich als Einsatzverzeichnis, nicht als Ortsnamen-SEO-Block.
       */}
-      <Section background="white">
+      <Section background="tint">
         <SectionHeading
           eyebrow="Gebäudereinigung vor Ort"
           title={heading.sectionHeadings[5]}
@@ -563,17 +623,25 @@ export default function HomePage() {
         </p>
       </Section>
 
-      {/* 8. Wissensbereich — redaktionelle Strecke, deutlich anders als die Leistungskarten. */}
-      <Section background="muted">
+      {/*
+        8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei
+        begleitenden Zeilen statt drei gleichwertiger Kacheln.
+      */}
+      <Section background="white">
         <SectionHeading
           eyebrow="Glanzwerk Wissen"
           title={heading.sectionHeadings[6]}
           subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
         />
-        <FadeIn className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-7">
-          {articles.slice(0, 3).map((article) => (
-            <ArticleCard key={article.slug} article={article} />
-          ))}
+        <FadeIn className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-16">
+          <ArticleCard article={leadArticle} variant="feature" />
+          <div className="flex flex-col divide-y divide-line border-t border-line lg:border-t-0 lg:pt-1">
+            {supportingArticles.map((article) => (
+              <div key={article.slug} className="py-7 first:pt-0 lg:first:pt-0">
+                <ArticleCard article={article} variant="row" />
+              </div>
+            ))}
+          </div>
         </FadeIn>
         <div className="mt-10">
           <Button href="/wissen" variant="ghost">
@@ -617,12 +685,21 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 10. FAQ — ruhiger Abschnitt, der die Seite vor dem Abschluss entlastet. */}
-      <Section background="white" id="faq">
-        <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
-        <FadeIn className="mx-auto mt-12 max-w-3xl">
-          <FAQ items={homeFaqItems} />
-        </FadeIn>
+      {/*
+        10. FAQ — Ueberschrift steht links und bleibt beim Scrollen stehen,
+        die Antworten laufen rechts durch. Ruhiger Abschnitt, der die Seite vor
+        dem Abschluss entlastet, und zugleich die einzige zweispaltige
+        Text-zu-Text-Anordnung der Seite.
+      */}
+      <Section background="muted" id="faq">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-20">
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} />
+          </div>
+          <FadeIn>
+            <FAQ items={homeFaqItems} />
+          </FadeIn>
+        </div>
       </Section>
 
       {/* 11. Abschließender Kontaktbereich — greift die Bildsprache des Heros wieder auf. */}

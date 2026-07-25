@@ -74,6 +74,13 @@ interface SectionProps {
   decor?: boolean;
   /** Vertikaler Rhythmus: compact (dichter), normal (Standard), roomy (Atempause). */
   spacing?: "compact" | "normal" | "roomy";
+  /**
+   * false: Die Kinder werden NICHT in den zentrierten Inhaltscontainer
+   * gelegt. Fuer randlose Bildbaender, die ueber die volle Fensterbreite
+   * laufen sollen. Der Abschnitt setzt dann selbst dort `container-page`,
+   * wo Text wieder im Raster stehen muss.
+   */
+  contained?: boolean;
 }
 
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
@@ -98,6 +105,7 @@ export default function Section({
   id,
   decor = false,
   spacing = "normal",
+  contained = true,
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
   return (
@@ -129,7 +137,9 @@ export default function Section({
           />
         </>
       )}
-      <div className={`container-page relative z-[1] ${className}`}>{children}</div>
+      <div className={`relative z-[1] ${contained ? "container-page" : ""} ${className}`}>
+        {children}
+      </div>
     </section>
   );
 }
