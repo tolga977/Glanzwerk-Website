@@ -536,10 +536,18 @@ export default function HomePage() {
         Das Foto ist eine Nahaufnahme (1600x1200) und bleibt deshalb bewusst
         klein: grossformatig wuerde es koernig und grell wirken.
       */}
+      {/*
+        Eigene Proportion: dieser Abschnitt laeuft als einziger auf einer
+        schmaleren Satzbreite. Der Weissraum links und rechts ist damit
+        gestaltete Marginalie statt Restflaeche — die Strecke liest sich als
+        redaktioneller Essay und unterscheidet sich schon in der Breite von
+        jedem anderen Abschnitt.
+      */}
       <Section background="warm" spacing="roomy">
-        <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div>
             <div className="space-y-4 text-base leading-relaxed text-ink-soft">
               <p>
@@ -588,7 +596,8 @@ export default function HomePage() {
                   </p>
                 </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
       </Section>
@@ -597,7 +606,7 @@ export default function HomePage() {
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
         liest sich als Einsatzverzeichnis, nicht als Ortsnamen-SEO-Block.
       */}
-      <Section background="tint">
+      <Section background="tint" surface="left">
         <SectionHeading
           eyebrow="Gebäudereinigung vor Ort"
           title={heading.sectionHeadings[5]}
@@ -630,6 +639,43 @@ export default function HomePage() {
           Leistungsumfang und Reinigungsintervall ab.
         </p>
       </Section>
+
+      {/*
+        Kapitelpause — randlose Caesur zwischen zwei hellen Flaechen.
+
+        Zwischen Bezirken, Wissen, Testphase und FAQ folgen vier Textbloecke
+        aufeinander; das ist die flachste Strecke der Seite.
+
+        Bewusst KEINE Abbildung, sondern eine Materialflaeche: die Fassaden-
+        aufnahme des Heros liegt unter einer kraeftigen Navy-Deckung und
+        liefert nur noch Struktur und Tiefe. Damit haengt die Wirkung nicht am
+        Charme eines Stockfotos — bei voller Breite tragen die vorhandenen
+        Motive das nicht (geprueft und verworfen: Treppenhaus und Empfangs-
+        bereich, beide lesen sich grossformatig als Bestandsimmobilie statt
+        als Gewerbe).
+
+        Nebeneffekt: der vom Rhythmus gewuenschte Dunkelwert zwischen zwei
+        hellen Flaechen und eine Klammer zurueck zum Hero.
+
+        Rein gestalterisch, deshalb leeres alt-Attribut. Laedt verzoegert.
+      */}
+      <div
+        aria-hidden="true"
+        className="relative aspect-[16/9] w-full overflow-hidden bg-brand-950 sm:aspect-[21/9] lg:aspect-[3.4/1]"
+      >
+        <Image
+          src={photos.heroCleaningTeam.src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 55%" }}
+        />
+        <div className="absolute inset-0 bg-brand-950/[0.58]" />
+        {/* Lichtkanten: dieselbe Sprache wie auf den anderen dunklen Flaechen. */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+      </div>
 
       {/*
         8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei

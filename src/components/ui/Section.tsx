@@ -90,11 +90,16 @@ interface SectionProps {
    * beginnt, liest sich als Raum hinter dem Inhalt, ein Kreis in der Mitte
    * liest sich als Dekoration.
    *
+   * Der Verlauf hat eine definierte Uebergangszone statt eines langen
+   * Ausblendens: eine erkennbare Kante liest sich als Flaeche, ein weiches
+   * Ausfransen liest sich als Nebel.
+   *
    * "right"  — Ebene von der rechten Kante; gibt textlastigen Abschnitten
    *            ein Gegengewicht zur leeren rechten Haelfte.
+   * "left"   — spiegelbildlich; fuer Abschnitte, deren Inhalt rechts sitzt.
    * "bottom" — Ebene von der Unterkante; leitet zum naechsten Abschnitt ueber.
    */
-  surface?: "right" | "bottom";
+  surface?: "right" | "left" | "bottom";
 }
 
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
@@ -133,14 +138,16 @@ export default function Section({
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
-            background:
-              surface === "right"
-                ? dark
-                  ? "linear-gradient(105deg, transparent 46%, rgb(255 255 255 / 0.05) 100%)"
-                  : "linear-gradient(105deg, transparent 46%, rgb(224 243 249 / 0.75) 100%)"
-                : dark
-                  ? "linear-gradient(180deg, transparent 52%, rgb(255 255 255 / 0.05) 100%)"
-                  : "linear-gradient(180deg, transparent 52%, rgb(224 243 249 / 0.7) 100%)",
+            background: (() => {
+              const tone = dark ? "rgb(255 255 255 / 0.06)" : "rgb(224 243 249 / 0.9)";
+              if (surface === "right") {
+                return `linear-gradient(102deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
+              }
+              if (surface === "left") {
+                return `linear-gradient(258deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
+              }
+              return `linear-gradient(180deg, transparent 46%, ${tone} 64%, ${tone} 100%)`;
+            })(),
           }}
         />
       )}
