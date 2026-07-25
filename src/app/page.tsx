@@ -455,7 +455,7 @@ export default function HomePage() {
           ))}
         </FadeIn>
 
-        <FadeIn className="mt-6 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+        <FadeIn className="mt-14 grid gap-4 border-t border-line pt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {specialisedServices.map((service) => (
             <ServiceCard
               key={service.slug}
@@ -524,7 +524,7 @@ export default function HomePage() {
       </Section>
 
       {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte. */}
-      <Section background="brand" decor>
+      <Section background="brand" decor spacing="roomy">
         <SectionHeading
           eyebrow="Von der Anfrage bis zum Reinigungsstart"
           title={heading.sectionHeadings[3]}
@@ -616,7 +616,7 @@ export default function HomePage() {
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
         liest sich als Einsatzverzeichnis, nicht als Ortsnamen-SEO-Block.
       */}
-      <Section background="tint" surface="left">
+      <Section background="tint" surface="left" spacing="compact">
         <SectionHeading
           eyebrow="Gebäudereinigung vor Ort"
           title={heading.sectionHeadings[5]}
@@ -692,25 +692,34 @@ export default function HomePage() {
         begleitenden Zeilen statt drei gleichwertiger Kacheln.
       */}
       <Section background="white" surface="right">
-        <SectionHeading
-          eyebrow="Glanzwerk Wissen"
-          title={heading.sectionHeadings[6]}
-          subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
-        />
-        <FadeIn className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-16">
-          <ArticleCard article={leadArticle} variant="feature" />
-          <div className="flex flex-col divide-y divide-line border-t border-line lg:border-t-0 lg:pt-1">
-            {supportingArticles.map((article) => (
-              <div key={article.slug} className="py-7 first:pt-0 lg:first:pt-0">
-                <ArticleCard article={article} variant="row" />
-              </div>
-            ))}
+        {/*
+          Eigene Satzbreite, zweite von zwei: neben Umwelt laeuft nur dieser
+          Abschnitt schmaler als das uebrige Raster. Eine Magazinstrecke
+          vertraegt keine volle Rasterbreite — die eingezogene Kante macht
+          aus dem Weissraum rechts eine Marginalie und trennt den redak-
+          tionellen Teil sichtbar von den Leistungs- und Bezirksflaechen.
+        */}
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Glanzwerk Wissen"
+            title={heading.sectionHeadings[6]}
+            subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
+          />
+          <FadeIn className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-16">
+            <ArticleCard article={leadArticle} variant="feature" />
+            <div className="flex flex-col divide-y divide-line border-t border-line lg:border-t-0 lg:pt-1">
+              {supportingArticles.map((article) => (
+                <div key={article.slug} className="py-7 first:pt-0 lg:first:pt-0">
+                  <ArticleCard article={article} variant="row" />
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+          <div className="mt-10">
+            <Button href="/wissen" variant="ghost">
+              Alle Ratgeber ansehen
+            </Button>
           </div>
-        </FadeIn>
-        <div className="mt-10">
-          <Button href="/wissen" variant="ghost">
-            Alle Ratgeber ansehen
-          </Button>
         </div>
       </Section>
 
@@ -718,7 +727,7 @@ export default function HomePage() {
         9. Dreimonatige Testphase — markantes horizontales Band auf dunkler
         Fläche. Bewusst kein Preisschild, kein Countdown, keine Dringlichkeit.
       */}
-      <Section background="navy" decor>
+      <Section background="navy" decor spacing="compact">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_auto] lg:items-center lg:gap-20">
           <div>
             <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl">
