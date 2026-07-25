@@ -467,7 +467,9 @@ export default function HomePage() {
           ))}
         </FadeIn>
 
-        <div className="mt-10">
+        {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
+            statt ihn frei im Raum stehen zu lassen. */}
+        <div className="mt-14 border-t border-line pt-8">
           <Button href="/leistungen" variant="ghost">
             Alle Reinigungsleistungen ansehen
           </Button>
@@ -578,7 +580,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="mt-8">
+            {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
+                statt ihn frei im Raum stehen zu lassen. */}
+            <div className="mt-12 border-t border-line pt-8">
               <Button href="/umwelt-verantwortung" variant="ghost">
                 Mehr über Umwelt und Verantwortung
               </Button>
@@ -715,7 +719,9 @@ export default function HomePage() {
               ))}
             </div>
           </FadeIn>
-          <div className="mt-10">
+          {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
+              statt ihn frei im Raum stehen zu lassen. */}
+          <div className="mt-14 border-t border-line pt-8">
             <Button href="/wissen" variant="ghost">
               Alle Ratgeber ansehen
             </Button>
