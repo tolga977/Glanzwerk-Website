@@ -2,7 +2,7 @@ import type { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { FieldError } from "@/components/forms/FormError";
 
 const inputClasses =
-  "w-full rounded-xl border px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40";
+  "w-full rounded-control border px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40";
 
 interface BaseProps {
   label: string;
@@ -25,7 +25,7 @@ type FormFieldProps = InputFieldProps | TextareaFieldProps;
 
 export default function FormField(props: FormFieldProps) {
   const { label, name, error, required, as = "input", className, ...rest } = props;
-  const borderClass = error ? "border-red-400" : "border-gray-200";
+  const borderClass = error ? "border-red-400" : "border-line";
 
   return (
     <div>

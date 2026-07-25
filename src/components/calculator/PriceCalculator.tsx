@@ -153,10 +153,10 @@ export default function PriceCalculator() {
               {objectTypeOrder.map((type) => (
                 <label
                   key={type}
-                  className={`flex min-h-11 cursor-pointer items-center rounded-xl border px-4 py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex min-h-11 cursor-pointer items-center rounded-control border px-4 py-2.5 text-sm font-medium transition-colors ${
                     values.objectType === type
                       ? "border-brand-500 bg-brand-50 text-brand-900"
-                      : "border-gray-200 text-ink-soft hover:border-brand-300"
+                      : "border-line text-ink-soft hover:border-brand-300"
                   }`}
                 >
                   <input
@@ -185,7 +185,7 @@ export default function PriceCalculator() {
                 value={values.customObjectDescription}
                 onChange={(e) => updateValue("customObjectDescription", e.target.value)}
                 placeholder="z. B. Lagerhalle mit angeschlossenem Bürobereich"
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "customObjectDescription")} />
             </div>
@@ -193,7 +193,7 @@ export default function PriceCalculator() {
 
           <button
             type="submit"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
           >
             Weiter
           </button>
@@ -215,7 +215,7 @@ export default function PriceCalculator() {
                 max={pricingConfig.limits.units.max}
                 value={values.units}
                 onChange={(e) => updateValue("units", e.target.value)}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "units")} />
             </div>
@@ -231,28 +231,28 @@ export default function PriceCalculator() {
                 max={pricingConfig.limits.floors.max}
                 value={values.floors}
                 onChange={(e) => updateValue("floors", e.target.value)}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "floors")} />
             </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <label className="flex min-h-11 items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-ink-soft">
+            <label className="flex min-h-11 items-center gap-2.5 rounded-control border border-line px-4 py-2.5 text-sm text-ink-soft">
               <input
                 type="checkbox"
                 checked={values.hasBasement}
                 onChange={(e) => updateValue("hasBasement", e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-brand-500 focus:ring-brand-500/40"
+                className="h-4 w-4 rounded border-line-strong text-brand-500 focus:ring-brand-500/40"
               />
               Keller vorhanden
             </label>
-            <label className="flex min-h-11 items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-ink-soft">
+            <label className="flex min-h-11 items-center gap-2.5 rounded-control border border-line px-4 py-2.5 text-sm text-ink-soft">
               <input
                 type="checkbox"
                 checked={values.hasElevator}
                 onChange={(e) => updateValue("hasElevator", e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-brand-500 focus:ring-brand-500/40"
+                className="h-4 w-4 rounded border-line-strong text-brand-500 focus:ring-brand-500/40"
               />
               Fahrstuhl vorhanden
             </label>
@@ -273,7 +273,7 @@ export default function PriceCalculator() {
               max={pricingConfig.limits.staircases.max}
               value={values.staircaseCount}
               onChange={(e) => updateValue("staircaseCount", e.target.value)}
-              className="w-full max-w-xs rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+              className="w-full max-w-xs rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
             />
             <FieldError message={errorFor(errors, "staircaseCount")} />
           </div>
@@ -304,7 +304,7 @@ export default function PriceCalculator() {
               value={values.areaSqm}
               onChange={(e) => updateValue("areaSqm", e.target.value)}
               placeholder="z. B. 250"
-              className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+              className="w-full rounded-control border border-line px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
             />
             <FieldError message={errorFor(errors, "areaSqm")} />
           </div>
@@ -317,10 +317,10 @@ export default function PriceCalculator() {
               {floorTypeOrder.map((floor) => (
                 <label
                   key={floor}
-                  className={`flex min-h-11 cursor-pointer items-center justify-center rounded-xl border px-4 py-2.5 text-center text-sm font-medium transition-colors ${
+                  className={`flex min-h-11 cursor-pointer items-center justify-center rounded-control border px-4 py-2.5 text-center text-sm font-medium transition-colors ${
                     values.floorType === floor
                       ? "border-brand-500 bg-brand-50 text-brand-900"
-                      : "border-gray-200 text-ink-soft hover:border-brand-300"
+                      : "border-line text-ink-soft hover:border-brand-300"
                   }`}
                 >
                   <input
@@ -354,7 +354,7 @@ export default function PriceCalculator() {
                 max={pricingConfig.limits.kitchens.max}
                 value={values.kitchens}
                 onChange={(e) => updateValue("kitchens", e.target.value)}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "kitchens")} />
             </div>
@@ -373,7 +373,7 @@ export default function PriceCalculator() {
                 max={pricingConfig.limits.toilets.max}
                 value={values.toilets}
                 onChange={(e) => updateValue("toilets", e.target.value)}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "toilets")} />
             </div>
@@ -420,7 +420,7 @@ export default function PriceCalculator() {
               autoComplete="name"
               value={contact.name}
               onChange={(e) => setContact((prev) => ({ ...prev, name: e.target.value }))}
-              className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+              className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
             />
             <FieldError message={errorFor(errors, "name")} />
           </div>
@@ -439,7 +439,7 @@ export default function PriceCalculator() {
                 autoComplete="email"
                 value={contact.email}
                 onChange={(e) => setContact((prev) => ({ ...prev, email: e.target.value }))}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "email")} />
             </div>
@@ -456,7 +456,7 @@ export default function PriceCalculator() {
                 autoComplete="tel"
                 value={contact.phone}
                 onChange={(e) => setContact((prev) => ({ ...prev, phone: e.target.value }))}
-                className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
             </div>
           </div>
@@ -469,7 +469,7 @@ export default function PriceCalculator() {
                 onChange={(e) =>
                   setContact((prev) => ({ ...prev, privacyAccepted: e.target.checked }))
                 }
-                className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-brand-500 focus:ring-brand-500/40"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong text-brand-500 focus:ring-brand-500/40"
               />
               <span>
                 Ich habe die{" "}
@@ -518,7 +518,7 @@ function FrequencyField({
         id={`${idBase}-visits`}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full max-w-xs rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+        className="w-full max-w-xs rounded-control border border-line px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40"
       >
         {Array.from({ length: 7 }, (_, i) => i + 1).map((n) => (
           <option key={n} value={n}>
@@ -543,7 +543,7 @@ function StepNav({ onBack, nextLabel = "Weiter" }: { onBack: () => void; nextLab
       </button>
       <button
         type="submit"
-        className="shine-sweep shine-sweep-auto inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+        className="shine-sweep shine-sweep-auto inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
       >
         {nextLabel}
       </button>
@@ -570,7 +570,7 @@ function ResultView({
         : "";
 
   return (
-    <div className="rounded-2xl border border-brand-100 bg-brand-50 p-6 text-center sm:p-8">
+    <div className="rounded-card border border-brand-100 bg-brand-50 p-6 text-center sm:p-8">
       <p className="text-sm font-medium text-ink-soft">Geschätzter Monatspreis netto</p>
       <p className="mt-2 text-4xl font-bold text-brand-900">
         {estimate.monthlyPriceNet.toLocaleString("de-DE", { maximumFractionDigits: 0 })} €
@@ -579,7 +579,7 @@ function ResultView({
         bei {estimate.visitsPerWeek}× Reinigung pro Woche
       </p>
 
-      <div className="mx-auto mt-6 max-w-sm rounded-xl bg-white p-4 text-left text-sm text-ink-soft shadow-sm">
+      <div className="mx-auto mt-6 max-w-sm rounded-control bg-white p-4 text-left text-sm text-ink-soft shadow-raise">
         <p className="font-semibold text-brand-900">Ihre Angaben</p>
         <ul className="mt-2 space-y-1">
           <li>Objektart: {objectLabel}</li>
@@ -608,7 +608,7 @@ function ResultView({
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Link
           href="/kontakt"
-          className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+          className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
         >
           Angebot anfragen
         </Link>

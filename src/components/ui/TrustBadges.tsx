@@ -144,7 +144,7 @@ export default function TrustBadges({ badges = defaultBadges }: { badges?: Trust
       {badges.map((badge) => (
         <li
           key={badge.title}
-          className="group flex gap-3 rounded-2xl p-3 transition-colors duration-300 hover:bg-brand-50/60"
+          className="group flex gap-3 rounded-card p-3 transition-colors duration-300 hover:bg-brand-50/60"
         >
           <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500 transition-transform duration-300 ease-out group-hover:scale-105">
             <TrustIcon name={badge.icon} />

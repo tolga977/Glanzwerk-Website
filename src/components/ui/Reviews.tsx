@@ -29,7 +29,7 @@ function Stars({ rating }: { rating: number }) {
 export default function Reviews({ reviews }: { reviews: Review[] }) {
   if (reviews.length === 0) {
     return (
-      <div className="rounded-3xl border border-dashed border-gray-200 bg-graphite-50/60 p-10 text-center">
+      <div className="rounded-panel border border-dashed border-line bg-graphite-50/60 p-10 text-center">
         <p className="text-sm text-ink-soft">
           Bewertungen unserer Kunden veröffentlichen wir hier, sobald sie vorliegen.
         </p>
@@ -42,7 +42,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
       {reviews.map((review, index) => (
         <li
           key={`${review.author}-${index}`}
-          className="flex flex-col rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+          className="flex flex-col rounded-panel border border-line bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
         >
           <Stars rating={review.rating} />
           <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">

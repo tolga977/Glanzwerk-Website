@@ -32,7 +32,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
       />
       <nav
         aria-label="Mobile Navigation"
-        className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-xl"
+        className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-float"
       >
         <div className="mb-6 flex items-center justify-between">
           <Logo height={40} onClick={onClose} />
@@ -58,7 +58,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
             const showOverviewLink =
               item.children && !item.children.some((child) => child.href === item.href);
             return (
-              <li key={item.label} className="border-b border-gray-100 py-1">
+              <li key={item.label} className="border-b border-line py-1">
                 {item.children ? (
                   <div>
                     <button

@@ -17,7 +17,7 @@ export function FormAlert({ type, message }: FormAlertProps) {
   return (
     <div
       role={isSuccess ? "status" : "alert"}
-      className={`rounded-xl border px-4 py-3 text-sm font-medium ${
+      className={`rounded-control border px-4 py-3 text-sm font-medium ${
         isSuccess
           ? "border-green-200 bg-green-50 text-green-800"
           : "border-red-200 bg-red-50 text-red-700"

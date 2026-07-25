@@ -69,7 +69,7 @@ export default function CTASection({
             href={primaryHref}
             variant="primary"
             size="lg"
-            className="shadow-lg shadow-brand-500/30"
+            className="shadow-float shadow-brand-500/30"
           >
             {primaryLabel}
           </Button>

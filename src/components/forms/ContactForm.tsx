@@ -164,7 +164,7 @@ export default function ContactForm() {
             checked={values.privacy}
             onChange={(e) => updateField("privacy", e.target.checked)}
             aria-invalid={!!errors.privacy}
-            className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-brand-500 focus:ring-brand-500/40"
+            className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong text-brand-500 focus:ring-brand-500/40"
           />
           <span>
             Ich habe die{" "}
