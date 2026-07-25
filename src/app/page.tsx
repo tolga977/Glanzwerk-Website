@@ -395,12 +395,22 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/*
+            Bildanschnitt: ab Desktop laeuft die Flaeche ueber den Inhalts-
+            container hinaus bis an den Fensterrand und ist dort nicht mehr
+            gerundet. Das Bild begrenzt damit den Abschnitt, statt darin zu
+            liegen — der Weissraum links entsteht als Gegengewicht zur
+            Bildkante, nicht als Restflaeche.
+            calc(50% - 50vw) zieht die rechte Kante auf die Fensterbreite; der
+            Ueberstand wird vom overflow-hidden der Section sauber beschnitten.
+          */}
           <BrandPhoto
             photo={photos.routineCleaningTeam}
-            aspect="aspect-[4/3] lg:aspect-[4/5]"
-            sizes="(min-width: 1024px) 640px, 100vw"
-            objectPosition="center 40%"
-            className="shadow-deep lg:-mt-16"
+            aspect="aspect-[4/3] lg:aspect-[3/4]"
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            objectPosition="center 38%"
+            rounded="rounded-panel lg:rounded-r-none"
+            className="shadow-deep lg:-mt-24 lg:-mb-8 lg:mr-[calc(50%-50vw)]"
           />
         </div>
 
@@ -756,72 +766,93 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* 11. Abschließender Kontaktbereich — greift die Bildsprache des Heros wieder auf. */}
-      <Section background="warm" spacing="roomy">
-        <FadeIn>
-          <div
-            className="relative overflow-hidden rounded-panel shadow-deep"
-            style={{
-              backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.93), rgb(11 30 61 / 0.9)), url(${photos.buildingFacade.src})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="light-edge relative px-6 py-16 text-center sm:px-12 sm:py-20">
-              <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-25 sm:h-32 sm:w-32" />
-              <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl">
-                {heading.ctaHeading}
-              </h2>
-              <div className="glanz-divider mx-auto mt-5 max-w-[120px]" />
-              <p className="measure mx-auto mt-6 text-base leading-relaxed text-brand-100">
-                Beschreiben Sie kurz, welche Räume gereinigt werden sollen und wie häufig Sie
-                Unterstützung benötigen. Wir prüfen Ihre Angaben und melden uns mit den nächsten
-                Schritten. Bei größeren oder besonders genutzten Objekten stimmen wir bei Bedarf einen
-                Besichtigungstermin ab.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button href="/preisrechner" variant="primary" size="lg">
-                  Preis kostenlos berechnen
-                </Button>
-                <Button
-                  href="/kontakt"
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-brand-900"
-                >
-                  Angebot anfragen
-                </Button>
-              </div>
-              <div className="mt-8 flex flex-col items-center justify-center gap-1 sm:flex-row sm:gap-8">
-                <a
-                  href={siteConfig.phoneHref}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                      d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Oder direkt anrufen: {siteConfig.phone}
-                </a>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
-                    <path d="m3.5 6.5 8.5 6 8.5-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-                  </svg>
-                  {siteConfig.email}
-                </a>
-              </div>
+      {/*
+        11. Abschliessender Kontaktbereich â die Bildflaeche traegt den Abschnitt.
+
+        Vorher lag hier ein CSS-Hintergrundbild unter 90â93 % Deckung in einer
+        gerundeten Karte. Das hatte zwei Nachteile: das Bild war praktisch
+        unsichtbar, und als CSS-Hintergrund lief es an der Bildoptimierung
+        vorbei â ohne WebP/AVIF, ohne responsive Groessen, ohne Lazy Loading.
+
+        Jetzt randlos ueber die volle Fensterbreite, ueber next/image, mit einem
+        gerichteten Verlauf von links statt einer flaechigen Deckung. Die
+        Fassade bleibt lesbar und schliesst die Seite als Gegenstueck zum Hero:
+        dort oeffnet eine Fassade mit linksbuendigem Text, hier schliesst eine.
+
+        Der zentrierte Stapel aus Bild, Text und Button ist damit aufgeloest.
+      */}
+      <section className="relative isolate overflow-hidden bg-brand-950">
+        <Image
+          src={photos.buildingFacade.src}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 35%" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-brand-950/92 via-brand-950/72 to-brand-950/40"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-brand-950/45"
+        />
+        <div className="light-edge container-page relative z-[1] py-24 sm:py-28 lg:py-32">
+          <div className="max-w-2xl">
+            <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
+              {heading.ctaHeading}
+            </h2>
+            <div className="glanz-divider mt-6 max-w-[120px]" />
+            <p className="measure mt-7 text-base leading-relaxed text-brand-100">
+              Beschreiben Sie kurz, welche Räume gereinigt werden sollen und wie häufig Sie
+              Unterstützung benötigen. Wir prüfen Ihre Angaben und melden uns mit den nächsten
+              Schritten. Bei größeren oder besonders genutzten Objekten stimmen wir bei Bedarf einen
+              Besichtigungstermin ab.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Button href="/preisrechner" variant="primary" size="lg">
+                Preis kostenlos berechnen
+              </Button>
+              <Button
+                href="/kontakt"
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-brand-900"
+              >
+                Angebot anfragen
+              </Button>
+            </div>
+            <div className="mt-9 flex flex-col gap-1 sm:flex-row sm:gap-8">
+              <a
+                href={siteConfig.phoneHref}
+                className="inline-flex min-h-11 items-center gap-2 rounded-control text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Oder direkt anrufen: {siteConfig.phone}
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="inline-flex min-h-11 items-center gap-2 rounded-control text-sm font-medium text-brand-100 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                  <path d="m3.5 6.5 8.5 6 8.5-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+                </svg>
+                {siteConfig.email}
+              </a>
             </div>
           </div>
-        </FadeIn>
-      </Section>
+        </div>
+      </section>
     </>
   );
 }
