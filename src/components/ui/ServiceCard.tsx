@@ -42,7 +42,7 @@ export default function ServiceCard({
   return (
     <Link
       href={hrefOverride ?? `/leistungen/${service.slug}`}
-      className={`lift group relative flex h-full overflow-hidden rounded-card border border-line bg-white shadow-raise hover:border-brand-200 hover:shadow-float focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
+      className={`lift press group relative flex h-full overflow-hidden rounded-card border border-line bg-white shadow-raise hover:border-brand-200 hover:shadow-float focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
         compact ? "flex-row sm:flex-col" : "flex-col"
       }`}
     >

@@ -29,7 +29,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
   return (
     <Link
       href={`/wissen/${article.slug}`}
-      className={`group flex rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${
+      className={`press group flex rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${
         row ? "flex-row items-start gap-5" : "flex-col"
       }`}
     >

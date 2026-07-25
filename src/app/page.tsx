@@ -570,8 +570,9 @@ export default function HomePage() {
           <div>
             <BrandPhoto
               photo={dosierungPhoto}
-              aspect="aspect-[4/3]"
+              aspect="aspect-[4/3] lg:aspect-[4/5]"
               sizes="(min-width: 1024px) 420px, 100vw"
+              objectPosition="center 45%"
               className="shadow-float"
             />
             <ul className="mt-8 divide-y divide-line border-t border-line">
@@ -602,12 +603,19 @@ export default function HomePage() {
           title={heading.sectionHeadings[5]}
           subtitle="Glanzwerk betreut gewerblich genutzte Objekte in ganz Berlin. Dazu gehören zentrale Bürostandorte ebenso wie Praxen, Kanzleien, Gastronomiebetriebe, Autohäuser und Gewerbeflächen in den äußeren Bezirken. Kurze Abstimmungswege und eine realistische Einsatzplanung sind dabei wichtiger als künstlich eingebaute Ortsnamen."
         />
-        <FadeIn className="mt-10 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
+        {/*
+          Spaltensatz statt Raster: die senkrechten Trennlinien machen aus der
+          Luft zwischen den Spalten eine sichtbare Struktur. Ein Einsatz-
+          verzeichnis liest sich spaltenweise — wie ein gedrucktes Register.
+          Die Linienfarbe steht literal, weil das Theme die Token inline
+          aufloest und keine CSS-Variable ausliefert.
+        */}
+        <FadeIn className="mt-10 border-t border-line sm:columns-2 sm:gap-14 sm:[column-rule:1px_solid_#e7eaef] lg:columns-3">
           {districts.map((district) => (
             <Link
               key={district.slug}
               href={`/standorte/${district.slug}`}
-              className="group flex items-center justify-between gap-4 border-b border-line py-4 text-base font-medium text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
+              className="group flex break-inside-avoid items-center justify-between gap-4 border-b border-line py-4 text-base font-medium text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
             >
               <span>{district.name}</span>
               <span className="text-brand-300 transition-colors duration-200 ease-out group-hover:text-brand-500">
@@ -627,7 +635,7 @@ export default function HomePage() {
         8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei
         begleitenden Zeilen statt drei gleichwertiger Kacheln.
       */}
-      <Section background="white">
+      <Section background="white" surface="right">
         <SectionHeading
           eyebrow="Glanzwerk Wissen"
           title={heading.sectionHeadings[6]}
@@ -691,7 +699,7 @@ export default function HomePage() {
         dem Abschluss entlastet, und zugleich die einzige zweispaltige
         Text-zu-Text-Anordnung der Seite.
       */}
-      <Section background="muted" id="faq">
+      <Section background="muted" id="faq" surface="bottom">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} />

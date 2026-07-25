@@ -81,6 +81,20 @@ interface SectionProps {
    * wo Text wieder im Raster stehen muss.
    */
   contained?: boolean;
+  /**
+   * Raumbildende Tonflaeche gegen leer wirkenden Weissraum.
+   *
+   * Anders als `decor` (feine Kante plus schwacher Streifen) legt `surface`
+   * eine grosse, an einer Kante verankerte Ebene an. Sie ist bewusst KEIN
+   * schwebender weichgezeichneter Kreis: eine Flaeche, die an der Kante
+   * beginnt, liest sich als Raum hinter dem Inhalt, ein Kreis in der Mitte
+   * liest sich als Dekoration.
+   *
+   * "right"  — Ebene von der rechten Kante; gibt textlastigen Abschnitten
+   *            ein Gegengewicht zur leeren rechten Haelfte.
+   * "bottom" — Ebene von der Unterkante; leitet zum naechsten Abschnitt ueber.
+   */
+  surface?: "right" | "bottom";
 }
 
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
@@ -106,6 +120,7 @@ export default function Section({
   decor = false,
   spacing = "normal",
   contained = true,
+  surface,
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
   return (
@@ -113,6 +128,22 @@ export default function Section({
       id={id}
       className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
     >
+      {surface && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              surface === "right"
+                ? dark
+                  ? "linear-gradient(105deg, transparent 46%, rgb(255 255 255 / 0.05) 100%)"
+                  : "linear-gradient(105deg, transparent 46%, rgb(224 243 249 / 0.75) 100%)"
+                : dark
+                  ? "linear-gradient(180deg, transparent 52%, rgb(255 255 255 / 0.05) 100%)"
+                  : "linear-gradient(180deg, transparent 52%, rgb(224 243 249 / 0.7) 100%)",
+          }}
+        />
+      )}
       {decor && (
         <>
           {/* Lichtkante: markiert den Beginn der Fläche, ohne Nebel zu erzeugen. */}
