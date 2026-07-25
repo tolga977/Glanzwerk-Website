@@ -43,3 +43,12 @@ next-env.d.ts
 # editors
 .vscode/
 .idea/
+
+# python bytecode aus mitgelieferten Skill-Skripten
+__pycache__/
+*.pyc
+
+# temporaerer Export fuer die externe Sicherheitspruefung
+# (dupliziert nur die ohnehin versionierten Skills)
+/security-review-export/
+/security-review-export.zip

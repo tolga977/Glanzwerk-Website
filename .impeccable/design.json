@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-24T09:00:00Z",
+  "title": "Design System: Glanzwerk Reinigungsservice Berlin",
+  "extensions": {
+    "colorMeta": {
+      "deep-navy": {
+        "role": "primary",
+        "displayName": "Tiefes Marineblau",
+        "canonical": "#071a3a",
+        "tonalRamp": ["#030d1e", "#071a3a", "#0b2650", "#0f3568", "#00799c", "#2fa6ce", "#6fc4e2", "#a9dcee"]
+      },
+      "action-blue": {
+        "role": "secondary",
+        "displayName": "Action-Blau",
+        "canonical": "#00799c",
+        "tonalRamp": ["#0f3568", "#0f4d82", "#00799c", "#2fa6ce", "#6fc4e2", "#a9dcee", "#e0f3f9", "#f2fafd"]
+      },
+      "sky-blue": {
+        "role": "tertiary",
+        "displayName": "Klares Himmelblau",
+        "canonical": "#6fc4e2",
+        "tonalRamp": ["#0f4d82", "#00799c", "#2fa6ce", "#6fc4e2", "#a9dcee", "#e0f3f9", "#f2fafd", "#ffffff"]
+      },
+      "off-white": {
+        "role": "neutral",
+        "displayName": "Off-White",
+        "canonical": "#faf9f7",
+        "tonalRamp": ["#14141a", "#1e1e26", "#4a4a52", "#8a8a90", "#c4c4c8", "#e8e8e6", "#f4f3f1", "#faf9f7"]
+      },
+      "graphite-100": {
+        "role": "neutral",
+        "displayName": "Graphit hell",
+        "canonical": "#f4f3f1",
+        "tonalRamp": ["#14141a", "#1e1e26", "#4a4a52", "#8a8a90", "#c4c4c8", "#e8e8e6", "#f4f3f1", "#ffffff"]
+      },
+      "graphite-900": {
+        "role": "neutral",
+        "displayName": "Graphit dunkel",
+        "canonical": "#1e1e26",
+        "tonalRamp": ["#14141a", "#1e1e26", "#3a3a42", "#5a5a62", "#8a8a90", "#c4c4c8", "#e8e8e6", "#f4f3f1"]
+      },
+      "graphite-950": {
+        "role": "neutral",
+        "displayName": "Graphit fast Schwarz",
+        "canonical": "#14141a",
+        "tonalRamp": ["#0a0a0e", "#14141a", "#1e1e26", "#3a3a42", "#5a5a62", "#8a8a90", "#c4c4c8", "#e8e8e6"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Fraunces Display", "purpose": "Ausschließlich H1/H2-Überschriften." },
+      "body": { "displayName": "Inter Body", "purpose": "Fließtext, UI-Labels, Navigation, Buttons." }
+    },
+    "shadows": [
+      { "name": "card-resting", "value": "0 1px 2px rgb(7 26 58 / 0.04)", "purpose": "Ruhezustand von Karten, kaum sichtbar." },
+      { "name": "card-hover", "value": "0 20px 40px -12px rgb(7 26 58 / 0.12)", "purpose": "Hover-Anhebung von Karten." },
+      { "name": "cta-block", "value": "0 25px 50px -12px rgb(3 13 30 / 0.4)", "purpose": "Dunkler Abschluss-CTA-Block, stärkste Schattenstufe." }
+    ],
+    "motion": [
+      { "name": "signature-ease", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Durchgängige Easing-Kurve für Shine-Sweep, Fade-In und Hover-Übergänge." },
+      { "name": "shine-sweep-duration", "value": "0.65s", "purpose": "Dauer des diagonalen Lichtreflex-Effekts auf ausgewählten Haupt-Buttons." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Haupt-CTA, hochwertig und klar; optionaler Shine-Sweep-Lichteffekt für ausgewählte Fälle, Rundung kontextabhängig (hier als Pill-Beispiel).",
+      "html": "<button class=\"ds-btn-primary\">Angebot anfragen</button>",
+      "css": ".ds-btn-primary { position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; border-radius: 9999px; background: #00799c; color: #ffffff; font-weight: 600; font-size: 14px; font-family: Inter, sans-serif; border: none; transition: background 0.3s cubic-bezier(0.22,1,0.36,1), transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #0f4d82; transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,121,156,0.35); } .ds-btn-primary::after { content: ''; position: absolute; inset: 0; left: -60%; width: 40%; background: linear-gradient(115deg, transparent, rgba(255,255,255,0.35), transparent); transform: skewX(-18deg); transition: left 0.65s cubic-bezier(0.22,1,0.36,1); pointer-events: none; } .ds-btn-primary:hover::after, .ds-btn-primary:focus-visible::after { left: 130%; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Sekundäre Handlung, transparenter Hintergrund mit Navy-Rand.",
+      "html": "<button class=\"ds-btn-outline\">Preis berechnen</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 24px; border-radius: 9999px; background: transparent; color: #071a3a; font-weight: 600; font-size: 14px; font-family: Inter, sans-serif; border: 2px solid #071a3a; transition: background 0.3s cubic-bezier(0.22,1,0.36,1), color 0.3s cubic-bezier(0.22,1,0.36,1); } .ds-btn-outline:hover { background: #071a3a; color: #ffffff; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Punktuell eingesetzte Karte mit ambientem Hover-Schatten — kein Standard-Rastermittel, keine Cards-in-Cards.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-card-title\">Titel</p><p class=\"ds-card-body\">Beschreibungstext.</p></div>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid rgba(0,0,0,0.06); border-radius: 24px; padding: 24px; box-shadow: 0 1px 2px rgba(7,26,58,0.04); transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.5s cubic-bezier(0.22,1,0.36,1); } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(7,26,58,0.12); border-color: #e0f3f9; } .ds-card-title { font-family: Fraunces, serif; font-weight: 500; font-size: 16px; color: #071a3a; margin: 0; } .ds-card-body { font-family: Inter, sans-serif; font-size: 14px; color: #414a58; margin-top: 6px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Formularfeld mit Fokusring in Action-Blau.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Name\" />",
+      "css": ".ds-input { width: 100%; border-radius: 12px; border: 1px solid #e5e7eb; padding: 10px 16px; font-size: 14px; font-family: Inter, sans-serif; color: #14181f; transition: border-color 0.3s, box-shadow 0.3s; } .ds-input:focus { outline: none; border-color: rgba(0,121,156,0.4); box-shadow: 0 0 0 2px rgba(0,121,156,0.4); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Clear Horizon",
+    "overview": "Ein tiefes Marineblau trägt die Marke, ein klares Himmelblau setzt Akzente — die Farbwelt eines Berliner Gewerbe-Reinigungsdienstes, der Ordnung und Verlässlichkeit verspricht, ohne laut zu werben. Fraunces-Serifen für Überschriften geben dem sonst nüchternen, Inter-basierten UI-Ton eine ruhige, etwas redaktionelle Wärme; Weiß, Off-White und neutrale Graphittöne tragen die Fläche. Ein wiederkehrender diagonaler Lichtschein (\"Shine-Sweep\") über Haupt-Buttons ist ein bestehendes, wiedererkennbares Markenzeichen — kein verpflichtendes Muster für neue Arbeiten, sondern ein optionales Werkzeug, das seine Wirkung gerade durch seltenen Einsatz behält. Verbindliches Ziel: 70% hochwertig/premium, 30% funktional; warm, seriös, einladend und individuell. Bestehende Glanzwerk-Identität weiterentwickeln, nicht durch eine neue Designsprache ersetzen.",
+    "keyCharacteristics": [
+      "Marineblau als Anker, Himmelblau als Licht, Weiß/Off-White/Graphit als Fläche.",
+      "Fraunces (Serif) exklusiv für Überschriften, Inter für alles andere.",
+      "Großformatige Bild-Text-Kompositionen und ruhige, luftige Sections vor dichten Kartenrastern.",
+      "Karten sind ein punktuelles Mittel, keine flächendeckende Standardlösung.",
+      "Shine-Sweep als seltenes, bewusst eingesetztes Markenzeichen, nicht als Pflichteffekt."
+    ],
+    "rules": [
+      { "name": "The 70/30 Rule", "body": "70% hochwertig/premium, 30% funktional; warm, seriös, einladend und individuell. Bestehende Glanzwerk-Identität weiterentwickeln, nicht durch eine neue Designsprache ersetzen.", "section": "overview" },
+      { "name": "The Blue-and-Graphite-Only Rule", "body": "Flächenfarben kommen ausschließlich aus der Marineblau/Action-Blau/Himmelblau/Weiß/Off-White/Graphit-Familie. Kein Amber, kein Lila, keine weiteren warmen Akzentfarben.", "section": "colors" },
+      { "name": "The Serif-Headline-Only Rule", "body": "Fraunces erscheint ausschließlich in Überschriften; Fließtext, Buttons, Navigation und UI bleiben durchgehend bei Inter.", "section": "typography" },
+      { "name": "The Ambient-Not-Structural Rule", "body": "Schatten kommunizieren Interaktivität (Hover-Zustand), nicht permanente Objekthaftigkeit. Ruhende Elemente bleiben nahezu flach.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do Fraunces ausschließlich für Überschriften verwenden, nie für Fließtext oder UI-Labels.",
+      "Do Schatten nur als Reaktion auf Hover/Fokus einsetzen, nie als permanenten Objekt-Schatten.",
+      "Do den Shine-Sweep-Effekt als seltenes, bewusst eingesetztes Markenzeichen behandeln, nicht als Standardeffekt für jeden Button.",
+      "Do Buttons hochwertig und klar gestalten, mit einer zum Kontext passenden Rundung statt eines schematisch immer gleichen Pill-Shapes.",
+      "Do großformatige Bild-Text-Kompositionen und ruhige, luftige Sections bevorzugen, wo sie genauso gut funktionieren wie eine Karte.",
+      "Do das Ziel '70% hochwertig/premium, 30% funktional; warm, seriös, einladend, individuell' als Maßstab für neue Design-Entscheidungen anlegen."
+    ],
+    "donts": [
+      "Don't neue, gesättigte Farben außerhalb der Marineblau/Action-Blau/Himmelblau/Graphit-Familie als Flächenfarbe einführen. Kein Amber, kein Lila, keine weiteren warmen Akzentfarben.",
+      "Don't harte, dunkle Schlagschatten oder skeuomorphe Tiefe verwenden — das System ist durchgehend 'ambient soft'.",
+      "Don't Pill-Buttons, Shine-Sweep oder stark abgerundete Karten als allgemeine Gestaltungspflicht behandeln — es sind bestehende, optionale Mittel, keine Vorschrift.",
+      "Don't flächendeckende Kartenraster oder Cards-in-Cards einsetzen.",
+      "Don't den typischen SaaS- oder Template-Look erzeugen (generische Dreier-/Viererreihen aus Icon-Kacheln, austauschbare Feature-Grids).",
+      "Don't den Shine-Sweep-Effekt kopieren oder auf sekundäre/Outline-Buttons ausweiten."
+    ]
+  }
+}
