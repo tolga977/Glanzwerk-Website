@@ -102,12 +102,30 @@ interface SectionProps {
   surface?: "right" | "left" | "bottom";
 }
 
+/*
+ * Materialsystem der Flaechen.
+ *
+ * Die drei hellen Flaechen waren vorher flache Volltoene bzw. liefen in
+ * reines Weiss aus. Zwei Folgen daraus:
+ *
+ * 1. `tint` endete auf rgb(255,255,255) — exakt die Farbe von `white`.
+ *    Wo ein tint-Abschnitt an einen weissen grenzte, war die Naht damit
+ *    unsichtbar; zwei Abschnitte lasen sich als eine Flaeche.
+ * 2. Ein Vollton ueber 1500 px Hoehe hat keine Oberflaeche. Papier nimmt
+ *    Licht an, ein Bildschirmweiss nicht.
+ *
+ * Alle Flaechen bekommen deshalb einen sehr flachen vertikalen Verlauf:
+ * oben heller, unten minimal angetont. Die Spanne liegt bei rund 2 % —
+ * unterhalb der Schwelle, ab der ein Verlauf als Verlauf auffaellt, aber
+ * ausreichend, damit die Flaeche eine Richtung hat und Kanten sichtbar
+ * bleiben. Keine neuen Farben: ausschliesslich vorhandene Tokens.
+ */
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
-  white: "bg-white",
-  muted: "bg-brand-50/60",
-  tint: "bg-gradient-to-b from-brand-100/70 via-brand-50/50 to-white",
+  white: "bg-gradient-to-b from-white via-white to-graphite-50/60",
+  muted: "bg-gradient-to-b from-brand-50/70 to-brand-50/40",
+  tint: "bg-gradient-to-b from-brand-100/70 via-brand-50/50 to-brand-50/25",
   brand: "bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 text-white",
-  warm: "bg-graphite-50",
+  warm: "bg-gradient-to-b from-graphite-50 via-graphite-50 to-graphite-100/70",
   navy: "bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 text-white",
 };
 
