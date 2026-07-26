@@ -81,6 +81,22 @@
   --shadow-deep: 0 34px 70px -34px rgb(3 13 30 / 0.45);
 
   /*
+   * ── Der Glanzwerk-Winkel ─────────────────────────────────────────────
+   * Die Striche des Markenzeichens laufen bei M8 32 L26 8, also 18 nach
+   * rechts und 24 nach oben: 53,13 Grad zur Horizontalen.
+   *
+   * Jede Diagonale auf der Website leitet sich ab jetzt aus diesem einen
+   * Winkel ab. Vorher lagen acht verschiedene, willkuerlich gewaehlte
+   * Werte im System (102, 115, 135, 165, 258 Grad und ein Skew von 18
+   * Grad) — keiner davon hatte eine Begruendung.
+   *
+   * 127deg ist die Verlaufsachse senkrecht zu einem 53-Grad-Band; 37 Grad
+   * ist der entsprechende Skew fuer ein urspruenglich senkrechtes Band.
+   * Beides ist Kommentar, kein Token: Tailwind loest Winkel nicht ueber
+   * die Theme-Ebene auf, die Werte stehen deshalb an der Nutzungsstelle.
+   */
+
+  /*
    * ── Motion ───────────────────────────────────────────────────────────
    * Zwei Kurven für alles. Werte aus review-animations/STANDARDS.md.
    * Dauern kommen aus Tailwinds Skala und sind bewusst auf vier Gruppen
@@ -179,8 +195,8 @@ body {
       inset: 0;
       left: -60%;
       width: 40%;
-      background: linear-gradient(115deg, transparent, rgb(255 255 255 / 0.3), transparent);
-      transform: skewX(-18deg);
+      background: linear-gradient(127deg, transparent, rgb(255 255 255 / 0.3), transparent);
+      transform: skewX(-37deg);
       transition: left 0.6s var(--ease-signature);
       pointer-events: none;
     }

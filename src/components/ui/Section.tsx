@@ -159,10 +159,10 @@ export default function Section({
             background: (() => {
               const tone = dark ? "rgb(255 255 255 / 0.06)" : "rgb(224 243 249 / 0.9)";
               if (surface === "right") {
-                return `linear-gradient(102deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
+                return `linear-gradient(127deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
               }
               if (surface === "left") {
-                return `linear-gradient(258deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
+                return `linear-gradient(233deg, transparent 44%, ${tone} 58%, ${tone} 100%)`;
               }
               return `linear-gradient(180deg, transparent 46%, ${tone} 64%, ${tone} 100%)`;
             })(),
@@ -187,8 +187,8 @@ export default function Section({
             className="pointer-events-none absolute inset-0"
             style={{
               background: dark
-                ? "linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.045) 50%, transparent 62%)"
-                : "linear-gradient(115deg, transparent 38%, rgb(47 166 206 / 0.06) 50%, transparent 62%)",
+                ? "linear-gradient(127deg, transparent 38%, rgb(255 255 255 / 0.045) 50%, transparent 62%)"
+                : "linear-gradient(127deg, transparent 38%, rgb(47 166 206 / 0.06) 50%, transparent 62%)",
             }}
           />
         </>
