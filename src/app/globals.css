@@ -354,6 +354,16 @@ body {
     transform: none !important;
   }
 
+  /*
+   * Das spaetere Hero-Video wird ausgeblendet, nicht nur angehalten. Darunter
+   * liegt das Standbild, das ohnehin immer gerendert wird — der Hero bleibt
+   * damit vollstaendig und ohne Bewegung. Rein ueber CSS geloest, damit die
+   * Medienebene eine Server Component bleiben kann.
+   */
+  .hero-video {
+    display: none !important;
+  }
+
   .fade-in-up,
   .fade-in-up.is-visible {
     opacity: 1;

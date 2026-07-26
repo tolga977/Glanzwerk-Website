@@ -11,7 +11,7 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
-import HeroPhoto from "@/components/home/HeroPhoto";
+import HeroMedia from "@/components/home/HeroMedia";
 import JsonLd from "@/components/seo/JsonLd";
 import { services } from "@/data/services";
 import { districts } from "@/data/districts";
@@ -292,29 +292,47 @@ export default function HomePage() {
       <JsonLd data={professionalServiceSchema()} />
 
       {/*
-        1. Hero — vollflächiges Foto als räumliche Basis, Textblock links auf
-        einer kontrollierten Verlaufskante. Kein Glaspanel, kein Badge-Cluster,
-        keine Kennzahlen. Das Bild driftet einmalig langsam in seine Ruhelage.
+        1. Hero — die Markenbuehne.
+
+        Hoehe ueber svh statt ueber Innenabstand: der Hero fuellt den Blick,
+        ohne ihn zu ueberschreiten. svh statt vh, weil vh auf Telefonen die
+        ein- und ausfahrende Adressleiste mitrechnet und der Hero dadurch
+        beim Scrollen springt. Der Inhalt sitzt vertikal zentriert — ein
+        Textblock, der im Raum steht, wirkt souveraener als einer, der von
+        oben eingeschoben ist.
+
+        Die Medienebene liegt in HeroMedia und ist bereits auf das spaetere
+        Cinematic-Video vorbereitet; an dieser Stelle aendert sich dann nichts.
       */}
-      <section className="relative isolate overflow-hidden bg-brand-950">
-        <HeroPhoto />
-        <div className="container-page relative z-10 py-24 sm:py-28 lg:py-36">
-          <div className="max-w-2xl">
-            <p className="mb-6 inline-flex items-center gap-2.5 rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+      <section className="relative isolate flex min-h-[32rem] items-center overflow-hidden bg-brand-950 sm:min-h-[36rem] lg:min-h-[78svh]">
+        <HeroMedia />
+        <div className="container-page relative z-10 py-16 sm:py-20">
+          <div className="max-w-[46rem]">
+            <p className="mb-7 inline-flex items-center gap-2.5 rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
               <GlanzMark className="h-3.5 w-3.5 shrink-0" />
               Gebäudereinigung für Gewerbekunden in Berlin
             </p>
-            <h1 className="font-display display-xl text-4xl font-medium text-white sm:text-5xl lg:text-6xl">
+            {/*
+              text-balance verteilt die Zeilen optisch gleichmaessig, statt die
+              letzte Zeile als Rest stehen zu lassen. Bei einer dreizeiligen
+              Headline ist das der Unterschied zwischen gesetzt und umgebrochen.
+            */}
+            <h1 className="font-display display-xl text-balance text-4xl font-medium text-white sm:text-5xl lg:text-[3.5rem]">
               {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/85">
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
               Glanzwerk Reinigungsservice Berlin reinigt Büros, Praxen, Kanzleien, Autohäuser,
               Gastronomiebetriebe und weitere Gewerbeobjekte in ganz Berlin. Wir stimmen Leistungen,
               Reinigungszeiten und Intervalle auf Ihren Betrieb ab. Sie erhalten einen festen
               Ansprechpartner, nachvollziehbare Absprachen und eine Reinigung, die Ihren Arbeitsalltag
               möglichst wenig beeinträchtigt.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            {/*
+              Groesserer Abstand und mehr Luft zwischen den beiden Zielen: die
+              Schaltflaechen sollen als eigener Akt der Komposition gelesen
+              werden, nicht als Fussleiste des Absatzes.
+            */}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5">
               <Button href="/preisrechner" size="lg">
                 Preis kostenlos berechnen
               </Button>
