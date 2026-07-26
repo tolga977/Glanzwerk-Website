@@ -59,7 +59,7 @@ export default function CTASection({
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
       />
-      <GlanzMark className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 opacity-25 sm:h-32 sm:w-32" />
+      <GlanzMark className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 opacity-[0.10]" />
       <div className="relative">
         <h2 className="font-display text-3xl font-medium text-white sm:text-4xl">{title}</h2>
         <div className="glanz-divider mx-auto mt-5 max-w-[140px]" />

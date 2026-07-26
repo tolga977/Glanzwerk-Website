@@ -308,8 +308,7 @@ export default function HomePage() {
         <HeroMedia />
         <div className="container-page relative z-10 py-16 sm:py-20">
           <div className="max-w-[46rem]">
-            <p className="mb-7 inline-flex items-center gap-2.5 rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
-              <GlanzMark className="h-3.5 w-3.5 shrink-0" />
+            <p className="mb-7 inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium tracking-wide text-white backdrop-blur-sm">
               Gebäudereinigung für Gewerbekunden in Berlin
             </p>
             {/*
@@ -832,6 +831,8 @@ export default function HomePage() {
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-brand-950/45"
         />
+        {/* Wasserzeichen nach derselben Regel wie auf allen dunklen Markenflaechen. */}
+        <GlanzMark className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 opacity-[0.10]" />
         <div className="light-edge container-page relative z-[1] py-24 sm:py-28 lg:py-32">
           <div className="max-w-2xl">
             <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl lg:text-4xl">

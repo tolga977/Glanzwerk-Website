@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import GlanzMark from "@/components/ui/GlanzMark";
 
 interface EditorialIntroProps {
   eyebrow?: string;
@@ -16,7 +15,7 @@ export default function EditorialIntro({ eyebrow, title, subtitle, children }: E
       <div>
         {eyebrow && (
           <p className="mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
-            <GlanzMark className="h-4 w-4 shrink-0" />
+            <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-400" />
             {eyebrow}
           </p>
         )}

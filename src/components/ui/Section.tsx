@@ -30,7 +30,19 @@ export function SectionHeading({
             light ? "text-brand-200" : "text-brand-500"
           } ${centered ? "justify-center" : ""}`}
         >
-          <GlanzMark className="h-4 w-4 shrink-0" />
+          {/*
+            Haarlinie statt Markenzeichen. Das Zeichen stand hier auf 16 px —
+            ein geschrumpftes Logo, das als Aufzaehlungspunkt gelesen wird und
+            gerade dadurch seinen Signaturwert verliert. Die Linie gehoert
+            dagegen in die durchgehende Sprache der Website: Spaltenlinien im
+            Bezirksregister, Abschnittsfuesse, Grundlinie im Prozess,
+            Trennlinien in der Vertrauensmatrix. Struktur aus Linien statt aus
+            Kaesten ist das Kompositionsprinzip — der Eyebrow folgt ihm jetzt.
+          */}
+          <span
+            aria-hidden="true"
+            className={`h-px w-7 shrink-0 ${light ? "bg-brand-300/70" : "bg-brand-400"}`}
+          />
           {eyebrow}
         </p>
       )}
@@ -151,6 +163,19 @@ export default function Section({
       id={id}
       className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
     >
+      {/*
+        Wasserzeichen: das Markenzeichen erscheint gross und sehr leise auf
+        den dunklen Flaechen der Marke — und nur dort. Es war bisher ein
+        Einzelfall in Footer und CTASection; als Regel markiert es jede
+        eigene dunkle Grundflaeche als Glanzwerk-Flaeche.
+
+        Die Gegenregel dazu: das Zeichen wird nie verkleinert. Entweder es
+        traegt eine Flaeche, oder es erscheint nicht.
+      */}
+      {dark && (
+        <GlanzMark className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 opacity-[0.10]" />
+      )}
+
       {surface && (
         <div
           aria-hidden="true"
