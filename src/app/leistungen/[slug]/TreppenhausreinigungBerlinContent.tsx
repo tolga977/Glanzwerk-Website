@@ -235,13 +235,13 @@ export default function TreppenhausreinigungBerlinContent({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/kontakt"
-              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               Unverbindliches Angebot anfragen
             </Link>
             <Link
               href="/preisrechner"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               Preis kostenlos berechnen
             </Link>
@@ -370,7 +370,7 @@ export default function TreppenhausreinigungBerlinContent({
         </div>
         <Link
           href="/umwelt-verantwortung"
-          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
           Mehr über Umwelt und Verantwortung
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -391,7 +391,7 @@ export default function TreppenhausreinigungBerlinContent({
             >
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
-              <Link href={card.href} className="mt-3 inline-block text-sm font-semibold text-brand-500 hover:underline">
+              <Link href={card.href} className="mt-3 inline-block text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
                 {card.linkLabel}
               </Link>
             </FadeIn>
@@ -424,13 +424,13 @@ export default function TreppenhausreinigungBerlinContent({
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             Preis kostenlos berechnen
           </Link>
           <Link
             href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             Individuelles Angebot anfragen
           </Link>
@@ -445,7 +445,7 @@ export default function TreppenhausreinigungBerlinContent({
             <Link
               key={district.slug}
               href={`/standorte/${district.slug}`}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
+              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}
             </Link>
@@ -490,12 +490,12 @@ export default function TreppenhausreinigungBerlinContent({
         />
         <p className="mt-6 text-center text-sm text-ink-soft">
           Telefon:{" "}
-          <a href={siteConfig.phoneHref} className="font-semibold text-brand-500 hover:underline">
+          <a href={siteConfig.phoneHref} className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             {siteConfig.phone}
           </a>
           {" · "}
           E-Mail:{" "}
-          <a href={`mailto:${siteConfig.email}`} className="font-semibold text-brand-500 hover:underline">
+          <a href={`mailto:${siteConfig.email}`} className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             {siteConfig.email}
           </a>
         </p>

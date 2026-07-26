@@ -68,7 +68,7 @@ export default function KontaktPage() {
                   <span className="block text-xs uppercase tracking-wide text-brand-300">
                     Telefon
                   </span>
-                  <a href={siteConfig.phoneHref} className="text-base font-semibold text-white">
+                  <a href={siteConfig.phoneHref} className="text-base font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                     {siteConfig.phone}
                   </a>
                 </li>
@@ -78,7 +78,7 @@ export default function KontaktPage() {
                   </span>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="text-base font-semibold text-white"
+                    className="text-base font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {siteConfig.email}
                   </a>

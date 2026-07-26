@@ -128,7 +128,7 @@ export default function UmweltVerantwortungPage() {
             <div className="mt-8">
               <Link
                 href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 Unverbindliches Angebot anfragen
               </Link>
@@ -250,23 +250,23 @@ export default function UmweltVerantwortungPage() {
         </div>
         <p className="mt-6 max-w-3xl text-sm text-ink-soft">
           Mehr zu einzelnen Leistungen:{" "}
-          <Link href="/leistungen/gebaeudereinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+          <Link href="/leistungen/gebaeudereinigung-berlin" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             Gebäudereinigung
           </Link>
           ,{" "}
-          <Link href="/leistungen/unterhaltsreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+          <Link href="/leistungen/unterhaltsreinigung-berlin" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             Unterhaltsreinigung
           </Link>
           ,{" "}
-          <Link href="/leistungen/bueroreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+          <Link href="/leistungen/bueroreinigung-berlin" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             Büroreinigung
           </Link>
           ,{" "}
-          <Link href="/leistungen/praxisreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+          <Link href="/leistungen/praxisreinigung-berlin" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             Praxisreinigung
           </Link>{" "}
           und{" "}
-          <Link href="/leistungen/glas-und-fensterreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+          <Link href="/leistungen/glas-und-fensterreinigung-berlin" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
             Glas- und Fensterreinigung
           </Link>
           .

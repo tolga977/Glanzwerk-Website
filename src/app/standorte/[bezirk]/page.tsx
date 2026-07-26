@@ -107,7 +107,7 @@ export default async function DistrictPage({ params }: Props) {
                 <Link
                   key={ortsteil.slug}
                   href={`/standorte/${district.slug}/${ortsteil.slug}`}
-                  className="rounded-full border border-gray-200 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-900 backdrop-blur-sm hover:border-brand-500 hover:text-brand-500"
+                  className="rounded-full border border-gray-200 bg-white/80 px-4 py-1.5 text-sm font-medium text-brand-900 backdrop-blur-sm hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                 >
                   {ortsteil.name}
                 </Link>
@@ -118,13 +118,13 @@ export default async function DistrictPage({ params }: Props) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/preisrechner"
-              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25"
+              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               Preis berechnen
             </Link>
             <Link
               href="/kontakt"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               Angebot anfragen
             </Link>
@@ -166,7 +166,7 @@ export default async function DistrictPage({ params }: Props) {
             ))}
           </FadeIn>
           <div className="mt-6">
-            <Link href="/leistungen" className="text-sm font-semibold text-brand-500 hover:underline">
+            <Link href="/leistungen" className="text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
               Alle Leistungen im Überblick
             </Link>
           </div>
@@ -181,7 +181,7 @@ export default async function DistrictPage({ params }: Props) {
               <Link
                 key={service.slug}
                 href={`/leistungen/${service.slug}/${combo.districtSlug}`}
-                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500"
+                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 {service.shortTitle} {district.name}
               </Link>

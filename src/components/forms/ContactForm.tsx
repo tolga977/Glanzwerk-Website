@@ -168,7 +168,7 @@ export default function ContactForm() {
           />
           <span>
             Ich habe die{" "}
-            <a href="/datenschutz" className="font-medium text-brand-500 hover:underline">
+            <a href="/datenschutz" className="font-medium text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
               Datenschutzerklärung
             </a>{" "}
             zur Kenntnis genommen. *
@@ -186,7 +186,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex items-center justify-center rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? "Wird gesendet…" : "Anfrage senden"}
       </button>

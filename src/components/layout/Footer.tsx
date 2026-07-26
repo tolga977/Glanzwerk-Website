@@ -25,12 +25,12 @@ export default function Footer() {
               {siteConfig.address.zip} {siteConfig.address.city}
             </li>
             <li>
-              <a href={siteConfig.phoneHref} className="hover:text-white">
+              <a href={siteConfig.phoneHref} className="hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Telefon: {siteConfig.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-white">
+              <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 E-Mail: {siteConfig.email}
               </a>
             </li>
@@ -44,7 +44,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {footerServiceLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-brand-200 hover:text-white">
+                <Link href={link.href} className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                   {link.label}
                 </Link>
               </li>
@@ -61,7 +61,7 @@ export default function Footer() {
               <li key={district.slug}>
                 <Link
                   href={`/standorte/${district.slug}`}
-                  className="text-brand-200 hover:text-white"
+                  className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300"
                 >
                   {district.name}
                 </Link>
@@ -76,42 +76,42 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link href="/ueber-uns" className="text-brand-200 hover:text-white">
+              <Link href="/ueber-uns" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Über uns
               </Link>
             </li>
             <li>
-              <Link href="/reinigungsfirma-berlin" className="text-brand-200 hover:text-white">
+              <Link href="/reinigungsfirma-berlin" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Reinigungsfirma Berlin
               </Link>
             </li>
             <li>
-              <Link href="/umwelt-verantwortung" className="text-brand-200 hover:text-white">
+              <Link href="/umwelt-verantwortung" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Umwelt &amp; Verantwortung
               </Link>
             </li>
             <li>
-              <Link href="/3-monate-testen" className="text-brand-200 hover:text-white">
+              <Link href="/3-monate-testen" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 3 Monate flexibel testen
               </Link>
             </li>
             <li>
-              <Link href="/kontakt" className="text-brand-200 hover:text-white">
+              <Link href="/kontakt" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Kontakt
               </Link>
             </li>
             <li>
-              <Link href="/preisrechner" className="text-brand-200 hover:text-white">
+              <Link href="/preisrechner" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Preisrechner
               </Link>
             </li>
             <li>
-              <Link href="/wissen" className="text-brand-200 hover:text-white">
+              <Link href="/wissen" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Glanzwerk Wissen
               </Link>
             </li>
             <li>
-              <Link href="/bewertungen" className="text-brand-200 hover:text-white">
+              <Link href="/bewertungen" className="text-brand-200 hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                 Bewertungen
               </Link>
             </li>
@@ -127,7 +127,7 @@ export default function Footer() {
           <ul className="flex gap-5">
             {footerLegalLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-white">
+                <Link href={link.href} className="hover:text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
                   {link.label}
                 </Link>
               </li>

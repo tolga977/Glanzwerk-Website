@@ -193,7 +193,7 @@ export default function PriceCalculator() {
 
           <button
             type="submit"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
+            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             Weiter
           </button>
@@ -543,7 +543,7 @@ function StepNav({ onBack, nextLabel = "Weiter" }: { onBack: () => void; nextLab
       </button>
       <button
         type="submit"
-        className="shine-sweep shine-sweep-auto inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
+        className="shine-sweep shine-sweep-auto inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
       >
         {nextLabel}
       </button>
@@ -608,7 +608,7 @@ function ResultView({
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Link
           href="/kontakt"
-          className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25"
+          className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
           Angebot anfragen
         </Link>

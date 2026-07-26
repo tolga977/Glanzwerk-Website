@@ -5,7 +5,7 @@ export default function LocationCard({ district }: { district: District }) {
   return (
     <Link
       href={`/standorte/${district.slug}`}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-panel border border-line bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-[0_20px_40px_-12px_rgb(7_26_58/0.12)]"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-panel border border-line bg-white p-7 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-[0_20px_40px_-12px_rgb(7_26_58/0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
     >
       <span
         aria-hidden="true"
