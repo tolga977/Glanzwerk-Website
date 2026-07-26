@@ -40,11 +40,22 @@ export default function ProcessSteps({
   light?: boolean;
 }) {
   return (
-    <ol className="relative grid gap-9 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
-      {/* Durchgehende Linie zwischen den Stationen — nur im vierspaltigen Layout. */}
+    <ol className="relative grid gap-10 sm:grid-cols-2 sm:gap-11 lg:grid-cols-4 lg:gap-8">
+      {/*
+        Signaturelement: die Ziffer steht als Satzzahl auf einer Linie, nicht
+        in einem Kreisabzeichen.
+
+        Das Kreisabzeichen ist das generischste Element dieser Branche — es
+        steht bei praktisch jedem Wettbewerber identisch da. Die Satzzahl in
+        der Display-Schrift nutzt dagegen die einzige typografische
+        Besonderheit der Marke an einer Groesse, bei der ihr Charakter
+        sichtbar wird, und die Linie darunter traegt weiterhin die Lesart
+        "zusammenhaengender Ablauf" statt "vier Kaertchen".
+      */}
+      {/* Durchgehende Grundlinie unter den Ziffern — nur im vierspaltigen Layout. */}
       <span
         aria-hidden="true"
-        className={`absolute left-5 right-5 top-5 hidden h-px lg:block ${
+        className={`absolute inset-x-0 top-[3.25rem] hidden h-px lg:block ${
           light ? "bg-white/25" : "bg-line-strong"
         }`}
       />
@@ -53,26 +64,34 @@ export default function ProcessSteps({
         const isLast = index === steps.length - 1;
         return (
           <li key={step.title} className="relative pl-16 sm:pl-0">
-            {/* Senkrechte Schiene zum nächsten Schritt (nur mobil). */}
+            {/* Senkrechte Schiene zum naechsten Schritt (nur mobil). */}
             {!isLast && (
               <span
                 aria-hidden="true"
-                className={`absolute left-5 top-12 -bottom-9 w-px sm:hidden ${
+                className={`absolute left-[1.35rem] top-12 -bottom-10 w-px sm:hidden ${
                   light ? "bg-white/25" : "bg-line-strong"
                 }`}
               />
             )}
 
             <span
-              className={`font-display absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full text-base font-medium sm:relative sm:mb-5 ${
-                light ? "bg-white text-brand-900" : "bg-brand-900 text-white"
+              className={`font-display absolute left-0 top-0 block w-12 text-3xl font-medium leading-none tracking-tight sm:relative sm:mb-0 sm:w-auto ${
+                light ? "text-white/55" : "text-brand-500"
               }`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
 
+            {/* Grundlinie unter der Ziffer im ein- und zweispaltigen Layout. */}
+            <span
+              aria-hidden="true"
+              className={`mt-4 hidden h-px w-full sm:block lg:hidden ${
+                light ? "bg-white/25" : "bg-line-strong"
+              }`}
+            />
+
             <h3
-              className={`text-base font-semibold sm:mt-0 ${light ? "text-white" : "text-brand-900"}`}
+              className={`text-base font-semibold sm:mt-5 lg:mt-[1.9rem] ${light ? "text-white" : "text-brand-900"}`}
             >
               {step.title}
             </h3>
