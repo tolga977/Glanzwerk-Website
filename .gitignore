@@ -52,3 +52,19 @@ __pycache__/
 # (dupliziert nur die ohnehin versionierten Skills)
 /security-review-export/
 /security-review-export.zip
+
+# Hero-Video.
+#
+# hero.mp4 und hero-original-nofaststart.mp4 sind je rund 140 MB. GitHub
+# weist einzelne Dateien ueber 100 MB grundsaetzlich zurueck — ein Push
+# waere gescheitert. Ausserdem laesst sich eine einmal committete Binaerdatei
+# ohne Umschreiben der Historie nicht mehr aus dem Repository entfernen.
+#
+# Grosse Mediendateien gehoeren nicht in die Codeverwaltung. Sobald das Video
+# neu exportiert ist (2,5-4 Mbit/s, Zielgroesse 8-12 MB), kann es entweder
+# hier aufgenommen oder besser ueber Vercel Blob bzw. einen CDN ausgeliefert
+# werden.
+#
+# Ohne die Datei zeigt der Hero das ohnehin immer gerenderte Standbild —
+# die Seite bleibt vollstaendig, nur ohne Bewegtbild.
+/public/video/

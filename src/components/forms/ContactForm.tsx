@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import FormField from "@/components/forms/FormField";
 import { FormAlert } from "@/components/forms/FormError";
+import Button from "@/components/ui/Button";
 
 interface FormValues {
   name: string;
@@ -183,13 +184,15 @@ export default function ContactForm() {
         )}
       </div>
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="inline-flex items-center justify-center rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:cursor-not-allowed disabled:opacity-60"
-      >
+      {/*
+        Auf dem Telefon volle Breite, ab Tablet auf die eigene Textbreite.
+        Ein Absendeknopf ueber die ganze Spalte ist auf einem 500 px breiten
+        Formular unnoetig wuchtig; auf einem 390-px-Schirm ist er dagegen das
+        sicherste Ziel fuer den Daumen.
+      */}
+      <Button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto sm:self-start">
         {status === "submitting" ? "Wird gesendet…" : "Anfrage senden"}
-      </button>
+      </Button>
     </form>
   );
 }

@@ -34,6 +34,20 @@ export const pricingConfig = {
   /** Mindestpreis pro Reinigungseinsatz in Euro netto (vor Fahrtkosten). */
   minimumPricePerVisit: 55,
 
+  /**
+   * Mindestauftragswert pro Monat in Euro netto fuer wiederkehrende Reinigung.
+   *
+   * Gilt fuer alle Objektarten AUSSER Treppenhausreinigung. Glas-/Fenster-
+   * und Grundreinigung sind ohnehin keine Rechner-Optionen, sondern
+   * Einzelauftraege ohne Mindestwert.
+   *
+   * Liegt die Schaetzung darunter, zeigt der Rechner bewusst KEINEN Preis,
+   * sondern verweist auf ein Gespraech: eine Zahl zu nennen, die wir nicht
+   * anbieten, waere irrefuehrend, und eine kuenstlich auf 750 angehobene
+   * Zahl waere fuer kleine Objekte schlicht falsch.
+   */
+  minimumMonthlyOrderNet: 750,
+
   /** Fahrtkostenpauschale pro Einsatz in Euro netto. */
   travelFeePerVisit: 10,
 

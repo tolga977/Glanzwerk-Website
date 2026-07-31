@@ -44,12 +44,51 @@ export default function Header() {
     }
   }
 
+  /*
+   * Materialebene statt Farbfläche (apple-design §12): eine größere Fläche
+   * soll dicker wirken als ein kleiner Chip. Deckung leicht zurückgenommen,
+   * dafür stärkerer Blur und eine Sättigungsanhebung — dadurch bleibt der
+   * Untergrund als Material spürbar, statt von einer fast weißen Platte
+   * abgedeckt zu werden. Die Haarlinie unten bleibt: ohne sie verschwimmt
+   * der Kopf auf den weißen Unterseiten mit dem Inhalt.
+   */
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur-md">
-      <div className="container-page flex h-20 items-center justify-between gap-6 lg:h-24">
-        <Logo height={56} className="shrink-0" />
+    <header className="sticky top-0 z-40 border-b border-line bg-white/85 backdrop-blur-xl backdrop-saturate-150">
+      {/*
+        Kopfhöhe und Logogröße gestaffelt — gemessen, nicht geschätzt.
 
-        <nav aria-label="Hauptnavigation" className="hidden lg:block">
+          < 1536 px   88 px hoch  = 1,57×
+          ≥ 1536 px   96 px hoch  = 1,71×   (Zielgröße aus dem Auftrag)
+
+        Warum die volle Navigation erst ab 1280 px erscheint (vorher 1024):
+        Bei 1024 px stellt die Zeile nur 945 px Inhaltsbreite bereit,
+        Navigation, Telefonnummer und Schaltfläche brauchen zusammen 1095 px.
+        Das ging bisher nur auf, weil die Einträge "Umwelt & Verantwortung"
+        und "Glanzwerk Wissen" dort still zweizeilig umbrachen — ein
+        Bestandsfehler, der beim Vermessen sichtbar wurde. Zwischen 1024 und
+        1279 px zeigt der Kopf jetzt dieselbe kompakte Form wie auf dem
+        Telefon; über das Menü bleiben alle Einträge vollständig erreichbar.
+        Eine umbrechende Navigation wäre die schlechtere Antwort.
+
+        Die Kopfhöhe folgt dem Logo mit gleichem Abstand oben und unten. Ein
+        Logo, das den Rand berührt, wirkt nicht groß, sondern gedrängt.
+
+        Gesamte Kopfzone vorher (mit Hinweisleiste): 121 / 137 / 137 px.
+        Jetzt: 112 / 112 / 128 px — auf jedem Breakpoint weniger, obwohl das
+        Logo überall deutlich größer ist.
+
+        `mr-auto` am Logo statt `justify-between` am Container: der freie Raum
+        sammelt sich hinter dem Logo, statt sich gleichmäßig auf beide Lücken
+        zu verteilen. Genau diese Gleichverteilung ließ die Navigation mittig
+        und damit beliebig wirken.
+      */}
+      <div className="container-page flex h-28 items-center gap-6 2xl:h-32">
+        <Logo
+          heightClassName="h-[5.5rem] 2xl:h-24"
+          className="mr-auto shrink-0"
+        />
+
+        <nav aria-label="Hauptnavigation" className="hidden xl:block">
           <ul className="flex items-center gap-1">
             {mainNav.map((item) => {
               const isMega = item.label === "Leistungen" || item.label === "Standorte";
@@ -66,7 +105,17 @@ export default function Header() {
                     aria-current={isActive(item.href) ? "page" : undefined}
                     aria-expanded={item.children ? openDropdown === item.label : undefined}
                     onFocus={() => item.children && setOpenDropdown(item.label)}
-                    className={`flex min-h-11 items-center gap-1 rounded-control px-4 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
+                    /* px-3 statt px-4: die 40 px, die das Innenpolster über
+                       fünf Einträge freigibt, gehen direkt an das größere
+                       Logo. Trefferfläche bleibt über min-h-11 bei 44 px.
+
+                       whitespace-nowrap ist hier kein Detail, sondern der
+                       Unterschied zwischen Kopfzeile und Textblock: ohne die
+                       Angabe brachen "Umwelt & Verantwortung" und "Glanzwerk
+                       Wissen" bei 1440 px zweizeilig um, sobald das Logo
+                       wuchs. Eine zweizeilige Navigation liest sich nicht als
+                       Menü, sondern als Absatz. */
+                    className={`flex min-h-11 items-center gap-1 whitespace-nowrap rounded-control px-3 py-3 text-sm font-medium transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
                       isActive(item.href) ? "bg-brand-50 text-brand-500" : "text-brand-900"
                     }`}
                   >
@@ -172,10 +221,22 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        {/*
+          Navigieren und Handeln sind zwei verschiedene Absichten und werden
+          deshalb sichtbar getrennt (apple-design §16, Grouping & Mapping):
+          links die Orientierung, rechts hinter einer Haarlinie die beiden
+          Handlungen. Vorher liefen Menü, Telefonnummer und Schaltfläche als
+          eine durchgehende Reihe — das ist der Grund, warum die Kopfzeile
+          beliebig wirkte, nicht die Position der Navigation.
+
+          Die Linie ist 28 px hoch, also kürzer als die Kopfzeile: sie
+          trennt, ohne die Zeile zu zerschneiden.
+        */}
+        <div className="hidden items-center gap-5 xl:flex">
+          <span aria-hidden="true" className="h-7 w-px shrink-0 bg-line-strong" />
           <a
             href={siteConfig.phoneHref}
-            className="flex min-h-11 items-center gap-1.5 rounded-control px-1 text-sm text-ink-soft transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            className="flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-control px-1 text-sm font-medium text-ink-soft transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -189,17 +250,20 @@ export default function Header() {
           </a>
           <Link
             href="/preisrechner"
-            className="shine-sweep lift press inline-flex min-h-11 items-center justify-center rounded-control bg-brand-500 px-5 text-sm font-semibold text-white shadow-raise hover:bg-brand-600 hover:shadow-float focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
+            /* Die einzige primäre Handlung der Kopfzeile — und in einer jetzt
+               höheren Zeile darf sie mitwachsen, sonst wirkt sie verloren.
+               Ruheschatten wie bei allen Primärschaltflächen der Seite. */
+            className="shine-sweep lift press inline-flex min-h-12 items-center justify-center rounded-control bg-brand-500 px-6 text-sm font-semibold text-white shadow-float hover:bg-brand-600 hover:shadow-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
           >
             Preis berechnen
           </Link>
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <a
             href={siteConfig.phoneHref}
             aria-label={`Anrufen: ${siteConfig.phone}`}
-            className="press flex h-11 w-11 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
+            className="press flex h-12 w-12 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -214,7 +278,7 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Menü öffnen"
-            className="press flex h-11 w-11 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
+            className="press flex h-12 w-12 items-center justify-center rounded-control text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

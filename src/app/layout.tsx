@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import PromoBar from "@/components/layout/PromoBar";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -61,11 +60,14 @@ export default function RootLayout({
         >
           Zum Inhalt springen
         </a>
-        <PromoBar
-          text="Glanzwerk drei Monate flexibel testen – ohne langfristige Bindung"
-          shortText="Drei Monate flexibel testen"
-          href="/3-monate-testen"
-        />
+        {/*
+          Die Hinweisleiste ueber dem Header ist entfernt — nicht ausgeblendet,
+          sondern aus dem Layout genommen. Sie kostete 41 px Bildschirmhoehe
+          auf jeder Seite und schob die Marke unter eine Werbezeile. Die
+          dreimonatige Testphase bleibt auf der Startseite dreifach vertreten
+          (Beweisband, eigener Abschnitt, Formular-Checkliste) und behaelt ihre
+          eigene Seite unter /3-monate-testen.
+        */}
         <Header />
         <main id="main-content" className="flex-1">
           {children}

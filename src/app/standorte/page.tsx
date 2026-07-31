@@ -40,7 +40,7 @@ export default function StandortePage() {
               Ansprechpartnern vor Ort.
             </p>
           </div>
-          <BrandPhoto photo={photos.buildingFacade} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={photos.buildingFacade} priority className="shadow-deep" />
         </div>
         <FadeIn className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {districts.map((district) => (

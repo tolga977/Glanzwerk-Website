@@ -20,6 +20,7 @@ import GebaeudereinigungPankowContent from "./GebaeudereinigungPankowContent";
 import GebaeudereinigungCharlottenburgWilmersdorfContent from "./GebaeudereinigungCharlottenburgWilmersdorfContent";
 import GebaeudereinigungTempelhofSchoenebergContent from "./GebaeudereinigungTempelhofSchoenebergContent";
 import GebaeudereinigungNeukoellnContent from "./GebaeudereinigungNeukoellnContent";
+import Button from "@/components/ui/Button";
 
 /** Kombi-Seiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
 const customContentCombos = {
@@ -138,30 +139,24 @@ export default async function ServiceDistrictPage({ params }: Props) {
         </div>
 
         <FadeIn as="ul" className="mt-8 grid gap-4 sm:grid-cols-3">
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             {service.benefits[0]}
           </li>
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             Typische Aufgabe: {service.tasks[0]}
           </li>
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             Passend für: {district.audiences[0]}
           </li>
         </FadeIn>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Preis berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Angebot anfragen
-          </Link>
+          <Button href="/preisrechner">
+              Preis berechnen
+            </Button>
+          <Button href="/kontakt" variant="outline">
+              Angebot anfragen
+            </Button>
         </div>
       </Section>
 
@@ -251,7 +246,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
             {service.audiences.map((audience) => (
               <li
                 key={audience}
-                className="rounded-xl border border-black/[0.06] bg-white px-4 py-2.5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+                className="rounded-control border border-line bg-white px-4 py-2.5 text-sm font-medium text-brand-900 shadow-raise"
               >
                 {audience}
               </li>
@@ -264,7 +259,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
         <FadeIn className="grid gap-6 sm:grid-cols-2">
           <Link
             href={`/leistungen/${service.slug}`}
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-card border border-line bg-white p-6 shadow-raise lift hover:border-brand-100 hover:shadow-float"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
               {mehrZurLeistungHeading}
@@ -273,7 +268,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
           </Link>
           <Link
             href={`/standorte/${district.slug}`}
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-card border border-line bg-white p-6 shadow-raise lift hover:border-brand-100 hover:shadow-float"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">
               {alleLeistungenHeading}
@@ -301,7 +296,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
               <Link
                 key={neighbor.slug}
                 href={`/leistungen/${service.slug}/${neighbor.slug}`}
-                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 {service.shortTitle} {neighbor.name}
               </Link>

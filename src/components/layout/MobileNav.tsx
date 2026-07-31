@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Logo from "@/components/layout/Logo";
 import { mainNav } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import Button from "@/components/ui/Button";
 
 interface MobileNavProps {
   open: boolean;
@@ -22,8 +23,14 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
 
   if (!open) return null;
 
+  /*
+   * Der Breakpoint muss derselbe sein wie bei der Menü-Schaltfläche im
+   * Header (jetzt xl statt lg). Stünde hier weiterhin lg:hidden, wäre die
+   * Schublade zwischen 1024 und 1279 px unsichtbar — die Schaltfläche wäre
+   * da, das Menü ließe sich aber nicht öffnen.
+   */
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div className="fixed inset-0 z-50 xl:hidden">
       <button
         type="button"
         aria-label="Menü schließen"
@@ -134,16 +141,15 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         </ul>
 
         <div className="mt-6 flex flex-col gap-3">
-          <a
-            href={siteConfig.phoneHref}
-            className="flex items-center justify-center gap-2 rounded-full border-2 border-brand-900 px-5 py-3 text-sm font-semibold text-brand-900"
-          >
+          {/* Beide hatten weder Hover- noch Druckzustand: im mobilen Menue
+              fehlte jede Rueckmeldung auf die Beruehrung. */}
+          <Button href={siteConfig.phoneHref} external variant="outline" className="w-full">
             {siteConfig.phone}
-          </a>
+          </Button>
           <Link
             href="/preisrechner"
             onClick={onClose}
-            className="flex items-center justify-center rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white"
+            className="lift press inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-control bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-float shine-sweep hover:bg-brand-600 hover:shadow-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
           >
             Preis berechnen
           </Link>

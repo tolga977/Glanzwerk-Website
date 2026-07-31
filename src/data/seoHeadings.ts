@@ -47,7 +47,17 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   // ZENTRALE SEITEN
   // ==========================================================
   "/": {
-    h1: "Gebäudereinigung Berlin für Unternehmen mit klaren Abläufen",
+    // Auf das Thema verkürzt. "Gebäudereinigung Berlin" ist die exakte
+    // Ziel-Keyword-Phrase, als H1 also eher stärker als die frühere
+    // Langform. Der Meta-Titel trägt die ausführliche Formulierung weiter,
+    // und die Abgrenzung zu /leistungen/gebaeudereinigung-berlin
+    // ("… mit klar abgestimmten Leistungen") wird dadurch deutlicher.
+    //
+    // Die Hervorhebung deckt sich mit der gesamten H1 — auf ausdrücklichen
+    // Wunsch: die Überschrift trägt wieder das helle Markenblau. Kontrast
+    // gemessen: brand-300 (#6fc4e2) auf der Hero-Kontrastführung ergibt
+    // 5,29:1, also AA auch für Fließtextgrößen.
+    h1: "Gebäudereinigung Berlin",
     h1Highlight: "Gebäudereinigung Berlin",
     sectionHeadings: [
       "Eine Gebäudereinigung muss vor allem zuverlässig funktionieren",

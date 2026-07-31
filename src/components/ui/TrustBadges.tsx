@@ -138,21 +138,34 @@ const defaultBadges: TrustBadge[] = [
   },
 ];
 
+/**
+ * Sechs Merkmale der Zusammenarbeit.
+ *
+ * Vorher: sechs Kacheln in Dreierreihen, jede mit einem Symbol in einem
+ * runden Plättchen, jede mit eigener Hover-Fläche. Es gibt hier nichts
+ * anzuklicken — die Hover-Reaktion versprach eine Interaktion, die nicht
+ * existiert, und die Dreierreihe aus Symbolkacheln ist die Bauform, die das
+ * Designsystem dieser Website ausdrücklich ausschließt.
+ *
+ * Jetzt zwei Spalten mit Trennlinien. Zwei statt drei, weil die
+ * Beschreibungen damit auf eine lesbare Zeilenlänge kommen statt auf drei
+ * gebrochene Wörter; die Symbole stehen frei neben der Überschrift.
+ */
 export default function TrustBadges({ badges = defaultBadges }: { badges?: TrustBadge[] }) {
   return (
-    <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid border-t border-line-strong sm:grid-cols-2">
       {badges.map((badge) => (
         <li
           key={badge.title}
-          className="group flex gap-3 rounded-card p-3 transition-colors duration-300 hover:bg-brand-50/60"
+          className="border-b border-line-strong py-6 sm:px-8 sm:py-7 sm:even:border-l sm:[&:nth-child(odd)]:pl-0 sm:[&:nth-child(even)]:pr-0"
         >
-          <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500 transition-transform duration-300 ease-out group-hover:scale-105">
-            <TrustIcon name={badge.icon} />
-          </span>
-          <div>
-            <p className="text-sm font-semibold text-brand-900">{badge.title}</p>
-            <p className="mt-0.5 text-sm text-ink-soft">{badge.description}</p>
+          <div className="flex items-center gap-3">
+            <span className="shrink-0 text-brand-400">
+              <TrustIcon name={badge.icon} className="h-5 w-5" />
+            </span>
+            <p className="text-base font-semibold text-brand-900">{badge.title}</p>
           </div>
+          <p className="measure mt-2 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
         </li>
       ))}
     </ul>

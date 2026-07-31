@@ -49,7 +49,7 @@ export default function KontaktPage() {
               Absenden prüfen wir Ihre Angaben und melden uns mit einem
               individuellen Angebot bei Ihnen zurück.
             </p>
-            <div className="mt-8 rounded-3xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+            <div className="mt-8 rounded-panel border border-line bg-white p-6 shadow-raise sm:p-8">
               <ContactForm />
             </div>
           </div>
@@ -59,9 +59,9 @@ export default function KontaktPage() {
               photo={photos.businessHandshake}
               priority
               aspect="aspect-[4/3]"
-              className="mb-6 shadow-xl shadow-brand-950/15"
+              className="mb-6 shadow-deep"
             />
-            <div className="rounded-3xl bg-brand-900 p-8 text-white">
+            <div className="rounded-panel bg-brand-900 p-8 text-white">
               <h2 className="text-lg font-semibold">{heading.sectionHeadings[0]}</h2>
               <ul className="mt-5 space-y-4 text-sm text-brand-100">
                 <li>

@@ -15,6 +15,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema, professionalServiceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 const heading = seoHeadings["/ueber-uns"];
 
@@ -213,21 +214,15 @@ export default function UeberUnsPage() {
               Termine sollen funktionieren und Rückfragen sollen schnell geklärt werden können.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Unverbindliches Angebot anfragen
-              </Link>
-              <Link
-                href="/leistungen"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Unsere Leistungen ansehen
-              </Link>
+              <Button href="/kontakt">
+              Unverbindliches Angebot anfragen
+            </Button>
+              <Button href="/leistungen" variant="outline">
+              Unsere Leistungen ansehen
+            </Button>
             </div>
           </div>
-          <BrandPhoto photo={photos.buildingFacade} className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={photos.buildingFacade} className="shadow-deep" />
         </div>
       </Section>
 
@@ -268,9 +263,9 @@ export default function UeberUnsPage() {
             <FadeIn
               key={point.title}
               delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="flex gap-4 rounded-card border border-line bg-white p-6 shadow-raise"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {approachIcons[point.icon]}
                 </svg>
@@ -300,7 +295,7 @@ export default function UeberUnsPage() {
             <FadeIn
               key={group.title}
               delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="rounded-card border border-line bg-white p-6 shadow-raise"
             >
               <p className="font-display text-base font-medium text-brand-900">{group.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{group.description}</p>
@@ -362,7 +357,7 @@ export default function UeberUnsPage() {
           {qualityPoints.map((point) => (
             <div
               key={point.title}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="rounded-card border border-line bg-white p-6 shadow-raise"
             >
               <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
@@ -370,9 +365,9 @@ export default function UeberUnsPage() {
           ))}
         </div>
 
-        <div className="mt-8 divide-y divide-brand-900/[0.06] overflow-hidden rounded-3xl border border-black/[0.06] bg-white shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+        <div className="mt-8 divide-y divide-brand-900/[0.06] overflow-hidden rounded-panel border border-line bg-white shadow-raise">
           <FadeIn className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M12 3.5l7 2.6v5.4c0 4.5-3 8-7 9.4-4-1.4-7-4.9-7-9.4V6.1l7-2.6Z"
@@ -392,7 +387,7 @@ export default function UeberUnsPage() {
             </div>
           </FadeIn>
           <FadeIn delay={80} className="flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M5 11a7 7 0 0 1 12-4.9M19 13a7 7 0 0 1-12 4.9"
@@ -449,8 +444,8 @@ export default function UeberUnsPage() {
               </svg>
             </Link>
           </div>
-          <BrandPhoto photo={photos.cleaningEquipment} className="shadow-2xl shadow-brand-950/20">
-            <div className="absolute bottom-4 left-4 rounded-xl bg-white/95 px-3 py-2 shadow-lg backdrop-blur">
+          <BrandPhoto photo={photos.cleaningEquipment} className="shadow-deep">
+            <div className="absolute bottom-4 left-4 rounded-control bg-white/95 px-3 py-2 shadow-float backdrop-blur">
               <Logo height={22} />
             </div>
           </BrandPhoto>
@@ -469,7 +464,7 @@ export default function UeberUnsPage() {
             <Link
               key={district.slug}
               href={`/standorte/${district.slug}`}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}
             </Link>

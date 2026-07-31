@@ -13,6 +13,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 const heading = seoHeadings["/reinigungsfirma-berlin"];
 
@@ -107,21 +108,15 @@ export default function ReinigungsfirmaBerlinPage() {
               Reinigungsfirma für Gewerbekunden arbeitet.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/preisrechner"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Preis berechnen
-              </Link>
-              <Link
-                href="/kontakt"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Angebot anfragen
-              </Link>
+              <Button href="/preisrechner">
+              Preis berechnen
+            </Button>
+              <Button href="/kontakt" variant="outline">
+              Angebot anfragen
+            </Button>
             </div>
           </div>
-          <BrandPhoto photo={photos.windowCleaning} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={photos.windowCleaning} priority className="shadow-deep" />
         </div>
       </Section>
 
@@ -132,7 +127,7 @@ export default function ReinigungsfirmaBerlinPage() {
         />
         <FadeIn className="mt-10 grid gap-6 sm:grid-cols-2">
           {selectionCriteria.map((item, index) => (
-            <FadeIn key={item.title} delay={index * 70} className="flex gap-3 rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+            <FadeIn key={item.title} delay={index * 70} className="flex gap-3 rounded-card border border-line bg-white p-5 shadow-raise">
               <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-brand-500" />
               <div>
                 <p className="text-sm font-semibold text-brand-900">{item.title}</p>
@@ -160,7 +155,7 @@ export default function ReinigungsfirmaBerlinPage() {
         <div className="grid gap-6 sm:grid-cols-2">
           <Link
             href="/leistungen"
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-card border border-line bg-white p-6 shadow-raise lift hover:border-brand-100 hover:shadow-float"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">{heading.sectionHeadings[2]}</h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
@@ -169,7 +164,7 @@ export default function ReinigungsfirmaBerlinPage() {
           </Link>
           <Link
             href="/standorte"
-            className="group rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand-900/[0.08]"
+            className="group rounded-card border border-line bg-white p-6 shadow-raise lift hover:border-brand-100 hover:shadow-float"
           >
             <h2 className="font-display text-lg font-medium text-brand-900 group-hover:text-brand-500">{heading.sectionHeadings[3]}</h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">

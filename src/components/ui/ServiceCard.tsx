@@ -77,10 +77,19 @@ export default function ServiceCard({
           feature ? "p-7 sm:p-8" : compact ? "p-4 sm:p-6" : "p-6"
         }`}
       >
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-400 via-brand-500 to-accent-500 transition-transform duration-300 ease-out group-hover:scale-x-100"
-        />
+        {/*
+          Hier lag eine 2 px hohe Akzentleiste, die beim Überfahren von links
+          nach rechts einfuhr — in einem Verlauf aus zwei Blautönen in ein
+          warmes Gelb.
+
+          Sie ist ersatzlos entfallen. Die Karte hatte damit sieben
+          gleichzeitige Hover-Reaktionen: Anheben, Rahmenfarbe, Schatten,
+          Bildzoom, Leiste, Titelfarbe, Pfeil. Wenn alles gleichzeitig
+          antwortet, antwortet nichts erkennbar. Übrig bleiben sechs, und
+          jede einzelne sagt etwas über den Zustand aus — die Leiste war die
+          einzige rein dekorative. Der Verlauf in eine markenfremde Farbe war
+          zusätzlich das Erkennungszeichen jeder Baukastenkarte.
+        */}
         {/* In der liegenden Telefon-Darstellung trägt bereits das Foto die
             visuelle Kennzeichnung — das Icon würde dort nur konkurrieren. */}
         <div

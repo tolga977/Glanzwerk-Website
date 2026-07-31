@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import Button from "@/components/ui/Button";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
@@ -95,24 +96,6 @@ const heroTrustBar = [
       </svg>
     ),
   },
-];
-
-/** Drei einheitliche, zyklisch zugeordnete Icons für die "Schnelle Vorteile"-Karten (Uhr, Schild, Team). */
-const quickBenefitIcons = [
-  <svg key="clock" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>,
-  <svg key="shield" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M12 3.5 19 6.5V11c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6.5L12 3.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    <path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>,
-  <svg key="team" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="9" cy="8" r="2.6" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M4 19c.6-3 2.6-4.8 5-4.8s4.4 1.8 5 4.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <circle cx="16.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M15 14.6c1.7.3 3 1.7 3.5 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-  </svg>,
 ];
 
 export function generateStaticParams() {
@@ -208,30 +191,37 @@ export default async function ServicePage({ params }: Props) {
             <p className="mt-5 text-lg leading-relaxed text-ink-soft">{service.intro}</p>
           </div>
 
+          {/*
+            Beide Wege liefen hier als handgebaute Links mit eigener Rundung,
+            eigener Hover-Physik und ohne Druckfeedback — die Schaltflächen
+            auf den zwölf Leistungsseiten sahen anders aus und reagierten
+            anders als die auf jeder anderen Seite. Jetzt dieselbe Komponente
+            wie überall.
+          */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/kontakt"
-              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
+            <Button href="/kontakt" size="lg">
               Reinigung anfragen
-            </Link>
-            <Link
-              href="/preisrechner"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
+            </Button>
+            <Button href="/preisrechner" variant="outline" size="lg" className="bg-white/70 backdrop-blur-sm">
               Preis berechnen
-            </Link>
+            </Button>
           </div>
         </div>
 
-        {/* Trust-Leiste am unteren Hero-Rand */}
-        <div className="relative z-[1] border-t border-black/[0.06] bg-white/85 backdrop-blur-sm">
-          <div className="container-page grid grid-cols-1 gap-3 py-4 sm:grid-cols-3 sm:gap-4">
+        {/*
+          Vertrauensleiste am unteren Hero-Rand.
+
+          Die Symbole standen vorher jeweils in einem runden Plättchen mit
+          Farbverlauf. Drei davon nebeneinander sind das Muster, an dem man
+          eine Baukastenseite auf den ersten Blick erkennt — und das Plättchen
+          trug nichts bei, was das Symbol nicht schon selbst sagt. Das Symbol
+          steht jetzt frei in der Markenfarbe neben der Zeile.
+        */}
+        <div className="relative z-[1] border-t border-line bg-white/85 backdrop-blur-sm">
+          <div className="container-page grid grid-cols-1 gap-3 py-4 sm:grid-cols-3 sm:gap-6">
             {heroTrustBar.map((point) => (
-              <div key={point.label} className="flex items-center gap-2.5 text-sm font-medium text-brand-900">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-                  {point.icon}
-                </span>
+              <div key={point.label} className="flex items-center gap-3 text-sm font-medium text-brand-900">
+                <span className="shrink-0 text-brand-500">{point.icon}</span>
                 {point.label}
               </div>
             ))}
@@ -239,51 +229,74 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 2. Schnelle Vorteile mit Symbolen */}
-      <Section background="tint" decor>
+      {/*
+        2. Auf einen Blick.
+
+        Vorher: drei weiße Karten mit je einem Symbol in einer Kachel mit
+        Farbverlauf. Die Symbole waren zyklisch vergeben — `index % 3`, also
+        Uhr/Schild/Team der Reihe nach, unabhängig davon, was in der Zeile
+        stand. Ein Symbol, das nichts über seinen Inhalt aussagt, ist
+        Füllmaterial; drei gleich große Kästen mit Symbol und Zeile sind die
+        Standardlösung, die diese Seite laut ihrem eigenen Designsystem nicht
+        verwenden soll.
+
+        Jetzt tragen die drei Aussagen sich selbst: größerer Grad, mehr Luft,
+        getrennt durch Haarlinien statt durch Kartenränder. Struktur aus
+        Linien statt aus Kästen ist die durchgehende Sprache dieser Website —
+        Spaltenlinien im Bezirksregister, Trennlinien im Beweisband, die
+        Grundlinie im Ablauf. Dieser Abschnitt folgt ihr jetzt auch.
+      */}
+      <Section background="tint">
         <SectionHeading eyebrow="Auf einen Blick" title={heading.sectionHeadings[0]} />
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+        <ul className="mt-10 grid divide-y divide-line-strong border-y border-line-strong sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {service.bullets.map((bullet, index) => (
             <FadeIn
               key={bullet}
-              delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] transition-transform duration-300 ease-out hover:-translate-y-0.5"
+              as="li"
+              delay={index * 70}
+              className="py-7 sm:px-8 sm:py-9 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-                {quickBenefitIcons[index % quickBenefitIcons.length]}
-              </span>
-              <p className="text-sm font-medium leading-relaxed text-brand-900">{bullet}</p>
+              {/*
+                Inter, nicht Fraunces: die Serife bleibt laut Designsystem
+                den Überschriften vorbehalten. Gewicht und Grad tragen die
+                Betonung.
+              */}
+              <p className="text-base font-medium leading-snug text-brand-900 sm:text-lg">{bullet}</p>
             </FadeIn>
           ))}
-        </div>
+        </ul>
       </Section>
 
-      {/* 3. Problem/Herausforderung - optisch hervorgehoben */}
-      <Section background="white">
-        <div className="relative overflow-hidden rounded-3xl bg-graphite-50 p-8 sm:p-10">
-          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-accent-500" />
-          <div className="flex items-start gap-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 4 21 19H3L12 4Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                <path d="M12 10v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <circle cx="12" cy="16.5" r="0.9" fill="currentColor" stroke="none" />
-              </svg>
-            </span>
-            <div>
-              <h2 className="font-display text-2xl font-medium tracking-tight text-brand-900 sm:text-3xl">
-                {heading.sectionHeadings[1]}
-              </h2>
-              <ul className="mt-5 space-y-3">
-                {service.challenges.map((challenge) => (
-                  <li key={challenge} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink-soft">
-                    <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" />
-                    {challenge}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+      {/*
+        3. Die Ausgangslage im Objekt.
+
+        Vorher steckte dieser Abschnitt in einem abgerundeten Kasten mit
+        einem 6 px breiten gelben Balken an der linken Kante und einem
+        Warndreieck im Symbolplättchen — also in der Aufmachung einer
+        Systemmeldung. Das ist eine Verwechslung der Gattung: hier steht
+        kein Fehler, sondern der Sachstand im Objekt des Kunden, bevor die
+        Lösung beschrieben wird. Ein Warndreieck macht daraus eine Störung.
+
+        Jetzt trägt der Abschnitt seine eigene Fläche, statt einen Kasten auf
+        eine weiße zu legen, und die Punkte stehen als Aufzählung mit
+        Trennlinien. Überschrift links, Sachverhalt rechts — dieselbe
+        zweispaltige Anordnung wie in den redaktionellen Abschnitten.
+      */}
+      <Section background="warm">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
+          <h2 className="font-display display-lg text-2xl font-medium text-brand-900 sm:text-3xl">
+            {heading.sectionHeadings[1]}
+          </h2>
+          <ul className="divide-y divide-line">
+            {service.challenges.map((challenge) => (
+              <li
+                key={challenge}
+                className="measure py-4 text-base leading-relaxed text-ink-soft first:pt-0 last:pb-0"
+              >
+                {challenge}
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 
@@ -304,7 +317,7 @@ export default async function ServicePage({ params }: Props) {
               photo={midPhoto}
               aspect="aspect-[16/10]"
               sizes="(min-width: 1024px) 560px, 100vw"
-              className={`shadow-xl shadow-brand-950/15 ${imageLeftOnDesktop ? "lg:order-1" : ""}`}
+              className={`shadow-deep ${imageLeftOnDesktop ? "lg:order-1" : ""}`}
             />
           </div>
         </Section>
@@ -358,7 +371,7 @@ export default async function ServicePage({ params }: Props) {
               {service.audiences.map((audience) => (
                 <li
                   key={audience}
-                  className="rounded-xl border border-gray-100 bg-brand-50/60 px-4 py-2.5 text-sm font-medium text-brand-900"
+                  className="rounded-control border border-line bg-brand-50/60 px-4 py-2.5 text-sm font-medium text-brand-900"
                 >
                   {audience}
                 </li>
@@ -390,8 +403,16 @@ export default async function ServicePage({ params }: Props) {
         <ExpectationCards />
       </Section>
 
-      <Section background="warm">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+      {/*
+        Ein einzelner Absatz stand hier in einer weißen Karte mit Rand und
+        Schatten auf warmer Fläche. Eine Karte um genau einen Absatz ist der
+        Behälter, den man nimmt, wenn man keine Entscheidung trifft: sie
+        trennt nichts, gruppiert nichts und hebt nichts hervor, was der
+        Absatz nicht selbst hergibt. Ohne sie steht derselbe Text ruhiger und
+        die warme Fläche bleibt als Fläche erkennbar.
+      */}
+      <Section background="warm" spacing="compact">
+        <div className="mx-auto max-w-3xl border-l border-line-strong pl-6 sm:pl-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">Nachhaltigkeit</p>
           <p className="mt-3 text-base leading-relaxed text-ink-soft">
             Bei der {service.shortTitle} setzen wir auf hochwertige, materialschonende Reinigungsmittel
@@ -414,7 +435,7 @@ export default async function ServicePage({ params }: Props) {
               <Link
                 key={district.slug}
                 href={`/leistungen/${service.slug}/${district.slug}`}
-                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
               >
                 {service.shortTitle} {district.name}
               </Link>

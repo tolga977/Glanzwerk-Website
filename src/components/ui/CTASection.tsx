@@ -75,9 +75,8 @@ export default function CTASection({
           </Button>
           <Button
             href={secondaryLabel ? secondaryHref! : siteConfig.phoneHref}
-            variant="outline"
+            variant="onMedia"
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-brand-900"
           >
             {secondaryLabel ?? siteConfig.phone}
           </Button>

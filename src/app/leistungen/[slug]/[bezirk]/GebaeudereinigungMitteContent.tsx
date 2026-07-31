@@ -13,6 +13,7 @@ import type { SeoHeadingSet } from "@/data/seoHeadings";
 import { siteConfig } from "@/data/site";
 import { serviceSchema } from "@/lib/schema";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 /**
  * Eigenständiger, vollständiger Seiteninhalt für /leistungen/gebaeudereinigung-berlin/mitte.
@@ -222,30 +223,24 @@ export default function GebaeudereinigungMitteContent({
         </div>
 
         <FadeIn as="ul" className="mt-8 grid gap-4 sm:grid-cols-3">
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             Flexible Reinigungszeiten
           </li>
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             Fester Ansprechpartner
           </li>
-          <li className="rounded-2xl border border-black/[0.06] bg-white p-5 text-sm font-medium text-brand-900 shadow-[0_1px_2px_rgb(7_26_58/0.04)]">
+          <li className="rounded-card border border-line bg-white p-5 text-sm font-medium text-brand-900 shadow-raise">
             Gewerbliche Reinigung in Berlin-Mitte
           </li>
         </FadeIn>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/kontakt"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Unverbindliches Angebot anfragen
-          </Link>
-          <Link
-            href="/preisrechner"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Preis kostenlos berechnen
-          </Link>
+          <Button href="/kontakt">
+              Unverbindliches Angebot anfragen
+            </Button>
+          <Button href="/preisrechner" variant="outline">
+              Preis kostenlos berechnen
+            </Button>
         </div>
       </Section>
 
@@ -277,7 +272,7 @@ export default function GebaeudereinigungMitteContent({
             <FadeIn
               key={card.title}
               delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="rounded-card border border-line bg-white p-6 shadow-raise"
             >
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
@@ -310,7 +305,7 @@ export default function GebaeudereinigungMitteContent({
             <FadeIn
               key={card.title}
               delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="rounded-card border border-line bg-white p-6 shadow-raise"
             >
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
@@ -329,7 +324,7 @@ export default function GebaeudereinigungMitteContent({
           {ortsteile.map((ortsteil) => (
             <li
               key={ortsteil}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900"
+              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
             >
               {ortsteil}
             </li>
@@ -384,18 +379,12 @@ export default function GebaeudereinigungMitteContent({
           ))}
         </ul>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Preis kostenlos berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Individuelles Angebot anfragen
-          </Link>
+          <Button href="/preisrechner">
+              Preis kostenlos berechnen
+            </Button>
+          <Button href="/kontakt" variant="outline">
+              Individuelles Angebot anfragen
+            </Button>
         </div>
       </Section>
 
@@ -432,7 +421,7 @@ export default function GebaeudereinigungMitteContent({
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {link.label}
             </Link>

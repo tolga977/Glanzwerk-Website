@@ -11,6 +11,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 const heading = seoHeadings["/umwelt-verantwortung"];
 
@@ -126,15 +127,12 @@ export default function UmweltVerantwortungPage() {
               bedarfsgerechte Dosierung und Reinigungsverfahren, die Oberflächen langfristig schonen.
             </p>
             <div className="mt-8">
-              <Link
-                href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Unverbindliches Angebot anfragen
-              </Link>
+              <Button href="/kontakt">
+              Unverbindliches Angebot anfragen
+            </Button>
             </div>
           </div>
-          <BrandPhoto photo={heroPhoto} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={heroPhoto} priority className="shadow-deep" />
         </div>
       </Section>
 
@@ -175,9 +173,9 @@ export default function UmweltVerantwortungPage() {
             <FadeIn
               key={point.title}
               delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="flex gap-4 rounded-card border border-line bg-white p-6 shadow-raise"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {productIcons[point.icon]}
                 </svg>
@@ -205,7 +203,7 @@ export default function UmweltVerantwortungPage() {
       {/* H2 4 — Bild-Text-Komposition, Bild links (alternierend zum Hero, wo das Bild rechts steht) */}
       <Section background="tint" decor>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <BrandPhoto photo={baumPhoto} className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={baumPhoto} className="shadow-deep" />
           <div>
             <SectionHeading eyebrow="Entsorgung" title={heading.sectionHeadings[3]} />
             <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">

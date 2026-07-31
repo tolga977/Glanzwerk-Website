@@ -1,0 +1,107 @@
+import Image from "next/image";
+import { owner } from "@/data/owner";
+import { siteConfig } from "@/data/site";
+
+/**
+ * Der persönliche Abschnitt der Startseite.
+ *
+ * Bewusst kein Karten-Raster und keine Icon-Kacheln: dieser Block ist die
+ * einzige Stelle der Seite, an der eine Person spricht, und er soll auch so
+ * aussehen. Große Serifenschrift für das Zitat, eine Signaturzeile darunter,
+ * die Reaktionszusage als eigenes, hervorgehobenes Element.
+ *
+ * Das Layout hat zwei Zustände. Liegt ein Porträt vor, läuft der Abschnitt
+ * zweispaltig mit versetzter Bildkante. Fehlt es, bleibt eine einspaltige,
+ * eingezogene Zitatstrecke — vollständig, ohne Lücke, ohne Platzhalter.
+ */
+export default function OwnerNote() {
+  const hasPhoto = owner.photo !== null;
+
+  const quote = (
+    <blockquote className="border-l-2 border-brand-500 pl-6 sm:pl-8">
+      <p className="font-display display-lg text-pretty text-xl font-medium leading-relaxed text-brand-900 sm:text-2xl lg:text-[1.75rem]">
+        {`„${owner.quote}“`}
+      </p>
+    </blockquote>
+  );
+
+  const signature = (
+    <div className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 pl-6 sm:pl-8">
+      <span className="font-display text-lg font-medium text-brand-900">{owner.name}</span>
+      <span aria-hidden="true" className="text-line-strong">
+        ·
+      </span>
+      <span className="text-sm uppercase tracking-[0.14em] text-ink-soft">{owner.role}</span>
+    </div>
+  );
+
+  /*
+    Die Zusage steht absichtlich nicht in der Fließtextfarbe, sondern auf
+    eigener Fläche: sie ist das einzige nachprüfbare Versprechen des
+    Abschnitts und darf nicht mitgelesen werden.
+  */
+  const promise = (
+    <div className="mt-10 rounded-card border border-brand-100 bg-brand-50 p-6 sm:p-7">
+      <p className="text-base leading-relaxed text-brand-900">
+        <strong className="font-semibold">Antwort {owner.responseTime}</strong>{" "}
+        {owner.responseTimeQualifier} — auf Anfragen über das Formular, per E-Mail und am Telefon.
+      </p>
+      <div className="mt-5 flex flex-col gap-x-8 gap-y-2 sm:flex-row sm:items-center">
+        <a
+          href={siteConfig.phoneHref}
+          className="inline-flex min-h-11 items-center gap-2 rounded-control text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out hover:text-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinejoin="round"
+            />
+          </svg>
+          {siteConfig.phone}
+        </a>
+        <a
+          href={`mailto:${siteConfig.email}`}
+          className="inline-flex min-h-11 items-center gap-2 rounded-control text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out hover:text-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.6" />
+            <path d="m3.5 6.5 8.5 6 8.5-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+          </svg>
+          {siteConfig.email}
+        </a>
+      </div>
+    </div>
+  );
+
+  if (!hasPhoto) {
+    return (
+      <div className="max-w-3xl">
+        {quote}
+        {signature}
+        {promise}
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid gap-10 lg:grid-cols-[20rem_1fr] lg:items-start lg:gap-16">
+      {/* Porträt im Hochformat, leicht angehoben — kein zentriertes Rundbild. */}
+      <div className="relative aspect-[4/5] w-full max-w-[20rem] overflow-hidden rounded-panel shadow-deep lg:-mt-6">
+        <Image
+          src={owner.photo as string}
+          alt={owner.photoAlt}
+          fill
+          sizes="(min-width: 1024px) 20rem, 100vw"
+          className="object-cover"
+        />
+      </div>
+      <div>
+        {quote}
+        {signature}
+        {promise}
+      </div>
+    </div>
+  );
+}

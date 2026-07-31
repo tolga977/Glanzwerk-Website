@@ -31,7 +31,7 @@ export default function PreisrechnerPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+        <div className="mx-auto mt-10 max-w-2xl rounded-panel border border-line bg-white p-6 shadow-raise sm:p-8">
           <PriceCalculator />
         </div>
       </Section>

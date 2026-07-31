@@ -19,6 +19,7 @@ import {
   validateStaircaseStep,
 } from "@/lib/pricing/validate";
 import type { CalculatorFormValues, PriceEstimate, ValidationError } from "@/lib/pricing/types";
+import Button from "@/components/ui/Button";
 
 type Step = "objectType" | "details" | "contact" | "result";
 
@@ -185,18 +186,15 @@ export default function PriceCalculator() {
                 value={values.customObjectDescription}
                 onChange={(e) => updateValue("customObjectDescription", e.target.value)}
                 placeholder="z. B. Lagerhalle mit angeschlossenem Bürobereich"
-                className="w-full rounded-control border border-line px-4 py-2.5 text-sm text-ink placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+                className="w-full rounded-control border border-line px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand-500/40"
               />
               <FieldError message={errorFor(errors, "customObjectDescription")} />
             </div>
           )}
 
-          <button
-            type="submit"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
+          <Button type="submit" className="w-full sm:w-auto sm:self-start">
             Weiter
-          </button>
+          </Button>
         </form>
       )}
 
@@ -304,7 +302,7 @@ export default function PriceCalculator() {
               value={values.areaSqm}
               onChange={(e) => updateValue("areaSqm", e.target.value)}
               placeholder="z. B. 250"
-              className="w-full rounded-control border border-line px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40"
+              className="w-full rounded-control border border-line px-4 py-2.5 text-sm placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-brand-500/40"
             />
             <FieldError message={errorFor(errors, "areaSqm")} />
           </div>
@@ -534,19 +532,12 @@ function FrequencyField({
 function StepNav({ onBack, nextLabel = "Weiter" }: { onBack: () => void; nextLabel?: string }) {
   return (
     <div className="flex gap-3">
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-      >
+      <Button type="button" variant="outline" onClick={onBack}>
         Zurück
-      </button>
-      <button
-        type="submit"
-        className="shine-sweep shine-sweep-auto inline-flex min-h-11 flex-1 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-      >
+      </Button>
+      <Button type="submit" className="flex-1">
         {nextLabel}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -571,13 +562,41 @@ function ResultView({
 
   return (
     <div className="rounded-card border border-brand-100 bg-brand-50 p-6 text-center sm:p-8">
-      <p className="text-sm font-medium text-ink-soft">Geschätzter Monatspreis netto</p>
-      <p className="mt-2 text-4xl font-bold text-brand-900">
-        {estimate.monthlyPriceNet.toLocaleString("de-DE", { maximumFractionDigits: 0 })} €
-      </p>
-      <p className="mt-1 text-sm text-ink-soft">
-        bei {estimate.visitsPerWeek}× Reinigung pro Woche
-      </p>
+      {/*
+        Unterhalb des Mindestauftragswerts zeigen wir bewusst keinen Preis.
+        Eine Zahl zu nennen, die wir nicht anbieten, waere irrefuehrend — und
+        die Schaetzung kuenstlich auf 750 anzuheben waere fuer ein kleines
+        Objekt schlicht falsch. Stattdessen der Hinweis plus Gespraechsangebot:
+        bei mehreren Objekten oder Zusatzleistungen ist ein Auftrag oft
+        trotzdem moeglich.
+      */}
+      {estimate.belowMinimumOrder ? (
+        <>
+          <p className="text-sm font-medium text-ink-soft">Ihr Objekt im Überblick</p>
+          <p className="font-display display-lg mx-auto mt-3 max-w-md text-2xl font-medium text-brand-900">
+            Für dieses Objekt liegt der Aufwand unter unserem Mindestauftragswert
+          </p>
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
+            Wir übernehmen wiederkehrende Reinigung ab{" "}
+            <strong className="font-semibold text-brand-900">
+              {pricingConfig.minimumMonthlyOrderNet} € netto im Monat
+            </strong>
+            . Sprechen Sie uns trotzdem an: Bei mehreren Objekten, zusätzlichen
+            Leistungen oder einem anderen Reinigungsintervall lässt sich häufig
+            eine passende Lösung finden.
+          </p>
+        </>
+      ) : (
+        <>
+          <p className="text-sm font-medium text-ink-soft">Geschätzter Monatspreis netto</p>
+          <p className="mt-2 text-4xl font-bold text-brand-900">
+            {estimate.monthlyPriceNet.toLocaleString("de-DE", { maximumFractionDigits: 0 })} €
+          </p>
+          <p className="mt-1 text-sm text-ink-soft">
+            bei {estimate.visitsPerWeek}× Reinigung pro Woche
+          </p>
+        </>
+      )}
 
       <div className="mx-auto mt-6 max-w-sm rounded-control bg-white p-4 text-left text-sm text-ink-soft shadow-raise">
         <p className="font-semibold text-brand-900">Ihre Angaben</p>
@@ -599,26 +618,21 @@ function ResultView({
         </ul>
       </div>
 
+      {!estimate.belowMinimumOrder && (
       <p className="mx-auto mt-6 max-w-md text-xs text-ink-soft">
         Diese Schätzung dient der ersten Orientierung und ersetzt kein persönliches Angebot.
         Der endgültige Preis kann sich nach einer Besichtigung und dem tatsächlichen Aufwand
         vor Ort ändern.
       </p>
+      )}
 
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <Link
-          href="/kontakt"
-          className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-float hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-        >
-          Angebot anfragen
-        </Link>
-        <button
-          type="button"
-          onClick={onRestart}
-          className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white"
-        >
+        <Button href="/kontakt">
+              Angebot anfragen
+            </Button>
+        <Button type="button" variant="outline" onClick={onRestart}>
           Neue Berechnung
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -7,8 +7,15 @@ interface FadeInProps {
   className?: string;
   /** Stagger delay in ms, useful for grids of cards. */
   delay?: number;
-  /** Element type to render — use "ul" when children are <li> items. */
-  as?: "div" | "ul";
+  /**
+   * Element type to render.
+   *  "ul" — when the children are <li> items.
+   *  "li" — when this wrapper is itself an item inside a <ul>/<ol>. Ohne
+   *         diese Variante landete ein <div> als direktes Kind einer Liste;
+   *         das ist ungültiges Markup und nimmt Screenreadern die
+   *         Listenansage ("Liste mit 4 Einträgen").
+   */
+  as?: "div" | "ul" | "li";
 }
 
 /**
@@ -17,7 +24,7 @@ interface FadeInProps {
  * rule that collapses all transition/animation durations.
  */
 export default function FadeIn({ children, className = "", delay = 0, as = "div" }: FadeInProps) {
-  const ref = useRef<HTMLDivElement & HTMLUListElement>(null);
+  const ref = useRef<HTMLDivElement & HTMLUListElement & HTMLLIElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -48,6 +55,14 @@ export default function FadeIn({ children, className = "", delay = 0, as = "div"
       <ul ref={ref} className={combinedClassName} style={style}>
         {children}
       </ul>
+    );
+  }
+
+  if (as === "li") {
+    return (
+      <li ref={ref} className={combinedClassName} style={style}>
+        {children}
+      </li>
     );
   }
 

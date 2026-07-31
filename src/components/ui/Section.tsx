@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import GlanzMark from "@/components/ui/GlanzMark";
 
@@ -112,6 +113,24 @@ interface SectionProps {
    * "bottom" — Ebene von der Unterkante; leitet zum naechsten Abschnitt ueber.
    */
   surface?: "right" | "left" | "bottom";
+  /**
+   * Fotoebene unter einer dunklen Grundfläche.
+   *
+   * Rhythmusmittel, kein Dekor: dunkle Abschnitte waren bisher reine
+   * Farbflächen. Auf einer Seite, die über weite Strecken ohne Bild
+   * auskommt, ist eine dunkle Fläche mit Motiv darunter der billigste Weg
+   * zu einem Bildmoment — sie kostet keinen zusätzlichen Scrollweg und
+   * bringt trotzdem Textur an eine Stelle, die sonst flach bliebe.
+   *
+   * Das Foto liegt über der Grundfläche, darüber eine Tonebene in der
+   * Markenfarbe. Deckung 88 % ist gegen den schlimmsten Fall gerechnet
+   * (vollständig weißes Motiv): Weiß auf Navy ergibt dort noch 12,2:1, auf
+   * dem Mittelblau 6,4:1 — beides deutlich über AA.
+   *
+   * Nur auf `navy` und `brand` wirksam. Auf hellen Flächen wäre ein
+   * ausgebleichtes Foto hinter Text genau das, was billig aussieht.
+   */
+  backdrop?: { src: string; objectPosition?: string };
 }
 
 /*
@@ -156,13 +175,37 @@ export default function Section({
   spacing = "normal",
   contained = true,
   surface,
+  backdrop,
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
+  const showBackdrop = Boolean(backdrop) && dark;
   return (
     <section
       id={id}
       className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
     >
+      {showBackdrop && backdrop && (
+        <>
+          <Image
+            src={backdrop.src}
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={backdrop.objectPosition ? { objectPosition: backdrop.objectPosition } : undefined}
+          />
+          {/* Tonebene in der Grundfarbe — hält den Markenton und die Lesbarkeit. */}
+          <div
+            aria-hidden="true"
+            className={`pointer-events-none absolute inset-0 ${
+              background === "navy"
+                ? "bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-950/94"
+                : "bg-gradient-to-br from-brand-600/90 via-brand-700/88 to-brand-800/92"
+            }`}
+          />
+        </>
+      )}
       {/*
         Wasserzeichen: das Markenzeichen erscheint gross und sehr leise auf
         den dunklen Flaechen der Marke — und nur dort. Es war bisher ein

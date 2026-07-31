@@ -83,7 +83,15 @@ export function calculateGeneralPrice(input: GeneralCalculationInput): PriceEsti
 
   const monthlyPriceNet = round2(pricePerVisitNet * visitsPerWeek * pricingConfig.weeksPerMonth);
 
-  return { monthlyPriceNet, pricePerVisitNet, visitsPerWeek };
+  return {
+    monthlyPriceNet,
+    pricePerVisitNet,
+    visitsPerWeek,
+    // Reine Kennzeichnung, kein Eingriff in den Preis: die Anzeige entscheidet,
+    // ob sie einen Wert oder den Hinweis auf den Mindestauftrag zeigt. Die
+    // Treppenhausberechnung weiter unten setzt das Feld bewusst nicht.
+    belowMinimumOrder: monthlyPriceNet < pricingConfig.minimumMonthlyOrderNet,
+  };
 }
 
 /**

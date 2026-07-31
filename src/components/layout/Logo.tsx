@@ -6,6 +6,17 @@ interface LogoProps {
   variant?: "dark" | "light";
   /** Rendered height in pixels (width follows automatically from the logo's fixed aspect ratio). */
   height?: number;
+  /**
+   * Alternative zur festen `height`: Tailwind-Höhenklassen für eine
+   * responsive Logogröße (z. B. `"h-[5.5rem] lg:h-24"`). Ist sie gesetzt,
+   * entfällt die Inline-Höhe — sonst würde sie die Klassen überstimmen.
+   *
+   * Die Breite folgt in beiden Fällen dem festen Seitenverhältnis aus
+   * width/height, deshalb kann hier nichts verzerren. Da Next.js die
+   * Proportion aus den Intrinsic-Werten reserviert, entsteht auch beim
+   * Breakpoint-Wechsel kein Layout Shift.
+   */
+  heightClassName?: string;
   onClick?: () => void;
 }
 
@@ -14,7 +25,13 @@ interface LogoProps {
 const INTRINSIC_WIDTH = 3830;
 const INTRINSIC_HEIGHT = 1948;
 
-export default function Logo({ className = "", variant = "dark", height = 48, onClick }: LogoProps) {
+export default function Logo({
+  className = "",
+  variant = "dark",
+  height = 48,
+  heightClassName,
+  onClick,
+}: LogoProps) {
   const isLight = variant === "light";
   const src = isLight ? "/brand/glanzwerk-logo-dark-bg.png" : "/brand/glanzwerk-logo.png";
 
@@ -31,7 +48,10 @@ export default function Logo({ className = "", variant = "dark", height = 48, on
         width={INTRINSIC_WIDTH}
         height={INTRINSIC_HEIGHT}
         priority
-        style={{ height, width: "auto" }}
+        /* Die Quelldatei ist 3830 px breit — auch bei 96 px Anzeigehöhe wird
+           also weit heruntergerechnet, nie hochskaliert. Keine Unschärfe. */
+        className={heightClassName ? `w-auto ${heightClassName}` : undefined}
+        style={heightClassName ? undefined : { height, width: "auto" }}
       />
     </Link>
   );

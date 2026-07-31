@@ -5,16 +5,22 @@ import Button from "@/components/ui/Button";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { TrustIcon } from "@/components/ui/TrustBadges";
-import ProcessSteps from "@/components/ui/ProcessSteps";
 import ArticleCard from "@/components/ui/ArticleCard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
 import HeroMedia from "@/components/home/HeroMedia";
+import OwnerNote from "@/components/home/OwnerNote";
+import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
+import GoogleRating from "@/components/ui/GoogleRating";
+import ContactForm from "@/components/forms/ContactForm";
 import JsonLd from "@/components/seo/JsonLd";
+import { getGoogleRating } from "@/lib/googleRating";
+import { owner, serviceVehiclePhoto } from "@/data/owner";
 import { services } from "@/data/services";
 import { districts } from "@/data/districts";
+import { districtPhotos } from "@/data/districtPhotos";
 import { articles } from "@/data/articles";
 import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
@@ -181,26 +187,58 @@ const workingMethodPoints = [
 ];
 
 /** Section 5 — vier Ablaufschritte, exakter Auftragstext. */
-const homeProcessSteps = [
+/*
+ * Die Beschreibungen sind unverändert. Ergänzt sind je Schritt zwei bis drei
+ * Einzelheiten — und ausschließlich solche, die an anderer Stelle der Seite
+ * bereits belegt sind: die Antwortzeit stammt aus owner.ts, der
+ * Mindestauftragswert aus der Preiskonfiguration, die Testphase aus dem
+ * eigenen Abschnitt, die Besichtigung aus dem Anfrageformular. Nichts davon
+ * ist für diesen Abschnitt neu erfunden.
+ *
+ * Der Handlungsweg steht nur am ersten Schritt. Vier gleichwertige
+ * Schaltflächen nebeneinander heben sich gegenseitig auf.
+ */
+const homeProcessSteps: TimelineStep[] = [
   {
     title: "Anfrage stellen",
     description:
       "Kontaktieren Sie uns telefonisch, über das Formular oder über den Preisrechner. Teilen Sie uns mit, um welche Objektart es geht und welche Reinigung Sie benötigen.",
+    facts: [
+      "Kostenlos und unverbindlich",
+      "Antwort innerhalb von 2 Stunden während der Geschäftszeiten",
+    ],
+    photo: photos.lawOfficeReception,
+    cta: { label: "Anfrage stellen", href: "/kontakt" },
   },
   {
     title: "Anforderungen besprechen",
     description:
       "Wir klären Größe, Flächen, gewünschte Intervalle, Reinigungszeiten und besondere Anforderungen. Bei umfangreicheren Objekten kann eine Besichtigung sinnvoll sein.",
+    facts: [
+      "Flächen, Intervalle und Reinigungszeiten werden festgelegt",
+      "Besichtigungstermin bei größeren Objekten",
+    ],
+    photo: photos.medicalPracticeInterior,
   },
   {
     title: "Angebot erhalten",
     description:
       "Sie erhalten ein nachvollziehbares Angebot auf Grundlage der besprochenen Leistungen. Zusätzliche Arbeiten werden nicht ohne vorherige Abstimmung eingeplant.",
+    facts: [
+      "Leistungen und Termine schriftlich festgehalten",
+      "Wiederkehrende Reinigung ab 750 € netto im Monat",
+    ],
+    photo: photos.businessHandshake,
   },
   {
     title: "Reinigung starten",
     description:
       "Nach der Freigabe beginnt die Reinigung zum vereinbarten Termin. Anpassungen können später vorgenommen werden, wenn sich Nutzung oder Bedarf verändern.",
+    facts: [
+      "Fester Ansprechpartner, der Ihr Objekt kennt",
+      "Auf Wunsch drei Monate testen, ohne automatische Verlängerung",
+    ],
+    photo: photos.windowCleaning,
   },
 ];
 
@@ -286,7 +324,50 @@ const arrowIcon = (
   </svg>
 );
 
-export default function HomePage() {
+/*
+ * ── Zum Beweisband unter dem Hero ────────────────────────────────────────
+ *
+ * Die vier Zahlen standen vorher als gleich große Einträge in einem 2×2-
+ * Raster neben einer Bewertungskarte. Vier gleich gewichtete Zahlen sagen
+ * dem Auge: hier ist nichts wichtiger als etwas anderes — und damit nichts
+ * wichtig. Deshalb ist das Raster hier aufgelöst und durch eine gestaffelte
+ * Rangfolge ersetzt.
+ *
+ * Rangfolge nach dem, was ein neuer Besucher in zwei bis drei Sekunden
+ * beantwortet haben will:
+ *   1. Ist die Firma vertrauenswürdig?  → 5,0 aus 7 Google-Bewertungen
+ *                                          (Fremdurteil, nicht selbst gesetzt)
+ *   2. Ist das Angebot risikoarm?       → 3 Monate ohne Verlängerung
+ *   3. Lohnt sich der Kontakt jetzt?    → Antwort in 2 Stunden
+ *   4./5. Absicherung und Reichweite    → 5 Mio. € · 12 Bezirke
+ *
+ * Die Schriftgrade folgen exakt dieser Reihenfolge (88 / 40 / 32 / 24 px auf
+ * dem Schirm). Die Beschreibungen bleiben in allen vier Stufen gleich ruhig:
+ * die Zahl trägt die Aufmerksamkeit, der Text nur die Bedeutung.
+ *
+ * Bewusst ohne Karten, ohne Radien, ohne Schatten — als einziger Abschnitt
+ * der Seite. Zwischen zwei Flächen, die beide mit Karten arbeiten, liest
+ * sich eine rein typografische Fläche als Absicht, nicht als Baukasten.
+ */
+
+/**
+ * Beispielrechnung für den Preisabschnitt.
+ *
+ * Der Wert stammt nicht aus einer Schätzung, sondern aus derselben Formel,
+ * die der Preisrechner benutzt (progressive Flächenzeit, progressive
+ * Stundensätze, Küchenzuschlag, Fahrtkostenpauschale). Ändert sich die
+ * Preiskonfiguration, muss diese Zahl mitgeführt werden — deshalb stehen die
+ * Eingabewerte hier vollständig daneben.
+ */
+const priceExample = {
+  inputs: "Büro · 300 m² · 1 Küche · 3 WC · 3× pro Woche",
+  result: "ca. 1.225 €",
+  unit: "netto im Monat",
+};
+
+export default async function HomePage() {
+  const googleRating = await getGoogleRating();
+
   return (
     <>
       <JsonLd data={professionalServiceSchema()} />
@@ -304,83 +385,416 @@ export default function HomePage() {
         Die Medienebene liegt in HeroMedia und ist bereits auf das spaetere
         Cinematic-Video vorbereitet; an dieser Stelle aendert sich dann nichts.
       */}
-      <section className="relative isolate flex min-h-[32rem] items-center overflow-hidden bg-brand-950 sm:min-h-[36rem] lg:min-h-[78svh]">
+      {/*
+        Die Hero-Höhe ist jetzt an die Kopfzone gekoppelt statt an einen
+        gegriffenen Prozentwert.
+
+        Vorher: 78svh. Zusammen mit Hinweisleiste und Kopfzeile (137 px)
+        endete der Hero auf einem 900-px-Schirm bei 839 px — 61 px des
+        Folgeabschnitts hingen mit im Bild, ohne lesbar zu sein.
+
+        Jetzt füllt `100svh minus Kopfhöhe` den ersten Schirm exakt aus. Auf
+        demselben Gerät ist die Medienfläche dadurch rund 75 px höher, das
+        Video wirkt sichtbar größer, und darunter beginnt sauber der nächste
+        Abschnitt statt eines angeschnittenen Streifens.
+
+        svh statt vh, weil vh auf Telefonen die ein- und ausfahrende
+        Adressleiste mitrechnet und der Hero beim Scrollen springen würde.
+      */}
+      <section className="relative isolate flex min-h-[calc(100svh-7rem)] items-center overflow-hidden bg-brand-950 2xl:min-h-[calc(100svh-8rem)]">
         <HeroMedia />
-        <div className="container-page relative z-10 py-16 sm:py-20">
+        {/*
+          Ungleiche Innenabstände: unten mehr als oben. Der zentrierte
+          Textblock rutscht dadurch über die optische Mitte, ohne dass etwas
+          absolut positioniert oder gequetscht wird — die Zeilenabstände
+          innerhalb des Blocks bleiben unverändert. Ergebnis: die beiden
+          Zeilen unter den Schaltflächen stehen auf üblichen Desktop-Höhen
+          vollständig im Bild.
+        */}
+        <div className="container-page relative z-10 pb-20 pt-10 sm:pb-24 sm:pt-12 lg:pb-28 lg:pt-14">
           <div className="max-w-[46rem]">
-            <p className="mb-7 inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium tracking-wide text-white backdrop-blur-sm">
-              Gebäudereinigung für Gewerbekunden in Berlin
-            </p>
             {/*
-              text-balance verteilt die Zeilen optisch gleichmaessig, statt die
-              letzte Zeile als Rest stehen zu lassen. Bei einer dreizeiligen
-              Headline ist das der Unterschied zwischen gesetzt und umgebrochen.
+              Die Auszeichnungszeile über der Überschrift ist entfallen. Sie
+              wiederholte mit "Gebäudereinigung für Gewerbekunden in Berlin"
+              fast wörtlich die Überschrift darunter — und ein gerundetes
+              Glas-Etikett über einer großen Headline ist genau das Muster,
+              das auf beinahe jeder generierten Seite steht. Der Platz geht
+              an das Video.
             */}
-            <h1 className="font-display display-xl text-balance text-4xl font-medium text-white sm:text-5xl lg:text-[3.5rem]">
+            {/*
+              Zwei Wörter tragen die Fläche allein. Die Größe steigt deshalb
+              von 56 auf 72 px ab Desktop; auf dem Telefon bleiben es 38 px,
+              gemessen: bei 44 px stand "Gebäudereinigung" exakt auf beiden
+              Innenkanten und wirkte eingeklemmt statt groß.
+
+              Einfarbig in Weiß. Bei zwei Wörtern wäre eine eingefärbte
+              Teilzeile kein Akzent mehr, sondern eine cyanfarbene Headline.
+            */}
+            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-white sm:text-6xl lg:text-7xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
-              Glanzwerk Reinigungsservice Berlin reinigt Büros, Praxen, Kanzleien, Autohäuser,
-              Gastronomiebetriebe und weitere Gewerbeobjekte in ganz Berlin. Wir stimmen Leistungen,
-              Reinigungszeiten und Intervalle auf Ihren Betrieb ab. Sie erhalten einen festen
-              Ansprechpartner, nachvollziehbare Absprachen und eine Reinigung, die Ihren Arbeitsalltag
-              möglichst wenig beeinträchtigt.
+
+            {/* Ein Satz. Nennt Leistung, Zielgruppe und Gebiet — mehr nicht. */}
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:mt-7 sm:text-lg">
+              Unterhaltsreinigung für Büros, Praxen, Kanzleien, Autohäuser und weitere
+              Gewerbeobjekte — in ganz Berlin.
             </p>
+
             {/*
               Groesserer Abstand und mehr Luft zwischen den beiden Zielen: die
               Schaltflaechen sollen als eigener Akt der Komposition gelesen
               werden, nicht als Fussleiste des Absatzes.
             */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5">
-              <Button href="/preisrechner" size="lg">
-                Preis kostenlos berechnen
+            <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:gap-5">
+              <Button href="/preisrechner" size="xl">
+                Preis schätzen
               </Button>
-              <Button
-                href="/kontakt"
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-brand-900"
-              >
-                Unverbindliches Angebot anfragen
+              <Button href="/kontakt" variant="onMedia" size="xl">
+                Angebot anfragen
               </Button>
+            </div>
+
+            {/*
+              Vertrauenszeile statt zweier Fliesstext-Absaetze.
+
+              Vorher standen hier zwei vollstaendige Saetze. Drei Zeichen
+              sagen dasselbe in einem Drittel der Hoehe und werden erkannt,
+              nicht gelesen — was ueber einem laufenden Film der einzige
+              realistische Modus ist.
+
+              Die Google-Auszeichnung nutzt bewusst eine andere Bauform als
+              das grosse Lockup im Beweisband: dort traegt die Ziffer, hier
+              tragen die Sterne.
+            */}
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <GoogleRating data={googleRating} variant="badge" />
+
+              <span className="inline-flex items-center gap-2 rounded-control border border-white/25 bg-white/10 px-3.5 py-2 text-sm font-medium text-white backdrop-blur-md">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0 text-brand-300">
+                  <path
+                    d="M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6l7-3Z"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinejoin="round"
+                  />
+                  <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                5 Mio. € Betriebshaftpflicht
+              </span>
+
+              <span className="inline-flex items-center gap-2 rounded-control border border-white/25 bg-white/10 px-3.5 py-2 text-sm font-medium text-white backdrop-blur-md">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0 text-brand-300">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Antwort {owner.responseTime}
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Vertrauenszeile: ruhiges Band, das den Hero abschließt statt eines Badge-Clusters im Bild. */}
-      <section className="light-edge border-b border-white/10 bg-brand-900 py-5">
-        <div className="container-page flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center">
-          {[
-            "In allen zwölf Berliner Bezirken im Einsatz",
-            "Flexible Reinigungszeiten",
-            "Betriebshaftpflichtversichert",
-          ].map((item) => (
-            <span
-              key={item}
-              className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-brand-100"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-                className="shrink-0 text-brand-300"
-              >
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {item}
-            </span>
-          ))}
-        </div>
+      {/*
+        Beweisband — der erste Abschnitt nach dem Hero.
+
+        Vorher standen hier drei gleich gewichtete Haekchen in einer
+        zentrierten Zeile. Das ist die Anordnung, die auf jeder zweiten
+        Dienstleisterseite steht, und sie hat nichts belegt.
+
+        Jetzt traegt der Abschnitt eine Asymmetrie: links die Google-Bewertung
+        als groesstes Einzelelement der Flaeche, rechts vier Zahlen ohne
+        Symbole, ohne Kaesten, ohne gleiche Groesse. Kein Vierer-Kachelraster —
+        genau das Muster wollten wir vermeiden.
+      */}
+      <section className="border-b border-line bg-graphite-50 py-14 sm:py-16 lg:py-20">
+        {/*
+          Drei eigene Kompositionen statt eines gestauchten Desktop-Layouts:
+
+            < 640 px   alles untereinander, Haarlinien waagerecht
+            640–1023   Bewertung oben über die volle Breite, darunter die
+                       drei Stufen als Dreierreihe mit senkrechten Linien
+            ≥ 1024     zwei ungleiche Spalten (1,15 : 1), Bewertung links,
+                       Stufen rechts an einer durchgehenden senkrechten Linie
+
+          Die Spalten sind absichtlich nicht gleich breit. Das Fremdurteil
+          bekommt mehr Raum als die eigenen Zusagen — die Gewichtung des
+          Layouts entspricht der Gewichtung der Aussagen.
+        */}
+        {/*
+          `items-center` statt Oberkantenbündigkeit: der Bewertungsblock ist
+          niedriger als die dreistufige Liste. Oben ausgerichtet blieb links
+          unter dem Lockup ein leeres Feld von rund 150 px stehen — das war
+          Restfläche, nicht Weißraum. Optisch mittig gegeneinander gestellt
+          wirken zwei ungleich hohe Blöcke ausgewogen, ohne gleich groß zu
+          sein.
+        */}
+        {/*
+          ── Zur Bewegung in diesem Abschnitt ──────────────────────────────
+          Erster Entwurf hatte eine gestaffelte Einblendung (0/70/140/210 ms)
+          über die vier Stufen — Begründung: die Reihenfolge zeitlich
+          erlebbar machen. Im Test war das falsch: bei 500 ms Übergang plus
+          210 ms Versatz war die wichtigste Vertrauensfläche der Seite rund
+          700 ms lang nicht lesbar, und die rechte Spalte erschien als
+          Letztes. Ein Abschnitt, den man in zwei bis drei Sekunden erfassen
+          soll, darf sich nicht erst aufbauen.
+
+          Geblieben ist eine einzige, gemeinsame Einblendung für den ganzen
+          Block. Zweck: den harten Einsprung beim Hereinscrollen vermeiden —
+          nicht, die Hierarchie zu erklären. Die trägt der Schriftgrad, und
+          zwar dauerhaft statt für eine halbe Sekunde.
+        */}
+        <FadeIn className="container-page grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center">
+            <GoogleRating data={googleRating} />
+
+          <div className="mt-12 border-t border-line pt-12 sm:grid sm:grid-cols-3 sm:gap-x-8 lg:mt-0 lg:block lg:border-l lg:border-t-0 lg:pl-16 lg:pt-1 xl:pl-24">
+            {/*
+              Stufe 1 — die Risikoumkehr. Zweitgrößte Zahl des Abschnitts,
+              weil sie die zweite Frage beantwortet, die jemand stellt.
+            */}
+            <div>
+              <p className="font-display display-lg text-[2.25rem] font-medium text-brand-900 sm:text-[1.875rem] lg:text-[2.5rem]">
+                3 Monate
+              </p>
+              <p className="mt-2.5 max-w-[22rem] text-pretty text-sm leading-relaxed text-ink-soft">
+                testen, ohne dass sich der Auftrag automatisch verlängert
+              </p>
+            </div>
+
+            {/*
+              Stufe 2 — die Zusage, die den Kontakt auslöst. Kleiner als
+              Stufe 1, größer als die Absicherung. Der obere Innenabstand
+              nimmt von Stufe zu Stufe ab (28 → 24 px): der Rhythmus zieht
+              sich zusammen, das Auge läuft nach unten aus.
+            */}
+            <div className="mt-9 border-t border-line pt-7 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0 lg:mt-9 lg:border-l-0 lg:border-t lg:pl-0 lg:pt-7">
+              <p className="font-display display-lg text-3xl font-medium text-brand-900 sm:text-[1.625rem] lg:text-[2rem]">
+                2 Stunden
+              </p>
+              <p className="mt-2.5 max-w-[22rem] text-pretty text-sm leading-relaxed text-ink-soft">
+                Antwortzeit auf Anfragen während der Geschäftszeiten
+              </p>
+            </div>
+
+            {/*
+              Stufe 3 — zwei Belege, die niemand aktiv sucht, die aber fehlen
+              würden. Sie teilen sich bewusst eine Zeile: zwei kleine Zahlen
+              nebeneinander treten weiter zurück als zwei untereinander.
+            */}
+            <div className="mt-8 border-t border-line pt-6 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0 lg:mt-8 lg:border-l-0 lg:border-t lg:pl-0 lg:pt-6">
+              <div className="flex flex-wrap gap-x-10 gap-y-5 sm:block sm:space-y-5 lg:flex lg:space-y-0">
+                <div>
+                  <p className="font-display text-2xl font-medium text-brand-900 sm:text-xl lg:text-2xl">
+                    5 Mio. €
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">Betriebshaftpflicht</p>
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-medium text-brand-900 sm:text-xl lg:text-2xl">
+                    12 Bezirke
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">Einsatzgebiet Berlin</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </section>
+
+      {/*
+        Der persoenliche Abschnitt — bewusst an zweiter Stelle.
+
+        "Fester Ansprechpartner" stand auf dieser Website sechzigmal, ohne
+        dass dieser Ansprechpartner je einen Namen hatte. Diese Stelle
+        korrigiert das, und sie steht weit oben, weil sie das Einzige ist,
+        was ein Wettbewerber nicht kopieren kann.
+
+        Eigene Satzbreite, keine Karten, kein Raster: der Abschnitt soll auch
+        formal aus der Reihe fallen.
+      */}
+      <Section background="white" spacing="roomy">
+        <div className="mx-auto max-w-5xl">
+          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+            <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-300" />
+            Wer bei Glanzwerk antwortet
+          </p>
+          <h2 className="font-display display-lg mt-5 max-w-2xl text-pretty text-2xl font-medium text-brand-900 sm:text-3xl lg:text-4xl">
+            Sie sprechen direkt mit dem Inhaber
+          </h2>
+
+          <div className="mt-12">
+            <OwnerNote />
+          </div>
+
+          {/*
+            Das Dienstfahrzeug ist der zweite Beleg, den keine Bilddatenbank
+            liefern kann. Fehlt die Aufnahme, faellt der Block ersatzlos weg —
+            eine leere Bildflaeche waere schlechter als keine.
+          */}
+          {serviceVehiclePhoto && (
+            <figure className="mt-14">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-panel shadow-deep sm:aspect-[21/9]">
+                <Image
+                  src={serviceVehiclePhoto.src}
+                  alt={serviceVehiclePhoto.alt}
+                  fill
+                  sizes="(min-width: 1024px) 64rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-4 text-sm text-ink-soft">
+                Unser Dienstfahrzeug im Einsatz in Berlin.
+              </figcaption>
+            </figure>
+          )}
+        </div>
+      </Section>
+
+      {/*
+        Bildzäsur nach dem persönlichen Abschnitt.
+
+        Gemessen: zwischen Hero und Vertrauensbereich lagen 2.586 px ohne ein
+        einziges Bild — auf einem Laptop 3,4 Bildschirme reiner Text, direkt
+        an der Stelle, an der die meisten noch entscheiden, ob sie
+        weiterlesen. Genau dort sitzt jetzt eine randlose Bildfläche.
+
+        Sie zeigt ein reales Berliner Motiv statt einer Reinigungssituation:
+        an dieser Stelle geht es nicht um die Leistung, sondern darum, dass
+        hier jemand vor Ort ist. 21:9 auf dem Schirm, 4:3 auf dem Telefon —
+        eine Fläche, die auf dem Handy zu flach wird, ist kein Bildmoment
+        mehr, sondern ein Streifen.
+
+        Die Bildunterschrift ist keine Beschriftung des Fotos, sondern die
+        Ortsangabe: sie trägt die Aussage, das Bild trägt den Rhythmus.
+      */}
+      <figure className="relative isolate bg-brand-950">
+        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
+          <Image
+            src={districtPhotos.mitte.src}
+            alt={districtPhotos.mitte.alt}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: districtPhotos.mitte.objectPosition }}
+          />
+          {/* Fußzone, damit die Bildunterschrift auf jedem Einzelbild lesbar bleibt. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-950/85 via-brand-950/35 to-transparent"
+          />
+          <figcaption className="container-page absolute inset-x-0 bottom-0 pb-8 sm:pb-10">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200">
+              <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-300" />
+              Einsatzgebiet
+            </p>
+            <p className="font-display display-lg mt-3 max-w-2xl text-pretty text-xl font-medium text-white sm:text-2xl lg:text-3xl">
+              In allen zwölf Berliner Bezirken unterwegs — mit realistischer
+              Einsatzplanung statt langer Anfahrtswege.
+            </p>
+          </figcaption>
+        </div>
+      </figure>
+
+      {/*
+        Preis-Schaetzung — eigener Abschnitt statt einer Schaltflaeche im
+        Fliesstext.
+
+        Die wichtigste Aussage ist nicht "wir haben einen Rechner", sondern
+        "Sie bekommen sofort eine Groessenordnung, ohne mit uns zu sprechen".
+        Deshalb steht rechts eine durchgerechnete Beispielzahl: eine konkrete
+        Zahl im Kopf ist der Grund, warum jemand den Rechner ueberhaupt
+        oeffnet.
+      */}
+      <Section background="tint" spacing="roomy">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20">
+          <div>
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+              <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-300" />
+              Was kostet das ungefähr?
+            </p>
+            <h2 className="font-display display-lg mt-5 text-pretty text-2xl font-medium text-brand-900 sm:text-3xl lg:text-4xl">
+              In zwei Minuten zu einer realistischen Hausnummer
+            </h2>
+            <p className="measure mt-6 text-base leading-relaxed text-ink-soft">
+              Der Preisrechner fragt Fläche, Sanitärbereiche, Küchen und Reinigungsintervall ab und
+              nennt Ihnen sofort eine Größenordnung — ohne Anmeldung, ohne Telefonat.{" "}
+              <strong className="font-semibold text-brand-900">
+                Das Ergebnis ist eine unverbindliche Schätzung, kein Angebot.
+              </strong>{" "}
+              Was am Ende im Vertrag steht, hängt vom Objekt ab und wird vorher gemeinsam
+              festgelegt. Wiederkehrende Reinigung übernehmen wir ab 750 € netto im Monat.
+            </p>
+            <div className="mt-10">
+              <Button href="/preisrechner" size="xl">
+                Jetzt Preis schätzen
+              </Button>
+            </div>
+          </div>
+
+          {/* Belegkarte: dieselbe Formel wie im Rechner, damit die Zahl haelt. */}
+          <div className="rounded-panel border border-line bg-white p-8 shadow-float sm:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
+              Beispielrechnung
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-ink-soft">{priceExample.inputs}</p>
+            <div className="mt-7 border-t border-line pt-7">
+              <p className="font-display display-xl text-4xl font-medium text-brand-900 sm:text-5xl">
+                {priceExample.result}
+              </p>
+              <p className="mt-2 text-sm font-medium text-ink-soft">{priceExample.unit}</p>
+            </div>
+            <p className="mt-7 text-sm leading-relaxed text-ink-soft">
+              Ihr Objekt kann darüber oder darunter liegen. Genau dafür gibt es den Rechner.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/*
+        Dreimonatige Testphase — vom Seitenende nach vorn geholt.
+
+        Das ist das staerkste Angebot, das Glanzwerk hat, und es stand
+        vorher an zehnter Stelle. Jetzt steht es dort, wo jemand noch liest,
+        und traegt eine eigene dunkle Flaeche.
+      */}
+      <Section
+        background="navy"
+        decor
+        spacing="roomy"
+        backdrop={{ src: photos.brightStaircase.src, objectPosition: "center 40%" }}
+      >
+        <div className="grid gap-12 lg:grid-cols-[1.25fr_auto] lg:items-center lg:gap-20">
+          <div>
+            <p className="inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+              Ohne langfristige Bindung
+            </p>
+            <h2 className="font-display display-lg mt-6 text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
+              {heading.secondaryCtaHeading}
+            </h2>
+            <div className="glanz-divider mt-6 max-w-[120px]" />
+            <p className="measure mt-7 text-base leading-relaxed text-brand-100 sm:text-lg">
+              Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
+              Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
+              angebotenen Konditionen.{" "}
+              <strong className="font-semibold text-white">
+                Nach Ablauf entsteht keine automatische Verlängerung.
+              </strong>{" "}
+              Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten.
+            </p>
+          </div>
+          <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
+            <Button href="/3-monate-testen" size="xl">
+              Testphase anfragen
+            </Button>
+            <Button
+              href="/preisrechner"
+              variant="onMedia"
+              size="xl"
+            >
+              Preis schätzen
+            </Button>
+          </div>
+        </div>
+      </Section>
 
       {/*
         2. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
@@ -427,7 +841,13 @@ export default function HomePage() {
             sizes="(min-width: 1024px) 55vw, 100vw"
             objectPosition="center 38%"
             rounded="rounded-panel lg:rounded-r-none"
-            className="shadow-deep lg:-mt-24 lg:-mb-8 lg:mr-[calc(50%-50vw)]"
+            /* Hoehendeckel ab Desktop: 3/4 rechnet sich auf der randlosen
+               Flaeche auf ueber 1450 px hoch, daneben blieb eine leere weisse
+               Spalte von mehr als einem halben Bildschirm stehen — das las
+               sich nicht als Weissraum, sondern als Layoutfehler. 46rem
+               bringt die Bildunterkante etwa auf Hoehe des Textblocks; der
+               Deckel greift, weil der Rahmen overflow-hidden traegt. */
+            className="shadow-deep lg:-mt-24 lg:-mb-8 lg:mr-[calc(50%-50vw)] lg:max-h-[46rem]"
           />
         </div>
 
@@ -472,25 +892,49 @@ export default function HomePage() {
           ))}
         </FadeIn>
 
-        <FadeIn className="mt-14 grid gap-4 border-t border-line pt-14 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {specialisedServices.map((service) => (
-            <ServiceCard
-              key={service.slug}
-              service={service}
-              variant="compact"
-              summaryOverride={homepageServiceCopy[service.slug]?.description}
-              ctaLabelOverride={homepageServiceCopy[service.slug]?.linkText}
-            />
-          ))}
-        </FadeIn>
+        {/*
+          Die uebrigen acht Leistungen — als Verzeichnis, nicht als Karten.
 
-        {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
-            statt ihn frei im Raum stehen zu lassen. */}
-        <div className="mt-14 border-t border-line pt-8">
-          <Button href="/leistungen" variant="ghost">
-            Alle Reinigungsleistungen ansehen
-          </Button>
-        </div>
+          Vorher standen hier acht weitere Bildkacheln. Zwoelf gleichrangige
+          Kacheln nehmen jeder Leistung ihr Gewicht: wenn alles gleich gross
+          ist, ist nichts wichtig.
+
+          Jetzt tragen die vier Hauptleistungen oben das Bild und die Flaeche,
+          die restlichen acht stehen als klar sichtbares, sofort anklickbares
+          Register darunter. Alle zwoelf internen Verlinkungen bleiben damit
+          unveraendert erhalten — an der internen Linkstruktur aendert sich
+          nichts, nur an der Gewichtung.
+        */}
+        <FadeIn className="mt-16 rounded-panel border border-line bg-white p-8 shadow-raise sm:p-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+            <h3 className="font-display display-lg text-xl font-medium text-brand-900 sm:text-2xl">
+              Alle weiteren Leistungen
+            </h3>
+            <Link
+              href="/leistungen"
+              className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out hover:text-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            >
+              Leistungsübersicht öffnen
+              {arrowIcon}
+            </Link>
+          </div>
+
+          <ul className="mt-7 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3">
+            {specialisedServices.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/leistungen/${service.slug}`}
+                  className="group flex items-center justify-between gap-4 border-b border-line py-4 text-base font-medium text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
+                >
+                  <span>{service.shortTitle}</span>
+                  <span className="text-brand-300 transition-colors duration-200 ease-out group-hover:text-brand-500">
+                    {arrowIcon}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </FadeIn>
       </Section>
 
       {/*
@@ -543,14 +987,19 @@ export default function HomePage() {
       </Section>
 
       {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte. */}
-      <Section background="brand" decor spacing="roomy">
+      <Section
+        background="brand"
+        decor
+        spacing="roomy"
+        backdrop={{ src: photos.lawOfficeReception.src, objectPosition: "center 45%" }}
+      >
         <SectionHeading
           eyebrow="Von der Anfrage bis zum Reinigungsstart"
           title={heading.sectionHeadings[3]}
           light
         />
         <FadeIn className="mt-12">
-          <ProcessSteps steps={homeProcessSteps} light />
+          <ProcessTimeline steps={homeProcessSteps} />
         </FadeIn>
       </Section>
 
@@ -576,7 +1025,14 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl">
           <SectionHeading eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
 
-          <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          {/*
+            Spaltenverhaeltnis von 1,4:1 auf 1:1 geoeffnet. Vorher lief das
+            Foto auf 420 px Breite und deckte nur 10 % der Abschnittsflaeche —
+            zusammen mit dem bildlosen Bezirksregister darunter ergab das die
+            laengste bildlose Strecke der Seite (2.003 px). Mit halber
+            Spaltenbreite traegt das Bild den Abschnitt sichtbar mit.
+          */}
+          <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-14">
           <div>
             <div className="space-y-4 text-base leading-relaxed text-ink-soft">
               <p>
@@ -609,8 +1065,8 @@ export default function HomePage() {
           <div>
             <BrandPhoto
               photo={dosierungPhoto}
-              aspect="aspect-[4/3] lg:aspect-[4/5]"
-              sizes="(min-width: 1024px) 420px, 100vw"
+              aspect="aspect-[4/3] lg:aspect-[3/4]"
+              sizes="(min-width: 1024px) 512px, 100vw"
               objectPosition="center 45%"
               className="shadow-float"
             />
@@ -688,11 +1144,16 @@ export default function HomePage() {
         Nebeneffekt: der vom Rhythmus gewuenschte Dunkelwert zwischen zwei
         hellen Flaechen und eine Klammer zurueck zum Hero.
 
+        Hoehe angehoben: 3.4/1 ergab auf dem Schirm 445 px — einen Streifen,
+        keine Flaeche. Bei 2.2/1 sind es rund 690 px und die Zaesur wirkt als
+        eigener Moment statt als Trennlinie. Auf dem Telefon bleibt 16/9, dort
+        traegt die schmale Spalte kein flacheres Format.
+
         Rein gestalterisch, deshalb leeres alt-Attribut. Laedt verzoegert.
       */}
       <div
         aria-hidden="true"
-        className="relative aspect-[16/9] w-full overflow-hidden bg-brand-950 sm:aspect-[21/9] lg:aspect-[3.4/1]"
+        className="relative aspect-[16/9] w-full overflow-hidden bg-brand-950 sm:aspect-[2/1] lg:aspect-[2.2/1]"
       >
         <Image
           src={photos.heroCleaningTeam.src}
@@ -747,36 +1208,90 @@ export default function HomePage() {
       </Section>
 
       {/*
-        9. Dreimonatige Testphase — markantes horizontales Band auf dunkler
-        Fläche. Bewusst kein Preisschild, kein Countdown, keine Dringlichkeit.
+        Anfrageformular direkt auf der Startseite.
+
+        Vorher fuehrte jeder Weg zur Anfrage ueber einen weiteren Klick auf
+        /kontakt. Jeder Zwischenschritt kostet Anfragen, und das Formular hat
+        nur fuenf Pflichtfelder — es passt hierher.
+
+        Links steht, was nach dem Absenden passiert, rechts das Formular.
+        Ungleiche Spalten, damit auch dieser Abschnitt nicht als mittige
+        Zweiteilung liest.
+
+        Die dreimonatige Testphase erscheint hier zum dritten Mal auf der
+        Seite: einmal als Zahl im Beweisband, einmal als eigener Abschnitt,
+        einmal als Option beim Absenden.
       */}
-      <Section background="navy" decor spacing="compact">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_auto] lg:items-center lg:gap-20">
-          <div>
-            <h2 className="font-display display-lg text-2xl font-medium text-white sm:text-3xl">
-              {heading.secondaryCtaHeading}
-            </h2>
-            <div className="glanz-divider mt-5 max-w-[120px]" />
-            <p className="measure mt-6 text-base leading-relaxed text-brand-100">
-              Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
-              Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
-              angebotenen Konditionen. Nach Ablauf entsteht keine automatische langfristige
-              Verlängerung. Die genauen Leistungen und Termine werden vor Beginn schriftlich
-              festgehalten.
+      {/*
+        Grundwechsel von Weiss auf Warm: der Wissensbereich davor laeuft
+        ebenfalls auf Weiss. Zwei identische Gruende hintereinander lesen
+        sich als eine einzige, sehr lange Flaeche — genau die flache Stelle,
+        die am Seitenende entstand.
+      */}
+      <Section background="warm" spacing="roomy" id="anfrage">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
+          <div className="lg:pt-2">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+              <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-300" />
+              Anfrage stellen
             </p>
+            <h2 className="font-display display-lg mt-5 text-pretty text-2xl font-medium text-brand-900 sm:text-3xl lg:text-4xl">
+              Schreiben Sie kurz, was gereinigt werden soll
+            </h2>
+            <p className="measure mt-6 text-base leading-relaxed text-ink-soft">
+              Fünf Angaben genügen. {owner.name} meldet sich {owner.responseTime}{" "}
+              {owner.responseTimeQualifier} bei Ihnen — mit Rückfragen zum Objekt oder direkt mit
+              den nächsten Schritten.
+            </p>
+
+            <ul className="mt-9 space-y-4 border-t border-line pt-8">
+              {[
+                "Kostenlos und unverbindlich",
+                "Auf Wunsch mit dreimonatiger Testphase",
+                "Besichtigungstermin bei größeren Objekten",
+              ].map((item) => (
+                <li key={item} className="flex gap-3 text-base text-ink-soft">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="mt-0.5 shrink-0 text-brand-500"
+                  >
+                    <path
+                      d="M5 13l4 4L19 7"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-9 border-t border-line pt-8">
+              <a
+                href={siteConfig.phoneHref}
+                className="inline-flex min-h-11 items-center gap-2.5 rounded-control text-base font-semibold text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Lieber telefonisch? {siteConfig.phone}
+              </a>
+            </div>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <Button href="/3-monate-testen" size="lg">
-              Testphase anfragen
-            </Button>
-            <Button
-              href="/preisrechner"
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-brand-900"
-            >
-              Preis berechnen
-            </Button>
+
+          <div className="rounded-panel border border-line bg-white p-7 shadow-float sm:p-9">
+            <ContactForm />
           </div>
         </div>
       </Section>
@@ -851,9 +1366,8 @@ export default function HomePage() {
               </Button>
               <Button
                 href="/kontakt"
-                variant="outline"
+                variant="onMedia"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-brand-900"
               >
                 Angebot anfragen
               </Button>

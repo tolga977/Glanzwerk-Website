@@ -26,11 +26,22 @@
   --color-brand-100: #e0f3f9;
   --color-brand-50: #f2fafd;
 
-  --color-accent-500: #fcba40;
-  --color-accent-600: #e2a02a;
-
   --color-ink: #14181f;
   --color-ink-soft: #414a58;
+  /*
+   * Platzhaltertext und stillgelegte Beschriftungen.
+   *
+   * Vorher stand hier Tailwinds `gray-400` (#9ca3af). Auf Weiß sind das
+   * 2,6:1 — die Platzhalter in Kontaktformular und Preisrechner lagen damit
+   * deutlich unter der geforderten Schwelle und waren bei Tageslicht auf
+   * einem Telefon kaum zu lesen.
+   *
+   * #6b7688 erreicht 4,59:1 und gehört zur kühl-neutralen Familie der
+   * Website: Blaukanal 29 Punkte über dem Rotkanal, dieselbe Neigung wie
+   * `line` und `line-strong`. Ein reines Grau wäre hier der Standardwert
+   * gewesen, dieser ist gewählt.
+   */
+  --color-ink-muted: #6b7688;
 
   /* Warm graphite neutrals — used for premium surfaces/backgrounds instead
      of default Tailwind gray, so the site reads as its own system rather
@@ -207,9 +218,20 @@ body {
   }
 
   /*
-   * Thin gradient divider reusing the same brand streak, for section breaks.
-   * Das warme Gelb erscheint hier bewusst nur als schmaler Kern des
-   * Verlaufs — die einzige regelmäßige Verwendung der Akzentfarbe.
+   * Markenstrich für Abschnittsfüße.
+   *
+   * Der Kern war bisher warmes Gelb (`accent-500`) — die letzte regelmäßige
+   * Verwendung einer Akzentfarbe, die aus der Farbwelt der Marke gestrichen
+   * wurde. Zwei Gründe für den Wechsel, nicht nur der formale:
+   *
+   * Der Strich stellt einen Lichtreflex dar. Licht auf einer Oberfläche wird
+   * heller, nicht wärmer — ein gelber Kern liest sich als zweite Farbe, ein
+   * aufgehellter Kern als tatsächliche Reflexion. Und ein Verlauf, der aus
+   * einer Farbfamilie in eine fremde läuft, ist die Machart, an der man
+   * Baukastenseiten erkennt.
+   *
+   * Jetzt: Markenblau, das zur Mitte hin aufhellt und an beiden Enden
+   * ausläuft.
    */
   .glanz-divider {
     height: 2px;
@@ -218,8 +240,8 @@ body {
     background: linear-gradient(
       90deg,
       transparent,
-      var(--color-brand-400) 35%,
-      var(--color-accent-500) 55%,
+      var(--color-brand-400) 32%,
+      var(--color-brand-200) 55%,
       transparent
     );
     opacity: 0.7;
@@ -248,6 +270,113 @@ body {
   }
   .press:active {
     transform: scale(0.97);
+  }
+
+  /*
+   * ── Hero-Overlay-System ──────────────────────────────────────────────
+   *
+   * Drei benannte Rollen statt verstreuter Einzelwerte im JSX. Alle drei
+   * arbeiten mit EINEM Ton: #12161d — kühles Graphit, R18 G22 B29.
+   *
+   * Warum nicht mehr das Marken-Navy: brand-950 (#030d1e) hat ein
+   * Blau-zu-Rot-Verhältnis von 10:1, brand-900 (#071a3a) von 8,3:1. Bei den
+   * bisherigen Deckungen — 92 % an der Textkante, 100 % an der Unterkante —
+   * hat das jede helle Fläche des Videos eingefärbt: weiße Wände, Glas und
+   * Boden lasen sich blau. #12161d liegt bei 1,6:1 und ist damit praktisch
+   * neutral. Es dunkelt ab, ohne umzufärben.
+   *
+   * Kein mix-blend-mode, kein saturate(), kein hue-rotate(), kein Blur.
+   * Die Integration entsteht über Kontrastführung und Transparenz, nicht
+   * über Umfärbung.
+   */
+
+  /*
+   * Rolle 1 — Kontrastführung hinter dem Text.
+   *
+   * 100 Grad statt exakt waagerecht: eine leichte Diagonale liest sich als
+   * Lichtsituation, eine exakt waagerechte Kante als CSS-Fläche.
+   *
+   * Die Stützstellen sind gegen den schlimmsten Fall gerechnet — ein
+   * vollständig weißes Videobild:
+   *    0 %  → 82 % Deckung → Weiß darauf ergibt 10,4:1
+   *   46 %  → 74 %         →  7,9:1
+   *   62 %  → 62 %         →  5,1:1
+   *   84 %  → 16 %         → Video praktisch frei
+   * Der Textblock endet bei 1440 px Fensterbreite auf 59 % der Breite —
+   * dort liegen noch über 5:1 an. Das rechte Drittel bleibt offen.
+   */
+  .hero-scrim {
+    background-image: linear-gradient(
+      100deg,
+      rgb(18 22 29 / 0.82) 0%,
+      rgb(18 22 29 / 0.74) 46%,
+      rgb(18 22 29 / 0.62) 62%,
+      rgb(18 22 29 / 0.16) 84%,
+      rgb(18 22 29 / 0) 100%
+    );
+  }
+
+  /*
+   * Rolle 2 — globale Kühlung.
+   *
+   * 10 % auf der gesamten Fläche. Über einem weißen Videobild ergibt das
+   * rgb(231 232 233): der Blaukanal liegt zwei Punkte über dem Rotkanal.
+   * Das ist unterhalb der Wahrnehmungsschwelle für einen Farbstich und
+   * genau die Menge, die aufeinanderfolgende Szenen ruhiger wirken lässt,
+   * ohne Weiß einzufärben oder Hauttöne grau zu machen.
+   */
+  .hero-veil {
+    background-color: rgb(16 24 34 / 0.1);
+  }
+
+  /*
+   * Rolle 3 — Fußzone.
+   *
+   * Vorher lief hier über 40 % der Höhe ein Verlauf, der an der Unterkante
+   * zu 100 % in brand-900 auslief — der größte zusammenhängende blaue Block
+   * des Heros. Er stammte aus einer Fassung, in der darunter ein dunkles
+   * Vertrauensband folgte. Heute folgt eine helle Fläche; die Begründung
+   * ist damit entfallen.
+   *
+   * Geblieben ist nur, was die beiden Zeilen unter den Schaltflächen lesbar
+   * hält: ein Viertel der Höhe, höchstens 52 % Deckung, neutral.
+   */
+  .hero-foot {
+    background-image: linear-gradient(
+      to top,
+      rgb(18 22 29 / 0.52) 0%,
+      rgb(18 22 29 / 0.24) 55%,
+      rgb(18 22 29 / 0) 100%
+    );
+  }
+
+  /*
+   * Bildausschnitt je Breakpoint.
+   *
+   * Eine einzige Objektposition für alle Geräte beschneidet auf dem Telefon
+   * zwangsläufig anders als auf dem Schirm: die Quelle ist 16:9, der Hero
+   * auf dem Telefon nahezu hochformatig.
+   *
+   *   Telefon   center 38 %  — höher im Bild: Architektur und Deckenzone
+   *                            statt Bodenzone, hält Personen aus dem
+   *                            Bereich direkt hinter der Schrift
+   *   Tablet    center 46 %  — ausgeglichen
+   *   Desktop   62 % 50 %    — Schwerpunkt nach rechts, weg von der
+   *                            Textspalte. Die Bewegung im Bild liegt damit
+   *                            dort, wo die Fläche offen ist.
+   */
+  .hero-focal {
+    object-position: center 38%;
+  }
+  @media (min-width: 640px) {
+    .hero-focal {
+      object-position: center 46%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-focal {
+      object-position: 62% 50%;
+    }
   }
 
   /*

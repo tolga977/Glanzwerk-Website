@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
@@ -13,6 +12,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 interface Props {
   params: Promise<{ bezirk: string; ortsteil: string }>;
@@ -81,18 +81,12 @@ export default async function OrtsteilPage({ params }: Props) {
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Preis berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Angebot anfragen
-          </Link>
+          <Button href="/preisrechner">
+              Preis berechnen
+            </Button>
+          <Button href="/kontakt" variant="outline">
+              Angebot anfragen
+            </Button>
         </div>
       </Section>
 

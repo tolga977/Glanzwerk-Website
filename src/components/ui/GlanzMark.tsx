@@ -2,7 +2,15 @@ interface GlanzMarkProps {
   className?: string;
 }
 
-/** Signature brand motif: stylised "shine glint" echoing "Glanz". */
+/**
+ * Markenmotiv: ein stilisierter Lichtreflex zum Namensbestandteil "Glanz".
+ *
+ * Die drei Striche werden nach außen dünner UND heller — sie stellen ein
+ * abklingendes Licht dar, nicht drei Objekte. Der dritte Strich stand
+ * vorher in warmem Gelb: damit las sich das Zeichen als drei verschieden
+ * farbige Balken statt als ein Reflex, und es war die letzte Stelle, an der
+ * eine markenfremde Farbe im System auftauchte.
+ */
 export default function GlanzMark({ className = "" }: GlanzMarkProps) {
   return (
     <svg
@@ -25,7 +33,7 @@ export default function GlanzMark({ className = "" }: GlanzMarkProps) {
       />
       <path
         d="M24 35 L33 23"
-        stroke="var(--color-accent-500)"
+        stroke="var(--color-brand-200)"
         strokeWidth="1.8"
         strokeLinecap="round"
       />

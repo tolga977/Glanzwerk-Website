@@ -13,6 +13,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 const heading = seoHeadings["/3-monate-testen"];
 
@@ -162,21 +163,15 @@ export default function DreiMonateTestenPage() {
               Zusammenarbeit.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/kontakt"
-                className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                Testphase anfragen
-              </a>
-              <a
-                href="/preisrechner"
-                className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
+              {/* Waren <a href> auf interne Ziele — damit lud jeder Klick die
+                  Seite komplett neu, statt im Router zu navigieren. */}
+              <Button href="/kontakt">Testphase anfragen</Button>
+              <Button href="/preisrechner" variant="outline">
                 Preis berechnen
-              </a>
+              </Button>
             </div>
           </div>
-          <BrandPhoto photo={photos.businessHandshake} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={photos.businessHandshake} priority className="shadow-deep" />
         </div>
       </Section>
 
@@ -191,9 +186,9 @@ export default function DreiMonateTestenPage() {
             <FadeIn
               key={benefit.title}
               delay={index * 80}
-              className="flex gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="flex gap-4 rounded-card border border-line bg-white p-6 shadow-raise"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-50 to-brand-100 text-brand-500">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   {benefitIcons[benefit.icon]}
                 </svg>
@@ -214,7 +209,7 @@ export default function DreiMonateTestenPage() {
       </Section>
 
       <Section background="warm">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)] sm:p-8">
+        <div className="mx-auto max-w-3xl rounded-card border border-line bg-white p-6 shadow-raise sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
             Wichtig zu wissen
           </p>

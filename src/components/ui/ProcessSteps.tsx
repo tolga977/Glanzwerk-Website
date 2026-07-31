@@ -39,8 +39,21 @@ export default function ProcessSteps({
   steps?: ProcessStep[];
   light?: boolean;
 }) {
+  /*
+   * Die Spaltenzahl folgt der Anzahl der Schritte, statt fest auf vier zu
+   * stehen.
+   *
+   * Der Ablauf auf den Leistungsseiten hat fuenf Schritte. Im festen
+   * Viererraster landete "05" allein in einer zweiten Reihe — auf allen
+   * zwoelf Leistungsseiten ein einzelner Rest unter einer vollen Reihe. Die
+   * durchgehende Grundlinie lief dabei nur unter der ersten Reihe durch und
+   * widersprach damit genau der Lesart, die sie herstellen soll: ein
+   * zusammenhaengender Weg statt einzelner Karten.
+   */
+  const columns = steps.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
+
   return (
-    <ol className="relative grid gap-10 sm:grid-cols-2 sm:gap-11 lg:grid-cols-4 lg:gap-8">
+    <ol className={`relative grid gap-10 sm:grid-cols-2 sm:gap-11 lg:gap-8 ${columns}`}>
       {/*
         Signaturelement: die Ziffer steht als Satzzahl auf einer Linie, nicht
         in einem Kreisabzeichen.

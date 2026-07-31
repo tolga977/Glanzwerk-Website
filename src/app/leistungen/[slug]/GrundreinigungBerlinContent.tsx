@@ -17,6 +17,7 @@ import { serviceContentPhotos } from "@/data/serviceContentPhotos";
 import { serviceMidPhotos } from "@/data/serviceMidPhotos";
 import { serviceSchema } from "@/lib/schema";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
+import Button from "@/components/ui/Button";
 
 /**
  * Eigenständiger, vollständiger Seiteninhalt für /leistungen/grundreinigung-berlin.
@@ -208,18 +209,12 @@ export default function GrundreinigungBerlinContent({
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/kontakt"
-              className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
+            <Button href="/kontakt">
               Unverbindliches Angebot anfragen
-            </Link>
-            <Link
-              href="/preisrechner"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 bg-white/70 px-6 text-sm font-semibold text-brand-900 backdrop-blur-sm transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
+            </Button>
+            <Button href="/preisrechner" variant="outline">
               Preis kostenlos berechnen
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -246,7 +241,7 @@ export default function GrundreinigungBerlinContent({
               photo={midPhoto}
               aspect="aspect-[16/10]"
               sizes="(min-width: 1024px) 560px, 100vw"
-              className="shadow-xl shadow-brand-950/15"
+              className="shadow-deep"
             />
           )}
         </div>
@@ -260,7 +255,7 @@ export default function GrundreinigungBerlinContent({
             <FadeIn
               key={card.title}
               delay={index * 60}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_1px_2px_rgb(7_26_58/0.04)]"
+              className="rounded-card border border-line bg-white p-6 shadow-raise"
             >
               <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
@@ -274,7 +269,7 @@ export default function GrundreinigungBerlinContent({
         <SectionHeading eyebrow="Typische Anlässe" title={heading.sectionHeadings[2]} />
         <ul className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
           {occasionItems.map((item) => (
-            <li key={item} className="flex items-start gap-2.5 rounded-xl border border-black/[0.06] bg-white px-4 py-3 text-sm text-ink-soft">
+            <li key={item} className="flex items-start gap-2.5 rounded-control border border-line bg-white px-4 py-3 text-sm text-ink-soft">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-brand-500">
                 <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -340,18 +335,12 @@ export default function GrundreinigungBerlinContent({
           ))}
         </ul>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/preisrechner"
-            className="shine-sweep shine-sweep-auto inline-flex min-h-11 items-center justify-center rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Preis kostenlos berechnen
-          </Link>
-          <Link
-            href="/kontakt"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-900 px-6 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-          >
-            Individuelles Angebot anfragen
-          </Link>
+          <Button href="/preisrechner">
+              Preis kostenlos berechnen
+            </Button>
+          <Button href="/kontakt" variant="outline">
+              Individuelles Angebot anfragen
+            </Button>
         </div>
         <p className="mt-6 text-sm text-ink-soft">
           Ergänzende Leistungen:{" "}
@@ -374,7 +363,7 @@ export default function GrundreinigungBerlinContent({
             <Link
               key={district.slug}
               href={`/standorte/${district.slug}`}
-              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}
             </Link>

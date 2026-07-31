@@ -46,7 +46,7 @@ export default function WissenPage() {
               für Büros, Praxen, Kanzleien und Unternehmen in Berlin.
             </p>
           </div>
-          <BrandPhoto photo={wissenHeroPhoto} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={wissenHeroPhoto} priority className="shadow-deep" />
         </div>
       </Section>
 

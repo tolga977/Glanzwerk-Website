@@ -22,10 +22,17 @@ export default function CalculatorProgress({
         aria-valuemin={1}
         aria-valuemax={totalSteps}
         aria-label={`Fortschritt: Schritt ${currentStep} von ${totalSteps}`}
-        className="h-2 w-full overflow-hidden rounded-full bg-gray-100"
+        className="h-2 w-full overflow-hidden rounded-full bg-line"
       >
+        {/*
+          `transition-all` hieß hier: der Browser beobachtet jede
+          animierbare Eigenschaft dieses Elements auf Änderungen, obwohl sich
+          nur die Breite ändert. Ohne Dauerangabe lief der Übergang zudem
+          über Tailwinds Standardwert von 150 ms — für einen Schrittwechsel
+          im Formular zu kurz, um als Fortschritt gelesen zu werden.
+        */}
         <div
-          className="h-full rounded-full bg-brand-500 transition-all"
+          className="h-full rounded-full bg-brand-500 transition-[width] duration-300 ease-out"
           style={{ width: `${percent}%` }}
         />
       </div>

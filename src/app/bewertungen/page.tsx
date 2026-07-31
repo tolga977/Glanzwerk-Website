@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section from "@/components/ui/Section";
-import Reviews from "@/components/ui/Reviews";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
+import GoogleRating from "@/components/ui/GoogleRating";
 import { photos } from "@/data/photos";
+import { googleBusiness } from "@/data/googleBusiness";
+import { getGoogleRating } from "@/lib/googleRating";
 import { buildMetadata } from "@/lib/metadata";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
@@ -17,7 +19,16 @@ export const metadata: Metadata = buildMetadata({
   path: "/bewertungen",
 });
 
-export default function BewertungenPage() {
+export default async function BewertungenPage() {
+  /*
+   * Dieselbe Datenquelle wie auf der Startseite (Google Places, sechsstündige
+   * Auffrischung, geprüfter Fallback). Vorher stand hier eine leere Liste mit
+   * dem Hinweis "sobald sie vorliegen" — während die Startseite gleichzeitig
+   * 5,0 aus 7 Bewertungen zeigte. Wer von dort hierher klickte, las das
+   * Gegenteil dessen, was er gerade gesehen hatte.
+   */
+  const googleRating = await getGoogleRating();
+
   return (
     <>
       <Breadcrumb items={[{ label: "Bewertungen" }]} />
@@ -32,15 +43,34 @@ export default function BewertungenPage() {
               {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-              Wir sammeln fortlaufend Rückmeldungen unserer Kunden zu
-              unserer Arbeit und veröffentlichen sie hier, sobald sie
-              vorliegen.
+              Rückmeldungen unserer Kundinnen und Kunden sammeln wir dort, wo sie
+              nachprüfbar sind: im Google-Unternehmensprofil. Der Stand unten wird
+              automatisch aktualisiert.
             </p>
           </div>
-          <BrandPhoto photo={photos.cleaningEquipment} priority className="shadow-2xl shadow-brand-950/20" />
+          <BrandPhoto photo={photos.cleaningEquipment} priority className="shadow-deep" />
         </div>
-        <div className="mt-14">
-          <Reviews reviews={[]} />
+
+        {/*
+          Dieselbe typografische Auszeichnung wie im Beweisband der Startseite —
+          kein zweiter Darstellungsstil für dieselbe Aussage.
+        */}
+        <div className="mt-14 border-t border-line pt-12">
+          <div className="max-w-xl">
+            <GoogleRating data={googleRating} />
+          </div>
+          <p className="measure mt-10 text-sm leading-relaxed text-ink-soft">
+            Die einzelnen Rezensionstexte lesen Sie direkt bei Google — dort sind sie
+            an ein Konto gebunden und damit überprüfbar.{" "}
+            <a
+              href={googleBusiness.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-brand-500 underline decoration-brand-200 underline-offset-4 transition-colors duration-200 ease-out hover:text-brand-600 hover:decoration-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            >
+              Zum Google-Profil
+            </a>
+          </p>
         </div>
       </Section>
 

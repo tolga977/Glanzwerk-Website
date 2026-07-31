@@ -1,92 +1,93 @@
 import Image from "next/image";
 import { photos } from "@/data/photos";
+import HeroVideo from "@/components/home/HeroVideo";
 
 /**
- * Hintergrundebene der Hero-Markenbühne.
+ * Medien- und Overlay-Ebene der Hero-Markenbühne.
  *
- * ── Vorbereitung auf das Cinematic-Video ────────────────────────────────
- * Die Ebene ist medienunabhängig aufgebaut. Sobald ein eigenes Hero-Video
- * vorliegt, genügt es, `heroVideo` unten zu füllen — Layout, Höhe, Overlays
- * und Textposition bleiben unverändert, weil Bild und Video exakt dieselbe
- * Fläche mit `object-cover` füllen. Keine weitere Layoutänderung nötig.
+ * ── Warum das Overlay neu aufgebaut ist ─────────────────────────────────
+ * Der vorherige Aufbau arbeitete mit drei Ebenen in Marken-Navy:
+ *   1. Lesekante   from-brand-950/92 via-brand-950/70 to-brand-950/15
+ *   2. Kopfzone    h-32, from-brand-950/55 to-transparent
+ *   3. Fußzone     h-2/5, from-brand-900 (100 %) via-brand-900/50
  *
- * Das Standbild bleibt dabei bewusst IMMER gerendert und liegt unter dem
- * Video. Es ist damit gleichzeitig:
- *   - das LCP-Element (mit `priority` vorgeladen, kein Wartezustand),
- *   - das Poster — über next/image optimiert statt als rohes poster-Attribut,
- *   - der Rückfall, wenn das Video nicht lädt oder kein Format passt,
- *   - die Darstellung unter prefers-reduced-motion (siehe .hero-video).
+ * brand-950 ist #030d1e, brand-900 ist #071a3a — beide mit einem
+ * Blau-zu-Rot-Verhältnis um 8:1 bis 10:1. Bei 92 % Deckung links und 100 %
+ * an der Unterkante blieb vom Videomaterial an diesen Stellen fast nichts
+ * übrig, und was übrig blieb, war eingefärbt: weiße Wände, Glas, Böden und
+ * Metallflächen lasen sich blau. Der Hero wirkte dadurch wie eine
+ * CSS-Farbfläche mit Bewegung darin, nicht wie ein Film.
  *
- * Deshalb braucht die Ebene kein JavaScript und bleibt eine Server
- * Component: die Reduced-Motion-Behandlung läuft rein über CSS.
+ * Der neue Aufbau trennt die beiden Aufgaben, die vorher vermischt waren:
+ * Lesbarkeit und Markenwirkung. Die Lesbarkeit übernimmt jetzt ein
+ * neutrales Graphit (#12161d, Blau-zu-Rot 1,6:1), die Markenwirkung tragen
+ * Logo, Überschriften-Akzent und die primäre Schaltfläche. Damit bleibt das
+ * Blau als Akzent erkennbar, ohne den gesamten Film zu überziehen.
  *
- * Empfehlung für die spätere Datei: H.264/MP4 plus WebM, ohne Tonspur,
- * unter 6 MB, 1920 breit, ruhige Kameraführung. Kein Schnitt im
- * Sekundentakt — die Fläche trägt Text.
+ * Alle Werte liegen in globals.css unter .hero-scrim, .hero-veil und
+ * .hero-foot — benannte Rollen statt Einzelwerte im JSX.
+ *
+ * ── Was unverändert bleibt ──────────────────────────────────────────────
+ * Das Standbild ist weiterhin IMMER gerendert und liegt unter dem Video:
+ *   - LCP-Element (mit `priority` vorgeladen, kein Wartezustand),
+ *   - Poster — über next/image optimiert statt als rohes poster-Attribut,
+ *     dadurch kein schwarzer Startframe,
+ *   - Rückfall, wenn das Video nicht lädt,
+ *   - Darstellung unter prefers-reduced-motion (siehe .hero-video).
+ *
+ * Diese Ebene bleibt eine Server Component. Nur das <video> selbst liegt in
+ * HeroVideo — einer schmalen Client-Komponente, weil sich der Download auf
+ * Telefonen und unter prefers-reduced-motion nur durch eine Prüfung vor dem
+ * Einhängen verhindern lässt, nicht durch CSS.
  */
-const heroVideo: { mp4: string; webm?: string } | null = null;
+const heroVideo: { mp4: string; webm?: string } | null = { mp4: "/video/hero.mp4" };
 
 export default function HeroMedia() {
   return (
     <div className="absolute inset-0 overflow-hidden">
+      {/*
+        Kein hero-drift mehr. Der Klassenname stand hier für einen
+        einmaligen Zoom von 1,07 auf 1,0 über 18 Sekunden — also einen
+        Ken-Burns-Effekt auf dem Standbild. Über einem laufenden Film ist
+        das eine zweite, konkurrierende Bewegung; die Vorlage nennt das
+        ausdrücklich als unerwünscht. Die CSS-Regel bleibt bestehen, sie
+        wird nur nicht mehr angewendet.
+      */}
       <Image
         src={photos.heroCleaningTeam.src}
         alt={photos.heroCleaningTeam.alt}
         fill
         priority
         sizes="100vw"
-        className="hero-drift object-cover"
-        style={{ objectPosition: "center 62%" }}
+        className="hero-focal object-cover"
       />
 
-      {heroVideo && (
-        <video
-          className="hero-video absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          tabIndex={-1}
-        >
-          {heroVideo.webm && <source src={heroVideo.webm} type="video/webm" />}
-          <source src={heroVideo.mp4} type="video/mp4" />
-        </video>
-      )}
+      {heroVideo && <HeroVideo mp4={heroVideo.mp4} webm={heroVideo.webm} />}
 
       {/*
-        Overlay-System in drei benannten Ebenen. Alle drei arbeiten mit dem
-        Marken-Navy statt mit Schwarz: Schwarz über einem Farbbild ergibt
-        einen grauen Schleier, der Markenton lässt die Fläche kühl und
-        zugehörig wirken.
-        Die Werte sind gegen den schlimmsten Fall gerechnet: ein vollstaendig
-        weisses Videobild an der rechten Textkante. Dort ergibt die Lesekante
-        mit 70 % Deckung und Text in Weiss 90 % noch 6,37:1 — die Lesbarkeit
-        haengt damit nicht davon ab, welches Einzelbild gerade laeuft.
+        Ebene 1 — Kontrastführung. Trägt den Textblock links und läuft nach
+        rechts vollständig aus, damit dort echtes Bildmaterial steht.
       */}
-
-      {/* 1. Lesekante — trägt den Textblock links, gibt die rechte Bildhälfte frei. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-brand-950/92 via-brand-950/70 to-brand-950/15"
-      />
-
-      {/* 2. Kopfzone — hält die mitlaufende Navigation lesbar, falls das Bild oben hell wird. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-brand-950/55 to-transparent"
-      />
+      <div aria-hidden="true" className="hero-scrim absolute inset-0" />
 
       {/*
-        3. Fußzone — löst exakt in die Farbe des folgenden Vertrauensbands
-        (brand-900) auf. Dadurch entsteht keine harte Kante: der Hero endet
-        nicht, er geht in den nächsten Abschnitt über.
+        Ebene 2 — globale Kühlung. Verbindet die Szenen minimal, ohne Weiß
+        einzufärben. Liegt über der Kontrastführung, damit auch die offene
+        rechte Fläche mitgenommen wird.
       */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900 via-brand-900/50 to-transparent"
-      />
+      <div aria-hidden="true" className="hero-veil absolute inset-0" />
+
+      {/*
+        Ebene 3 — Fußzone. Nur so viel, wie die beiden Zeilen unter den
+        Schaltflächen brauchen.
+
+        Die frühere Kopfzone ist ersatzlos entfallen: sie sollte die
+        mitlaufende Navigation lesbar halten, doch die Kopfzeile ist eine
+        eigene, deckende Fläche über dem Hero. Der dunkle Streifen darunter
+        hatte damit keine Aufgabe mehr und erzeugte genau die blaue Kante
+        zwischen weißem Header und Film, die vermieden werden sollte.
+      */}
+      <div aria-hidden="true" className="hero-foot absolute inset-x-0 bottom-0 h-1/4" />
     </div>
   );
 }

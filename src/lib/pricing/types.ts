@@ -23,6 +23,11 @@ export interface PriceEstimate {
   /** Preis pro Reinigungseinsatz netto (inkl. Fahrtkostenpauschale). */
   pricePerVisitNet: number;
   visitsPerWeek: number;
+  /**
+   * true, wenn die Schaetzung unter dem monatlichen Mindestauftragswert liegt.
+   * Nur bei wiederkehrender Reinigung gesetzt, nicht bei Treppenhausreinigung.
+   */
+  belowMinimumOrder?: boolean;
 }
 
 export interface ValidationError {
