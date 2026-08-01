@@ -36,17 +36,25 @@ export default function OwnerNote() {
   );
 
   /*
-    Die Zusage steht absichtlich nicht in der Fließtextfarbe, sondern auf
-    eigener Fläche: sie ist das einzige nachprüfbare Versprechen des
-    Abschnitts und darf nicht mitgelesen werden.
+    Die Zusage.
+
+    Sie stand in einer hellblauen Karte mit Rand — ein farbiger Kasten
+    mitten in einem Abschnitt, in dem sonst eine Person spricht. Das las
+    sich wie ein eingeschobener Hinweiskasten aus einer Softwaredoku, nicht
+    wie ein Satz, den jemand sagt.
+
+    Jetzt trägt sie eine Doppellinie darüber statt einer Fläche darum. Die
+    Zusage bleibt abgesetzt — aber als Absatz mit eigener Kante, nicht als
+    Objekt. Die Kontaktwege stehen darunter in derselben Zeile wie die
+    Signatur; sie sind Teil des Gesprächs, kein Fußbereich.
   */
   const promise = (
-    <div className="mt-10 rounded-card border border-brand-100 bg-brand-50 p-6 sm:p-7">
-      <p className="text-base leading-relaxed text-brand-900">
+    <div className="mt-12 border-t-2 border-brand-900 pt-8 sm:mt-14">
+      <p className="measure text-lg leading-relaxed text-brand-900 sm:text-xl">
         <strong className="font-semibold">Antwort {owner.responseTime}</strong>{" "}
         {owner.responseTimeQualifier} — auf Anfragen über das Formular, per E-Mail und am Telefon.
       </p>
-      <div className="mt-5 flex flex-col gap-x-8 gap-y-2 sm:flex-row sm:items-center">
+      <div className="mt-6 flex flex-col gap-x-10 gap-y-2 sm:flex-row sm:items-center">
         <a
           href={siteConfig.phoneHref}
           className="inline-flex min-h-11 items-center gap-2 rounded-control text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out hover:text-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
@@ -85,22 +93,41 @@ export default function OwnerNote() {
     );
   }
 
+  /*
+    ── Mit Porträt ────────────────────────────────────────────────────────
+    Das Bild lag bisher als 20 rem breite Kachel links neben dem Text —
+    ein Passfoto in Spaltenbreite. Genau die Anordnung, die jede
+    Über-uns-Seite hat, und die den Eindruck erzeugt "hier ist unser
+    Geschäftsführer" statt "ich spreche mit dem Verantwortlichen".
+
+    Jetzt steht der Text links und das Porträt rechts über die halbe
+    Abschnittsbreite, hochformatig und bis an die Fensterkante laufend. Ein
+    Gesicht in dieser Größe wird angesehen, nicht zur Kenntnis genommen.
+
+    `lg:mr-[calc(50%-50vw)]` zieht die rechte Kante auf die Fensterbreite;
+    der Überstand wird von der Section beschnitten. Die Rundung entfällt an
+    der angeschnittenen Seite — eine gerundete Ecke an einer Kante, die es
+    nicht gibt, verrät die Konstruktion.
+
+    Der Text steht zuerst im Markup und wird erst ab Desktop nach links
+    gestellt. Auf dem Telefon liest man so die Aussage vor dem Gesicht —
+    das Zitat trägt den Abschnitt, das Bild bestätigt ihn.
+  */
   return (
-    <div className="grid gap-10 lg:grid-cols-[20rem_1fr] lg:items-start lg:gap-16">
-      {/* Porträt im Hochformat, leicht angehoben — kein zentriertes Rundbild. */}
-      <div className="relative aspect-[4/5] w-full max-w-[20rem] overflow-hidden rounded-panel shadow-deep lg:-mt-6">
+    <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-20">
+      <div className="lg:order-1">
+        {quote}
+        {signature}
+        {promise}
+      </div>
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-panel shadow-deep lg:order-2 lg:aspect-[3/4] lg:mr-[calc(50%-50vw)] lg:max-h-[42rem] lg:rounded-r-none">
         <Image
           src={owner.photo as string}
           alt={owner.photoAlt}
           fill
-          sizes="(min-width: 1024px) 20rem, 100vw"
+          sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover"
         />
-      </div>
-      <div>
-        {quote}
-        {signature}
-        {promise}
       </div>
     </div>
   );

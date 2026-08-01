@@ -33,11 +33,18 @@ interface GoogleRatingProps {
    * "badge"     — kompakte Auszeichnung für dunkle Flächen und Bewegtbild
    *               (Hero: Glasplättchen, Sterne zuerst, Zahl klein)
    *
-   * Zwei bewusst verschiedene Bauformen für dieselbe Aussage. Auf einer
-   * hellen Satzfläche trägt die Ziffer, über einem laufenden Film tragen
-   * die Sterne — dort wird nicht gelesen, sondern erkannt.
+   * "rail"      — ohne eigene Fläche, für die Vertrauensleiste am Hero-Fuß.
+   *               Dort trennen senkrechte Haarlinien die Einträge; ein
+   *               Plättchen mit eigenem Rand würde als einziger Eintrag
+   *               einen Kasten in die Leiste setzen.
+   *
+   *               Warum eine eigene Bauform statt Zusatzklassen: `bg-white/10`
+   *               und `bg-transparent` haben dieselbe Spezifität — welche
+   *               gewinnt, entscheidet allein die Reihenfolge im erzeugten
+   *               Stylesheet. Genau diese Wette ist auf dieser Website schon
+   *               einmal verloren worden (siehe Button `onMedia`).
    */
-  variant?: "editorial" | "badge";
+  variant?: "editorial" | "badge" | "rail";
   className?: string;
 }
 
@@ -112,6 +119,29 @@ export default function GoogleRating({
   className = "",
 }: GoogleRatingProps) {
   const value = formatRating(data.rating);
+
+  if (variant === "rail") {
+    return (
+      <a
+        href={googleBusiness.profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${value} von 5 Sternen aus ${data.count} Google-Bewertungen — Profil auf Google ansehen`}
+        className={`group inline-flex items-center gap-2.5 rounded-control transition-opacity duration-200 ease-out hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white ${className}`}
+      >
+        <GoogleG className="h-[18px] w-[18px] shrink-0" />
+        <span aria-hidden="true">
+          <Stars rating={data.rating} compact />
+        </span>
+        <span aria-hidden="true" className="text-sm font-semibold text-white">
+          {value}
+        </span>
+        <span aria-hidden="true" className="text-sm text-white/70">
+          ({data.count})
+        </span>
+      </a>
+    );
+  }
 
   if (variant === "badge") {
     /*

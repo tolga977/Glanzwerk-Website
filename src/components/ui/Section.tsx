@@ -12,6 +12,23 @@ interface SectionHeadingProps {
   as?: "h1" | "h2";
   /** Use light text colors when placed on a dark ("navy" or "brand") Section background. */
   light?: boolean;
+  /**
+   * Schriftgrad der Überschrift.
+   *
+   * "default"   — 24/30 px. Der Bestand auf allen Unterseiten.
+   * "editorial" — 30/36/48 px. Nur auf der Startseite.
+   *
+   * Warum es zwei Stufen gibt: die Startseite ist die einzige Fläche, auf
+   * der jemand ankommt, ohne zu wissen, wo er ist. Dort ist die Überschrift
+   * ein Auftritt, auf einer Leistungsseite ist sie eine Wegmarke. 30 px sind
+   * für einen Auftritt zu wenig — bei diesem Grad liest sich eine Zeile als
+   * Beschriftung, nicht als Aussage.
+   *
+   * Der Sprung nach 48 px passiert erst ab 1024 px. Darunter würde eine
+   * dreizeilige Überschrift entstehen, und drei Zeilen sind kein Auftritt
+   * mehr, sondern ein Absatz.
+   */
+  scale?: "default" | "editorial";
 }
 
 export function SectionHeading({
@@ -21,6 +38,7 @@ export function SectionHeading({
   align = "left",
   as: Heading = "h2",
   light = false,
+  scale = "default",
 }: SectionHeadingProps) {
   const centered = align === "center";
   return (
@@ -40,16 +58,25 @@ export function SectionHeading({
             Trennlinien in der Vertrauensmatrix. Struktur aus Linien statt aus
             Kaesten ist das Kompositionsprinzip — der Eyebrow folgt ihm jetzt.
           */}
+          {/*
+            Markenzeichen als Satzzeichen: zwei kurze Striche im 53-Grad-
+            Winkel des Glanzwerk-Zeichens statt einer waagerechten Haarlinie.
+            Siehe `.brand-tick` in globals.css.
+          */}
           <span
             aria-hidden="true"
-            className={`h-px w-7 shrink-0 ${light ? "bg-brand-300/70" : "bg-brand-400"}`}
+            className={`brand-tick ${light ? "text-brand-300" : "text-brand-400"}`}
           />
           {eyebrow}
         </p>
       )}
       <Heading
-        className={`font-display display-lg font-medium ${light ? "text-white" : "text-brand-900"} ${
-          Heading === "h1" ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
+        className={`font-display display-lg text-pretty font-medium ${light ? "text-white" : "text-brand-900"} ${
+          Heading === "h1"
+            ? "text-3xl sm:text-4xl"
+            : scale === "editorial"
+              ? "text-[1.875rem] sm:text-4xl lg:text-5xl"
+              : "text-2xl sm:text-3xl"
         }`}
       >
         {title}
@@ -131,6 +158,18 @@ interface SectionProps {
    * ausgebleichtes Foto hinter Text genau das, was billig aussieht.
    */
   backdrop?: { src: string; objectPosition?: string };
+  /**
+   * Ecke des Wasserzeichens auf dunklen Flächen. Vorgabe "top-right" — der
+   * unveränderte, überall sonst verwendete Wert.
+   *
+   * Grund für den Prop: auf der Startseite folgen drei dunkle Flächen im
+   * selben Scroll aufeinander, alle mit dem Zeichen in derselben Ecke,
+   * derselben Größe, derselben Deckung. Das ist keine Markensignatur mehr,
+   * sobald man es dreimal hintereinander sieht — es ist ein Aufkleber, der
+   * immer an derselben Stelle klebt. Die Regel selbst (groß, leise, nie
+   * verkleinert) bleibt; nur die Position darf variieren.
+   */
+  markCorner?: "top-right" | "bottom-left";
 }
 
 /*
@@ -176,6 +215,7 @@ export default function Section({
   contained = true,
   surface,
   backdrop,
+  markCorner = "top-right",
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
   const showBackdrop = Boolean(backdrop) && dark;
@@ -216,7 +256,11 @@ export default function Section({
         traegt eine Flaeche, oder es erscheint nicht.
       */}
       {dark && (
-        <GlanzMark className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 opacity-[0.10]" />
+        <GlanzMark
+          className={`pointer-events-none absolute h-64 w-64 opacity-[0.10] ${
+            markCorner === "bottom-left" ? "-bottom-12 -left-12" : "-right-12 -top-12"
+          }`}
+        />
       )}
 
       {surface && (

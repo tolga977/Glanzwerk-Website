@@ -15,7 +15,8 @@ export default function EditorialIntro({ eyebrow, title, subtitle, children }: E
       <div>
         {eyebrow && (
           <p className="mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
-            <span aria-hidden="true" className="h-px w-7 shrink-0 bg-brand-400" />
+            {/* Markenzeichen im 53-Grad-Winkel — siehe `.brand-tick` in globals.css. */}
+            <span aria-hidden="true" className="brand-tick text-brand-400" />
             {eyebrow}
           </p>
         )}

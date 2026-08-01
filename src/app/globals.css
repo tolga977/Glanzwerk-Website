@@ -140,25 +140,60 @@ body {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Display serif for headlines — Inter remains the body/UI font. */
+  /*
+   * ── Die Schrift der Marke ────────────────────────────────────────────
+   *
+   * Fraunces wird in `layout.tsx` mit zwei veränderlichen Achsen geladen:
+   * `opsz` und `SOFT`. Beide waren bisher ungenutzt — sie wurden mit jedem
+   * Seitenaufruf ausgeliefert und standen auf ihren Vorgabewerten. Damit sah
+   * Fraunces hier aus wie Fraunces überall sonst.
+   *
+   * Das ist die Stelle, an der eine Marke am tiefsten unverwechselbar wird
+   * und an der praktisch niemand nachsieht: nicht Farbe, nicht Layout,
+   * sondern die Form der Buchstaben selbst.
+   *
+   * SOFT 18 (Bereich 0–100)
+   *   SOFT rundet Endstriche und Anschlüsse. Bei 0 ist Fraunces spitz und
+   *   rein redaktionell — für einen Berliner Dienstleister eine Spur zu
+   *   scharf. Bei hohen Werten wird sie weich und freundlich, was die
+   *   Sachlichkeit verliert.
+   *
+   *   18 ist bewusst niedrig: die Endstriche verlieren ihre Spitze, ohne
+   *   rund zu werden. Genau das Verhältnis, das die Marke tragen soll —
+   *   überwiegend Präzision, ein Rest Wärme. In einer Überschrift ist der
+   *   Unterschied nicht zu benennen, aber zu spüren.
+   *
+   * opsz gestuft (Bereich 9–144)
+   *   Ein optischer Grad ist keine Skalierung: Große Grade brauchen dünnere
+   *   Haarstriche und engere Punzen, kleine das Gegenteil. `opsz` regelt
+   *   das im Schriftschnitt selbst.
+   *
+   *   `font-optical-sizing: auto` hätte das übernommen — aber sobald
+   *   `font-variation-settings` gesetzt ist, ist dieses Zusammenspiel
+   *   browserabhängig. Deshalb steht opsz hier explizit und in denselben
+   *   drei Stufen, in denen ohnehin schon das Tracking abgestuft ist.
+   */
   .font-display {
     font-family: var(--font-display), Georgia, serif;
     font-feature-settings: "ss01" 1;
-    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 18, "opsz" 28;
   }
 
   /*
    * Optisches Tracking nach apple-design §15: je größer der Schriftgrad,
    * desto enger die Laufweite. Ein fester letter-spacing-Wert wäre bei
-   * mindestens einer Größe falsch.
+   * mindestens einer Größe falsch. Der optische Grad folgt derselben
+   * Staffelung.
    */
   .display-xl {
     letter-spacing: -0.024em;
     line-height: 1.05;
+    font-variation-settings: "SOFT" 18, "opsz" 110;
   }
   .display-lg {
     letter-spacing: -0.018em;
     line-height: 1.12;
+    font-variation-settings: "SOFT" 18, "opsz" 60;
   }
 
   /* Kontrollierte Lesebreite für redaktionelle Absätze (~65 Zeichen). */
@@ -330,6 +365,37 @@ body {
   }
 
   /*
+   * Rolle 2b — Lichtquelle.
+   *
+   * Bis hierher bestand das Overlay ausschließlich aus Abdunklung: drei
+   * Ebenen, die alle Licht wegnehmen. Das Ergebnis war lesbar, aber flach —
+   * eine gleichmäßig gedämpfte Fläche hat keine Richtung, und ohne Richtung
+   * entsteht keine Tiefe.
+   *
+   * Diese Ebene nimmt nichts weg, sie gibt. Ein sehr weiter, sehr schwacher
+   * Lichtkegel aus dem oberen rechten Drittel — genau dort, wo die
+   * Kontrastführung ausläuft und das Videobild offen liegt. Der Hero bekommt
+   * damit eine Lichtrichtung: hell und offen rechts oben, ruhig und tragend
+   * links unten, wo die Schrift steht.
+   *
+   * Werte: 6 % Weiß im Kern, auf 60 % des Radius bereits bei null. Das ist
+   * unterhalb der Schwelle, ab der man einen Kegel als Form erkennt, und
+   * genau die Menge, die aus einer Fläche einen Raum macht.
+   *
+   * Kein Glühen: ein Glow sitzt hinter einem Objekt und strahlt nach außen.
+   * Das hier ist eine Lichtquelle im Bild — dieselbe Logik wie das
+   * Markenzeichen, das einen Reflex darstellt.
+   */
+  .hero-light {
+    background-image: radial-gradient(
+      120% 90% at 78% 18%,
+      rgb(255 255 255 / 0.06) 0%,
+      rgb(255 255 255 / 0.025) 32%,
+      transparent 60%
+    );
+  }
+
+  /*
    * Rolle 3 — Fußzone.
    *
    * Vorher lief hier über 40 % der Höhe ein Verlauf, der an der Unterkante
@@ -380,6 +446,50 @@ body {
   }
 
   /*
+   * ── Markenzeichen als Satzzeichen ────────────────────────────────────
+   *
+   * Vor jeder Auszeichnungszeile stand bisher eine waagerechte Haarlinie.
+   * Waagerecht ist die Voreinstellung — sie sagt nichts über diese Marke.
+   *
+   * Die Striche des Glanzwerk-Zeichens laufen bei M8 32 L26 8: 18 nach
+   * rechts, 24 nach oben, also 53,13 Grad. Genau dieser Winkel steht jetzt
+   * an der Stelle der Linie — ein einzelner kurzer Strich, vierzehnmal auf
+   * der Startseite, immer gleich geneigt.
+   *
+   * Das ist der kleinste denkbare Markenmoment und zugleich der häufigste:
+   * er erscheint an jedem Abschnittsanfang und macht die Auszeichnungszeile
+   * zu etwas, das nur auf dieser Website so aussieht. Zwei Striche statt
+   * einem, der zweite kürzer und heller — dieselbe abklingende Staffelung
+   * wie im Zeichen selbst.
+   *
+   * `currentColor` erbt die Farbe der Zeile, damit dasselbe Element auf
+   * hellem und dunklem Grund funktioniert.
+   */
+  .brand-tick {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+  .brand-tick::before,
+  .brand-tick::after {
+    content: "";
+    display: block;
+    width: 1.5px;
+    border-radius: 999px;
+    background: currentColor;
+    /* 53,13 Grad zur Waagerechten = 36,87 Grad Neigung aus der Senkrechten. */
+    transform: rotate(36.87deg);
+  }
+  .brand-tick::before {
+    height: 1.0625rem;
+  }
+  .brand-tick::after {
+    height: 0.6875rem;
+    opacity: 0.55;
+  }
+
+  /*
    * Lichtkante: feine helle Oberkante auf dunklen Flächen. Ersetzt die
    * früheren großflächigen Blur-Orbs als Tiefenmittel — Licht statt Nebel.
    */
@@ -415,6 +525,102 @@ body {
     to {
       transform: scale(1);
     }
+  }
+}
+
+@layer utilities {
+  /*
+   * ── Bewertungslaufband ───────────────────────────────────────────────
+   *
+   * Eine Spur, die ihren Inhalt genau zweimal enthält und sich um exakt die
+   * Hälfte verschiebt. Am Ende der Bewegung steht die Kopie exakt dort, wo
+   * das Original begann — die Naht ist damit nicht sichtbar und es braucht
+   * kein JavaScript, das Positionen nachrechnet.
+   *
+   * `linear` ist hier ausnahmsweise richtig: eine gleichförmige Bewegung
+   * ohne Anfang und Ende darf nicht beschleunigen, sonst wirkt sie wie ein
+   * Karussell, das immer wieder neu anfährt.
+   *
+   * Die Bewegung läuft über `transform` und damit auf dem Compositor.
+   */
+  .marquee {
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-slide var(--marquee-duration, 70s) linear infinite;
+  }
+  @keyframes marquee-slide {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /*
+   * Anhalten, sobald jemand liest.
+   *
+   * `:hover` fängt die Maus, `:focus-within` die Tastatur — beim Durchtabben
+   * durch die Links im Band bliebe der Fokusrahmen sonst auf einem Element,
+   * das unter dem Zeiger wegläuft.
+   */
+  @media (hover: hover) and (pointer: fine) {
+    .marquee:hover .marquee-track,
+    .marquee:focus-within .marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  /*
+   * Auf Touchgeräten läuft nichts von selbst.
+   *
+   * Dort gibt es kein Hover, mit dem man anhalten könnte — ein Band, das
+   * unaufhaltsam weiterläuft, während jemand liest, ist auf dem Telefon
+   * kein Vertrauenssignal, sondern eine Zumutung. Stattdessen wird das Band
+   * mit dem Finger schiebbar. Dieselbe Lösung greift bei reduzierter
+   * Bewegung.
+   */
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      /* Fokusrahmen im Band dürfen nicht an der Kante abgeschnitten werden. */
+      scroll-padding-inline: 1rem;
+    }
+    .marquee::-webkit-scrollbar {
+      display: none;
+    }
+    .marquee-track {
+      animation: none;
+      transform: none;
+    }
+  }
+
+  /*
+   * Einblendkanten links und rechts: das Band soll aus der Fläche kommen und
+   * in sie zurücklaufen, statt an einer harten Kante abgeschnitten zu werden.
+   * Als Maske statt als aufgelegter Verlauf — so funktioniert es über jedem
+   * Untergrund, ohne dessen Farbe zu kennen.
+   */
+  .marquee-fade {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 5rem,
+      #000 calc(100% - 5rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 5rem,
+      #000 calc(100% - 5rem),
+      transparent 100%
+    );
   }
 }
 

@@ -78,6 +78,17 @@ export default function HeroMedia() {
       <div aria-hidden="true" className="hero-veil absolute inset-0" />
 
       {/*
+        Ebene 2b — Lichtquelle oben rechts.
+
+        Alle bisherigen Ebenen nehmen Licht weg. Diese gibt welches zurück,
+        und zwar gerichtet: dort, wo die Kontrastführung ausläuft und das
+        Videobild offen liegt. Erst dadurch bekommt der Hero eine
+        Lichtrichtung statt einer gleichmäßigen Dämpfung — der Unterschied
+        zwischen einer abgedunkelten Fläche und einem Raum.
+      */}
+      <div aria-hidden="true" className="hero-light absolute inset-0" />
+
+      {/*
         Ebene 3 — Fußzone. Nur so viel, wie die beiden Zeilen unter den
         Schaltflächen brauchen.
 

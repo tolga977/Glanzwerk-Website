@@ -233,7 +233,22 @@ export default function Header() {
           trennt, ohne die Zeile zu zerschneiden.
         */}
         <div className="hidden items-center gap-5 xl:flex">
-          <span aria-hidden="true" className="h-7 w-px shrink-0 bg-line-strong" />
+          {/*
+            Trennung zwischen Navigation und Kontaktweg.
+
+            Hier stand ein senkrechter Strich — die Voreinstellung, die in
+            jeder Kopfzeile steht. Es ist derselbe Strich geblieben, nur im
+            53-Grad-Winkel des Markenzeichens. Damit trägt die Kopfzeile
+            neben der Logodatei ein zweites, eigenes Merkmal, und der
+            Besucher begegnet dem Winkel schon vor dem ersten Scrollen.
+
+            Kein zusätzliches Element, keine Dekoration: ein vorhandener
+            Strich, richtig geneigt.
+          */}
+          <span
+            aria-hidden="true"
+            className="h-7 w-px shrink-0 rotate-[36.87deg] rounded-full bg-line-strong"
+          />
           <a
             href={siteConfig.phoneHref}
             className="flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-control px-1 text-sm font-medium text-ink-soft transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
