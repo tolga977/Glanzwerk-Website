@@ -1,6 +1,16 @@
 export interface Ortsteil {
   slug: string;
   name: string;
+  /**
+   * Optional: ein bis zwei Sätze, die diesen Ortsteil von seinen
+   * Geschwister-Ortsteilen im selben Bezirk unterscheiden – ausschließlich
+   * bereits anderswo im Projekt etablierte, allgemein bekannte Fakten (Lage,
+   * Gebäudetyp, Nutzung), keine erfundenen Details. Bleibt das Feld leer,
+   * rendert die Seite wie zuvor ohne "Vor Ort"-Abschnitt.
+   */
+  localContext?: string[];
+  /** Optional: überschreibt die von der Bezirksseite geerbten Leistungskarten, damit Geschwister-Ortsteile nicht identisch aussehen. */
+  featuredServiceSlugs?: string[];
 }
 
 export interface DistrictFaqItem {
@@ -156,8 +166,22 @@ export const districts: District[] = [
     ],
     neighborSlugs: ["mitte", "spandau", "reinickendorf", "steglitz-zehlendorf", "tempelhof-schoeneberg"],
     ortsteile: [
-      { slug: "charlottenburg", name: "Charlottenburg" },
-      { slug: "wilmersdorf", name: "Wilmersdorf" },
+      {
+        slug: "charlottenburg",
+        name: "Charlottenburg",
+        localContext: [
+          "Charlottenburg bildet mit dem Kurfürstendamm und der Umgebung des Bahnhofs Zoo den geschäftigeren, publikumsorientierten Teil des Bezirks – geprägt von Ladengeschäften, Autohäusern und repräsentativen Büroflächen, bei denen das äußere Erscheinungsbild direkt auf Kunden wirkt.",
+        ],
+        featuredServiceSlugs: ["autohausreinigung-berlin", "glas-und-fensterreinigung-berlin", "gebaeudereinigung-berlin"],
+      },
+      {
+        slug: "wilmersdorf",
+        name: "Wilmersdorf",
+        localContext: [
+          "Wilmersdorf ist ruhiger geprägt als der Ku'damm-nahe Teil des Bezirks – mit vielen Kanzleien und Arztpraxen in gepflegten Altbaulagen, wo Diskretion und ein auf Sprechzeiten abgestimmter Reinigungsablauf im Vordergrund stehen.",
+        ],
+        featuredServiceSlugs: ["kanzleireinigung-berlin", "praxisreinigung-berlin", "unterhaltsreinigung-berlin"],
+      },
     ],
   },
   {
@@ -225,8 +249,22 @@ export const districts: District[] = [
     ],
     neighborSlugs: ["charlottenburg-wilmersdorf", "tempelhof-schoeneberg"],
     ortsteile: [
-      { slug: "steglitz", name: "Steglitz" },
-      { slug: "zehlendorf", name: "Zehlendorf" },
+      {
+        slug: "steglitz",
+        name: "Steglitz",
+        localContext: [
+          "Steglitz ist der urbanere, dichter bebaute Teil des Bezirks mit der Schloßstraße als Geschäfts- und Bürolage – hier reinigen wir vor allem Büro- und Kanzleiflächen in gemischt genutzten Geschäftshäusern.",
+        ],
+        featuredServiceSlugs: ["bueroreinigung-berlin", "kanzleireinigung-berlin", "unterhaltsreinigung-berlin"],
+      },
+      {
+        slug: "zehlendorf",
+        name: "Zehlendorf",
+        localContext: [
+          "Zehlendorf ist von villenartigen Wohnlagen und Grünflächen geprägt – mit vergleichsweise vielen Arztpraxen und Schulen in Wohnnähe, für die ein besonders unauffälliger, gut in den Tagesablauf des Umfelds eingepasster Reinigungsablauf gefragt ist.",
+        ],
+        featuredServiceSlugs: ["praxisreinigung-berlin", "kita-und-schulreinigung-berlin", "unterhaltsreinigung-berlin"],
+      },
     ],
   },
   {
@@ -261,8 +299,22 @@ export const districts: District[] = [
     ],
     neighborSlugs: ["mitte", "neukoelln", "steglitz-zehlendorf", "charlottenburg-wilmersdorf"],
     ortsteile: [
-      { slug: "tempelhof", name: "Tempelhof" },
-      { slug: "schoeneberg", name: "Schöneberg" },
+      {
+        slug: "tempelhof",
+        name: "Tempelhof",
+        localContext: [
+          "Rund um das Gelände des ehemaligen Flughafens Tempelhof haben sich größere Gewerbe- und Bürogebäude mit mehreren Mietparteien angesiedelt – hier spielt neben der Büroreinigung häufig auch die Treppenhausreinigung eine Rolle, die wir mit Hausverwaltungen abstimmen.",
+        ],
+        featuredServiceSlugs: ["treppenhausreinigung-berlin", "gebaeudereinigung-berlin", "bueroreinigung-berlin"],
+      },
+      {
+        slug: "schoeneberg",
+        name: "Schöneberg",
+        localContext: [
+          "Schöneberg ist urbaner und dichter bebaut als der Tempelhofer Teil des Bezirks – geprägt von Büros, Kanzleien und Wohn-Geschäftshäusern mit gemischter Nutzung, in denen Zugang und Zeitfenster oft individuell mit mehreren Parteien abgestimmt werden.",
+        ],
+        featuredServiceSlugs: ["bueroreinigung-berlin", "kanzleireinigung-berlin", "unterhaltsreinigung-berlin"],
+      },
     ],
   },
   {
@@ -296,7 +348,16 @@ export const districts: District[] = [
       },
     ],
     neighborSlugs: ["friedrichshain-kreuzberg", "tempelhof-schoeneberg", "treptow-koepenick"],
-    ortsteile: [{ slug: "rudow", name: "Rudow" }],
+    ortsteile: [
+      {
+        slug: "rudow",
+        name: "Rudow",
+        localContext: [
+          "Rudow unterscheidet sich deutlich vom dicht bebauten Kern Neuköllns: Hier liegen größere, zusammenhängende Gewerbeflächen mit Bürogebäuden und Gewerbeparks, die einen anderen Zuschnitt der Reinigung erfordern als kleinere Büros im Bezirkskern.",
+        ],
+        featuredServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin", "bueroreinigung-berlin"],
+      },
+    ],
   },
   {
     slug: "treptow-koepenick",
@@ -329,7 +390,16 @@ export const districts: District[] = [
       },
     ],
     neighborSlugs: ["friedrichshain-kreuzberg", "neukoelln", "lichtenberg", "marzahn-hellersdorf"],
-    ortsteile: [{ slug: "koepenick", name: "Köpenick" }],
+    ortsteile: [
+      {
+        slug: "koepenick",
+        name: "Köpenick",
+        localContext: [
+          "Der historische Ortskern Köpenick bildet mit seinen Geschäften und Praxen einen eigenständigen Schwerpunkt innerhalb des flächenmäßig großen Bezirks – kompakter und fußläufiger erschlossen als die weitläufigeren Gewerbegebiete am Stadtrand.",
+        ],
+        featuredServiceSlugs: ["praxisreinigung-berlin", "unterhaltsreinigung-berlin", "glas-und-fensterreinigung-berlin"],
+      },
+    ],
   },
   {
     slug: "marzahn-hellersdorf",

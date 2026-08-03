@@ -1,0 +1,341 @@
+{
+  "summary": {
+    "health_score": 74,
+    "business_type": "B2B Gebäudereinigung / Facility Services (Service Area Business, hybrid mit legal erforderlicher Geschäftsadresse)",
+    "top_findings": [
+      "GBP-Primärkategorie ist nirgends dokumentiert (Local, Critical)",
+      "HSTS-Header (Strict-Transport-Security) fehlt komplett (Technical, High)",
+      "Seitentyp-Mismatch bei 'Gebäudereinigung Preis' — SERP dominiert von Preis-Ratgebern, Startseite ist eine Verkaufsseite (SXO, Critical)",
+      "Uneinheitliche Sektionstiefe bei Leistung×Bezirk-Kombiseiten (Pankow 3/6 H2 vs. Mitte, Content, High)",
+      "Kontakt-Seite: auf Mobile weder CTA noch Telefonnummer im Fold sichtbar (Visual)"
+    ],
+    "quick_wins": [
+      "llms.txt unter public/llms.txt anlegen (~30 Min)",
+      "Organization.logo, Article.image, Article.publisher.logo verdrahten (Daten existieren bereits)",
+      "Logo-Preload-Größe korrigieren (w=3840 statt ~100-150px, unabhängig zweifach bestätigt)",
+      "HSTS-Header ergänzen (eine Zeile in next.config.ts)",
+      "Kontakt-Seite: klickbaren Telefonlink/CTA oberhalb des Formulars auf Mobile ergänzen"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 88,
+      "what_works": [
+        "robots.txt korrekt permissiv, keine AI-Crawler-Blockaden",
+        "Sitemap: 99 valide URLs, keine Duplikate, keine Karteileichen, alle 47 Kombiseiten 1:1 abgebildet",
+        "Redirects sauber, single-hop, 308",
+        "Echte 404s, keine Soft-404s",
+        "Alle gestichprobten Canonicals selbstreferenzierend",
+        "Vollständig SSR/SSG, minimaler CSR-Fußabdruck (10 Client-Komponenten)",
+        "Valides JSON-LD über alle Seitentypen",
+        "Gzip aktiv, Fonts mit display:swap via next/font"
+      ],
+      "findings": [
+        {
+          "title": "HSTS-Header fehlt komplett",
+          "severity": "High",
+          "description": "Strict-Transport-Security ist weder im Dev- noch im Prod-Header-Array in next.config.ts konfiguriert.",
+          "recommendation": "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload zu baseSecurityHeaders ergänzen, vor dem ersten Live-HTTPS-Request."
+        },
+        {
+          "title": "Logo-Preload überdimensioniert",
+          "severity": "Medium",
+          "description": "Beide Logo-Preload-Tags fordern w=3840 an, obwohl das Logo mit ~100-150px Höhe gerendert wird (300 KB PNG statt einer passenden Größe). Konkurriert mit der echten LCP-Ressource. Unabhängig auch im Performance-Audit bestätigt.",
+          "recommendation": "width/height-Props der Logo-Image-Komponenten auf Zielgröße setzen oder Logo als SVG ausliefern."
+        },
+        {
+          "title": "Trailing-Slash-Inkonsistenz Startseite",
+          "severity": "Medium",
+          "description": "Sitemap nutzt https://www.glanzwerkberlin.de/ (mit Slash), Canonical-Tag nutzt die Version ohne Slash.",
+          "recommendation": "Beide Quellen auf denselben Zustand vereinheitlichen (empfohlen: ohne trailing slash, konsistent mit allen anderen Seiten)."
+        },
+        {
+          "title": "X-Powered-By-Header verrät Stack",
+          "severity": "Low",
+          "description": "Next.js-Standardverhalten, reine Hardening-Empfehlung ohne SEO-Impact.",
+          "recommendation": "poweredByHeader: false in next.config.ts setzen."
+        },
+        {
+          "title": "Kein IndexNow-Protokoll",
+          "severity": "Low",
+          "description": "Kein API-Endpoint oder Key-File für IndexNow (Bing/Yandex/Naver) gefunden.",
+          "recommendation": "Nach Go-Live IndexNow-Integration erwägen für schnellere Reindexierung bei Content-Updates."
+        },
+        {
+          "title": "lastmod fehlt auf allen 99 Sitemap-URLs",
+          "severity": "Low",
+          "description": "sitemap.ts setzt nie lastModified. Spec-valide, aber ungenutztes Freshness-Signal.",
+          "recommendation": "Echte lastModified-Werte ergänzen, keine fingierten Daten pro Seite."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 66,
+      "what_works": [
+        "Trustworthiness 80% — Impressum/Datenschutz korrekt, sauberes Schema, echte Google-Bewertung korrekt eingebunden",
+        "Keine erfundenen Zertifikate/Kundenzahlen/Testimonials gefunden (Anti-Fabrikations-Regel eingehalten, 6 Stichprobenseiten geprüft)",
+        "Homepage und Leistungsseite deutlich über QRG-Mindestwortzahlen",
+        "AI Citation Readiness 72/100 — gutes strukturiertes Daten-Set"
+      ],
+      "findings": [
+        {
+          "title": "Uneinheitliche Sektionstiefe bei Kombiseiten (Pankow vs. Mitte)",
+          "severity": "High",
+          "description": "Pankow hat nur 3 von 6 H2-Sektionen der Mitte-Seite (fehlend: Leistungsumfang, So starten Sie, Passende Objekte), ~280 vs. ~525 Wörter.",
+          "recommendation": "Fehlende Sektionen ergänzen oder als bewusst schlankeren Seitentyp dokumentieren; Stichprobe auf weitere der 47 Kombiseiten ausweiten."
+        },
+        {
+          "title": "Thin Content auf Ortsteilseiten und Wissen-Artikel",
+          "severity": "High",
+          "description": "standorte/neukoelln/rudow ~186 Wörter (Richtwert 500-600), wissen/nachhaltige-gebaeudereinigung ~495 Wörter (Richtwert 1500).",
+          "recommendation": "Inhaltliche Tiefe erhöhen oder Content-Typ intern neu einstufen."
+        },
+        {
+          "title": "Authoritativeness-Lücke",
+          "severity": "Medium",
+          "description": "Kaum externe Autoritätssignale (Presseerwähnungen, Verbandsverweise), kleine Bewertungs-Fallzahl (7).",
+          "recommendation": "Nach Launch: Branchenverbände, Presseerwähnungen, Fallstudien mit freigegebenen Kundennamen ergänzen, ohne Anti-Fabrikations-Regel zu verletzen."
+        },
+        {
+          "title": "Keine sichtbaren Autoren-Signale auf Wissen-Artikeln",
+          "severity": "Medium",
+          "description": "Kein Byline/Credential-Hinweis auf den geprüften Wissen-Artikeln gefunden.",
+          "recommendation": "Sichtbare Byline mit Rolle/Erfahrung ergänzen, verknüpft mit Person-Schema (siehe GEO-Kategorie)."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 75,
+      "what_works": [
+        "Title-Tags und Meta-Descriptions vorhanden, unique, keine Duplikate",
+        "Genau ein H1 pro Seite durchgängig",
+        "Bezirksseiten verlinken solide zu Nachbarbezirken/Kombiseiten"
+      ],
+      "findings": [
+        {
+          "title": "Meta-Description ohne Preisangabe im Wettbewerbsvergleich",
+          "severity": "Medium",
+          "description": "Wettbewerber zeigen Preise direkt im SERP-Snippet für 'Büroreinigung Berlin Mitte', Glanzwerk nicht.",
+          "recommendation": "Preisspanne oder Startwert in die Meta-Description der Kombiseiten aufnehmen."
+        },
+        {
+          "title": "Ortsteilseiten ohne internen Rücklink",
+          "severity": "Low",
+          "description": "Ortsteilseiten verlinken nicht zu Geschwister-Ortsteilen oder relevanten Kombiseiten.",
+          "recommendation": "Interne Links ergänzen."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 78,
+      "what_works": [
+        "Valides JSON-LD über alle Seitentypen, absolute URLs, keine erfundenen Werte",
+        "areaServed granular je Bezirk/Ortsteil korrekt überschrieben",
+        "BreadcrumbList korrekt auf jeder Unterseite"
+      ],
+      "findings": [
+        {
+          "title": "aggregateRating fehlt trotz echter, verifizierter Daten",
+          "severity": "High",
+          "description": "getGoogleRating() liefert 5.0/7 real und verifiziert, ist aber in keinem Schema-Block abgebildet, auch nicht auf /bewertungen. Google verbietet selbstreferenzielle Review-Rich-Results auf der eigenen Seite — Nutzen liegt in AI/GEO-Sichtbarkeit, nicht SERP-Sternen.",
+          "recommendation": "aggregateRating dynamisch aus getGoogleRating() an professionalServiceSchema() und /bewertungen anbinden, mit klarer interner Kommunikation des Caveats."
+        },
+        {
+          "title": "Organization.logo, Article.image, Article.publisher.logo nicht verdrahtet",
+          "severity": "Medium",
+          "description": "Alle drei Datenquellen existieren bereits im Projekt (Logo-Datei, article.image-Feld), werden aber von den Schema-Buildern nicht referenziert.",
+          "recommendation": "In organizationSchema() und articleSchema() ergänzen (Code-Vorschlag in findings/schema.md)."
+        },
+        {
+          "title": "datePublished/dateModified fehlen im Article-Schema",
+          "severity": "Low",
+          "description": "Echte Datenlücke, kein Datumsfeld im Article-Datenmodell vorhanden — bewusst nicht erfunden.",
+          "recommendation": "Reales Datumsfeld in articles.ts ergänzen, sobald Veröffentlichungsdaten bekannt sind, dann ins Schema ziehen."
+        },
+        {
+          "title": "/bewertungen hat kein eigenes Page-Schema",
+          "severity": "Low",
+          "description": "Einzige Seite mit prominenter Bewertungsdarstellung ohne eigenes WebPage-Schema.",
+          "recommendation": "webPageSchema() für /bewertungen ergänzen."
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 65,
+      "what_works": [
+        "CLS = 0 auf beiden gemessenen Seiten",
+        "Hero-Video verifiziert kein LCP-Risiko (kein Video-Request im Lighthouse-Lauf, durchdachtes clientseitiges Gating)",
+        "Keine Third-Party-Skripte im gemessenen Lauf",
+        "Fonts mit display:swap, self-hosted via next/font"
+      ],
+      "findings": [
+        {
+          "title": "Alle Messungen stammen vom Dev-Server, nicht Production-Build",
+          "severity": "Info",
+          "description": "LCP ~9-10s ist ein dev-mode-Artefakt (Live-Kompilierung, ungecachte Bildoptimierung). Nicht repräsentativ für die Live-Site.",
+          "recommendation": "Vor jeder verbindlichen CWV-Bewertung next build && next start messen; nach Launch PageSpeed Insights/CrUX einholen."
+        },
+        {
+          "title": "Hero-Video-Rohdatei sehr groß (139 MB)",
+          "severity": "Medium",
+          "description": "Kein LCP-Risiko, aber Datenverbrauch/Decoding-Last für Nutzer, die den Viewport-Schwellenwert erfüllen. Keine WebM-Variante trotz vorbereitetem Prop.",
+          "recommendation": "Stärkere Kompression/kürzere Loop-Länge prüfen, WebM-Variante ergänzen."
+        },
+        {
+          "title": "Logo-Preload überdimensioniert",
+          "severity": "Medium",
+          "description": "w=3840 für ein kleines UI-Element, unabhängig auch im Technical-Audit gefunden.",
+          "recommendation": "Siehe Technical-Kategorie, sizes-Attribut/Breakpoints prüfen."
+        },
+        {
+          "title": "Font-Payload ~312 KB über 3 WOFF2-Dateien",
+          "severity": "Low",
+          "description": "Relativ viel für zwei Font-Familien.",
+          "recommendation": "Prüfen, ob alle geladenen Gewichte/Stile above-the-fold benötigt werden."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 58,
+      "what_works": [
+        "Vollständiges SSR bestätigt (Markenname 20x im rohen HTML)",
+        "robots.txt blockiert keinen relevanten AI-Search-Crawler",
+        "FAQPage-Schema sauber implementiert auf 24 Seiten",
+        "Zentrale, konsistente Markennamens-Quelle ohne Abweichungen"
+      ],
+      "findings": [
+        {
+          "title": "llms.txt fehlt komplett",
+          "severity": "Medium",
+          "description": "Weder llms.txt noch RSL-1.0-Lizenzierung vorhanden.",
+          "recommendation": "public/llms.txt anlegen (Unternehmensbeschreibung, Leistungsübersicht, Links zu Kernseiten) — vor Launch der ideale Zeitpunkt."
+        },
+        {
+          "title": "Wissen-Artikel-Absätze zu kurz für KI-Zitate",
+          "severity": "Medium",
+          "description": "~30-55 Wörter statt optimaler 134-167 Wörter je Kernabsatz.",
+          "recommendation": "Kernabsätze erweitern, direkte Antwort in den ersten 40-60 Wörtern."
+        },
+        {
+          "title": "Kein Person-Schema für den namentlichen Inhaber",
+          "severity": "Medium",
+          "description": "owner.ts enthält starkes E-E-A-T-Signal (Ich-Perspektive-Zitat), aber kein strukturiertes Person-Schema.",
+          "recommendation": "Person-Schema ergänzen, verknüpft via founder mit Organization."
+        },
+        {
+          "title": "H2-Überschriften meist Nominalphrasen statt Fragen",
+          "severity": "Low",
+          "description": "Schwächer für Featured-Snippet/AI-Overview-Extraktion.",
+          "recommendation": "Auf Frage-Form umstellen wo sinnvoll."
+        },
+        {
+          "title": "datePublished/dateModified fehlen (Freshness-Signal)",
+          "severity": "Low",
+          "description": "Relevant besonders für Perplexity, das Freshness stark gewichtet.",
+          "recommendation": "Siehe Schema-Kategorie."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 80,
+      "what_works": [
+        "Alle 22 Bilder der Startseite mit alt-Attributen",
+        "next/image korrekt genutzt, moderne Formate (AVIF beobachtet)",
+        "Responsiver srcset für Hero-Bild, korrektes priority/lazy-Splitting"
+      ],
+      "findings": [
+        {
+          "title": "Logo-Preload überdimensioniert",
+          "severity": "Medium",
+          "description": "Einziger konkreter Ineffizienz-Fund in dieser Kategorie, dreifach im Audit bestätigt (technical, performance, hier).",
+          "recommendation": "Siehe Technical-Kategorie."
+        }
+      ]
+    }
+  ],
+  "additional_assessments": [
+    {
+      "name": "Local SEO",
+      "score": 78,
+      "note": "Nicht Teil des Standard-Gewichtungsschemas, aber hochrelevant für B2B-Lokalunternehmen.",
+      "top_finding": "GBP-Primärkategorie ist nirgends dokumentiert (Critical). NAP-Konsistenz: keine Abweichungen gefunden (Single-Source via siteConfig). Ortsteilseiten thin/template-getrieben (8 Seiten)."
+    },
+    {
+      "name": "Search Experience (SXO)",
+      "score": null,
+      "note": "Kompakter Modus, kein numerischer Score.",
+      "top_finding": "'Gebäudereinigung Preis' — kritischer Seitentyp-Mismatch (SERP dominiert von Preis-Ratgebern). Kombiseite Mitte fehlt Preisrechner und Bewertungssignal, die nur auf der Startseite vorhanden sind."
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Kritisch (vor Launch)",
+        "timeframe": "vor Go-Live",
+        "items": [
+          "GBP-Primärkategorie entscheiden und dokumentieren",
+          "HSTS-Header ergänzen",
+          "Exakte Adressformatierung für GBP-Eintrag festlegen",
+          "Production-Build für verlässliche Performance-Bewertung messen"
+        ]
+      },
+      {
+        "name": "Phase 2: Hoch",
+        "timeframe": "Woche 1",
+        "items": [
+          "Kombiseite Pankow auf Mitte-Sektionstiefe bringen",
+          "Ortsteilseiten inhaltlich anreichern",
+          "Preisrechner/Preisspanne auf Kombiseiten reproduzieren",
+          "Google-Bewertungssignal auf Kombiseiten sichtbar machen",
+          "Kontakt-Seite Mobile: Telefonlink oberhalb des Formulars",
+          "aggregateRating ins Schema anbinden",
+          "Review-Generierungs-Workflow einrichten",
+          "Logo-Preload-Größe korrigieren"
+        ]
+      },
+      {
+        "name": "Phase 3: Mittel",
+        "timeframe": "Monat 1-2",
+        "items": [
+          "llms.txt anlegen",
+          "Organization.logo, Article.image, Article.publisher.logo verdrahten",
+          "datePublished-Feld ergänzen",
+          "Wissen-Artikel-Absätze erweitern",
+          "H2/H3 auf Frage-Form umstellen",
+          "Person-Schema für Inhaber ergänzen",
+          "CTA-Wording vereinheitlichen",
+          "Fallback-Kombiseiten-FAQ de-templatisieren",
+          "Interne Links von Ortsteilseiten ergänzen",
+          "Trailing-Slash-Inkonsistenz beheben",
+          "Hero-Video komprimieren + WebM-Variante",
+          "Font-Payload prüfen"
+        ]
+      },
+      {
+        "name": "Phase 4: Niedrig / Laufend",
+        "timeframe": "Ongoing",
+        "items": [
+          "X-Powered-By-Header deaktivieren",
+          "IndexNow-Protokoll implementieren",
+          "lastModified in Sitemap befüllen",
+          "@id-Verbund zwischen Schema-Blöcken",
+          "areaServed-Typ präzisieren",
+          "Echtes Geocoding für geo-Koordinaten",
+          "NAP-Zitationen bei B2B-Verzeichnissen einreichen",
+          "Review-Schema-Nodes ergänzen sobald mehr Bewertungen vorliegen"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

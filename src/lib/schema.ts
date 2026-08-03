@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/site";
+import { owner } from "@/data/owner";
 
 /**
  * Centralized JSON-LD builders, sourced from `siteConfig`. Deliberately no
@@ -11,6 +12,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
+    logo: `${siteConfig.url}/brand/glanzwerk-logo.png`,
     telephone: siteConfig.phone,
     email: siteConfig.email,
     address: {
@@ -20,11 +22,32 @@ export function organizationSchema() {
       addressLocality: siteConfig.address.city,
       addressCountry: "DE",
     },
+    // Kein Bild — owner.photo ist noch null (src/data/owner.ts). Sobald ein
+    // echtes Porträt vorliegt, hier analog zu Organization.logo ergänzen.
+    founder: {
+      "@type": "Person",
+      name: owner.name,
+    },
   };
 }
 
-/** More specific than the sitewide Organization schema, without inventing ratings, hours or certifications. Used on the homepage and Über-uns page. */
-export function professionalServiceSchema() {
+interface ProfessionalServiceSchemaOptions {
+  /**
+   * Aus `getGoogleRating()` — nie erfunden. Wird weggelassen, wenn kein
+   * Aufrufer sie übergibt, statt hier einen eigenen Fallback zu ziehen: die
+   * Zahl soll immer exakt der sein, die auch sichtbar auf der Seite steht.
+   *
+   * Google verbietet Review-Rich-Results auf der eigenen Unternehmensseite
+   * ("self-serving reviews") – kein SERP-Sternchen zu erwarten. Der Wert
+   * liegt in Entity-Grounding für KI-Suchsysteme (GEO), nicht im Snippet.
+   */
+  aggregateRating?: { ratingValue: number; reviewCount: number };
+}
+
+/** More specific than the sitewide Organization schema, without inventing ratings, hours or certifications. Used on the homepage, Über-uns- und Bewertungen-Seite. */
+export function professionalServiceSchema({
+  aggregateRating,
+}: ProfessionalServiceSchemaOptions = {}) {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -43,6 +66,14 @@ export function professionalServiceSchema() {
       "@type": "City",
       name: "Berlin",
     },
+    ...(aggregateRating && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: aggregateRating.ratingValue,
+        reviewCount: aggregateRating.reviewCount,
+        bestRating: 5,
+      },
+    }),
   };
 }
 
@@ -88,15 +119,18 @@ interface ArticleSchemaOptions {
   headline: string;
   description: string;
   path: string;
+  /** Absoluter Pfad des Artikelbilds, z. B. `article.image.src` aus `src/data/articles.ts`. */
+  image?: string;
 }
 
-export function articleSchema({ headline, description, path }: ArticleSchemaOptions) {
+export function articleSchema({ headline, description, path, image }: ArticleSchemaOptions) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline,
     description,
     url: `${siteConfig.url}${path}`,
+    ...(image && { image: `${siteConfig.url}${image}` }),
     author: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -106,6 +140,10 @@ export function articleSchema({ headline, description, path }: ArticleSchemaOpti
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/brand/glanzwerk-logo.png`,
+      },
     },
   };
 }

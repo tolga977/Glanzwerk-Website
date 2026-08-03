@@ -4,10 +4,12 @@ import Section from "@/components/ui/Section";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import GoogleRating from "@/components/ui/GoogleRating";
+import JsonLd from "@/components/seo/JsonLd";
 import { photos } from "@/data/photos";
 import { googleBusiness } from "@/data/googleBusiness";
 import { getGoogleRating } from "@/lib/googleRating";
 import { buildMetadata } from "@/lib/metadata";
+import { webPageSchema, professionalServiceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 
@@ -32,6 +34,18 @@ export default async function BewertungenPage() {
   return (
     <>
       <Breadcrumb items={[{ label: "Bewertungen" }]} />
+      <JsonLd
+        data={webPageSchema({
+          name: heading.metaTitle ?? heading.h1,
+          description: "Erfahrungen und Bewertungen von Glanzwerk Reinigungsservice Berlin.",
+          path: "/bewertungen",
+        })}
+      />
+      <JsonLd
+        data={professionalServiceSchema({
+          aggregateRating: { ratingValue: googleRating.rating, reviewCount: googleRating.count },
+        })}
+      />
 
       <Section background="white" className="pt-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">

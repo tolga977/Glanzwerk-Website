@@ -412,6 +412,47 @@ export const combos: Combo[] = [
     districtSlug: "pankow",
     intro:
       "Viele Gewerbeflächen und Büros in Pankow liegen in gemischt genutzten Gebäuden mit Wohnungen in den oberen Etagen – wir reinigen entsprechend leise und unauffällig und stimmen Termine darauf ab.",
+    metaDescription:
+      "Büroreinigung für gemischt genutzte Gewerbeobjekte in Berlin-Pankow – leise, mit festen Ansprechpartnern und Rücksicht auf Anwohner. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Das unterscheidet Pankow von rein gewerblich geprägten Lagen: Reinigungstermine dürfen hier weder den Büroalltag noch die Nachbarschaft stören. Wir stimmen Zeitfenster deshalb so ab, dass sie sowohl zum Tagesablauf im Büro als auch zur Hausordnung passen.",
+    localAngle: [
+      "Mit dem Bevölkerungswachstum im Bezirk ist auch die Zahl kleinerer Gewerbeflächen und Büros in Wohnnähe gestiegen – oft in Häusern, in denen sich Gewerbe und Wohnungen die Etagen teilen. Das bringt engere Zugangswege und mehr Rücksichtnahme mit sich als in reinen Bürogebäuden.",
+      "Weil Anwohner in denselben Häusern leben, reinigen wir Büroflächen in Pankow bevorzugt in ruhigen Zeitfenstern und mit leisem Gerät – Treppenhaus und Zugänge werden entsprechend rücksichtsvoll genutzt.",
+    ],
+    scopeBullets: [
+      "Schreibtische, Ablageflächen und Bildschirme außen",
+      "Böden in Büro- und Gemeinschaftsflächen",
+      "Teeküchen und Pausenräume",
+      "Sanitär-, Empfangs- und Besprechungsräume",
+    ],
+    processText:
+      "Nach einer kurzen Abstimmung zu Fläche, Zugang und gewünschtem Rhythmus erhalten Sie ein individuelles Angebot. Da viele Objekte in Pankow gemischt genutzt sind, legen wir Zeitfenster und Zutritt so fest, dass sie auch mit den Wohnparteien im Haus abgestimmt sind, bevor die Reinigung nach dem vereinbarten Plan beginnt.",
+    faq: [
+      {
+        question: "Wird bei der Büroreinigung in Pankow Rücksicht auf die Wohnparteien im selben Haus genommen?",
+        answer:
+          "Ja. Gerade in gemischt genutzten Gebäuden mit Wohnungen in den oberen Etagen stimmen wir Zeitfenster und Lautstärke so ab, dass Anwohner möglichst wenig gestört werden.",
+      },
+      {
+        question: "Bietet Glanzwerk Büroreinigung auch für kleinere Gewerbeflächen in Pankow an?",
+        answer:
+          "Ja. Neben größeren Büroflächen reinigen wir in Pankow auch kleinere Gewerbeeinheiten in gemischt genutzten Häusern – der Leistungsumfang wird auf die tatsächliche Fläche und Nutzung abgestimmt.",
+      },
+      {
+        question: "Ist eine Reinigung außerhalb der Bürozeiten in Pankow möglich?",
+        answer:
+          "Ja. Zeitfenster stimmen wir individuell ab – üblich sind früher Morgen, Abend oder Wochenende, jeweils so gewählt, dass weder der Büroalltag noch die Nachbarschaft gestört wird.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Büro in Pankow – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",

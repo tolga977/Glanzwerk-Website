@@ -7,11 +7,13 @@ import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
+import GoogleRating from "@/components/ui/GoogleRating";
 import { getServiceBySlug } from "@/data/services";
 import { getDistrictBySlug, getNeighborDistricts } from "@/data/districts";
 import { combos, getCombo } from "@/data/combos";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema } from "@/lib/schema";
+import { getGoogleRating } from "@/lib/googleRating";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 import GebaeudereinigungMitteContent from "./GebaeudereinigungMitteContent";
@@ -72,6 +74,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
   if (!combo || !service || !district) notFound();
   const heading = seoHeadings[`/leistungen/${service.slug}/${district.slug}`];
   if (!heading) notFound();
+  const googleRating = await getGoogleRating();
 
   const CustomContent = customContentCombos[`${service.slug}/${district.slug}` as keyof typeof customContentCombos];
   if (CustomContent) {
@@ -157,6 +160,16 @@ export default async function ServiceDistrictPage({ params }: Props) {
           <Button href="/kontakt" variant="outline">
               Angebot anfragen
             </Button>
+        </div>
+
+        {/*
+          SXO-Audit: Wer über die lokale Suche direkt hier landet (nicht über
+          die Startseite), sah bislang weder Preisrechner-Hinweis noch
+          Vertrauenssignal – beides stand nur im Hero der Startseite. Der
+          Preisrechner-Button steht bereits oben; das Bewertungssignal fehlte.
+        */}
+        <div className="mt-6">
+          <GoogleRating data={googleRating} variant="inline" />
         </div>
       </Section>
 

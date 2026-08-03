@@ -9,7 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => `${siteConfig.url}${path}`;
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: url("/"), changeFrequency: "monthly", priority: 1 },
+    // Kein trailing slash, damit dieser Eintrag mit dem selbstreferenzierenden
+    // Canonical-Tag der Startseite übereinstimmt (siehe SEO-Audit technical.md).
+    { url: url(""), changeFrequency: "monthly", priority: 1 },
     { url: url("/leistungen"), changeFrequency: "monthly", priority: 0.9 },
     { url: url("/standorte"), changeFrequency: "monthly", priority: 0.9 },
     { url: url("/preisrechner"), changeFrequency: "monthly", priority: 0.9 },

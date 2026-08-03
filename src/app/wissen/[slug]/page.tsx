@@ -57,6 +57,7 @@ export default async function ArticlePage({ params }: Props) {
           headline: article.title,
           description: article.metaDescription,
           path: `/wissen/${article.slug}`,
+          image: article.image.src,
         })}
       />
 

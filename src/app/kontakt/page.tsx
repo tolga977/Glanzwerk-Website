@@ -49,7 +49,36 @@ export default function KontaktPage() {
               Absenden prüfen wir Ihre Angaben und melden uns mit einem
               individuellen Angebot bei Ihnen zurück.
             </p>
-            <div className="mt-8 rounded-panel border border-line bg-white p-6 shadow-raise sm:p-8">
+
+            {/*
+              Nur auf Mobile: Ohne diesen Button ist im ersten Bildschirm
+              weder ein CTA noch eine Telefonnummer sichtbar – die
+              Kontaktdaten in der rechten Spalte folgen dort erst nach dem
+              gesamten Formular. Ab lg steht die Spalte bereits daneben,
+              der Button wäre dort redundant.
+            */}
+            {/*
+              Plain <a> statt Button-Komponente: Button rendert interne Links
+              immer über next/link, das für tel:-URIs nicht das richtige
+              Werkzeug ist (siehe auch OwnerNote.tsx, das aus demselben Grund
+              ein rohes <a> für Telefon/E-Mail verwendet).
+            */}
+            <a
+              href={siteConfig.phoneHref}
+              className="lift press mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-control border-2 border-brand-900 text-base font-semibold text-brand-900 hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900 lg:hidden"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Jetzt anrufen: {siteConfig.phone}
+            </a>
+
+            <div className="mt-6 rounded-panel border border-line bg-white p-6 shadow-raise sm:p-8">
               <ContactForm />
             </div>
           </div>

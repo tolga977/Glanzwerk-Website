@@ -68,3 +68,19 @@ __pycache__/
 # Ohne die Datei zeigt der Hero das ohnehin immer gerenderte Standbild —
 # die Seite bleibt vollstaendig, nur ohne Bewegtbild.
 /public/video/
+
+# Screenshots aus dem SEO-Audit (August 2026).
+#
+# Rund 31 MB Vollseiten-PNGs, die ausschliesslich der einmaligen visuellen
+# Pruefung dienten. Die schriftliche Auswertung dazu steht in
+# .claude/audit/findings/visual.md und ist versioniert — die Bilder selbst
+# sind reproduzierbar und fallen unter dieselbe Regel wie das Hero-Video.
+/.claude/audit/screenshots/
+
+# Unbearbeitete Bildquellen.
+#
+# Vom Betreiber gelieferte Original-Stockdateien (mehrere MB) bleiben auf der
+# Platte, gehoeren aber nicht ins Repository: ausgeliefert wird immer die
+# optimierte WebP-Fassung unter public/images/. Siehe docs/IMAGES.md.
+/AdobeStock_*.jpeg
+/AdobeStock_*.jpg

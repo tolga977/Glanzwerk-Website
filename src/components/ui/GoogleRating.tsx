@@ -43,8 +43,13 @@ interface GoogleRatingProps {
    *               gewinnt, entscheidet allein die Reihenfolge im erzeugten
    *               Stylesheet. Genau diese Wette ist auf dieser Website schon
    *               einmal verloren worden (siehe Button `onMedia`).
+   *
+   * "inline"    — wie "rail", aber für helle Flächen (dunkler statt weißer
+   *               Text). Für Stellen, an denen "editorial" zu schwer wirkt,
+   *               etwa neben Schaltflächen im Fließtext-Kontext der
+   *               Leistungs-×-Bezirk-Kombiseiten.
    */
-  variant?: "editorial" | "badge" | "rail";
+  variant?: "editorial" | "badge" | "rail" | "inline";
   className?: string;
 }
 
@@ -138,6 +143,29 @@ export default function GoogleRating({
         </span>
         <span aria-hidden="true" className="text-sm text-white/70">
           ({data.count})
+        </span>
+      </a>
+    );
+  }
+
+  if (variant === "inline") {
+    return (
+      <a
+        href={googleBusiness.profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${value} von 5 Sternen aus ${data.count} Google-Bewertungen — Profil auf Google ansehen`}
+        className={`group inline-flex items-center gap-2.5 rounded-control transition-opacity duration-200 ease-out hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${className}`}
+      >
+        <GoogleG className="h-[18px] w-[18px] shrink-0" />
+        <span aria-hidden="true">
+          <Stars rating={data.rating} compact />
+        </span>
+        <span aria-hidden="true" className="text-sm font-semibold text-brand-900">
+          {value}
+        </span>
+        <span aria-hidden="true" className="text-sm text-ink-soft">
+          ({data.count} Bewertungen)
         </span>
       </a>
     );

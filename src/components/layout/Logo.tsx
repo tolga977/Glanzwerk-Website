@@ -48,8 +48,14 @@ export default function Logo({
         width={INTRINSIC_WIDTH}
         height={INTRINSIC_HEIGHT}
         priority
-        /* Die Quelldatei ist 3830 px breit — auch bei 96 px Anzeigehöhe wird
-           also weit heruntergerechnet, nie hochskaliert. Keine Unschärfe. */
+        /* Ohne `sizes` behandelt next/image ein nicht-`fill`-Bild als fix in
+           voller `width` (hier 3830px) dargestellt und lädt/preload'ed die
+           Quellauflösung entsprechend groß – unabhängig davon, wie klein es
+           per CSS tatsächlich gerendert wird. Größte reale Anzeigehöhe ist
+           96px (Header `2xl:h-24`), macht bei diesem Seitenverhältnis rund
+           189px Breite; `sizes` deckt das inkl. Retina-Displays ab, ohne die
+           Quellauflösung (3830px) zu verzerren. */
+        sizes="200px"
         className={heightClassName ? `w-auto ${heightClassName}` : undefined}
         style={heightClassName ? undefined : { height, width: "auto" }}
       />

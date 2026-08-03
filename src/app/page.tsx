@@ -303,24 +303,39 @@ const homeFaqItems = [
 ];
 
 /**
- * Section 3 — Rhythmus im Leistungsraster: die vier breitesten Leistungen
- * bekommen die größere Kartenfläche, die acht spezialisierten die kompakte.
- * Beide Gruppen behalten Foto und Beschreibung; die Reihenfolge entspricht
- * unverändert der Datenreihenfolge in services.ts (keine Umsortierung).
- * 4 + 8 füllt das 2er- bzw. 4er-Raster restlos auf — kein ausgefranstes
- * letztes Raster und kein Bento-Zufallsmuster.
+ * Section 3 — die vier Hauptleistungen der Startseite.
+ *
+ * Auswahl und Gewichtung auf ausdrückliche Vorgabe des Betreibers (August
+ * 2026): diese vier Leistungen, in dieser Reihenfolge, und alle vier in
+ * derselben grossen Bauform untereinander — nicht mehr eine Leitleistung
+ * gross und drei Begleiter klein daneben.
+ *
+ * Die Liste steht bewusst als explizite Slug-Aufzählung statt als
+ * `services.slice(0, 4)`: die gewünschte Auswahl entspricht nicht mehr der
+ * Datenreihenfolge in services.ts (Grundreinigung und Glas-/Fensterreinigung
+ * stehen dort weiter hinten). Eine Slice-Grenze würde bei der nächsten
+ * Umsortierung in services.ts stillschweigend andere Leistungen nach vorne
+ * holen; die Aufzählung hier kann das nicht.
  */
+const FEATURED_SERVICE_SLUGS = [
+  "gebaeudereinigung-berlin",
+  "bueroreinigung-berlin",
+  "grundreinigung-berlin",
+  "glas-und-fensterreinigung-berlin",
+] as const;
+
+const featuredServices = FEATURED_SERVICE_SLUGS.map((slug) =>
+  services.find((service) => service.slug === slug),
+).filter((service): service is NonNullable<typeof service> => Boolean(service));
+
 /*
- * Die vier Hauptleistungen der Startseite, jetzt in zwei Rollen geteilt:
- * eine Leitleistung, die die grosse Flaeche traegt, und drei Begleiter.
- * Die Auswahl und Reihenfolge selbst bleibt unveraendert (services 0–3),
- * es aendert sich nur ihre Gewichtung in der Darstellung.
+ * Alle übrigen Leistungen — abgeleitet, nicht zweite Liste von Hand. So kann
+ * keine Leistung doppelt erscheinen oder ganz herausfallen, egal wie sich
+ * die Auswahl oben oder services.ts künftig ändert.
  */
-const broadServices = services.slice(0, 4);
-const leadService = broadServices[0];
-const leadServicePhoto = leadService ? servicePhotos[leadService.slug] : undefined;
-const supportingServices = broadServices.slice(1);
-const specialisedServices = services.slice(4);
+const specialisedServices = services.filter(
+  (service) => !FEATURED_SERVICE_SLUGS.includes(service.slug as (typeof FEATURED_SERVICE_SLUGS)[number]),
+);
 
 const arrowIcon = (
   <svg
@@ -384,7 +399,11 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd data={professionalServiceSchema()} />
+      <JsonLd
+        data={professionalServiceSchema({
+          aggregateRating: { ratingValue: googleRating.rating, reviewCount: googleRating.count },
+        })}
+      />
 
       {/*
         1. Hero — die Markenbuehne.
@@ -975,10 +994,10 @@ export default async function HomePage() {
             Ueberstand wird vom overflow-hidden der Section sauber beschnitten.
           */}
           <BrandPhoto
-            photo={photos.routineCleaningTeam}
+            photo={photos.teamBriefing}
             aspect="aspect-[4/3] lg:aspect-[3/4]"
             sizes="(min-width: 1024px) 55vw, 100vw"
-            objectPosition="center 38%"
+            objectPosition="84% 45%"
             rounded="rounded-panel lg:rounded-r-none"
             /* Hoehendeckel ab Desktop: 3/4 rechnet sich auf der randlosen
                Flaeche auf ueber 1450 px hoch, daneben blieb eine leere weisse
@@ -1028,109 +1047,71 @@ export default async function HomePage() {
           einem Onlineshop nicht mehr unterscheiden kann.
 
           ── Was jetzt hier steht ─────────────────────────────────────────
-          Eine Leitleistung und drei Begleiter, wie in einer Magazinstrecke:
+          Vier gleichrangige Bildflächen im selben grossen Querformat,
+          untereinander gestapelt — auf ausdrückliche Vorgabe des Betreibers
+          (August 2026).
 
-            Gebäudereinigung   großes Querformat, Text auf dem Bild
-            die drei übrigen   Hochformat nebeneinander, Text unter dem Bild
+          Beibehalten aus dem vorherigen Aufbau:
 
-          Zwei Entscheidungen tragen den Unterschied:
+          1. Kein Behälter. Weder Rahmen noch Schatten noch weiße Fläche —
+             es gibt nur Bild und Satz. Genau der Kasten war das, was die
+             Leistungen vorher zu „Karten" gemacht hat; ohne ihn liest sich
+             dieselbe Information als redaktionelle Strecke.
 
-          1. Kein Behälter mehr. Weder Rahmen noch Schatten noch weiße
-             Fläche — es gibt nur Bild und Satz. Genau der Kasten war das,
-             was die vier Leistungen zu „Karten" gemacht hat; ohne ihn liest
-             sich dieselbe Information als redaktionelle Strecke.
+          2. Text auf dem Bild, mit Lesekante unten statt Deckung über die
+             ganze Fläche: oben bleibt das Motiv frei, unten trägt es die
+             Schrift.
 
-          2. Ungleiche Größe. Die Leitleistung bekommt rund die doppelte
-             Fläche der anderen. Vier gleich große Flächen sagen dem Auge,
-             dass alles gleich wichtig ist — dann sucht es sich selbst etwas
-             aus, meist das erste.
-
-          Alle vier Verlinkungen bleiben unverändert; es ändert sich nur die
-          Gewichtung, nicht die Struktur.
+          Geändert ist die Gewichtung: vorher trug eine Leitleistung die
+          doppelte Fläche und drei Begleiter standen im Hochformat daneben,
+          jetzt sind alle vier gleich gross. Das Format bleibt auf allen
+          Breakpoints dasselbe wie zuvor bei der Leitleistung (4:3 auf dem
+          Telefon, 16:9 ab sm, 21:9 ab lg), damit ein einzelner Eintrag auf
+          dem Telefon nicht die halbe Bildschirmhöhe einnimmt.
         */}
         <FadeIn className="mt-12">
-          {/* Leitleistung — Text sitzt auf dem Bild, nicht darunter. */}
-          {leadService && (
-            <Link
-              href={`/leistungen/${leadService.slug}`}
-              className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
-            >
-              <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
-                {leadServicePhoto && (
-                  <Image
-                    src={leadServicePhoto.src}
-                    alt={leadServicePhoto.alt}
-                    fill
-                    priority={false}
-                    sizes="(min-width: 1024px) 76rem, 100vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  />
-                )}
-                {/*
-                  Lesekante unten statt einer Deckung über das ganze Bild:
-                  oben bleibt das Motiv frei, unten trägt es die Schrift.
-                */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/5"
-                />
-              </div>
-
-              <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
-                <h3 className="font-display display-lg text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
-                  {leadService.shortTitle}
-                </h3>
-                <p className="measure mt-4 text-sm leading-relaxed text-brand-100 sm:text-base">
-                  {homepageServiceCopy[leadService.slug]?.description ?? leadService.summary}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
-                  {homepageServiceCopy[leadService.slug]?.linkText ?? `Zur ${leadService.shortTitle}`}
-                  {arrowIcon}
-                </span>
-              </div>
-            </Link>
-          )}
-
-          {/*
-            Die drei Begleiter. Hochformat, damit sie sich schon im Format
-            von der querformatigen Leitleistung unterscheiden — und weil ein
-            stehendes Bild in einer schmalen Spalte mehr Motiv zeigt als ein
-            liegendes.
-          */}
-          <ul className="mt-6 grid gap-6 sm:grid-cols-3">
-            {supportingServices.map((service) => {
+          <ul className="grid gap-6 lg:gap-8">
+            {featuredServices.map((service) => {
               const photo = servicePhotos[service.slug];
               return (
                 <li key={service.slug}>
                   <Link
                     href={`/leistungen/${service.slug}`}
-                    className="press group block rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
+                    className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
                   >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card sm:aspect-[3/4]">
+                    <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
                       {photo && (
                         <Image
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          sizes="(min-width: 640px) 25rem, 100vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                          sizes="(min-width: 1024px) 76rem, 100vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
                       )}
+                      {/*
+                        Lesekante unten statt einer Deckung über das ganze
+                        Bild: oben bleibt das Motiv frei, unten trägt es die
+                        Schrift.
+                      */}
                       <div
                         aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-brand-950/25 to-transparent"
+                        className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/5"
                       />
                     </div>
-                    <h3 className="font-display mt-5 text-lg font-medium text-brand-900 transition-colors duration-200 ease-out group-hover:text-brand-500 sm:text-xl">
-                      {service.shortTitle}
-                    </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">
-                      {homepageServiceCopy[service.slug]?.description ?? service.summary}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-500">
-                      {homepageServiceCopy[service.slug]?.linkText ?? `Zur ${service.shortTitle}`}
-                      {arrowIcon}
-                    </span>
+
+                    <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
+                      <h3 className="font-display display-lg text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
+                        {service.shortTitle}
+                      </h3>
+                      <p className="measure mt-4 text-sm leading-relaxed text-brand-100 sm:text-base">
+                        {homepageServiceCopy[service.slug]?.description ?? service.summary}
+                      </p>
+                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                        {homepageServiceCopy[service.slug]?.linkText ?? `Zur ${service.shortTitle}`}
+                        {arrowIcon}
+                      </span>
+                    </div>
                   </Link>
                 </li>
               );

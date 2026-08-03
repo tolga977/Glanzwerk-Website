@@ -278,3 +278,30 @@ Sprechend, kleingeschrieben, mit Bindestrichen:
 - Rein dekorative Grafiken (Signature-Element, Icons): `aria-hidden="true"`
 - Für zukünftige eigene Fotos: Alt-Text erst schreiben, wenn der tatsächliche
   Bildinhalt bekannt ist – keine Alt-Texte auf Verdacht erfinden
+
+## Neues Startseiten-Foto (02.08.2026, vom Betreiber geliefert)
+
+Der Vertrauensabschnitt der Startseite („Eine Gebäudereinigung muss vor allem
+zuverlässig funktionieren") zeigt nicht mehr das Pexels-Foto einer einzelnen
+Reinigungskraft am Regal, sondern ein vom Betreiber geliefertes, lizenziertes
+Adobe-Stock-Foto (`AdobeStock_2051616478`).
+
+| Registry-Eintrag | Datei | Format | Einsatzort |
+|---|---|---|---|
+| `teamBriefing` | `public/images/startseite/reinigungsteam-abstimmung.webp` | 2400 × 1351 px, WebP q82, 136 KB (Quelle 5456 × 3072 JPEG) | Startseite, Vertrauensabschnitt |
+
+Zwei Entscheidungen dazu, damit sie nachvollziehbar bleiben:
+
+1. **Neuer Registry-Eintrag statt Überschreiben von `routineCleaningTeam`.**
+   Jener Eintrag hängt zusätzlich am Mittelteil der Unterhaltsreinigungs-Seite
+   (`serviceMidPhotos.ts`). Ein direktes Überschreiben hätte dieses Bild dort
+   stillschweigend mitgetauscht, was nicht beauftragt war. Der alte Eintrag
+   bleibt deshalb unverändert bestehen und wird weiterhin dort verwendet.
+
+2. **`objectPosition: 84% 45%`.** Die Bildspalte ist ab Desktop hochformatig
+   (3:4), die Aufnahme ist Querformat (16:9) — es sind also nur rund 42 % der
+   Bildbreite sichtbar. Bei mittiger Ausrichtung wurde die rechte der beiden
+   Personen angeschnitten; 84 % rückt den Ausschnitt so weit nach rechts, dass
+   beide Personen, das Tablet und der Reinigungswagen vollständig im Bild
+   stehen. Auf dem Telefon (4:3) ist der Ausschnitt breiter und zeigt
+   zusätzlich die Flurtiefe.

@@ -13,6 +13,7 @@ import { photos } from "@/data/photos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema, professionalServiceSchema } from "@/lib/schema";
+import { getGoogleRating } from "@/lib/googleRating";
 import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 import Button from "@/components/ui/Button";
@@ -190,12 +191,18 @@ const faqItems = [
   },
 ];
 
-export default function UeberUnsPage() {
+export default async function UeberUnsPage() {
+  const googleRating = await getGoogleRating();
+
   return (
     <>
       <Breadcrumb items={[{ label: "Über uns" }]} />
       <JsonLd data={webPageSchema({ name: heading.metaTitle ?? heading.h1, description, path: "/ueber-uns", type: "AboutPage" })} />
-      <JsonLd data={professionalServiceSchema()} />
+      <JsonLd
+        data={professionalServiceSchema({
+          aggregateRating: { ratingValue: googleRating.rating, reviewCount: googleRating.count },
+        })}
+      />
 
       {/* 1. Hero */}
       <Section background="white" className="pt-12">

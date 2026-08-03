@@ -42,6 +42,19 @@ export const photos = {
     src: pexels("9462109/pexels-photo-9462109.jpeg"),
     alt: "Reinigungskraft staubt ein Regal in einem gepflegten Raum ab",
   },
+  /**
+   * Lizenziertes Adobe-Stock-Foto (August 2026, vom Betreiber bereitgestellt),
+   * lokal ausgeliefert statt über eine Bilddatenbank-URL.
+   *
+   * Bewusst als eigener Eintrag statt als Ersatz für `routineCleaningTeam`:
+   * jener Eintrag hängt zusätzlich am Mittelteil der Unterhaltsreinigungs-Seite
+   * (`serviceMidPhotos.ts`). Ein Austausch dort war nicht beauftragt und
+   * wäre bei einer direkten Überschreibung stillschweigend mitgelaufen.
+   */
+  teamBriefing: {
+    src: "/images/startseite/reinigungsteam-abstimmung.webp",
+    alt: "Zwei Reinigungskräfte stimmen sich in einem Büroflur anhand eines Tablets ab, daneben steht ein Reinigungswagen",
+  },
   medicalPracticeInterior: {
     src: pexels("6812461/pexels-photo-6812461.jpeg"),
     alt: "Modernes, helles Behandlungszimmer einer Arztpraxis",
