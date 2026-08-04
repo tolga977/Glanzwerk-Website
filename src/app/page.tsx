@@ -13,6 +13,7 @@ import HeroMedia from "@/components/home/HeroMedia";
 import OwnerNote from "@/components/home/OwnerNote";
 import ReviewMarquee from "@/components/home/ReviewMarquee";
 import ClientLogos from "@/components/home/ClientLogos";
+import ProductLogos from "@/components/home/ProductLogos";
 import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
 import GoogleRating from "@/components/ui/GoogleRating";
 import ContactForm from "@/components/forms/ContactForm";
@@ -23,6 +24,8 @@ import { services } from "@/data/services";
 import { districts } from "@/data/districts";
 import { districtPhotos } from "@/data/districtPhotos";
 import { articles } from "@/data/articles";
+import { clientLogos } from "@/data/clientLogos";
+import { productLogos } from "@/data/productLogos";
 import { photos } from "@/data/photos";
 import { servicePhotos } from "@/data/servicePhotos";
 import { siteConfig } from "@/data/site";
@@ -32,11 +35,6 @@ import { seoHeadings } from "@/data/seoHeadings";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 
 const heading = seoHeadings["/"];
-
-const dosierungPhoto = {
-  src: "/images/umwelt-verantwortung/dosierung.webp",
-  alt: "Wiederverwendbare Reinigungsutensilien für einen bewussten Ressourceneinsatz",
-};
 
 export const metadata: Metadata = {
   ...buildMetadata({
@@ -164,7 +162,15 @@ const [leadTrustPoint, ...supportingTrustPoints] = trustSectionBadges;
  *  Reihenfolge entsprechen unveraendert den ersten drei Artikeln. */
 const [leadArticle, ...supportingArticles] = articles.slice(0, 3);
 
-/** Section 4 — vier Aussagen zur konkreten Arbeitsweise, homepage-eigen. */
+/**
+ * Section 4 — drei Aussagen zur konkreten Arbeitsweise, homepage-eigen.
+ *
+ * Ein vierter Punkt „Beanstandungen werden direkt geklärt" stand hier bis
+ * August 2026. Er ist entfernt, weil derselbe Sachverhalt weiter unten einen
+ * eigenen Abschnitt hat — dort aber mit Zahlen statt in Prosa („innerhalb von
+ * 24 Stunden", „in der Regel kostenlos"). Zwei Fassungen derselben Zusage
+ * verstärken sich nicht; die unbestimmte schwächt die belastbare.
+ */
 const workingMethodPoints = [
   {
     title: "Ihr Objekt wird vorab eingeordnet",
@@ -180,11 +186,6 @@ const workingMethodPoints = [
     title: "Das eingesetzte Team kennt die Anforderungen",
     description:
       "Wiederkehrende Abläufe und objektspezifische Hinweise werden so organisiert, dass nicht bei jedem Einsatz neu begonnen werden muss.",
-  },
-  {
-    title: "Beanstandungen werden direkt geklärt",
-    description:
-      "Sollte eine vereinbarte Leistung einmal nicht wie erwartet ausgeführt worden sein, prüfen wir den konkreten Fall und kümmern uns um eine zeitnahe Lösung.",
   },
 ];
 
@@ -210,7 +211,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Antwort innerhalb von 2 Stunden während der Geschäftszeiten",
     ],
     photo: photos.lawOfficeReception,
-    cta: { label: "Anfrage stellen", href: "/kontakt" },
+    cta: { label: "Angebot anfragen", href: "/kontakt" },
   },
   {
     title: "Anforderungen besprechen",
@@ -241,22 +242,6 @@ const homeProcessSteps: TimelineStep[] = [
       "Auf Wunsch drei Monate testen, ohne automatische Verlängerung",
     ],
     photo: photos.windowCleaning,
-  },
-];
-
-/** Section 6 — drei kurze Umweltpunkte, homepage-eigen. */
-const environmentPoints = [
-  {
-    title: "Bedarfsgerechte Dosierung",
-    description: "Reinigungsmittel werden entsprechend dem tatsächlichen Bedarf und den Herstellerangaben eingesetzt.",
-  },
-  {
-    title: "Materialschonende Verfahren",
-    description: "Das Verfahren wird an Bodenbeläge, Glas, Mobiliar und weitere Oberflächen angepasst.",
-  },
-  {
-    title: "Mülltrennung im Objekt",
-    description: "Bestehende Trennsysteme berücksichtigen wir im Rahmen der vereinbarten Leistungen.",
   },
 ];
 
@@ -502,7 +487,7 @@ export default async function HomePage() {
             */}
             <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:gap-5">
               <Button href="/preisrechner" size="xl">
-                Preis schätzen
+                Preis berechnen
               </Button>
               <Button href="/kontakt" variant="onMedia" size="xl">
                 Angebot anfragen
@@ -631,119 +616,60 @@ export default async function HomePage() {
       <ReviewMarquee reviews={googleRating.reviews} />
 
       {/*
-        Beweisband — der erste Abschnitt nach dem Hero.
+        Kundenlogo-Band — der erste Abschnitt nach dem Hero.
 
-        ── Was hier entfernt wurde ──────────────────────────────────────
-        Links stand bis eben die Google-Bewertung als 88-px-Ziffer: „5,0 aus
-        7 Bewertungen", das größte Einzelelement der Fläche. Dieselbe Zahl
-        steht jedoch schon im Hero, keine 400 px darüber, als Glasplättchen
-        mit Google-Zeichen und Sternen.
+        ── Was hier bis August 2026 stand ───────────────────────────────
+        Ein Abschnitt mit „3 Monate" als 68-px-Zeile und einer Randspalte
+        mit drei Belegen (2 Stunden Antwortzeit, 5 Mio. € Haftpflicht,
+        12 Bezirke). Beim Nachmessen war er vollständig redundant:
 
-        Zweimal dieselbe Aussage unmittelbar hintereinander macht sie nicht
-        stärker, sondern schwächer: die Wiederholung liest sich als Mangel an
-        weiteren Argumenten. Die Bewertung bleibt im Hero — dort steht sie
-        früher und über dem Bewegtbild. Dieser Abschnitt trägt jetzt das,
-        was der Hero NICHT sagt.
+          „3 Monate ohne automatische Verlängerung"  steht in der
+              Vertrauensleiste am Hero-Fuß, rund 400 px darüber — und
+              trägt weiter unten einen eigenen, großformatigen Abschnitt.
+          „Antwort innerhalb von 2 Stunden"          steht ebenfalls in
+              der Hero-Leiste und ein drittes Mal im Inhaber-Abschnitt.
+          „5 Mio. € Betriebshaftpflicht"             steht in der
+              Hero-Leiste.
+          „12 Bezirke"                               hat weiter unten
+              einen eigenen Abschnitt mit allen zwölf verlinkt.
 
-        ── Wie er jetzt aufgebaut ist ───────────────────────────────────
-        Eine einzelne große Aussage statt vier gleich gewichteter Zahlen.
-        „3 Monate testen" ist das einzige Argument auf dieser Seite, das ein
-        Risiko beim Kunden wegnimmt statt eine Eigenschaft zu behaupten —
-        es bekommt deshalb allein so viel Fläche wie die drei anderen
-        zusammen. Die übrigen Belege stehen darunter in einer linierten
-        Zeile: vorhanden, nachlesbar, aber nicht gleichrangig.
+        Damit wurde derselbe Satz Argumente dreimal innerhalb der ersten
+        zwei Bildschirmhöhen erzählt. Wiederholung verstärkt eine Zusage
+        nicht — sie lässt sie wie Füllmaterial wirken, weil ein Leser
+        annimmt, es gäbe nichts weiter zu sagen.
+
+        ── Was jetzt hier steht ─────────────────────────────────────────
+        Nur noch die Kundenlogos, und auch die nur, sobald in
+        `data/clientLogos.ts` echte, freigegebene Einträge stehen. Bis
+        dahin entfällt der Abschnitt vollständig: keine leere Fläche, kein
+        Innenabstand, kein „Referenzen folgen".
+
+        Das ist bewusst die Stelle dafür. Logos direkt unter dem Hero sind
+        Fremdbeleg statt Eigenaussage — das Einzige an dieser Position, was
+        die Vertrauensleiste darüber nicht schon sagt.
       */}
-      <section className="border-b border-line bg-graphite-50 py-14 sm:py-16 lg:py-[4.5rem]">
-        {/*
-          ── Zur Bewegung in diesem Abschnitt ──────────────────────────────
-          Eine einzige, gemeinsame Einblendung für den ganzen Block. Ein
-          gestaffelter Aufbau über die vier Belege wurde verworfen: bei
-          500 ms Übergang plus Versatz war die erste Vertrauensfläche der
-          Seite fast eine Sekunde lang nicht lesbar. Die Hierarchie trägt der
-          Schriftgrad — dauerhaft statt für eine halbe Sekunde.
-        */}
-        {/*
-          ── Satzspiegel mit Marginalspalte ────────────────────────────────
-          Die drei Belege standen bis eben als Dreierspalte mit senkrechten
-          Trennlinien unter der Leitaussage: drei gleich breite Felder, je
-          eine große Zahl über einer Beschriftung. Das ist die Anordnung
-          einer Kennzahlenübersicht — dieselbe Bauform, in der eine Software
-          ihre Nutzungsstatistik zeigt.
-
-          Jetzt läuft der Abschnitt als zweispaltiger Satzspiegel:
-
-            links   die Aussage, über zwei Drittel der Breite
-            rechts  eine schmale Randspalte mit den Belegen
-
-          Die Randspalte ist ein Mittel aus dem Buchsatz: Anmerkungen stehen
-          neben dem Haupttext, nicht darunter, und sind schon durch ihre Lage
-          als zweitrangig erkennbar — ohne dass man sie kleiner machen oder
-          ausgrauen müsste. Die Belege konkurrieren dadurch nicht mehr mit
-          der Leitaussage, sie begleiten sie.
-
-          Die Zahlen stehen jetzt in der Zeile ihres Textes statt darüber.
-          Eine Zahl auf eigener Zeile mit Beschriftung darunter ist das
-          Kennzahlen-Muster; eine Zahl im Satz ist eine Angabe.
-        */}
-        <FadeIn className="container-page">
-          <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,17rem)] lg:gap-x-20">
-            <div>
-              {/*
-                Leitaussage. Die Zahl steht als Satzanfang in der Zeile des
-                Satzes, den sie eröffnet — nicht als Ziffer über einer
-                Beschriftung. Dadurch liest sich der Block als ein Gedanke.
-              */}
-              <p className="font-display display-xl max-w-3xl text-pretty text-[2.75rem] font-medium text-brand-900 sm:text-[3.5rem] lg:text-[4.25rem]">
-                3 Monate
-              </p>
-              <p className="measure mt-6 text-pretty text-lg leading-relaxed text-ink-soft sm:mt-7 sm:text-xl">
-                können Sie Glanzwerk im laufenden Betrieb testen — zu den regulären
-                Konditionen, ohne dass sich der Auftrag danach automatisch verlängert.
-              </p>
-              <div className="mt-9">
-                <Button href="/3-monate-testen" variant="ghost">
-                  Wie die Testphase abläuft
-                </Button>
-              </div>
-            </div>
-
+      {(productLogos.length > 0 || clientLogos.length > 0) && (
+        <section className="border-b border-line bg-graphite-50 py-14 sm:py-16 lg:py-[4.5rem]">
+          <FadeIn className="container-page">
             {/*
-              Randspalte. Auf dem Schirm eine senkrechte Haarlinie als
-              Bundsteg, darunter die Angaben mit feinen Zwischenlinien.
-              Unterhalb von 1024 px wandert sie unter den Text und die
-              Bundsteglinie wird zur Oberlinie — dieselbe Trennung, nur in
-              der Richtung, die der schmale Schirm hergibt.
-            */}
-            <dl className="border-t border-line-strong pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-2">
-              {[
-                { value: "2 Stunden", label: "Antwortzeit auf Anfragen während der Geschäftszeiten" },
-                { value: "5 Mio. €", label: "Betriebshaftpflichtversicherung" },
-                { value: "12 Bezirke", label: "Einsatzgebiet in ganz Berlin" },
-              ].map((fact, index) => (
-                <div
-                  key={fact.value}
-                  className={index > 0 ? "mt-5 border-t border-line pt-5" : ""}
-                >
-                  <dt className="font-display text-lg font-medium text-brand-900">{fact.value}</dt>
-                  <dd className="mt-1 text-pretty text-sm leading-relaxed text-ink-soft">
-                    {fact.label}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+              Zwei getrennte Reihen mit eigener Überschrift, nicht eine
+              gemischte: „Produkte, die wir einsetzen" ist eine Sachangabe
+              über die Ausstattung, „Objekte, die wir betreuen" eine
+              Referenz. In einer Reihe läse ein Besucher die Herstellerlogos
+              als Kundenliste — die schwächere Aussage bekäme das Gewicht
+              der stärkeren.
 
-          {/*
-            Kundenlogos — erscheinen, sobald in `data/clientLogos.ts` echte,
-            freigegebene Einträge stehen. Bis dahin rendert die Komponente
-            nichts; an dieser Stelle bleibt dann keine Lücke, weil die Zeile
-            darüber den Abschnitt bereits abschließt.
-          */}
-          <div className="mt-12 empty:mt-0 lg:mt-14">
-            <ClientLogos />
-          </div>
-        </FadeIn>
-      </section>
+              Beide Komponenten blenden sich selbst aus, solange ihre Daten
+              leer sind; der Abstand dazwischen entsteht deshalb erst, wenn
+              tatsächlich beide etwas anzeigen.
+            */}
+            <ProductLogos />
+            <div className="[&:not(:first-child)]:mt-12">
+              <ClientLogos />
+            </div>
+          </FadeIn>
+        </section>
+      )}
 
       {/*
         Der persoenliche Abschnitt — bewusst an zweiter Stelle.
@@ -870,7 +796,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-10">
               <Button href="/preisrechner" size="xl">
-                Jetzt Preis schätzen
+                Preis berechnen
               </Button>
             </div>
           </div>
@@ -948,7 +874,7 @@ export default async function HomePage() {
               variant="onMedia"
               size="xl"
             >
-              Preis schätzen
+              Preis berechnen
             </Button>
           </div>
         </div>
@@ -1248,91 +1174,6 @@ export default async function HomePage() {
         </FadeIn>
       </Section>
 
-      {/*
-        6. Umwelt und Verantwortung — warme Graphitfläche und ein sehr
-        zurückhaltender Grünakzent, der ausschließlich hier vorkommt.
-      */}
-      {/*
-        Komposition: als einziger Abschnitt textgefuehrt. Ueberschrift ueber
-        die volle Breite, darunter zwei ungleiche Spalten — links der
-        Fliesstext, rechts ein kleines Belegbild ueber der Punkteliste.
-        Das Foto ist eine Nahaufnahme (1600x1200) und bleibt deshalb bewusst
-        klein: grossformatig wuerde es koernig und grell wirken.
-      */}
-      {/*
-        Eigene Proportion: dieser Abschnitt laeuft als einziger auf einer
-        schmaleren Satzbreite. Der Weissraum links und rechts ist damit
-        gestaltete Marginalie statt Restflaeche — die Strecke liest sich als
-        redaktioneller Essay und unterscheidet sich schon in der Breite von
-        jedem anderen Abschnitt.
-      */}
-      <Section background="warm">
-        <div className="mx-auto max-w-5xl">
-          <SectionHeading scale="editorial" eyebrow="Umwelt und Schutz" title={heading.sectionHeadings[4]} />
-
-          {/*
-            Spaltenverhaeltnis von 1,4:1 auf 1:1 geoeffnet. Vorher lief das
-            Foto auf 420 px Breite und deckte nur 10 % der Abschnittsflaeche —
-            zusammen mit dem bildlosen Bezirksregister darunter ergab das die
-            laengste bildlose Strecke der Seite (2.003 px). Mit halber
-            Spaltenbreite traegt das Bild den Abschnitt sichtbar mit.
-          */}
-          <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-14">
-          <div>
-            <div className="space-y-4 text-base leading-relaxed text-ink-soft">
-              <p>
-                <strong className="font-semibold text-brand-900">
-                  Wirksame Reinigung bedeutet nicht, möglichst viel Chemie einzusetzen.
-                </strong>{" "}
-                Entscheidend sind das passende Mittel, die richtige Dosierung und ein Verfahren, das
-                zur Oberfläche passt. Glanzwerk arbeitet unter anderem mit professionellen
-                Reinigungsprodukten von Kiehl, Dr. Schnell und Buzil. Welches Produkt eingesetzt wird,
-                richtet sich nach Material, Verschmutzung und Nutzungsbereich.
-              </p>
-              <p>
-                Wo es im Objekt möglich und sinnvoll ist, achten wir auf einen sparsamen
-                Wasserverbrauch, bedarfsgerechte Dosierung und Mülltrennung. Empfindliche Oberflächen
-                behandeln wir materialgerecht, damit sie nicht durch ungeeignete Mittel oder zu
-                aggressive Verfahren beschädigt werden. Desinfektionsmittel setzen wir dort ein, wo sie
-                vereinbart oder hygienisch erforderlich sind – nicht pauschal auf jeder Fläche.
-              </p>
-            </div>
-
-            {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
-                statt ihn frei im Raum stehen zu lassen. */}
-            <div className="mt-12 border-t border-line pt-8">
-              <Button href="/umwelt-verantwortung" variant="ghost">
-                Mehr über Umwelt und Verantwortung
-              </Button>
-            </div>
-          </div>
-
-          <div>
-            <BrandPhoto
-              photo={dosierungPhoto}
-              aspect="aspect-[4/3] lg:aspect-[3/4]"
-              sizes="(min-width: 1024px) 512px, 100vw"
-              objectPosition="center 45%"
-              className="shadow-float"
-            />
-            <ul className="mt-8 divide-y divide-line border-t border-line">
-              {environmentPoints.map((point) => (
-                <li key={point.title} className="flex gap-3.5 py-5">
-                  <span
-                    aria-hidden="true"
-                    className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-eco-600"
-                  />
-                  <p className="text-sm leading-relaxed">
-                    <span className="font-semibold text-eco-600">{point.title}</span>{" "}
-                    <span className="text-ink-soft">— {point.description}</span>
-                  </p>
-                </li>
-              ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Section>
 
       {/*
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
@@ -1342,7 +1183,7 @@ export default async function HomePage() {
         <SectionHeading
           scale="editorial"
           eyebrow="Gebäudereinigung vor Ort"
-          title={heading.sectionHeadings[5]}
+          title={heading.sectionHeadings[4]}
           subtitle="Glanzwerk betreut gewerblich genutzte Objekte in ganz Berlin. Dazu gehören zentrale Bürostandorte ebenso wie Praxen, Kanzleien, Gastronomiebetriebe, Autohäuser und Gewerbeflächen in den äußeren Bezirken. Kurze Abstimmungswege und eine realistische Einsatzplanung sind dabei wichtiger als künstlich eingebaute Ortsnamen."
         />
         {/*
@@ -1373,124 +1214,6 @@ export default async function HomePage() {
         </p>
       </Section>
 
-      {/*
-        Kapitelpause — randlose Caesur zwischen zwei hellen Flaechen.
-
-        Zwischen Bezirken, Wissen, Testphase und FAQ folgen vier Textbloecke
-        aufeinander; das ist die flachste Strecke der Seite.
-
-        Bewusst KEINE Abbildung, sondern eine Materialflaeche: die Fassaden-
-        aufnahme des Heros liegt unter einer kraeftigen Navy-Deckung und
-        liefert nur noch Struktur und Tiefe. Damit haengt die Wirkung nicht am
-        Charme eines Stockfotos — bei voller Breite tragen die vorhandenen
-        Motive das nicht (geprueft und verworfen: Treppenhaus und Empfangs-
-        bereich, beide lesen sich grossformatig als Bestandsimmobilie statt
-        als Gewerbe).
-
-        Nebeneffekt: der vom Rhythmus gewuenschte Dunkelwert zwischen zwei
-        hellen Flaechen und eine Klammer zurueck zum Hero.
-
-        Hoehe angehoben: 3.4/1 ergab auf dem Schirm 445 px — einen Streifen,
-        keine Flaeche. Bei 2.2/1 sind es rund 690 px und die Zaesur wirkt als
-        eigener Moment statt als Trennlinie. Auf dem Telefon bleibt 16/9, dort
-        traegt die schmale Spalte kein flacheres Format.
-
-        Rein gestalterisch, deshalb leeres alt-Attribut. Laedt verzoegert.
-      */}
-      {/*
-        ── Was sich hier geändert hat ────────────────────────────────────
-        Diese Fläche war `aria-hidden` und vollständig ohne Inhalt: eine
-        dunkle Bildfläche über die volle Fensterbreite, deren einzige Aufgabe
-        darin bestand, zwei helle Abschnitte zu trennen. Genau das ist die
-        „rein dekorative Großfläche", die eine Kapitelpause nicht sein soll —
-        auf einem Laptop rund 690 px Höhe, die der Besucher durchscrollt,
-        ohne etwas zu erfahren.
-
-        Jetzt trägt sie die einzige belegte Zusage, die auf der Startseite
-        noch nicht vorkam: das Nachbesserungsversprechen. Der Wortlaut ist
-        unverändert aus `data/expectations.tsx` übernommen — dieselbe Aussage
-        wie auf den Leistungsseiten und unter /ueber-uns#garantie, nicht neu
-        formuliert.
-
-        Damit ist die Fläche keine Pause mehr, sondern die Stelle, an der
-        zwischen zwei sachlichen Abschnitten das stärkste Argument steht.
-
-        ── Tiefe statt Farbblock ─────────────────────────────────────────
-        Drei Ebenen über dem Foto, alle aus dem vorhandenen System:
-          1. Grundton, links dichter als rechts — eine Lichtrichtung statt
-             einer gleichmäßigen Deckung. Der Text sitzt links, wo es dunkel
-             ist; rechts bleibt das Motiv sichtbar.
-          2. ein einzelner Lichtstreifen im Glanzwerk-Winkel. 127 Grad ist
-             die in globals.css dokumentierte Verlaufsachse senkrecht zum
-             53-Grad-Band des Markenzeichens — derselbe Winkel wie beim
-             Glanzstreifen der Schaltflächen, nicht frei gewählt.
-          3. die Lichtkanten oben und unten, die alle dunklen Flächen der
-             Seite tragen.
-
-        Kein Glühen, keine animierten Verläufe, keine Partikel.
-      */}
-      <section className="relative isolate overflow-hidden bg-brand-950">
-        <div className="absolute inset-0">
-          <Image
-            src={photos.heroCleaningTeam.src}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: "center 55%" }}
-          />
-          {/* 1 — gerichteter Grundton: links tragend, rechts geöffnet. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/80 to-brand-950/55"
-          />
-          {/* 2 — Lichtstreifen im Markenwinkel. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(127deg, transparent 34%, rgb(255 255 255 / 0.07) 50%, transparent 66%)",
-            }}
-          />
-          {/* 3 — Lichtkanten, dieselbe Sprache wie auf allen dunklen Flächen. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
-          />
-        </div>
-
-        {/*
-          Höhe entsteht jetzt aus dem Inhalt statt aus einem festen
-          Seitenverhältnis. Vorher war sie auf 2.2/1 festgelegt — eine Zahl,
-          die nichts trug. Der Mindestwert verhindert nur, dass die Fläche
-          auf breiten Schirmen zum Streifen zusammenfällt.
-        */}
-        <div className="container-page relative z-[1] flex min-h-[22rem] items-center py-20 sm:min-h-[26rem] sm:py-24">
-          <div className="max-w-3xl">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200">
-              <span aria-hidden="true" className="brand-tick text-brand-300" />
-              Wenn etwas nicht stimmt
-            </p>
-            <p className="font-display display-lg mt-6 text-pretty text-2xl font-medium leading-snug text-white sm:text-3xl lg:text-[2.5rem]">
-              Melden Sie einen konkreten Mangel innerhalb von 24 Stunden, beheben wir
-              ihn in der Regel kostenlos nach.
-            </p>
-            <Link
-              href="/ueber-uns#garantie"
-              className="group mt-8 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-200 transition-colors duration-200 ease-out hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              Was genau wir zusagen
-              {arrowIcon}
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/*
         8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei
@@ -1508,7 +1231,7 @@ export default async function HomePage() {
           <SectionHeading
           scale="editorial"
             eyebrow="Glanzwerk Wissen"
-            title={heading.sectionHeadings[6]}
+            title={heading.sectionHeadings[5]}
             subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
           />
           <FadeIn className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-16">
@@ -1686,7 +1409,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" variant="primary" size="lg">
-                Preis kostenlos berechnen
+                Preis berechnen
               </Button>
               <Button
                 href="/kontakt"

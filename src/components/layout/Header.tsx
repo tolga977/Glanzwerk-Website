@@ -8,24 +8,11 @@ import MobileNav from "@/components/layout/MobileNav";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import { mainNav } from "@/data/navigation";
 import { services } from "@/data/services";
-import { districts } from "@/data/districts";
 import { siteConfig } from "@/data/site";
 
 const chevron = (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const pinIcon = (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M12 22s7-7.4 7-12.4A7 7 0 0 0 5 9.6C5 14.6 12 22 12 22Z"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-    <circle cx="12" cy="9.6" r="2.4" stroke="currentColor" strokeWidth="2" />
   </svg>
 );
 
@@ -63,8 +50,8 @@ export default function Header() {
         Warum die volle Navigation erst ab 1280 px erscheint (vorher 1024):
         Bei 1024 px stellt die Zeile nur 945 px Inhaltsbreite bereit,
         Navigation, Telefonnummer und Schaltfläche brauchen zusammen 1095 px.
-        Das ging bisher nur auf, weil die Einträge "Umwelt & Verantwortung"
-        und "Glanzwerk Wissen" dort still zweizeilig umbrachen — ein
+        Das ging bisher nur auf, weil längere Einträge wie damals "Umwelt &
+        Verantwortung" und "Glanzwerk Wissen" dort still zweizeilig umbrachen — ein
         Bestandsfehler, der beim Vermessen sichtbar wurde. Zwischen 1024 und
         1279 px zeigt der Kopf jetzt dieselbe kompakte Form wie auf dem
         Telefon; über das Menü bleiben alle Einträge vollständig erreichbar.
@@ -91,7 +78,7 @@ export default function Header() {
         <nav aria-label="Hauptnavigation" className="hidden xl:block">
           <ul className="flex items-center gap-1">
             {mainNav.map((item) => {
-              const isMega = item.label === "Leistungen" || item.label === "Standorte";
+              const isMega = item.label === "Leistungen";
               return (
                 <li
                   key={item.label}
@@ -134,7 +121,7 @@ export default function Header() {
                   {item.children && openDropdown === item.label && (
                     <div
                       className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-card border border-line bg-white p-5 shadow-float ${
-                        item.label === "Standorte" ? "w-[640px]" : isMega ? "w-[560px]" : "w-64"
+                        isMega ? "w-[560px]" : "w-64"
                       }`}
                     >
                       {item.label === "Leistungen" && (
@@ -163,37 +150,6 @@ export default function Header() {
                             </span>
                             <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-200">
                               Preis berechnen {chevron}
-                            </span>
-                          </Link>
-                        </div>
-                      )}
-
-                      {item.label === "Standorte" && (
-                        <div className="grid grid-cols-[1fr_auto] gap-5">
-                          <ul className="grid grid-cols-2 gap-1">
-                            {districts.map((district) => (
-                              <li key={district.slug}>
-                                <Link
-                                  href={`/standorte/${district.slug}`}
-                                  className="flex items-center gap-2.5 rounded-control px-3 py-2.5 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
-                                >
-                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
-                                    {pinIcon}
-                                  </span>
-                                  {district.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                          <Link
-                            href="/standorte"
-                            className="lift flex w-40 flex-col justify-between rounded-control bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-                          >
-                            <span className="text-sm font-semibold">
-                              Alle 12 Bezirke im Überblick
-                            </span>
-                            <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-200">
-                              Standorte ansehen {chevron}
                             </span>
                           </Link>
                         </div>

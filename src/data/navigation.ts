@@ -1,5 +1,4 @@
 import { services } from "@/data/services";
-import { districts } from "@/data/districts";
 
 export interface NavChild {
   label: string;
@@ -12,7 +11,20 @@ export interface NavItem {
   children?: NavChild[];
 }
 
-/** Preisrechner ist bewusst kein Textlink, sondern der CTA-Button im Header. */
+/**
+ * Preisrechner ist bewusst kein Textlink, sondern der CTA-Button im Header.
+ *
+ * "Standorte" stand hier bis August 2026 als eigener Menüpunkt mit
+ * Mega-Menü (alle 12 Bezirke + "Standorte ansehen"-Kachel). Auf
+ * ausdrücklichen Wunsch des Betreibers entfernt, um die Kopfzeile auf
+ * Leistungen/Umweltschutz/Testphase/Wissen/Kontakt zu verkürzen.
+ *
+ * Kein Linkverlust dadurch: `Footer.tsx` führt weiterhin eine vollständige
+ * Standorte-Spalte mit allen 12 Bezirken, und jede Bezirks-/Ortsteil- und
+ * Kombiseite verlinkt intern zu ihren Nachbarn (siehe `districts.ts`,
+ * `combos.ts`). Die Seite `/standorte` selbst bleibt unverändert erreichbar,
+ * nur ohne eigenen Platz in der Hauptnavigation.
+ */
 export const mainNav: NavItem[] = [
   {
     label: "Leistungen",
@@ -22,15 +34,8 @@ export const mainNav: NavItem[] = [
       href: `/leistungen/${service.slug}`,
     })),
   },
-  {
-    label: "Standorte",
-    href: "/standorte",
-    children: districts.map((district) => ({
-      label: district.name,
-      href: `/standorte/${district.slug}`,
-    })),
-  },
-  { label: "Umwelt & Verantwortung", href: "/umwelt-verantwortung" },
+  { label: "Umweltschutz", href: "/umwelt-verantwortung" },
+  { label: "Testphase", href: "/3-monate-testen" },
   { label: "Glanzwerk Wissen", href: "/wissen" },
   { label: "Kontakt", href: "/kontakt" },
 ];

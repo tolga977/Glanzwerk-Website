@@ -64,7 +64,6 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
       "Reinigung passend zu Objekt, Nutzung und Besucheraufkommen",
       "Keine pauschalen Versprechen, sondern nachvollziehbare Abläufe",
       "In vier Schritten zu einem passenden Reinigungsplan",
-      "Sorgsamer Einsatz von Wasser, Reinigungsmitteln und Materialien",
       "In allen zwölf Berliner Bezirken für Unternehmen im Einsatz",
       "Antworten auf praktische Fragen zur gewerblichen Reinigung",
     ],
