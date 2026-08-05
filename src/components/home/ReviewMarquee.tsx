@@ -76,15 +76,47 @@ function ReviewItem({ review }: { review: GoogleReview }) {
 export default function ReviewMarquee({ reviews }: { reviews: GoogleReview[] }) {
   if (reviews.length === 0) return null;
 
-  // Rund neun Sekunden Lesezeit je Bewertung — langsam genug, dass ein
-  // ganzer Satz erfasst werden kann, bevor er die Kante erreicht.
-  const durationSeconds = Math.max(40, reviews.length * 18);
+  /*
+    Laufzeit je Bewertung von 18 auf 34 Sekunden angehoben.
+
+    Bei 18 s wanderte eine Bewertung in rund neun Sekunden durch das Sichtfeld
+    — lesbar, aber spürbar in Bewegung. Ein Band, dessen Tempo man bemerkt,
+    verlangt Aufmerksamkeit; genau das soll es an dieser Stelle nicht. Bei
+    34 s liegt die Geschwindigkeit unterhalb der Schwelle, ab der Bewegung
+    zieht: das Band wirkt eher wie eine langsam atmende Fläche als wie ein
+    laufender Text.
+
+    Der Mindestwert steigt entsprechend mit, damit auch zwei Bewertungen
+    nicht schneller vorbeiziehen als fünf.
+  */
+  const durationSeconds = Math.max(72, reviews.length * 34);
 
   return (
+    /*
+      ── Eigene Fläche statt Weiß ────────────────────────────────────────
+      Das Band lag auf reinem Weiß zwischen dem dunklen Hero und dem weißen
+      Inhaber-Kapitel darunter — es hatte damit keine eigene Fläche, sondern
+      war der erste helle Streifen eines langen hellen Blocks.
+
+      Jetzt trägt es eine sehr flache kühle Tönung (brand-50 nach Weiß) plus
+      eine Lichtkante oben. Die Tönung ist stark genug, dass die Naht zum
+      weißen Kapitel darunter sichtbar bleibt, und schwach genug, dass die
+      Fläche nicht als Farbblock auftritt. Beide Töne stammen aus der
+      vorhandenen Palette.
+    */
     <section
       aria-label="Bewertungen aus dem Google-Unternehmensprofil"
-      className="border-y border-line bg-white py-10 sm:py-12"
+      className="relative border-b border-line bg-gradient-to-b from-brand-50 via-brand-50/70 to-white py-10 sm:py-12"
     >
+      {/* Lichtkante: markiert den Beginn der Fläche unter dem dunklen Hero. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgb(47 166 206 / 0.35), transparent)",
+        }}
+      />
       <div className="container-page flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
         <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
           <span aria-hidden="true" className="brand-tick text-brand-400" />

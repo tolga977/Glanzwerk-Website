@@ -647,10 +647,33 @@ export default async function HomePage() {
         Das ist bewusst die Stelle dafür. Logos direkt unter dem Hero sind
         Fremdbeleg statt Eigenaussage — das Einzige an dieser Position, was
         die Vertrauensleiste darüber nicht schon sagt.
+
+        ── Gestaltung der Leiste (August 2026) ──────────────────────────
+        Warmes Off-White gegen das kühle Bewertungsband darüber, dazu eine
+        Lichtkante und ein sehr schwacher Glanzstreifen im 127-Grad-
+        Markenwinkel — dieselben beiden Mittel, die auch die dunklen
+        Flächen der Seite tragen. Dadurch ist die Leiste als eigene Ebene
+        erkennbar, ohne eine zweite Farbe einzuführen.
       */}
       {(productLogos.length > 0 || clientLogos.length > 0) && (
-        <section className="border-b border-line bg-graphite-50 py-14 sm:py-16 lg:py-[4.5rem]">
-          <FadeIn className="container-page">
+        <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-graphite-100 via-graphite-50 to-graphite-50 py-14 sm:py-16 lg:py-[4.5rem]">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgb(47 166 206 / 0.3), transparent)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(127deg, transparent 38%, rgb(47 166 206 / 0.05) 50%, transparent 62%)",
+            }}
+          />
+          <FadeIn className="container-page relative z-[1]">
             {/*
               Zwei getrennte Reihen mit eigener Überschrift, nicht eine
               gemischte: „Produkte, die wir einsetzen" ist eine Sachangabe
@@ -681,8 +704,23 @@ export default async function HomePage() {
 
         Eigene Satzbreite, keine Karten, kein Raster: der Abschnitt soll auch
         formal aus der Reihe fallen.
+
+        ── Warum hier eine Tonflaeche liegt (August 2026) ────────────────
+        Solange `owner.photo` leer ist, laeuft der Abschnitt einspaltig: der
+        Satz endet bei 768 px, die Flaeche ist aber ueber 1400 px breit. Beim
+        Nachmessen stand rechts ein leerer Streifen von rund 450 px — das
+        liest sich nicht als Weissraum, sondern als vergessene Spalte.
+
+        `surface="right"` ist genau dafuer gebaut (siehe Section.tsx): eine an
+        der rechten Kante verankerte Ebene, die den Raum als Raum ausweist
+        statt als Rest. Kein zusaetzliches Element, keine Dekoration — die
+        vorhandene Ebene an der Stelle, fuer die sie gedacht ist.
+
+        Sobald ein Portraet vorliegt, wechselt OwnerNote von selbst auf die
+        zweispaltige Fassung; die Tonflaeche liegt dann hinter dem Bild und
+        stoert dort nicht.
       */}
-      <Section background="white" spacing="roomy">
+      <Section background="white" spacing="roomy" surface="right">
         <div className="mx-auto max-w-5xl">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
             <span aria-hidden="true" className="brand-tick text-brand-400" />

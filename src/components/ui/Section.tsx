@@ -173,29 +173,51 @@ interface SectionProps {
 }
 
 /*
- * Materialsystem der Flaechen.
+ * Materialsystem der Flaechen — vier Papiere, nicht vier Weisstoene.
  *
- * Die drei hellen Flaechen waren vorher flache Volltoene bzw. liefen in
- * reines Weiss aus. Zwei Folgen daraus:
+ * ── Was gemessen wurde (August 2026) ────────────────────────────────────
+ * Ein Ganzseiten-Screenshot der Startseite wurde in 60-px-Streifen zerlegt
+ * und je Streifen die mediane Helligkeit bestimmt. Ergebnis fuer die vier
+ * hellen Flaechen im tatsaechlichen Einsatz:
  *
- * 1. `tint` endete auf rgb(255,255,255) — exakt die Farbe von `white`.
- *    Wo ein tint-Abschnitt an einen weissen grenzte, war die Naht damit
- *    unsichtbar; zwei Abschnitte lasen sich als eine Flaeche.
- * 2. Ein Vollton ueber 1500 px Hoehe hat keine Oberflaeche. Papier nimmt
- *    Licht an, ein Bildschirmweiss nicht.
+ *     white  ~250     tint  ~245     warm  ~248     muted  ~251
  *
- * Alle Flaechen bekommen deshalb einen sehr flachen vertikalen Verlauf:
- * oben heller, unten minimal angetont. Die Spanne liegt bei rund 2 % —
- * unterhalb der Schwelle, ab der ein Verlauf als Verlauf auffaellt, aber
- * ausreichend, damit die Flaeche eine Richtung hat und Kanten sichtbar
- * bleiben. Keine neuen Farben: ausschliesslich vorhandene Tokens.
+ * Alle vier lagen innerhalb von acht Helligkeitspunkten. Theoretisch vier
+ * Varianten, praktisch eine einzige Flaeche. Auf der Startseite fuehrte das
+ * zu einer durchgehenden hellen Strecke von 3.660 px ueber vier Abschnitte
+ * hinweg — ein Viertel der Seite ohne einen einzigen Tonwechsel.
+ *
+ * Ursache: die Tokens wurden mit stark reduzierter Deckung eingesetzt
+ * (`brand-100/70`, `brand-50/40`, `graphite-100/70`). Jede Reduktion zieht
+ * den Ton Richtung Weiss — vier verschieden gedachte Flaechen landeten
+ * dadurch alle bei annaehernd 250.
+ *
+ * ── Was jetzt gilt ──────────────────────────────────────────────────────
+ * Die Tokens laufen in voller Staerke. Die Palette bleibt unveraendert
+ * (Weiss, brand-50, brand-100, graphite-50, graphite-100) — es wird nur
+ * nicht mehr weggeblendet, was sie unterscheidet:
+ *
+ *     white  reines Weiss, leicht angetont auslaufend — der Neutralwert
+ *     muted  kuehl, Markenblau-Familie      (brand-50 -> brand-100)
+ *     tint   kuehlste Flaeche               (brand-100 durchgehend)
+ *     warm   warmes Graphit, einzige nicht-blaue helle Flaeche
+ *
+ * Damit trennen sich die Flaechen um rund 15 statt 8 Punkte, und die
+ * Naht zwischen zwei Abschnitten wird wieder als Kapitelgrenze gelesen.
+ *
+ * Der flache Verlauf innerhalb jeder Flaeche bleibt erhalten: ein Vollton
+ * ueber 1500 px Hoehe hat keine Oberflaeche, Papier nimmt Licht an, ein
+ * Bildschirmweiss nicht.
+ *
+ * Kontrast unveraendert unkritisch: die dunkelste helle Flaeche liegt bei
+ * rund 240, dunkler Text darauf bleibt weit ueber AA.
  */
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
-  white: "bg-gradient-to-b from-white via-white to-graphite-50/60",
-  muted: "bg-gradient-to-b from-brand-50/70 to-brand-50/40",
-  tint: "bg-gradient-to-b from-brand-100/70 via-brand-50/50 to-brand-50/25",
+  white: "bg-gradient-to-b from-white via-white to-graphite-50",
+  muted: "bg-gradient-to-b from-brand-50 via-brand-50 to-brand-100/70",
+  tint: "bg-gradient-to-b from-brand-100 via-brand-100 to-brand-50",
   brand: "bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 text-white",
-  warm: "bg-gradient-to-b from-graphite-50 via-graphite-50 to-graphite-100/70",
+  warm: "bg-gradient-to-b from-graphite-100 via-graphite-100 to-graphite-50",
   navy: "bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 text-white",
 };
 

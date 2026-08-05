@@ -1,4 +1,5 @@
 import Image from "next/image";
+import GlanzMark from "@/components/ui/GlanzMark";
 import { owner } from "@/data/owner";
 import { siteConfig } from "@/data/site";
 
@@ -84,11 +85,57 @@ export default function OwnerNote() {
   );
 
   if (!hasPhoto) {
+    /*
+      ── Ohne Portraet: dieselbe Buehne, nur ohne Darsteller ──────────────
+
+      Bisher lief der Abschnitt einspaltig und liess rechts einen leeren
+      Streifen von rund 450 px stehen — das las sich als vergessene Spalte,
+      nicht als Weissraum.
+
+      Jetzt steht rechts bereits die Flaeche, auf die das echte Hochformat-
+      Foto spaeter kommt — im selben Seitenverhaeltnis (3:4) und an derselben
+      Rasterposition wie im Portraet-Zweig unten, damit beim Einsetzen des
+      Fotos nichts springt. Bis dahin traegt sie kein Ersatzbild und keinen
+      Platzhalter, sondern die dunkle Markenflaeche der Website — dieselbe
+      Sprache wie Fusszeile und Abschluss-CTA: Navy-Verlauf, Lichtkante,
+      Glanzstreifen im 127-Grad-Markenwinkel, Wasserzeichen (das Zeichen
+      erscheint gross oder gar nicht, siehe Section.tsx).
+
+      Bewusst ohne den Randanschnitt des Portraet-Zweigs: dessen
+      `mr-[calc(50%-50vw)]` greift hier nicht, weil der Abschnitt in
+      page.tsx auf `max-w-5xl` begrenzt ist — 50 % beziehen sich dann auf
+      die Rasterspalte statt auf das Fenster. Eine Flaeche, die 200 px vor
+      der Kante endet und trotzdem rechts ungerundet ist, sieht nach Fehler
+      aus. Also lieber sauber im Raster und rundum gerundet.
+
+      Wenn das Foto eingetragen wird, aendert sich am Layout nichts mehr —
+      nur der Inhalt der Flaeche wechselt von Markenton auf Aufnahme.
+
+      Auf dem Telefon bleibt die Flaeche aus: eine leere dunkle Tafel in
+      voller Breite waere dort ein toter Bildschirm. Das echte Foto zeigt
+      der Portraet-Zweig spaeter auch mobil.
+    */
     return (
-      <div className="max-w-3xl">
-        {quote}
-        {signature}
-        {promise}
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-20">
+        <div className="lg:order-1">
+          {quote}
+          {signature}
+          {promise}
+        </div>
+        <div
+          aria-hidden="true"
+          className="relative hidden overflow-hidden rounded-panel bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 shadow-deep lg:order-2 lg:block lg:aspect-[3/4] lg:max-h-[42rem] lg:w-full"
+        >
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(127deg, transparent 38%, rgb(255 255 255 / 0.05) 50%, transparent 62%)",
+            }}
+          />
+          <GlanzMark className="pointer-events-none absolute -bottom-12 -right-12 h-64 w-64 opacity-[0.12]" />
+        </div>
       </div>
     );
   }
