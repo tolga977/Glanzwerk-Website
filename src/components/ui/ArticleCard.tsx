@@ -10,9 +10,15 @@ interface ArticleCardProps {
    * "row": liegende Zeile (Bild links, Text rechts) fuer begleitende
    * Beitraege neben einem Feature — verhindert die Reihe aus drei
    * gleichwertigen Kacheln.
+   * "band": fuehrender Beitrag ueber die volle Breite, Bild und Text
+   * nebeneinander statt uebereinander. Damit laesst sich eine
+   * Magazinstrecke stapeln (Band, dann Zeilen), statt sie in zwei
+   * Spalten zu setzen — auf der Startseite der Unterschied zwischen
+   * einem eigenstaendigen Wissensbereich und dem dritten Zweispalter
+   * in Folge.
    * Der Default bleibt exakt die bisherige Darstellung.
    */
-  variant?: "default" | "feature" | "row";
+  variant?: "default" | "feature" | "row" | "band";
 }
 
 /**
@@ -25,17 +31,30 @@ interface ArticleCardProps {
 export default function ArticleCard({ article, variant = "default" }: ArticleCardProps) {
   const feature = variant === "feature";
   const row = variant === "row";
+  const band = variant === "band";
+  /** feature und band teilen sich Schriftgrad und Satzbreite des Textteils. */
+  const lead = feature || band;
 
   return (
     <Link
       href={`/wissen/${article.slug}`}
       className={`press group flex rounded-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${
-        row ? "flex-row items-start gap-5" : "flex-col"
+        row
+          ? "flex-row items-start gap-5"
+          : band
+            ? "flex-col lg:flex-row lg:items-center lg:gap-14"
+            : "flex-col"
       }`}
     >
       <div
         className={`relative shrink-0 overflow-hidden rounded-card ${
-          row ? "aspect-square w-28 sm:w-32" : feature ? "aspect-[3/2]" : "aspect-[16/10]"
+          row
+            ? "aspect-square w-28 sm:w-32"
+            : band
+              ? "aspect-[16/10] w-full lg:aspect-[3/2] lg:w-[54%]"
+              : feature
+                ? "aspect-[3/2]"
+                : "aspect-[16/10]"
         }`}
       >
         <Image
@@ -45,15 +64,17 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
           sizes={
             row
               ? "128px"
-              : feature
-                ? "(min-width: 1024px) 680px, 100vw"
-                : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              : band
+                ? "(min-width: 1024px) 40rem, 100vw"
+                : feature
+                  ? "(min-width: 1024px) 680px, 100vw"
+                  : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
           }
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
       </div>
 
-      <div className={`flex flex-1 flex-col ${row ? "" : "pt-5"}`}>
+      <div className={`flex flex-1 flex-col ${row ? "" : band ? "pt-6 lg:pt-0" : "pt-5"}`}>
         <div className="flex items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
             {article.category}
@@ -65,12 +86,12 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
         </div>
         <h3
           className={`font-display display-lg mt-3 font-medium text-brand-900 transition-colors duration-200 group-hover:text-brand-500 ${
-            feature ? "text-2xl sm:text-3xl" : "text-lg"
+            lead ? "text-2xl sm:text-3xl" : "text-lg"
           }`}
         >
           {article.title}
         </h3>
-        <p className={`mt-2.5 leading-relaxed text-ink-soft ${feature ? "measure text-base" : "text-sm"}`}>
+        <p className={`mt-2.5 leading-relaxed text-ink-soft ${lead ? "measure text-base" : "text-sm"}`}>
           {article.excerpt}
         </p>
         <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-500">

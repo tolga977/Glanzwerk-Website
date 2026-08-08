@@ -55,17 +55,22 @@ function ReviewItem({ review }: { review: GoogleReview }) {
       Keine Karte mit Rand und Schatten, sondern eine Spalte mit einer
       Haarlinie links — dieselbe Sprache wie im übrigen Seitenaufbau.
 
-      Die Breite ist nicht fest, sondern liegt zwischen 18 und 28 rem. Damit
+      Die Breite ist nicht fest, sondern liegt zwischen 20 und 30 rem. Damit
       bekommt jede Bewertung die Breite, die ihr Text braucht, und das Band
       bildet von selbst einen unregelmäßigen Rhythmus statt einer Reihe
       identisch geschnittener Klone.
+
+      Der Text läuft in der Display-Serife mit deutschen Anführungszeichen —
+      dieselbe Stimme wie das Inhaber-Zitat im Kapitel darunter. Beides sind
+      Menschen, die sprechen; beides soll nach Zitat aussehen, nicht nach
+      Datensatz. Der Wortlaut selbst bleibt unangetastet (siehe oben).
     */
-    <figure className="flex min-w-[18rem] max-w-[28rem] shrink-0 flex-col border-l border-line-strong px-7 py-1">
+    <figure className="flex min-w-[20rem] max-w-[30rem] shrink-0 flex-col border-l border-line-strong px-8 py-1.5 sm:px-9">
       <Stars rating={review.rating} />
-      <blockquote className="mt-3 text-pretty text-[0.9375rem] leading-relaxed text-ink">
-        {review.text}
+      <blockquote className="mt-4 font-display text-pretty text-[1.0625rem] font-medium leading-relaxed text-brand-900">
+        {`„${review.text}“`}
       </blockquote>
-      <figcaption className="mt-3 text-sm text-ink-soft">
+      <figcaption className="mt-4 text-sm text-ink-soft">
         <span className="font-semibold text-brand-900">{review.author}</span>
         {review.publishedLabel && <span> · {review.publishedLabel}</span>}
       </figcaption>
@@ -106,7 +111,7 @@ export default function ReviewMarquee({ reviews }: { reviews: GoogleReview[] }) 
     */
     <section
       aria-label="Bewertungen aus dem Google-Unternehmensprofil"
-      className="relative border-b border-line bg-gradient-to-b from-brand-50 via-brand-50/70 to-white py-10 sm:py-12"
+      className="relative border-b border-line bg-gradient-to-b from-brand-50 via-brand-50/70 to-white py-12 sm:py-16"
     >
       {/* Lichtkante: markiert den Beginn der Fläche unter dem dunklen Hero. */}
       <div
@@ -133,7 +138,7 @@ export default function ReviewMarquee({ reviews }: { reviews: GoogleReview[] }) 
       </div>
 
       <div
-        className="marquee marquee-fade mt-8"
+        className="marquee marquee-fade mt-10"
         style={{ "--marquee-duration": `${durationSeconds}s` } as React.CSSProperties}
       >
         <div className="marquee-track">

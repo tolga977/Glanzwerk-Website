@@ -39,11 +39,33 @@
 export interface ProductLogo {
   /** Herstellername — wird als Alternativtext ausgegeben. */
   name: string;
-  /** Pfad unter /public, z. B. "/images/produkte/numatic.svg". */
-  src: string;
-  /** Intrinsische Maße der Datei, gegen Layoutsprünge. */
-  width: number;
-  height: number;
+  /**
+   * Freigabestatus.
+   *
+   * `false` heißt: der Hersteller wird auf der Website nicht genannt und
+   * nicht abgebildet. Die Anzeige filtert danach, es entsteht keine leere
+   * Stelle und kein ausgegrauter Eintrag — ein Besucher sieht nicht, dass
+   * hier etwas fehlt.
+   *
+   * Der Eintrag bleibt trotzdem in dieser Liste stehen, damit beim
+   * Vorliegen der Freigabe nur ein Wort zu ändern ist und niemand den
+   * Namen neu recherchieren muss.
+   */
+  approved: boolean;
+  /**
+   * Pfad unter /public, z. B. "/images/produkte/numatic.svg".
+   *
+   * `null`, solange die Logodatei noch nicht vorliegt. Die Anzeige setzt
+   * dann den Herstellernamen als Wortbild. Das ist bewusst kein Ersatzlogo:
+   * ein Name ist eine Sachangabe, eine nachgebaute Bildmarke wäre eine
+   * Behauptung über die Marke. Liegt die offizielle Datei später vor,
+   * genügt es, hier den Pfad einzutragen — die Proportionen kommen dann aus
+   * der Datei selbst.
+   */
+  src: string | null;
+  /** Intrinsische Maße der Datei, gegen Layoutsprünge. Nur mit `src` nötig. */
+  width?: number;
+  height?: number;
   /**
    * Optische Korrektur je Logo. Ein breites Wortbild wirkt bei gleicher
    * Höhe größer als ein kompaktes Signet; dieser Faktor gleicht das aus.
@@ -53,11 +75,26 @@ export interface ProductLogo {
 }
 
 /**
- * Leer, bis die echten Logodateien vorliegen. Die Anzeige
- * (`components/home/ProductLogos.tsx`) erscheint automatisch, sobald hier
- * der erste Eintrag steht — kein Platzhalter, keine Beispielmarken.
+ * Stand der Freigaben (August 2026):
  *
- * Beispiel für einen späteren Eintrag:
- *   { name: "Numatic", src: "/images/produkte/numatic.svg", width: 320, height: 80 }
+ *   Numatic      freigegeben — wird angezeigt.
+ *   DR.SCHNELL   noch keine schriftliche Freigabe. Der Hersteller wird
+ *                deshalb in dieser Zeile nicht genannt. (Dass Dr. Schnell
+ *                als Reinigungsmittel eingesetzt wird, steht als reine
+ *                Sachaussage im Fragenbereich der Startseite — das ist
+ *                etwas anderes als eine Nennung in einer Herstellerzeile,
+ *                die wie eine Zusammenarbeit gelesen werden kann.)
+ *
+ * Weitere Hersteller erst nach Freigabe ergänzen — `approved: true` allein
+ * genügt, die Anzeige nimmt den Eintrag dann von selbst auf.
+ *
+ * Beispiel für den späteren Wechsel auf die offizielle Bildmarke:
+ *   { name: "Numatic", approved: true, src: "/images/produkte/numatic.svg", width: 320, height: 80 }
  */
-export const productLogos: ProductLogo[] = [];
+export const productLogos: ProductLogo[] = [
+  { name: "Numatic", approved: true, src: null },
+  { name: "DR.SCHNELL", approved: false, src: null },
+];
+
+/** Nur das, was gezeigt werden darf. Einzige Quelle für die Anzeige. */
+export const approvedProductLogos = productLogos.filter((logo) => logo.approved);

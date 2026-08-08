@@ -21,25 +21,49 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
     return href === "/" ? pathname === "/" : pathname.startsWith(href);
   }
 
-  if (!open) return null;
-
   /*
    * Der Breakpoint muss derselbe sein wie bei der Menü-Schaltfläche im
    * Header (jetzt xl statt lg). Stünde hier weiterhin lg:hidden, wäre die
    * Schublade zwischen 1024 und 1279 px unsichtbar — die Schaltfläche wäre
    * da, das Menü ließe sich aber nicht öffnen.
+   *
+   * Bleibt permanent im DOM statt bei `!open` ganz zu unmounten, und wird
+   * rein über CSS (`opacity`/`translate-x`) ein-/ausgeblendet — dadurch eine
+   * echte Slide-/Fade-Transition statt abruptem Erscheinen/Verschwinden,
+   * ohne zusätzlichen Mount-Timing-State. `inert` nimmt das geschlossene
+   * Panel vollständig aus Tab-Reihenfolge und Screenreader-Baum heraus, sonst
+   * blieben seine Links bei unsichtbarem Panel per Tab erreichbar.
+   * `motion-reduce:transition-none` lässt den Zustand (offen/geschlossen)
+   * unverändert, nur der Übergang entfällt (prefers-reduced-motion).
    */
   return (
-    <div className="fixed inset-0 z-50 xl:hidden">
+    <div
+      /*
+       * overflow-hidden ist hier kein Stil, sondern Voraussetzung: Das Panel
+       * bleibt geschlossen per `translate-x-full` geometrisch rechts neben
+       * dem Container stehen. Ohne Clipping an dieser (exakt
+       * viewport-großen, weil `inset-0`) Fläche würde das off-canvas
+       * geschobene Panel document.documentElement.scrollWidth erweitern und
+       * eine horizontale Scrollleiste erzeugen, obwohl visuell nichts zu
+       * sehen ist.
+       */
+      className={`fixed inset-0 z-50 overflow-hidden xl:hidden ${open ? "visible" : "invisible"}`}
+      aria-hidden={!open}
+      inert={!open}
+    >
       <button
         type="button"
         aria-label="Menü schließen"
         onClick={onClose}
-        className="absolute inset-0 bg-brand-950/50"
+        className={`absolute inset-0 bg-brand-950/50 transition-opacity duration-200 ease-out motion-reduce:transition-none ${
+          open ? "opacity-100" : "opacity-0"
+        }`}
       />
       <nav
         aria-label="Mobile Navigation"
-        className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-float"
+        className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-float transition-transform duration-200 ease-out motion-reduce:transition-none ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="mb-6 flex items-center justify-between">
           <Logo height={40} onClick={onClose} />

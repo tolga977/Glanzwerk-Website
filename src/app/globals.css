@@ -446,6 +446,126 @@ body {
   }
 
   /*
+   * ── Der Kontaktmoment in der Seitenmitte ─────────────────────────────
+   *
+   * Dieselbe Technik wie beim Hero — benannte Rollen statt Einzelwerte im
+   * JSX —, aber bewusst anders gewichtet. Der Hero darf eine Bühne sein;
+   * dieser Abschnitt ist eine Erinnerung im Vorbeiscrollen und muss vor
+   * allem eines: die Telefonnummer sofort lesbar machen, ohne den Film
+   * dahinter zuzudecken.
+   *
+   * Rolle 1 — Lesezone.
+   *
+   * Kein durchgehender Verlauf über die ganze Breite, sondern eine örtlich
+   * begrenzte Verdunklung genau dort, wo Schrift steht: ein weiter
+   * Radialverlauf um die Textzone im linken Drittel. Rechts davon läuft er
+   * vollständig aus, sodass dort echtes Videobild steht. Graphit
+   * (#12161d, Blau-zu-Rot 1,6:1) statt Marken-Navy — ein Navy mit 8:1
+   * würde weiße Wände und Böden im Video blau einfärben, und genau das
+   * soll dieser Abschnitt nicht sein.
+   */
+  /*
+   * Die Deckung ist gegen den schlimmsten Fall gerechnet, nicht gegen das
+   * Standbild. Gemessen liegt die Aufnahme in dieser Zone bei Luminanz
+   * 34–76 — dort trüge weiße Schrift schon ohne jede Ebene über 13:1. Der
+   * Film läuft aber durch helle Räume, und ein nahezu weißer Einzelframe
+   * hinter der Telefonnummer wäre der Fall, der bricht.
+   *
+   * Gerechnet: Schrift Weiß, Ebenenfarbe #12161d (Luminanz 22). Über einem
+   * vollständig weißen Frame ergibt 0,68 Deckung einen Grund von 97, mit
+   * der Kühlung darüber 87 — Kontrast 7,2:1 und damit auch für Fließtext
+   * deutlich über AA. Über dem tatsächlichen Material sind es rund 15:1.
+   *
+   * 0,88, der erste Wert hier, ergab über dem ohnehin dunklen Material
+   * einen praktisch schwarzen Block: der Film war nicht mehr zu erkennen.
+   * Lesbarkeit war nie das Problem, Sichtbarkeit schon.
+   */
+  .cta-scrim {
+    background-image: radial-gradient(
+      125% 135% at 24% 52%,
+      rgb(18 22 29 / 0.68) 0%,
+      rgb(18 22 29 / 0.5) 34%,
+      rgb(18 22 29 / 0.22) 58%,
+      rgb(18 22 29 / 0.04) 80%,
+      transparent 92%
+    );
+  }
+  /*
+   * Auf dem Telefon steht der Text über die volle Spaltenbreite, nicht im
+   * linken Drittel. Der Verlauf rückt deshalb in die Mitte und trägt etwas
+   * weiter — sonst läge die rechte Kante der Schrift im offenen Bild.
+   */
+  @media (max-width: 639px) {
+    .cta-scrim {
+      background-image: radial-gradient(
+        140% 115% at 50% 58%,
+        rgb(18 22 29 / 0.72) 0%,
+        rgb(18 22 29 / 0.64) 42%,
+        rgb(18 22 29 / 0.46) 70%,
+        rgb(18 22 29 / 0.3) 88%,
+        rgb(18 22 29 / 0.24) 100%
+      );
+    }
+  }
+
+  /*
+   * Rolle 2 — kühle Korrektur und Grundabdunklung in einem.
+   *
+   * Sehr niedrig gehalten: sie soll die Szene an die Farbwelt anbinden und
+   * den Kontrast an den offenen Rändern absichern, nicht das Bild
+   * verschließen. Zusammen mit Rolle 1 liegt weiße Schrift in der Lesezone
+   * deutlich über AA, während am rechten Rand noch Bild erkennbar bleibt.
+   */
+  .cta-veil {
+    background-color: rgb(16 24 34 / 0.12);
+  }
+
+  /*
+   * Rolle 3 — Kanten.
+   *
+   * Ober- und Unterkante bekommen eine schwache Abdunklung, damit die
+   * Fläche gegen die hellen Abschnitte darüber und darunter sitzt statt
+   * hart abzureißen. Bewusst schmal: in der Mitte bleibt das Bild offen.
+   */
+  .cta-edge {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(18 22 29 / 0.32) 0%,
+      rgb(18 22 29 / 0) 20%,
+      rgb(18 22 29 / 0) 78%,
+      rgb(18 22 29 / 0.38) 100%
+    );
+  }
+
+  /*
+   * Bildausschnitt.
+   *
+   * Bewusst ein anderer als `.hero-focal`, obwohl dieselbe Aufnahme läuft:
+   * mit identischem Ausschnitt läse der Abschnitt wie eine Wiederholung des
+   * Heros.
+   *
+   * Der Schwerpunkt liegt im oberen rechten Bereich der Szene. Das hat zwei
+   * Gründe: er liegt gegenüber der Textzone, sodass die Bewegung dort
+   * stattfindet, wo die Fläche offen ist — und er ist der hellste Teil des
+   * Materials (gemessen Luminanz 76 gegenüber 34 unten links). Ein dunkler
+   * Ausschnitt unter einer Leseebene ergibt eine schwarze Fläche, in der
+   * niemand mehr erkennt, dass ein Film läuft.
+   */
+  .cta-focal {
+    object-position: 62% 38%;
+  }
+  @media (min-width: 640px) {
+    .cta-focal {
+      object-position: 66% 34%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cta-focal {
+      object-position: 70% 32%;
+    }
+  }
+
+  /*
    * ── Markenzeichen als Satzzeichen ────────────────────────────────────
    *
    * Vor jeder Auszeichnungszeile stand bisher eine waagerechte Haarlinie.

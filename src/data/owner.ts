@@ -27,6 +27,18 @@ export const owner = {
   photoAlt: "Tolga Doguc, Inhaber von Glanzwerk Reinigungsservice Berlin",
 
   /**
+   * Bildausschnitt des Porträts.
+   *
+   * Die Bildfläche auf der Startseite läuft im Hochformat (3:4) und
+   * beschneidet über `object-fit: cover`. Welcher Teil der Aufnahme dabei
+   * stehen bleibt, hängt davon ab, wo der Kopf im Bild sitzt — deshalb hier
+   * einstellbar statt fest im Bauteil. `center 30%` hält den Kopf im oberen
+   * Drittel und lässt Oberkörper und Umgebung sichtbar; nach dem Einsetzen
+   * des echten Fotos genügt es, diesen Wert zu justieren.
+   */
+  photoObjectPosition: "center 30%",
+
+  /**
    * Die Reaktionszusage. Bewusst mit Einschränkung auf die Geschäftszeiten:
    * ein Versprechen, das nachts nicht gilt, aber immer gehalten wird, ist
    * mehr wert als eine runde Zahl, die um 23 Uhr bricht.

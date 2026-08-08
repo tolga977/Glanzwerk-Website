@@ -118,10 +118,26 @@ export default function Header() {
                     )}
                   </Link>
 
-                  {item.children && openDropdown === item.label && (
+                  {item.children && (
                     <div
-                      className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-card border border-line bg-white p-5 shadow-float ${
+                      inert={openDropdown !== item.label}
+                      /*
+                       * Bleibt permanent im DOM statt nur bei offenem Zustand
+                       * zu mounten, und wird über `opacity`/`scale`/
+                       * `translate-y` weich ein-/ausgeblendet statt abrupt zu
+                       * erscheinen/verschwinden. `inert` nimmt das
+                       * geschlossene Dropdown aus Tab-Reihenfolge und
+                       * Screenreader-Baum heraus — sonst blieben seine Links
+                       * bei unsichtbarem Panel per Tab erreichbar.
+                       * `motion-reduce:transition-none` lässt den Zustand
+                       * unverändert, nur der Übergang entfällt.
+                       */
+                      className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-card border border-line bg-white p-5 shadow-float transition-all duration-200 ease-out motion-reduce:transition-none ${
                         isMega ? "w-[560px]" : "w-64"
+                      } ${
+                        openDropdown === item.label
+                          ? "visible translate-y-0 scale-100 opacity-100"
+                          : "invisible translate-y-1 scale-[0.98] opacity-0"
                       }`}
                     >
                       {item.label === "Leistungen" && (

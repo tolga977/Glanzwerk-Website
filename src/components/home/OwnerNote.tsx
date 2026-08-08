@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import GlanzMark from "@/components/ui/GlanzMark";
 import { owner } from "@/data/owner";
 import { siteConfig } from "@/data/site";
@@ -11,11 +12,47 @@ import { siteConfig } from "@/data/site";
  * aussehen. Große Serifenschrift für das Zitat, eine Signaturzeile darunter,
  * die Reaktionszusage als eigenes, hervorgehobenes Element.
  *
- * Das Layout hat zwei Zustände. Liegt ein Porträt vor, läuft der Abschnitt
- * zweispaltig mit versetzter Bildkante. Fehlt es, bleibt eine einspaltige,
- * eingezogene Zitatstrecke — vollständig, ohne Lücke, ohne Platzhalter.
+ * ── Komposition: helle redaktionelle Doppelseite (August 2026) ──────────
+ * Die Bildfläche stand zuvor als dunkelblaue Vollfläche im Abschnitt — auf
+ * 44 % der Breite und über 40 rem Höhe war sie der dominanteste Block der
+ * Seite und ließ das persönliche Kapitel wie einen Farbbaustein wirken.
+ *
+ * Jetzt ist der Grund durchgehend hell. Die Tiefe kommt aus der Tonebene
+ * des Abschnitts (`surface="left"` in Section.tsx, eine helle Blauebene an
+ * der linken Kante), über die das Porträt mit seiner rechten Kante läuft.
+ * Kein Rahmen, kein Kasten, kein Schlagschatten: das Bild ist links aus der
+ * Fläche geschnitten und rechts gerundet, damit es als Teil der Seite liest
+ * und nicht als eingesetztes Rechteck.
+ *
+ * Der Randanschnitt misst den Abstand von der Rasterspalte zur Fensterkante
+ * exakt. Der anderswo genutzte Ausdruck `calc(50%-50vw)` rechnet gegen die
+ * Spalte statt gegen das Fenster und schießt über die Kante hinaus — bei
+ * einer Tonfläche folgenlos, bei einem Porträt würde er das Gesicht
+ * beschneiden.
+ *
+ * Reihenfolge im Markup: Bild vor Text. Auf dem Telefon öffnet damit das
+ * Bild den Abschnitt und der Text schließt direkt an; ab Desktop ergibt
+ * dieselbe Reihenfolge Bild links, Text rechts. Es braucht keine
+ * Umsortierung per `order`.
  */
-export default function OwnerNote() {
+interface OwnerNoteProps {
+  /**
+   * Auszeichnungszeile und Überschrift des Abschnitts.
+   *
+   * Sie stehen bewusst INNERHALB der Textspalte statt darüber: über dem
+   * Raster gesetzt, ließ die Überschrift rechts neben sich eine leere
+   * Hälfte stehen, während die Bildfläche darunter links anschnitt — zwei
+   * gegenläufige Kanten im selben Abschnitt. In der Spalte gehört die linke
+   * Kante ganz dem Bild, und rechts läuft eine durchgehende Erzählung:
+   * Auszeichnung → Überschrift → Zitat → Signatur → Zusage.
+   *
+   * Der Wortlaut bleibt in page.tsx, weil er zur Seite gehört und nicht zur
+   * Komponente.
+   */
+  heading?: ReactNode;
+}
+
+export default function OwnerNote({ heading }: OwnerNoteProps = {}) {
   const hasPhoto = owner.photo !== null;
 
   const quote = (
@@ -84,98 +121,108 @@ export default function OwnerNote() {
     </div>
   );
 
+  /*
+    Der Randanschnitt.
+
+    Misst den Abstand von der linken Rasterkante zur Fensterkante: halbe
+    Differenz zwischen Fenster und Container (`max-w-7xl`) plus dessen
+    Innenabstand (`px-8`). Unterhalb von 80rem Fensterbreite bleiben die
+    2rem uebrig. Damit endet die Flaeche exakt am Fenster statt darueber
+    hinaus — bei einem Portraet der Unterschied zwischen angeschnitten und
+    angeschnittenem Gesicht.
+  */
+  const bleedLeft = "lg:-ml-[calc((100vw-min(100vw,80rem))/2+2rem)]";
+
+  /*
+    Spaltenverhaeltnis: Bild rund 44 %, Text rund 50 %, dazwischen die
+    Rasterluft. Das Bild bekommt bewusst weniger als die Haelfte — es traegt
+    den Abschnitt, aber die Aussage steht im Text.
+
+    `items-end` statt `items-center`: die Bildunterkante und die Unterkante
+    des Textblocks laufen auf eine gemeinsame Linie aus. Mittig zentriert
+    haetten beide Spalten oben und unten unterschiedlich viel Luft, was bei
+    zwei so verschiedenen Blockhoehen als Ausrichtungsfehler liest.
+  */
+  const grid =
+    "grid gap-12 lg:grid-cols-[0.88fr_1fr] lg:items-end lg:gap-16";
+
+  const text = (
+    <div>
+      {/* Ohne Einzug, anders als Zitat und Signatur: die Überschrift steht
+          an der Spaltenkante, das Zitat rückt mit seinem Akzentstrich
+          darunter ein. */}
+      {heading && <div className="mb-10 lg:mb-12">{heading}</div>}
+      {quote}
+      {signature}
+      {promise}
+    </div>
+  );
+
   if (!hasPhoto) {
     /*
-      ── Ohne Portraet: dieselbe Buehne, nur ohne Darsteller ──────────────
+      ── Ohne Portraet ────────────────────────────────────────────────────
 
-      Bisher lief der Abschnitt einspaltig und liess rechts einen leeren
-      Streifen von rund 450 px stehen — das las sich als vergessene Spalte,
-      nicht als Weissraum.
+      Links liegt die Flaeche, auf die das echte Hochformat spaeter kommt —
+      im selben Seitenverhaeltnis und an derselben Rasterposition wie im
+      Portraet-Zweig, damit beim Eintragen des Fotos nichts springt.
 
-      Jetzt steht rechts bereits die Flaeche, auf die das echte Hochformat-
-      Foto spaeter kommt — im selben Seitenverhaeltnis (3:4) und an derselben
-      Rasterposition wie im Portraet-Zweig unten, damit beim Einsetzen des
-      Fotos nichts springt. Bis dahin traegt sie kein Ersatzbild und keinen
-      Platzhalter, sondern die dunkle Markenflaeche der Website — dieselbe
-      Sprache wie Fusszeile und Abschluss-CTA: Navy-Verlauf, Lichtkante,
-      Glanzstreifen im 127-Grad-Markenwinkel, Wasserzeichen (das Zeichen
-      erscheint gross oder gar nicht, siehe Section.tsx).
+      Sie traegt kein Ersatzbild, keinen Rahmen, keine Beschriftung und
+      keinen Grauton, sondern die hellste Stufe der eigenen Farbwelt mit dem
+      Markenzeichen als Wasserzeichen. Damit liest sie als ruhige Tonebene
+      der Seite und nicht als unfertiger Platzhalter — und vor allem nicht
+      mehr als dunkelblauer Block, der den halben Abschnitt einnimmt.
 
-      Bewusst ohne den Randanschnitt des Portraet-Zweigs: dessen
-      `mr-[calc(50%-50vw)]` greift hier nicht, weil der Abschnitt in
-      page.tsx auf `max-w-5xl` begrenzt ist — 50 % beziehen sich dann auf
-      die Rasterspalte statt auf das Fenster. Eine Flaeche, die 200 px vor
-      der Kante endet und trotzdem rechts ungerundet ist, sieht nach Fehler
-      aus. Also lieber sauber im Raster und rundum gerundet.
-
-      Wenn das Foto eingetragen wird, aendert sich am Layout nichts mehr —
-      nur der Inhalt der Flaeche wechselt von Markenton auf Aufnahme.
-
-      Auf dem Telefon bleibt die Flaeche aus: eine leere dunkle Tafel in
-      voller Breite waere dort ein toter Bildschirm. Das echte Foto zeigt
-      der Portraet-Zweig spaeter auch mobil.
+      Auf dem Telefon bleibt sie aus: eine leere Flaeche ueber die volle
+      Breite waere dort ein toter Bildschirm. Das echte Foto zeigt der
+      Portraet-Zweig dann auch mobil.
     */
     return (
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-20">
-        <div className="lg:order-1">
-          {quote}
-          {signature}
-          {promise}
-        </div>
+      <div className={grid}>
         <div
           aria-hidden="true"
-          className="relative hidden overflow-hidden rounded-panel bg-gradient-to-br from-brand-900 via-brand-900 to-brand-950 shadow-deep lg:order-2 lg:block lg:aspect-[3/4] lg:max-h-[42rem] lg:w-full"
+          /* Kein w-full und keine aspect-ratio: die Breite muss `auto`
+             bleiben, damit der negative Rand die Flaeche bis zur
+             Fensterkante VERBREITERT statt sie nur zu verschieben —
+             Prozentbreiten ignorieren Raender, und eine aspect-ratio
+             rechnet die Breite aus der gekappten Hoehe zurueck und macht
+             die Flaeche wieder schmal. Feste Hoehe, Breite aus dem Raster. */
+          className={`relative hidden overflow-hidden rounded-panel bg-gradient-to-br from-brand-50 via-white to-brand-100/70 lg:block lg:h-[38rem] lg:rounded-l-none ${bleedLeft}`}
         >
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(127deg, transparent 38%, rgb(255 255 255 / 0.05) 50%, transparent 62%)",
-            }}
-          />
-          <GlanzMark className="pointer-events-none absolute -bottom-12 -right-12 h-64 w-64 opacity-[0.12]" />
+          <GlanzMark className="pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 text-brand-300 opacity-[0.16]" />
         </div>
+        {text}
       </div>
     );
   }
 
   /*
-    ── Mit Porträt ────────────────────────────────────────────────────────
-    Das Bild lag bisher als 20 rem breite Kachel links neben dem Text —
-    ein Passfoto in Spaltenbreite. Genau die Anordnung, die jede
-    Über-uns-Seite hat, und die den Eindruck erzeugt "hier ist unser
-    Geschäftsführer" statt "ich spreche mit dem Verantwortlichen".
+    ── Mit Portraet ───────────────────────────────────────────────────────
+    Hochformat, links aus der Flaeche geschnitten, rechts gerundet. Kein
+    Rahmen und kein Schlagschatten: die Tiefe kommt aus der Tonebene des
+    Abschnitts, ueber deren Kante das Bild laeuft.
 
-    Jetzt steht der Text links und das Porträt rechts über die halbe
-    Abschnittsbreite, hochformatig und bis an die Fensterkante laufend. Ein
-    Gesicht in dieser Größe wird angesehen, nicht zur Kenntnis genommen.
+    `object-position` steht in owner.ts und ist nach dem Einsetzen des
+    echten Fotos dort zu justieren — Kopf, Oberkoerper und ein Teil der
+    Umgebung sollen im Ausschnitt bleiben.
 
-    `lg:mr-[calc(50%-50vw)]` zieht die rechte Kante auf die Fensterbreite;
-    der Überstand wird von der Section beschnitten. Die Rundung entfällt an
-    der angeschnittenen Seite — eine gerundete Ecke an einer Kante, die es
-    nicht gibt, verrät die Konstruktion.
-
-    Der Text steht zuerst im Markup und wird erst ab Desktop nach links
-    gestellt. Auf dem Telefon liest man so die Aussage vor dem Gesicht —
-    das Zitat trägt den Abschnitt, das Bild bestätigt ihn.
+    Auf dem Telefon laeuft das Bild in 4:5 ueber die volle Spaltenbreite und
+    oeffnet den Abschnitt; der Text schliesst direkt an.
   */
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-center lg:gap-20">
-      <div className="lg:order-1">
-        {quote}
-        {signature}
-        {promise}
-      </div>
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-panel shadow-deep lg:order-2 lg:aspect-[3/4] lg:mr-[calc(50%-50vw)] lg:max-h-[42rem] lg:rounded-r-none">
+    <div className={grid}>
+      <div
+        className={`relative aspect-[4/5] overflow-hidden rounded-panel lg:aspect-auto lg:h-[38rem] lg:rounded-l-none ${bleedLeft}`}
+      >
         <Image
           src={owner.photo as string}
           alt={owner.photoAlt}
           fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 46vw, 100vw"
           className="object-cover"
+          style={{ objectPosition: owner.photoObjectPosition }}
         />
       </div>
+      {text}
     </div>
   );
 }

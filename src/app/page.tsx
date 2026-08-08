@@ -10,6 +10,7 @@ import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
 import HeroMedia from "@/components/home/HeroMedia";
+import ContactMoment from "@/components/home/ContactMoment";
 import OwnerNote from "@/components/home/OwnerNote";
 import ReviewMarquee from "@/components/home/ReviewMarquee";
 import ClientLogos from "@/components/home/ClientLogos";
@@ -25,7 +26,8 @@ import { districts } from "@/data/districts";
 import { districtPhotos } from "@/data/districtPhotos";
 import { articles } from "@/data/articles";
 import { clientLogos } from "@/data/clientLogos";
-import { productLogos } from "@/data/productLogos";
+import { approvedProductLogos } from "@/data/productLogos";
+import { innungMembership } from "@/data/memberships";
 import { photos } from "@/data/photos";
 import { servicePhotos } from "@/data/servicePhotos";
 import { siteConfig } from "@/data/site";
@@ -322,6 +324,14 @@ const specialisedServices = services.filter(
   (service) => !FEATURED_SERVICE_SLUGS.includes(service.slug as (typeof FEATURED_SERVICE_SLUGS)[number]),
 );
 
+/** Homepage-Kartentext je Leistung, mit Rueckfall auf die Daten aus services.ts. */
+function serviceCopy(service: (typeof services)[number]) {
+  return {
+    description: homepageServiceCopy[service.slug]?.description ?? service.summary,
+    linkText: homepageServiceCopy[service.slug]?.linkText ?? `Zur ${service.shortTitle}`,
+  };
+}
+
 const arrowIcon = (
   <svg
     width="16"
@@ -607,94 +617,6 @@ export default async function HomePage() {
       </section>
 
       {/*
-        Bewertungsband — erscheint nur, wenn echte Rezensionen vorliegen.
-
-        Solange die Zugangsdaten zur Places API fehlen, liefert
-        `getGoogleRating()` eine leere Liste und diese Komponente rendert
-        nichts. Es gibt bewusst keinen Ersatztext: siehe ReviewMarquee.tsx.
-      */}
-      <ReviewMarquee reviews={googleRating.reviews} />
-
-      {/*
-        Kundenlogo-Band — der erste Abschnitt nach dem Hero.
-
-        ── Was hier bis August 2026 stand ───────────────────────────────
-        Ein Abschnitt mit „3 Monate" als 68-px-Zeile und einer Randspalte
-        mit drei Belegen (2 Stunden Antwortzeit, 5 Mio. € Haftpflicht,
-        12 Bezirke). Beim Nachmessen war er vollständig redundant:
-
-          „3 Monate ohne automatische Verlängerung"  steht in der
-              Vertrauensleiste am Hero-Fuß, rund 400 px darüber — und
-              trägt weiter unten einen eigenen, großformatigen Abschnitt.
-          „Antwort innerhalb von 2 Stunden"          steht ebenfalls in
-              der Hero-Leiste und ein drittes Mal im Inhaber-Abschnitt.
-          „5 Mio. € Betriebshaftpflicht"             steht in der
-              Hero-Leiste.
-          „12 Bezirke"                               hat weiter unten
-              einen eigenen Abschnitt mit allen zwölf verlinkt.
-
-        Damit wurde derselbe Satz Argumente dreimal innerhalb der ersten
-        zwei Bildschirmhöhen erzählt. Wiederholung verstärkt eine Zusage
-        nicht — sie lässt sie wie Füllmaterial wirken, weil ein Leser
-        annimmt, es gäbe nichts weiter zu sagen.
-
-        ── Was jetzt hier steht ─────────────────────────────────────────
-        Nur noch die Kundenlogos, und auch die nur, sobald in
-        `data/clientLogos.ts` echte, freigegebene Einträge stehen. Bis
-        dahin entfällt der Abschnitt vollständig: keine leere Fläche, kein
-        Innenabstand, kein „Referenzen folgen".
-
-        Das ist bewusst die Stelle dafür. Logos direkt unter dem Hero sind
-        Fremdbeleg statt Eigenaussage — das Einzige an dieser Position, was
-        die Vertrauensleiste darüber nicht schon sagt.
-
-        ── Gestaltung der Leiste (August 2026) ──────────────────────────
-        Warmes Off-White gegen das kühle Bewertungsband darüber, dazu eine
-        Lichtkante und ein sehr schwacher Glanzstreifen im 127-Grad-
-        Markenwinkel — dieselben beiden Mittel, die auch die dunklen
-        Flächen der Seite tragen. Dadurch ist die Leiste als eigene Ebene
-        erkennbar, ohne eine zweite Farbe einzuführen.
-      */}
-      {(productLogos.length > 0 || clientLogos.length > 0) && (
-        <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-graphite-100 via-graphite-50 to-graphite-50 py-14 sm:py-16 lg:py-[4.5rem]">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, rgb(47 166 206 / 0.3), transparent)",
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(127deg, transparent 38%, rgb(47 166 206 / 0.05) 50%, transparent 62%)",
-            }}
-          />
-          <FadeIn className="container-page relative z-[1]">
-            {/*
-              Zwei getrennte Reihen mit eigener Überschrift, nicht eine
-              gemischte: „Produkte, die wir einsetzen" ist eine Sachangabe
-              über die Ausstattung, „Objekte, die wir betreuen" eine
-              Referenz. In einer Reihe läse ein Besucher die Herstellerlogos
-              als Kundenliste — die schwächere Aussage bekäme das Gewicht
-              der stärkeren.
-
-              Beide Komponenten blenden sich selbst aus, solange ihre Daten
-              leer sind; der Abstand dazwischen entsteht deshalb erst, wenn
-              tatsächlich beide etwas anzeigen.
-            */}
-            <ProductLogos />
-            <div className="[&:not(:first-child)]:mt-12">
-              <ClientLogos />
-            </div>
-          </FadeIn>
-        </section>
-      )}
-
-      {/*
         Der persoenliche Abschnitt — bewusst an zweiter Stelle.
 
         "Fester Ansprechpartner" stand auf dieser Website sechzigmal, ohne
@@ -702,61 +624,140 @@ export default async function HomePage() {
         korrigiert das, und sie steht weit oben, weil sie das Einzige ist,
         was ein Wettbewerber nicht kopieren kann.
 
-        Eigene Satzbreite, keine Karten, kein Raster: der Abschnitt soll auch
-        formal aus der Reihe fallen.
+        ── Komposition: helle redaktionelle Doppelseite (August 2026) ────
+        Bildflaeche links, Inhalt rechts. Die Flaeche fuer das echte
+        Inhaberfoto ist links aus dem Raster geschnitten und laeuft bis an
+        die Fensterkante; die Tiefe kommt aus der hellen Tonebene
+        (`surface="left"`), ueber deren Kante das Bild laeuft — nicht aus
+        einem Rahmen und nicht aus einem Schatten.
 
-        ── Warum hier eine Tonflaeche liegt (August 2026) ────────────────
-        Solange `owner.photo` leer ist, laeuft der Abschnitt einspaltig: der
-        Satz endet bei 768 px, die Flaeche ist aber ueber 1400 px breit. Beim
-        Nachmessen stand rechts ein leerer Streifen von rund 450 px — das
-        liest sich nicht als Weissraum, sondern als vergessene Spalte.
+        Der Grund ist durchgehend hell. Zuvor stand hier eine dunkelblaue
+        Vollflaeche als Platzhalter fuer das Portraet: auf 44 % der Breite
+        und ueber 40 rem Hoehe war sie der dominanteste Block der Seite und
+        liess das persoenliche Kapitel wie einen Farbbaustein wirken.
 
-        `surface="right"` ist genau dafuer gebaut (siehe Section.tsx): eine an
-        der rechten Kante verankerte Ebene, die den Raum als Raum ausweist
-        statt als Rest. Kein zusaetzliches Element, keine Dekoration — die
-        vorhandene Ebene an der Stelle, fuer die sie gedacht ist.
-
-        Sobald ein Portraet vorliegt, wechselt OwnerNote von selbst auf die
-        zweispaltige Fassung; die Tonflaeche liegt dann hinter dem Bild und
-        stoert dort nicht.
+        Die Ueberschrift laeuft auf 2,5 rem statt 2,75 rem — sie soll die
+        Bildflaeche daneben anfuehren, nicht gegen sie arbeiten.
       */}
-      <Section background="white" spacing="roomy" surface="right">
-        <div className="mx-auto max-w-5xl">
-          <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
-            <span aria-hidden="true" className="brand-tick text-brand-400" />
-            Wer bei Glanzwerk antwortet
-          </p>
-          <h2 className="font-display display-lg mt-5 max-w-2xl text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-5xl">
-            Sie sprechen direkt mit dem Inhaber
-          </h2>
+      <Section background="white" spacing="roomy" surface="left">
+        <OwnerNote
+          heading={
+            <>
+              <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+                <span aria-hidden="true" className="brand-tick text-brand-400" />
+                Wer bei Glanzwerk antwortet
+              </p>
+              <h2 className="font-display display-lg mt-5 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-[2.5rem]">
+                Sie sprechen direkt mit dem Inhaber
+              </h2>
+            </>
+          }
+        />
 
-          <div className="mt-12">
-            <OwnerNote />
-          </div>
-
-          {/*
-            Das Dienstfahrzeug ist der zweite Beleg, den keine Bilddatenbank
-            liefern kann. Fehlt die Aufnahme, faellt der Block ersatzlos weg —
-            eine leere Bildflaeche waere schlechter als keine.
-          */}
-          {serviceVehiclePhoto && (
-            <figure className="mt-14">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-panel shadow-deep sm:aspect-[21/9]">
-                <Image
-                  src={serviceVehiclePhoto.src}
-                  alt={serviceVehiclePhoto.alt}
-                  fill
-                  sizes="(min-width: 1024px) 64rem, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="mt-4 text-sm text-ink-soft">
-                Unser Dienstfahrzeug im Einsatz in Berlin.
-              </figcaption>
-            </figure>
-          )}
-        </div>
+        {/*
+          Das Dienstfahrzeug ist der zweite Beleg, den keine Bilddatenbank
+          liefern kann. Fehlt die Aufnahme, faellt der Block ersatzlos weg —
+          eine leere Bildflaeche waere schlechter als keine.
+        */}
+        {serviceVehiclePhoto && (
+          <figure className="mt-16 max-w-5xl">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-panel shadow-deep sm:aspect-[21/9]">
+              <Image
+                src={serviceVehiclePhoto.src}
+                alt={serviceVehiclePhoto.alt}
+                fill
+                sizes="(min-width: 1024px) 64rem, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 text-sm text-ink-soft">
+              Unser Dienstfahrzeug im Einsatz in Berlin.
+            </figcaption>
+          </figure>
+        )}
       </Section>
+
+      {/*
+        Bewertungsband — direkt im Anschluss an das persoenliche Kapitel.
+
+        Es stand zuvor zwischen Hero und Inhaber-Abschnitt und damit vor
+        der Person, auf die es sich bezieht. Jetzt folgt es ihr: erst wer
+        antwortet, dann was Kunden darueber schreiben.
+
+        Erscheint nur, wenn echte Rezensionen vorliegen. Solange die
+        Zugangsdaten zur Places API fehlen, liefert `getGoogleRating()`
+        eine leere Liste und die Komponente rendert nichts. Es gibt bewusst
+        keinen Ersatztext: siehe ReviewMarquee.tsx.
+
+        Die Kennzahl (5,0 aus 7) erscheint ausschliesslich im Hero. Dieses
+        Band zeigt die Rezensionstexte — zwei verschiedene Aussagen aus
+        derselben Quelle. Das grosse Ziffern-Lockup, das hier zuvor unter
+        dem Titel „Google-Bewertungen" stand, ist entfallen: dieselbe Zahl
+        einmal als Kennzahl und einmal als Band ist keine Verstaerkung,
+        sondern eine Wiederholung.
+      */}
+      <ReviewMarquee reviews={googleRating.reviews} />
+
+      {/*
+        Vertrauens- und Logozeile — der sachliche Fuss des persoenlichen
+        Kapitels.
+
+        Sie stand zuvor direkt unter dem Hero. Dort belegte die schwaechste
+        Aussage der Seite (welche Produkte eingesetzt werden) den staerksten
+        Platz. Jetzt folgt sie auf Person und Bewertungen: erst wer
+        antwortet, dann was Kunden schreiben, dann womit gearbeitet wird.
+
+        ── Was hier nur mit Berechtigung erscheint ──────────────────────
+          productLogos      Hersteller mit `approved: true`. Numatic ist
+                            freigegeben, DR.SCHNELL nicht — der Filter
+                            steht in data/productLogos.ts, damit ein nicht
+                            freigegebener Name gar nicht erst bis in die
+                            Anzeige gelangt. Ohne Logodatei laeuft der Name
+                            als Wortbild; eine nachgesetzte Bildmarke waere
+                            eine Behauptung ueber eine fremde Marke.
+          clientLogos       Kundenreferenzen — eigener, klar getrennter
+                            Zusammenhang, erst mit schriftlicher Freigabe
+                            (Datei ist bis dahin leer).
+          innungMembership  Gebaeudereiniger-Innung — steht auf `null`,
+                            solange die Mitgliedschaft nicht bestaetigt
+                            ist, und rendert dann nichts. Was nicht belegt
+                            ist, wird nicht einmal angedeutet.
+
+        Alle drei blenden sich selbst aus. Steht nichts davon zur
+        Verfuegung, entfaellt der ganze Abschnitt — keine leere Flaeche,
+        kein ausgegrauter Platz, kein „folgt in Kuerze".
+
+        ── Flaeche ──────────────────────────────────────────────────────
+        `warm` (Off-White) statt der blauen `muted`-Flaeche, die hier
+        zuvor stand: der Vertrauensbereich soll durchgehend hell laufen,
+        Blau bleibt der Tonebene im Inhaber-Kapitel und dem schmalen
+        Bewertungsband vorbehalten. Die Lichtkante aus `decor` markiert die
+        Naht zum weissen Kapitel darueber.
+      */}
+      {(approvedProductLogos.length > 0 ||
+        clientLogos.length > 0 ||
+        innungMembership !== null) && (
+        <Section background="warm" decor spacing="compact">
+          <FadeIn>
+            <ProductLogos />
+            {clientLogos.length > 0 && (
+              <div className="mt-12 border-t border-line pt-10">
+                <ClientLogos />
+              </div>
+            )}
+            {innungMembership !== null && (
+              <div className="mt-12 border-t border-line pt-10">
+                <p className="text-sm leading-relaxed text-ink-soft">Mitglied der</p>
+                <p className="mt-3 font-display text-xl font-medium text-brand-900 sm:text-2xl">
+                  {innungMembership.detail
+                    ? `${innungMembership.name} · ${innungMembership.detail}`
+                    : innungMembership.name}
+                </p>
+              </div>
+            )}
+          </FadeIn>
+        </Section>
+      )}
 
       {/*
         Bildzäsur nach dem persönlichen Abschnitt.
@@ -877,6 +878,27 @@ export default async function HomePage() {
         Das ist das staerkste Angebot, das Glanzwerk hat, und es stand
         vorher an zehnter Stelle. Jetzt steht es dort, wo jemand noch liest,
         und traegt eine eigene dunkle Flaeche.
+
+        ── Warum hier kein Zweispalter mehr steht ───────────────────────
+        Davor liegt der Preisabschnitt (Text links, Zahl rechts), danach
+        der Vertrauensbereich (Text links, Foto rechts). Mit dem frueheren
+        Aufbau — Text links, Schaltflaechen rechts — standen drei
+        Zweispalter unmittelbar hintereinander, alle mit dem Text auf
+        derselben Seite. Drei gleich gebaute Abschnitte in Folge liest das
+        Auge als eine einzige lange Flaeche; der mittlere verliert dabei
+        genau das Gewicht, das dieses Angebot braucht.
+
+        Jetzt eine einzelne, tiefer gestellte Textbahn ueber der vollen
+        Breite: die Aussage laeuft auf Satzbreite von links, die
+        Schaltflaechen stehen darunter in einer Zeile. Dieselben
+        Schaltflaechen, dieselbe Reihenfolge — nur nicht mehr als
+        Randspalte, sondern als Abschluss der Bahn.
+
+        Der Bildgrund traegt jetzt sichtbar mit: `spacing` bleibt roomy,
+        aber die Bahn sitzt in der unteren Haelfte, sodass ueber ihr eine
+        ruhige Bildzone stehen bleibt. Damit ist dies die einzige dunkle
+        Flaeche der Seite, die als Bildkomposition und nicht als Farbblock
+        gelesen wird.
       */}
       <Section
         background="navy"
@@ -884,26 +906,28 @@ export default async function HomePage() {
         spacing="roomy"
         backdrop={{ src: photos.brightStaircase.src, objectPosition: "center 40%" }}
       >
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_auto] lg:items-center lg:gap-20">
-          <div>
-            <p className="inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
-              Ohne langfristige Bindung
-            </p>
-            <h2 className="font-display display-lg mt-6 text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
-              {heading.secondaryCtaHeading}
-            </h2>
-            <div className="glanz-divider mt-6 max-w-[120px]" />
-            <p className="measure mt-7 text-base leading-relaxed text-brand-100 sm:text-lg">
-              Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
-              Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
-              angebotenen Konditionen.{" "}
-              <strong className="font-semibold text-white">
-                Nach Ablauf entsteht keine automatische Verlängerung.
-              </strong>{" "}
-              Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten.
-            </p>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
+        {/* Bildzone ueber der Textbahn — leer, aber nicht leer wirkend: das
+            Motiv traegt sie. Nur ab Desktop, auf dem Telefon waere sie
+            verschenkte Hoehe. */}
+        <div aria-hidden="true" className="hidden lg:block lg:h-40" />
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+            Ohne langfristige Bindung
+          </p>
+          <h2 className="font-display display-lg mt-6 text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
+            {heading.secondaryCtaHeading}
+          </h2>
+          <div className="glanz-divider mt-6 max-w-[120px]" />
+          <p className="measure mt-7 text-base leading-relaxed text-brand-100 sm:text-lg">
+            Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
+            Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
+            angebotenen Konditionen.{" "}
+            <strong className="font-semibold text-white">
+              Nach Ablauf entsteht keine automatische Verlängerung.
+            </strong>{" "}
+            Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button href="/3-monate-testen" size="xl">
               Testphase anfragen
             </Button>
@@ -1004,78 +1028,166 @@ export default async function HomePage() {
         />
 
         {/*
-          ── Was hier vorher stand ────────────────────────────────────────
-          Vier gleich große Karten in einem 2×2-Raster: weißer Grund, Rahmen,
-          Schatten, Bild oben, Text unten, Pfeil-Link. Viermal exakt dieselbe
-          Bauform — die Anordnung, an der man einen Leistungskatalog von
-          einem Onlineshop nicht mehr unterscheiden kann.
+          ── Warum jede der vier Leistungen anders gebaut ist ──────────────
+          Vorher: vier Bildflaechen im identischen 21:9-Querformat,
+          untereinander gestapelt, Text jeweils unten links auf dem Bild.
+          Kein Rahmen und kein Schatten — aber viermal exakt dieselbe
+          Komposition. Eine Wiederholung bleibt eine Wiederholung, auch
+          wenn man ihr den Kasten wegnimmt: ab der zweiten Flaeche liest
+          niemand mehr, weil die Form schon bekannt ist.
 
-          ── Was jetzt hier steht ─────────────────────────────────────────
-          Vier gleichrangige Bildflächen im selben grossen Querformat,
-          untereinander gestapelt — auf ausdrückliche Vorgabe des Betreibers
-          (August 2026).
+          Jetzt traegt jede der vier eine eigene Bauform. Die Reihenfolge
+          und die Auswahl der Leistungen bleiben unveraendert
+          (FEATURED_SERVICE_SLUGS), ebenso jeder Text:
 
-          Beibehalten aus dem vorherigen Aufbau:
+            1  Gebaeudereinigung     Bildband ueber die volle Breite, Text
+                                     auf dem Bild. Die Leitleistung behaelt
+                                     die groesste Flaeche und als einzige
+                                     die Schrift im Bild.
+            2  Bueroreinigung        Querformat, sieben Rasterspalten, Text
+                                     UNTER dem Bild auf der Abschnitts-
+                                     flaeche — dunkle Schrift statt weisser.
+            3  Grundreinigung        Hochformat, fuenf Rasterspalten, um
+                                     eine Bildhoehe nach unten versetzt.
+                                     Zusammen mit 2 ergibt das eine
+                                     ungleiche, versetzte Doppelseite statt
+                                     zweier gleicher Kacheln.
+            4  Glas- und Fenster-    Bild links, Text rechts daneben, mittig
+               reinigung             — die einzige der vier, die quer
+                                     gelesen wird und damit die Strecke
+                                     abschliesst.
 
-          1. Kein Behälter. Weder Rahmen noch Schatten noch weiße Fläche —
-             es gibt nur Bild und Satz. Genau der Kasten war das, was die
-             Leistungen vorher zu „Karten" gemacht hat; ohne ihn liest sich
-             dieselbe Information als redaktionelle Strecke.
-
-          2. Text auf dem Bild, mit Lesekante unten statt Deckung über die
-             ganze Fläche: oben bleibt das Motiv frei, unten trägt es die
-             Schrift.
-
-          Geändert ist die Gewichtung: vorher trug eine Leitleistung die
-          doppelte Fläche und drei Begleiter standen im Hochformat daneben,
-          jetzt sind alle vier gleich gross. Das Format bleibt auf allen
-          Breakpoints dasselbe wie zuvor bei der Leitleistung (4:3 auf dem
-          Telefon, 16:9 ab sm, 21:9 ab lg), damit ein einzelner Eintrag auf
-          dem Telefon nicht die halbe Bildschirmhöhe einnimmt.
+          Ein zwoelfspaltiges Raster traegt alle vier, damit die Liste
+          semantisch eine Liste bleibt (ul/li) und die unterschiedlichen
+          Breiten trotzdem aus einer gemeinsamen Ordnung kommen.
         */}
-        <FadeIn className="mt-12">
-          <ul className="grid gap-6 lg:gap-8">
-            {featuredServices.map((service) => {
+        <FadeIn>
+          <ul className="mt-12 grid gap-x-12 gap-y-14 lg:mt-16 lg:grid-cols-12 lg:gap-y-4">
+            {featuredServices.map((service, index) => {
               const photo = servicePhotos[service.slug];
+              const { description, linkText } = serviceCopy(service);
+              const href = `/leistungen/${service.slug}`;
+
+              /* 1 — Leitleistung: Bildband, Schrift im Bild. */
+              if (index === 0) {
+                return (
+                  <li key={service.slug} className="lg:col-span-12">
+                    <Link
+                      href={href}
+                      className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
+                    >
+                      <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[2.4/1]">
+                        {photo && (
+                          <Image
+                            src={photo.src}
+                            alt={photo.alt}
+                            fill
+                            sizes="(min-width: 1024px) 76rem, 100vw"
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          />
+                        )}
+                        {/*
+                          Lesekante unten statt einer Deckung über das ganze
+                          Bild: oben bleibt das Motiv frei, unten trägt es die
+                          Schrift.
+                        */}
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/5"
+                        />
+                      </div>
+
+                      <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
+                        <h3 className="font-display display-lg text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-[2.75rem]">
+                          {service.shortTitle}
+                        </h3>
+                        <p className="measure mt-4 text-sm leading-relaxed text-brand-100 sm:text-base">
+                          {description}
+                        </p>
+                        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                          {linkText}
+                          {arrowIcon}
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              }
+
+              /* 4 — quer gelesen: Bild links, Text rechts daneben. */
+              if (index === 3) {
+                return (
+                  <li key={service.slug} className="lg:col-span-12 lg:mt-20">
+                    <Link
+                      href={href}
+                      className="press group grid items-center gap-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 lg:grid-cols-[1.15fr_1fr] lg:gap-16"
+                    >
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-panel sm:aspect-[16/10]">
+                        {photo && (
+                          <Image
+                            src={photo.src}
+                            alt={photo.alt}
+                            fill
+                            sizes="(min-width: 1024px) 42rem, 100vw"
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          />
+                        )}
+                      </div>
+                      <div>
+                        <h3 className="font-display display-lg text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
+                          {service.shortTitle}
+                        </h3>
+                        <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
+                          {description}
+                        </p>
+                        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
+                          {linkText}
+                          {arrowIcon}
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              }
+
+              /* 2 und 3 — ungleiche Doppelseite, Text unter dem Bild. */
+              const isPortrait = index === 2;
               return (
-                <li key={service.slug}>
+                <li
+                  key={service.slug}
+                  className={
+                    isPortrait ? "lg:col-span-5 lg:mt-28" : "lg:col-span-7 lg:mt-16"
+                  }
+                >
                   <Link
-                    href={`/leistungen/${service.slug}`}
-                    className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
+                    href={href}
+                    className="press group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
                   >
-                    <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
+                    <div
+                      className={`relative w-full overflow-hidden rounded-panel ${
+                        isPortrait ? "aspect-[4/5]" : "aspect-[4/3] sm:aspect-[16/10]"
+                      }`}
+                    >
                       {photo && (
                         <Image
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          sizes="(min-width: 1024px) 76rem, 100vw"
+                          sizes="(min-width: 1024px) 38rem, 100vw"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
                       )}
-                      {/*
-                        Lesekante unten statt einer Deckung über das ganze
-                        Bild: oben bleibt das Motiv frei, unten trägt es die
-                        Schrift.
-                      */}
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/5"
-                      />
                     </div>
-
-                    <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
-                      <h3 className="font-display display-lg text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
-                        {service.shortTitle}
-                      </h3>
-                      <p className="measure mt-4 text-sm leading-relaxed text-brand-100 sm:text-base">
-                        {homepageServiceCopy[service.slug]?.description ?? service.summary}
-                      </p>
-                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
-                        {homepageServiceCopy[service.slug]?.linkText ?? `Zur ${service.shortTitle}`}
-                        {arrowIcon}
-                      </span>
-                    </div>
+                    <h3 className="font-display display-lg mt-7 text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
+                      {service.shortTitle}
+                    </h3>
+                    <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
+                      {description}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
+                      {linkText}
+                      {arrowIcon}
+                    </span>
                   </Link>
                 </li>
               );
@@ -1254,6 +1366,29 @@ export default async function HomePage() {
 
 
       {/*
+        Kontaktmoment mit Hintergrundvideo.
+
+        ── Warum genau hier ─────────────────────────────────────────────
+        An dieser Stelle hat der Leser Leistungen, Arbeitsweise, Ablauf und
+        Einsatzgebiet hinter sich — er weiss, was Glanzwerk macht und wie.
+        Was danach folgt (Wissensbereich, Anfrageformular, Fragen), ist
+        vertiefend. Zwischen „ich habe verstanden" und „ich lese weiter"
+        liegt der Punkt, an dem eine Erinnerung an den direkten Weg am
+        wenigsten unterbricht.
+
+        Vor dem Abschluss steht der Abschnitt damit deutlich: es folgen noch
+        drei Abschnitte bis zum Kontaktbereich. Und er ersetzt keinen
+        bestehenden Handlungsweg — an dieser Stelle stand bisher gar kein
+        CTA. Die vorhandenen bleiben unangetastet: die Testphase weiter
+        oben, das Formular weiter unten, der Abschluss am Seitenende.
+
+        Farbfolge: Einsatzgebiet (tint) → dunkle Videoflaeche → Wissen
+        (weiss). Der Abschnitt sitzt als einziger dunkler Moment zwischen
+        zwei hellen Flaechen und faellt dadurch auf, ohne laut zu sein.
+      */}
+      <ContactMoment />
+
+      {/*
         8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei
         begleitenden Zeilen statt drei gleichwertiger Kacheln.
       */}
@@ -1272,19 +1407,38 @@ export default async function HomePage() {
             title={heading.sectionHeadings[5]}
             subtitle="Was kostet eine Gebäudereinigung? Wie häufig sollte ein Büro gereinigt werden? Und wann reicht eine Unterhaltsreinigung nicht mehr aus? In unserem Wissensbereich erklären wir wichtige Begriffe und Entscheidungskriterien verständlich und ohne unnötige Fachsprache."
           />
-          <FadeIn className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_1fr] lg:gap-16">
-            <ArticleCard article={leadArticle} variant="feature" />
-            <div className="flex flex-col divide-y divide-line border-t border-line lg:border-t-0 lg:pt-1">
-              {supportingArticles.map((article) => (
-                <div key={article.slug} className="py-7 first:pt-0 lg:first:pt-0">
-                  <ArticleCard article={article} variant="row" />
-                </div>
-              ))}
-            </div>
+          {/*
+            ── Warum die Strecke jetzt gestapelt statt gespalten ist ──────
+            Vorher: fuehrender Beitrag links, zwei begleitende rechts —
+            zwei Spalten. Unmittelbar danach folgt das Anfrageformular
+            (Text links, Formular rechts) und darauf der Fragenbereich
+            (Ueberschrift links, Antworten rechts). Drei Zweispalter in
+            Folge, alle mit dem Schwergewicht links: das Seitenende las
+            sich als eine einzige lange, gleichfoermige Flaeche.
+
+            Jetzt liegt der fuehrende Beitrag als Band ueber die volle
+            Breite (Bild und Text nebeneinander, `variant "band"`), die
+            beiden begleitenden folgen darunter als Zeilenregister mit
+            kleinen Bildern — dieselbe Sprache wie das Leistungs- und das
+            Bezirksverzeichnis. Gestapelt statt gespalten, und damit die
+            einzige Bauform dieser Art auf der Seite.
+
+            Kein Textwechsel, keine andere Auswahl, dieselbe Reihenfolge
+            der drei Beitraege.
+          */}
+          <FadeIn className="mt-12">
+            <ArticleCard article={leadArticle} variant="band" />
+          </FadeIn>
+          <FadeIn className="mt-14 flex flex-col divide-y divide-line border-t border-line">
+            {supportingArticles.map((article) => (
+              <div key={article.slug} className="py-7">
+                <ArticleCard article={article} variant="row" />
+              </div>
+            ))}
           </FadeIn>
           {/* Abschnittsfuss: die Haarlinie bindet den Link an den Block darueber,
               statt ihn frei im Raum stehen zu lassen. */}
-          <div className="mt-14 border-t border-line pt-8">
+          <div className="mt-6 border-t border-line pt-8">
             <Button href="/wissen" variant="ghost">
               Alle Ratgeber ansehen
             </Button>
@@ -1313,7 +1467,14 @@ export default async function HomePage() {
         sich als eine einzige, sehr lange Flaeche — genau die flache Stelle,
         die am Seitenende entstand.
       */}
-      <Section background="warm" id="anfrage">
+      {/*
+        `decor` gibt der Flaeche eine Lichtkante an der Oberkante. Der
+        Wissensbereich davor laeuft auf Weiss aus, diese hier beginnt auf
+        Graphit — 255 gegen 244 ist ein Unterschied von elf Punkten und als
+        Kapitelgrenze zu leise. Die Kante macht aus dem Farbwechsel eine
+        sichtbare Naht, ohne eine weitere Trennlinie einzufuehren.
+      */}
+      <Section background="warm" id="anfrage" decor>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
           <div className="lg:pt-2">
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
@@ -1375,7 +1536,43 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="rounded-panel border border-line bg-white p-7 shadow-float sm:p-9">
+          {/*
+            Das Formular stand in einer weissen Karte mit Rahmen und
+            Schlagschatten — das groesste schwebende Objekt der Seite, auf
+            einer Flaeche, die sonst ohne Behaelter auskommt.
+
+            Jetzt ist es eine Flaeche statt eines Objekts: reines Weiss,
+            kein Rahmen, kein Schatten, und nach rechts bis an die
+            Fensterkante durchlaufend, wo die Rundung entfaellt. Damit
+            gehoert es zur Seite, statt auf ihr zu liegen — dieselbe
+            Anschnitt-Sprache wie das Inhaberbild (links) und das
+            Arbeitsfoto im Vertrauensbereich (rechts).
+
+            ── Warum ueberhaupt eine eigene Flaeche ─────────────────────
+            Das Formular lag zwischenzeitlich direkt auf dem warmen Grund.
+            Gemessen ergab das einen Feldrahmen (#e7eaef) auf #f4f3f1 mit
+            1,08:1 — die Feldgrenzen verschwanden praktisch. Auf Weiss sind
+            es 1,20:1, also der Stand von vorher. Die Flaeche ist hier
+            keine Dekoration, sondern das, was die Eingabefelder ueberhaupt
+            als Eingabefelder lesbar haelt. (Der Feldrahmen selbst liegt
+            unter 3:1 und waere in FormField.tsx zu beheben — das ist eine
+            eigene Sache und nicht Teil dieses Durchgangs.)
+
+            ── Warum hier NICHT `calc(50%-50vw)` steht ──────────────────
+            Das ist der Anschnitt-Ausdruck, den Inhaberbild und Arbeitsfoto
+            benutzen. Er rechnet gegen die Rasterspalte, nicht gegen das
+            Fenster, und schiesst deshalb ueber die Kante hinaus — bei
+            1528 px Fensterbreite um 240 px. Bei einer reinen Bildflaeche
+            faellt das nicht auf, weil der Ueberstand beschnitten wird und
+            dort kein Inhalt steht. Hier stuenden die Eingabefelder im
+            abgeschnittenen Bereich.
+
+            Der Ausdruck unten misst stattdessen genau den Abstand von der
+            Spaltenkante zur Fensterkante: halbe Differenz zwischen Fenster
+            und Container (max-w-7xl) plus dessen Innenabstand (px-8).
+            Unterhalb von 80rem Fensterbreite bleiben davon die 2rem uebrig.
+          */}
+          <div className="rounded-panel bg-white p-7 sm:p-9 lg:-mr-[calc((100vw-min(100vw,80rem))/2+2rem)] lg:rounded-r-none lg:py-12 lg:pl-12 lg:pr-12">
             <ContactForm />
           </div>
         </div>

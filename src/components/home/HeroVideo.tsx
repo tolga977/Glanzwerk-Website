@@ -1,10 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface HeroVideoProps {
   mp4: string;
   webm?: string;
+  /**
+   * Klasse für den Bildausschnitt (`object-position`).
+   *
+   * Vorgabe `hero-focal` — der unveränderte Wert des Heros. Der
+   * Kontaktmoment in der Seitenmitte spielt dieselbe Aufnahme und übergibt
+   * hier `cta-focal`, damit ein anderer Teil der Szene im Bild steht und
+   * der Abschnitt nicht wie eine Wiederholung des Heros liest.
+   *
+   * `hero-video` bleibt in jedem Fall gesetzt: daran hängt in globals.css
+   * die Regel, die unter `prefers-reduced-motion` jedes Hintergrundvideo
+   * ausblendet. Diese Sicherung darf nicht überschreibbar sein.
+   */
+  focalClassName?: string;
+  /**
+   * Erst laden, wenn die Fläche in Sichtnähe kommt.
+   *
+   * Vorgabe `false` — der Hero steht am Seitenanfang und soll sofort
+   * laufen. Für den Kontaktmoment in der Seitenmitte ist es umgekehrt: er
+   * spielt dieselbe 145-MB-Datei, und beide Videos gleichzeitig anzustoßen
+   * lässt den Renderer beim Seitenaufbau messbar hängen. Mit dieser Option
+   * beginnt der zweite Stream erst, wenn er gebraucht wird — bis dahin
+   * trägt das Standbild die Fläche, sichtbar ist der Unterschied nicht.
+   */
+  lazyUntilVisible?: boolean;
 }
 
 /**
@@ -29,8 +53,15 @@ interface HeroVideoProps {
  * transparent, sodass das optimierte Standbild darunter sichtbar bleibt.
  * Ein poster-Attribut würde dieses Bild doppeln und unoptimiert laden.
  */
-export default function HeroVideo({ mp4, webm }: HeroVideoProps) {
+export default function HeroVideo({
+  mp4,
+  webm,
+  focalClassName = "hero-focal",
+  lazyUntilVisible = false,
+}: HeroVideoProps) {
   const [zeigen, setZeigen] = useState(false);
+  const [inSicht, setInSicht] = useState(!lazyUntilVisible);
+  const merker = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const grossGenug = window.matchMedia("(min-width: 640px)");
@@ -46,6 +77,38 @@ export default function HeroVideo({ mp4, webm }: HeroVideoProps) {
       wenigerBewegung.removeEventListener("change", pruefen);
     };
   }, []);
+
+  /*
+    Sichtbarkeitspruefung nur im Lazy-Fall. `rootMargin` von einer halben
+    Bildschirmhoehe: das Video beginnt zu laden, bevor die Flaeche im Bild
+    ist, sodass beim Ankommen bereits Bewegung laeuft.
+  */
+  useEffect(() => {
+    if (!lazyUntilVisible) return;
+    const knoten = merker.current;
+    if (!knoten) return;
+
+    const beobachter = new IntersectionObserver(
+      (eintraege) => {
+        if (eintraege.some((e) => e.isIntersecting)) {
+          setInSicht(true);
+          beobachter.disconnect();
+        }
+      },
+      { rootMargin: "50% 0px" },
+    );
+    beobachter.observe(knoten);
+    return () => beobachter.disconnect();
+  }, [lazyUntilVisible]);
+
+  /*
+    Der Merker steht nur, solange noch nicht geladen wird. Er ist leer, ohne
+    Ausdehnung im Fluss und fuer Hilfsmittel unsichtbar — er markiert
+    lediglich die Stelle, an der die Flaeche liegt.
+  */
+  if (lazyUntilVisible && !inSicht) {
+    return <span ref={merker} aria-hidden="true" className="absolute inset-0" />;
+  }
 
   if (!zeigen) return null;
 
@@ -69,7 +132,7 @@ export default function HeroVideo({ mp4, webm }: HeroVideoProps) {
         unoptimiert laden. Ein schwarzer Startframe kann dadurch nicht
         entstehen — das <video> ist vor dem ersten Frame transparent.
       */
-      className="hero-video hero-focal absolute inset-0 h-full w-full object-cover"
+      className={`hero-video ${focalClassName} absolute inset-0 h-full w-full object-cover`}
       autoPlay
       muted
       loop

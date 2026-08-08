@@ -37,7 +37,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
                 </span>
               )}
               {item.href && !isLast ? (
-                <Link href={item.href} className="transition-colors hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+                <Link href={item.href} className="transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
                   {item.label}
                 </Link>
               ) : (

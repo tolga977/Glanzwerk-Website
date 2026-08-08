@@ -154,7 +154,7 @@ export default function PriceCalculator() {
               {objectTypeOrder.map((type) => (
                 <label
                   key={type}
-                  className={`flex min-h-11 cursor-pointer items-center rounded-control border px-4 py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex min-h-11 cursor-pointer items-center rounded-control border px-4 py-2.5 text-sm font-medium transition-colors duration-200 ease-out ${
                     values.objectType === type
                       ? "border-brand-500 bg-brand-50 text-brand-900"
                       : "border-line text-ink-soft hover:border-brand-300"
@@ -315,7 +315,7 @@ export default function PriceCalculator() {
               {floorTypeOrder.map((floor) => (
                 <label
                   key={floor}
-                  className={`flex min-h-11 cursor-pointer items-center justify-center rounded-control border px-4 py-2.5 text-center text-sm font-medium transition-colors ${
+                  className={`flex min-h-11 cursor-pointer items-center justify-center rounded-control border px-4 py-2.5 text-center text-sm font-medium transition-colors duration-200 ease-out ${
                     values.floorType === floor
                       ? "border-brand-500 bg-brand-50 text-brand-900"
                       : "border-line text-ink-soft hover:border-brand-300"
