@@ -154,8 +154,23 @@ interface SectionProps {
    * (vollständig weißes Motiv): Weiß auf Navy ergibt dort noch 12,2:1, auf
    * dem Mittelblau 6,4:1 — beides deutlich über AA.
    *
-   * Nur auf `navy` und `brand` wirksam. Auf hellen Flächen wäre ein
-   * ausgebleichtes Foto hinter Text genau das, was billig aussieht.
+   * Wirksam auf `navy`, `brand` — und auf `tint`.
+   *
+   * Die ursprüngliche Regel lautete „nur auf dunklen Flächen": ein
+   * ausgebleichtes Foto hinter dunklem Text auf hellem Grund ist genau das,
+   * was billig aussieht. Das gilt weiterhin für ein Foto, das flächig unter
+   * dem gesamten Inhalt liegt.
+   *
+   * Die helle Fassung macht deshalb etwas anderes. Das Motiv wird entsättigt,
+   * im Kontrast genommen und über eine Maske nach links ausgeblendet — es
+   * steht also nur in der rechten Hälfte, wo im Bezirksregister keine
+   * Überschrift liegt, und läuft zur Textspalte hin auf null. Darüber liegt
+   * unverändert die Tonebene der Fläche. Was übrig bleibt, ist Architektur
+   * als Textur, kein erkennbares Foto.
+   *
+   * Auf dem Telefon ist das Motiv zusätzlich zurückgenommen: dort steht das
+   * Register einspaltig über die volle Breite, es gibt keine freie Hälfte
+   * mehr.
    */
   backdrop?: { src: string; objectPosition?: string };
   /**
@@ -240,7 +255,7 @@ export default function Section({
   markCorner = "top-right",
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
-  const showBackdrop = Boolean(backdrop) && dark;
+  const showBackdrop = Boolean(backdrop) && (dark || background === "tint");
   return (
     <section
       id={id}
@@ -254,8 +269,23 @@ export default function Section({
             aria-hidden="true"
             fill
             sizes="100vw"
-            className="object-cover"
-            style={backdrop.objectPosition ? { objectPosition: backdrop.objectPosition } : undefined}
+            className={
+              dark
+                ? "object-cover"
+                : "object-cover opacity-[0.16] saturate-[0.45] contrast-[0.8] sm:opacity-[0.3] lg:opacity-[0.42]"
+            }
+            style={{
+              ...(backdrop.objectPosition ? { objectPosition: backdrop.objectPosition } : null),
+              ...(dark
+                ? null
+                : {
+                    // Nach links auf null — die Textspalte bekommt kein Motiv.
+                    maskImage:
+                      "linear-gradient(100deg, transparent 26%, rgba(0,0,0,0.45) 52%, #000 78%)",
+                    WebkitMaskImage:
+                      "linear-gradient(100deg, transparent 26%, rgba(0,0,0,0.45) 52%, #000 78%)",
+                  }),
+            }}
           />
           {/* Tonebene in der Grundfarbe — hält den Markenton und die Lesbarkeit. */}
           <div
@@ -263,7 +293,9 @@ export default function Section({
             className={`pointer-events-none absolute inset-0 ${
               background === "navy"
                 ? "bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-950/94"
-                : "bg-gradient-to-br from-brand-600/90 via-brand-700/88 to-brand-800/92"
+                : background === "tint"
+                  ? "bg-gradient-to-r from-brand-100 via-brand-100/88 to-brand-50/70"
+                  : "bg-gradient-to-br from-brand-600/90 via-brand-700/88 to-brand-800/92"
             }`}
           />
         </>

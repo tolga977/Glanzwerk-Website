@@ -16,7 +16,6 @@ import ContactMoment from "@/components/home/ContactMoment";
 import OwnerNote from "@/components/home/OwnerNote";
 import ReviewMarquee from "@/components/home/ReviewMarquee";
 import ClientLogos from "@/components/home/ClientLogos";
-import ProductLogos from "@/components/home/ProductLogos";
 import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
 import GoogleRating from "@/components/ui/GoogleRating";
 import JsonLd from "@/components/seo/JsonLd";
@@ -27,7 +26,6 @@ import { districts } from "@/data/districts";
 import { districtPhotos } from "@/data/districtPhotos";
 import { articles } from "@/data/articles";
 import { clientLogos } from "@/data/clientLogos";
-import { approvedProductLogos } from "@/data/productLogos";
 import { innungMembership } from "@/data/memberships";
 import { heroStripItems } from "@/data/heroTrust";
 import { photos } from "@/data/photos";
@@ -899,54 +897,44 @@ export default async function HomePage() {
       <ReviewMarquee reviews={googleRating.reviews} />
 
       {/*
-        Vertrauens- und Logozeile — der sachliche Fuss des persoenlichen
-        Kapitels.
+        Vertrauenszeile — der sachliche Fuss des persoenlichen Kapitels.
 
-        Sie stand zuvor direkt unter dem Hero. Dort belegte die schwaechste
-        Aussage der Seite (welche Produkte eingesetzt werden) den staerksten
-        Platz. Jetzt folgt sie auf Person und Bewertungen: erst wer
-        antwortet, dann was Kunden schreiben, dann womit gearbeitet wird.
+        ── Warum die Herstellerzeile hier entfallen ist ─────────────────
+        Hier stand `<ProductLogos />` mit der Zeile „Wir arbeiten unter
+        anderem mit professionellen Produkten und Systemen von" und darunter
+        Numatic als Wortbild. Diese Aussage steht seit der Markenleiste
+        unmittelbar unter dem Hero ein zweites Mal auf derselben Seite — dort
+        mit den echten Herstellerlogos und unter einer eigenen Ueberschrift.
+        Dieselbe Sachangabe zweimal ist keine Verstaerkung, sondern eine
+        Wiederholung, und die schwaechere der beiden Fassungen war diese.
 
-        ── Was hier nur mit Berechtigung erscheint ──────────────────────
-          productLogos      Hersteller mit `approved: true`. Numatic ist
-                            freigegeben, DR.SCHNELL nicht — der Filter
-                            steht in data/productLogos.ts, damit ein nicht
-                            freigegebener Name gar nicht erst bis in die
-                            Anzeige gelangt. Ohne Logodatei laeuft der Name
-                            als Wortbild; eine nachgesetzte Bildmarke waere
-                            eine Behauptung ueber eine fremde Marke.
-          clientLogos       Kundenreferenzen — eigener, klar getrennter
-                            Zusammenhang, erst mit schriftlicher Freigabe
-                            (Datei ist bis dahin leer).
+        Die Komponente und die Freigabelogik in `data/productLogos.ts`
+        bleiben unberuehrt — es entfaellt nur der zweite Auftritt auf der
+        Startseite.
+
+        ── Was hier weiterhin mit Berechtigung erscheinen kann ─────────
+          clientLogos       Kundenreferenzen — erst mit schriftlicher
+                            Freigabe (Datei ist bis dahin leer).
           innungMembership  Gebaeudereiniger-Innung — steht auf `null`,
                             solange die Mitgliedschaft nicht bestaetigt
-                            ist, und rendert dann nichts. Was nicht belegt
-                            ist, wird nicht einmal angedeutet.
+                            ist. Was nicht belegt ist, wird nicht einmal
+                            angedeutet.
 
-        Alle drei blenden sich selbst aus. Steht nichts davon zur
-        Verfuegung, entfaellt der ganze Abschnitt — keine leere Flaeche,
-        kein ausgegrauter Platz, kein „folgt in Kuerze".
+        Beide blenden sich selbst aus. Da derzeit keines von beiden vorliegt,
+        entfaellt der ganze Abschnitt — es bleibt keine leere Off-White-Bahn
+        zwischen Bewertungsband und Berliner Bildzaesur stehen, sondern die
+        beiden ruecken unmittelbar zusammen.
 
-        ── Flaeche ──────────────────────────────────────────────────────
-        `warm` (Off-White) statt der blauen `muted`-Flaeche, die hier
-        zuvor stand: der Vertrauensbereich soll durchgehend hell laufen,
-        Blau bleibt der Tonebene im Inhaber-Kapitel und dem schmalen
-        Bewertungsband vorbehalten. Die Lichtkante aus `decor` markiert die
-        Naht zum weissen Kapitel darueber.
+        Die Trennlinie sitzt deshalb an einem Folgeelement (`* + *`) und
+        nicht an jedem Block: das erste sichtbare Element beginnt ohne Linie,
+        egal welches der beiden es ist.
       */}
-      {(approvedProductLogos.length > 0 ||
-        clientLogos.length > 0 ||
-        innungMembership !== null) && (
+      {(clientLogos.length > 0 || innungMembership !== null) && (
         <Section background="warm" decor spacing="compact">
-          <FadeIn>
-            <ProductLogos />
-            {clientLogos.length > 0 && (
-              <div className="mt-12 border-t border-line pt-10">
-                <ClientLogos />
-              </div>
-            )}
+          <FadeIn className="[&>*+*]:mt-12 [&>*+*]:border-t [&>*+*]:border-line [&>*+*]:pt-10">
+            {clientLogos.length > 0 && <ClientLogos />}
             {innungMembership !== null && (
-              <div className="mt-12 border-t border-line pt-10">
+              <div>
                 <p className="text-sm leading-relaxed text-ink-soft">Mitglied der</p>
                 <p className="mt-3 font-display text-xl font-medium text-brand-900 sm:text-2xl">
                   {innungMembership.detail
@@ -958,51 +946,6 @@ export default async function HomePage() {
           </FadeIn>
         </Section>
       )}
-
-      {/*
-        Bildzäsur nach dem persönlichen Abschnitt.
-
-        Gemessen: zwischen Hero und Vertrauensbereich lagen 2.586 px ohne ein
-        einziges Bild — auf einem Laptop 3,4 Bildschirme reiner Text, direkt
-        an der Stelle, an der die meisten noch entscheiden, ob sie
-        weiterlesen. Genau dort sitzt jetzt eine randlose Bildfläche.
-
-        Sie zeigt ein reales Berliner Motiv statt einer Reinigungssituation:
-        an dieser Stelle geht es nicht um die Leistung, sondern darum, dass
-        hier jemand vor Ort ist. 21:9 auf dem Schirm, 4:3 auf dem Telefon —
-        eine Fläche, die auf dem Handy zu flach wird, ist kein Bildmoment
-        mehr, sondern ein Streifen.
-
-        Die Bildunterschrift ist keine Beschriftung des Fotos, sondern die
-        Ortsangabe: sie trägt die Aussage, das Bild trägt den Rhythmus.
-      */}
-      <figure className="relative isolate bg-brand-950">
-        <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
-          <Image
-            src={districtPhotos.mitte.src}
-            alt={districtPhotos.mitte.alt}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: districtPhotos.mitte.objectPosition }}
-          />
-          {/* Fußzone, damit die Bildunterschrift auf jedem Einzelbild lesbar bleibt. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-950/85 via-brand-950/35 to-transparent"
-          />
-          <figcaption className="container-page absolute inset-x-0 bottom-0 pb-8 sm:pb-10">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-200">
-              <span aria-hidden="true" className="brand-tick text-brand-300" />
-              Einsatzgebiet
-            </p>
-            <p className="font-display display-lg mt-3 max-w-2xl text-pretty text-xl font-medium text-white sm:text-2xl lg:text-3xl">
-              In allen zwölf Berliner Bezirken unterwegs — mit realistischer
-              Einsatzplanung statt langer Anfahrtswege.
-            </p>
-          </figcaption>
-        </div>
-      </figure>
 
       {/*
         Preis-Schaetzung — eigener Abschnitt statt einer Schaltflaeche im
@@ -1079,144 +1022,105 @@ export default async function HomePage() {
         vorher an zehnter Stelle. Jetzt steht es dort, wo jemand noch liest,
         und traegt eine eigene dunkle Flaeche.
 
-        ── Warum hier kein Zweispalter mehr steht ───────────────────────
-        Davor liegt der Preisabschnitt (Text links, Zahl rechts), danach
-        der Vertrauensbereich (Text links, Foto rechts). Mit dem frueheren
-        Aufbau — Text links, Schaltflaechen rechts — standen drei
-        Zweispalter unmittelbar hintereinander, alle mit dem Text auf
-        derselben Seite. Drei gleich gebaute Abschnitte in Folge liest das
-        Auge als eine einzige lange Flaeche; der mittlere verliert dabei
-        genau das Gewicht, das dieses Angebot braucht.
+        ── Warum das Visual links steht und der Text rechts ─────────────
+        Davor liegt der Preisabschnitt (Text links, Zahl rechts), danach der
+        Vertrauensbereich (Text links, Foto rechts). Beide fuehren den Text
+        links. Wuerde dieser Abschnitt das auch tun, stuenden drei gleich
+        gebaute Zweispalter unmittelbar hintereinander — das Auge liest das
+        als eine einzige lange Flaeche, und der mittlere verliert genau das
+        Gewicht, das dieses Angebot braucht.
 
-        Jetzt eine einzelne, tiefer gestellte Textbahn ueber der vollen
-        Breite: die Aussage laeuft auf Satzbreite von links, die
-        Schaltflaechen stehen darunter in einer Zeile. Dieselben
-        Schaltflaechen, dieselbe Reihenfolge — nur nicht mehr als
-        Randspalte, sondern als Abschluss der Bahn.
+        Deshalb ist die Seite hier vertauscht: Visualzone links, Inhalt
+        rechts. Das ist der einzige Seitenwechsel in dieser Folge und
+        gleichzeitig der Grund, warum der Abschnitt als eigener Moment
+        gelesen wird. `surface="left"` legt den Lichtkeil des Systems auf
+        dieselbe Seite — die Prop ist genau dafuer da („fuer Abschnitte,
+        deren Inhalt rechts sitzt").
 
-        Der Bildgrund traegt jetzt sichtbar mit: `spacing` bleibt roomy,
-        aber die Bahn sitzt in der unteren Haelfte, sodass ueber ihr eine
-        ruhige Bildzone stehen bleibt. Damit ist dies die einzige dunkle
-        Flaeche der Seite, die als Bildkomposition und nicht als Farbblock
-        gelesen wird.
+        Im Fluss steht der Inhalt zuerst; die Vertauschung laeuft ueber
+        `order` und damit rein visuell. Auf dem Telefon liest deshalb erst
+        die Aussage, dann folgt die Zone.
+
+        ── Die Visualzone ist noch leer, und das mit Absicht ─────────────
+        Hier kommt das eigenstaendige „3 Monate"-Visual hin; es wird in einem
+        eigenen Schritt entwickelt. Bis dahin steht hier bewusst KEIN
+        Provisorium: keine Uhr, kein Kalender, kein Rahmen, kein „folgt in
+        Kuerze" — eine angedeutete Grafik wuerde eine Designentscheidung
+        vortaeuschen, die noch nicht getroffen ist.
+
+        Was steht, ist der Raum: feste Seitenverhaeltnisse, feste Position im
+        Raster. Damit ist die Flaeche schon jetzt Teil der Komposition (der
+        Lichtkeil und das Bildmotiv der Flaeche tragen sie), und der spaetere
+        Einbau veraendert die Hoehe des Abschnitts nicht — es gibt keinen
+        Layout Shift, weil nichts nachtraeglich Platz beansprucht.
+
+        Auf dem Telefon ist die Zone ausgeblendet statt niedriger: eine
+        reservierte Hoehe ohne Inhalt waere dort schlicht leerer Raum. Mit
+        dem Visual wird sie eingeblendet — flacher als auf dem Schirm.
       */}
       <Section
         background="navy"
         decor
         spacing="roomy"
+        surface="left"
         backdrop={{ src: photos.brightStaircase.src, objectPosition: "center 40%" }}
       >
-        {/* Bildzone ueber der Textbahn — leer, aber nicht leer wirkend: das
-            Motiv traegt sie. Nur ab Desktop, auf dem Telefon waere sie
-            verschenkte Hoehe. */}
-        <div aria-hidden="true" className="hidden lg:block lg:h-40" />
-        <div className="max-w-3xl">
-          <p className="inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
-            Ohne langfristige Bindung
-          </p>
-          <h2 className="font-display display-lg mt-6 text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
-            {heading.secondaryCtaHeading}
-          </h2>
-          <div className="glanz-divider mt-6 max-w-[120px]" />
-          <p className="measure mt-7 text-base leading-relaxed text-brand-100 sm:text-lg">
-            Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
-            Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
-            angebotenen Konditionen.{" "}
-            <strong className="font-semibold text-white">
-              Nach Ablauf entsteht keine automatische Verlängerung.
-            </strong>{" "}
-            Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button href="/3-monate-testen" size="xl">
-              Testphase anfragen
-            </Button>
-            <Button
-              href="/preisrechner"
-              variant="onMedia"
-              size="xl"
-            >
-              Preis berechnen
-            </Button>
-          </div>
-        </div>
-      </Section>
-
-      {/*
-        2. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
-        die sechs Punkte rechts als Matrix aus feinen Trennlinien. Bewusst
-        keine sechs gleichen Container.
-      */}
-      <Section background="warm">
-        {/*
-          Komposition: schmale Textspalte gegen eine bewusst grosse, hochformatige
-          Bildflaeche, die vertikal versetzt sitzt — keine mittige Zweiteilung.
-          Die staerkste Einzelaussage steht direkt hier oben; die uebrigen fuenf
-          folgen als ruhiges Band darunter, statt alle sechs gleich zu gewichten.
-        */}
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,30rem)_1fr] lg:gap-20">
-          <div className="lg:pt-10">
-            <SectionHeading
-              eyebrow="Darauf kommt es im Reinigungsalltag an"
-              title={heading.sectionHeadings[0]}
-              subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
-            />
-
-            <div className="mt-10 border-l-2 border-brand-500 pl-7">
-              <p className="font-display display-lg text-xl font-medium text-brand-900 sm:text-2xl">
-                {leadTrustPoint.title}
-              </p>
-              <p className="measure mt-3 text-base leading-relaxed text-ink-soft">
-                {leadTrustPoint.description}
-              </p>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+          <div className="lg:order-2">
+            <p className="inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
+              Ohne langfristige Bindung
+            </p>
+            <h2 className="font-display display-lg mt-6 text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
+              {heading.secondaryCtaHeading}
+            </h2>
+            <div className="glanz-divider mt-6 max-w-[120px]" />
+            <p className="measure mt-7 text-base leading-relaxed text-brand-100 sm:text-lg">
+              Sie möchten zunächst prüfen, ob Abläufe, Kommunikation und Reinigungsleistung zu Ihrem
+              Unternehmen passen? Vereinbaren Sie eine dreimonatige Testphase zu den regulär
+              angebotenen Konditionen.{" "}
+              <strong className="font-semibold text-white">
+                Nach Ablauf entsteht keine automatische Verlängerung.
+              </strong>{" "}
+              Die genauen Leistungen und Termine werden vor Beginn schriftlich festgehalten.
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Button href="/3-monate-testen" size="xl">
+                Testphase anfragen
+              </Button>
+              <Button
+                href="/preisrechner"
+                variant="onMedia"
+                size="xl"
+              >
+                Preis berechnen
+              </Button>
             </div>
           </div>
 
           {/*
-            Bildanschnitt: ab Desktop laeuft die Flaeche ueber den Inhalts-
-            container hinaus bis an den Fensterrand und ist dort nicht mehr
-            gerundet. Das Bild begrenzt damit den Abschnitt, statt darin zu
-            liegen — der Weissraum links entsteht als Gegengewicht zur
-            Bildkante, nicht als Restflaeche.
-            calc(50% - 50vw) zieht die rechte Kante auf die Fensterbreite; der
-            Ueberstand wird vom overflow-hidden der Section sauber beschnitten.
+            Einbaustelle des spaeteren „3 Monate"-Visuals.
+
+            `data-trial-visual` ist der Anker, an dem es eingesetzt wird —
+            kein Styling haengt daran, es benennt nur die Stelle. Die Zone
+            traegt selbst keine Flaeche, keinen Rahmen und keinen Schatten:
+            das waere schon eine Gestaltung, und der Abschnitt soll keine
+            Karte werden.
+
+            5 : 4 ab Desktop, weil ein Zeitraum aus drei Teilen sowohl
+            nebeneinander als auch uebereinander darstellbar bleiben soll —
+            ein Streifen oder ein Hochformat wuerde eine der beiden
+            Richtungen jetzt schon ausschliessen.
           */}
-          <BrandPhoto
-            photo={photos.teamBriefing}
-            aspect="aspect-[4/3] lg:aspect-[3/4]"
-            sizes="(min-width: 1024px) 55vw, 100vw"
-            objectPosition="84% 45%"
-            rounded="rounded-panel lg:rounded-r-none"
-            /* Hoehendeckel ab Desktop: 3/4 rechnet sich auf der randlosen
-               Flaeche auf ueber 1450 px hoch, daneben blieb eine leere weisse
-               Spalte von mehr als einem halben Bildschirm stehen — das las
-               sich nicht als Weissraum, sondern als Layoutfehler. 46rem
-               bringt die Bildunterkante etwa auf Hoehe des Textblocks; der
-               Deckel greift, weil der Rahmen overflow-hidden traegt. */
-            className="shadow-deep lg:-mt-24 lg:-mb-8 lg:mr-[calc(50%-50vw)] lg:max-h-[46rem]"
+          <div
+            data-trial-visual
+            aria-hidden="true"
+            className="hidden lg:order-1 lg:block lg:aspect-[5/4] lg:w-full"
           />
         </div>
-
-        <FadeIn
-          as="ul"
-          className="mt-16 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:mt-20 lg:grid-cols-3"
-        >
-          {supportingTrustPoints.map((badge) => (
-            <li key={badge.title} className="flex gap-4 border-b border-line py-6">
-              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-white text-brand-500 shadow-raise">
-                <TrustIcon name={badge.icon} />
-              </span>
-              <div>
-                <p className="font-display text-base font-medium text-brand-900">{badge.title}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
-              </div>
-            </li>
-          ))}
-        </FadeIn>
       </Section>
 
       {/*
-        3. Leistungsbereich — alle zwölf Leistungen mit Foto nebeneinander.
+        2. Leistungsbereich — alle zwölf Leistungen mit Foto nebeneinander.
         Rhythmus über zwei Kartengrößen statt über zwölf identische Kacheln.
       */}
       <Section background="tint" decor>
@@ -1228,41 +1132,39 @@ export default async function HomePage() {
         />
 
         {/*
-          ── Warum jede der vier Leistungen anders gebaut ist ──────────────
-          Vorher: vier Bildflaechen im identischen 21:9-Querformat,
-          untereinander gestapelt, Text jeweils unten links auf dem Bild.
-          Kein Rahmen und kein Schatten — aber viermal exakt dieselbe
-          Komposition. Eine Wiederholung bleibt eine Wiederholung, auch
-          wenn man ihr den Kasten wegnimmt: ab der zweiten Flaeche liest
-          niemand mehr, weil die Form schon bekannt ist.
+          ── Auftakt plus Serie ────────────────────────────────────────────
+          Zwei Bauformen, nicht vier: die Leitleistung als Bildband, die
+          uebrigen drei als eine Reihe gleichwertiger Bild-Text-Kompositionen.
+          Reihenfolge, Auswahl (FEATURED_SERVICE_SLUGS) und jeder Text bleiben
+          unveraendert.
 
-          Jetzt traegt jede der vier eine eigene Bauform. Die Reihenfolge
-          und die Auswahl der Leistungen bleiben unveraendert
-          (FEATURED_SERVICE_SLUGS), ebenso jeder Text:
+          ── Was vorher nicht zusammenhielt ────────────────────────────────
+          Jede der vier Leistungen trug eine eigene Bauform: Bildband, dann
+          Querformat auf sieben Rasterspalten mit Text darunter, daneben ein
+          Hochformat auf fuenf Spalten um 7 rem nach unten versetzt, zuletzt
+          Bild links mit Text rechts. Dazu drei verschiedene Anschluss-
+          abstaende (mt-16, mt-28, mt-20) und drei verschiedene Bildformate
+          (16:10, 4:5, 16:10).
 
-            1  Gebaeudereinigung     Bildband ueber die volle Breite, Text
-                                     auf dem Bild. Die Leitleistung behaelt
-                                     die groesste Flaeche und als einzige
-                                     die Schrift im Bild.
-            2  Bueroreinigung        Querformat, sieben Rasterspalten, Text
-                                     UNTER dem Bild auf der Abschnitts-
-                                     flaeche — dunkle Schrift statt weisser.
-            3  Grundreinigung        Hochformat, fuenf Rasterspalten, um
-                                     eine Bildhoehe nach unten versetzt.
-                                     Zusammen mit 2 ergibt das eine
-                                     ungleiche, versetzte Doppelseite statt
-                                     zweier gleicher Kacheln.
-            4  Glas- und Fenster-    Bild links, Text rechts daneben, mittig
-               reinigung             — die einzige der vier, die quer
-                                     gelesen wird und damit die Strecke
-                                     abschliesst.
+          Der Gedanke dahinter war, Wiederholung zu vermeiden. Der Preis war
+          aber, dass die vier Leistungen nicht mehr als eine Gruppe lasen —
+          vier Einzelentwuerfe untereinander, und beim Ueberfliegen nicht
+          erkennbar, dass sie zusammengehoeren.
 
-          Ein zwoelfspaltiges Raster traegt alle vier, damit die Liste
-          semantisch eine Liste bleibt (ul/li) und die unterschiedlichen
-          Breiten trotzdem aus einer gemeinsamen Ordnung kommen.
+          Der Rhythmus kommt jetzt nicht mehr aus vier verschiedenen Formen,
+          sondern aus dem Seitenwechsel innerhalb einer Form: Bild links, Bild
+          rechts, Bild links. Gleiche Bildproportion, gleiche Radien, gleiche
+          Ueberschriftengroesse, gleiche Textbreite, gleicher Verweis, gleicher
+          Abstand. Die Ordnung ist damit spuerbar, ohne dass eine Kachel
+          entsteht — es gibt weiterhin keine Flaeche, keinen Rahmen und keinen
+          Schatten um die einzelne Leistung.
+
+          Das zwoelfspaltige Raster ist entfallen: es diente nur den
+          ungleichen Spaltenbreiten. Alle Elemente laufen jetzt ueber die volle
+          Breite, die Zweiteilung passiert innerhalb der Leistung.
         */}
         <FadeIn>
-          <ul className="mt-12 grid gap-x-12 gap-y-14 lg:mt-16 lg:grid-cols-12 lg:gap-y-4">
+          <ul className="mt-12 grid gap-y-14 lg:mt-16 lg:gap-y-24">
             {featuredServices.map((service, index) => {
               const photo = servicePhotos[service.slug];
               const { description, linkText } = serviceCopy(service);
@@ -1271,12 +1173,24 @@ export default async function HomePage() {
               /* 1 — Leitleistung: Bildband, Schrift im Bild. */
               if (index === 0) {
                 return (
-                  <li key={service.slug} className="lg:col-span-12">
+                  <li key={service.slug}>
                     <Link
                       href={href}
                       className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
                     >
-                      <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] lg:aspect-[2.4/1]">
+                      {/*
+                        Der Auftakt muss auf JEDER Breite die groessere Flaeche
+                        sein. Die mittlere Stufe stand auf 16 : 9 und war damit
+                        bei 768 px 396 px hoch — flacher als die 441 px der
+                        Serie darunter, die im einspaltigen Modus die volle
+                        Breite in 16 : 10 fuellt. Der Auftakt war dort also der
+                        kleinste Eintrag des Bereichs.
+
+                        3 : 2 haelt ihn ueber der Serie, ohne ihn aufzublaehen:
+                        470 px gegen 441 px bei 768 px Breite, 630 gegen 591
+                        knapp unter 1024 px.
+                      */}
+                      <div className="relative aspect-[4/3] w-full sm:aspect-[3/2] lg:aspect-[2.4/1]">
                         {photo && (
                           <Image
                             src={photo.src}
@@ -1314,58 +1228,31 @@ export default async function HomePage() {
                 );
               }
 
-              /* 4 — quer gelesen: Bild links, Text rechts daneben. */
-              if (index === 3) {
-                return (
-                  <li key={service.slug} className="lg:col-span-12 lg:mt-20">
-                    <Link
-                      href={href}
-                      className="press group grid items-center gap-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 lg:grid-cols-[1.15fr_1fr] lg:gap-16"
-                    >
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-panel sm:aspect-[16/10]">
-                        {photo && (
-                          <Image
-                            src={photo.src}
-                            alt={photo.alt}
-                            fill
-                            sizes="(min-width: 1024px) 42rem, 100vw"
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                          />
-                        )}
-                      </div>
-                      <div>
-                        <h3 className="font-display display-lg text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
-                          {service.shortTitle}
-                        </h3>
-                        <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
-                          {description}
-                        </p>
-                        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
-                          {linkText}
-                          {arrowIcon}
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              }
+              /*
+                2 bis 4 — eine Bauform, die Seite wechselt.
 
-              /* 2 und 3 — ungleiche Doppelseite, Text unter dem Bild. */
-              const isPortrait = index === 2;
+                `index % 2 === 0` trifft in dieser Reihe nur die dritte
+                Leistung, also ergibt sich links / rechts / links. Der Wechsel
+                laeuft ueber `order` und damit ausschliesslich visuell: im DOM
+                steht immer erst das Bild, dann der Text. Auf dem Telefon, wo
+                `order` nicht greift, liest deshalb jede Leistung in derselben
+                Folge — Bild, Ueberschrift, Beschreibung, Verweis.
+
+                Der etwas groessere Abstand der ersten Serienleistung setzt die
+                Zaesur zum Bildband darueber; untereinander tragen alle drei
+                denselben Rhythmus aus `gap-y`.
+              */
+              const bildRechts = index % 2 === 0;
+
               return (
-                <li
-                  key={service.slug}
-                  className={
-                    isPortrait ? "lg:col-span-5 lg:mt-28" : "lg:col-span-7 lg:mt-16"
-                  }
-                >
+                <li key={service.slug} className={index === 1 ? "lg:mt-4" : undefined}>
                   <Link
                     href={href}
-                    className="press group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
+                    className="press group grid items-center gap-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 lg:grid-cols-2 lg:gap-16"
                   >
                     <div
-                      className={`relative w-full overflow-hidden rounded-panel ${
-                        isPortrait ? "aspect-[4/5]" : "aspect-[4/3] sm:aspect-[16/10]"
+                      className={`relative aspect-[16/10] w-full overflow-hidden rounded-panel ${
+                        bildRechts ? "lg:order-2" : ""
                       }`}
                     >
                       {photo && (
@@ -1373,21 +1260,31 @@ export default async function HomePage() {
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          sizes="(min-width: 1024px) 38rem, 100vw"
+                          /* Alle vier Aufnahmen sind 1672 × 941 px, also
+                             1,78 : 1. Bei 16 : 10 bleiben davon 90 % der
+                             Breite sichtbar, mittig beschnitten — bei jeder
+                             Leistung derselbe milde Anschnitt. Ein eigenes
+                             `object-position` braucht keine davon: bei der
+                             Grundreinigung liegt die Maschine zwischen 40 und
+                             80 % der Bildbreite und bleibt damit vollstaendig
+                             im Bild. */
+                          sizes="(min-width: 1024px) 36rem, 100vw"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
                       )}
                     </div>
-                    <h3 className="font-display display-lg mt-7 text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
-                      {service.shortTitle}
-                    </h3>
-                    <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
-                      {description}
-                    </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
-                      {linkText}
-                      {arrowIcon}
-                    </span>
+                    <div className={bildRechts ? "lg:order-1" : ""}>
+                      <h3 className="font-display display-lg text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
+                        {service.shortTitle}
+                      </h3>
+                      <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
+                        {description}
+                      </p>
+                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
+                        {linkText}
+                        {arrowIcon}
+                      </span>
+                    </div>
                   </Link>
                 </li>
               );
@@ -1447,6 +1344,162 @@ export default async function HomePage() {
               </li>
             ))}
           </ul>
+        </FadeIn>
+      </Section>
+
+      {/*
+        ── Vorgesehene Position: Hygiene-Abschnitt „Disinfection Sweep" ────
+        Zwischen dem Leistungsbereich und diesem Abschnitt wird der separat
+        entwickelte visuelle Hygiene-Moment eingesetzt. Er ist bewusst noch
+        nicht angelegt — kein Platzhalter, keine reservierte Höhe: solange
+        nichts zu zeigen ist, folgt hier direkt der nächste Abschnitt.
+      */}
+
+      {/*
+        3. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
+        die sechs Punkte rechts als Matrix aus feinen Trennlinien. Bewusst
+        keine sechs gleichen Container.
+      */}
+      <Section background="warm">
+        {/*
+          Komposition: Textspalte und Bildflaeche als eine Einheit — gleiche
+          Oberkante, gleiche Unterkante. Die staerkste Einzelaussage steht
+          direkt hier oben; die uebrigen fuenf folgen als ruhiges Band darunter,
+          statt alle sechs gleich zu gewichten.
+
+          ── Was hier vorher nicht aufging ──────────────────────────────────
+          Die Bildflaeche war ab Desktop auf `aspect-[3/4]` gesetzt, also
+          Hochformat, und zusaetzlich um 6 rem nach oben aus dem Abschnitt
+          gezogen. Beides zusammen machte sie rund 736 px hoch, waehrend der
+          Text daneben endete — rechts lief das Foto weiter, links begann schon
+          der naechste Inhalt. Es las sich nicht als Komposition, sondern als
+          nachtraeglich daneben gestelltes Bild.
+
+          Jetzt bestimmt der Text die Hoehe, und das Bild folgt ihr (`h-full`
+          auf der von `stretch` bereits gedehnten Rasterzelle). Damit ist die
+          Bildhoehe aus dem Inhalt abgeleitet statt gesetzt: wird der Text auf
+          einem Breakpoint kuerzer, wird auch das Bild flacher, und die
+          Unterkanten bleiben in jedem Fall auf einer Linie.
+
+          ── Warum zwei Spalten erst ab `xl` ────────────────────────────────
+          Die Textspalte ist 32 rem breit, und der Fliesstext ist dadurch rund
+          459 px hoch — auf jeder Breite gleich. Bei 1024 px blieben der
+          Bildzelle davon nur 369 px, also ein Hochformat von 0,80 : 1, in dem
+          nur noch 44–89 % der Bildbreite sichtbar waren. Das ist derselbe
+          Fehler wie vorher, nur kleiner.
+
+          Aus dem Zweispalter herauszukommen ist dort die bessere Antwort als
+          ihn zu quetschen: von 1024 bis 1279 px stehen Text und Bild
+          untereinander, das Bild in voller Breite und flachem Querformat. Ab
+          1280 px ist genug Breite fuer beides nebeneinander da.
+        */}
+        <div className="grid gap-12 xl:grid-cols-[minmax(0,32rem)_1fr] xl:gap-16">
+          <div>
+            <SectionHeading
+              eyebrow="Darauf kommt es im Reinigungsalltag an"
+              title={heading.sectionHeadings[0]}
+              subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
+            />
+
+            {/*
+              Zweite Informationsebene innerhalb derselben Spalte, nicht ein
+              Block, der unter dem Text weiterlaeuft. Zwei Mittel tragen das:
+              der groessere Abstand nach oben, der ihn vom Fliesstext loest,
+              und die kleinere Schriftgroesse.
+
+              Vorher stand die Zeile in `text-xl sm:text-2xl` und damit fast
+              auf Augenhoehe mit der Abschnitts-Ueberschrift — zwei Aussagen
+              gleichen Gewichts direkt untereinander, von denen keine die
+              andere stuetzt. Eine Stufe darunter liest sie sich als Beleg zur
+              Ueberschrift, was sie inhaltlich auch ist.
+
+              Die blaue Akzentlinie bleibt: sie ordnet den Block dem Thema
+              Zuverlaessigkeit zu, ohne eine Kartenhuelle zu brauchen.
+            */}
+            <div className="mt-12 border-l-2 border-brand-500 pl-7">
+              <p className="font-display display-lg text-lg font-medium text-brand-900 sm:text-xl">
+                {leadTrustPoint.title}
+              </p>
+              <p className="measure mt-3 text-base leading-relaxed text-ink-soft">
+                {leadTrustPoint.description}
+              </p>
+            </div>
+          </div>
+
+          {/*
+            ── Warum der Randanschnitt entfallen ist ────────────────────────
+            Die Flaeche lief ab Desktop mit `mr-[calc(50%-50vw)]` bis an den
+            Fensterrand. Der Trick setzt voraus, dass das Element die volle
+            Breite des Inhaltscontainers hat — dann sind 50 % genau die halbe
+            Containerbreite. Hier steht es aber in der rechten Rasterzelle, und
+            die ist bei 1440 px nur 654 px breit. Gemessen ergab das eine
+            Layoutbreite von 1040 px bei 759 px sichtbarer Flaeche: rund 386 px
+            Ueberschuss, den `overflow-hidden` rechts abschnitt.
+
+            Das war nicht nur Verschnitt. `object-position` rechnet auf der
+            Layoutbreite, nicht auf dem sichtbaren Rest — die beiden Personen
+            wurden also auf 80 % einer Flaeche positioniert, deren rechtes
+            Viertel gar nicht zu sehen war. Der Ausschnitt liess sich damit
+            nicht verlaesslich steuern.
+
+            Ohne Anschnitt sind Layoutbreite und sichtbare Breite identisch,
+            und der Ausschnitt ist wieder berechenbar. Das Bild rundet dadurch
+            auf allen Seiten — `rounded-panel` wie die uebrigen Aufnahmen der
+            Seite, keine eigene Bauform.
+
+            ── Drei Stufen, alle am Motiv ausgerichtet ──────────────────────
+            Die Aufnahme ist 2400 × 1351 px, also 1,78 : 1 im Querformat. Sie
+            in ein 3 : 4-Hochformat zu zwingen hiess, 58 % der Bildbreite
+            wegzuschneiden — nur ein Streifen von 42 % blieb sichtbar, und nur
+            deshalb musste `object-position` auf 84 % stehen, um die beiden
+            Personen ueberhaupt einzufangen.
+
+            Jetzt bleibt jede Stufe in der Naehe der 1,78 des Motivs:
+
+              bis 1023 px   3 : 2 — 84 % der Bildbreite sichtbar, Hoehe voll
+              1024–1279 px  16 : 9 — praktisch deckungsgleich mit dem Motiv,
+                            volle Breite ueber die einspaltige Flaeche
+              ab 1280 px    kein Verhaeltnis, die Hoehe kommt vom Text; das
+                            ergibt gemessen etwa 1,4 : 1 und 79 % der
+                            Bildbreite bei voller Hoehe
+
+            In allen drei Faellen stehen beide Personen, das Tablet zwischen
+            ihnen und der Wagen als Kontext im Bild, ohne dass der Ausschnitt
+            sie an den Rand druecken muss.
+
+            `min-h` als Boden, nicht als Sollwert: er greift nur, falls der Text
+            auf einem schmalen Desktop-Fenster kuerzer umbricht als das Bild
+            hoch sein soll. Ein `max-h` braucht es nicht mehr — die Hoehe kann
+            gar nicht mehr davonlaufen, weil sie vom Text kommt.
+          */}
+          <BrandPhoto
+            photo={photos.teamBriefing}
+            aspect="aspect-[3/2] lg:aspect-[16/9] xl:aspect-auto"
+            sizes="(min-width: 1280px) 46vw, 100vw"
+            /* 80 % horizontal haelt die beiden Personen und das Tablet in der
+               Flaeche und schneidet links die leere dunkle Wand weg, die im
+               Motiv die ersten 30 % einnimmt. 42 % vertikal sichert die Koepfe
+               fuer den Fall, dass die Flaeche flacher wird als das Bild. */
+            objectPosition="80% 42%"
+            className="shadow-deep xl:h-full xl:min-h-[26rem]"
+          />
+        </div>
+
+        <FadeIn
+          as="ul"
+          className="mt-16 grid border-t border-line sm:grid-cols-2 sm:gap-x-12 lg:mt-20 lg:grid-cols-3"
+        >
+          {supportingTrustPoints.map((badge) => (
+            <li key={badge.title} className="flex gap-4 border-b border-line py-6">
+              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-white text-brand-500 shadow-raise">
+                <TrustIcon name={badge.icon} />
+              </span>
+              <div>
+                <p className="font-display text-base font-medium text-brand-900">{badge.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{badge.description}</p>
+              </div>
+            </li>
+          ))}
         </FadeIn>
       </Section>
 
@@ -1528,8 +1581,27 @@ export default async function HomePage() {
       {/*
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
         liest sich als Einsatzverzeichnis, nicht als Ortsnamen-SEO-Block.
+
+        ── Das Motiv im Hintergrund ────────────────────────────────────────
+        Weiter oben stand die Aufnahme aus Berlin-Mitte als eigene, randlose
+        Bildzäsur — 21:9 über die volle Fensterbreite, mit einer Bildunter-
+        schrift zum Einsatzgebiet. Sie ist entfallen: die Aussage dieser
+        Zäsur („in allen zwölf Bezirken unterwegs") ist genau die Aussage
+        dieses Abschnitts, nur ohne dessen Bezirksliste. Zwei Abschnitte für
+        dieselbe Information, dazwischen der halbe Seitenverlauf.
+
+        Dasselbe Asset liegt jetzt hier als Tonebene unter der Fläche. Es
+        kostet keinen zusätzlichen Scrollweg mehr und steht an der Stelle,
+        an der die Bezirke tatsächlich stehen. Der Bildausschnitt ist nach
+        rechts gesetzt: dort liegt keine Überschrift, und das Register
+        beginnt erst darunter.
       */}
-      <Section background="tint" surface="left" spacing="compact">
+      <Section
+        background="tint"
+        surface="left"
+        spacing="compact"
+        backdrop={{ src: districtPhotos.mitte.src, objectPosition: "72% 30%" }}
+      >
         <SectionHeading
           scale="editorial"
           eyebrow="Gebäudereinigung vor Ort"
