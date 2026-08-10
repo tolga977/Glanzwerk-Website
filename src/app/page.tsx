@@ -9,7 +9,9 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
-import HeroMedia from "@/components/home/HeroMedia";
+import HeroStage from "@/components/home/HeroStage";
+import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
+import HeroBrandStrip from "@/components/home/HeroBrandStrip";
 import ContactMoment from "@/components/home/ContactMoment";
 import OwnerNote from "@/components/home/OwnerNote";
 import ReviewMarquee from "@/components/home/ReviewMarquee";
@@ -17,10 +19,9 @@ import ClientLogos from "@/components/home/ClientLogos";
 import ProductLogos from "@/components/home/ProductLogos";
 import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
 import GoogleRating from "@/components/ui/GoogleRating";
-import ContactForm from "@/components/forms/ContactForm";
 import JsonLd from "@/components/seo/JsonLd";
 import { getGoogleRating } from "@/lib/googleRating";
-import { owner, serviceVehiclePhoto } from "@/data/owner";
+import { serviceVehiclePhoto } from "@/data/owner";
 import { services } from "@/data/services";
 import { districts } from "@/data/districts";
 import { districtPhotos } from "@/data/districtPhotos";
@@ -28,15 +29,39 @@ import { articles } from "@/data/articles";
 import { clientLogos } from "@/data/clientLogos";
 import { approvedProductLogos } from "@/data/productLogos";
 import { innungMembership } from "@/data/memberships";
+import { heroStripItems } from "@/data/heroTrust";
 import { photos } from "@/data/photos";
 import { servicePhotos } from "@/data/servicePhotos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
 import { professionalServiceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
-import { renderHighlightedH1 } from "@/lib/renderHeading";
 
 const heading = seoHeadings["/"];
+
+/*
+ * Zeilenfall der Hero-Überschrift.
+ *
+ * Die Entwurfsvorlage setzt das Ortswort auf eine eigene Zeile und färbt es
+ * im Markenblau — bei „Gebäudereinigung Berlin" also „Gebäudereinigung" /
+ * „Berlin". Statt diesen Umbruch als zwei feste Zeichenketten ins Markup zu
+ * schreiben, wird er aus der bestehenden H1 abgeleitet: alles bis zum letzten
+ * Wort trägt die erste Zeile, das letzte Wort die zweite.
+ *
+ * Damit ändert sich am SEO-relevanten Text kein Zeichen — Inhalt, Wortlaut
+ * und Reihenfolge kommen unverändert aus `seoHeadings`. Und wenn die H1
+ * dort einmal anders lautet, fällt der Umbruch weiterhin an der richtigen
+ * Stelle statt auf ein hartkodiertes „Berlin" zu zeigen.
+ *
+ * `h1Highlight` aus `seoHeadings` wird hier absichtlich nicht verwendet: für
+ * die Startseite deckt es die gesamte H1 ab, was in der vorherigen dunklen
+ * Fassung eine vollständig hellblaue Überschrift ergab. Auf der hellen Bühne
+ * ist der Akzent auf das letzte Wort begrenzt. Das Feld bleibt unverändert
+ * und wird von den übrigen Seiten weiter genutzt.
+ */
+const h1Words = heading.h1.trim().split(/\s+/);
+const h1Accent = h1Words[h1Words.length - 1];
+const h1Lead = h1Words.slice(0, -1).join(" ");
 
 export const metadata: Metadata = {
   ...buildMetadata({
@@ -401,220 +426,395 @@ export default async function HomePage() {
       />
 
       {/*
-        1. Hero — die Markenbuehne.
+        ══ 1. Hero — die Bühne aus Kopfzeile, Tageslicht und Anfrage ═══════
 
-        Hoehe ueber svh statt ueber Innenabstand: der Hero fuellt den Blick,
-        ohne ihn zu ueberschreiten. svh statt vh, weil vh auf Telefonen die
-        ein- und ausfahrende Adressleiste mitrechnet und der Hero dadurch
-        beim Scrollen springt. Der Inhalt sitzt vertikal zentriert — ein
-        Textblock, der im Raum steht, wirkt souveraener als einer, der von
-        oben eingeschoben ist.
+        ── Was diese Fassung anders macht als die vorherige ──────────────
+        Vorher war der Hero eine dunkle Markenbühne mit Bewegtbild: Navy als
+        Grundfläche, mehrere abdunkelnde Ebenen über dem Film, weiße Schrift
+        darauf. Diese Fassung dreht das um. Der Grund ist links weiß, die
+        Schrift dunkel, und die Farbe kommt aus einem Verlauf, der nach
+        rechts in das Foto übergeht.
 
-        Die Medienebene liegt in HeroMedia und ist bereits auf das spaetere
-        Cinematic-Video vorbereitet; an dieser Stelle aendert sich dann nichts.
+        Der Unterschied ist nicht nur die Helligkeit. In der dunklen Fassung
+        musste jede Textstelle gegen wechselndes Bildmaterial gerechnet
+        werden, und die Überschrift konnte das hellblaue Markenblau nicht
+        tragen, ohne den Grund fast schwarz zu machen. Auf der weißen Fläche
+        liegen Überschrift und Fließtext bei 15,2:1 und 7,9:1 — der Kontrast
+        ist kein Thema mehr, und das Markenblau kann als Akzent in der
+        Überschrift stehen, wo es hingehört.
+
+        ── Der Aufbau, und warum er auf jeder Breite derselbe DOM ist ────
+        Die Bühne hat vier Teile: Textblock, Foto, Anfrageformular,
+        Vertrauenszeile. In dieser Reihenfolge stehen sie im Markup — und
+        das ist genau die Reihenfolge, die auf dem Telefon gebraucht wird:
+        Überschrift, Kernbotschaft, Bewertung, Handlungswege, dann das Bild,
+        dann das Formular, dann die Fakten.
+
+        Ab 1024 px wird aus demselben Markup die zweispaltige Bühne: das
+        Foto löst sich aus dem Fluss (`lg:absolute` in HeroStage) und wird
+        zur Fläche hinter allem, Textblock und Formular werden die beiden
+        Spalten eines Rasters.
+
+        Kein zweites Markup, kein `hidden`/`block`-Paar, kein zweites
+        <Image>. Das ist hier nicht Sparsamkeit, sondern eine
+        Performance-Bedingung: die Aufnahme ist das LCP-Element und wird mit
+        `priority` vorgeladen. Zwei Varianten davon im Markup würden beide
+        vorgeladen — die Hälfte davon immer umsonst.
+
+        Damit `lg:absolute` die volle Fensterbreite bekommt und nicht die
+        Rasterbreite, bleibt der Container hier bewusst ohne `relative`.
+        Positionsbezug des Fotos ist dadurch die Section, nicht der
+        Container. Textblock und Formular tragen ihr eigenes `relative z-20`.
+
+        ── Höhe ─────────────────────────────────────────────────────────
+        `lg:min-h-svh` — nur ab Desktop. Auf dem Telefon stehen Text, Bild
+        und Formular untereinander; eine Bühne, die dort auf eine
+        Bildschirmhöhe gezwungen wird, müsste entweder das Formular
+        abschneiden oder alles zusammenquetschen. Sie darf dort länger sein.
+
+        svh und nicht vh, weil vh auf Telefonen die ein- und ausfahrende
+        Adressleiste mitrechnet.
+
+        Der negative obere Außenabstand entspricht der Kopfhöhe
+        (`--header-height`, einschließlich Haarlinie) und zieht die Bühne
+        hinter die Kopfzeile. Der Innenabstand oben gibt denselben Betrag an
+        den Inhalt zurück.
       */}
-      {/*
-        Die Hero-Höhe ist jetzt an die Kopfzone gekoppelt statt an einen
-        gegriffenen Prozentwert.
-
-        Vorher: 78svh. Zusammen mit Hinweisleiste und Kopfzeile (137 px)
-        endete der Hero auf einem 900-px-Schirm bei 839 px — 61 px des
-        Folgeabschnitts hingen mit im Bild, ohne lesbar zu sein.
-
-        Jetzt füllt `100svh minus Kopfhöhe` den ersten Schirm exakt aus. Auf
-        demselben Gerät ist die Medienfläche dadurch rund 75 px höher, das
-        Video wirkt sichtbar größer, und darunter beginnt sauber der nächste
-        Abschnitt statt eines angeschnittenen Streifens.
-
-        svh statt vh, weil vh auf Telefonen die ein- und ausfahrende
-        Adressleiste mitrechnet und der Hero beim Scrollen springen würde.
-      */}
-      {/*
-        ── Warum der Hero jetzt anders aufgebaut ist ─────────────────────
-        Vorher lag alles in einem einzigen linksbündigen Block: Überschrift,
-        Satz, zwei Schaltflächen und darunter drei Glasplättchen mit
-        Bewertung, Versicherung und Antwortzeit. Die drei Plättchen brachen
-        auf gängigen Breiten in zwei Zeilen um (2 + 1) — der Hero endete also
-        mit einer unruhigen, halb gefüllten Reihe.
-
-        Jetzt trägt der Hero zwei getrennte Ebenen:
-
-          oben   die Aussage — Überschrift, Satz, Handlungswege. Sie steht
-                 allein und bekommt die ganze Höhe.
-          unten  eine Vertrauensleiste über die volle Fensterbreite, durch
-                 eine Haarlinie abgesetzt.
-
-        Das ist der Unterschied zwischen "Etiketten unter einem Textblock"
-        und einer Leiste, die den Hero unten abschließt. Eine über die volle
-        Breite laufende Faktenzeile ist die Bauform seriöser Unternehmens-
-        und Architekturauftritte; gerundete Glasplättchen sind die von
-        Software-Startseiten.
-
-        Nebeneffekt: die Leiste bildet zugleich die Kante zum nächsten
-        Abschnitt und macht aus dem harten Schnitt einen Übergang.
-      */}
-      <section className="relative isolate flex min-h-[calc(100svh-7rem)] flex-col overflow-hidden bg-brand-950 2xl:min-h-[calc(100svh-8rem)]">
-        <HeroMedia />
+      <section
+        data-hero-stage
+        className="relative isolate mt-[calc(var(--header-height)*-1)] flex flex-col overflow-hidden bg-white lg:min-h-[clamp(40rem,100svh,58rem)]"
+      >
         {/*
-          `flex-1` plus `justify-end`: der Textblock sitzt im oberen Bereich
-          und läuft gegen die Vertrauensleiste aus, statt exakt mittig zu
-          stehen. Optisch mittig heißt bei einem Block, der nach unten
-          schwerer wird, ohnehin: leicht darüber.
-        */}
-        <div className="container-page relative z-10 flex flex-1 flex-col justify-center pb-14 pt-12 sm:pb-16 sm:pt-14 lg:pb-20 lg:pt-16">
-          <div className="max-w-[46rem]">
-            {/*
-              Die Auszeichnungszeile über der Überschrift ist entfallen. Sie
-              wiederholte mit "Gebäudereinigung für Gewerbekunden in Berlin"
-              fast wörtlich die Überschrift darunter — und ein gerundetes
-              Glas-Etikett über einer großen Headline ist genau das Muster,
-              das auf beinahe jeder generierten Seite steht. Der Platz geht
-              an das Video.
-            */}
-            {/*
-              Zwei Wörter tragen die Fläche allein. Die Größe steigt deshalb
-              von 56 auf 72 px ab Desktop; auf dem Telefon bleiben es 38 px,
-              gemessen: bei 44 px stand "Gebäudereinigung" exakt auf beiden
-              Innenkanten und wirkte eingeklemmt statt groß.
+          ── Vertikale Komposition ────────────────────────────────────────
+          Der obere Innenabstand ist Kopfhöhe PLUS 3,5 rem ab Desktop und
+          PLUS 3 rem darunter. Die Kopfhöhe holt den von der Bühne
+          überlagerten Streifen zurück, der Zuschlag ist ein bewusster
+          Abstand: die Überschrift soll nicht an der Kopfzeile kleben, sondern
+          erkennbar nach ihr beginnen.
 
-              Einfarbig in Weiß. Bei zwei Wörtern wäre eine eingefärbte
-              Teilzeile kein Akzent mehr, sondern eine cyanfarbene Headline.
+          Im gestapelten Layout wirkt der Zuschlag unmittelbar, weil dort
+          nicht zentriert wird — 2 rem waren dort gemessen 32 px und damit für
+          eine 60 px hohe Überschrift zu knapp.
+
+          Zusammen mit `items-center` ergibt das auf 1440 × 900 rund 180 px
+          Luft zwischen Kopfzeile und Überschrift, auf 1366 × 768 noch rund
+          115 px, und auf einer knappen Höhe von 700 px immer noch etwa 80 px.
+          Der Abstand schrumpft also mit, statt bei kleinen Höhen den Inhalt
+          aus der Bühne zu schieben — das ist der Grund, warum er über
+          Innenabstand plus Zentrierung läuft und nicht über einen festen
+          Versatz.
+
+          Die Bühnenhöhe an der Section ist `clamp(40rem, 100svh, 58rem)` —
+          also Boden UND Deckel, nicht nur eine Bildschirmhöhe:
+
+            Boden 40 rem (640 px)  Unter dieser Fensterhöhe wird die Bühne
+                                   nicht weiter zusammengedrückt, sondern
+                                   beginnt zu scrollen.
+            Deckel 58 rem (928 px) Darüber wächst sie nicht mit.
+
+          Der Deckel ist nachträglich dazugekommen, und zwar wegen einer
+          Messung: auf einem 1024 × 1366 großen Fenster (Tablet im Hochformat)
+          war die Bühne 1366 px hoch, der Inhalt aber nur rund 414 px. Die
+          Zentrierung verteilte den Rest gleichmäßig — gemessen 420 px
+          Abstand zwischen Kopfzeile und Überschrift. Das ist kein bewusster
+          Abstand mehr, sondern eine Leerstelle, in der die Komposition ihren
+          Halt verliert.
+
+          Mit dem Deckel liegt derselbe Abstand bei rund 200 px, und auf den
+          gängigen Desktop-Höhen ändert sich nichts: 900 px und 768 px liegen
+          beide unterhalb von 928 px und laufen unverändert durch.
+
+          Dass auf sehr hohen Fenstern der nächste Abschnitt oberhalb der
+          Faltkante beginnt, ist dabei kein Nebeneffekt, sondern richtig — eine
+          Bühne von 1366 px Höhe ist keine Bühne mehr, sondern eine Wand.
+
+          Der untere Innenabstand ist kleiner als der obere. Das ist Absicht:
+          seit die Vertrauensleiste entfallen ist, läuft das Foto bis an die
+          Unterkante, und dort löst es sich über `.hero-floor` ins Weiße auf.
+          Ein großer Innenabstand unten würde diese Zone nur leer halten.
+        */}
+        <div className="container-page flex flex-1 flex-col pb-12 pt-[calc(var(--header-height)+3rem)] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--hero-panel-width))] lg:items-center lg:gap-12 lg:pb-[var(--hero-gap-bottom)] lg:pt-[calc(var(--header-height)+var(--hero-gap-top))] xl:gap-16">
+          {/* ── 1) Aussage ────────────────────────────────────────────── */}
+          <div className="relative z-20">
+            {/*
+              Keine Auszeichnungszeile über der Überschrift. Ein gerundetes
+              Etikett mit „Ihre Reinigungsfirma in Berlin" wiederholte nur
+              die Überschrift darunter und ist das Muster, das auf beinahe
+              jeder erzeugten Seite steht. Die Hierarchie beginnt direkt mit
+              der Überschrift.
+
+              Der Umbruch ist gesetzt, nicht dem Zufall überlassen: das
+              letzte Wort der bestehenden H1 steht auf einer eigenen Zeile
+              und trägt das Markenblau. Bei „Gebäudereinigung Berlin" ergibt
+              das die Aufteilung der Entwurfsvorlage, ohne dass am
+              SEO-relevanten Text ein Zeichen geändert wurde — Inhalt und
+              Reihenfolge sind identisch, nur der Zeilenfall und die Farbe
+              des letzten Wortes sind bestimmt.
+
+              brand-500 auf Weiß ergibt 4,98:1 und ist damit auch für
+              Fließtextgrößen ausreichend; bei 72 px ist es weit über der
+              Schwelle.
+
+              ── Warum hier kein <br /> steht ──────────────────────────────
+              Der Umbruch lief zuerst über ein <br />. Gemessen ergab der
+              Textinhalt der Überschrift dann „GebäudereinigungBerlin" — ohne
+              Leerzeichen, weil ein <br /> keinen Textknoten beisteuert. Für
+              das Auge war das unsichtbar, für alles, was den Text ausliest,
+              ein einziges Wort. Bei der wichtigsten Überschrift der Seite ist
+              das keine Kleinigkeit.
+
+              Jetzt trägt das Ortswort ein `block` und erzwingt damit den
+              Umbruch als Element, während zwischen den beiden Teilen ein
+              echtes Leerzeichen im Text steht. Der Textinhalt lautet wieder
+              „Gebäudereinigung Berlin", identisch mit `seoHeadings`.
             */}
-            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-white sm:text-6xl lg:text-7xl">
-              {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-300")}
+            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-brand-900 sm:text-6xl lg:text-7xl">
+              {h1Lead && `${h1Lead} `}
+              <span className="block text-brand-500">{h1Accent}</span>
             </h1>
 
-            {/* Ein Satz. Nennt Leistung, Zielgruppe und Gebiet — mehr nicht. */}
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:mt-7 sm:text-lg">
+            {/*
+              ── Drei Stufen unter der Überschrift ────────────────────────
+              Überschrift → Versprechen → für wen. Genau die Staffelung der
+              Entwurfsvorlage, und die drei Zeilen leisten Verschiedenes:
+
+                H1        das Thema (SEO-tragend, unverändert)
+                Slogan    warum man es bei Glanzwerk beauftragt
+                Zeile 3   für wen es gemacht ist
+
+              Der Slogan ist der Wortlaut aus der Vorlage des Betreibers und
+              damit dessen eigene Formulierung, keine hier erfundene
+              Marketingzeile. Er behauptet auch nichts Prüfbares: keine Zahl,
+              kein Zertifikat, keine Frist. Das Markenblau sitzt auf „jeden
+              Tag", wie in der Vorlage.
+
+              Die dritte Zeile ist der unveränderte Bestandssatz der Seite.
+              Er nennt Leistung, Zielgruppe und Gebiet konkret und ist aus den
+              tatsächlich angebotenen Leistungen abgeleitet — deshalb steht
+              hier nicht die allgemeinere Formulierung der Vorlage („Für
+              Unternehmen, Verwaltungen, Praxen und Immobilien"), sondern die
+              belegte.
+
+              Die Rangfolge läuft über zwei Merkmale gleichzeitig, nicht nur
+              über die Schriftgröße: 72 → 24 → 16 px und brand-900 → brand-900
+              → ink-soft. Der Slogan bleibt dadurch dunkel und nah an der
+              Überschrift, die Zielgruppenzeile tritt zurück.
+            */}
+            <p className="mt-6 max-w-lg text-xl font-medium leading-snug text-brand-900 sm:mt-7 sm:text-2xl">
+              Sauberkeit, auf die Sie sich <span className="text-brand-500">jeden Tag</span>{" "}
+              verlassen können.
+            </p>
+
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">
               Unterhaltsreinigung für Büros, Praxen, Kanzleien, Autohäuser und weitere
               Gewerbeobjekte — in ganz Berlin.
             </p>
 
             {/*
-              Groesserer Abstand und mehr Luft zwischen den beiden Zielen: die
-              Schaltflaechen sollen als eigener Akt der Komposition gelesen
-              werden, nicht als Fussleiste des Absatzes.
+              Die Bewertung steht zwischen Aussage und Handlung: sie ist der
+              Beleg, der die Entscheidung stützt, und gehört an die Stelle,
+              an der die Entscheidung ansteht.
+
+              Zahlen und Anzahl kommen aus `getGoogleRating()` — live aus
+              dem Unternehmensprofil oder aus dem von Hand geprüften Stand.
+              Nichts daran ist gerundet oder mit „über" versehen.
             */}
-            <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:gap-5">
-              <Button href="/preisrechner" size="xl">
-                Preis berechnen
-              </Button>
-              <Button href="/kontakt" variant="onMedia" size="xl">
-                Angebot anfragen
-              </Button>
+            <div className="mt-8 sm:mt-9">
+              <GoogleRating data={googleRating} variant="heroLight" />
             </div>
 
             {/*
-              Die Google-Bewertung steht wieder hier, direkt unter den
-              Schaltflächen — als Glasplättchen, wie vor dem letzten
-              Durchgang. Sie ist der unmittelbare Social Proof zum ersten
-              Eindruck und gehört an die Stelle, an der jemand gerade zwei
-              Handlungswege abgewogen hat.
+              ── Ein Cluster, nicht zwei Elemente ─────────────────────────
+              Die beiden Handlungswege standen zuvor in eigenen Blöcken mit je
+              einer Kleinzeile darunter und 24 px Abstand dazwischen. Das las
+              sich als zwei getrennte Angebote statt als eine Entscheidung mit
+              zwei Wegen — und die Kleinzeilen doppelten Information, die
+              ohnehin schon auf der Seite steht: die Zwei-Minuten-Zusage trägt
+              der Preisrechner-Abschnitt weiter unten selbst, und die
+              Telefonnummer steht in der Kopfzeile.
 
-              Die Fußleiste des Heros zeigt sie nicht mehr: dieselbe Zahl an
-              zwei Stellen desselben Bildausschnitts verstärkt sich nicht,
-              sie wiederholt sich nur.
+              Jetzt eine Reihe, 12 px Abstand, gemeinsame Grundlinie über
+              `items-center`. Die Abstufung übernehmen Fläche und Umriss, nicht
+              die Größe: beide Schaltflächen sind gleich hoch.
+
+              ── Warum eine ausgeschriebene Mindesthöhe ───────────────────
+              Gemessen waren die beiden vorher 52 und 55 px hoch. Die Ursache
+              liegt in der Variante: `outline` bringt einen 2 px starken
+              Rahmen mit, der oben und unten je 2 px zur Gesamthöhe addiert,
+              während `primary` keinen hat. Beide tragen dieselbe
+              `size`-Angabe — die Größe war also nominell gleich und optisch
+              nicht.
+
+              `min-h-14` setzt beide auf 56 px. Das ist die Höhe, die die
+              Umriss-Variante ohnehin erreicht, und sie liegt deutlich über
+              der 44-px-Mindestgröße für Touch. Nicht über eine Korrektur am
+              Rahmen gelöst: eine ausgeschriebene Höhe ist an dieser Stelle
+              lesbar, ein kompensierender transparenter Rahmen wäre ein Trick,
+              den beim nächsten Lesen niemand einordnen kann.
             */}
-            <div className="mt-6 sm:mt-7">
-              <GoogleRating data={googleRating} variant="badge" />
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:mt-9 sm:flex-row sm:items-center">
+              <Button
+                href="/preisrechner"
+                size="lg"
+                className="min-h-14 w-full sm:w-auto"
+              >
+                Preis schätzen
+              </Button>
+              <Button
+                href={siteConfig.phoneHref}
+                variant="outline"
+                size="lg"
+                className="min-h-14 w-full sm:w-auto"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                  className="shrink-0"
+                >
+                  <path
+                    d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Jetzt anrufen
+              </Button>
             </div>
+          </div>
+
+          {/* ── 2) Das Foto ───────────────────────────────────────────── */}
+          <HeroStage />
+
+          {/*
+            ── 3) Die Anfrage ──────────────────────────────────────────
+            Der Versatz nach unten ab Desktop ist Bildkomposition, nicht
+            Abstand: das Panel soll VOR der Person liegen und dabei ihren
+            Kopf und die Schultern frei lassen. Erst dadurch entsteht die
+            Staffelung Berlin → Person → Formular.
+
+            Gemessen an der eingepassten Aufnahme bei 1440 × 900: der Kopf
+            reicht bis y 294, ohne Versatz begann das Panel bei 273 und
+            schnitt ihn an. Mit 4 rem beginnt es bei 337 — der Kopf steht
+            frei, die untere und mittlere Körperhälfte liegt dahinter.
+
+            Der Versatz steht als `--hero-panel-offset` in globals.css und
+            wird auf kurzen Fenstern kleiner — mit dem festen Wert stünde das
+            Panel auf 1366 × 768 im Vertrauensstreifen.
+
+            ── Warum es an der Rasterkante endet und nicht an der Fensterkante ──
+            Zwischenzeitlich schob ein negativer rechter Außenabstand das Panel
+            bis auf 12 px an die Fensterkante. Mit der neuen, breiteren
+            Aufnahme ist das falsch: dort läuft jetzt die Glasfassade bis zum
+            Rand, und ein Panel an der Fensterkante würde sie vollständig
+            verdecken — gemessen blieben nur 13 px von ihr sichtbar.
+
+            An der Rasterkante bleiben rund 105 px Fassade rechts neben dem
+            Panel stehen, und die Kante liegt damit näher an der Körpermitte
+            der Person: sie überlagert deren rechte Hälfte, statt sie ganz
+            zuzudecken.
+
+            `ml-auto` und die feste Breite bleiben nötig, damit das Panel die
+            Rasterspalte nicht überdehnt.
+          */}
+          {/*
+            Ab 1280 px rückt das Panel um die halbe Außenmarge des Containers
+            über die Rasterkante hinaus nach rechts. Der Ausdruck ist
+            selbstbegrenzend: bei 1280 px ist die Marge null und der Versatz
+            ebenso, bei 1440 px sind es 40 px. Die Fassade rechts bleibt
+            dadurch immer sichtbar (bei 1440 px rund 65 px), und links vom
+            Panel wird entsprechend mehr von der Person frei.
+          */}
+          <div className="relative z-20 mt-10 lg:ml-auto lg:mt-[var(--hero-panel-offset)] lg:w-[var(--hero-panel-width)] xl:mr-[calc(-0.5*max(0rem,(100vw_-_80rem)/2))]">
+            <HeroQuoteWizard />
           </div>
         </div>
 
         {/*
-          ── Vertrauensleiste am Fuß des Heros ──────────────────────────
-          Drei Belege über die volle Fensterbreite, getrennt durch senkrechte
-          Haarlinien — keine Plättchen, keine Rahmen, keine Flächen.
+          ── Vertrauensstreifen am Fuß der Bühne ─────────────────────────
+          Vier belegte Angaben, eine Zeile, im ersten Bildschirm sichtbar.
 
-          Die Bewertung stand hier zuvor an erster Stelle. Sie ist jetzt aus
-          dieser Leiste entfernt, weil sie direkt darüber — unter den
-          Schaltflächen — bereits erscheint: derselbe Beleg zweimal im
-          selben Bildausschnitt ist keine Verstärkung, sondern eine
-          Wiederholung. Jedes Vertrauenselement hier übernimmt jetzt genau
-          eine, unterschiedliche Aufgabe.
+          ── Warum diese Bauform und nicht die vorherige ─────────────────
+          Hier stand zuvor dieselbe Information als sechsspaltiges Raster mit
+          Symbol über der Beschriftung. Gemessen war das 146 px hoch, bei
+          1024 px sogar 241 px — auf einem 768 px hohen Schirm knapp ein
+          Fünftel der Bühne, und der einzige Teil, der als Kartenraster
+          gelesen wurde.
 
-          An erster Stelle steht deshalb die Testphase — das einzige
-          Argument der Seite, das ein Risiko beim Kunden wegnimmt statt eine
-          Eigenschaft zu behaupten. Derselbe Fakt trägt weiter unten einen
-          eigenen, großformatigen Abschnitt; hier ist er die kurze Fassung,
-          so wie die Bewertung vorher als Plättchen und an anderer Stelle
-          als ausführliches Lockup erschien.
+          Drei Änderungen machen daraus einen Streifen:
+            vier statt sechs Einträge (Auswahl in heroTrust.tsx begründet)
+            Symbol NEBEN statt ÜBER der Beschriftung
+            kleinere Grade, engere Zeilenhöhe
 
-          Auf dem Telefon wird aus der Reihe eine waagerecht schiebbare
-          Zeile statt eines Umbruchs in drei Zeilen. Ein Umbruch würde die
-          Leiste zum Block machen und dem Video ein Drittel der Höhe nehmen;
-          geschoben bleibt sie eine Zeile und verhält sich wie das, was sie
-          ist — eine Fußleiste.
+          Ergebnis ist eine Zeile von rund 70 px statt eines Blocks von 146 px.
+          Die beiden übrigen Einträge sind nicht verloren, sie stehen weiter in
+          `heroTrust.tsx` — samt Quellenangabe und samt dem Nachweis, welche
+          zwei Punkte der Entwurfsvorlage im Projekt nicht belegt waren.
+
+          ── Warum ohne eigene Fläche ────────────────────────────────────
+          Kein `bg-white`, nur eine Haarlinie oben. Der Streifen liegt in der
+          Zone, in der sich das Foto über `.hero-floor` ohnehin ins Weiße
+          auflöst — eine zweite weiße Fläche darüber wäre ein Balken auf einem
+          Balken. So bleibt er Teil der Bühne, statt sie abzuschneiden.
+
+          ── Logos ──────────────────────────────────────────────────────
+          Die Vorlage zeigt neben den Angaben noch Siegel und Logos. Dafür
+          liegt im Projekt nichts vor: `clientLogos` ist eine leere Liste (bis
+          zur Freigabe durch die Kunden), `innungMembership` steht auf `null`,
+          und die Siegel der Vorlage („100 % Zufriedenheit garantiert",
+          „Geprüfter Dienstleister") sind nirgends belegt. Der Streifen bleibt
+          deshalb rein typografisch; sobald echte Logos vorliegen, ist rechts
+          daneben der Platz dafür.
         */}
-        <div className="relative z-10 border-t border-white/15 bg-brand-950/35 backdrop-blur-md">
+        <div className="relative z-20 border-t border-line">
           <div className="container-page">
-            <ul className="-mx-4 flex snap-x snap-mandatory items-stretch overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
-              {[
-                {
-                  label: "3 Monate ohne automatische Verlängerung",
-                  icon: (
-                    <>
-                      <circle cx="12" cy="12.5" r="7.5" stroke="currentColor" strokeWidth="1.8" />
-                      <path
-                        d="M12 8v4.5l3 2"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path d="M9 2.5h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                    </>
-                  ),
-                },
-                {
-                  label: "5 Mio. € Betriebshaftpflicht",
-                  icon: (
-                    <>
-                      <path
-                        d="M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6l7-3Z"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinejoin="round"
-                      />
-                      <path d="m9 12 2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </>
-                  ),
-                },
-                {
-                  label: `Antwort ${owner.responseTime}`,
-                  icon: (
-                    <>
-                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
-                      <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                    </>
-                  ),
-                },
-              ].map((fact, index) => (
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-5 py-5 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-0">
+              {heroStripItems.map((item, index) => (
                 <li
-                  key={fact.label}
-                  className={`flex shrink-0 snap-start items-center gap-2.5 py-5 pr-7 text-sm font-medium text-white sm:flex-1 lg:py-6 ${
-                    index === 0
-                      ? "pl-0 sm:pr-6"
-                      : "border-l border-white/15 pl-7 sm:pl-6 sm:pr-0"
+                  key={item.label}
+                  className={`flex items-start gap-2.5 lg:px-5 ${
+                    index === 0 ? "lg:pl-0" : "lg:border-l lg:border-line"
                   }`}
                 >
                   <svg
-                    width="18"
-                    height="18"
+                    width="19"
+                    height="19"
                     viewBox="0 0 24 24"
-                    fill="none"
                     aria-hidden="true"
-                    className="shrink-0 text-brand-300"
+                    className="mt-px shrink-0 text-brand-500"
                   >
-                    {fact.icon}
+                    {item.icon}
                   </svg>
-                  <span className="whitespace-nowrap">{fact.label}</span>
+                  <span className="min-w-0">
+                    <span className="block text-[0.8125rem] font-medium leading-tight text-brand-900">
+                      {item.label}
+                    </span>
+                    {item.detail && (
+                      <span className="mt-0.5 block text-xs leading-tight text-ink-muted">
+                        {item.detail}
+                      </span>
+                    )}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </section>
+
+      {/*
+        Markenleiste unmittelbar unter der Buehne.
+
+        Sie steht bewusst ausserhalb der Hero-Section: die Buehne endet mit
+        dem Vertrauensstreifen, und was danach kommt, ist ein eigener
+        Abschnitt mit eigenem Grund. Innerhalb der Section haette die Leiste
+        die Buehnenhoehe mitbestimmt und den Streifen unter die Faltkante
+        geschoben.
+      */}
+      <HeroBrandStrip />
 
       {/*
         Der persoenliche Abschnitt — bewusst an zweiter Stelle.
@@ -1447,136 +1647,37 @@ export default async function HomePage() {
       </Section>
 
       {/*
-        Anfrageformular direkt auf der Startseite.
+        ── Hier stand ein zweites Anfrageformular ───────────────────────
+        An dieser Stelle lag der Abschnitt „Schreiben Sie kurz, was gereinigt
+        werden soll“ mit dem vollständigen Kontaktformular — auf der
+        Startseite der zweite Anfrageweg neben dem Hero.
 
-        Vorher fuehrte jeder Weg zur Anfrage ueber einen weiteren Klick auf
-        /kontakt. Jeder Zwischenschritt kostet Anfragen, und das Formular hat
-        nur fuenf Pflichtfelder — es passt hierher.
+        Er ist entfernt, weil die Hero-Bühne jetzt das vierschrittige
+        Formular „Kostenloses Angebot anfordern“ trägt. Zwei konkurrierende
+        Anfrageformulare auf derselben Seite teilen die Aufmerksamkeit, und
+        das schwächere von beiden gewinnt nichts dazu.
 
-        Links steht, was nach dem Absenden passiert, rechts das Formular.
-        Ungleiche Spalten, damit auch dieser Abschnitt nicht als mittige
-        Zweiteilung liest.
+        Entfernt wurde ausschließlich die Einbindung an dieser Stelle:
+        `ContactForm` selbst ist unverändert und trägt weiterhin die
+        Kontaktseite (`src/app/kontakt/page.tsx`). Prüfregeln und
+        Übermittlung liegen seit diesem Durchgang in
+        `src/lib/contactRequest.ts` und werden von beiden Formularen
+        gemeinsam benutzt.
 
-        Die dreimonatige Testphase erscheint hier zum dritten Mal auf der
-        Seite: einmal als Zahl im Beweisband, einmal als eigener Abschnitt,
-        einmal als Option beim Absenden.
+        Die Verankerung `id="anfrage"` ist mit dem Abschnitt entfallen. Im
+        Projekt verwies nichts darauf — geprüft über die gesamte Quelle,
+        kein einziger Verweis auf `#anfrage`.
+
+        Zum Übergang: der Wissensbereich davor läuft auf Weiß aus, der
+        FAQ-Bereich danach beginnt auf `muted`. Vorher lag zwischen beiden
+        die warme Fläche des Formulars als eigenes Kapitel. Ohne sie
+        stüßen zwei Abschnitte mit sehr ähnlichem Grund aneinander, was
+        genau die flache Stelle ergäbe, die dieser Wechsel vermeiden soll.
+        Der FAQ-Bereich trägt deshalb jetzt `decor` — dieselbe Lichtkante
+        an der Oberkante, die vorher das Formular trug. Sie macht aus dem
+        leisen Farbwechsel eine sichtbare Naht, ohne eine weitere
+        Trennlinie einzuführen.
       */}
-      {/*
-        Grundwechsel von Weiss auf Warm: der Wissensbereich davor laeuft
-        ebenfalls auf Weiss. Zwei identische Gruende hintereinander lesen
-        sich als eine einzige, sehr lange Flaeche — genau die flache Stelle,
-        die am Seitenende entstand.
-      */}
-      {/*
-        `decor` gibt der Flaeche eine Lichtkante an der Oberkante. Der
-        Wissensbereich davor laeuft auf Weiss aus, diese hier beginnt auf
-        Graphit — 255 gegen 244 ist ein Unterschied von elf Punkten und als
-        Kapitelgrenze zu leise. Die Kante macht aus dem Farbwechsel eine
-        sichtbare Naht, ohne eine weitere Trennlinie einzufuehren.
-      */}
-      <Section background="warm" id="anfrage" decor>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20">
-          <div className="lg:pt-2">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
-              <span aria-hidden="true" className="brand-tick text-brand-400" />
-              Anfrage stellen
-            </p>
-            <h2 className="font-display display-lg mt-5 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-5xl">
-              Schreiben Sie kurz, was gereinigt werden soll
-            </h2>
-            <p className="measure mt-6 text-base leading-relaxed text-ink-soft">
-              Fünf Angaben genügen. {owner.name} meldet sich {owner.responseTime}{" "}
-              {owner.responseTimeQualifier} bei Ihnen — mit Rückfragen zum Objekt oder direkt mit
-              den nächsten Schritten.
-            </p>
-
-            <ul className="mt-9 space-y-4 border-t border-line pt-8">
-              {[
-                "Kostenlos und unverbindlich",
-                "Auf Wunsch mit dreimonatiger Testphase",
-                "Besichtigungstermin bei größeren Objekten",
-              ].map((item) => (
-                <li key={item} className="flex gap-3 text-base text-ink-soft">
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    className="mt-0.5 shrink-0 text-brand-500"
-                  >
-                    <path
-                      d="M5 13l4 4L19 7"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-9 border-t border-line pt-8">
-              <a
-                href={siteConfig.phoneHref}
-                className="inline-flex min-h-11 items-center gap-2.5 rounded-control text-base font-semibold text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Lieber telefonisch? {siteConfig.phone}
-              </a>
-            </div>
-          </div>
-
-          {/*
-            Das Formular stand in einer weissen Karte mit Rahmen und
-            Schlagschatten — das groesste schwebende Objekt der Seite, auf
-            einer Flaeche, die sonst ohne Behaelter auskommt.
-
-            Jetzt ist es eine Flaeche statt eines Objekts: reines Weiss,
-            kein Rahmen, kein Schatten, und nach rechts bis an die
-            Fensterkante durchlaufend, wo die Rundung entfaellt. Damit
-            gehoert es zur Seite, statt auf ihr zu liegen — dieselbe
-            Anschnitt-Sprache wie das Inhaberbild (links) und das
-            Arbeitsfoto im Vertrauensbereich (rechts).
-
-            ── Warum ueberhaupt eine eigene Flaeche ─────────────────────
-            Das Formular lag zwischenzeitlich direkt auf dem warmen Grund.
-            Gemessen ergab das einen Feldrahmen (#e7eaef) auf #f4f3f1 mit
-            1,08:1 — die Feldgrenzen verschwanden praktisch. Auf Weiss sind
-            es 1,20:1, also der Stand von vorher. Die Flaeche ist hier
-            keine Dekoration, sondern das, was die Eingabefelder ueberhaupt
-            als Eingabefelder lesbar haelt. (Der Feldrahmen selbst liegt
-            unter 3:1 und waere in FormField.tsx zu beheben — das ist eine
-            eigene Sache und nicht Teil dieses Durchgangs.)
-
-            ── Warum hier NICHT `calc(50%-50vw)` steht ──────────────────
-            Das ist der Anschnitt-Ausdruck, den Inhaberbild und Arbeitsfoto
-            benutzen. Er rechnet gegen die Rasterspalte, nicht gegen das
-            Fenster, und schiesst deshalb ueber die Kante hinaus — bei
-            1528 px Fensterbreite um 240 px. Bei einer reinen Bildflaeche
-            faellt das nicht auf, weil der Ueberstand beschnitten wird und
-            dort kein Inhalt steht. Hier stuenden die Eingabefelder im
-            abgeschnittenen Bereich.
-
-            Der Ausdruck unten misst stattdessen genau den Abstand von der
-            Spaltenkante zur Fensterkante: halbe Differenz zwischen Fenster
-            und Container (max-w-7xl) plus dessen Innenabstand (px-8).
-            Unterhalb von 80rem Fensterbreite bleiben davon die 2rem uebrig.
-          */}
-          <div className="rounded-panel bg-white p-7 sm:p-9 lg:-mr-[calc((100vw-min(100vw,80rem))/2+2rem)] lg:rounded-r-none lg:py-12 lg:pl-12 lg:pr-12">
-            <ContactForm />
-          </div>
-        </div>
-      </Section>
 
       {/*
         10. FAQ — Ueberschrift steht links und bleibt beim Scrollen stehen,
@@ -1584,7 +1685,7 @@ export default async function HomePage() {
         dem Abschluss entlastet, und zugleich die einzige zweispaltige
         Text-zu-Text-Anordnung der Seite.
       */}
-      <Section background="muted" id="faq" surface="bottom">
+      <Section background="muted" id="faq" surface="bottom" decor>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} />

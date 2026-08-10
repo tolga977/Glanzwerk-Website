@@ -3,6 +3,196 @@
 :root {
   --background: #ffffff;
   --foreground: #14181f;
+
+  /*
+   * Gesamthöhe der Kopfzeile — Inhaltshöhe PLUS Haarlinie.
+   *
+   * Der Wert existiert, weil die Hero-Bühne genau um diese Höhe nach oben
+   * gezogen wird, damit sie hinter der Kopfzeile durchläuft. Ohne das
+   * zusätzliche Pixel für den unteren Rahmen bleibt an der Fensteroberkante
+   * ein weißer Streifen von einem Pixel stehen — gemessen, nicht vermutet:
+   * `h-28` sind 112 px Inhalt, `border-b` macht daraus 113 px.
+   *
+   * Die Haarlinie ist im Bühnenzustand durchsichtig, sie belegt aber
+   * weiterhin ihren Platz. Das ist Absicht: würde sie dort entfallen, wäre
+   * die Kopfzeile in den beiden Zuständen unterschiedlich hoch und der
+   * Zustandswechsel eine Layoutverschiebung.
+   *
+   * Als Variable und nicht als zwei Tailwind-Klassen, weil derselbe Wert an
+   * zwei Stellen gebraucht wird — negativer Außenabstand und ausgleichender
+   * Innenabstand der Bühne — und beide zwangsläufig gleich bleiben müssen.
+   */
+  --header-height: calc(7rem + 1px);
+
+  /*
+   * Luft über und unter der Hero-Komposition.
+   *
+   * ── Warum das an der Fensterhöhe hängt und nicht an der Breite ───────
+   * Die Bühne trägt Überschrift, Slogan, Zielgruppenzeile, Bewertung, zwei
+   * Handlungswege und den Vertrauensstreifen — zusammen rund 560 px, die
+   * nicht kleiner werden können, ohne den Inhalt zu beschneiden. Auf einem
+   * 900 px hohen Fenster bleibt daneben genug Platz für einen großzügigen
+   * Abstand. Auf einem 768 px hohen nicht.
+   *
+   * Gemessen mit festen 3,5 rem oben und unten: auf 1366 × 768 wuchs die
+   * Bühne auf 788 px, und der Vertrauensstreifen endete bei 788 — also
+   * unterhalb der Faltkante. Er soll aber ohne Scrollen sichtbar sein.
+   *
+   * Tailwind kennt von sich aus keine Höhen-Breakpoints, deshalb stehen die
+   * beiden Werte hier als Variablen und werden unten über eine
+   * Höhen-Media-Query umgeschaltet. Die Alternative — die Abstände generell
+   * kleiner zu machen — hätte die großen Schirme mitbestraft, auf denen
+   * gerade nichts fehlt.
+   */
+  --hero-gap-top: 3.5rem;
+  --hero-gap-bottom: 3.5rem;
+
+  /*
+   * Versatz des Anfragepanels nach unten.
+   *
+   * Bildkomposition, kein Abstand: das Panel soll vor dem UNTEREN Rücken der
+   * Person liegen und Kopf, Schultern und den oberen Rücken frei lassen. Der
+   * Wert hängt an der Fensterhöhe, weil er sonst auf kurzen Schirmen das
+   * Panel in den Vertrauensstreifen schieben würde.
+   */
+  --hero-panel-offset: 15rem;
+
+  /*
+   * Wie weit die Bildfläche über der Bühnenunterkante endet.
+   *
+   * Steuert damit die Größe der eingepassten Aufnahme: je flacher die Fläche,
+   * desto kleiner das Bild und desto höher liegt die Schulterlinie der Person.
+   * Auf kurzen Fenstern ist das der Hebel, der Kopf und Schultern über dem
+   * Panel frei hält (siehe Höhen-Media-Query unten).
+   */
+  --hero-photo-bottom: 6%;
+
+  /*
+   * Breite des Anfragepanels.
+   *
+   * ── Warum 20 rem und nicht mehr ──────────────────────────────────────
+   * Die Breite ist das einzige wirksame Mittel, um mehr von der Person
+   * sichtbar zu machen. Das Bild selbst lässt sich dafür nicht verschieben:
+   * die Person sitzt in der Aufnahme bei 62–85 % der Bildbreite, und rechts
+   * von ihr endet das Foto mit der Fassade. Ein Verschieben nach links würde
+   * rechts eine weiße Lücke hinterlassen, und ein kleineres Bild schiebt die
+   * Person bei rechter Anschlagung sogar weiter nach rechts unter das Panel.
+   *
+   * Bei 320 px beginnt die Panelkante rund auf der Körpermitte — genau das
+   * gewünschte Verhältnis: die linke Hälfte des Rückens bleibt sichtbar, die
+   * rechte liegt dahinter.
+   *
+   * Zwischen 1024 und 1279 px zusätzlich schmaler: dort ist die Bühne so
+   * eng, dass selbst 320 px die Person, den Fernsehturm und die Fassade
+   * verdecken würden.
+   */
+  --hero-panel-width: 22rem;
+}
+
+/*
+ * Ab hier wird der Platz knapp. 840 px ist die Schwelle, unterhalb der
+ * Inhalt plus großzügige Abstände nicht mehr in eine Bildschirmhöhe passen:
+ * bei 2 rem oben und unten endet der Streifen auf 1366 × 768 bei 739 px und
+ * liegt damit mit 29 px Reserve im ersten Schirm.
+ */
+@media (max-height: 840px) {
+  :root {
+    --hero-gap-top: 2rem;
+    --hero-gap-bottom: 2rem;
+    /*
+     * Auf 1366 × 768 stünde das Panel mit 8,5 rem Versatz im Streifen — und
+     * mit 3 rem schnitt es die Schultern an (gemessen: Schulterlinie 290,
+     * Panel-Oberkante 231). Beides zusammen ging nicht auf, solange das Bild
+     * dieselbe Höhe behielt.
+     *
+     * Gelöst über beide Werte: das Bild endet 20 % statt 10 % über der
+     * Unterkante und wird dadurch kleiner, die Schulterlinie wandert auf 258.
+     * Der Panelversatz von 6,25 rem setzt die Oberkante auf 259 — Kopf und
+     * Schultern bleiben frei, und bis zum Vertrauensstreifen bleiben 39 px.
+     */
+    /*
+     * Das Panel ist nach der Verdichtung rund 400 statt 432 px hoch — die
+     * eingesparte Höhe geht hier in zusätzlichen Versatz nach unten, damit
+     * mehr von der Person frei bleibt. Mehr als 5,5 rem schiebt den
+     * Vertrauensstreifen unter die Faltkante.
+     */
+    --hero-panel-offset: 5.5rem;
+    /*
+     * 8 % statt 20 %: bei 20 % war das Bild so klein, dass das Motiv nach
+     * rechts rutschte und der Fernsehturm (955 px) hinter die Panelkante
+     * (935 px) fiel. Mit 8 % liegt er bei 896 px und damit frei. Der Kopf
+     * bleibt in beiden Fällen über dem Panel.
+     */
+    /*
+     * 14 %: durch den geringeren Panelversatz liegt die Oberkante bei 225 px.
+     * Das kleinere Bild hebt den Kopf auf 216 px und hält ihn damit frei.
+     */
+    --hero-photo-bottom: 14%;
+  }
+}
+
+/*
+ * ── Die schmale Bühne: 1024 bis 1279 px ──────────────────────────────────
+ *
+ * Hier war die Komposition kaputt, und zwar unabhängig von allem, was für
+ * breite Schirme gerechnet wurde. Gemessen bei 1050 px Fensterbreite
+ * (1035 px nutzbar):
+ *
+ *   Panel        615 – 1015   400 px, also 39 % der Fläche
+ *   Frau         668 –  887   begann 53 px RECHTS der Panelkante
+ *   Fernsehturm  622          lag direkt hinter der Panelkante
+ *   Fassade      ab 907       vollständig hinter dem Panel
+ *
+ * Sichtbar war damit von der Bildkomposition praktisch nichts — die Bühne
+ * sah aus wie vor allen Korrekturen, weil das Panel sie verdeckte.
+ *
+ * Zwei Werte lösen das:
+ *
+ *   Panel auf 22 rem   352 statt 400 px, die Kante wandert nach rechts.
+ *                      Schmaler wäre kontraproduktiv: das Panel wird dadurch
+ *                      höher und kollidiert mit dem Vertrauensstreifen.
+ *
+ * Das Bild ist hier breitenbegrenzt (die Fläche ist schmaler als das
+ * Seitenverhältnis der Aufnahme verlangt) und füllt die Breite vollständig —
+ * dadurch rutscht die Frau von 668 auf 640 px, der Fernsehturm von 622 auf
+ * 590 px und damit vor die Panelkante.
+ *
+ * ── Was hier NICHT vollständig aufgeht ──────────────────────────────────
+ * Das schmalere Panel ist zugleich höher: bei 1050 × 800 rund 431 px, weil der
+ * Inhalt stärker umbricht. Zusammen mit dem Vertrauensstreifen, der ohne
+ * Scrollen sichtbar bleiben muss, ist der vertikale Spielraum praktisch
+ * aufgebraucht.
+ *
+ * Deshalb ist die Bildfläche hier zusätzlich flacher (16 %): die Person wird
+ * kleiner, ihr Kopf endet bei 220 statt 250 px und bleibt damit über der
+ * Panelkante. Die Schulterpartie wird teilweise überlagert — mehr Versatz
+ * würde den Streifen unter die Faltkante schieben, und der hat Vorrang.
+ *
+ * Die vollständige Staffelung aus der Vorlage — Kopf UND Schulter UND ein
+ * sichtbarer Streifen des Rückens — braucht ab 1280 px Fensterbreite.
+ *
+ * Diese Regel steht bewusst NACH der Höhen-Media-Query: bei einem Fenster
+ * von 1050 × 800 greifen beide, und gewinnen muss die schmale Bühne.
+ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --hero-panel-width: 18rem;
+    --hero-photo-bottom: 20%;
+    /*
+     * 7,25 rem: mit 8,5 rem wuchs die Bühne auf 802 px und der
+     * Vertrauensstreifen endete bei 802 statt 800 — also unter der
+     * Faltkante. Der Streifen hat Vorrang. Bei 7,25 rem liegt die
+     * Panel-Oberkante auf 261 px, der Kopf endet bei 250 px und bleibt frei;
+     * der Streifen schließt mit rund 18 px Reserve im ersten Schirm ab.
+     */
+    --hero-panel-offset: 7.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --header-height: calc(8rem + 1px);
+  }
 }
 
 @theme inline {
@@ -12,19 +202,22 @@
   --font-display: var(--font-display);
 
   /* Brand: Glanzwerk Reinigungsservice Berlin */
-  --color-brand-950: #030d1e;
-  --color-brand-900: #071a3a;
-  --color-brand-800: #0b2650;
-  --color-brand-700: #0f3568;
-  --color-brand-600: #0f4d82;
-  /* #00799c statt #008cba: gleicher Markenton, aber WCAG-AA-tauglicher
-     Kontrast (~4.9:1) für Text und Buttons auf Weiß. */
-  --color-brand-500: #00799c;
-  --color-brand-400: #2fa6ce;
-  --color-brand-300: #6fc4e2;
-  --color-brand-200: #a9dcee;
-  --color-brand-100: #e0f3f9;
-  --color-brand-50: #f2fafd;
+  --color-brand-950: #060d20;
+  --color-brand-900: #0d1b3d;
+  --color-brand-800: #14295c;
+  --color-brand-700: #1a3c86;
+  --color-brand-600: #1a4ea8;
+  /* Markenblau nach Vorgabe: #1e5bc6 statt des vorherigen Tuerkis #00799c.
+     Gemessen 6,23:1 auf Weiss und damit besser als der alte Wert (4,98:1) —
+     in beiden Richtungen, also Text auf Weiss und Weiss auf der Flaeche.
+     brand-300 (#4fa3ff, 2,62:1) ist ausdruecklich nur fuer Highlights und
+     Hover vorgesehen, nicht fuer Text. */
+  --color-brand-500: #1e5bc6;
+  --color-brand-400: #3b82e8;
+  --color-brand-300: #4fa3ff;
+  --color-brand-200: #a5cdff;
+  --color-brand-100: #deebff;
+  --color-brand-50: #f2f7ff;
 
   --color-ink: #14181f;
   --color-ink-soft: #414a58;
@@ -308,79 +501,511 @@ body {
   }
 
   /*
-   * ── Hero-Overlay-System ──────────────────────────────────────────────
+   * ══ Hero-Bühne: Tageslicht ═══════════════════════════════════════════
    *
-   * Drei benannte Rollen statt verstreuter Einzelwerte im JSX. Alle drei
-   * arbeiten mit EINEM Ton: #12161d — kühles Graphit, R18 G22 B29.
+   * Die Licht- und Farbführung ist das tragende Gestaltungselement dieses
+   * Heros — nicht das Foto und nicht die Typografie. Sie leistet zwei Dinge
+   * gleichzeitig: links eine weiße Fläche, auf der Logo, Überschrift und
+   * Text ohne jede Kontrastarbeit stehen, und nach rechts einen Übergang,
+   * der als Bestandteil der Aufnahme gelesen wird statt als aufgelegte
+   * Ebene.
    *
-   * Warum nicht mehr das Marken-Navy: brand-950 (#030d1e) hat ein
-   * Blau-zu-Rot-Verhältnis von 10:1, brand-900 (#071a3a) von 8,3:1. Bei den
-   * bisherigen Deckungen — 92 % an der Textkante, 100 % an der Unterkante —
-   * hat das jede helle Fläche des Videos eingefärbt: weiße Wände, Glas und
-   * Boden lasen sich blau. #12161d liegt bei 1,6:1 und ist damit praktisch
-   * neutral. Es dunkelt ab, ohne umzufärben.
+   * ── Die Abfolge ──────────────────────────────────────────────────────
+   *   0–38 %   reines Weiß            Logo, Überschrift, Fließtext
+   *   30 %     Weiß mit einem Hauch   der Übergang beginnt, unmerklich
+   *   40 %     brand-100, 92 %        sehr helles Markenblau
+   *   52 %     brand-200, 82 %        das Foto beginnt durchzukommen
+   *   64 %     brand-300, 46 %        klares Himmelblau über dem Bild
+   *   74 %     brand-400, 15 %        letzter kühler Anflug
+   *   86 %     transparent            reines Foto
    *
-   * Kein mix-blend-mode, kein saturate(), kein hue-rotate(), kein Blur.
-   * Die Integration entsteht über Kontrastführung und Transparenz, nicht
-   * über Umfärbung.
+   * Die Werte bei 52 % und 64 % sind nachgeschärft (vorher 50 % / 72 % und
+   * 62 % / 40 %). Grund war eine Messung, nicht ein Eindruck: am fertigen
+   * Kompositbild — Foto, Verlauf und Lichtschleier übereinander, abgetastet
+   * an den tatsächlichen Zeilenkästen — lag die Kernaussage am rechten
+   * Zeilenende bei 4,68:1. Das besteht die Schwelle von 4,5:1, aber mit vier
+   * Prozent Reserve. Die endgültige Aufnahme steht noch aus, und ein
+   * dunkleres Motiv hätte den Wert darunter gedrückt.
+   *
+   * Nach der Korrektur liegt derselbe Messpunkt bei 5,4:1. Die offene rechte
+   * Seite bleibt unberührt: die Stützstellen bei 74 % und 86 % sind
+   * unverändert, das Foto liegt dort weiterhin frei.
+   *
+   * ── Warum die weiße Zone bis 38 % reicht und nicht bis 28 % ──────────
+   * Die vorherige Aufnahme hatte links helles Gegenlicht; dort trug schon
+   * eine dünne Aufhellung den Text. Die neue Aufnahme ist an derselben Stelle
+   * dunkel — Stadt, Dächer, Bäume. Gemessen unter der Zielgruppenzeile:
+   * Foto rgb(25 25 9), nach dem damaligen Verlauf rgb(71 83 75). Der Text
+   * (`ink-soft`, rgb(65 74 88)) wäre darauf praktisch unsichtbar gewesen:
+   * 1,52 : 1 statt der nötigen 4,5 : 1.
+   *
+   * Die Antwort ist nicht mehr Schleier über das ganze Bild, sondern ein
+   * STEILERER Verlauf: bis 38 % voll deckend — das ist die Textspalte, deren
+   * Glyphen bei 42 % der Breite enden —, danach in 22 % der Breite auf null.
+   * Vorher lief er über 34 % aus und lag dabei bis weit in die Bildmitte als
+   * dünne Aufhellung.
+   *
+   * Ergebnis: Fernsehturm (56 % der Breite) liegt bei 0,12 Deckung, die
+   * Person (ab 60 %) bei 0,04, Fassade und Himmel vollständig frei.
+   *
+   * Sieben Stützstellen, nicht drei: mit weniger entsteht genau die
+   * sichtbare Kante, die hier nicht sein darf. Der Übergang von „deckend"
+   * nach „transparent" verteilt sich über 64 % der Breite — das ist der
+   * Grund, warum kein Balken zu erkennen ist.
+   *
+   * ── Warum aufhellende und nicht abdunkelnde Ebenen ───────────────────
+   * Die frühere Fassung dieses Heros arbeitete mit dunklem Marken-Navy über
+   * dem ganzen Bild. Das ist hier ausdrücklich ausgeschlossen: ein dunkler
+   * Filter über der gesamten Aufnahme nimmt ihr das Tageslicht, und
+   * Tageslicht ist die Aussage dieser Bühne.
+   *
+   * Der Kontrast entsteht deshalb umgekehrt — nicht indem der Grund
+   * dunkler wird, sondern indem er heller wird und die Schrift dunkel
+   * bleibt. Gemessen: brand-900 auf der Textzone bei 40 % Breite ergibt
+   * 15,2:1, `ink-soft` dort 7,9:1. Beides mit großem Abstand über AA, ohne
+   * dass eine einzige Ebene abdunkelt.
+   *
+   * 96 Grad statt exakt waagerecht: eine kaum wahrnehmbare Neigung liest
+   * sich als Lichteinfall, eine exakt senkrechte Kante als CSS-Fläche.
    */
-
-  /*
-   * Rolle 1 — Kontrastführung hinter dem Text.
-   *
-   * 100 Grad statt exakt waagerecht: eine leichte Diagonale liest sich als
-   * Lichtsituation, eine exakt waagerechte Kante als CSS-Fläche.
-   *
-   * Die Stützstellen sind gegen den schlimmsten Fall gerechnet — ein
-   * vollständig weißes Videobild:
-   *    0 %  → 82 % Deckung → Weiß darauf ergibt 10,4:1
-   *   46 %  → 74 %         →  7,9:1
-   *   62 %  → 62 %         →  5,1:1
-   *   84 %  → 16 %         → Video praktisch frei
-   * Der Textblock endet bei 1440 px Fensterbreite auf 59 % der Breite —
-   * dort liegen noch über 5:1 an. Das rechte Drittel bleibt offen.
-   */
-  .hero-scrim {
+  .hero-daylight {
     background-image: linear-gradient(
-      100deg,
-      rgb(18 22 29 / 0.82) 0%,
-      rgb(18 22 29 / 0.74) 46%,
-      rgb(18 22 29 / 0.62) 62%,
-      rgb(18 22 29 / 0.16) 84%,
-      rgb(18 22 29 / 0) 100%
+      96deg,
+      rgb(255 255 255) 0%,
+      rgb(255 255 255) 38%,
+      rgb(255 255 255 / 0.74) 43%,
+      rgb(222 235 255 / 0.26) 48%,
+      rgb(165 205 255 / 0.09) 52%,
+      rgb(79 163 255 / 0.02) 56%,
+      rgb(59 130 232 / 0) 60%
     );
   }
 
   /*
-   * Rolle 2 — globale Kühlung.
+   * Zwischen 1024 und 1279 px liegen dieselben Stützstellen falsch.
    *
-   * 10 % auf der gesamten Fläche. Über einem weißen Videobild ergibt das
-   * rgb(231 232 233): der Blaukanal liegt zwei Punkte über dem Rotkanal.
-   * Das ist unterhalb der Wahrnehmungsschwelle für einen Farbstich und
-   * genau die Menge, die aufeinanderfolgende Szenen ruhiger wirken lässt,
-   * ohne Weiß einzufärben oder Hauttöne grau zu machen.
+   * Der Verlauf ist proportional zur Fensterbreite, die Textspalte hat aber
+   * eine feste Maximalbreite. Je schmaler das Fenster, desto größer der
+   * Anteil der Breite, den der Text einnimmt: bei 1440 px endet die
+   * Kernaussage auf 46 % der Breite, bei 1024 px auf 52 % — also deutlich
+   * tiefer im durchscheinenden Bereich.
+   *
+   * Gemessen am Kompositbild bei 1024 px: 4,48:1. Das ist unter der
+   * Schwelle von 4,5:1 — knapp, aber unter.
+   *
+   * Die Stützstellen wandern deshalb nach rechts, bis der Übergang wieder
+   * hinter der Textspalte beginnt. Die letzte bleibt bei 92 % statt 86 %,
+   * damit rechts weiterhin freies Bild steht.
    */
-  .hero-veil {
-    background-color: rgb(16 24 34 / 0.1);
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .hero-daylight {
+      background-image: linear-gradient(
+        96deg,
+        rgb(255 255 255) 0%,
+        rgb(255 255 255) 28%,
+        rgb(250 253 254 / 0.98) 38%,
+        rgb(224 243 249 / 0.92) 48%,
+        rgb(169 220 238 / 0.82) 60%,
+        rgb(111 196 226 / 0.46) 72%,
+        rgb(47 166 206 / 0.15) 82%,
+        rgb(47 166 206 / 0) 92%
+      );
+    }
   }
 
   /*
-   * Rolle 2b — Lichtquelle.
+   * Lichtschleier über der Kopfzone.
    *
-   * Bis hierher bestand das Overlay ausschließlich aus Abdunklung: drei
-   * Ebenen, die alle Licht wegnehmen. Das Ergebnis war lesbar, aber flach —
-   * eine gleichmäßig gedämpfte Fläche hat keine Richtung, und ohne Richtung
-   * entsteht keine Tiefe.
+   * Die Kopfzeile liegt im Ausgangszustand transparent in der Bühne und
+   * trägt dunkle Schrift. Links steht sie auf der weißen Fläche — dort ist
+   * nichts zu tun. Rechts steht sie über dem Foto, und dort entscheidet
+   * allein das Bildmaterial, ob dunkle Navigation lesbar bleibt. Auf ein
+   * helles Motiv zu hoffen ist keine Lösung.
    *
-   * Diese Ebene nimmt nichts weg, sie gibt. Ein sehr weiter, sehr schwacher
-   * Lichtkegel aus dem oberen rechten Drittel — genau dort, wo die
-   * Kontrastführung ausläuft und das Videobild offen liegt. Der Hero bekommt
-   * damit eine Lichtrichtung: hell und offen rechts oben, ruhig und tragend
-   * links unten, wo die Schrift steht.
+   * Dieser Schleier hellt die Kopfzone auf, statt sie abzudunkeln — er
+   * bleibt damit in der Logik der Bühne. Über der weißen Fläche links ist
+   * er unsichtbar (Weiß auf Weiß), über dem Foto rechts liest er sich als
+   * Dunst und Gegenlicht.
    *
-   * Werte: 6 % Weiß im Kern, auf 60 % des Radius bereits bei null. Das ist
-   * unterhalb der Schwelle, ab der man einen Kegel als Form erkennt, und
-   * genau die Menge, die aus einer Fläche einen Raum macht.
+   * Gerechnet gegen den schlimmsten Fall, ein vollständig schwarzes
+   * Bildmaterial: auf der Mittelachse der Kopfzeile liegen 70 % Weiß an,
+   * brand-900 darauf ergibt 8,18:1. Die Navigation ist 14 px halbfett und
+   * braucht 4,5:1.
+   *
+   * Die Höhe kommt aus `--header-height` (siehe HeroStage) und ist doppelt
+   * so hoch wie die Kopfzeile: der Schleier soll unterhalb von ihr auslaufen
+   * können, statt an ihrer Unterkante abzureißen — sonst entsteht dort
+   * wieder die Kante eines Balkens.
+   */
+  /*
+   * ── `.hero-haze` ist entfallen ───────────────────────────────────────
+   *
+   * Die Ebene hellte die Kopfzone ueber die volle Breite auf, damit die
+   * transparente Kopfzeile ueber wechselndem Bildmaterial lesbar blieb. Ihre
+   * Unterkante lag bei doppelter Kopfhoehe, also rund 226 px, und damit genau
+   * auf Hoehe von Nacken und oberem Ruecken der Person. Dort entstand eine
+   * waagerechte Farbkante quer durch das Motiv.
+   *
+   * Sie ist nicht ersetzt, sondern ersatzlos entfernt: die Kopfzeile traegt
+   * jetzt selbst eine helle Materialebene (siehe `headerSurface` in
+   * Header.tsx). Damit liegt die Aufgabe dort, wo sie hingehoert, und das
+   * Foto bleibt unberuehrt.
+   */
+
+  /*
+   * ── Kein Bildfilter mehr ─────────────────────────────────────────────
+   *
+   * Hier stand `saturate(1.22) contrast(1.08) brightness(1.02)`. Der Filter
+   * war ein Ausgleich für die vorherige Aufnahme: sie war im Gegenlicht
+   * entstanden, flach und dunstig, und der Verlauf nahm ihr zusätzlich
+   * Sättigung.
+   *
+   * Die neue Aufnahme braucht das nicht — sie bringt den kräftigen Himmel,
+   * das warme Gegenlicht und die kontrastreiche Fassade selbst mit. Ein
+   * Filter darüber würde genau das tun, was hier ausdrücklich nicht gewollt
+   * ist: aufhellen und die Farben verfälschen.
+   *
+   * Die Klasse ist deshalb entfallen. Was rechts zu sehen ist, ist die
+   * unveränderte Fotografie.
+   */
+
+  /*
+   * Abschluss der Bühne nach unten.
+   *
+   * Diese Ebene ist neu und hat einen konkreten Anlass: mit der sechsteiligen
+   * Vertrauensleiste ist die weiße Fläche entfallen, die die Bühne unten
+   * abgeschlossen hat. Das Foto reicht jetzt bis an die Unterkante — genau so
+   * gewollt, denn es soll mehr Raum bekommen —, und darunter beginnt ein
+   * weißer Abschnitt.
+   *
+   * Ohne Übergang stößt das Bild dort hart auf Weiß. Eine Kante quer über die
+   * volle Fensterbreite ist aber genau das, was diese Bühne an keiner Stelle
+   * haben soll: derselbe Grund, aus dem der Verlauf nach rechts über 64 % der
+   * Breite läuft statt über 10 %.
+   *
+   * Deshalb löst sich das Bild nach unten in dieselbe weiße Fläche auf, auf
+   * der der nächste Abschnitt steht. Kein Farbwechsel, keine Linie — das Bild
+   * endet einfach nicht sichtbar.
+   */
+  /*
+   * ── `.hero-crest` — Licht von oben für die transparente Kopfzeile ────
+   *
+   * Die Kopfzeile liegt über der Bühne ohne eigene Fläche. Ihre Schrift steht
+   * damit direkt auf dem Foto, und das Motiv ist dort nicht durchgängig hell:
+   * gemessen bei 1265 px Breite liegt der Grund im Kopfband zwischen 0,36 und
+   * 0,53 Leuchtdichte — mit einer Ausnahme. Der Schaft des Fernsehturms zieht
+   * eine schmale senkrechte dunkle Struktur durchs Bild (0,10), und die kreuzt
+   * je nach Fensterbreite einen Navigationseintrag. Dort fiel der Kontrast auf
+   * 2,40:1.
+   *
+   * ── Warum das nicht die alte `.hero-haze` ist ────────────────────────────
+   * Es gab hier schon einmal eine Aufhellung. Sie war 226 px hoch und ihr
+   * Verlauf war bei 20 % ihrer Höhe zu Ende — der Rest war Nullfläche. Diese
+   * Grenze lag genau auf Nackenhöhe der Person und war als waagerechte Kante
+   * quer durchs Motiv sichtbar.
+   *
+   * Der Unterschied liegt nicht in der Stärke, sondern in der Länge des
+   * Auslaufs. Diese Ebene reicht über 62 % der Bühnenhöhe und wird darin
+   * durchgehend schwächer, ohne Plateau und ohne Ende innerhalb des Motivs.
+   * Bei einer 800 px hohen Bühne verteilt sie 40 Prozentpunkte Deckkraft auf
+   * 496 px. Entscheidend ist nicht die Spitze, sondern die Änderungsrate: die
+   * Stützstellen sind so gesetzt, dass sie nirgends 0,07 Prozentpunkte pro
+   * Pixel übersteigt — im stärksten Abschnitt fällt sie von 0,40 auf 0,345
+   * über 80 px. Damit liegt sie unter der Schwelle, an der das Auge eine Kante
+   * oder ein Band bildet.
+   *
+   * Die 40 % oben sind nachgemessen und nicht geschätzt: mit 26 % kam der vom
+   * Turmschaft gekreuzte Navigationseintrag auf 4,29:1 und blieb damit unter
+   * der Anforderung.
+   *
+   * Die Nackenzone bei etwa 226 px liegt jetzt MITTEN im Verlauf, nicht an
+   * seinem Rand — genau da, wo ein Gradient unsichtbar ist.
+   *
+   * ── Was sie am Motiv ändert ──────────────────────────────────────────────
+   * Spürbar nur in den oberen rund 150 px, und dort liegt Morgenhimmel, der
+   * ohnehin hell ist. Der Fernsehturm verliert oben etwas Tiefe, bleibt aber
+   * als Silhouette deutlich — das ist der Preis dafür, dass die Kopfzeile
+   * keine eigene Fläche braucht. Unterhalb der Bildmitte ist die Ebene
+   * praktisch bei Null; der Wunsch nach kräftigen Fotofarben rechts bleibt
+   * unberuehrt.
+   *
+   * Nur ab 1024 px eingebunden: darunter steht kein Kopfzeilentext über dem
+   * Foto (siehe HeroStage), und das Bild wird dort eingepasst statt
+   * beschnitten — die obere Bildkante ist Weiß.
+   */
+  .hero-crest {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0.4) 0%,
+      rgb(255 255 255 / 0.345) 10%,
+      rgb(255 255 255 / 0.26) 22%,
+      rgb(255 255 255 / 0.175) 36%,
+      rgb(255 255 255 / 0.095) 54%,
+      rgb(255 255 255 / 0.035) 75%,
+      rgb(255 255 255 / 0) 100%
+    );
+  }
+
+  .hero-floor {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0) 0%,
+      rgb(255 255 255 / 0.3) 46%,
+      rgb(255 255 255 / 0.8) 78%,
+      rgb(255 255 255) 100%
+    );
+  }
+
+  /*
+   * Bildausschnitt der Hero-Aufnahme.
+   *
+   * Telefon   center 50 %  — das Foto ist dort ein eigenes Band im Fluss,
+   *                          kein Hintergrund. Es braucht keinen
+   *                          Textfreiraum und wird mittig gezeigt.
+   * Ab 1024   62 % 45 %    — Schwerpunkt nach rechts, weg von der
+   *                          Textspalte, und etwas höher: die Bewegung und
+   *                          das Motiv liegen dort, wo die Fläche offen ist.
+   */
+  /*
+   * ── Telefon und Tablet: füllend ───────────────────────────────────────
+   * Dort ist das Foto ein eigenes Band mit festem Seitenverhältnis. Es soll
+   * die Fläche füllen; ein eingepasstes Bild mit Rändern wäre dort kein
+   * Bildband mehr, sondern eine Abbildung.
+   */
+  .hero-photo-focal {
+    object-fit: cover;
+    object-position: center 50%;
+  }
+
+  /*
+   * ── Ab Desktop: eingepasst statt beschnitten ──────────────────────────
+   *
+   * Hier lag der Grund dafür, dass die Szene zu nah heranzoomt wirkte.
+   *
+   * Mit `cover` wird die Aufnahme so weit vergrößert, dass sie die Bühne in
+   * BEIDEN Richtungen füllt. Bei einem 1,5:1 großen Bild in einer 1,78:1
+   * breiten Bühne (1366 × 768) entscheidet die Breite — das Bild wird auf
+   * 1366 gestreckt, wird dabei 911 px hoch, und von diesen 911 px sind nur
+   * 768 zu sehen. Ein Sechstel der Höhe fällt weg, und alles, was bleibt,
+   * ist entsprechend größer: die Person wird zur Hauptfigur, Skyline und
+   * Fassade werden angeschnitten.
+   *
+   * `contain` dreht das um: die Aufnahme wird eingepasst, nicht beschnitten.
+   * Es ist die vollständige Fotografie zu sehen — Fernsehturm, die ganze
+   * Silhouette, das Bürogebäude bis zur Kante — und die Person sitzt in
+   * derselben Größe darin, in der sie fotografiert wurde. Sie wird dadurch
+   * kleiner und Teil der Szene, statt sie zu dominieren.
+   *
+   * `100% 50%` schlägt das eingepasste Bild an der RECHTEN Kante an. Der
+   * dadurch links entstehende Rand ist nicht sichtbar: dort liegt die weiße
+   * Textfläche, die der Tageslichtverlauf bis 27 % der Breite ohnehin
+   * vollständig deckt. Der Rand ist damit kein Kompromiss, sondern genau die
+   * Fläche, die die Komposition links braucht.
+   *
+   * Beide Angaben stehen hier zusammen und NICHT als `object-cover` im JSX:
+   * eine Utility-Klasse im Markup und eine Regel hier hätten dieselbe
+   * Spezifität, und welche gewinnt, entschiede allein die Reihenfolge im
+   * erzeugten Stylesheet.
+   */
+  /*
+   * ── Ab Desktop: cover mit echter horizontaler Verschiebung ────────────
+   *
+   * Bis zum Assetwechsel stand hier `contain`, und das war eine Notlösung:
+   * die alte Aufnahme hatte 1,50 : 1 und war damit SCHMALER als die Bühne
+   * (1,58 : 1). `cover` hätte sie so weit vergrößert, dass die Person zur
+   * Hauptfigur wurde; `contain` zeigte sie vollständig, ließ aber links einen
+   * Rand und gab keinen horizontalen Spielraum — jede Verschiebung hätte
+   * rechts eine weiße Lücke erzeugt.
+   *
+   * Die neue Aufnahme ist 1,78 : 1 und damit BREITER als die Bühne. Damit
+   * kehrt sich die Lage um: `cover` füllt die Fläche vollständig und es
+   * bleiben rund 78 px Überhang, die `object-position` verteilen kann.
+   *
+   * `100%` schlägt die rechte Bildkante an die rechte Flächenkante. Der
+   * Beschnitt fällt damit vollständig auf die LINKE Bildseite — dort liegt
+   * der helle Gegenlichthimmel, der ohnehin unter der weißen Textfläche
+   * verschwindet. Das Motiv wandert dadurch nach links: die Person von
+   * 62–80 % der Bildbreite auf 854–1124 px der Bühne, der Fernsehturm auf
+   * 787 px und damit klar links von ihr, und die Glasfassade läuft von
+   * 1132 px bis an die rechte Kante.
+   */
+  @media (min-width: 1024px) {
+    .hero-photo-focal {
+      object-fit: cover;
+      object-position: 100% 50%;
+    }
+  }
+
+  /*
+   * ══ Derzeit ungenutzt: das dunkle Overlay-System ═════════════════════
+   *
+   * Die folgenden Rollen (`hero-grade`, `hero-scrim`, `hero-light`,
+   * `hero-crown`, `hero-foot`) gehören zur vorherigen Fassung des Heros —
+   * einer dunklen Bühne mit Bewegtbild. Sie werden von `HeroMedia.tsx` und
+   * `HeroSequence.tsx` verwendet, und diese beiden Bauteile hängen seit dem
+   * Wechsel auf die helle Bühne an keiner Seite mehr.
+   *
+   * Sie bleiben stehen, damit die beiden Bauteile nicht halb funktionsfähig
+   * zurückbleiben und der Schritt umkehrbar ist. Wenn die helle Bühne
+   * bestätigt ist, können dieser Block und die beiden Bauteile zusammen
+   * entfallen.
+   *
+   * Die Bildausschnitte `.hero-focal` und `.cta-focal` weiter unten sind
+   * davon ausgenommen — `.cta-focal` trägt weiterhin den Kontaktmoment in
+   * der Seitenmitte.
+   *
+   * ── Hero-Overlay-System (alt) ────────────────────────────────────────
+   *
+   * Fünf benannte Rollen statt verstreuter Einzelwerte im JSX.
+   *
+   * ── Warum die Ebenen jetzt blau sind und vorher neutral ──────────────
+   * Die vorherige Fassung arbeitete bewusst mit einem neutralen Graphit
+   * (#12161d, Blau-zu-Rot 1,6:1). Das Ziel damals: abdunkeln, ohne
+   * umzufärben — bei 82 % Deckung an der Textkante hätte ein Marken-Navy
+   * mit 8:1 jede weiße Wand im Video blau eingefärbt.
+   *
+   * Das Ziel hat sich geändert, nicht die Rechnung. Gefordert ist jetzt
+   * ausdrücklich, dass der Film farblich in die Marke eingebunden wird,
+   * statt als fremdes Rechteck dahinter zu liegen — und dass die Bühne
+   * frisch und luftig wirkt, nicht dunkel. Ein neutrales Grau kann das
+   * erste nicht leisten, und 82 % Deckung nicht das zweite.
+   *
+   * Der Ausweg ist nicht „mehr Blau bei gleicher Deckung", sondern eine
+   * Umverteilung: die Farbe kommt aus einer sehr dünnen Ebene über die
+   * ganze Fläche (Rolle 1), die Lesbarkeit aus einer deutlich schwächeren
+   * Kontrastführung als vorher (Rolle 2, 64 % statt 82 %). Zusammen ergibt
+   * das eine hellere Bühne bei ausreichendem Kontrast.
+   *
+   * Alle Werte gegen den schlimmsten Fall gerechnet — ein vollständig
+   * weißes Videobild. Über dem tatsächlichen Material liegen sie höher.
+   *
+   * Kein mix-blend-mode, kein hue-rotate, kein Blur über dem Film. Die
+   * Integration entsteht über Transparenz und Kontrastführung.
+   */
+
+  /*
+   * Rolle 1 — die Farbeinbindung („Grade").
+   *
+   * Eine sehr dünne Lage Marken-Blau über der gesamten Fläche: brand-800
+   * (#0b2650) bei 22 %. Das ist die Ebene, die aus „Video mit Overlay" ein
+   * farblich zusammengehöriges Bild macht — und die einzige, die auch dort
+   * wirkt, wo die Fläche offen bleibt.
+   *
+   * Über Weiß ergibt sie rgb(199 207 216): der Blaukanal liegt 17 Punkte
+   * über dem Rotkanal. Das ist bewusst oberhalb der Wahrnehmungsschwelle,
+   * anders als bei der früheren neutralen Kühlung — es soll ein sichtbar
+   * kühler, meerblauer Ton sein, kein unbestimmtes Abdunkeln. Bei 22 %
+   * bleiben 78 % des Videobilds stehen: Hauttöne bleiben Hauttöne.
+   */
+  .hero-grade {
+    background-color: rgb(11 38 80 / 0.22);
+  }
+
+  /*
+   * Rolle 2 — Kontrastführung hinter dem Text.
+   *
+   * 100 Grad statt exakt waagerecht: eine leichte Diagonale liest sich als
+   * Lichtsituation, eine exakt waagerechte Kante als CSS-Fläche.
+   *
+   * brand-900 (#071a3a) statt des früheren Graphits, und mit 64 % statt
+   * 82 % Deckung. Gerechnet über einem vollständig weißen Frame, jeweils
+   * NACH Rolle 1 (die Ebenen liegen übereinander):
+   *
+   *    0 %  → 64 %  → rgb(80 95 118)   → Weiß darauf  6,5:1
+   *   42 %  → 52,5% → rgb(98 112 133)  →              5,0:1
+   *   66 %  → 32 %  → rgb(141 153 169) →   Video dominiert
+   *   84 %  → 10 %  → praktisch frei
+   *
+   * Die Textspalte ist auf 46 rem begrenzt. Bei 1440 px Fensterbreite endet
+   * die längste Überschriftenzeile bei rund 41 % der Breite und der
+   * Fließtext bei 42 % — dort liegen 5,0:1 an, also AA auch für
+   * Fließtextgrößen und das im schlechtesten denkbaren Fall. Das rechte
+   * Drittel bleibt offen für den Film.
+   */
+  /*
+   * Die Stützstellen sind je Breakpoint eigene, und das ist der Punkt, an
+   * dem eine einzige Verlaufsdefinition zwangsläufig falsch wird:
+   *
+   * Der Verlauf ist proportional zur Fensterbreite, die Textspalte aber hat
+   * eine feste Maximalbreite. Je schmaler das Fenster, desto größer der
+   * Anteil der Breite, den der Text einnimmt — bei 768 px reicht der
+   * Fließtext bis auf 70 % der Breite. Mit den Desktop-Werten lagen dort
+   * gemessen 2,97:1 an, also klar unter AA. Der Verlauf muss auf schmalen
+   * Fenstern also deutlich weiter nach rechts tragen.
+   *
+   * Telefon (< 640 px): die Spalte läuft über die volle Breite, es gibt
+   * keine offene Fläche, die zu schützen wäre. Der Verlauf bleibt deshalb
+   * über die ganze Breite tragend und fällt nur leicht ab — gemessen
+   * 4,67:1 an der rechten Textkante.
+   */
+  .hero-scrim {
+    background-image: linear-gradient(
+      100deg,
+      rgb(7 26 58 / 0.62) 0%,
+      rgb(7 26 58 / 0.58) 60%,
+      rgb(7 26 58 / 0.52) 100%
+    );
+  }
+
+  /*
+   * Tablet (640–1023 px): die Textspalte nimmt noch rund zwei Drittel der
+   * Breite ein. Der Abfall beginnt deshalb erst bei 55 % und ist bei 92 %
+   * durch — gemessen 4,66:1 an der rechten Kante des Fließtextes, also AA
+   * auch für Fließtextgrößen.
+   */
+  @media (min-width: 640px) {
+    .hero-scrim {
+      background-image: linear-gradient(
+        100deg,
+        rgb(7 26 58 / 0.64) 0%,
+        rgb(7 26 58 / 0.6) 55%,
+        rgb(7 26 58 / 0.44) 78%,
+        rgb(7 26 58 / 0.16) 92%,
+        rgb(7 26 58 / 0) 100%
+      );
+    }
+  }
+
+  /*
+   * Desktop (ab 1024 px): erst hier ist die Fläche breit genug, dass rechts
+   * ein Drittel für den Film offen bleiben kann. Gemessen gegen einen
+   * vollständig weißen Videoframe, jeweils NACH der Farbeinbindung und
+   * einschließlich der Lichtquelle oben rechts:
+   *
+   *   rechte Kante der Überschrift (72 px)   4,72:1   nötig 3:1
+   *   rechte Kante des Fließtextes (18 px)   4,67:1   nötig 4,5:1
+   *
+   * Beide Werte setzen voraus, dass die Überschrift zweizeilig umbricht und
+   * der Fließtext auf 32 rem begrenzt ist — genau dafür stehen die
+   * Maximalbreiten in page.tsx. Wird eine davon aufgehoben, wandert die
+   * Textkante nach rechts in die hellere Zone und die Rechnung fällt.
+   */
+  @media (min-width: 1024px) {
+    .hero-scrim {
+      background-image: linear-gradient(
+        100deg,
+        rgb(7 26 58 / 0.64) 0%,
+        rgb(7 26 58 / 0.525) 42%,
+        rgb(7 26 58 / 0.32) 66%,
+        rgb(7 26 58 / 0.1) 84%,
+        rgb(7 26 58 / 0) 100%
+      );
+    }
+  }
+
+  /*
+   * Rolle 3 — Lichtquelle.
+   *
+   * Alle anderen Ebenen nehmen Licht weg. Diese gibt welches zurück, und
+   * zwar gerichtet: oben rechts, dort wo die Kontrastführung ausläuft und
+   * das Videobild offen liegt. Erst dadurch bekommt der Hero eine
+   * Lichtrichtung statt einer gleichmäßigen Dämpfung — der Unterschied
+   * zwischen einer abgedunkelten Fläche und einem Raum.
+   *
+   * Nicht weiß, sondern brand-300 (#6fc4e2) mit einem weißen Kern. Ein rein
+   * weißer Kegel wäre neutrales Licht in einem blauen Bild; ein hellblauer
+   * ist die aufgehellte Fortsetzung derselben Farbfamilie und trägt das
+   * „hellere blaue Übergänge"-Motiv, das die Bühne luftig macht.
    *
    * Kein Glühen: ein Glow sitzt hinter einem Objekt und strahlt nach außen.
    * Das hier ist eine Lichtquelle im Bild — dieselbe Logik wie das
@@ -388,49 +1013,94 @@ body {
    */
   .hero-light {
     background-image: radial-gradient(
-      120% 90% at 78% 18%,
-      rgb(255 255 255 / 0.06) 0%,
-      rgb(255 255 255 / 0.025) 32%,
-      transparent 60%
+      125% 95% at 80% 16%,
+      rgb(255 255 255 / 0.07) 0%,
+      rgb(111 196 226 / 0.1) 26%,
+      rgb(111 196 226 / 0.04) 46%,
+      transparent 66%
     );
   }
 
   /*
-   * Rolle 3 — Fußzone.
+   * Rolle 4 — Kopfzone („Crown").
    *
-   * Vorher lief hier über 40 % der Höhe ein Verlauf, der an der Unterkante
-   * zu 100 % in brand-900 auslief — der größte zusammenhängende blaue Block
-   * des Heros. Er stammte aus einer Fassung, in der darunter ein dunkles
-   * Vertrauensband folgte. Heute folgt eine helle Fläche; die Begründung
-   * ist damit entfallen.
+   * Diese Ebene war entfallen, solange die Kopfzeile eine eigene, deckend
+   * weiße Fläche über dem Hero war: ein dunkler Streifen darunter hatte
+   * keine Aufgabe und erzeugte nur eine sichtbare Kante.
    *
-   * Geblieben ist nur, was die beiden Zeilen unter den Schaltflächen lesbar
-   * hält: ein Viertel der Höhe, höchstens 52 % Deckung, neutral.
+   * Jetzt liegt die Kopfzeile im Ausgangszustand transparent IN der Bühne.
+   * Damit ist die Zone wieder nötig — sie ist die Bedingung dafür, dass
+   * Navigation, Telefonnummer und Logo über wechselndem Filmmaterial
+   * lesbar bleiben, ohne dass die Kopfzeile eine eigene Fläche braucht.
+   *
+   * ── Warum die Stützstellen auf die Kopfhöhe gerechnet sind ───────────
+   * Erste Fassung: Element 256 px hoch, Verlauf bei 20 % ausgelaufen. Das
+   * sind 51 px — die Kopfzeile ist aber 113 px hoch. Die Navigation sitzt
+   * auf ihrer Mittelachse bei rund 56 px und lag damit schon außerhalb der
+   * Zone: gemessen 2,84:1 gegen einen weißen Videoframe, also klar unter
+   * AA. Die Zone stützte genau den Bereich nicht, für den sie da ist.
+   *
+   * Jetzt ist das Element doppelt so hoch wie die Kopfzeile (siehe
+   * `--header-height` in HeroMedia), und die Stützstellen sind darauf
+   * gerechnet:
+   *
+   *   0 %              → 0,50
+   *   35 %  (≈ 79 px)  → 0,30   Navigation bei ≈ 56 px liegt bei 0,358
+   *   70 %  (≈158 px)  → 0,12   Unterkante Kopfzeile (113 px) bei 0,223
+   *   100 % (≈226 px)  → 0
+   *
+   * Nachgerechnet an der Navigation rechts oben, über einem weißen Frame
+   * und nach allen darunterliegenden Rollen: rgb(99 112 133) → Weiß darauf
+   * 5,01:1. Die Navigation ist 14 px halbfett und braucht 4,5:1.
+   *
+   * Dass der Verlauf erst deutlich unterhalb der Kopfzeile bei null ankommt,
+   * ist Absicht: eine Zone, die exakt an der Kopfunterkante endet, erzeugt
+   * dort eine sichtbare Kante — also genau den Balken, den dieser Entwurf
+   * vermeiden soll. Die Überschrift beginnt auf dem Desktop bei 235 px und
+   * liegt damit außerhalb; sie wird nicht mitverdunkelt.
+   */
+  .hero-crown {
+    background-image: linear-gradient(
+      to bottom,
+      rgb(7 26 58 / 0.5) 0%,
+      rgb(7 26 58 / 0.3) 35%,
+      rgb(7 26 58 / 0.12) 70%,
+      rgb(7 26 58 / 0) 100%
+    );
+  }
+
+  /*
+   * Rolle 5 — Fußzone.
+   *
+   * Trägt die Vertrauenszeile am unteren Rand der Bühne. Bewusst schwächer
+   * als früher (44 % statt 52 %) und in Markenblau statt Graphit: die Zeile
+   * hat zusätzlich eine eigene, sehr dünne Materialebene, beides zusammen
+   * genügt. Ein Viertel der Höhe.
    */
   .hero-foot {
     background-image: linear-gradient(
       to top,
-      rgb(18 22 29 / 0.52) 0%,
-      rgb(18 22 29 / 0.24) 55%,
-      rgb(18 22 29 / 0) 100%
+      rgb(7 26 58 / 0.44) 0%,
+      rgb(7 26 58 / 0.2) 55%,
+      rgb(7 26 58 / 0) 100%
     );
   }
 
   /*
-   * Bildausschnitt je Breakpoint.
+   * Bildausschnitt je Einstellung und je Breakpoint.
    *
    * Eine einzige Objektposition für alle Geräte beschneidet auf dem Telefon
-   * zwangsläufig anders als auf dem Schirm: die Quelle ist 16:9, der Hero
-   * auf dem Telefon nahezu hochformatig.
+   * zwangsläufig anders als auf dem Schirm: die Quellen sind 16:9, der Hero
+   * auf dem Telefon nahezu hochformatig. Und eine einzige Position für
+   * verschiedenes Material legt den Bildschwerpunkt zufällig — jede
+   * Einstellung bekommt deshalb ihre eigene.
    *
-   *   Telefon   center 38 %  — höher im Bild: Architektur und Deckenzone
-   *                            statt Bodenzone, hält Personen aus dem
-   *                            Bereich direkt hinter der Schrift
-   *   Tablet    center 46 %  — ausgeglichen
-   *   Desktop   62 % 50 %    — Schwerpunkt nach rechts, weg von der
-   *                            Textspalte. Die Bewegung im Bild liegt damit
-   *                            dort, wo die Fläche offen ist.
+   * Gemeinsames Prinzip auf dem Desktop: Schwerpunkt nach rechts, weg von
+   * der Textspalte. Die Bewegung im Bild liegt damit dort, wo die Fläche
+   * offen ist.
    */
+
+  /* Standbild und Kontaktmoment — unveränderter Bestandswert. */
   .hero-focal {
     object-position: center 38%;
   }
@@ -442,6 +1112,42 @@ body {
   @media (min-width: 1024px) {
     .hero-focal {
       object-position: 62% 50%;
+    }
+  }
+
+  /*
+   * Glas-Einstellung: das Fenster und die Abzieherbewegung sollen im
+   * offenen rechten Bereich stehen, das Tageslicht der Scheibe oben bleiben.
+   */
+  .hero-focal-glas {
+    object-position: center 40%;
+  }
+  @media (min-width: 640px) {
+    .hero-focal-glas {
+      object-position: 60% 44%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-focal-glas {
+      object-position: 68% 44%;
+    }
+  }
+
+  /*
+   * Büro-Einstellung: die arbeitende Person rechts der Textspalte halten,
+   * Raumtiefe darüber sichtbar lassen.
+   */
+  .hero-focal-buero {
+    object-position: center 44%;
+  }
+  @media (min-width: 640px) {
+    .hero-focal-buero {
+      object-position: 62% 48%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-focal-buero {
+      object-position: 70% 48%;
     }
   }
 

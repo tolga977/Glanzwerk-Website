@@ -48,8 +48,20 @@ interface GoogleRatingProps {
    *               Text). Für Stellen, an denen "editorial" zu schwer wirkt,
    *               etwa neben Schaltflächen im Fließtext-Kontext der
    *               Leistungs-×-Bezirk-Kombiseiten.
+   *
+   * "heroLight" — zweizeiliges Lockup für die helle Hero-Bühne: Bildmarke,
+   *               Sterne und Sternwert auf einer Zeile, die Anzahl klein
+   *               darunter.
+   *
+   *               Warum eine eigene Bauform und nicht "inline": dort steht
+   *               alles in einer Zeile, und die Zeile wird mit der Anzahl in
+   *               Klammern rund 320 px lang. Im Hero sitzt sie zwischen
+   *               Fließtext und Schaltflächen und muss dort als eigener,
+   *               kompakter Block lesbar sein — zwei Zeilen mit klarer
+   *               Rangfolge statt einer langen. Der Sternwert trägt hier
+   *               zusätzlich Gewicht, weil er das eigentliche Signal ist.
    */
-  variant?: "editorial" | "badge" | "rail" | "inline";
+  variant?: "editorial" | "badge" | "rail" | "inline" | "heroLight";
   className?: string;
 }
 
@@ -166,6 +178,38 @@ export default function GoogleRating({
         </span>
         <span aria-hidden="true" className="text-sm text-ink-soft">
           ({data.count} Bewertungen)
+        </span>
+      </a>
+    );
+  }
+
+  if (variant === "heroLight") {
+    /*
+     * Die Zahlen kommen unverändert aus `data` und damit aus
+     * `getGoogleRating()` — entweder live aus dem Google-Unternehmensprofil
+     * oder aus dem von Hand geprüften Stand in `googleBusiness.ts`. Hier
+     * wird nichts gerundet, nichts aufgewertet und nichts mit „über"
+     * versehen: bei sieben Rezensionen steht sieben.
+     */
+    return (
+      <a
+        href={googleBusiness.profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${value} von 5 Sternen aus ${data.count} Google-Bewertungen — Profil auf Google ansehen`}
+        className={`group inline-flex items-center gap-3.5 rounded-control transition-opacity duration-200 ease-out hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 ${className}`}
+      >
+        <GoogleG className="h-7 w-7 shrink-0" />
+        <span aria-hidden="true">
+          <span className="flex items-center gap-2.5">
+            <Stars rating={data.rating} />
+            <span className="text-base font-semibold text-brand-900">
+              {value} von 5 Sternen
+            </span>
+          </span>
+          <span className="mt-1 block text-sm text-ink-soft">
+            aus {data.count} Google-Bewertungen
+          </span>
         </span>
       </a>
     );

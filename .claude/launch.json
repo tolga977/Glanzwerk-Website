@@ -3,9 +3,17 @@
   "configurations": [
     {
       "name": "glanzwerk-original",
-      "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
-      "runtimeArgs": ["run", "dev", "--", "-p", "3001"],
-      "port": 3001
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
+      "port": 3001,
+      "autoPort": true
+    },
+    {
+      "name": "glanzwerk-build-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "start"],
+      "port": 3100,
+      "autoPort": true
     }
   ]
 }

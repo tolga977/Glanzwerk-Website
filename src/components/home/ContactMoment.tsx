@@ -45,7 +45,21 @@ import { siteConfig } from "@/data/site";
  * hellen Abschnitte darüber und darunter. Rechts der Textzone bleibt das
  * Videobild offen.
  */
-const contactVideo: { mp4: string; webm?: string } | null = { mp4: "/video/hero.mp4" };
+/*
+ * Zeigte auf `/video/hero.mp4`. Diese Datei existiert im Projekt nicht mehr:
+ * `public/video/` ist von der Versionsverwaltung ausgenommen, und beim
+ * Zusammenführen der Arbeitsstände ist der alte Hero-Film dabei verloren
+ * gegangen. Der Abschnitt lief seither ohne Bewegtbild — sichtbar kaputt war
+ * er nicht, weil das Standbild die Fläche ohnehin immer trägt.
+ *
+ * Jetzt die Büro-Einstellung der neuen Hero-Bildfolge: 1,7 MB, und mit
+ * `lazyUntilVisible` wird sie erst angefordert, wenn die Fläche in Sichtnähe
+ * kommt. Bewusst nicht der Glas-Clip — der eröffnet den Hero, und dieselbe
+ * Einstellung ein zweites Mal auf derselben Seite liest sich als
+ * Wiederholung. Der Bildausschnitt (`cta-focal`) unterscheidet sich
+ * zusätzlich vom Hero.
+ */
+const contactVideo: { mp4: string; webm?: string } | null = { mp4: "/video/hero-buero.mp4" };
 
 export default function ContactMoment() {
   return (

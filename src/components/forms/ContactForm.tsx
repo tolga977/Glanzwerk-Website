@@ -4,63 +4,51 @@ import { useState, type FormEvent } from "react";
 import FormField from "@/components/forms/FormField";
 import { FormAlert } from "@/components/forms/FormError";
 import Button from "@/components/ui/Button";
+import {
+  emptyContactRequest,
+  submitContactRequest,
+  validateContactRequest,
+  type ContactRequestErrors,
+  type ContactRequestValues,
+} from "@/lib/contactRequest";
 
-interface FormValues {
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  objectType: string;
-  message: string;
-  privacy: boolean;
-}
-
-const initialValues: FormValues = {
-  name: "",
-  company: "",
-  email: "",
-  phone: "",
-  objectType: "",
-  message: "",
-  privacy: false,
-};
-
-type FormErrors = Partial<Record<keyof FormValues, string>>;
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function validate(values: FormValues): FormErrors {
-  const errors: FormErrors = {};
-  if (!values.name.trim()) errors.name = "Bitte geben Sie Ihren Namen an.";
-  if (!values.company.trim()) errors.company = "Bitte geben Sie Ihr Unternehmen an.";
-  if (!values.email.trim()) {
-    errors.email = "Bitte geben Sie Ihre E-Mail-Adresse an.";
-  } else if (!emailPattern.test(values.email)) {
-    errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse an.";
-  }
-  if (!values.message.trim()) {
-    errors.message = "Bitte beschreiben Sie kurz Ihr Anliegen.";
-  }
-  if (!values.privacy) {
-    errors.privacy = "Bitte bestätigen Sie die Datenschutzerklärung.";
-  }
-  return errors;
-}
+/*
+ * Datenmodell, Prüfregeln und Übermittlung liegen jetzt in
+ * `@/lib/contactRequest` — gemeinsam mit dem vierschrittigen Formular in der
+ * Hero-Bühne der Startseite. Vorher standen sie hier, und dieses Formular war
+ * die einzige Stelle, die sie kannte.
+ *
+ * Am sichtbaren Verhalten dieses Formulars ändert das nichts: dieselben
+ * Felder, dieselben Pflichtangaben (Name, Unternehmen, E-Mail, Anliegen,
+ * Datenschutz), dieselben Meldungen. Die Felder `service` und `serviceOther`
+ * aus dem gemeinsamen Modell bleiben hier ungenutzt — dieses Formular fragt
+ * die Leistung nicht über eine Liste ab, sondern über den Freitext.
+ */
+const requiredFields: (keyof ContactRequestValues)[] = [
+  "name",
+  "company",
+  "email",
+  "message",
+  "privacy",
+];
 
 export default function ContactForm() {
-  const [values, setValues] = useState<FormValues>(initialValues);
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [values, setValues] = useState<ContactRequestValues>(emptyContactRequest);
+  const [errors, setErrors] = useState<ContactRequestErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
 
-  function updateField<K extends keyof FormValues>(field: K, value: FormValues[K]) {
+  function updateField<K extends keyof ContactRequestValues>(
+    field: K,
+    value: ContactRequestValues[K],
+  ) {
     setValues((prev) => ({ ...prev, [field]: value }));
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const validationErrors = validate(values);
+    const validationErrors = validateContactRequest(values, requiredFields);
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
@@ -70,10 +58,9 @@ export default function ContactForm() {
 
     setStatus("submitting");
     try {
-      // TODO: an Server Action / API-Route zur Angebotsanfrage anbinden.
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      await submitContactRequest(values);
       setStatus("success");
-      setValues(initialValues);
+      setValues(emptyContactRequest);
     } catch {
       setStatus("error");
     }

@@ -25,6 +25,21 @@ export interface NavItem {
  * `combos.ts`). Die Seite `/standorte` selbst bleibt unverändert erreichbar,
  * nur ohne eigenen Platz in der Hauptnavigation.
  */
+/*
+ * ── Reihenfolge und Umfang (August 2026) ──────────────────────────────────
+ * „Über uns" ist neu aufgenommen und die Reihenfolge folgt jetzt der
+ * Entwurfsvorlage für die Startseite: Leistungen, Testphase, Umweltschutz,
+ * Glanzwerk Wissen, Über uns, Kontakt.
+ *
+ * `/ueber-uns` ist keine erfundene Adresse — die Seite existiert seit langem
+ * unter `src/app/ueber-uns/page.tsx` und war bisher nur aus der Kopfzeile
+ * nicht erreichbar. Sie trägt unter anderem den Nachweis zur
+ * Betriebshaftpflicht, auf den die Vertrauenszeile der Startseite verweist;
+ * dass dorthin kein Weg aus der Navigation führte, war eine Lücke.
+ *
+ * Kein Linkverlust und keine geänderte Adresse: es kommt ein Eintrag hinzu,
+ * die übrigen fünf sind unverändert.
+ */
 export const mainNav: NavItem[] = [
   {
     label: "Leistungen",
@@ -34,9 +49,10 @@ export const mainNav: NavItem[] = [
       href: `/leistungen/${service.slug}`,
     })),
   },
-  { label: "Umweltschutz", href: "/umwelt-verantwortung" },
   { label: "Testphase", href: "/3-monate-testen" },
+  { label: "Umweltschutz", href: "/umwelt-verantwortung" },
   { label: "Glanzwerk Wissen", href: "/wissen" },
+  { label: "Über uns", href: "/ueber-uns" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
