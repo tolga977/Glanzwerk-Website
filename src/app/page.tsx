@@ -1566,6 +1566,7 @@ export default async function HomePage() {
         decor
         markCorner="bottom-left"
         backdrop={{ src: photos.lawOfficeReception.src, objectPosition: "center 45%" }}
+        clip="clip-path"
       >
         <SectionHeading
           scale="editorial"

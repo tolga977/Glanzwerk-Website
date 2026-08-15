@@ -92,6 +92,16 @@ export const photos = {
     src: unsplash("photo-1765371513276-a74f1ecbcf7d"),
     alt: "Heller Schreibtisch in einem modernen Büro mit grosser Grünpflanze und natürlichem Licht",
   },
+  /*
+   * Hero-Neufassung 15.08.2026 — vom Betreiber geliefertes Foto, ersetzt
+   * `ecoOfficeGreenery` ausschließlich im Hero (Eintrag bleibt selbst
+   * bestehen, siehe docs/IMAGES.md). Lokal als WebP unter
+   * public/images/umwelt-verantwortung/, kein Hotlinking.
+   */
+  ecoHeroLeafSkyline: {
+    src: "/images/umwelt-verantwortung/hero-naturnah-berlin.webp",
+    alt: "Junger grüner Blattspross auf moosbewachsenem Stein an einem See, im Hintergrund eine Stadt-Skyline im Sonnenlicht",
+  },
   ecoForestLight: {
     src: unsplash("photo-1605467518368-b959213686dd"),
     alt: "Sonnenlicht fällt durch dichtes grünes Blätterdach eines Waldes",
@@ -120,5 +130,24 @@ export const photos = {
   ecoForestCanopy: {
     src: unsplash("photo-1701157121748-aa59ab87f983"),
     alt: "Blick von unten durch ein grünes Blätterdach hoher Bäume in den Himmel",
+  },
+  /*
+   * "Unsere Verantwortung in der Praxis" — Bildaustausch 15.08.2026, drei vom
+   * Betreiber gelieferte Fotos ersetzen `ecoWaterDroplet`, `ecoRecyclingBins`
+   * und `ecoCleaningSpray` in den ersten drei Praxis-Karten (siehe
+   * docs/IMAGES.md). Alle drei Unsplash-Einträge bleiben unverändert in der
+   * Registry bestehen, werden aber seither nirgends mehr referenziert.
+   */
+  ecoWaterCareCard: {
+    src: "/images/umwelt-verantwortung/praxis-wasser-bewusst.webp",
+    alt: "Wasserhahn mit einzelnem Tropfen über einer Spüle, daneben eine Karte mit dem Hinweis „Wasser bewusst einsetzen“ und ein grünes Mikrofasertuch",
+  },
+  ecoWasteSeparationCard: {
+    src: "/images/umwelt-verantwortung/praxis-muelltrennung.webp",
+    alt: "Vier beschriftete Mülltonnen für Restmüll, Papier, Verpackung und Glas unter einem Hinweisschild zur Mülltrennung",
+  },
+  ecoNeutralProductsCard: {
+    src: "/images/umwelt-verantwortung/praxis-neutrale-reinigungsmittel.webp",
+    alt: "Vier Reinigungsmittelflaschen mit Sprühkopf für Oberflächen, Boden, Glas und Sanitärbereiche auf einer Arbeitsfläche",
   },
 } as const;

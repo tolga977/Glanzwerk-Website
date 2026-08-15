@@ -21,6 +21,9 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
     return href === "/" ? pathname === "/" : pathname.startsWith(href);
   }
 
+  /* Dieselbe seitenabhängige Grünrolle wie im Header (siehe dortiger Kommentar). */
+  const ecoPage = pathname.startsWith("/umwelt-verantwortung");
+
   /*
    * Der Breakpoint muss derselbe sein wie bei der Menü-Schaltfläche im
    * Header (jetzt xl statt lg). Stünde hier weiterhin lg:hidden, wäre die
@@ -173,7 +176,11 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
           <Link
             href="/preisrechner"
             onClick={onClose}
-            className="lift press inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-control bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-float shine-sweep hover:bg-brand-600 hover:shadow-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
+            className={`lift press inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-control px-5 py-3 text-sm font-semibold text-white shadow-float shine-sweep hover:shadow-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+              ecoPage
+                ? "bg-eco-600 hover:bg-eco-800 focus-visible:outline-eco-800"
+                : "bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900"
+            }`}
           >
             Preis berechnen
           </Link>

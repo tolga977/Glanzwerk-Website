@@ -1894,9 +1894,19 @@ body {
       opacity 0.5s var(--ease-signature),
       transform 0.5s var(--ease-signature);
   }
+  /*
+   * `transform: none` statt `translateY(0)` — sieht identisch aus (beides
+   * null Versatz), verhält sich aber anders: JEDER Transformwert außer dem
+   * Schlüsselwort `none`, auch eine Null-Translation, eröffnet für
+   * Nachfahren einen neuen Enthaltungsblock. Das bricht `position: sticky`
+   * (und `fixed`) in jedem Nachfahren dauerhaft — nicht nur während der
+   * Animation, sondern für immer nach dem Einblenden. Gefunden beim Bau der
+   * angehefteten Bildbühne in `ProcessTimeline`: die Fläche blieb an ihrer
+   * ursprünglichen Position hängen, unabhängig von der Scrollposition.
+   */
   .fade-in-up.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost" | "onMedia";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "onMedia" | "eco";
 type Size = "md" | "lg" | "xl";
 
 /*
@@ -50,6 +50,14 @@ const variantClasses: Record<Variant, string> = {
    */
   onMedia:
     "border-2 border-white/75 bg-white/5 text-white backdrop-blur-sm hover:border-white hover:bg-white hover:text-brand-900 focus-visible:outline-white",
+  /*
+   * Einzige grüne Primärvariante der Website — ausschließlich für den Hero
+   * von "Umwelt & Verantwortung" (siehe dortiger Kommentar). Gleiche
+   * Zustandslogik wie `primary`, nur `--color-eco-600`/`--color-eco-800`
+   * statt Markenblau: Weiß auf eco-600 ergibt 6,3:1, auf eco-800 11,7:1
+   * (siehe Farbrollen-Kommentar in globals.css) — beides deutlich über AA.
+   */
+  eco: "shine-sweep bg-eco-600 text-white shadow-float hover:bg-eco-800 hover:shadow-deep focus-visible:outline-eco-800",
 };
 
 const sizeClasses: Record<Size, string> = {

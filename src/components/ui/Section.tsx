@@ -211,6 +211,25 @@ interface SectionProps {
    * verkleinert) bleibt; nur die Position darf variieren.
    */
   markCorner?: "top-right" | "bottom-left";
+  /**
+   * Wie die Fläche ihre dekorativen Überstände kappt (Wasserzeichen-Ecke,
+   * Backdrop-Bild, Glanzstreifen). Vorgabe "overflow" — unverändertes
+   * `overflow-hidden`, der Bestand auf allen ~30 bestehenden Einsatzstellen.
+   *
+   * "clip-path" clippt optisch identisch (`clip-path: inset(0)` schneidet
+   * an derselben Kante wie `overflow-hidden`), eröffnet dabei aber — anders
+   * als `overflow` — keinen neuen Scroll-Container. Das ist kein
+   * Stilunterschied, sondern ein Verhaltensunterschied: `overflow: hidden`
+   * auf einem Vorfahren setzt `position: sticky` in jedem Nachfahren
+   * dauerhaft außer Kraft, weil der Klebe-Bezug dann an dieser (nicht
+   * selbst scrollenden) Fläche hängt statt am Ausschnittsfenster —
+   * empirisch geprüft, kein Fall aus der Spezifikation zitiert.
+   *
+   * Nur dort verwenden, wo eine Fläche eine angeheftete Kindkomponente
+   * trägt (aktuell ausschließlich der Ablauf-Abschnitt der Startseite mit
+   * `ProcessTimeline`). Für jede andere Fläche bleibt "overflow" richtig.
+   */
+  clip?: "overflow" | "clip-path";
 }
 
 /*
@@ -279,13 +298,14 @@ export default function Section({
   surface,
   backdrop,
   markCorner = "top-right",
+  clip = "overflow",
 }: SectionProps) {
   const dark = background === "navy" || background === "brand";
   const showBackdrop = Boolean(backdrop) && (dark || background === "tint");
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 overflow-hidden ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
+      className={`relative scroll-mt-24 ${clip === "clip-path" ? "[clip-path:inset(0)]" : "overflow-hidden"} ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
     >
       {showBackdrop && backdrop && (
         <>

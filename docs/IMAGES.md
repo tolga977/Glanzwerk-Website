@@ -358,3 +358,49 @@ und `public/images/marken/deiss.webp` (beide lagen bereits unverändert im
 Projekt, waren aber in `src/data/productLogos.ts` noch nicht freigeschaltet
 — siehe dortigen Freigabe-Kommentar). Keine Zertifikats-/Eco-Label-Grafiken
 verwendet; nur diese zwei Marken, unverändert, ohne Partnerschafts-Aussage.
+
+## Hero-Neufassung (15.08.2026, vom Betreiber geliefertes Foto)
+
+Ausschließlich der Hero von `/umwelt-verantwortung` ist erneut überarbeitet
+worden — Aufbau/Größe/Typografie/Conversion-Struktur orientiert sich jetzt
+am Hero der Startseite (`HeroStage`-Prinzip: derselbe DOM auf jeder Breite,
+< 1024 px randloses Bildband im Fluss, ≥ 1024 px absolut positionierte
+Bühne mit weißem Tageslichtverlauf hinter der Textspalte). `BrandPhoto`
+(gerahmtes 3:4-Kartenfoto) ist dort nicht mehr im Einsatz.
+
+| Registry-Eintrag | Datei | Einsatzort |
+|---|---|---|
+| `ecoHeroLeafSkyline` | `public/images/umwelt-verantwortung/hero-naturnah-berlin.webp` (1536×1024, WebP q85, vom Betreiber als PNG geliefert und lokal re-encodiert) | Hero `/umwelt-verantwortung` |
+
+`ecoOfficeGreenery` bleibt unverändert in der Registry bestehen (bisheriges
+Hero-Foto), wird aber seit dieser Fassung nirgends mehr referenziert —
+derselbe Umgang mit abgelösten Fotos wie bei `umwelt-hippie-*.webp` weiter
+oben in diesem Dokument.
+
+**Neue Button-Variante `eco`** (`src/components/ui/Button.tsx`): einzige
+grüne Primärfarbe der Website, ausschließlich für den Hero-CTA dieser
+Seite. `bg-eco-600` / Hover `eco-800`, additiv — alle bestehenden
+Varianten und Einsatzstellen unverändert.
+
+## Bildaustausch "Unsere Verantwortung in der Praxis" + Anfrage-Moment (15.08.2026)
+
+Drei der vier Praxis-Karten zeigen jetzt vom Betreiber gelieferte Fotos statt
+der bisherigen Unsplash-Aufnahmen. Die vierte Karte (`ecoForestCanopy`,
+"Verantwortung endet nicht beim Reinigungsmittel") ist unverändert — dafür
+lag kein Ersatzfoto vor.
+
+| Registry-Eintrag | Datei | Karte |
+|---|---|---|
+| `ecoWaterCareCard` | `public/images/umwelt-verantwortung/praxis-wasser-bewusst.webp` | "Wasser bewusst einsetzen" |
+| `ecoWasteSeparationCard` | `public/images/umwelt-verantwortung/praxis-muelltrennung.webp` | "Mülltrennung gehört zum Arbeitsalltag" |
+| `ecoNeutralProductsCard` | `public/images/umwelt-verantwortung/praxis-neutrale-reinigungsmittel.webp` | "Desinfektion dort, wo sie sinnvoll ist" |
+
+`ecoWaterDroplet`, `ecoRecyclingBins` und `ecoCleaningSpray` bleiben
+unverändert in der Registry bestehen, werden aber seither nirgends mehr
+referenziert (derselbe Umgang wie bei `ecoOfficeGreenery`, siehe oben).
+
+Zusätzlich neu: ein Anfrage-Moment zwischen dem Produkte-Abschnitt und
+"Unsere Verantwortung in der Praxis", der `HeroQuoteWizard`
+(unverändert, dieselbe Komponente wie im Startseiten-Hero) auf einem
+sanften `eco-50`-Verlauf zeigt. Keine neue Formular-Variante — nur Felder,
+Validierung und Versandlogik der Startseite, wiederverwendet.

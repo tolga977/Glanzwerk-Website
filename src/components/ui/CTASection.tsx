@@ -100,7 +100,7 @@ export default function CTASection({
             mitbringt — Größe, Farbe, Text, Funktion und
             Hover/Active/Focus-Zustände bleiben unverändert.
           */}
-          <Button href={primaryHref} variant="primary" size="lg">
+          <Button href={primaryHref} variant={eco ? "eco" : "primary"} size="lg">
             {primaryLabel}
           </Button>
           <Button

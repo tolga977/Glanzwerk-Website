@@ -91,6 +91,16 @@ export default function Header() {
   const stagePage = pathname === "/";
 
   /*
+   * Seiteneigene Farbrolle: ausschließlich auf "Umwelt & Verantwortung"
+   * wechselt der primäre Kopfzeilen-Knopf von Markenblau auf das Grün der
+   * Seite (`eco-600`/`eco-800`, dieselben Werte wie `Button`-Variante
+   * "eco"). Verlässt man die Seite, greift wieder die normale Farbe — der
+   * Zustand hängt ausschließlich am aktuellen Pfad, es gibt keinen
+   * darüber hinaus gespeicherten Zustand.
+   */
+  const ecoPage = pathname.startsWith("/umwelt-verantwortung");
+
+  /*
    * `true`, solange die Kopfzeile noch über der Bühne liegt.
    *
    * Anfangswert `stagePage`: auf der Startseite wird die Kopfzeile damit
@@ -467,7 +477,11 @@ export default function Header() {
           */}
           <Link
             href="/preisrechner"
-            className="press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control bg-brand-500 px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
+            className={`press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+              ecoPage
+                ? "bg-eco-600 hover:bg-eco-800 focus-visible:outline-eco-800"
+                : "bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900"
+            }`}
           >
             Preis schätzen
           </Link>

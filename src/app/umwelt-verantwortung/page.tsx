@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
+import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
@@ -23,13 +23,12 @@ const description =
   "Erfahren Sie, wie Glanzwerk Reinigungsservice Berlin Reinigungsmittel, Wasser und Materialien verantwortungsvoll einsetzt und warum nachhaltige Reinigung mit durchdachten Abläufen beginnt.";
 
 /*
- * Hero-Foto — ersetzt die bisherigen Illustrationen (`umwelt-hippie-*`).
- * Kuratiertes Unsplash-Foto, siehe docs/IMAGES.md. Ein helles, professionell
- * wirkendes Büro mit Glaswänden und Pflanzen trägt den ersten Eindruck
- * "Premium-Gebäudereinigung" und erst auf den zweiten Blick "bewusste
- * Arbeitsweise" — nicht andersherum.
+ * Hero-Hintergrundbild — Neufassung 15.08.2026, vom Betreiber geliefertes
+ * Foto (junger Blattspross auf Moos an einem See, Stadt-Skyline im
+ * Hintergrund). Ersetzt `ecoOfficeGreenery` ausschließlich hier; jener
+ * Eintrag bleibt unverändert in der Registry bestehen (siehe docs/IMAGES.md).
  */
-const heroPhoto = photos.ecoOfficeGreenery;
+const heroPhoto = photos.ecoHeroLeafSkyline;
 
 export const metadata: Metadata = {
   ...buildMetadata({
@@ -155,25 +154,29 @@ const practiceCards = [
     icon: "wasser" as const,
     title: heading.sectionHeadings[2],
     text: "Auch Wasser ist eine Ressource. Deshalb achten wir darauf, Arbeitsabläufe so zu gestalten, dass unnötiger Wasserverbrauch vermieden wird. Moderne Reinigungstechniken und sinnvoll vorbereitete Arbeitsprozesse helfen dabei, Ressourcen effizient einzusetzen, ohne die Reinigungsqualität zu beeinträchtigen.",
-    photo: photos.ecoWaterDroplet,
+    photo: photos.ecoWaterCareCard,
+    objectPosition: "50% 40%",
   },
   {
     icon: "muell" as const,
     title: heading.sectionHeadings[3],
     text: "Dort, wo unsere Kunden Mülltrennung im Gebäude vorsehen, berücksichtigen wir diese im Rahmen der vereinbarten Leistungen. Ziel ist es, bestehende Entsorgungskonzepte sinnvoll zu unterstützen und Arbeitsbereiche sauber zu halten.",
-    photo: photos.ecoRecyclingBins,
+    photo: photos.ecoWasteSeparationCard,
+    objectPosition: "50% 40%",
   },
   {
     icon: "desinfektion" as const,
     title: heading.sectionHeadings[4],
     text: "Nicht jede Fläche muss desinfiziert werden. In medizinischen Einrichtungen oder anderen hygienisch sensiblen Bereichen kann eine Desinfektion notwendig sein. In vielen anderen Bereichen reicht eine fachgerechte Reinigung vollkommen aus. Deshalb unterscheiden wir bewusst zwischen Reinigung und Desinfektion und setzen Desinfektionsmittel nur dort ein, wo sie erforderlich oder vereinbart sind.",
-    photo: photos.ecoCleaningSpray,
+    photo: photos.ecoNeutralProductsCard,
+    objectPosition: "56% 48%",
   },
   {
     icon: "ressourcen" as const,
     title: heading.sectionHeadings[5],
     text: "Eine zuverlässige Gebäudereinigung besteht aus vielen kleinen Entscheidungen. Dazu gehören sorgfältige Arbeitsabläufe, ein respektvoller Umgang mit den Räumlichkeiten unserer Kunden, eine klare Kommunikation und die Auswahl geeigneter Reinigungsverfahren. Unser Anspruch ist eine Reinigung, die Gebäude langfristig pflegt und den täglichen Betrieb zuverlässig unterstützt.",
     photo: photos.ecoForestCanopy,
+    objectPosition: undefined,
   },
 ];
 
@@ -222,32 +225,53 @@ export default function UmweltVerantwortungPage() {
 
       {/*
         ── Hero ──────────────────────────────────────────────────────────
-        H1 und Einleitungstext unverändert. Neu ist die Handlungszeile: sie
-        übernimmt jetzt dieselbe Konversionsstärke wie die übrigen
-        Glanzwerk-Heroes — bestehender Kontakt-CTA zuerst (unveränderter
-        Wortlaut/Link), "Preis schätzen" als klar erkennbare zweite Aktion
-        (derselbe Link wie im Hauptmenü/Startseiten-Hero), Telefonnummer als
-        ruhige dritte Option darunter — statt vorher nur einer einzelnen
-        Schaltfläche.
+        H1, Einleitungstext und Handlungszeile (Kontakt-CTA, "Preis
+        schätzen", Telefonnummer) bleiben inhaltlich unverändert. Neu ist
+        ausschließlich die Bauform: das mitgelieferte Naturfoto liegt jetzt
+        als echtes Hero-Hintergrundbild hinter dem Text, exakt nach dem
+        Muster von `HeroStage` auf der Startseite — derselbe DOM auf jeder
+        Breite, dieselbe Auflösung in ein randloses Band unter dem Text
+        (< 1024 px) und eine absolut positionierte Bühnenfläche hinter der
+        Textspalte (≥ 1024 px). Kein zweites Bild-Markup, kein
+        `hidden`/`block`-Paar.
+        Anders als auf der Startseite ist der Container hier bewusst NICHT
+        `relative` (siehe Kommentar in HeroStage.tsx) — genau das lässt
+        `lg:absolute lg:inset-0` unten gegen die Section greifen statt gegen
+        die schmalere Rasterspalte.
+        Die Kopfzeile bleibt auf dieser Seite immer in ihrem "solid"-Zustand
+        (Header.tsx: der transparente Bühnenzustand ist auf `pathname === "/"`
+        begrenzt) — die Bühne muss sich deshalb nicht hinter die Kopfzeile
+        ziehen, anders als auf der Startseite.
+
+        ── Farbstimmung ────────────────────────────────────────────────────
+        Die Fläche bleibt hell (Weiß → Foto), mit dunkler Schrift — dieselbe
+        Bühnenlogik wie auf der Startseite, nicht die dunkelgrüne
+        Verlaufsfläche des weiter unten stehenden Signature-Banners "Wir
+        können auch grün." Zwei solche Flächen kurz hintereinander wären
+        Wiederholung, keine Verstärkung. Grün steht hier bewusst nur an drei
+        Stellen: der Eyebrow-Zeile, dem primären Button (`variant="eco"`,
+        einzige grüne Primärfarbe der Website, siehe Button.tsx) und dem
+        Hover der Telefonzeile — alles andere bleibt Weiß, Off-White und
+        Glanzwerk-Dunkelblau.
       */}
-      <Section background="white" className="pt-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="max-w-xl">
+      <section className="relative isolate overflow-hidden bg-white">
+        <div className="container-page flex flex-col gap-10 py-14 sm:gap-12 sm:py-16 lg:py-24 xl:py-28">
+          <div className="relative z-20 max-w-xl">
             <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-eco-600">
               <span aria-hidden="true" className="brand-tick" />
               Nachhaltige Arbeitsweise
             </p>
-            <h1 className="font-display mt-4 text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
+            <h1 className="font-display display-xl mt-5 text-balance text-[2.375rem] font-medium text-brand-900 sm:text-5xl lg:text-6xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
               Nachhaltigkeit bedeutet für uns nicht, möglichst viele Umweltbegriffe zu verwenden. Sie
               zeigt sich im täglichen Umgang mit Reinigungsmitteln, Wasser, Materialien und den
               Gebäuden unserer Kunden. Deshalb setzen wir auf sorgfältige Arbeitsabläufe, eine
               bedarfsgerechte Dosierung und Reinigungsverfahren, die Oberflächen langfristig schonen.
             </p>
-            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <Button href="/kontakt" size="lg" className="min-h-14 w-full sm:w-auto">
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:mt-9 sm:flex-row sm:items-center">
+              <Button href="/kontakt" variant="eco" size="lg" className="min-h-14 w-full sm:w-auto">
                 Unverbindliches Angebot anfragen
               </Button>
               <Button href="/preisrechner" variant="outline" size="lg" className="min-h-14 w-full sm:w-auto">
@@ -256,21 +280,45 @@ export default function UmweltVerantwortungPage() {
             </div>
             <a
               href={siteConfig.phoneHref}
-              className="mt-6 inline-flex min-h-11 items-center gap-2.5 rounded-control text-sm font-medium text-ink-soft transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              className="mt-6 inline-flex min-h-11 items-center gap-2.5 rounded-control text-sm font-medium text-ink-soft transition-colors duration-200 ease-out hover:text-eco-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-eco-600"
             >
-              <span className="text-brand-400">{phoneIcon}</span>
+              <span className="text-eco-600">{phoneIcon}</span>
               Oder direkt anrufen: {siteConfig.phone}
             </a>
           </div>
+
           {/*
-            3:4 statt der sonst üblichen 4:3 — die Aufnahme ist selbst
-            hochformatig (rund 0,7:1). Bei 4:3 wäre oben die Decke oder unten
-            der Schreibtisch weggeschnitten worden; bei 3:4 bleibt die grosse
-            Pflanze samt Vorhang und Lichteinfall fast vollständig sichtbar.
+            ── Die Bildbühne ──────────────────────────────────────────────
+            < 1024 px: eigenes randloses Band im Fluss, nach dem Text — ein
+            Hintergrundfoto kann auf einem 390 px breiten Schirm keine
+            Textfläche tragen (dieselbe Begründung wie in HeroStage.tsx).
+            ≥ 1024 px: volle Bühnenfläche hinter dem Text, mit einem nach
+            rechts auslaufenden weißen Tageslichtverlauf, der die Textspalte
+            trägt — derselbe Mechanismus wie `.hero-daylight`, hier als
+            eigene, auf dieses Foto zugeschnittene Verlaufsangabe statt der
+            globalen (personenbezogenen) Klasse.
           */}
-          <BrandPhoto photo={heroPhoto} aspect="aspect-[3/4]" priority className="shadow-deep" />
+          <div className="relative -mx-4 aspect-[4/3] w-auto overflow-hidden sm:-mx-6 sm:aspect-[16/9] lg:absolute lg:inset-0 lg:mx-0 lg:aspect-auto lg:w-full">
+            <Image
+              src={heroPhoto.src}
+              alt={heroPhoto.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: "70% 45%" }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 hidden lg:block"
+              style={{
+                background:
+                  "linear-gradient(100deg, rgb(255 255 255) 0%, rgb(255 255 255) 52%, rgb(255 255 255 / 0.92) 60%, rgb(255 255 255 / 0.55) 70%, rgb(255 255 255 / 0.15) 82%, rgb(255 255 255 / 0) 92%)",
+              }}
+            />
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* H2 1 — unverändert */}
       <Section background="tint" decor>
@@ -409,6 +457,42 @@ export default function UmweltVerantwortungPage() {
       </Section>
 
       {/*
+        ── Anfrage-Moment in der Seitenmitte ──────────────────────────────
+        Dieselbe Komponente wie im Startseiten-Hero (`HeroQuoteWizard`) —
+        unverändert übernommen, kein neues Formular, keine neue Variante.
+        Weder Felder noch Validierung noch Versandlogik sind angerührt.
+        Ebenso wenig eine neue H2: alle sechs freigegebenen Überschriften
+        dieser Seite sind bereits vergeben (siehe Kommentar am
+        Signature-Banner "Wir können auch grün." weiter oben) — der Absatz
+        links steht deshalb in der Schriftgröße einer Überschrift, ist aber
+        keine.
+        Der weiche Grün-Verlauf im Hintergrund ist die einzige Anpassung an
+        die Seitenstimme: das Panel selbst bleibt exakt die weiße Fläche mit
+        den Marken-blauen Bedienelementen, die auch auf der Startseite steht
+        — eindeutig Glanzwerk, nicht neu eingefärbt.
+      */}
+      <section className="bg-gradient-to-b from-eco-50 via-eco-50 to-white py-20 sm:py-24">
+        <div className="container-page">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div className="max-w-lg">
+              <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-eco-600">
+                <span aria-hidden="true" className="brand-tick text-eco-600" />
+                Direkt anfragen
+              </p>
+              <p className="font-display display-lg mt-5 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl">
+                Sprechen Sie mit uns über Ihr Objekt
+              </p>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-ink-soft">
+                Wählen Sie Ihre gewünschte Leistung und hinterlassen Sie kurz Ihre Kontaktdaten —
+                den Rest klären wir gemeinsam. Unverbindlich und in wenigen Minuten ausgefüllt.
+              </p>
+            </div>
+            <HeroQuoteWizard />
+          </div>
+        </div>
+      </section>
+
+      {/*
         ── "Unsere Verantwortung in der Praxis" ──────────────────────────
         Die vier bisherigen Vollbreite-Abschnitte (Wasser, Mülltrennung,
         Desinfektion, Gesamtbild) als ein Kartenraster. Vier echte,
@@ -431,6 +515,7 @@ export default function UmweltVerantwortungPage() {
                   fill
                   sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 100vw"
                   className="object-cover"
+                  style={card.objectPosition ? { objectPosition: card.objectPosition } : undefined}
                 />
                 <span
                   aria-hidden="true"
