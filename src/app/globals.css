@@ -198,7 +198,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  /*
+   * Native Systemschrift statt Inter (Slop-Detect: "AI-default font stack").
+   * Inter lief zuvor hier über next/font/google; ersetzt durch den
+   * Betriebssystem-eigenen UI-Font-Stack — keine neue Abhängigkeit, kein
+   * zusätzlicher Font-Download, metrisch sehr nah an Inter (Inter wurde
+   * ursprünglich als Ersatz für genau diese Systemschriften entworfen),
+   * dadurch praktisch keine Größen-/Zeilenumbruchverschiebung. Fraunces
+   * (Überschriften) bleibt unverändert.
+   */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-display);
 
   /* Brand: Glanzwerk Reinigungsservice Berlin */

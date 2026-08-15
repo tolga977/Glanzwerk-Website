@@ -90,12 +90,17 @@ export default function CTASection({
         <div className="glanz-divider mx-auto mt-5 max-w-[140px]" />
         <p className={`mx-auto mt-5 max-w-xl ${eco ? "text-eco-100" : "text-brand-200"}`}>{subtitle}</p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button
-            href={primaryHref}
-            variant="primary"
-            size="lg"
-            className="shadow-float shadow-brand-500/30"
-          >
+          {/*
+            Der zusätzliche `shadow-brand-500/30`-Glow ist entfernt
+            (Slop-Detect: gesättigter farbiger Box-Shadow) — er widersprach
+            der eigenen Schatten-Doktrin des Systems ("Kein blauer Glow,
+            keine diffusen SaaS-Schatten", siehe globals.css). Ohne eigenes
+            `className` trägt der Button wieder ausschließlich den neutralen
+            `shadow-float`-Token, den die `primary`-Variante ohnehin schon
+            mitbringt — Größe, Farbe, Text, Funktion und
+            Hover/Active/Focus-Zustände bleiben unverändert.
+          */}
+          <Button href={primaryHref} variant="primary" size="lg">
             {primaryLabel}
           </Button>
           <Button

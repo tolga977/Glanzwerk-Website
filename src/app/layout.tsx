@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Fraunces } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
@@ -7,13 +7,7 @@ import { siteConfig } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Display serif for headings only — pairs with Inter body copy to give the
+// Display serif for headings only — pairs with the native system-font body copy to give the
 // site a distinctive, editorial "premium agency" character instead of the
 // single-sans look shared by most competitor sites.
 const fraunces = Fraunces({
@@ -45,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
+    <html lang="de" className={`${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink">
         {/* Fallback für Browser ohne Unterstützung der scripting-Media-Query:
             ohne JavaScript dürfen Scroll-Einblendungen keine Inhalte verbergen. */}
