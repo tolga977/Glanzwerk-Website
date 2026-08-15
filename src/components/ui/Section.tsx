@@ -172,7 +172,33 @@ interface SectionProps {
    * Register einspaltig über die volle Breite, es gibt keine freie Hälfte
    * mehr.
    */
-  backdrop?: { src: string; objectPosition?: string };
+  backdrop?: {
+    src: string;
+    objectPosition?: string;
+    /**
+     * Klassen für die Bildebene — für einen Ausschnitt, der sich je Breite
+     * unterscheiden muss. Wird sie gesetzt, entfällt `objectPosition`: eine
+     * Inline-Angabe würde jede Regel aus der Klasse schlagen.
+     */
+    imageClassName?: string;
+    /**
+     * Wie stark die Marke über dem Motiv liegt.
+     *
+     * "tint" (Vorgabe) — die Tonebene deckt zu rund 90 %. Das Foto ist
+     *   Textur unter der Markenfarbe; der Kontrast des Textes hängt an der
+     *   Tonebene, nicht am Motiv. Das ist der richtige Weg für Aufnahmen,
+     *   die hell sind oder deren Helligkeit man nicht kennt.
+     *
+     * "carry" — das Motiv trägt die Fläche selbst und behält seine Tiefe.
+     *   Darüber liegt nur noch ein sehr schwacher Verlauf, der die Kanten
+     *   an die Nachbarflächen anschließt.
+     *
+     *   Bedingung: die Textzone der Aufnahme muss von sich aus dunkel genug
+     *   sein. Das ist zu messen, nicht zu schätzen — bei einem zu hellen
+     *   Motiv fällt der Kontrast ohne Vorwarnung unter AA.
+     */
+    tone?: "tint" | "carry";
+  };
   /**
    * Ecke des Wasserzeichens auf dunklen Flächen. Vorgabe "top-right" — der
    * unveränderte, überall sonst verwendete Wert.
@@ -271,11 +297,13 @@ export default function Section({
             sizes="100vw"
             className={
               dark
-                ? "object-cover"
-                : "object-cover opacity-[0.16] saturate-[0.45] contrast-[0.8] sm:opacity-[0.3] lg:opacity-[0.42]"
+                ? `object-cover ${backdrop.imageClassName ?? ""}`
+                : `object-cover opacity-[0.22] saturate-[0.6] contrast-[0.85] sm:opacity-[0.4] lg:opacity-[0.54] ${backdrop.imageClassName ?? ""}`
             }
             style={{
-              ...(backdrop.objectPosition ? { objectPosition: backdrop.objectPosition } : null),
+              ...(backdrop.objectPosition && !backdrop.imageClassName
+                ? { objectPosition: backdrop.objectPosition }
+                : null),
               ...(dark
                 ? null
                 : {
@@ -287,15 +315,24 @@ export default function Section({
                   }),
             }}
           />
-          {/* Tonebene in der Grundfarbe — hält den Markenton und die Lesbarkeit. */}
+          {/*
+            Tonebene in der Grundfarbe — hält den Markenton und die
+            Lesbarkeit. Bei `tone: "carry"` entfällt sie: dort ist das Motiv
+            selbst die Fläche, und eine Deckung von 90 % würde genau die
+            Tiefe wegnehmen, derentwegen es ausgewählt wurde. Es bleibt ein
+            schwacher Verlauf, der die Ränder an die Nachbarflächen
+            anschließt.
+          */}
           <div
             aria-hidden="true"
             className={`pointer-events-none absolute inset-0 ${
-              background === "navy"
-                ? "bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-950/94"
-                : background === "tint"
-                  ? "bg-gradient-to-r from-brand-100 via-brand-100/88 to-brand-50/70"
-                  : "bg-gradient-to-br from-brand-600/90 via-brand-700/88 to-brand-800/92"
+              backdrop.tone === "carry"
+                ? "backdrop-carry"
+                : background === "navy"
+                  ? "bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-950/94"
+                  : background === "tint"
+                    ? "bg-gradient-to-r from-brand-100 via-brand-100/88 to-brand-50/70"
+                    : "bg-gradient-to-br from-brand-600/90 via-brand-700/88 to-brand-800/92"
             }`}
           />
         </>

@@ -18,6 +18,16 @@ export interface GoogleReview {
   text: string;
   /** Von Google formulierte relative Zeitangabe, z. B. "vor 2 Monaten". */
   publishedLabel: string;
+  /**
+   * Profilbild aus dem Google-Konto der rezensierenden Person.
+   *
+   * Kommt unverändert aus `authorAttribution.photoUri` — demselben Feld, aus
+   * dem bereits `author` gelesen wird, keine zusätzliche FieldMask nötig.
+   * Fehlt es (nicht jedes Google-Konto hat ein Profilbild), bleibt der Wert
+   * `undefined`; die Anzeige fällt dann auf ein Initialen-Kürzel zurück statt
+   * ein kaputtes Bild zu zeigen.
+   */
+  photoUrl?: string;
 }
 
 export interface GoogleRatingData {
@@ -69,6 +79,7 @@ function parseReview(raw: unknown): GoogleReview | null {
 
   const text = typeof textNode?.text === "string" ? textNode.text.trim() : "";
   const author = typeof authorNode?.displayName === "string" ? authorNode.displayName.trim() : "";
+  const photoUri = (authorNode as { photoUri?: unknown } | undefined)?.photoUri;
 
   if (typeof name !== "string" || name.length === 0) return null;
   if (typeof rating !== "number" || !Number.isFinite(rating) || rating < 1) return null;
@@ -80,6 +91,7 @@ function parseReview(raw: unknown): GoogleReview | null {
     rating,
     text,
     publishedLabel: typeof publishedLabel === "string" ? publishedLabel : "",
+    photoUrl: typeof photoUri === "string" && photoUri.length > 0 ? photoUri : undefined,
   };
 }
 
@@ -127,7 +139,23 @@ export async function getGoogleRating(): Promise<GoogleRatingData> {
       },
     );
 
-    if (!response.ok) return fallback;
+    if (!response.ok) {
+      // Nur Statuscode und Googles eigene Kernmeldung aus dem Antwortkörper —
+      // nie Header oder Anfragedaten. Der Schlüssel steht in keinem von
+      // beiden, da Google ihn aus Sicherheitsgründen nie zurückspiegelt.
+      const errorBody: unknown = await response.json().catch(() => null);
+      const googleMessage =
+        typeof errorBody === "object" &&
+        errorBody !== null &&
+        "error" in errorBody &&
+        typeof (errorBody as { error?: { message?: unknown } }).error?.message === "string"
+          ? (errorBody as { error: { message: string } }).error.message
+          : "(keine Detailmeldung)";
+      console.error(
+        `[getGoogleRating] Places API antwortete ${response.status} ${response.statusText}: ${googleMessage}`,
+      );
+      return fallback;
+    }
 
     const data = (await response.json()) as PlacesResponse;
     const rating = data.rating;
@@ -145,7 +173,12 @@ export async function getGoogleRating(): Promise<GoogleRatingData> {
       : [];
 
     return { rating, count, live: true, reviews };
-  } catch {
+  } catch (error) {
+    // Nur die Fehlermeldung, nie das Error-Objekt/die Request-Konfiguration —
+    // aus demselben Grund wie oben.
+    console.error(
+      `[getGoogleRating] Abfrage fehlgeschlagen: ${error instanceof Error ? error.message : "unbekannter Fehler"}`,
+    );
     return fallback;
   }
 }

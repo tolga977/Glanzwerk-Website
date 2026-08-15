@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disinfection Sweep – Motion-Prototyp</title>
+<style>
+  :root{
+    --stage-bg:#f6f9fc;
+    --ink:#5a6672;
+    --p:0;
+    --ep:-20%;
+    --idle:1;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#eef3f8;color:var(--ink);padding:24px}
+  .wrap{max-width:1180px;margin:0 auto}
+
+  .stage{
+    position:relative;width:100%;aspect-ratio:16/8;border-radius:18px;overflow:hidden;
+    background:var(--stage-bg);isolation:isolate;
+  }
+  .stage::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(58% 70% at 34% 50%, #dfedf8 0%, rgba(223,237,248,0) 70%);
+  }
+  .clean-glow{
+    position:absolute;inset:0;
+    background:radial-gradient(46% 62% at 78% 50%, #ffffff 0%, rgba(255,255,255,0) 72%);
+    opacity:calc(.25 + var(--p) * .75);
+    transition:opacity .12s linear;
+  }
+
+  #atmospheric-particles{position:absolute;inset:0;pointer-events:none}
+  #atmospheric-particles i{
+    position:absolute;display:block;border-radius:50%;background:#9fb9ce;filter:blur(1.4px);
+    animation:drift linear infinite;will-change:transform;
+  }
+  @keyframes drift{
+    0%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(14px,-10px,0)}
+    100%{transform:translate3d(0,0,0)}
+  }
+
+  .organism{
+    position:absolute;left:6%;top:50%;width:47%;
+    transform:translateY(-50%);
+  }
+  .organism-inner{position:relative;width:100%;aspect-ratio:1536/1024}
+
+  #idle-motion{
+    position:absolute;inset:0;transform-origin:52% 50%;
+    animation:idleA 19s cubic-bezier(.37,0,.63,1) infinite alternate;
+    will-change:transform;
+  }
+  #idle-motion .idle-b{
+    position:absolute;inset:0;transform-origin:52% 50%;
+    animation:idleB 31s cubic-bezier(.37,0,.63,1) infinite alternate;
+    will-change:transform;
+  }
+  @keyframes idleA{
+    from{transform:translate3d(0,calc(-6px * var(--idle)),0) rotate(calc(-1.1deg * var(--idle)))}
+    to{transform:translate3d(calc(5px * var(--idle)),calc(7px * var(--idle)),0) rotate(calc(1.3deg * var(--idle)))}
+  }
+  @keyframes idleB{
+    from{transform:scale(calc(1 - .014 * var(--idle))) rotate(calc(1.6deg * var(--idle)))}
+    to{transform:scale(calc(1 + .016 * var(--idle))) rotate(calc(-1.4deg * var(--idle)))}
+  }
+
+  #idle-motion .idle-b{filter:url(#crumble)}
+  #bacteria-mask{
+    position:absolute;inset:0;
+    -webkit-mask-image:linear-gradient(90deg,transparent calc(var(--ep) - 12%),rgba(0,0,0,.22) calc(var(--ep) - 5%),rgba(0,0,0,.68) calc(var(--ep) + 2%),#000 calc(var(--ep) + 11%));
+    mask-image:linear-gradient(90deg,transparent calc(var(--ep) - 12%),rgba(0,0,0,.22) calc(var(--ep) - 5%),rgba(0,0,0,.68) calc(var(--ep) + 2%),#000 calc(var(--ep) + 11%));
+  }
+  #master-bacteria{width:100%;height:100%;display:block;object-fit:contain;user-select:none;-webkit-user-drag:none}
+
+  #contact-glow{
+    position:absolute;inset:0;pointer-events:none;
+    -webkit-mask-size:contain;mask-size:contain;
+    -webkit-mask-position:center;mask-position:center;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    background:linear-gradient(90deg,
+      rgba(255,255,255,0) calc(var(--ep) - 13%),
+      rgba(206,236,252,.42) calc(var(--ep) - 7%),
+      rgba(236,249,255,.82) calc(var(--ep) - 2%),
+      rgba(255,255,255,1) calc(var(--ep) + 1%),
+      rgba(224,244,254,.72) calc(var(--ep) + 4%),
+      rgba(206,236,252,.34) calc(var(--ep) + 9%),
+      rgba(255,255,255,0) calc(var(--ep) + 15%));
+    opacity:0;
+  }
+
+  /* Hundreds of moving DOM fragments force a full repaint of their composited
+     layer every frame. One canvas per group turns that into a single texture
+     upload — the layer split stays, the per-element paint cost does not. */
+  .fragments{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
+  #large-fragments{filter:brightness(1.14) saturate(.94)}
+  #medium-fragments{filter:brightness(1.2) saturate(.9)}
+
+  #sweep{
+    position:absolute;top:-8%;bottom:-8%;left:0;width:100%;pointer-events:none;
+    transform:translate3d(var(--sweepx,-300px),0,0);
+    will-change:transform;
+  }
+  #sweep svg{position:absolute;left:0;top:0;height:100%;width:240px;overflow:visible}
+
+  .controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px;font-size:13px}
+  .controls button{
+    font:inherit;padding:8px 16px;border-radius:999px;border:1px solid #c6d6e4;background:#fff;color:#37505f;
+    cursor:pointer;transition:background .18s cubic-bezier(.32,.72,0,1),border-color .18s;
+  }
+  .controls button:hover{background:#f1f7fc;border-color:#a9c4da}
+  .controls button[aria-pressed="true"]{background:#2f6a97;border-color:#2f6a97;color:#fff}
+  input[type=range]{width:340px;accent-color:#2f6a97}
+  .val{font-variant-numeric:tabular-nums;min-width:74px}
+  .hint{margin-top:10px;font-size:12px;opacity:.7}
+  @media (prefers-reduced-motion:reduce){
+    #idle-motion,#idle-motion .idle-b,#atmospheric-particles i{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="crumble" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016 0.032" numOctaves="1" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="13" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs></svg>
+  <div class="stage" id="stage">
+    <div class="clean-glow"></div>
+    <div id="atmospheric-particles"></div>
+
+    <div id="sweep">
+      <svg viewBox="0 0 120 800" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".42" stop-color="#fff" stop-opacity="1"/>
+            <stop offset=".74" stop-color="#e6f6ff" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#cfebfa" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="fb" x="-60%" y="-20%" width="220%" height="140%"><feGaussianBlur stdDeviation="9"/></filter>
+          <filter id="fs" x="-60%" y="-20%" width="220%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+          <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#cbe8f8" stop-opacity="0"/>
+            <stop offset=".55" stop-color="#cbe8f8" stop-opacity=".26"/>
+            <stop offset=".88" stop-color="#e9f7ff" stop-opacity=".6"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity=".75"/>
+          </linearGradient>
+        </defs>
+        <rect x="-155" y="-20" width="207" height="840" fill="url(#trail)"/>
+        <g stroke="#bcdff4" fill="none" stroke-linecap="round" filter="url(#fs)">
+          <path d="M-140 168 C-80 158 -20 176 46 164" stroke-width="2.6" opacity=".2"/>
+          <path d="M-126 318 C-66 330 -8 310 48 322" stroke-width="2.2" opacity=".22"/>
+          <path d="M-148 452 C-84 442 -24 460 44 448" stroke-width="2.4" opacity=".18"/>
+          <path d="M-118 596 C-58 608 -2 588 50 600" stroke-width="2" opacity=".2"/>
+          <path d="M-134 244 C-70 252 -14 236 46 246" stroke-width="1.6" opacity=".14"/>
+          <path d="M-130 528 C-66 518 -10 534 46 524" stroke-width="1.6" opacity=".14"/>
+        </g>
+        <path d="M52 -20 C86 140 26 250 58 400 C90 550 30 640 62 820" fill="none" stroke="#e8f7ff" stroke-width="54" opacity=".16" filter="url(#fb)"/>
+        <path d="M52 -20 C86 140 26 250 58 400 C90 550 30 640 62 820" fill="none" stroke="url(#sg)" stroke-width="24" stroke-linecap="round" opacity=".95" filter="url(#fs)"/>
+        <path d="M26 -20 C60 140 0 250 32 400 C64 550 4 640 36 820" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".5" filter="url(#fs)"/>
+        <path d="M80 -20 C114 140 54 250 86 400 C118 550 58 640 90 820" fill="none" stroke="#cdeafb" stroke-width="5" stroke-linecap="round" opacity=".45" filter="url(#fs)"/>
+        <path d="M8 -20 C42 140 -18 250 14 400 C46 550 -14 640 18 820" fill="none" stroke="#eaf7ff" stroke-width="30" opacity=".3" filter="url(#fb)"/>
+        <path d="M38 -20 C72 140 12 250 44 400 C76 550 16 640 48 820" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" opacity=".62" filter="url(#fs)"/>
+        <path d="M66 -20 C100 140 40 250 72 400 C104 550 44 640 76 820" fill="none" stroke="#f2fbff" stroke-width="2.6" stroke-linecap="round" opacity=".5" filter="url(#fs)"/>
+        <path d="M58 40 C82 180 40 270 66 400" fill="none" stroke="#fff" stroke-width="2" opacity=".75"/>
+        <path d="M54 460 C80 560 40 660 64 760" fill="none" stroke="#fff" stroke-width="1.8" opacity=".6"/>
+        <path d="M30 90 C54 210 16 300 40 430 C62 550 26 650 46 780" fill="none" stroke="#fff" stroke-width="1.2" opacity=".45"/>
+        <path d="M20 -10 C44 120 6 220 30 340" fill="none" stroke="#dff2fd" stroke-width="1.6" opacity=".4"/>
+      </svg>
+    </div>
+
+    <div class="organism">
+      <div class="organism-inner" id="organism">
+        <div id="idle-motion">
+          <div class="idle-b">
+            <div id="bacteria-mask">
+              <img id="master-bacteria" src="master-bacteria.png" alt="Mikroorganismus" draggable="false">
+            </div>
+            <div id="contact-glow"></div>
+          </div>
+        </div>
+        <canvas class="fragments" id="large-fragments"></canvas>
+        <canvas class="fragments" id="medium-fragments"></canvas>
+        <canvas class="fragments" id="fine-particles"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="controls">
+    <button id="play" aria-pressed="false">Abspielen</button>
+    <button id="loop" aria-pressed="false">Loop</button>
+    <button id="rev" aria-pressed="false">Rückwärts</button>
+    <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Progress">
+    <span class="val" id="out">p = 0.000</span>
+  </div>
+  <p class="hint">Progress 0–1 ist der einzige Steuerparameter (<code>DisinfectionSweep.setProgress(p)</code>) – später an den Scroll-Fortschritt koppelbar. Scrubben unterbricht die Wiedergabe jederzeit.</p>
+</div>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  const organism=document.getElementById('organism');
+  const glow=document.getElementById('contact-glow');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+
+  let seed=20260810;
+  const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+  const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+  const easeOut=t=>1-Math.pow(1-t,3);
+  const easeInOut=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+
+  // --- fragment seeding: every fragment is a crop of the master asset ---
+  const R={x:.30,y:.455};
+  function discPoint(){
+    // bias inward: fragments must carry saturated body material, not halo
+    const a=rnd()*2*Math.PI, r=Math.sqrt(rnd())*.74;
+    return {fx:.5+Math.cos(a)*r*R.x, fy:.5+Math.sin(a)*r*R.y};
+  }
+
+  const groups=[
+    // delay/hold stage the hand-off: crust breaks off first, is carried, then
+    // grinds down into smaller debris further downstream
+    {el:document.getElementById('large-fragments'),n:96,size:[.013,.028],win:.40,dx:[.10,.26],dy:.05,rot:38,img:true,
+     delay:0,hold:.46,fadePow:2.4,shr:.32,cling:true},
+    {el:document.getElementById('medium-fragments'),n:150,size:[.006,.014],win:.52,dx:[.28,.60],dy:.09,rot:64,img:true,
+     delay:.07,hold:.34,fadePow:2.0,shr:.48,cling:false},
+    {el:document.getElementById('fine-particles'),n:210,size:[.0022,.0055],win:.70,dx:[.55,1.25],dy:.13,rot:0,img:false,
+     delay:.16,hold:.18,fadePow:1.7,shr:.6,cling:false}
+  ];
+  const items=[];
+  groups.forEach(g=>{
+    g.ctx=g.el.getContext('2d');
+    g.items=[];
+    for(let i=0;i<g.n;i++){
+      const p=discPoint();
+      const s=g.size[0]+rnd()*(g.size[1]-g.size[0]);
+      const it={
+        img:g.img,s,g,
+        fx:p.fx,fy:p.fy,
+        win:g.win*(.7+rnd()*.6),
+        dx:g.dx[0]+rnd()*(g.dx[1]-g.dx[0]),
+        dy:(rnd()-.5)*2*g.dy,
+        rot:((rnd()-.5)*2*g.rot)*Math.PI/180,
+        lag:rnd()*.05,
+        ar:.72+rnd()*.5,              // organic aspect, no perfect beads
+        rx:.40+rnd()*.12, ry:.36+rnd()*.14,
+        tilt:rnd()*Math.PI,
+        col:rnd()>.5?'#9dc2de':'#cfe6f6'
+      };
+      g.items.push(it); items.push(it);
+    }
+  });
+
+  // one sprite per fragment, rendered once: the per-frame path is drawImage only
+  function buildSprites(src){
+    const IW=src.width, IH=src.height;
+    for(const it of items){
+      if(!it.img) continue;
+      const w=Math.max(2,Math.round(it.s*IW)), h=Math.max(2,Math.round(it.s*IW*it.ar));
+      const sx=it.fx*IW-w/2, sy=it.fy*IH-h/2;
+      const c=document.createElement('canvas');
+      c.width=w;c.height=h;
+      const x=c.getContext('2d');
+      x.save();
+      x.beginPath();
+      x.ellipse(w/2,h/2,w*it.rx*2,h*it.ry*2,it.tilt,0,6.284);
+      x.clip();
+      x.drawImage(src,sx,sy,w,h,0,0,w,h);
+      x.restore();
+      it.sprite=c;
+    }
+  }
+
+  // atmospheric layer
+  const atm=document.getElementById('atmospheric-particles');
+  for(let i=0;i<20;i++){
+    const n=document.createElement('i');
+    const r=1.6+rnd()*3.2;
+    n.style.width=n.style.height=r+'px';
+    n.style.left=(rnd()*100)+'%';
+    n.style.top=(rnd()*100)+'%';
+    n.style.opacity=(.12+rnd()*.2).toFixed(2);
+    n.style.animationDuration=(14+rnd()*16).toFixed(1)+'s';
+    n.style.animationDelay=(-rnd()*20).toFixed(1)+'s';
+    atm.appendChild(n);
+  }
+
+  // --- layout: fragments carry a crop of the master image ---
+  let W=0,H=0,orgLeft=0,sweepHalf=120,dprS=1;
+  function layout(){
+    const r=organism.getBoundingClientRect();
+    const s=document.getElementById('stage').getBoundingClientRect();
+    W=r.width;H=r.height;orgLeft=r.left-s.left;
+    const sv=document.querySelector('#sweep svg');
+    if(sv)sweepHalf=sv.getBoundingClientRect().width*0.43;
+    dprS=Math.min(devicePixelRatio||1,2);
+    groups.forEach(g=>{
+      g.el.width=Math.round(W*dprS);
+      g.el.height=Math.round(H*dprS);
+      g.ctx.setTransform(dprS,0,0,dprS,0,0);
+    });
+  }
+  addEventListener('resize',layout);
+  // the stage may still be unlaid-out at boot (background tab); re-measure and
+  // repaint whenever it actually gets a size
+  new ResizeObserver(()=>{ layout(); render(progress); }).observe(organism);
+
+  // --- the single driver ---
+  let progress=0;
+  function render(p){
+    progress=clamp(p,0,1);
+    root.style.setProperty('--p',progress);
+    // The organism occupies roughly 20%..80% of its image box. The edge crawls
+    // through that band and moves fast outside it, so the disintegration itself
+    // owns the bulk of the timeline instead of being wiped away.
+    const ep = progress<.15 ? -8+(progress/.15)*26
+             : progress<.84 ? 18+((progress-.15)/.69)*66
+             : 84+((progress-.84)/.16)*56;
+    root.style.setProperty('--ep',ep+'%');
+    root.style.setProperty('--sweepx',(orgLeft+ep/100*W-sweepHalf).toFixed(1)+'px');
+    root.style.setProperty('--idle',(1-easeOut(clamp(progress/.22,0,1))*.85).toFixed(3));
+
+    const onBody=clamp((progress-.13)/.06,0,1)*clamp((.88-progress)/.08,0,1);
+    glow.style.opacity=(onBody*.95).toFixed(3);
+
+    const edge=(ep+7)/100;
+    for(let gi=0;gi<groups.length;gi++){
+      const g=groups[gi], x=g.ctx, list=g.items;
+      x.clearRect(0,0,W,H);
+      for(let i=0;i<list.length;i++){
+        const it=list[i];
+        const t=clamp((edge-it.fx-it.lag-g.delay)/it.win,0,1);
+        if(t<=0||t>=1) continue;
+        // large crust clings to the surface before the flow takes it; smaller
+        // debris is grabbed immediately
+        const e=g.cling?easeInOut(t):easeOut(t);
+        const o=t<.09 ? t/.09 : (t<g.hold ? 1 : 1-Math.pow((t-g.hold)/(1-g.hold),g.fadePow));
+        if(o<=.004) continue;
+        const cx=it.fx*W+(.02+e*it.dx)*W;
+        const cy=it.fy*H+e*it.dy*H+Math.sin(t*3.1)*3;
+        // debris smears along the flow instead of flying as beads
+        const sc=1-e*g.shr, sx=sc*(1+e*.75), sy=sc*(1-e*.22);
+        x.globalAlpha=o;
+        if(it.img){
+          const w=it.s*W, h=w*it.ar;
+          x.setTransform(1,0,0,1,0,0);
+          x.translate(cx*dprS,cy*dprS);
+          x.scale(dprS*sx,dprS*sy);
+          if(it.rot) x.rotate(e*it.rot);
+          x.drawImage(it.sprite,-w/2,-h/2,w,h);
+        }else{
+          const r=it.s*W*.5;
+          x.setTransform(dprS,0,0,dprS,0,0);
+          x.fillStyle=it.col;
+          x.beginPath();
+          x.ellipse(cx,cy,r*sx,r*sy,0,0,6.284);
+          x.fill();
+        }
+      }
+      x.setTransform(dprS,0,0,dprS,0,0);
+      x.globalAlpha=1;
+    }
+    scrub.value=Math.round(progress*1000);
+    out.textContent='p = '+progress.toFixed(3);
+  }
+
+  // --- playback (interruptible) ---
+  const play=document.getElementById('play'),loopBtn=document.getElementById('loop'),
+        rev=document.getElementById('rev'),scrub=document.getElementById('scrub'),out=document.getElementById('out');
+  let raf=null,t0=0,from=0,to=1,dur=2800;
+  // adaptive quality: the displacement filter is the single most expensive
+  // effect — drop it if the dissolution can't hold frame budget
+  const idle=document.querySelector('#idle-motion .idle-b');
+  let slow=0,prev=0,degraded=false;
+  function watch(ts){
+    if(prev){
+      const d=ts-prev;
+      if(d>26){ if(++slow>6&&!degraded){ degraded=true; idle.style.filter='none'; } }
+      else if(slow>0) slow--;
+    }
+    prev=ts;
+  }
+
+  function tick(ts){
+    watch(ts);
+    if(!t0)t0=ts;
+    const k=clamp((ts-t0)/dur,0,1);
+    render(from+(to-from)*easeInOut(k));
+    if(k<1){raf=requestAnimationFrame(tick);}
+    else{
+      raf=null;t0=0;
+      if(loopBtn.getAttribute('aria-pressed')==='true'){
+        setTimeout(()=>{ if(loopBtn.getAttribute('aria-pressed')==='true'){ start(progress>.5?0:1); } },700);
+      } else { play.setAttribute('aria-pressed','false'); play.textContent='Abspielen'; }
+    }
+  }
+  function stop(){ if(raf){cancelAnimationFrame(raf);raf=null;t0=0;prev=0;} play.setAttribute('aria-pressed','false');play.textContent='Abspielen'; }
+  function start(target){
+    stop();
+    from=progress;to=target;
+    dur=2800*Math.max(.25,Math.abs(to-from));
+    if(reduce.matches){ render(to); return; }
+    play.setAttribute('aria-pressed','true');play.textContent='Pause';
+    raf=requestAnimationFrame(tick);
+  }
+  play.onclick=()=>{ if(raf){stop();return;} start(rev.getAttribute('aria-pressed')==='true'?0:(progress>=.999?0:1)); };
+  loopBtn.onclick=()=>loopBtn.setAttribute('aria-pressed',loopBtn.getAttribute('aria-pressed')==='true'?'false':'true');
+  rev.onclick=()=>{ const on=rev.getAttribute('aria-pressed')==='true'; rev.setAttribute('aria-pressed',on?'false':'true'); };
+  scrub.addEventListener('input',()=>{ stop(); render(scrub.value/1000); });
+
+  window.DisinfectionSweep={ setProgress:render, getProgress:()=>progress };
+
+  const img=document.getElementById('master-bacteria');
+
+  // The master PNG ships with an opaque white/checker matte baked in.
+  // Key it out once so the asset can float on the light stage — pixels are
+  // otherwise untouched (white un-matting only, no recolouring).
+  function unmatte(source){
+    const c=document.createElement('canvas');
+    c.width=source.naturalWidth;c.height=source.naturalHeight;
+    const x=c.getContext('2d',{willReadFrequently:true});
+    x.drawImage(source,0,0);
+    const d=x.getImageData(0,0,c.width,c.height),px=d.data;
+    for(let i=0;i<px.length;i+=4){
+      const r=px[i],g=px[i+1],b=px[i+2];
+      // matte is neutral (white 255 / checker 240): key on saturation first,
+      // luminance only below the checker floor
+      const mx=Math.max(r,g,b),mn=Math.min(r,g,b),lum=(r+g+b)/3;
+      const a=clamp(Math.max((mx-mn)*5.5,(232-lum)*4),0,255);
+      if(a<26){px[i+3]=0;continue;}
+      const k=255/a;
+      px[i]=clamp((r-(255-a))*k,0,255);
+      px[i+1]=clamp((g-(255-a))*k,0,255);
+      px[i+2]=clamp((b-(255-a))*k,0,255);
+      px[i+3]=a;
+    }
+    x.putImageData(d,0,0);
+    return c;
+  }
+
+  function apply(url){
+    img.src=url;
+    glow.style.setProperty('-webkit-mask-image','url('+url+')');
+    glow.style.setProperty('mask-image','url('+url+')');
+    layout(); render(0);
+  }
+
+  let booted=false;
+  function boot(){
+    if(booted)return; booted=true;
+    img.onload=null; // swapping src must not re-key the already keyed asset
+    const keyed=unmatte(img);
+    buildSprites(keyed);
+    // one shared blob URL: the browser decodes the keyed asset a single time
+    keyed.toBlob(b=>apply(URL.createObjectURL(b)),'image/png');
+  }
+  if(img.complete) boot(); else img.onload=boot;
+})();
+</script>
+</body>
+</html>

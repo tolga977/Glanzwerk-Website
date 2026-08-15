@@ -38,7 +38,7 @@ const cspHeader = {
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline'",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: https://images.unsplash.com https://images.pexels.com",
+    "img-src 'self' data: https://images.unsplash.com https://images.pexels.com https://lh3.googleusercontent.com",
     "font-src 'self' data:",
     "connect-src 'self'",
     "frame-ancestors 'self'",
@@ -68,6 +68,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.pexels.com",
+      },
+      {
+        // Profilbilder aus Google-Rezensionen (Places API), siehe
+        // src/lib/googleRating.ts.
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
     ],
   },

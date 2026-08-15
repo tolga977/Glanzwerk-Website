@@ -77,23 +77,38 @@ export interface ProductLogo {
 /**
  * Stand der Freigaben (August 2026):
  *
- *   Numatic      freigegeben — wird angezeigt.
- *   DR.SCHNELL   noch keine schriftliche Freigabe. Der Hersteller wird
- *                deshalb in dieser Zeile nicht genannt. (Dass Dr. Schnell
- *                als Reinigungsmittel eingesetzt wird, steht als reine
- *                Sachaussage im Fragenbereich der Startseite — das ist
- *                etwas anderes als eine Nennung in einer Herstellerzeile,
- *                die wie eine Zusammenarbeit gelesen werden kann.)
+ *   Numatic      freigegeben — wird angezeigt (noch als Wortbild, Datei
+ *                unter /images/marken/numatic.webp liegt bereits vor).
+ *   DR.SCHNELL   schriftliche Nutzungsrechtvereinbarung liegt vor, Original-
+ *                Logodatei vom Betreiber bereitgestellt und freigegeben.
+ *   DEISS        Original-Logodatei vom Betreiber bereitgestellt und
+ *                freigegeben (A Sund Group Company).
  *
  * Weitere Hersteller erst nach Freigabe ergänzen — `approved: true` allein
  * genügt, die Anzeige nimmt den Eintrag dann von selbst auf.
- *
- * Beispiel für den späteren Wechsel auf die offizielle Bildmarke:
- *   { name: "Numatic", approved: true, src: "/images/produkte/numatic.svg", width: 320, height: 80 }
  */
 export const productLogos: ProductLogo[] = [
   { name: "Numatic", approved: true, src: null },
-  { name: "DR.SCHNELL", approved: false, src: null },
+  {
+    name: "DR.SCHNELL",
+    approved: true,
+    src: "/images/marken/dr-schnell.webp",
+    width: 2000,
+    height: 286,
+  },
+  {
+    name: "DEISS",
+    approved: true,
+    src: "/images/marken/deiss.webp",
+    width: 2377,
+    height: 1052,
+    /* Das Wortbild "DEISS" sitzt nur in der oberen Hälfte der Datei (der
+       Fließtext "A SUND GROUP COMPANY" darunter gehört zur Optik der Marke
+       und bleibt Teil der Datei), dadurch wirkt es bei gleicher Höhe wie die
+       anderen Logos optisch kleiner. 1.3 gleicht das aus, ohne die Datei
+       selbst zu beschneiden oder zu verändern. */
+    scale: 1.3,
+  },
 ];
 
 /** Nur das, was gezeigt werden darf. Einzige Quelle für die Anzeige. */

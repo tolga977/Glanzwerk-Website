@@ -12,9 +12,11 @@ import GlanzMark from "@/components/ui/GlanzMark";
 import HeroStage from "@/components/home/HeroStage";
 import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
 import HeroBrandStrip from "@/components/home/HeroBrandStrip";
-import ContactMoment from "@/components/home/ContactMoment";
+import HygieneSystem from "@/components/home/HygieneSystem";
+import PriceCalculator from "@/components/home/PriceCalculator";
+import TrialCalendar from "@/components/home/TrialCalendar";
 import OwnerNote from "@/components/home/OwnerNote";
-import ReviewMarquee from "@/components/home/ReviewMarquee";
+import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import ClientLogos from "@/components/home/ClientLogos";
 import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
 import GoogleRating from "@/components/ui/GoogleRating";
@@ -187,33 +189,6 @@ const [leadTrustPoint, ...supportingTrustPoints] = trustSectionBadges;
  *  Reihenfolge entsprechen unveraendert den ersten drei Artikeln. */
 const [leadArticle, ...supportingArticles] = articles.slice(0, 3);
 
-/**
- * Section 4 — drei Aussagen zur konkreten Arbeitsweise, homepage-eigen.
- *
- * Ein vierter Punkt „Beanstandungen werden direkt geklärt" stand hier bis
- * August 2026. Er ist entfernt, weil derselbe Sachverhalt weiter unten einen
- * eigenen Abschnitt hat — dort aber mit Zahlen statt in Prosa („innerhalb von
- * 24 Stunden", „in der Regel kostenlos"). Zwei Fassungen derselben Zusage
- * verstärken sich nicht; die unbestimmte schwächt die belastbare.
- */
-const workingMethodPoints = [
-  {
-    title: "Ihr Objekt wird vorab eingeordnet",
-    description:
-      "Wir klären Flächen, Nutzung, Besucheraufkommen, sensible Bereiche und gewünschte Reinigungszeiten.",
-  },
-  {
-    title: "Die Leistungen werden eindeutig festgelegt",
-    description:
-      "Sie wissen, welche Arbeiten regelmäßig ausgeführt werden und welche Leistungen bei Bedarf ergänzt werden können.",
-  },
-  {
-    title: "Das eingesetzte Team kennt die Anforderungen",
-    description:
-      "Wiederkehrende Abläufe und objektspezifische Hinweise werden so organisiert, dass nicht bei jedem Einsatz neu begonnen werden muss.",
-  },
-];
-
 /** Section 5 — vier Ablaufschritte, exakter Auftragstext. */
 /*
  * Die Beschreibungen sind unverändert. Ergänzt sind je Schritt zwei bis drei
@@ -236,7 +211,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Antwort innerhalb von 2 Stunden während der Geschäftszeiten",
     ],
     photo: photos.lawOfficeReception,
-    cta: { label: "Angebot anfragen", href: "/kontakt" },
+    cta: { label: "Anfrage jetzt stellen", href: "/kontakt" },
   },
   {
     title: "Anforderungen besprechen",
@@ -406,6 +381,79 @@ const arrowIcon = (
  * Preiskonfiguration, muss diese Zahl mitgeführt werden — deshalb stehen die
  * Eingabewerte hier vollständig daneben.
  */
+/*
+ * Strichzeichnungen fuer die Nutzenzeile des Preisabschnitts.
+ *
+ * Bewusst inline und bewusst reduziert: 1,5 px Strich, keine Flaechen, kein
+ * zweiter Farbton. Die Seite hat keine Icon-Bibliothek, und vier Zeichen
+ * rechtfertigen keine. Sie erben `currentColor` und stehen damit im selben
+ * Blau wie der Eyebrow darueber.
+ */
+const strich = {
+  width: 22,
+  height: 22,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
+
+const schildIcon = (
+  <svg {...strich} width={16} height={16} aria-hidden="true">
+    <path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 8.5 4.1-.9 7-4.3 7-8.5V6l-7-3Z" />
+    <path d="m9.2 12.1 2 2 3.6-3.9" />
+  </svg>
+);
+
+const gebaeudeIcon = (
+  <svg {...strich} aria-hidden="true">
+    <path d="M4 20h16M6 20V5.5A1.5 1.5 0 0 1 7.5 4h5A1.5 1.5 0 0 1 14 5.5V20M14 10h3.5A1.5 1.5 0 0 1 19 11.5V20" />
+    <path d="M8.6 7.6h2.8M8.6 11h2.8M8.6 14.4h2.8M16.2 13.2h1M16.2 16.4h1" />
+  </svg>
+);
+
+const nutzenpunkte = [
+  {
+    text: "In ca. 2 Minuten erste Schätzung",
+    icon: (
+      <svg {...strich} aria-hidden="true">
+        <circle cx="12" cy="13.5" r="7" />
+        <path d="M12 10.2v3.3l2.1 1.4M9.6 3.5h4.8M12 3.5v3" />
+      </svg>
+    ),
+  },
+  {
+    text: "Vier Angaben genügen",
+    icon: (
+      <svg {...strich} aria-hidden="true">
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path d="M8.2 7.2h7.6" />
+        <path d="M8.6 12h.01M12 12h.01M15.4 12h.01M8.6 16.2h.01M12 16.2h.01M15.4 16.2h.01" />
+      </svg>
+    ),
+  },
+  {
+    text: "Ohne Anmeldung, ohne Telefonat",
+    icon: (
+      <svg {...strich} aria-hidden="true">
+        <rect x="5" y="10.5" width="14" height="10" rx="2" />
+        <path d="M8.5 10.5V7.8a3.5 3.5 0 0 1 7 0v2.7" />
+      </svg>
+    ),
+  },
+  {
+    text: "Grundlage fürs Gespräch",
+    icon: (
+      <svg {...strich} aria-hidden="true">
+        <path d="M20 14.5a2 2 0 0 1-2 2H8.5L4 20.2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.5Z" />
+        <path d="M8.6 9.2h6.8M8.6 12.4h4.2" />
+      </svg>
+    ),
+  },
+] as const;
+
 const priceExample = {
   inputs: "Büro · 300 m² · 1 Küche · 3 WC · 3× pro Woche",
   result: "ca. 1.225 €",
@@ -876,25 +924,23 @@ export default async function HomePage() {
       </Section>
 
       {/*
-        Bewertungsband — direkt im Anschluss an das persoenliche Kapitel.
-
-        Es stand zuvor zwischen Hero und Inhaber-Abschnitt und damit vor
-        der Person, auf die es sich bezieht. Jetzt folgt es ihr: erst wer
-        antwortet, dann was Kunden darueber schreiben.
+        Google-Bewertungen — direkt im Anschluss an das persoenliche Kapitel.
 
         Erscheint nur, wenn echte Rezensionen vorliegen. Solange die
-        Zugangsdaten zur Places API fehlen, liefert `getGoogleRating()`
-        eine leere Liste und die Komponente rendert nichts. Es gibt bewusst
-        keinen Ersatztext: siehe ReviewMarquee.tsx.
+        Zugangsdaten zur Places API fehlen, liefert `getGoogleRating()` eine
+        leere Liste und die Komponente rendert nichts. Es gibt bewusst
+        keinen Ersatztext: siehe GoogleReviewsSection.tsx.
 
-        Die Kennzahl (5,0 aus 7) erscheint ausschliesslich im Hero. Dieses
-        Band zeigt die Rezensionstexte — zwei verschiedene Aussagen aus
-        derselben Quelle. Das grosse Ziffern-Lockup, das hier zuvor unter
-        dem Titel „Google-Bewertungen" stand, ist entfallen: dieselbe Zahl
-        einmal als Kennzahl und einmal als Band ist keine Verstaerkung,
-        sondern eine Wiederholung.
+        Ersetzt das vorherige Laufband (ReviewMarquee, weiterhin vorhanden,
+        hier nicht mehr eingesetzt): links ein feststehender Kennzahlenblock
+        mit Rating und Anzahl, rechts die einzelnen Rezensionskarten in
+        einer nur auf Eingabe reagierenden Spur.
       */}
-      <ReviewMarquee reviews={googleRating.reviews} />
+      <GoogleReviewsSection
+        reviews={googleRating.reviews}
+        rating={googleRating.rating}
+        count={googleRating.count}
+      />
 
       {/*
         Vertrauenszeile — der sachliche Fuss des persoenlichen Kapitels.
@@ -957,14 +1003,37 @@ export default async function HomePage() {
         Zahl im Kopf ist der Grund, warum jemand den Rechner ueberhaupt
         oeffnet.
       */}
+      {/*
+        ── Aufbau nach der freigegebenen Designreferenz ───────────────────
+        Zweispalter: links die Aussage, rechts das Geraet. Der Rechner ist
+        nativ gebaut (`PriceCalculator`) — kein Bild, kein Video. Er nimmt
+        die rechte Spalte in voller Hoehe ein und traegt denselben Blauton
+        wie die Flaeche, damit er aus ihr entsteht statt darauf zu liegen.
+
+        Darunter laeuft die Beispielrechnung als ruhiges Band ueber die
+        ganze Breite — dieselbe Zahl wie im Display, nur eine Stufe leiser,
+        weil sie den Beleg liefert und nicht die Hauptaussage ist.
+
+        Die vier Nutzenpunkte stammen aus der Referenz. Jeder ist durch den
+        Absatz darueber gedeckt: „In zwei Minuten" aus der Ueberschrift, die
+        vier Abfragen und „ohne Anmeldung, ohne Telefonat" woertlich aus dem
+        Text, die Grundlage fuers Gespraech aus „wird vorher gemeinsam
+        festgelegt".
+
+        Die Datenschutzzeile der Referenz („Ihre Angaben werden nicht
+        gespeichert und nicht weitergegeben") ist NICHT uebernommen: der
+        echte Rechner hat einen Kontaktschritt mit Absenden. Die Zeile waere
+        eine unbelegte Behauptung. An ihrer Stelle steht die Aussage, die
+        der Absatz tatsaechlich hergibt.
+      */}
       <Section background="tint">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_1fr] lg:gap-x-14 xl:gap-x-20">
           <div>
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
               <span aria-hidden="true" className="brand-tick text-brand-400" />
               Was kostet das ungefähr?
             </p>
-            <h2 className="font-display display-lg mt-5 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-5xl">
+            <h2 className="font-display display-lg mt-6 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-[2.75rem] xl:text-5xl">
               In zwei Minuten zu einer realistischen Hausnummer
             </h2>
             <p className="measure mt-6 text-base leading-relaxed text-ink-soft">
@@ -976,42 +1045,65 @@ export default async function HomePage() {
               Was am Ende im Vertrag steht, hängt vom Objekt ab und wird vorher gemeinsam
               festgelegt. Wiederkehrende Reinigung übernehmen wir ab 750 € netto im Monat.
             </p>
+
+            <div className="pr-nutzen mt-10">
+              {nutzenpunkte.map((n) => (
+                <div key={n.text}>
+                  <span aria-hidden="true" className="block text-brand-500">
+                    {n.icon}
+                  </span>
+                  <p className="mt-3 text-[0.8125rem] leading-snug text-ink-soft">{n.text}</p>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-10">
               <Button href="/preisrechner" size="xl">
                 Preis berechnen
               </Button>
             </div>
+
+            <p className="mt-6 flex items-start gap-2.5 text-sm leading-relaxed text-ink-soft">
+              <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-400">
+                {schildIcon}
+              </span>
+              Unverbindliche Schätzung — daraus entsteht keine Verpflichtung.
+            </p>
           </div>
 
-          {/*
-            Beispielrechnung — dieselbe Formel wie im Rechner, damit die Zahl
-            haelt.
+          <div className="lg:pl-4">
+            <PriceCalculator />
+          </div>
+        </div>
 
-            Der Kasten ist weg: weisse Flaeche, Rahmen und Schatten haben aus
-            einer Zahl ein Objekt gemacht, das neben dem Text liegt. Jetzt
-            traegt die Zahl selbst. Sie steht auf 96 px — groesser als jede
-            Ueberschrift dieser Seite ausser der Titelzeile — und ist damit
-            das, was sie sein soll: der Grund, den Rechner zu oeffnen.
-
-            Struktur entsteht ueber zwei Haarlinien und die Einrueckung, nicht
-            ueber einen Rahmen. Die senkrechte Linie links bindet den Block an
-            den Text daneben, statt ihn davon abzugrenzen.
-          */}
-          <div className="border-t border-line-strong pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
-              Beispielrechnung
-            </p>
-            <p className="measure mt-4 text-sm leading-relaxed text-ink-soft">
-              {priceExample.inputs}
-            </p>
-            <p className="font-display display-xl mt-8 text-[3.5rem] font-medium leading-none text-brand-900 sm:text-[4.5rem] lg:text-[6rem]">
-              {priceExample.result}
-            </p>
-            <p className="mt-3 text-sm font-medium text-ink-soft">{priceExample.unit}</p>
-            <p className="measure mt-8 border-t border-line pt-6 text-sm leading-relaxed text-ink-soft">
-              Ihr Objekt kann darüber oder darunter liegen. Genau dafür gibt es den Rechner.
+        {/*
+          Beispielrechnung als Band: Konfiguration links, Zahl rechts, eine
+          Haarlinie dazwischen. Bewusst sekundaer gegenueber dem Geraet —
+          gleiche Zahl, deutlich kleinerer Grad.
+        */}
+        <div className="mt-12 border-t border-line-strong pt-7 lg:mt-16">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+            <div className="flex items-start gap-4">
+              <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-400">
+                {gebaeudeIcon}
+              </span>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+                  Beispielrechnung
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  {priceExample.inputs}
+                </p>
+              </div>
+            </div>
+            <p className="font-display shrink-0 text-2xl font-medium leading-tight text-brand-900 sm:border-l sm:border-line sm:pl-10 sm:text-[1.75rem]">
+              {priceExample.result}{" "}
+              <span className="text-base font-normal text-ink-soft">{priceExample.unit}</span>
             </p>
           </div>
+          <p className="measure mt-6 text-sm leading-relaxed text-ink-soft">
+            Ihr Objekt kann darüber oder darunter liegen. Genau dafür gibt es den Rechner.
+          </p>
         </div>
       </Section>
 
@@ -1041,29 +1133,28 @@ export default async function HomePage() {
         `order` und damit rein visuell. Auf dem Telefon liest deshalb erst
         die Aussage, dann folgt die Zone.
 
-        ── Die Visualzone ist noch leer, und das mit Absicht ─────────────
-        Hier kommt das eigenstaendige „3 Monate"-Visual hin; es wird in einem
-        eigenen Schritt entwickelt. Bis dahin steht hier bewusst KEIN
-        Provisorium: keine Uhr, kein Kalender, kein Rahmen, kein „folgt in
-        Kuerze" — eine angedeutete Grafik wuerde eine Designentscheidung
-        vortaeuschen, die noch nicht getroffen ist.
+        ── Die Visualzone traegt jetzt den Kalender ──────────────────────
+        Der reservierte Raum ist gefuellt: `TrialCalendar`. Vier
+        Kalenderblaetter — 01, 02, 03, VERTRAG — die nacheinander an der
+        Ringbindung abreissen, danach die Unterschrift. Die Zone behaelt ihr
+        Seitenverhaeltnis von 5 : 4 ab Desktop; die Hoehe des Abschnitts
+        aendert sich dadurch nicht, es gibt keinen Layout Shift.
 
-        Was steht, ist der Raum: feste Seitenverhaeltnisse, feste Position im
-        Raster. Damit ist die Flaeche schon jetzt Teil der Komposition (der
-        Lichtkeil und das Bildmotiv der Flaeche tragen sie), und der spaetere
-        Einbau veraendert die Hoehe des Abschnitts nicht — es gibt keinen
-        Layout Shift, weil nichts nachtraeglich Platz beansprucht.
-
-        Auf dem Telefon ist die Zone ausgeblendet statt niedriger: eine
-        reservierte Hoehe ohne Inhalt waere dort schlicht leerer Raum. Mit
-        dem Visual wird sie eingeblendet — flacher als auf dem Schirm.
+        Auf dem Telefon ist sie jetzt sichtbar und flacher (4 : 3), mit
+        eigener, engerer Komposition statt einer verkleinerten Bildschirm-
+        fassung. Sie steht im Fluss weiterhin NACH der Aussage und den
+        Schaltflaechen — dort behalten Text und CTA den Vortritt.
       */}
       <Section
         background="navy"
         decor
         spacing="roomy"
         surface="left"
-        backdrop={{ src: photos.brightStaircase.src, objectPosition: "center 40%" }}
+        backdrop={{
+          src: "/images/testphase/buero-nacht.webp",
+          imageClassName: "trial-backdrop",
+          tone: "carry",
+        }}
       >
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
           <div className="lg:order-2">
@@ -1092,7 +1183,7 @@ export default async function HomePage() {
                 variant="onMedia"
                 size="xl"
               >
-                Preis berechnen
+                Preisrechner öffnen
               </Button>
             </div>
           </div>
@@ -1111,11 +1202,9 @@ export default async function HomePage() {
             ein Streifen oder ein Hochformat wuerde eine der beiden
             Richtungen jetzt schon ausschliessen.
           */}
-          <div
-            data-trial-visual
-            aria-hidden="true"
-            className="hidden lg:order-1 lg:block lg:aspect-[5/4] lg:w-full"
-          />
+          <div data-trial-visual className="order-2 w-full lg:order-1">
+            <TrialCalendar />
+          </div>
         </div>
       </Section>
 
@@ -1132,155 +1221,79 @@ export default async function HomePage() {
         />
 
         {/*
-          ── Auftakt plus Serie ────────────────────────────────────────────
-          Zwei Bauformen, nicht vier: die Leitleistung als Bildband, die
-          uebrigen drei als eine Reihe gleichwertiger Bild-Text-Kompositionen.
-          Reihenfolge, Auswahl (FEATURED_SERVICE_SLUGS) und jeder Text bleiben
-          unveraendert.
+          ── Eine Bauform, viermal ─────────────────────────────────────────
+          Vorher trug die Leitleistung ein vollbreites Bildband mit Schrift
+          im Bild, die drei uebrigen dagegen eine Zweispalter-Komposition mit
+          wechselnder Bildseite. Zwei Bauformen in einem Bereich, und beim
+          Ueberfliegen las die erste Leistung als etwas anderes als die
+          folgenden drei.
 
-          ── Was vorher nicht zusammenhielt ────────────────────────────────
-          Jede der vier Leistungen trug eine eigene Bauform: Bildband, dann
-          Querformat auf sieben Rasterspalten mit Text darunter, daneben ein
-          Hochformat auf fuenf Spalten um 7 rem nach unten versetzt, zuletzt
-          Bild links mit Text rechts. Dazu drei verschiedene Anschluss-
-          abstaende (mt-16, mt-28, mt-20) und drei verschiedene Bildformate
-          (16:10, 4:5, 16:10).
+          Jetzt tragen alle vier dieselbe Form: volle Breite, Bild, Schrift
+          im Bild, gleicher Abstand. Die Ordnung entsteht aus der
+          Wiederholung, nicht aus dem Kontrast — und weil jede Leistung
+          gleich breit ist, liest sich der Bereich als eine Liste statt als
+          eine Sammlung von Einzelentwuerfen.
 
-          Der Gedanke dahinter war, Wiederholung zu vermeiden. Der Preis war
-          aber, dass die vier Leistungen nicht mehr als eine Gruppe lasen —
-          vier Einzelentwuerfe untereinander, und beim Ueberfliegen nicht
-          erkennbar, dass sie zusammengehoeren.
+          ── Warum die Baender flacher sind ────────────────────────────────
+          Bei 2,4 : 1 war das Leitband auf dem Schirm 507 px hoch. Viermal
+          diese Hoehe waere ein Bereich, durch den man nur noch scrollt.
+          3,1 : 1 nimmt gut ein Fuenftel heraus, ohne dass die Aufnahmen
+          zu Streifen werden — 1672 × 941 px Quellmaterial vertragen den
+          Anschnitt.
 
-          Der Rhythmus kommt jetzt nicht mehr aus vier verschiedenen Formen,
-          sondern aus dem Seitenwechsel innerhalb einer Form: Bild links, Bild
-          rechts, Bild links. Gleiche Bildproportion, gleiche Radien, gleiche
-          Ueberschriftengroesse, gleiche Textbreite, gleicher Verweis, gleicher
-          Abstand. Die Ordnung ist damit spuerbar, ohne dass eine Kachel
-          entsteht — es gibt weiterhin keine Flaeche, keinen Rahmen und keinen
-          Schatten um die einzelne Leistung.
+          Der Bereich wird dadurch nicht laenger, sondern kuerzer: die
+          bisherige Zweispalter-Reihe brauchte neben dem Bild noch die
+          Texthoehe, das Band traegt beides uebereinander im selben Raum.
 
-          Das zwoelfspaltige Raster ist entfallen: es diente nur den
-          ungleichen Spaltenbreiten. Alle Elemente laufen jetzt ueber die volle
-          Breite, die Zweiteilung passiert innerhalb der Leistung.
+          Der Schriftgrad geht von 2,75 rem auf 2 rem. Vier Ueberschriften
+          in derselben Groesse wie zuvor die eine wuerden sich gegenseitig
+          ueberbieten; eine Stufe darunter bleibt jede lesbar, ohne dass der
+          Bereich schreit.
         */}
         <FadeIn>
-          <ul className="mt-12 grid gap-y-14 lg:mt-16 lg:gap-y-24">
-            {featuredServices.map((service, index) => {
+          <ul className="mt-12 grid gap-y-8 lg:mt-16 lg:gap-y-12">
+            {featuredServices.map((service) => {
               const photo = servicePhotos[service.slug];
               const { description, linkText } = serviceCopy(service);
               const href = `/leistungen/${service.slug}`;
 
-              /* 1 — Leitleistung: Bildband, Schrift im Bild. */
-              if (index === 0) {
-                return (
-                  <li key={service.slug}>
-                    <Link
-                      href={href}
-                      className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
-                    >
-                      {/*
-                        Der Auftakt muss auf JEDER Breite die groessere Flaeche
-                        sein. Die mittlere Stufe stand auf 16 : 9 und war damit
-                        bei 768 px 396 px hoch — flacher als die 441 px der
-                        Serie darunter, die im einspaltigen Modus die volle
-                        Breite in 16 : 10 fuellt. Der Auftakt war dort also der
-                        kleinste Eintrag des Bereichs.
-
-                        3 : 2 haelt ihn ueber der Serie, ohne ihn aufzublaehen:
-                        470 px gegen 441 px bei 768 px Breite, 630 gegen 591
-                        knapp unter 1024 px.
-                      */}
-                      <div className="relative aspect-[4/3] w-full sm:aspect-[3/2] lg:aspect-[2.4/1]">
-                        {photo && (
-                          <Image
-                            src={photo.src}
-                            alt={photo.alt}
-                            fill
-                            sizes="(min-width: 1024px) 76rem, 100vw"
-                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                          />
-                        )}
-                        {/*
-                          Lesekante unten statt einer Deckung über das ganze
-                          Bild: oben bleibt das Motiv frei, unten trägt es die
-                          Schrift.
-                        */}
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/5"
-                        />
-                      </div>
-
-                      <div className="absolute inset-x-0 bottom-0 p-7 sm:p-10 lg:p-12">
-                        <h3 className="font-display display-lg text-pretty text-2xl font-medium text-white sm:text-3xl lg:text-[2.75rem]">
-                          {service.shortTitle}
-                        </h3>
-                        <p className="measure mt-4 text-sm leading-relaxed text-brand-100 sm:text-base">
-                          {description}
-                        </p>
-                        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
-                          {linkText}
-                          {arrowIcon}
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-                );
-              }
-
-              /*
-                2 bis 4 — eine Bauform, die Seite wechselt.
-
-                `index % 2 === 0` trifft in dieser Reihe nur die dritte
-                Leistung, also ergibt sich links / rechts / links. Der Wechsel
-                laeuft ueber `order` und damit ausschliesslich visuell: im DOM
-                steht immer erst das Bild, dann der Text. Auf dem Telefon, wo
-                `order` nicht greift, liest deshalb jede Leistung in derselben
-                Folge — Bild, Ueberschrift, Beschreibung, Verweis.
-
-                Der etwas groessere Abstand der ersten Serienleistung setzt die
-                Zaesur zum Bildband darueber; untereinander tragen alle drei
-                denselben Rhythmus aus `gap-y`.
-              */
-              const bildRechts = index % 2 === 0;
-
               return (
-                <li key={service.slug} className={index === 1 ? "lg:mt-4" : undefined}>
+                <li key={service.slug}>
                   <Link
                     href={href}
-                    className="press group grid items-center gap-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 lg:grid-cols-2 lg:gap-16"
+                    className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
                   >
-                    <div
-                      className={`relative aspect-[16/10] w-full overflow-hidden rounded-panel ${
-                        bildRechts ? "lg:order-2" : ""
-                      }`}
-                    >
+                    <div className="relative aspect-[4/3] w-full sm:aspect-[2.2/1] lg:aspect-[3.1/1]">
                       {photo && (
                         <Image
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          /* Alle vier Aufnahmen sind 1672 × 941 px, also
-                             1,78 : 1. Bei 16 : 10 bleiben davon 90 % der
-                             Breite sichtbar, mittig beschnitten — bei jeder
-                             Leistung derselbe milde Anschnitt. Ein eigenes
-                             `object-position` braucht keine davon: bei der
-                             Grundreinigung liegt die Maschine zwischen 40 und
-                             80 % der Bildbreite und bleibt damit vollstaendig
-                             im Bild. */
-                          sizes="(min-width: 1024px) 36rem, 100vw"
+                          sizes="(min-width: 1024px) 76rem, 100vw"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
                       )}
+                      {/*
+                        Lesekante unten statt einer Deckung ueber das ganze
+                        Bild: oben bleibt das Motiv frei, unten traegt es die
+                        Schrift. Etwas kraeftiger als beim frueheren Leitband,
+                        weil die Schrift im flacheren Band einen groesseren
+                        Anteil der Flaeche einnimmt.
+                      */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-gradient-to-t from-brand-950/92 via-brand-950/55 to-brand-950/10"
+                      />
                     </div>
-                    <div className={bildRechts ? "lg:order-1" : ""}>
-                      <h3 className="font-display display-lg text-pretty text-2xl font-medium text-brand-900 sm:text-3xl">
+
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 lg:p-10">
+                      <h3 className="font-display display-lg text-pretty text-xl font-medium text-white sm:text-2xl lg:text-[2rem]">
                         {service.shortTitle}
                       </h3>
-                      <p className="measure mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
+                      <p className="measure mt-3 text-sm leading-relaxed text-brand-100">
                         {description}
                       </p>
-                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-500 transition-colors duration-200 ease-out group-hover:text-brand-600">
+                      <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
                         {linkText}
                         {arrowIcon}
                       </span>
@@ -1348,12 +1361,49 @@ export default async function HomePage() {
       </Section>
 
       {/*
-        ── Vorgesehene Position: Hygiene-Abschnitt „Disinfection Sweep" ────
-        Zwischen dem Leistungsbereich und diesem Abschnitt wird der separat
-        entwickelte visuelle Hygiene-Moment eingesetzt. Er ist bewusst noch
-        nicht angelegt — kein Platzhalter, keine reservierte Höhe: solange
-        nichts zu zeigen ist, folgt hier direkt der nächste Abschnitt.
+        ── Hygiene-Moment „Disinfection Sweep" ─────────────────────────────
+        Die Stelle war für diesen Abschnitt vorgesehen; hier steht er jetzt.
+
+        ── Warum genau hier ───────────────────────────────────────────────
+        Der Leistungsbereich davor sagt, WAS gereinigt wird. Der Abschnitt
+        danach erklärt, WORAUF es im Alltag ankommt. Dazwischen fehlte das
+        WOZU — und das ist nichts, was man behaupten sollte, sondern etwas,
+        das man zeigen kann. Deshalb trägt dieser Abschnitt keinen Satz,
+        sondern ein Bild in Bewegung.
+
+        ── Warum ohne Überschrift und ohne Text ───────────────────────────
+        Alle sechs freigegebenen H2 dieser Seite sind bereits an anderen
+        Abschnitten in Gebrauch, und eine neue Aussage über Hygiene zu
+        erfinden wäre genau die Art von Versprechen, die diese Seite nicht
+        macht. Die Fläche bleibt deshalb stumm. Für die Gliederung heißt das:
+        die H2-Kette der Seite bleibt unverändert, es kommt keine Ebene hinzu.
+
+        ── Flächenwechsel ────────────────────────────────────────────────
+        Der Leistungsbereich steht auf `tint`, der Alltagsabschnitt auf
+        `warm`. Dieser hier steht auf `white` — damit sind es drei
+        verschiedene Gründe in Folge, und die helle, kühle Bühne des
+        Motion-Assets sitzt auf der hellsten Fläche der Seite, statt gegen
+        einen Farbton anzuarbeiten.
+
+        `contained={false}` gibt es hier NICHT: die Bühne soll im
+        Inhaltsraster stehen wie die Bildflächen der Leistungen darüber, nicht
+        randlos über die Fensterbreite laufen.
+
+        ── Der Prototyp ist abgelöst ──────────────────────────────────────
+        Hier stand `<DisinfectionSweep />` — die auf der Leinwand gerechnete
+        Fassung des Hygiene-Moments. Sie hat ihren Zweck erfüllt: sie hat
+        gezeigt, dass die Stelle trägt. Jetzt steht dort das finale Motiv,
+        und zwar nicht als stummes Bild, sondern mit dem redaktionellen
+        Inhalt, der ihm bisher fehlte.
+
+        Zwei Auflösungen desselben Gedankens nacheinander wären eine zu viel:
+        die Seite hat drei Signature-Motive, und der Organismus ist eines
+        davon. `DisinfectionSweep.tsx` und seine Rollen in dieser Datei
+        bleiben unangetastet liegen — der Schritt ist damit umkehrbar.
       */}
+      <Section background="white" spacing="roomy">
+        <HygieneSystem />
+      </Section>
 
       {/*
         3. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
@@ -1396,7 +1446,7 @@ export default async function HomePage() {
         <div className="grid gap-12 xl:grid-cols-[minmax(0,32rem)_1fr] xl:gap-16">
           <div>
             <SectionHeading
-              eyebrow="Darauf kommt es im Reinigungsalltag an"
+              eyebrow="Was eine verlässliche Zusammenarbeit ausmacht"
               title={heading.sectionHeadings[0]}
               subtitle="Saubere Räume allein reichen nicht aus, wenn Termine ausfallen, Zuständigkeiten unklar sind oder Leistungen jedes Mal neu erklärt werden müssen. Deshalb legen wir Wert auf feste Abläufe. Vor dem Start klären wir, welche Flächen gereinigt werden, wie häufig die Reinigung stattfinden soll und welche Bereiche besondere Aufmerksamkeit benötigen. So wissen beide Seiten, was vereinbart wurde."
             />
@@ -1503,55 +1553,6 @@ export default async function HomePage() {
         </FadeIn>
       </Section>
 
-      {/*
-        4. Konkrete Arbeitsweise — bewusst KEIN zweiter Kartenbereich: großes
-        Betriebsfoto plus vier Betriebsprinzipien an einer durchgehenden Kante.
-      */}
-      {/*
-        Komposition: randloses Bildband ueber die volle Fensterbreite, darueber
-        ein versetztes Textpanel. Das Layout entsteht hier um das Bild herum
-        statt das Bild in eine Spalte zu setzen — die einzige Stelle der Seite,
-        an der eine Flaeche den Raster verlaesst.
-      */}
-      <Section background="white" contained={false}>
-        <div className="relative aspect-[3/2] w-full overflow-hidden sm:aspect-[16/9] lg:aspect-[21/9]">
-          <Image
-            src={photos.cleaningEquipment.src}
-            alt={photos.cleaningEquipment.alt}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: "center 45%" }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-brand-950/35 via-transparent to-transparent"
-          />
-        </div>
-
-        <div className="container-page">
-          <div className="relative z-[1] -mt-14 max-w-2xl rounded-panel bg-graphite-50 p-8 shadow-deep sm:-mt-24 sm:p-11 lg:-mt-40 lg:ml-auto lg:p-12">
-            <SectionHeading
-              eyebrow="So arbeitet Glanzwerk"
-              title={heading.sectionHeadings[2]}
-              subtitle="Ob eine Reinigung dauerhaft funktioniert, zeigt sich im Alltag. Deshalb setzen wir nicht auf allgemeine Werbeversprechen, sondern auf klare Zuständigkeiten und praktische Vereinbarungen. Ihr Objekt wird vor dem Start besprochen, Leistungen werden festgehalten und Besonderheiten dokumentiert."
-            />
-            <FadeIn as="ul" className="mt-9 space-y-7 border-l-2 border-brand-200 pl-7">
-              {workingMethodPoints.map((point) => (
-                <li key={point.title} className="relative">
-                  <span
-                    aria-hidden="true"
-                    className="absolute -left-[calc(1.75rem+3px)] top-2 h-1.5 w-1.5 rounded-full bg-brand-500"
-                  />
-                  <p className="font-display text-base font-medium text-brand-900">{point.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{point.description}</p>
-                </li>
-              ))}
-            </FadeIn>
-          </div>
-        </div>
-      </Section>
-
       {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte. */}
       {/*
         Wasserzeichen unten links statt oben rechts: die vorherige und die
@@ -1638,27 +1639,20 @@ export default async function HomePage() {
 
 
       {/*
-        Kontaktmoment mit Hintergrundvideo.
+        ── Hier stand der Kontaktmoment mit Hintergrundvideo ────────────
+        Der Abschnitt ("Persönliche Beratung" / "Sprechen Sie uns direkt
+        an") bot neben der Telefonnummer nur eine Schaltfläche zu /kontakt
+        — denselben Handlungsweg, den die Schluss-CTA am Seitenende bereits
+        mit derselben Zielseite anbietet, und dieselbe Telefonnummer, die im
+        Hero bereits als Schaltfläche steht. Ohne eigene Information (kein
+        Preis, keine neue Aussage) blieb kein eigenständiger Wert gegenüber
+        Hero und Schluss-CTA übrig, deshalb ist die Einbindung entfernt.
 
-        ── Warum genau hier ─────────────────────────────────────────────
-        An dieser Stelle hat der Leser Leistungen, Arbeitsweise, Ablauf und
-        Einsatzgebiet hinter sich — er weiss, was Glanzwerk macht und wie.
-        Was danach folgt (Wissensbereich, Anfrageformular, Fragen), ist
-        vertiefend. Zwischen „ich habe verstanden" und „ich lese weiter"
-        liegt der Punkt, an dem eine Erinnerung an den direkten Weg am
-        wenigsten unterbricht.
+        `ContactMoment.tsx` selbst bleibt unangetastet liegen, falls die
+        Komponente an anderer Stelle wieder gebraucht wird.
 
-        Vor dem Abschluss steht der Abschnitt damit deutlich: es folgen noch
-        drei Abschnitte bis zum Kontaktbereich. Und er ersetzt keinen
-        bestehenden Handlungsweg — an dieser Stelle stand bisher gar kein
-        CTA. Die vorhandenen bleiben unangetastet: die Testphase weiter
-        oben, das Formular weiter unten, der Abschluss am Seitenende.
-
-        Farbfolge: Einsatzgebiet (tint) → dunkle Videoflaeche → Wissen
-        (weiss). Der Abschnitt sitzt als einziger dunkler Moment zwischen
-        zwei hellen Flaechen und faellt dadurch auf, ohne laut zu sein.
+        Farbfolge bleibt dadurch: Einsatzgebiet (tint) → Wissen (weiss).
       */}
-      <ContactMoment />
 
       {/*
         8. Wissensbereich — Magazinstrecke mit einem fuehrenden Beitrag und zwei
@@ -1817,14 +1811,14 @@ export default async function HomePage() {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Button href="/preisrechner" variant="primary" size="lg">
-                Preis berechnen
+                Preisrechner nutzen
               </Button>
               <Button
                 href="/kontakt"
                 variant="onMedia"
                 size="lg"
               >
-                Angebot anfragen
+                Kontakt aufnehmen
               </Button>
             </div>
             <div className="mt-9 flex flex-col gap-1 sm:flex-row sm:gap-8">

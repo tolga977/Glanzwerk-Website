@@ -75,4 +75,50 @@ export const photos = {
     src: pexels("6918529/pexels-photo-6918529.jpeg"),
     alt: "Zwei Geschäftspartner besiegeln eine Vereinbarung mit Handschlag",
   },
+  /*
+   * Umwelt & Verantwortung — Redesign 15.08.2026. Sechs neue, kuratierte
+   * Unsplash-Fotos (Unsplash-Lizenz, kostenlose kommerzielle Nutzung, keine
+   * Zuschreibung verpflichtend), Direktlinks vor Einbindung geprüft. Siehe
+   * docs/IMAGES.md für die vollständige Quellenangabe je Foto.
+   */
+  /*
+   * Ersetzt am 15.08.2026: die erste Auswahl (photo-1765371514743, enger
+   * Ausschnitt einer Besprechungsecke) trug zu wenig sichtbares Grün und zu
+   * wenig Weite. Diese Aufnahme zeigt einen hellen Schreibtisch, viel
+   * natürliches Licht durch Vorhänge und eine grosse, deutlich erkennbare
+   * Pflanze im Vordergrund — trägt die "Atmosphäre" deutlich stärker.
+   */
+  ecoOfficeGreenery: {
+    src: unsplash("photo-1765371513276-a74f1ecbcf7d"),
+    alt: "Heller Schreibtisch in einem modernen Büro mit grosser Grünpflanze und natürlichem Licht",
+  },
+  ecoForestLight: {
+    src: unsplash("photo-1605467518368-b959213686dd"),
+    alt: "Sonnenlicht fällt durch dichtes grünes Blätterdach eines Waldes",
+  },
+  ecoWaterDroplet: {
+    src: unsplash("photo-1450696714834-bb5b4aee70d3"),
+    alt: "Wassertropfen auf einem grünen Blatt in Nahaufnahme",
+  },
+  /*
+   * Ersetzt am 15.08.2026: die erste Auswahl (photo-1611284446314) zeigte
+   * australische Bio-/Restmüll-Tonnen mit vollflächig bedruckten
+   * Etiketten (englischer Text, teils erkennbare Fremdmarken auf den
+   * Aufklebern) — nicht vereinbar mit der Regel "keine fremden
+   * Marken/Beschriftungen im Bild" (siehe Hinweis weiter oben in dieser
+   * Datei). Diese Aufnahme zeigt vier einfarbige Mülltonnen ohne jede
+   * Beschriftung.
+   */
+  ecoRecyclingBins: {
+    src: unsplash("photo-1532996122724-e3c354a0b15b"),
+    alt: "Vier bunte Mülltonnen in Gelb, Blau, Rot und Grün nebeneinander vor einer Wand",
+  },
+  ecoCleaningSpray: {
+    src: unsplash("photo-1550963295-019d8a8a61c5"),
+    alt: "Sprühflasche mit Reinigungsmittel neben Papiertüchern",
+  },
+  ecoForestCanopy: {
+    src: unsplash("photo-1701157121748-aa59ab87f983"),
+    alt: "Blick von unten durch ein grünes Blätterdach hoher Bäume in den Himmel",
+  },
 } as const;

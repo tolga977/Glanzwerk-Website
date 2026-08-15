@@ -261,10 +261,22 @@
   --color-line: #e7eaef; /* dezenter Rahmen auf hellen Flächen */
   --color-line-strong: #d2d8e1; /* stärkerer Rahmen / Trennlinie */
 
-  /* Umwelt-Akzent — ausschließlich für "Umwelt und Verantwortung".
-     Entsättigtes Waldgrün, harmoniert mit dem Navy und erreicht auf Weiß
-     ~6.3:1 (AA für Fließtext, kein plakatives Öko-Grün). */
+  /*
+   * Umwelt-Akzent — ausschließlich für "Umwelt und Verantwortung", nirgends
+   * sonst. Vier Stufen desselben entsättigten Waldgrüns, kein plakatives
+   * Öko-Grün: es soll neben dem Markenblau bestehen, es nicht ersetzen.
+   *
+   *   eco-800  dunkle Grundfläche (Signature-Banner, Abschluss-CTA) —
+   *            Weiß darauf 11,7:1.
+   *   eco-600  Textakzent auf hellem Grund (Wortakzent, Eyebrow, Icons) —
+   *            6,3:1 auf Weiß, AA auch für Fließtext.
+   *   eco-100  Rahmen/Trennlinie auf eco-getönten Flächen — Rolle wie
+   *            `--color-line`, nur in Grün statt Blaugrau.
+   *   eco-50   sehr helle Tonfläche (Kartenflächen, dezente Bänder).
+   */
+  --color-eco-800: #1b3f2f;
   --color-eco-600: #2f6b52;
+  --color-eco-100: #d9e8de;
   --color-eco-50: #eef4f0;
 
   /*
@@ -834,6 +846,384 @@ body {
       object-fit: cover;
       object-position: 100% 50%;
     }
+  }
+
+  /*
+   * ══ Disinfection Sweep — Hygiene-Moment der Startseite ═══════════════
+   *
+   * Übertragung des freigegebenen Prototyps aus
+   * `docs/disinfection-sweep-prototype/disinfection-sweep.html`. Jene Datei
+   * bleibt die eingefrorene Referenz.
+   *
+   * ── Warum die Ebenen hier und nicht im JSX stehen ──────────────────────
+   * Die Masken und Verläufe rechnen mit `calc()` auf der Laufvariablen `--ep`.
+   * Als Tailwind-Wertliteral im Markup wäre daraus eine unlesbare Kette aus
+   * eckigen Klammern geworden. Dieselbe Entscheidung wie beim Hero-Verlauf.
+   *
+   * ── Der Steuerparameter ────────────────────────────────────────────────
+   * Vier Variablen, alle von `render(p)` in DisinfectionSweep.tsx gesetzt:
+   *
+   *   --p        Fortschritt 0–1, roh.
+   *   --ep       Position der Kontaktkante in Prozent der Bildbreite. Sie ist
+   *              die eigentliche Erzählung: Maske, Kontaktlicht und Position
+   *              des Wasserlaufs lesen alle diesen einen Wert.
+   *   --idle     Dämpfung der Ruhebewegung, 1 vor dem Kontakt, gegen 0,15
+   *              danach.
+   *   --sweepx   Verschiebung des Wasserlaufs in Pixeln.
+   *
+   * Sie stehen auf der Bühne selbst, nicht auf `:root`: zwei Instanzen auf
+   * einer Seite würden sich sonst gegenseitig überschreiben.
+   */
+
+  /*
+   * Szene = Bühne plus die vier Begriffe. Sie trägt den Bezugsrahmen für
+   * deren Platzierung; die Bühne selbst kann das nicht, weil sie den
+   * Wasserlauf beschneiden muss und Text an ihrem Rand mit abgeschnitten
+   * würde.
+   */
+  .sweep-scene {
+    position: relative;
+  }
+
+  .sweep-stage {
+    /*
+     * Seitenverhältnis und Größe der Bazille ändern sich über die Breiten.
+     * Der Master ist eine Desktop-Bühne mit 2 : 1 und 47 % Bildbreite; das
+     * auf dem Telefon proportional zu verkleinern hätte die Bazille auf rund
+     * 168 px gebracht — sichtbar, aber nicht mehr plastisch lesbar.
+     * Stattdessen wird die Bühne dort höher und die Bazille anteilig größer.
+     *
+     * Ab Tablet ist die Bühne 16 : 9 statt der 2 : 1 des Prototyps. Der
+     * Prototyp brauchte keinen Platz für Text; hier stehen vier Begriffe in
+     * den Ecken, und bei 2 : 1 hätten sie nur rund 60 px Luft über und unter
+     * der Bazille gehabt. Die Bazille behält ihre 47 % Breite und damit auf
+     * gleicher Fensterbreite exakt die Größe des Masters.
+     */
+    --sweep-org-left: 8%;
+    --sweep-org-width: 62%;
+    --sweep-flow-width: 150px;
+    --p: 0;
+    --ep: -8%;
+    --idle: 1;
+    --sweepx: -300px;
+
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /*
+     * Beschneidet den Wasserlauf an den Bühnenkanten. KEIN Hintergrund, kein
+     * Radius, kein Rahmen, kein Schatten: der Abschnitt soll wie offene
+     * Seitenfläche wirken. Ein eigener Ton — hier stand zuvor #f6f9fc mit
+     * Panel-Radius — liest sich sofort als eingebettetes Widget.
+     */
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .sweep-stage {
+      --sweep-org-left: 7%;
+      --sweep-org-width: 52%;
+      --sweep-flow-width: 200px;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sweep-stage {
+      --sweep-org-left: 6%;
+      --sweep-org-width: 47%;
+      --sweep-flow-width: 240px;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  /* Schwebstaub. Reine CSS-Bewegung, damit die Bildrate nichts davon merkt. */
+  .sweep-atm {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .sweep-atm i {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: #9fb9ce;
+    filter: blur(1.4px);
+    animation: sweep-drift linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes sweep-drift {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(14px, -10px, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .sweep-organism {
+    position: absolute;
+    left: var(--sweep-org-left);
+    top: 50%;
+    width: var(--sweep-org-width);
+    transform: translateY(-50%);
+  }
+
+  /* Seitenverhältnis der Datei, nicht der Bühne: keine Verzerrung. */
+  .sweep-organism-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1536 / 1024;
+  }
+
+  /*
+   * Zwei ineinander liegende Ruhebewegungen mit unterschiedlicher Periode
+   * (19 s und 31 s). Weil sich beide nie decken, entsteht kein erkennbarer
+   * Takt — eine einzelne Schleife wäre nach dem zweiten Durchlauf als Muster
+   * lesbar. Bewegt wird ausschließlich `transform`: Verschiebung, minimale
+   * Drehung in der Bildebene und eine Skalierung unter 2 %.
+   *
+   * Bewusst KEIN `rotateY` und keine Perspektive: das Motiv ist eine flache
+   * Aufnahme mit einbelichteter Räumlichkeit. Eine echte Achsdrehung würde
+   * sie als Pappscheibe entlarven, statt die Plastik zu stützen.
+   */
+  .sweep-idle-a {
+    position: absolute;
+    inset: 0;
+    transform-origin: 52% 50%;
+    animation: sweep-idle-a 19s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+    will-change: transform;
+  }
+
+  .sweep-idle-b {
+    position: absolute;
+    inset: 0;
+    transform-origin: 52% 50%;
+    animation: sweep-idle-b 31s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+    will-change: transform;
+  }
+
+  /*
+   * Der Verdrängungsfilter gibt der Bruchkante ihre krümelige Struktur.
+   *
+   * Er läuft NUR während des Zerfalls. Zuvor lag er dauerhaft auf der
+   * Bazille und verschob ihre Bildpunkte um bis zu ±6,5 px — er kostete also
+   * gerade in der Phase Leistung, in der das Motiv seine volle Schärfe zeigen
+   * soll. In der Ruhephase steht die Aufnahme jetzt unverfälscht.
+   */
+  .sweep-stage[data-sweep-phase="zerfall"] .sweep-idle-b {
+    filter: url(#glanzwerk-crumble);
+  }
+
+  @keyframes sweep-idle-a {
+    from {
+      transform: translate3d(0, calc(-6px * var(--idle)), 0) rotate(calc(-1.1deg * var(--idle)));
+    }
+    to {
+      transform: translate3d(calc(5px * var(--idle)), calc(7px * var(--idle)), 0)
+        rotate(calc(1.3deg * var(--idle)));
+    }
+  }
+
+  @keyframes sweep-idle-b {
+    from {
+      transform: scale(calc(1 - 0.014 * var(--idle))) rotate(calc(1.6deg * var(--idle)));
+    }
+    to {
+      transform: scale(calc(1 + 0.016 * var(--idle))) rotate(calc(-1.4deg * var(--idle)));
+    }
+  }
+
+  /*
+   * Die Kante, an der die Bazille verschwindet. Kein harter Schnitt, sondern
+   * ein 23 Prozentpunkte breiter Verlauf: die Oberfläche wird durchscheinend,
+   * bevor sie weg ist. Genau in diesem Band lösen sich die Fragmente — das
+   * Wegblenden allein soll nie sichtbar werden, es wird von Material verdeckt.
+   */
+  .sweep-mask {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent calc(var(--ep) - 12%),
+      rgb(0 0 0 / 0.22) calc(var(--ep) - 5%),
+      rgb(0 0 0 / 0.68) calc(var(--ep) + 2%),
+      #000 calc(var(--ep) + 11%)
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent calc(var(--ep) - 12%),
+      rgb(0 0 0 / 0.22) calc(var(--ep) - 5%),
+      rgb(0 0 0 / 0.68) calc(var(--ep) + 2%),
+      #000 calc(var(--ep) + 11%)
+    );
+  }
+
+  .sweep-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /*
+   * Das Aufleuchten im Moment der Berührung. Mit der Aufnahme selbst maskiert
+   * (die URL setzt das Bauteil), leuchtet also nur auf dem Körper — sonst
+   * wäre es ein Strahl über der Bühne statt einer Reaktion des Materials.
+   */
+  .sweep-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background: linear-gradient(
+      90deg,
+      rgb(255 255 255 / 0) calc(var(--ep) - 13%),
+      rgb(206 236 252 / 0.42) calc(var(--ep) - 7%),
+      rgb(236 249 255 / 0.82) calc(var(--ep) - 2%),
+      rgb(255 255 255 / 1) calc(var(--ep) + 1%),
+      rgb(224 244 254 / 0.72) calc(var(--ep) + 4%),
+      rgb(206 236 252 / 0.34) calc(var(--ep) + 9%),
+      rgb(255 255 255 / 0) calc(var(--ep) + 15%)
+    );
+    opacity: 0;
+  }
+
+  /*
+   * EINE Leinwand für alle drei Fragmentgrößen.
+   *
+   * Der Prototyp hatte drei, weil jede Gruppe einen eigenen Helligkeitsfilter
+   * trug. Drei bühnengroße Leinwände heißt aber: dreimal löschen und dreimal
+   * hochladen, in jedem Bild. Die Helligkeit ist jetzt beim einmaligen Bau der
+   * Sprites eingerechnet — dieselbe Optik, ein Drittel der Bildkosten.
+   */
+  .sweep-frag {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*
+   * Der Wasserlauf. Über- und untersteht die Bühne um 8 %, damit die Strähnen
+   * nirgends abreißen. Bewegt wird ausschließlich `transform`.
+   */
+  .sweep-flow {
+    position: absolute;
+    top: -8%;
+    bottom: -8%;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    transform: translate3d(var(--sweepx), 0, 0);
+    will-change: transform;
+  }
+
+  .sweep-flow svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--sweep-flow-width);
+    overflow: visible;
+  }
+
+  /*
+   * ── Die vier Begriffe ──────────────────────────────────────────────────
+   * Auf dem Telefon stehen sie als ruhiges Zweierraster unter der Bühne: die
+   * Ecken sind dort nur rund 16 px hoch, Text darin wäre gequetscht. Ab
+   * Tablet rücken sie in den Weißraum der vier Ecken, in dem weder Bazille
+   * noch Wasserlauf liegen.
+   */
+  .sweep-words {
+    margin-top: 1.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .sweep-word {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  @media (min-width: 768px) {
+    .sweep-words {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      display: block;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .sweep-word {
+      position: absolute;
+      max-width: 12rem;
+      font-size: 0.75rem;
+    }
+
+    .sweep-word-a {
+      left: 1%;
+      top: 6%;
+    }
+
+    .sweep-word-b {
+      left: 1%;
+      bottom: 6%;
+    }
+
+    .sweep-word-c {
+      right: 1%;
+      top: 6%;
+      text-align: right;
+    }
+
+    .sweep-word-d {
+      right: 1%;
+      bottom: 6%;
+      text-align: right;
+    }
+  }
+
+  /*
+   * ── Reduzierte Bewegung ────────────────────────────────────────────────
+   * Keine Ruhebewegung, kein Schwebstaub. Die Zeitachse läuft dann gar nicht
+   * an; es bleibt die vollständige, unbewegte Bazille stehen (Begründung im
+   * Bauteil).
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .sweep-idle-a,
+    .sweep-idle-b,
+    .sweep-atm i {
+      animation: none;
+    }
+  }
+
+  /*
+   * Außerhalb des Blickfelds werden die Dauerschleifen angehalten.
+   */
+  .sweep-stage[data-sweep-view="out"] .sweep-idle-a,
+  .sweep-stage[data-sweep-view="out"] .sweep-idle-b,
+  .sweep-stage[data-sweep-view="out"] .sweep-atm i {
+    animation-play-state: paused;
   }
 
   /*
@@ -1448,6 +1838,22 @@ body {
       transparent 100%
     );
   }
+
+  /*
+   * ── Bewertungskarussell ──────────────────────────────────────────────
+   * Anders als das Laufband oben bewegt sich hier nichts von selbst: die
+   * Spur folgt ausschließlich Finger, Mausrad oder den beiden Pfeiltasten
+   * in GoogleReviewsSection.tsx. Die Klasse blendet nur die Scrollleiste
+   * aus — die native Scrollposition (und damit Tastatur- und
+   * Touch-Bedienung) bleibt vollständig erhalten.
+   */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer utilities {
@@ -1482,6 +1888,1008 @@ body {
   .fade-in-up.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  /*
+   * ══ Zwei Bewegtbild-Motive ════════════════════════════════════════════
+   *
+   * Gemeinsam ist beiden nur eines: sie dürfen nicht als Video erkennbar
+   * sein. Kein Rahmen, keine Fläche darunter, keine Bedienung, keine
+   * sichtbare Rechteckkante. Wie das jeweils erreicht wird, ist verschieden
+   * — der Organismus steht auf hellem Grund, der Rechner in einem dunklen
+   * Zimmer, und dieselbe Lösung würde für den anderen nicht funktionieren.
+   */
+
+  /*
+   * Sanftes Wiedereinsetzen der Schleife; siehe MotionAsset.tsx.
+   *
+   * `transition: none` ist hier der ganze Trick. Ohne die Zeile blendet auch
+   * das Verstecken ueber 0,55 s aus — der Ruecksprung setzt das Attribut aber
+   * nur fuer zwei Bilder auf "nein", die Deckkraft kaeme also nie unter 0,94
+   * und das Einblenden waere unsichtbar. Verstecken hart, zeigen weich.
+   */
+  .hyg-video[data-ein="nein"] {
+    opacity: 0;
+    transition: none;
+  }
+
+  /*
+   * ── Der Organismus ────────────────────────────────────────────────────
+   *
+   * Der Hintergrund der Aufnahme ist gemessen #e4e9ef bis #edeff3 (Leucht-
+   * dichte 233 bis 240) und über die ganze Fläche gleichmäßig. `brightness`
+   * hebt ihn über den Anschlag: 228 × 1,11 ergibt 253, und alles darüber
+   * wird zu reinem Weiß. Die Fläche des Abschnitts läuft von #ffffff nach
+   * graphite-50 (#faf9f7) — der Unterschied liegt damit bei ein bis zwei
+   * Stufen von 255 und ist nicht zu sehen.
+   *
+   * Der Organismus selbst verliert dabei nichts: sein dunkelstes Blau
+   * (#2a5993) bleibt nach der Rechnung bei #2f63a3. `contrast` holt die
+   * Tiefe zurück, die das Aufhellen kostet.
+   *
+   * Die radiale Maske ist die zweite Sicherung. Sie ist bewusst weit
+   * gefasst — sie soll nichts vom Motiv beschneiden, sondern nur die Ecken
+   * der Aufnahme abräumen, falls eine Wiedergabe die Farben minimal anders
+   * auflöst als gerechnet.
+   *
+   * Kein `mix-blend-mode`: der Inhalt der Section steht in einem eigenen
+   * Stapelkontext (`z-[1]`), und Mischung endet an dessen Grenze. Das
+   * Ergebnis wäre je nach Browser ein deckendes helles Rechteck.
+   */
+  .hyg-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: brightness(1.078) contrast(1.05) saturate(1.04);
+    transition: opacity 0.55s var(--ease-signature);
+    -webkit-mask-image: radial-gradient(
+      60% 64% at 50% 47%,
+      #000 0%,
+      #000 46%,
+      rgb(0 0 0 / 0.82) 66%,
+      rgb(0 0 0 / 0.3) 86%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      60% 64% at 50% 47%,
+      #000 0%,
+      #000 46%,
+      rgb(0 0 0 / 0.82) 66%,
+      rgb(0 0 0 / 0.3) 86%,
+      transparent 100%
+    );
+  }
+
+  .hyg-kopf {
+    max-width: 34rem;
+  }
+
+  .hyg-feld {
+    display: grid;
+    gap: 2.5rem 0;
+    margin-top: 2.5rem;
+  }
+
+  .hyg-buehne {
+    /*
+     * Das Motiv trägt viel Luft: der Organismus füllt nur die mittleren
+     * gut vierzig Prozent der Aufnahme. Ein negativer Rand holt ihn auf
+     * eine sinnvolle Größe, ohne dass er beschnitten wird — die Luft
+     * ringsum ist ohnehin weiß und liegt nach der Maske auf null.
+     */
+    margin: -8% -14%;
+  }
+
+  .hyg-punkt-titel {
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-brand-900);
+  }
+
+  .hyg-punkt-text {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+  }
+
+  /*
+   * Telefon: keine Tafel, sondern eine Liste. Zeigerlinien auf ein Motiv,
+   * das darüber steht, wären hier entweder sehr lang oder sie kreuzten sich
+   * — beides ist schlechter als eine saubere Aufzählung. Die Haarlinie
+   * trennt, statt zu zeigen.
+   */
+  .hyg-punkt {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .hyg-feld {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.25rem 3rem;
+    }
+    .hyg-buehne {
+      grid-column: 1 / -1;
+      margin: -4% 12% 0;
+    }
+  }
+
+  /*
+   * Ab Desktop die Tafel: das Motiv in der Mitte, je zwei Punkte links und
+   * rechts. Die Zeigerlinie läuft waagerecht in den Rasterabstand hinein
+   * und endet in einem Punkt zur Bühne hin. Weil die Punkte in den äußeren
+   * Spalten stehen und das Motiv dazwischen, kann sich keine Linie mit
+   * einer anderen kreuzen.
+   */
+  @media (min-width: 1024px) {
+    .hyg-feld {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 4rem 3.5rem;
+      margin-top: 1rem;
+    }
+
+    .hyg-buehne {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      margin: 0 -13%;
+    }
+
+    .hyg-punkt {
+      position: relative;
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .hyg-punkt-1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .hyg-punkt-2 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    .hyg-punkt-3 {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .hyg-punkt-4 {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .hyg-punkt-1,
+    .hyg-punkt-2 {
+      text-align: right;
+    }
+
+    /* Haarlinie in den Rasterabstand, mit einem Punkt am motivnahen Ende. */
+    .hyg-punkt::before,
+    .hyg-punkt::after {
+      content: "";
+      position: absolute;
+      top: 0.72em;
+      pointer-events: none;
+    }
+
+    .hyg-punkt::before {
+      height: 1px;
+      width: 2.6rem;
+    }
+
+    .hyg-punkt::after {
+      width: 5px;
+      height: 5px;
+      margin-top: -2px;
+      border-radius: 50%;
+      background: var(--color-brand-400);
+    }
+
+    .hyg-punkt-1::before,
+    .hyg-punkt-2::before {
+      left: 100%;
+      margin-left: 0.45rem;
+      background: linear-gradient(to right, var(--color-line-strong), transparent);
+    }
+    .hyg-punkt-1::after,
+    .hyg-punkt-2::after {
+      left: 100%;
+      margin-left: 0.2rem;
+    }
+
+    .hyg-punkt-3::before,
+    .hyg-punkt-4::before {
+      right: 100%;
+      margin-right: 0.45rem;
+      background: linear-gradient(to left, var(--color-line-strong), transparent);
+    }
+    .hyg-punkt-3::after,
+    .hyg-punkt-4::after {
+      right: 100%;
+      margin-right: 0.2rem;
+    }
+  }
+
+  /*
+   * ══ Preisrechner: das Geraet ══════════════════════════════════════════
+   *
+   * Nativ gebaut, kein Bild. Es soll nicht auf der Flaeche liegen, sondern
+   * aus ihr entstehen: der Korpus traegt denselben Blauton wie der
+   * Abschnitt, nur eine Spur heller, und wird allein ueber Licht und
+   * Schatten koerperlich — keine Umrandung, kein Rahmen.
+   *
+   * Die Tiefe kommt aus drei Quellen und ist bewusst flach gehalten:
+   * ein weiter weicher Schlagschatten unter dem Korpus, eine helle
+   * Innenkante oben (Licht faellt von oben links) und eine dunkle unten.
+   * Kein Neumorphismus: die Tasten haben echte Schatten nach aussen, keine
+   * eingepraegten Mulden.
+   */
+  .pk {
+    position: relative;
+    width: 100%;
+  }
+
+  .pk-geraet {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.6rem, 1.2vw, 0.9rem);
+    padding: clamp(0.75rem, 1.6vw, 1.15rem);
+    border-radius: clamp(1.25rem, 2.4vw, 1.75rem);
+    background: linear-gradient(158deg, #ffffff 0%, #f4f8ff 42%, #deebff 100%);
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.9) inset,
+      0 -1px 0 0 rgb(120 150 200 / 0.14) inset,
+      0 2px 4px -1px rgb(23 48 96 / 0.06),
+      0 14px 28px -12px rgb(23 48 96 / 0.16),
+      0 36px 64px -28px rgb(23 48 96 / 0.22);
+  }
+
+  /* ── Display ─────────────────────────────────────────────────────────
+   * Der einzige gesaettigte Block der Flaeche. Er traegt die Marke und ist
+   * damit auch der Grund, warum das Geraet nicht als graues Werkzeug liest.
+   *
+   * Ton hellblau statt navy: das Geraet steht auf der Preisrechner-Flaeche
+   * (`background="tint"`, brand-100 → brand-50) und soll aus ihr entstehen,
+   * nicht sich als dunkler Fremdkoerper davon abheben. Der dunkelste Punkt
+   * des Verlaufs bleibt bei #2f66c2 (~5,5:1 auf Weiss) — hell genug, um zur
+   * Flaeche zu passen, dunkel genug, damit die weisse Schrift lesbar bleibt.
+   */
+  .pk-display {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-height: clamp(5rem, 9.5vw, 6.75rem);
+    padding: clamp(0.75rem, 1.6vw, 1.15rem);
+    border-radius: clamp(0.75rem, 1.5vw, 1.05rem);
+    background: linear-gradient(150deg, #86b6f2 0%, #4a86dd 45%, #2f66c2 100%);
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.28) inset,
+      0 -10px 20px -10px rgb(9 26 62 / 0.4) inset,
+      0 2px 3px 0 rgb(23 48 96 / 0.14);
+    overflow: hidden;
+  }
+
+  .pk-display-marke {
+    position: absolute;
+    top: clamp(0.55rem, 1.2vw, 0.85rem);
+    left: clamp(0.75rem, 1.6vw, 1.15rem);
+    font-size: clamp(0.5625rem, 0.8vw, 0.6875rem);
+    letter-spacing: 0.04em;
+    color: rgb(255 255 255 / 0.68);
+  }
+
+  .pk-wert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+    text-align: right;
+  }
+
+  .pk-wert-kontext {
+    font-size: clamp(0.5625rem, 0.85vw, 0.75rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgb(255 255 255 / 0.65);
+  }
+
+  .pk-wert-haupt {
+    font-size: clamp(1.5rem, 3.8vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Wortmarken wie „3× PRO WOCHE" brauchen weniger Grad als eine Zahl. */
+  .pk-wert-haupt[data-lang="ja"] {
+    font-size: clamp(0.9375rem, 2vw, 1.5rem);
+    letter-spacing: 0.01em;
+  }
+
+  .pk-wert-fuss {
+    margin-top: 0.1rem;
+    font-size: clamp(0.625rem, 0.95vw, 0.8125rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: rgb(255 255 255 / 0.85);
+  }
+
+  /* ── Auswahlliste im Display ─────────────────────────────────────────
+   * Ersetzt den Wert, statt sich darueber zu legen: ein Display zeigt
+   * immer genau einen Zustand.
+   */
+  .pk-liste {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: clamp(0.15rem, 0.5vw, 0.35rem);
+    width: 100%;
+    text-align: right;
+  }
+
+  .pk-liste-zeile {
+    font-size: clamp(0.6875rem, 1.3vw, 0.9375rem);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgb(255 255 255 / 0.5);
+    transition:
+      color 0.22s var(--ease-signature),
+      transform 0.22s var(--ease-signature);
+  }
+
+  .pk-liste-zeile[data-aktiv="ja"] {
+    color: #fff;
+    font-weight: 600;
+    transform: scale(1.04);
+    transform-origin: right center;
+  }
+
+  /* ── Tasten ──────────────────────────────────────────────────────────
+   * Eine Bauform fuer alle, drei Groessen. Der Druck ist der einzige
+   * bewegte Zustand: zwei Bildpunkte nach unten und der Schatten flacher —
+   * genau so viel, wie eine echte Taste nachgibt.
+   *
+   * Seitenverhaeltnis 1.45/1 statt 1.18/1: die Zifferntasten sind dadurch
+   * flacher, ohne an Breite zu verlieren — das ist der Hauptgrund, warum
+   * das Geraet insgesamt niedriger wird und neben dem Fliesstext auf eine
+   * Bildschirmhoehe passt.
+   */
+  .pk-funktionen,
+  .pk-feld {
+    display: grid;
+    gap: clamp(0.3rem, 0.75vw, 0.5rem);
+  }
+
+  .pk-funktionen {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /*
+   * Keine feste Reihenhoehe: die Tasten bestimmen ueber ihr Seitenverhaeltnis
+   * selbst, wie hoch sie sind. Mit `grid-template-rows` waren sie auf
+   * breiten Flaechen flach wie Leisten — auf dem Tablet 160 × 44 px.
+   */
+  .pk-feld {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .pk-taste {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1.45 / 1;
+    min-height: 2rem;
+    padding: 0.2rem;
+    border: 0;
+    border-radius: clamp(0.5rem, 1.05vw, 0.8rem);
+    background: linear-gradient(168deg, #ffffff 0%, #fbfcff 55%, #e5eefd 100%);
+    color: var(--color-brand-900);
+    font-size: clamp(0.85rem, 1.6vw, 1.25rem);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    cursor: default;
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.95) inset,
+      0 1px 2px 0 rgb(23 48 96 / 0.08),
+      0 3px 7px -3px rgb(23 48 96 / 0.14);
+    transition:
+      transform 0.14s var(--ease-signature),
+      box-shadow 0.14s var(--ease-signature);
+  }
+
+  .pk-taste[data-druck="ja"] {
+    transform: translateY(2px);
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.6) inset,
+      0 1px 1px 0 rgb(23 48 96 / 0.1),
+      0 1px 3px -2px rgb(23 48 96 / 0.14);
+  }
+
+  /* Beschriftete Tasten tragen Text, keine Ziffer — kleiner und gesperrt. */
+  .pk-taste-funktion,
+  .pk-taste-neben {
+    font-size: clamp(0.55rem, 0.95vw, 0.75rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* Beschriftete Tasten sind flacher als Zifferntasten — wie in der Vorlage. */
+  .pk-taste-funktion {
+    aspect-ratio: 2 / 1;
+  }
+
+  .pk-taste-gleich {
+    grid-column: 4;
+    grid-row: 3 / 5;
+    aspect-ratio: auto;
+    background: linear-gradient(158deg, #86b6f2 0%, #4a86dd 48%, #2f66c2 100%);
+    color: #fff;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.32) inset,
+      0 1px 2px 0 rgb(16 38 82 / 0.18),
+      0 5px 11px -4px rgb(16 38 82 / 0.3);
+  }
+
+  .pk-taste-gleich[data-druck="ja"] {
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.2) inset,
+      0 1px 1px 0 rgb(16 38 82 / 0.2),
+      0 2px 4px -3px rgb(16 38 82 / 0.26);
+  }
+
+  /* ── Nutzenzeile links ───────────────────────────────────────────────── */
+  .pr-nutzen {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .pr-nutzen {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /*
+   * Trennung ueber Haarlinien statt Kaesten — dieselbe Sprache wie im
+   * Bezirksregister und in der Vertrauensmatrix. Die erste Spalte jeder
+   * Zeile bekommt keine Linie.
+   */
+  .pr-nutzen > * {
+    padding: 0 0.875rem;
+    border-left: 1px solid var(--color-line-strong);
+  }
+
+  .pr-nutzen > *:nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  @media (min-width: 640px) {
+    .pr-nutzen > *:nth-child(2n + 1) {
+      padding-left: 0.875rem;
+      border-left: 1px solid var(--color-line-strong);
+    }
+    .pr-nutzen > *:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
+  /*
+   * ══ Testphase: die vier Kalenderblätter ═══════════════════════════════
+   *
+   * Rollen zu `TrialCalendar.tsx`. Warum der Kalender aus einer einzigen
+   * Aufnahme plus vier herausgelösten Schriftfeldern besteht und warum unten
+   * ein fünftes, unbewegtes Blatt liegt, steht im Kopf jenes Bauteils; hier
+   * steht nur die Bewegung.
+   *
+   * ── Die Zeitachse ─────────────────────────────────────────────────────
+   * Ein Durchlauf dauert 11 s:
+   *
+   *   0,0 – 1,7    01 MONAT ruhig
+   *   1,7 – 2,3    Blatt 01 reißt ab
+   *   2,3 – 4,0    02 MONAT ruhig
+   *   4,0 – 4,6    Blatt 02 reißt ab
+   *   4,6 – 6,3    03 MONAT ruhig
+   *   6,3 – 6,9    Blatt 03 reißt ab
+   *   6,9 – 8,6    VERTRAG, die Unterschrift entsteht
+   *   8,6 – 9,9    fertiger Zustand, bewusste Ruhe
+   *   9,9 – 10,75  der Vertrag reißt ruhiger ab als die Monate
+   *  10,75 – 11,0  darunter steht wieder 01 — die Schleife schließt sich
+   *
+   * Jede Prozentangabe unten ist Sekunde ÷ 11.
+   *
+   * Die Zustände sind vier getrennte Ebenen und keine Überblendung. Eine
+   * Ziffer verwandelt sich nie in eine andere; sie verschwindet mit ihrem
+   * Blatt, und die nächste lag die ganze Zeit sauber darunter.
+   */
+
+  /*
+   * ── Die Aufnahme als Fläche ───────────────────────────────────────────
+   *
+   * Gemessen am Motiv (1536 × 1024): die Textzone rechts liegt bei einer
+   * Leuchtdichte von 11 mit einem 99-Perzentil von 14,5 — weiße Schrift
+   * darauf ergibt 19:1. Die Fläche braucht also keine Tonebene, um lesbar
+   * zu sein, und bekommt deshalb auch keine (`tone: "carry"`).
+   *
+   * Es bleiben zwei sehr schwache Verläufe:
+   *   – oben und unten je eine kurze Abdunklung, damit die Naht zu den
+   *     hellen Nachbarflächen nicht als Kante steht;
+   *   – von rechts eine leichte Vertiefung, die den Blick nach links zum
+   *     Kalender zieht, statt ihn am Bildrand hängen zu lassen.
+   *
+   * Keine flächige Deckung: die Tiefe des Raums ist der Grund für dieses
+   * Motiv.
+   */
+  .backdrop-carry {
+    background:
+      linear-gradient(
+        to bottom,
+        rgb(6 13 32 / 0.55) 0%,
+        rgb(6 13 32 / 0) 14%,
+        rgb(6 13 32 / 0) 84%,
+        rgb(6 13 32 / 0.5) 100%
+      ),
+      linear-gradient(to right, rgb(4 9 24 / 0.62) 0%, rgb(4 9 24 / 0) 22%),
+      linear-gradient(to left, rgb(4 9 24 / 0.4) 0%, rgb(4 9 24 / 0) 46%);
+  }
+
+  /*
+   * Unterhalb von 1024 px stehen Eyebrow, Überschrift, Absatz und beide
+   * Schaltflächen übereinander im oberen Teil der Fläche — nicht rechts in
+   * der dunklen Zone wie auf dem Schirm. Dort ist der Ausschnitt aber nicht
+   * mehr frei wählbar: je breiter das Fenster, desto mehr vom Motiv ist zu
+   * sehen, und ab etwa 700 px kommt die beleuchtete Oberkante der
+   * Lamellenwand (Spitze 191) in genau den Bereich, in dem die Überschrift
+   * steht.
+   *
+   * Deshalb ein gerichteter Verlauf statt eines anderen Ausschnitts: oben
+   * tief, zur Mitte hin auf null. Weiß über der hellsten Stelle kommt damit
+   * auf 7:1 — über AA. Die untere Hälfte, in der der Kalender und der Boden
+   * die Tiefe tragen, bleibt unangetastet; es liegt also keine Fläche über
+   * dem Bild, sondern nur über der Textzone.
+   */
+  @media (max-width: 1023px) {
+    .backdrop-carry {
+      background:
+        linear-gradient(
+          to bottom,
+          rgb(6 13 32 / 0.86) 0%,
+          rgb(6 13 32 / 0.62) 30%,
+          rgb(6 13 32 / 0.18) 55%,
+          rgb(6 13 32 / 0) 72%,
+          rgb(6 13 32 / 0.5) 100%
+        ),
+        linear-gradient(to right, rgb(4 9 24 / 0.5) 0%, rgb(4 9 24 / 0) 18%),
+        linear-gradient(to left, rgb(4 9 24 / 0.35) 0%, rgb(4 9 24 / 0) 40%);
+    }
+  }
+
+  /*
+   * Der Ausschnitt der Aufnahme, je Breite verschieden.
+   *
+   * Telefon — der Abschnitt ist hoch und schmal, `object-cover` skaliert
+   * über die Höhe und zeigt nur rund ein Viertel der Bildbreite. Die Mitte
+   * wäre die falsche Wahl: die Lamellenwand trägt zwischen 27 % und 43,5 %
+   * ihre beleuchtete Oberkante (Spitzenleuchtdichte 191), und genau dort
+   * stehen auf dem Telefon Eyebrow und Überschrift. Der Ausschnitt liegt
+   * deshalb rechts davon, wo das 99-Perzentil unter 15 bleibt — dieselbe
+   * Raumflucht, aber der Teil, der Text tragen kann.
+   *
+   * Ab Desktop ist die volle Breite zu sehen; dort steuert nur noch die
+   * Höhe. 34 % holt die Oberkante der Lamellenwand ins Bild — sie ist das
+   * einzige Licht der Szene und steht hinter dem Kalender, nicht hinter
+   * dem Text.
+   */
+  .trial-backdrop {
+    object-position: 58% 50%;
+  }
+
+  @media (min-width: 1024px) {
+    .trial-backdrop {
+      object-position: 50% 20%;
+    }
+  }
+
+  .trial-zone {
+    position: relative;
+    width: 100%;
+  }
+
+  /*
+   * Die dunkle Pfütze liegt AUSSERHALB der Maske und reicht über den
+   * Bildrand hinaus.
+   *
+   * Gemessen sind die Bildränder #01050e bis #070f1d — deutlich dunkler als
+   * brand-900 (#0d1b3d), auf dem der Abschnitt steht. Ohne Zwischenstufe
+   * bleibt selbst eine weich auslaufende Aufnahme als dunklerer Fleck
+   * sichtbar: das Ausblenden endet ja nicht im Bildton, sondern in einem
+   * helleren. Die Pfütze zieht die Fläche ringsum auf den Bildton herunter,
+   * und erst dadurch hat die Maske überhaupt etwas, worin sie verschwinden
+   * kann.
+   */
+  .trial-wash {
+    position: absolute;
+    inset: -14%;
+    pointer-events: none;
+    background: radial-gradient(
+      62% 60% at 50% 50%,
+      rgb(3 8 22 / 0.82) 0%,
+      rgb(3 8 22 / 0.48) 55%,
+      rgb(3 8 22 / 0) 80%
+    );
+  }
+
+  /*
+   * Zwei Masken, nicht eine.
+   *
+   * Ein einzelner radialer Verlauf kann das hier nicht leisten: der Kalender
+   * füllt 77 % der Breite und 84 % der Höhe: eine Ellipse, die seine Ecken
+   * deckt, reicht über den Kasten hinaus und wird an den Kantenmitten nie
+   * durchsichtig — genau dort, wo die Kante sonst als Linie stehen bleibt.
+   *
+   * Deshalb liegt der senkrechte Verlauf auf dem Rahmen und der waagerechte
+   * auf der Ebene darin. Zwei geschachtelte Masken multiplizieren sich, ohne
+   * dass `mask-composite` nötig wäre.
+   */
+  .trial-frame {
+    position: relative;
+    width: 100%;
+    /* Telefon: eigene, flachere Komposition — der Kalender steht näher im
+       Bild, die Umgebung wird beschnitten. */
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);
+  }
+
+  .trial-veil {
+    position: absolute;
+    inset: 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 11%, #000 89%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 11%, #000 89%, transparent 100%);
+  }
+
+  /*
+   * Die Bühne hält das Seitenverhältnis der Aufnahme (5 : 4) unabhängig vom
+   * Rahmen. Alle Ebenen liegen in Prozent darin — deshalb darf der Rahmen
+   * seine Form ändern, ohne dass eine einzige Zahl unten nachgezogen werden
+   * muss.
+   */
+  .trial-stage {
+    position: absolute;
+    /*
+     * Telefon: die Bühne ist breiter als der Rahmen und um rund 4 % nach
+     * rechts versetzt. Der Kalender sitzt in der Aufnahme bei 45,5 % der
+     * Breite,
+     * nicht in deren Mitte — ohne den Versatz stünde er im schmalen Rahmen
+     * sichtbar links. Zusammen mit dem flacheren Format ist das eine eigene
+     * Komposition und keine verkleinerte Bildschirmfassung.
+     */
+    left: -1%;
+    width: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    aspect-ratio: 5 / 4;
+  }
+
+  .trial-base {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*
+   * Die Aufnahme des Kalenders bringt ihren eigenen Raum mit — Fenster,
+   * Pflanze, eine Lamellenwand rechts. Solange der Abschnitt eine reine
+   * Farbfläche war, fiel das nicht auf. Seit dort ein echtes Büro steht,
+   * stehen zwei Räume nebeneinander, und auf dem Telefon, wo der Hintergrund
+   * im Ausschnitt fast flach dunkel ist, liest man den zweiten deutlich als
+   * eingesetzte Fläche.
+   *
+   * Diese Ebene nimmt ihn zurück: durchsichtig über dem Kalender selbst,
+   * nach außen bis auf einen Rest abgedunkelt. Sie liegt über der
+   * Grundaufnahme und unter den Blättern — der Kalender behält also sein
+   * Licht, nur sein Zimmer verschwindet.
+   *
+   * Kein Glanz, kein Halo: die Ebene macht nichts heller, sie nimmt nur
+   * weg. Der Kalender hebt sich danach durch seine eigene Helligkeit ab und
+   * nicht durch einen Schein, den jemand um ihn herum gemalt hat.
+   */
+  .trial-shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      60% 74% at 45% 52%,
+      rgb(4 9 22 / 0) 0%,
+      rgb(4 9 22 / 0) 50%,
+      rgb(4 9 22 / 0.5) 72%,
+      rgb(4 9 22 / 0.9) 90%,
+      rgb(4 9 22 / 0.97) 100%
+    );
+  }
+
+  /*
+   * Lage und Drehpunkt des Blattes, gemessen im Master: der Kasten beginnt
+   * bei 26,916 % / 19,159 % und ist 45,701 % × 62,850 % groß. Der Drehpunkt
+   * sitzt auf der Abrisskante dicht unter den Ringfüßen (40,92 % / 1,29 %) —
+   * dort, wo ein echtes Blatt von der Bindung getrennt wird.
+   *
+   * Das Blatt beginnt bewusst UNTER den Ringen. Der schmale Papierstreifen
+   * dazwischen bleibt in der Grundaufnahme stehen und ist in allen vier
+   * Zuständen derselbe. Dadurch braucht es keine freigestellte Ringebene,
+   * und kein Blatt schiebt sich je über die Bindung.
+   */
+  .trial-sheet {
+    position: absolute;
+    left: 26.916%;
+    top: 19.159%;
+    width: 45.701%;
+    height: 62.85%;
+    transform-origin: 40.92% 1.29%;
+    backface-visibility: hidden;
+  }
+
+  .trial-sheet-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .trial-zone[data-view="in"] .trial-sheet-1,
+  .trial-zone[data-view="in"] .trial-sheet-2,
+  .trial-zone[data-view="in"] .trial-sheet-3,
+  .trial-zone[data-view="in"] .trial-sheet-v {
+    will-change: transform, opacity;
+  }
+
+  /*
+   * Der Abriss. Drei Abschnitte, drei Kurven:
+   *
+   *   Ruhe → Anriss   beschleunigt aus dem Stand (das Papier hat Masse)
+   *   Anriss → Flug   zieht durch
+   *   Flug → weg      läuft aus
+   *
+   * Gedreht wird um die Abrisskante nach hinten oben, dazu eine kleine
+   * Verschiebung nach rechts und eine leichte Schräglage — Papier löst sich
+   * nie exakt gerade. Keine Federung, kein Rückschwingen.
+   *
+   * Bewegt werden ausschließlich `transform` und `opacity`; die Perspektive
+   * steht in der Transformkette selbst, damit ihr Fluchtpunkt auf dem
+   * Drehpunkt liegt und die Faltung um die Bindung sauber bleibt.
+   */
+  .trial-sheet-1 {
+    animation:
+      trial-abriss-1 11s linear infinite,
+      trial-blende-1 11s linear infinite;
+  }
+  .trial-sheet-2 {
+    animation:
+      trial-abriss-2 11s linear infinite,
+      trial-blende-2 11s linear infinite;
+  }
+  .trial-sheet-3 {
+    animation:
+      trial-abriss-3 11s linear infinite,
+      trial-blende-3 11s linear infinite;
+  }
+  .trial-sheet-v {
+    animation:
+      trial-abriss-v 11s linear infinite,
+      trial-blende-v 11s linear infinite;
+  }
+
+  @keyframes trial-abriss-1 {
+    0%,
+    15.455% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.86, 0.48);
+    }
+    16.764% {
+      transform: perspective(1500px) translate3d(0.8%, -0.5%, 0) rotateX(-10deg) rotate(-0.5deg);
+      animation-timing-function: cubic-bezier(0.2, 0.5, 0.35, 0.9);
+    }
+    18.836% {
+      transform: perspective(1500px) translate3d(4.5%, -2.4%, 0) rotateX(-42deg) rotate(-1.8deg);
+      animation-timing-function: cubic-bezier(0.22, 0.68, 0.24, 1);
+    }
+    20.909%,
+    100% {
+      transform: perspective(1500px) translate3d(13%, -5.5%, 0) rotateX(-82deg) rotate(-4deg);
+    }
+  }
+
+  @keyframes trial-abriss-2 {
+    0%,
+    36.364% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.86, 0.48);
+    }
+    37.673% {
+      transform: perspective(1500px) translate3d(0.8%, -0.5%, 0) rotateX(-10deg) rotate(-0.5deg);
+      animation-timing-function: cubic-bezier(0.2, 0.5, 0.35, 0.9);
+    }
+    39.745% {
+      transform: perspective(1500px) translate3d(4.5%, -2.4%, 0) rotateX(-42deg) rotate(-1.8deg);
+      animation-timing-function: cubic-bezier(0.22, 0.68, 0.24, 1);
+    }
+    41.818%,
+    100% {
+      transform: perspective(1500px) translate3d(13%, -5.5%, 0) rotateX(-82deg) rotate(-4deg);
+    }
+  }
+
+  @keyframes trial-abriss-3 {
+    0%,
+    57.273% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.86, 0.48);
+    }
+    58.582% {
+      transform: perspective(1500px) translate3d(0.8%, -0.5%, 0) rotateX(-10deg) rotate(-0.5deg);
+      animation-timing-function: cubic-bezier(0.2, 0.5, 0.35, 0.9);
+    }
+    60.655% {
+      transform: perspective(1500px) translate3d(4.5%, -2.4%, 0) rotateX(-42deg) rotate(-1.8deg);
+      animation-timing-function: cubic-bezier(0.22, 0.68, 0.24, 1);
+    }
+    62.727%,
+    100% {
+      transform: perspective(1500px) translate3d(13%, -5.5%, 0) rotateX(-82deg) rotate(-4deg);
+    }
+  }
+
+  /*
+   * Der Vertrag geht anders als die Monate: 0,85 s statt 0,6 s, flacherer
+   * Winkel, kürzerer Weg. Ein Monat wird abgerissen, ein Vertrag wird
+   * weggelegt.
+   */
+  @keyframes trial-abriss-v {
+    0%,
+    90% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.86, 0.48);
+    }
+    92.009% {
+      transform: perspective(1500px) translate3d(0.5%, -0.4%, 0) rotateX(-7deg) rotate(-0.3deg);
+      animation-timing-function: cubic-bezier(0.2, 0.5, 0.35, 0.9);
+    }
+    94.791% {
+      transform: perspective(1500px) translate3d(3.2%, -1.8%, 0) rotateX(-32deg) rotate(-1.2deg);
+      animation-timing-function: cubic-bezier(0.22, 0.68, 0.24, 1);
+    }
+    97.727%,
+    100% {
+      transform: perspective(1500px) translate3d(10%, -4.4%, 0) rotateX(-70deg) rotate(-3deg);
+    }
+  }
+
+  /*
+   * Das Ausblenden liegt in einer eigenen Animation, nicht in den Flug-
+   * Keyframes.
+   *
+   * Grund: Papier ist undurchsichtig. Läuft die Deckkraft über denselben
+   * Stützstellenraster wie die Drehung, steht sie schon in der Bildmitte des
+   * Fluges bei 0,9 — und dann liest man zwei Ziffern übereinander, die alte
+   * durch das eigene Blatt hindurch. Getrennt bleibt das Blatt bis kurz vor
+   * Schluss voll deckend und verschwindet erst, wenn es fast auf der Kante
+   * steht und ohnehin kaum noch Fläche hat.
+   *
+   * 0,18 s für die Monate, 0,25 s für den ruhigeren Vertrag.
+   */
+  @keyframes trial-blende-1 {
+    0%,
+    19.273% {
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0.4);
+    }
+    20.909%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes trial-blende-2 {
+    0%,
+    40.182% {
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0.4);
+    }
+    41.818%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes trial-blende-3 {
+    0%,
+    61.091% {
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0.4);
+    }
+    62.727%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes trial-blende-v {
+    0%,
+    95.455% {
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.5, 0, 0.75, 0.4);
+    }
+    97.727%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /*
+   * Die Unterschrift. `pathLength="1"` macht die Länge des Pfades zur
+   * Einheit — die Kurve kann geändert werden, ohne dass hier eine Zahl
+   * nachgezogen werden muss.
+   *
+   * Sie liegt im Blatt und wird von dessen Transform mitgenommen: wenn der
+   * Vertrag am Ende weggelegt wird, geht sie mit. Zurückgesetzt wird sie
+   * erst bei 100 %, also lange nachdem das Blatt unsichtbar ist.
+   */
+  .trial-signature {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #142a58;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .trial-signature path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: trial-signatur 11s linear infinite;
+  }
+
+  @keyframes trial-signatur {
+    0%,
+    63.18% {
+      stroke-dashoffset: 1;
+      animation-timing-function: cubic-bezier(0.45, 0.05, 0.25, 1);
+    }
+    78.18%,
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Außerhalb des Blickfelds läuft nichts weiter. */
+  .trial-zone[data-view="out"] .trial-sheet,
+  .trial-zone[data-view="out"] .trial-signature path {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 1024px) {
+    .trial-frame {
+      aspect-ratio: 5 / 4;
+    }
+    .trial-stage {
+      left: 0;
+      width: 100%;
+    }
   }
 }
 
@@ -1536,5 +2944,38 @@ body {
   .lift:hover,
   .press:active {
     transform: none !important;
+  }
+}
+
+/*
+ * Der Testphasen-Kalender bei reduzierter Bewegung.
+ *
+ * Der Block oben kürzt jede Animation auf 0,01 ms und einen Durchlauf. Für
+ * den Kalender wäre das kein Stillstand, sondern der Endzustand jeder
+ * Sequenz: drei weggeflogene Blätter und ein weggelegter Vertrag. Deshalb
+ * wird die Bewegung hier nicht gekürzt, sondern abgeschaltet — und ein
+ * Zustand ausgewählt, der die Aussage allein trägt.
+ *
+ * Stehen bleibt „03 MONAT". Von den vier Zuständen ist das der einzige, der
+ * ohne Bewegung vollständig ist: drei Monate, sichtbar als Zahl. „01" wäre
+ * nur der Anfang einer Geschichte, die dann nicht erzählt wird.
+ *
+ * Absichtlich außerhalb von `@layer utilities`: so entscheidet die
+ * Spezifität (.trial-sheet gegen *) und nicht die Reihenfolge der Ebenen.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .trial-sheet,
+  .trial-signature path {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .trial-sheet-1,
+  .trial-sheet-2 {
+    opacity: 0;
+  }
+
+  .trial-signature {
+    display: none;
   }
 }

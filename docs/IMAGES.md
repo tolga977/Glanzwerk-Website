@@ -305,3 +305,56 @@ Zwei Entscheidungen dazu, damit sie nachvollziehbar bleiben:
    beide Personen, das Tablet und der Reinigungswagen vollständig im Bild
    stehen. Auf dem Telefon (4:3) ist der Ausschnitt breiter und zeigt
    zusätzlich die Flurtiefe.
+
+## Umwelt & Verantwortung — Redesign nach Designreferenz (15.08.2026)
+
+Die Illustrationen `umwelt-hippie-peace.webp` (Hero) und `umwelt-hippie-baum.webp`
+(Bild-Text-Abschnitt) sind durch sechs kuratierte Unsplash-Fotos ersetzt
+(Unsplash-Lizenz, kostenlose kommerzielle Nutzung, keine Zuschreibung
+verpflichtend). Direktlinks vor Einbindung per HTTP-Statuscheck verifiziert.
+Beide Dateien bleiben unverändert im Projekt liegen, werden aber auf dieser
+Seite nicht mehr referenziert.
+
+| Registry-Eintrag (`photos.ts`) | Foto-ID | Einsatzort |
+|---|---|---|
+| `ecoOfficeGreenery` | `photo-1765371513276-a74f1ecbcf7d` | Hero |
+| `ecoForestLight` | `photo-1605467518368-b959213686dd` | Signature-Banner „Wir können auch grün." |
+| `ecoWaterDroplet` | `photo-1450696714834-bb5b4aee70d3` | Praxis-Karte „Wasser bewusst einsetzen" |
+| `ecoRecyclingBins` | `photo-1532996122724-e3c354a0b15b` | Praxis-Karte „Mülltrennung gehört zum Arbeitsalltag" |
+| `ecoCleaningSpray` | `photo-1550963295-019d8a8a61c5` | Praxis-Karte „Desinfektion dort, wo sie sinnvoll ist" |
+| `ecoForestCanopy` | `photo-1701157121748-aa59ab87f983` | Praxis-Karte „Verantwortung endet nicht beim Reinigungsmittel", Untergrund Abschluss-CTA (jetzt `tone="eco"`, siehe unten) |
+
+**Korrektur 15.08.2026 (nach erster Durchsicht durch den Betreiber):** Zwei
+der sechs Erstauswahlen wurden ausgetauscht.
+
+- `ecoOfficeGreenery` zeigte zunächst `photo-1765371514743` — einen engen,
+  unruhigen Ausschnitt einer Besprechungsecke mit einem Blatt, das den
+  halben Vordergrund verdeckte. Ausgetauscht gegen `photo-1765371513276`
+  (heller Schreibtisch, grosse frei stehende Pflanze, Vorhang mit
+  Lichteinfall) — deutlich stärkere „Atmosphäre". Zusätzlich läuft das
+  Hero-Foto jetzt im Seitenverhältnis 3:4 statt 4:3 (`BrandPhoto
+  aspect="aspect-[3/4]"`), weil die Aufnahme selbst hochformatig ist
+  (~0,7:1) und bei 4:3 oben/unten zu viel weggeschnitten worden wäre.
+- `ecoRecyclingBins` zeigte zunächst `photo-1611284446314` — australische
+  Compost/Waste/Recycle-Tonnen mit vollflächig bedrucktem Etikett
+  (englischer Fließtext, darauf erkennbare Fast-Food-Verpackungslogos in
+  der Foto-Collage). Verstößt gegen die oben dokumentierte Regel zu
+  Fremdmarken/Beschriftung im Bild. Ausgetauscht gegen
+  `photo-1532996122724` (vier einfarbige Mülltonnen ohne jede Beschriftung
+  vor einer schlichten Wand).
+
+**Abschluss-CTA jetzt in Grün statt Blau:** `CTASection` hat einen neuen,
+rein additiven Prop `tone?: "brand" | "eco"` (Vorgabe weiterhin `"brand"` —
+alle 30 übrigen Einsatzstellen der Komponente sind dadurch unverändert).
+Bei `tone="eco"` läuft die Grundfläche in `eco-800 → eco-600` statt
+`brand-900 → brand-800`, und die Bildabdunkelung ist deutlich schwächer
+(55–78 % statt 85–92 % Deckung) — das Foto soll hier sichtbar Grün tragen,
+nicht unter der Farbe verschwinden. Nur `/umwelt-verantwortung` setzt
+diesen Prop.
+
+Zusätzlich neu auf dieser Seite: die vom Betreiber bereitgestellten,
+freigegebenen Original-Logodateien `public/images/marken/dr-schnell.webp`
+und `public/images/marken/deiss.webp` (beide lagen bereits unverändert im
+Projekt, waren aber in `src/data/productLogos.ts` noch nicht freigeschaltet
+— siehe dortigen Freigabe-Kommentar). Keine Zertifikats-/Eco-Label-Grafiken
+verwendet; nur diese zwei Marken, unverändert, ohne Partnerschafts-Aussage.
