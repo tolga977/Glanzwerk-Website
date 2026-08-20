@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -67,6 +68,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <StickyMobileCTA />
       </body>
     </html>
   );

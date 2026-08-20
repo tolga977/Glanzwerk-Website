@@ -1,0 +1,48 @@
+import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
+
+/**
+ * Zweiter Anfrageweg — ausschließlich auf dem Telefon (`lg:hidden`).
+ *
+ * ── Warum jetzt derselbe Wizard wie im Hero, nicht `ContactForm` ─────────
+ * Hier stand zuerst `ContactForm` (das schwerere, sechs Felder umfassende
+ * Formular von /kontakt) — ausdrücklich als "zweiter", andersartiger Weg
+ * gedacht. Auf Wunsch des Betreibers steht hier jetzt exakt derselbe
+ * `HeroQuoteWizard` wie oben im Hero: dieselben vier Schritte, dieselbe
+ * Kopfzeile "Kostenloses Angebot anfordern", dieselbe Fläche. Wer im Hero
+ * abgebrochen hat, findet hier keinen zweiten, andersartigen Weg, sondern
+ * exakt denselben noch einmal.
+ *
+ * Die Komponente bringt ihre eigene weiße Karte samt Titel mit (siehe dort)
+ * — deshalb hier nur eine schmale Auszeichnungszeile darüber, keine zweite
+ * Überschrift, die sich mit der eigenen des Wizards doppeln würde.
+ *
+ * ── Warum trotzdem ein eigener Abschnitt statt nur der Wizard ───────────
+ * An dieser Stelle stand früher ein zweites Anfrageformular für alle
+ * Breiten; es wurde entfernt, weil es auf dem Desktop gegen das Formular
+ * der Hero-Bühne konkurrierte (siehe Kommentar in page.tsx an dieser
+ * Stelle). Dieser Einwand betrifft ausschließlich Desktop: dort steht die
+ * Hero-Bühne beim Erreichen dieses Abschnitts längst nicht mehr im
+ * Blickfeld, aber der Wizard bleibt über die Kopfzeile erreichbar, und ein
+ * zweites vollständiges Formular mitten in derselben Ansicht wäre
+ * tatsächlich eine Doppelung.
+ *
+ * Auf dem Telefon liegt die Hero-Bühne dagegen viele Bildschirmhöhen zurück.
+ * Wer bis hierher gescrollt ist, ohne die Anfrage im Hero abzuschicken, soll
+ * nicht zurückscrollen müssen — deshalb dieselbe Anfrage hier noch einmal,
+ * aber nur unterhalb von 1024 px sichtbar.
+ */
+export default function MobileContactSection() {
+  return (
+    <section className="border-y border-line bg-gradient-to-b from-graphite-100 via-graphite-100 to-graphite-50 py-14 lg:hidden">
+      <div className="container-page">
+        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+          <span aria-hidden="true" className="brand-tick text-brand-400" />
+          Direkt anfragen
+        </p>
+        <div className="mt-6">
+          <HeroQuoteWizard />
+        </div>
+      </div>
+    </section>
+  );
+}

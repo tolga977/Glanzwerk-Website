@@ -13,6 +13,8 @@ import HeroStage from "@/components/home/HeroStage";
 import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
 import HeroBrandStrip from "@/components/home/HeroBrandStrip";
 import HygieneSystem from "@/components/home/HygieneSystem";
+import MobileCTAStrip from "@/components/home/MobileCTAStrip";
+import MobileContactSection from "@/components/home/MobileContactSection";
 import PriceCalculator from "@/components/home/PriceCalculator";
 import TrialCalendar from "@/components/home/TrialCalendar";
 import OwnerNote from "@/components/home/OwnerNote";
@@ -343,6 +345,19 @@ const arrowIcon = (
   </svg>
 );
 
+/** Telefonhörer fürs Hero-CTA — einmal definiert, weil die Schaltfläche
+ *  jetzt zweimal im Markup steht (Bühnenzustand mobil/Desktop, siehe dort). */
+const phoneIcon = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0">
+    <path
+      d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 /*
  * ── Zum Beweisband unter dem Hero ────────────────────────────────────────
  *
@@ -579,9 +594,32 @@ export default async function HomePage() {
           Unterkante, und dort löst es sich über `.hero-floor` ins Weiße auf.
           Ein großer Innenabstand unten würde diese Zone nur leer halten.
         */}
-        <div className="container-page flex flex-1 flex-col pb-12 pt-[calc(var(--header-height)+3rem)] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--hero-panel-width))] lg:items-center lg:gap-12 lg:pb-[var(--hero-gap-bottom)] lg:pt-[calc(var(--header-height)+var(--hero-gap-top))] xl:gap-16">
+        {/*
+          ── Mobil: eine Bühne statt eines Stapels ────────────────────────
+          Bis eben war das hier `flex flex-col`: Aussage, Foto, Anfrage liefen
+          auf dem Telefon strikt untereinander — drei getrennte Blöcke. Das
+          Foto trug dabei nie Text, weil ein reines Textband auf hellem Grund
+          folgt und ein separates Bildband danach kommt.
+
+          Jetzt ist der Container ab der kleinsten Breite `grid`. Aussage und
+          Bühnen-Wrapper bekommen beide `col-start-1 row-start-1` — dieselbe
+          Rasterzelle, sie liegen also übereinander statt nacheinander. Das
+          Foto füllt die Zelle als Fläche, die Aussage schwebt darüber
+          (`z-20`, siehe dort) und trägt jetzt selbst den Verlaufsschleier für
+          die Lesbarkeit. Die Anfrage bleibt eine eigene Zeile darunter
+          (`row-start-2`) — das Formular soll ein eigener, heller Schritt
+          bleiben, kein Element auf dem Foto.
+
+          Ab `lg` ist das unverändert die bisherige Zweispalten-Bühne: die
+          Aussage bleibt `col-start-1`, die Anfrage wechselt auf
+          `lg:col-start-2 lg:row-start-1`, und der Bühnen-Wrapper verschwindet
+          über `lg:contents` aus dem Rasterbaum — HeroStage positioniert sich
+          dort weiterhin selbst (`lg:absolute lg:inset-0`) gegenüber der
+          Section, unabhängig von dieser Zellenzuordnung.
+        */}
+        <div className="container-page grid flex-1 grid-cols-1 pb-12 pt-[calc(var(--header-height)+3rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--hero-panel-width))] lg:items-center lg:gap-12 lg:pb-[var(--hero-gap-bottom)] lg:pt-[calc(var(--header-height)+var(--hero-gap-top))] xl:gap-16">
           {/* ── 1) Aussage ────────────────────────────────────────────── */}
-          <div className="relative z-20">
+          <div className="relative z-20 col-start-1 row-start-1 pb-10 pt-9 sm:pb-12 sm:pt-11 lg:pb-0 lg:pt-0">
             {/*
               Keine Auszeichnungszeile über der Überschrift. Ein gerundetes
               Etikett mit „Ihre Reinigungsfirma in Berlin" wiederholte nur
@@ -614,9 +652,9 @@ export default async function HomePage() {
               echtes Leerzeichen im Text steht. Der Textinhalt lautet wieder
               „Gebäudereinigung Berlin", identisch mit `seoHeadings`.
             */}
-            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-brand-900 sm:text-6xl lg:text-7xl">
+            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-white sm:text-6xl lg:text-7xl lg:text-brand-900">
               {h1Lead && `${h1Lead} `}
-              <span className="block text-brand-500">{h1Accent}</span>
+              <span className="block text-brand-200 lg:text-brand-500">{h1Accent}</span>
             </h1>
 
             {/*
@@ -646,12 +684,12 @@ export default async function HomePage() {
               → ink-soft. Der Slogan bleibt dadurch dunkel und nah an der
               Überschrift, die Zielgruppenzeile tritt zurück.
             */}
-            <p className="mt-6 max-w-lg text-xl font-medium leading-snug text-brand-900 sm:mt-7 sm:text-2xl">
-              Sauberkeit, auf die Sie sich <span className="text-brand-500">jeden Tag</span>{" "}
-              verlassen können.
+            <p className="mt-6 max-w-lg text-xl font-medium leading-snug text-white sm:mt-7 sm:text-2xl lg:text-brand-900">
+              Sauberkeit, auf die Sie sich{" "}
+              <span className="text-brand-200 lg:text-brand-500">jeden Tag</span> verlassen können.
             </p>
 
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-brand-100 lg:text-ink-soft">
               Unterhaltsreinigung für Büros, Praxen, Kanzleien, Autohäuser und weitere
               Gewerbeobjekte — in ganz Berlin.
             </p>
@@ -665,8 +703,21 @@ export default async function HomePage() {
               dem Unternehmensprofil oder aus dem von Hand geprüften Stand.
               Nichts daran ist gerundet oder mit „über" versehen.
             */}
+            {/*
+              Zwei Varianten derselben Bewertung statt einer: "badge" ist
+              eigens für "dunkle Flächen und Bewegtbild" gebaut (siehe
+              GoogleRating.tsx) und trägt hier den mobilen Bühnenzustand,
+              "heroLight" bleibt ab Desktop wie zuvor. Jeweils nur eine der
+              beiden ist sichtbar (`hidden`/`lg:hidden`) — für Screenreader
+              und Tabreihenfolge zählt ausschließlich die sichtbare.
+            */}
             <div className="mt-8 sm:mt-9">
-              <GoogleRating data={googleRating} variant="heroLight" />
+              <span className="lg:hidden">
+                <GoogleRating data={googleRating} variant="badge" />
+              </span>
+              <span className="hidden lg:inline-flex">
+                <GoogleRating data={googleRating} variant="heroLight" />
+              </span>
             </div>
 
             {/*
@@ -706,34 +757,89 @@ export default async function HomePage() {
               >
                 Preis schätzen
               </Button>
-              <Button
-                href={siteConfig.phoneHref}
-                variant="outline"
-                size="lg"
-                className="min-h-14 w-full sm:w-auto"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="shrink-0"
+              {/*
+                `outline` zeichnet dunklen Rahmen auf hellem Grund — genau
+                verkehrt über dem Foto. `onMedia` ist die Variante, die
+                Button.tsx eigens für Text-über-Bewegtbild mitbringt (siehe
+                dortiger Kommentar zur früheren Kollision zweier
+                gleich-spezifischer Klassen). Zwei Instanzen statt einer
+                Farbkorrektur per Zusatzklasse, aus genau diesem Grund.
+              */}
+              <span className="lg:hidden">
+                <Button
+                  href={siteConfig.phoneHref}
+                  variant="onMedia"
+                  size="lg"
+                  className="min-h-14 w-full"
                 >
-                  <path
-                    d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Jetzt anrufen
-              </Button>
+                  {phoneIcon}
+                  Jetzt anrufen
+                </Button>
+              </span>
+              <span className="hidden lg:inline-flex">
+                <Button
+                  href={siteConfig.phoneHref}
+                  variant="outline"
+                  size="lg"
+                  className="min-h-14 w-full sm:w-auto"
+                >
+                  {phoneIcon}
+                  Jetzt anrufen
+                </Button>
+              </span>
             </div>
           </div>
 
-          {/* ── 2) Das Foto ───────────────────────────────────────────── */}
-          <HeroStage />
+          {/*
+            ── 2) Das Foto ───────────────────────────────────────────────
+            `order-first` stellt das Foto auf dem Telefon vor die Aussage —
+            vorher lag zwischen H1 und Foto noch Slogan, Zielgruppenzeile,
+            Bewertung und beide Handlungswege, das Foto kam damit erst nach
+            deutlichem Scrollen. Das betrifft ausschließlich die visuelle
+            Reihenfolge: die DOM-Reihenfolge (und damit Vorlesereihenfolge
+            und Lesefolge für Suchmaschinen) bleibt Überschrift zuerst.
+
+            `lg:contents` löst den Wrapper ab Desktop aus dem Boxbaum —
+            HeroStage trägt sein eigenes `lg:absolute lg:inset-0` und
+            positioniert sich damit weiterhin gegenüber der Section, nicht
+            gegenüber diesem Wrapper. Ohne `contents` würde der Wrapper ab
+            Desktop selbst zu einem dritten Rasterelement und die
+            Zweispalten-Zuordnung (Aussage/Anfrage) verschieben.
+          */}
+          <div className="relative col-start-1 row-start-1 -mx-4 min-h-[38rem] bg-brand-950 sm:-mx-6 lg:contents lg:mx-0 lg:min-h-0 lg:bg-transparent">
+            {/*
+              ── Bleed und Mindesthöhe liegen jetzt hier, nicht in HeroStage ──
+              HeroStage bringt sein eigenes Seitenverhältnis mit (moderater
+              Ausschnitt, siehe dortiger Kommentar) und bleibt dadurch deutlich
+              kürzer als die Bühne, die der Text hier braucht. Dieser Wrapper
+              füllt den Rest: `min-h-[38rem]` ist derselbe Boden wie zuvor,
+              `bg-brand-950` trägt die Fläche UNTER dem Foto in derselben
+              dunklen Farbe, in die der Verlauf ohnehin ausläuft — kein
+              Second-Guessing, wo genau das Foto endet, die Farbe schließt
+              nahtlos an, weil beide denselben Farbwert tragen.
+
+              `-mx-4 sm:-mx-6` bleibt der Bleed-Trick (Begründung ursprünglich
+              in HeroStage.tsx): er sitzt jetzt am Wrapper, damit Foto UND
+              Verlaufsschleier gemeinsam bis an den Bildschirmrand reichen —
+              vorher deckte der Schleier nur die schmalere, ungebleedete
+              Rasterspalte und ließ links/rechts einen unbedeckten Streifen
+              am eigentlich bis zum Rand laufenden Foto.
+            */}
+            <HeroStage />
+            {/*
+              Verlaufsschleier ausschließlich für den mobilen Bühnenzustand:
+              ab Desktop übernehmen `.hero-daylight`/`.hero-crest` in
+              HeroStage.tsx dieselbe Aufgabe, feiner auf die dortige
+              Komposition abgestimmt. Hier reicht ein durchgehender dunkler
+              Verlauf über die gesamte Wrapper-Höhe — er liegt über dem Foto
+              UND über der Fläche darunter und geht dort unauffällig in sie
+              über, weil beide `brand-950` tragen.
+            */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-b from-brand-950/50 via-brand-950/60 to-brand-950/90 lg:hidden"
+            />
+          </div>
 
           {/*
             ── 3) Die Anfrage ──────────────────────────────────────────
@@ -774,7 +880,7 @@ export default async function HomePage() {
             dadurch immer sichtbar (bei 1440 px rund 65 px), und links vom
             Panel wird entsprechend mehr von der Person frei.
           */}
-          <div className="relative z-20 mt-10 lg:ml-auto lg:mt-[var(--hero-panel-offset)] lg:w-[var(--hero-panel-width)] xl:mr-[calc(-0.5*max(0rem,(100vw_-_80rem)/2))]">
+          <div className="relative z-20 col-start-1 row-start-2 mt-10 lg:col-start-2 lg:row-start-1 lg:ml-auto lg:mt-[var(--hero-panel-offset)] lg:w-[var(--hero-panel-width)] xl:mr-[calc(-0.5*max(0rem,(100vw_-_80rem)/2))]">
             <HeroQuoteWizard />
           </div>
         </div>
@@ -941,6 +1047,8 @@ export default async function HomePage() {
         rating={googleRating.rating}
         count={googleRating.count}
       />
+
+      <MobileCTAStrip heading="Überzeugt von den Bewertungen?" />
 
       {/*
         Vertrauenszeile — der sachliche Fuss des persoenlichen Kapitels.
@@ -1271,6 +1379,20 @@ export default async function HomePage() {
                           fill
                           sizes="(min-width: 1024px) 76rem, 100vw"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          /*
+                            Ohne diese Angabe schnitt `object-cover` jedes Foto
+                            an seiner geometrischen Mitte zu. Bei der
+                            Büroreinigung lag dort der dunkle Netzrücken des
+                            Bürostuhls — im breiten, flachen Zuschnitt dieser
+                            Kachel eine durchgehende dunkle Zeile quer durchs
+                            Bild, unter dem Verlauf zusätzlich verstärkt.
+                            `objectPosition` ist pro Foto bereits geprüft
+                            hinterlegt (siehe `ServiceContentPhoto` in
+                            serviceContentPhotos.ts) und trägt dieselbe
+                            Service-Detailseite — hier wurde sie bisher nur
+                            nicht weitergereicht.
+                          */
+                          style={photo.objectPosition ? { objectPosition: photo.objectPosition } : undefined}
                         />
                       )}
                       {/*
@@ -1360,6 +1482,8 @@ export default async function HomePage() {
         </FadeIn>
       </Section>
 
+      <MobileCTAStrip heading="Fragen zu einer Leistung?" />
+
       {/*
         ── Hygiene-Moment „Disinfection Sweep" ─────────────────────────────
         Die Stelle war für diesen Abschnitt vorgesehen; hier steht er jetzt.
@@ -1404,6 +1528,8 @@ export default async function HomePage() {
       <Section background="white" spacing="roomy">
         <HygieneSystem />
       </Section>
+
+      <MobileCTAStrip heading="Sauberkeit, auf die Verlass ist?" />
 
       {/*
         3. Vertrauensbereich — redaktioneller Einstieg mit Arbeitsfoto links,
@@ -1553,6 +1679,8 @@ export default async function HomePage() {
         </FadeIn>
       </Section>
 
+      <MobileCTAStrip heading="Bereit für den ersten Schritt?" />
+
       {/* 5. Ablauf — kräftiger Blauton als visueller Anker in der Seitenmitte. */}
       {/*
         Wasserzeichen unten links statt oben rechts: die vorherige und die
@@ -1579,6 +1707,7 @@ export default async function HomePage() {
         </FadeIn>
       </Section>
 
+      <MobileCTAStrip heading="Noch offene Fragen zum Ablauf?" />
 
       {/*
         7. Einsatzgebiet — typografische Bezirksmatrix statt Pill-Wolke:
@@ -1745,6 +1874,8 @@ export default async function HomePage() {
         leisen Farbwechsel eine sichtbare Naht, ohne eine weitere
         Trennlinie einzuführen.
       */}
+
+      <MobileContactSection />
 
       {/*
         10. FAQ — Ueberschrift steht links und bleibt beim Scrollen stehen,

@@ -155,7 +155,12 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-3 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        {/*
+          pb-24 statt py-6 unten: die fixierte Kontaktleiste (StickyMobileCTA,
+          nur unter 1024 px sichtbar) legt sich sonst über diese letzte Zeile.
+          Ab lg entfällt die Leiste, deshalb dort wieder das reguläre Maß.
+        */}
+        <div className="container-page flex flex-col gap-3 pb-24 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between lg:pb-6">
           <p className={tone.quietStatic}>
             © {year} {siteConfig.name}
           </p>

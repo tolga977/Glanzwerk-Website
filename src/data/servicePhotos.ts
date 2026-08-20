@@ -4,6 +4,13 @@ import { serviceContentPhotos } from "@/data/serviceContentPhotos";
 interface Photo {
   src: string;
   alt: string;
+  /**
+   * CSS object-position, wo geprüft (siehe `ServiceContentPhoto` in
+   * serviceContentPhotos.ts). Optional, weil die beiden Bilder aus
+   * `@/data/photos` (Kanzlei-, Fitnessstudioreinigung) keine eigene Angabe
+   * mitbringen und beim Standardwert der Bildmitte bleiben.
+   */
+  objectPosition?: string;
 }
 
 /**

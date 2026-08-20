@@ -39,7 +39,27 @@ import { heroStagePhoto } from "@/data/heroStagePhoto";
  */
 export default function HeroStage() {
   return (
-    <div className="relative -mx-4 aspect-[4/3] w-auto overflow-hidden sm:-mx-6 sm:aspect-[16/9] lg:absolute lg:inset-0 lg:mx-0 lg:aspect-auto lg:w-full">
+    /*
+     * ── Seitenverhältnis statt Mindesthöhe ───────────────────────────────
+     * Hier stand kurzzeitig `min-h-[38rem]` mit `h-full` statt eines
+     * Seitenverhältnisses — mit der Absicht, dem auf dem Foto liegenden Text
+     * mehr Raum zu geben. Das Ergebnis war falsch: die Aufnahme ist mit
+     * 1,78 : 1 ein Panorama, und `object-cover` in eine derart hohe, schmale
+     * Fläche gezwungen musste enorm einzoomen, um die Höhe zu füllen — bei
+     * 375 px Breite auf rund 1080 px Bildbreite. Sichtbar wurde dadurch fast
+     * die GESAMTE Bildhöhe (Himmel bis Dachkante), nur extrem schmal
+     * ausgeschnitten. Genau in dieser Spanne liegt die Silhouette der
+     * Skyline vor dem Morgenhimmel — im Ausschnitt wirkte sie wie ein
+     * durchgehender dunkler Balken quer durchs Bild.
+     *
+     * Zurück zum Seitenverhältnis: der Ausschnitt bleibt damit moderat (bei
+     * 375 px Breite rund 281 px hoch statt 608 px), keine Übervergrößerung,
+     * keine hervorgehobene Skyline-Kante. Den zusätzlichen Raum für den
+     * überlagerten Text übernimmt jetzt der Wrapper in page.tsx: er trägt
+     * die Mindesthöhe und eine eigene dunkle Fläche, in die das Foto oben
+     * ausläuft (Begründung dort).
+     */
+    <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] lg:absolute lg:inset-0 lg:aspect-auto lg:w-full">
       {/*
         ── Warum die Bildfläche ab Desktop flacher ist als die Bühne ──────
         Die Aufnahme ist so komponiert, dass die Person rund 23 % der

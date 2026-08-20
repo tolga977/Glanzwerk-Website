@@ -70,8 +70,23 @@ const headerSurface = {
    *
    * Der Preis-Knopf braucht ohnehin keinen Grund — er bringt seine eigene
    * Flaeche mit.
+   *
+   * ── Nur ab `lg` ─────────────────────────────────────────────────────────
+   * Dieser Zustand ist NUR ab 1024 px als Modifikator eingebunden (siehe
+   * Rückgabe unten): die Begründung oben — heller Tageslichtverlauf trägt
+   * das dunkle Logo — gilt ausschließlich für die zweispaltige
+   * Desktop-Komposition mit weißer Textfläche links.
+   *
+   * Der mobile Hero (siehe HeroStage/page.tsx) ist keine solche Komposition:
+   * dort liegt ganz oben das volle Foto mit dunklem Verlaufsschleier, damit
+   * der weiße Überschrifttext darauf lesbar ist. Eine transparente
+   * Kopfzeile mit demselben dunklen Logo wäre dort auf dunklem Grund fast
+   * unsichtbar — die Kopfzeile blieb erkennbar erst, sobald man an der
+   * hellen Markenleiste unter dem Hero vorbeigescrollt war. Unterhalb von
+   * `lg` bleibt die Kopfzeile deshalb IMMER in der `solid`-Fläche, auch
+   * während `imBuehnenzustand` true ist.
    */
-  stage: "border-transparent bg-transparent",
+  stage: "lg:border-transparent lg:bg-transparent lg:shadow-none lg:backdrop-blur-none lg:backdrop-saturate-100",
   solid: "border-line bg-white/85 shadow-raise backdrop-blur-xl backdrop-saturate-150",
 };
 
@@ -225,8 +240,15 @@ export default function Header() {
     <header
       ref={headerRef}
       data-header-state={imBuehnenzustand ? "stage" : "solid"}
-      className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-[var(--ease-signature)] ${
-        imBuehnenzustand ? headerSurface.stage : headerSurface.solid
+      /*
+       * `solid` steht jetzt immer als Grundlage da — nicht mehr als eine von
+       * zwei sich ausschließenden Varianten. `stage` (ausschließlich
+       * `lg:`-Klassen, siehe dort) legt sich bei Bedarf darüber und hebt
+       * Fläche, Rahmen, Schatten und Unschärfe erst ab 1024 px auf. Unterhalb
+       * bleibt die Kopfzeile dadurch in jedem Scrollzustand lesbar.
+       */
+      className={`sticky top-0 z-40 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-[var(--ease-signature)] ${headerSurface.solid} ${
+        imBuehnenzustand ? headerSurface.stage : ""
       }`}
     >
       {/*
