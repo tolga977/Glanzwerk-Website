@@ -128,6 +128,14 @@ const processSteps = [
   },
 ];
 
+/** Bezirke mit eigener Treppenhausreinigung-Kombiseite – im Einsatzgebiet gezielt dorthin statt zur allgemeinen Bezirksseite verlinken. */
+const treppenhausDistrictSlugs: Record<string, true> = {
+  "tempelhof-schoeneberg": true,
+  "charlottenburg-wilmersdorf": true,
+  pankow: true,
+  neukoelln: true,
+};
+
 const costFactors = [
   "Anzahl der Etagen",
   "Größe von Eingängen und Podesten",
@@ -166,8 +174,26 @@ const faqItems = [
     answer: "Entscheidend sind unter anderem Etagenzahl, Flächengröße, Bodenbeläge, Intervall und gewünschter Leistungsumfang.",
   },
   {
+    question: "Zahle ich pro Treppenhaus oder für das ganze Objekt?",
+    answer:
+      "Bei einem einzelnen Aufgang kalkulieren wir pro Treppenhaus. Bei mehreren Aufgängen im selben Objekt bündeln wir Anfahrt und Organisation, wodurch der Preis pro einzelnem Treppenhaus meist sinkt.",
+  },
+  {
+    question: "Lässt sich die Treppenhausreinigung über die Nebenkosten abrechnen?",
+    answer:
+      "Die Abrechnung läuft über Ihre Hausverwaltung oder Eigentümergemeinschaft. Ob und in welcher Höhe die Kosten in der Nebenkostenabrechnung erscheinen, entscheidet die jeweilige Verwaltung – das liegt außerhalb unseres Vertrags mit Ihnen.",
+  },
+  {
+    question: "Ist Winterdienst im Preis der Treppenhausreinigung enthalten?",
+    answer: "Nein, Winterdienst ist eine eigene Leistung und nicht automatisch Teil der Treppenhausreinigung. Sprechen Sie uns bei Bedarf gesondert darauf an.",
+  },
+  {
     question: "Gibt es einen festen Ansprechpartner?",
     answer: "Ja. Für die Objektbetreuung erhalten Sie eine feste Kontaktperson.",
+  },
+  {
+    question: "Was passiert, wenn das übliche Reinigungsteam einmal ausfällt?",
+    answer: "Feste Teams sind bei uns die Regel. Fällt jemand aus, organisieren wir eine Vertretung, damit der Reinigungstermin für Ihr Treppenhaus trotzdem stattfindet.",
   },
   {
     question: "Wie kann ich ein Angebot anfordern?",
@@ -307,9 +333,33 @@ export default function TreppenhausreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* 3b. Auftraggeber und Nutzer */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Wer entscheidet, wer nutzt" title={heading.sectionHeadings[2]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Wer ein Treppenhaus beauftragt, ist selten identisch mit den Menschen, die es täglich
+            benutzen. In den meisten Fällen entscheidet eine Hausverwaltung oder eine
+            Eigentümergemeinschaft über den Reinigungsvertrag, während Bewohner, Mieter und
+            Besucher nur das Ergebnis sehen – und sich bei Problemen zuerst an die Verwaltung
+            wenden, nicht an uns direkt.
+          </p>
+          <p>
+            Bei Gebäuden mit mehreren Mietparteien oder mehreren Eigentümern fehlt dafür oft eine
+            klare Zuständigkeit: Jeder nutzt das Treppenhaus, niemand fühlt sich richtig
+            verantwortlich. Deshalb klären wir vor Vertragsbeginn direkt mit der Hausverwaltung
+            oder der Eigentümergemeinschaft, wer Ansprechpartner ist, wie eine Beanstandung
+            gemeldet wird und wer die Rechnung erhält. Bei Wohn- und Geschäftshäusern mit
+            gemischter Nutzung kommt oft eine dritte Ebene hinzu, weil Gewerbemieter im
+            Erdgeschoss andere Ansprüche an Sauberkeit und Zeitfenster haben als die Bewohner in
+            den oberen Etagen.
+          </p>
+        </div>
+      </Section>
+
       {/* 4. Reinigungsintervalle */}
       <Section background="muted">
-        <SectionHeading eyebrow="Passender Rhythmus" title={heading.sectionHeadings[2]} />
+        <SectionHeading eyebrow="Passender Rhythmus" title={heading.sectionHeadings[3]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Die passende Häufigkeit richtet sich nach Nutzung und Verschmutzung. In Gebäuden mit
@@ -334,7 +384,7 @@ export default function TreppenhausreinigungBerlinContent({
 
       {/* 5. Besondere Verschmutzungen */}
       <Section background="white">
-        <SectionHeading eyebrow="Saisonale Einflüsse" title={heading.sectionHeadings[3]} />
+        <SectionHeading eyebrow="Saisonale Einflüsse" title={heading.sectionHeadings[4]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Im Herbst werden Blätter und Feuchtigkeit in das Gebäude getragen. Im Winter entstehen
@@ -348,9 +398,25 @@ export default function TreppenhausreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* 5b. Leistungsgrenze */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Klare Grenze zum Winterdienst" title={heading.sectionHeadings[5]} />
+        <div className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          <p>
+            Die Reinigung endet dort, wo klassischer Winterdienst beginnt. Schnee räumen und bei
+            Glätte streuen gehört nicht zur Treppenhausreinigung – das ist eine eigene, meist
+            separat beauftragte Leistung. Was wir übernehmen, ist die Reinigung dessen, was Winter
+            und Wetter ins Haus tragen: aufgeweichtes Streusalz auf den Stufen, nasse Fußabdrücke
+            im Eingang, liegengebliebener Splitt auf dem Podest. Brauchen Sie zusätzlich
+            Winterdienst, sprechen Sie uns gesondert darauf an – das stimmen wir dann getrennt mit
+            Ihnen ab.
+          </p>
+        </div>
+      </Section>
+
       {/* 6. Materialgerechte Reinigung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Schutz von Böden und Oberflächen" title={heading.sectionHeadings[4]} />
+        <SectionHeading eyebrow="Schutz von Böden und Oberflächen" title={heading.sectionHeadings[6]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Naturstein, Fliesen, Kunststoffbeläge, Holz und beschichtete Oberflächen benötigen
@@ -376,7 +442,7 @@ export default function TreppenhausreinigungBerlinContent({
 
       {/* 7. Ergänzende Leistungen */}
       <Section background="white">
-        <SectionHeading eyebrow="Zusätzliche Reinigung" title={heading.sectionHeadings[5]} />
+        <SectionHeading eyebrow="Zusätzliche Reinigung" title={heading.sectionHeadings[7]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {supplementaryCards.map((card, index) => (
             <FadeIn
@@ -396,7 +462,7 @@ export default function TreppenhausreinigungBerlinContent({
 
       {/* 8. Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[6]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[8]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -404,7 +470,7 @@ export default function TreppenhausreinigungBerlinContent({
 
       {/* 9. Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Treppenhausreinigung" title={heading.sectionHeadings[7]} />
+        <SectionHeading eyebrow="Preis der Treppenhausreinigung" title={heading.sectionHeadings[9]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Der Preis richtet sich unter anderem nach:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -416,6 +482,11 @@ export default function TreppenhausreinigungBerlinContent({
             </li>
           ))}
         </ul>
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Bei Objekten mit mehreren Treppenhäusern sinkt der Preis pro einzelnem Aufgang meist
+          spürbar, weil sich Anfahrt und Grundorganisation auf mehrere Aufgänge verteilen. Das
+          rechnen wir bereits im Angebot vor, nicht erst danach.
+        </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button href="/preisrechner">
               Preis kostenlos berechnen
@@ -428,12 +499,16 @@ export default function TreppenhausreinigungBerlinContent({
 
       {/* 10. Einsatzgebiet */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[10]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link
               key={district.slug}
-              href={`/standorte/${district.slug}`}
+              href={
+                district.slug in treppenhausDistrictSlugs
+                  ? `/leistungen/${service.slug}/${district.slug}`
+                  : `/standorte/${district.slug}`
+              }
               className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}

@@ -244,18 +244,112 @@ export const combos: Combo[] = [
     districtSlug: "tempelhof-schoeneberg",
     intro:
       "Mehrstöckige Gewerbegebäude mit mehreren Mietparteien sind im Tempelhofer Teil des Bezirks keine Seltenheit. Wir stimmen die Treppenhausreinigung hier häufig direkt mit der Hausverwaltung ab.",
+    metaDescription:
+      "Treppenhausreinigung für Gewerbeobjekte in Tempelhof-Schöneberg – Abstimmung direkt mit der Hausverwaltung, feste Reinigungstage. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Bei einem Gewerbeobjekt mit mehreren Mietparteien ist meist die Hausverwaltung Vertragspartnerin, nicht die einzelnen Firmen im Haus – das bestimmt, wie Zutritt und Rückmeldungen laufen.",
+    localAngle: [
+      "In vielen Tempelhofer Gewerbeobjekten teilen sich mehrere Firmen ein Treppenhaus, ohne dass eine von ihnen allein dafür zuständig ist. Die Hausverwaltung koordiniert in diesen Fällen den Reinigungsvertrag, legt Zeitfenster fest und ist erste Anlaufstelle, wenn eine Mietpartei etwas zu beanstanden hat.",
+      "Für uns bedeutet das: ein fester Ansprechpartner auf Verwaltungsseite, klare Reinigungstage, die sich nicht mit Lieferverkehr oder Kundenterminen der Mieter überschneiden, und eine Rechnung, die an die Verwaltung geht statt an einzelne Firmen.",
+    ],
+    scopeBullets: [
+      "Eingangsbereich und Empfangszone",
+      "Treppen, Podeste und Handläufe",
+      "Aufzugbereiche, sofern vorhanden",
+      "Briefkasten- und Klingelanlagen für alle Mietparteien",
+    ],
+    additionalLinks: [
+      { label: "Für das gesamte Gebäude: Gebäudereinigung in Tempelhof-Schöneberg", href: "/leistungen/gebaeudereinigung-berlin/tempelhof-schoeneberg" },
+    ],
+    processText:
+      "Nach einer kurzen Abstimmung mit Ihrer Hausverwaltung legen wir Zutritt, Reinigungstage und Ansprechpartner fest. Bei mehreren Mietparteien im selben Objekt informiert die Verwaltung die einzelnen Firmen über den vereinbarten Ablauf – Sie müssen das nicht selbst koordinieren.",
+    faq: [
+      {
+        question: "Wer ist bei mehreren Mietparteien unser Ansprechpartner?",
+        answer:
+          "In der Regel Ihre Hausverwaltung. Sie vereinbart Zeitfenster und Zutritt mit uns und ist erste Anlaufstelle, wenn eine der Mietparteien im Haus etwas zu beanstanden hat.",
+      },
+      {
+        question: "Werden die einzelnen Mieter im Haus über den Reinigungstermin informiert?",
+        answer:
+          "Das übernimmt üblicherweise Ihre Hausverwaltung. Wir stimmen den Ablauf mit ihr ab und halten uns an die vereinbarten Zeitfenster, damit der Betrieb der einzelnen Firmen nicht gestört wird.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Nennen Sie uns die Zahl der Mietparteien und den gewünschten Rhythmus – wir melden uns mit einem Angebot für Ihre Hausverwaltung.",
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",
     districtSlug: "neukoelln",
     intro:
       "In dicht bebauten Lagen Neuköllns mit mehreren Aufgängen pro Objekt sinkt der Reinigungsaufwand pro Treppenhaus, wenn mehrere Aufgänge gemeinsam betreut werden – das berücksichtigen wir bereits im Angebot.",
+    metaDescription:
+      "Treppenhausreinigung in Berlin-Neukölln – bei mehreren Aufgängen im selben Objekt sinkt der Preis pro Treppenhaus. Jetzt Angebot anfragen.",
+    localAngle: [
+      "Neukölln reicht vom dicht bebauten Kern bis zu den größeren Gewerbeflächen in Rudow. Gerade im Kern liegen viele Häuser mit zwei, drei oder mehr Aufgängen unter einer Adresse – für die Reinigung ist das ein Vorteil, wenn man sie gemeinsam statt einzeln beauftragt.",
+    ],
+    priceFactorsText:
+      "Bei mehreren Aufgängen im selben Objekt teilen sich Anfahrt und Grundorganisation, wodurch der Preis pro einzelnem Treppenhaus meist niedriger ausfällt als bei getrennter Beauftragung. Das rechnen wir bereits im Angebot vor. Ein einzelner Aufgang wird dagegen einzeln kalkuliert – ein Nachteil ist das nicht, nur eine andere Grundlage für den Preis.",
+    faq: [
+      {
+        question: "Reinigen Sie auch weitere Bereiche des Gebäudes, nicht nur das Treppenhaus?",
+        answer:
+          "Ja. Für das gesamte Objekt lässt sich die Treppenhausreinigung mit Unterhalts- und Fensterreinigung zu einem gemeinsamen Konzept bündeln.",
+        relatedLink: { label: "Zur Gebäudereinigung in Neukölln", href: "/leistungen/gebaeudereinigung-berlin/neukoelln" },
+      },
+      {
+        question: "Gilt die Bündelung mehrerer Aufgänge auch für Objekte in Rudow?",
+        answer:
+          "Ja, das Prinzip gilt unabhängig von der Lage im Bezirk. Ob es sich lohnt, hängt von der Zahl der Aufgänge am jeweiligen Objekt ab.",
+      },
+    ],
+    ctaSubtitle:
+      "Nennen Sie uns die Zahl der Aufgänge an Ihrem Objekt in Neukölln – wir rechnen Ihnen die Bündelung direkt im Angebot vor.",
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",
     districtSlug: "pankow",
     intro:
       "In gemischt genutzten Gebäuden mit Wohnungen und Gewerbe in Pankow reinigen wir Treppenhäuser mit Rücksicht auf Anwohner und in enger Abstimmung mit der jeweiligen Hausverwaltung.",
+    metaDescription:
+      "Treppenhausreinigung in Berlin-Pankow für gemischt genutzte Häuser – Rücksicht auf Bewohner, abgestimmt mit der Hausverwaltung. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Ein Treppenhaus, das sowohl zu Wohnungen als auch zu Gewerbeflächen führt, hat zwei Gruppen von Nutzern mit unterschiedlichen Ansprüchen – das wirkt sich auf Zeitfenster und Lautstärke der Reinigung aus.",
+    localAngle: [
+      "In vielen Pankower Häusern liegt im Erdgeschoss eine Praxis, ein kleines Büro oder ein Ladengeschäft, während in den oberen Etagen Wohnungen sind. Beide Gruppen nutzen dasselbe Treppenhaus, haben aber unterschiedliche Erwartungen: Der Gewerbemieter möchte einen gepflegten Eindruck für seine Kunden, die Bewohner möchten vor allem nicht gestört werden.",
+      "Deshalb legen wir Reinigungszeiten in Pankow bevorzugt in ruhige Tagesabschnitte und arbeiten mit leisem Gerät, wenn Wohnungen direkt am Treppenhaus liegen. Bei Eigentümergemeinschaften mit gemischter Nutzung stimmen wir außerdem ab, ob die Kosten anteilig zwischen Wohn- und Gewerbeeinheiten aufgeteilt werden – das entscheidet die Verwaltung, wir richten uns danach.",
+    ],
+    scopeBullets: [
+      "Eingangsbereich und Hausflur",
+      "Treppen, Podeste und Handläufe",
+      "Briefkasten- und Klingelanlage",
+      "Fensterbänke im Treppenhaus",
+    ],
+    additionalLinks: [
+      { label: "Für das gesamte Gebäude: Gebäudereinigung in Berlin-Pankow", href: "/leistungen/gebaeudereinigung-berlin/pankow" },
+    ],
+    processText:
+      "Nach Abstimmung mit der Hausverwaltung oder Eigentümergemeinschaft legen wir Reinigungstage und Zeitfenster fest, die sowohl zu den Öffnungszeiten der Gewerbeeinheiten als auch zur Wohnruhe passen.",
+    faq: [
+      {
+        question: "Wird bei der Reinigung Rücksicht auf die Bewohner genommen?",
+        answer:
+          "Ja. Gerade wenn Wohnungen direkt am Treppenhaus liegen, legen wir Termine in ruhige Tagesabschnitte und arbeiten mit leisem Gerät.",
+      },
+      {
+        question: "Wie wird die Kostenaufteilung zwischen Wohnen und Gewerbe geregelt?",
+        answer:
+          "Das entscheidet Ihre Hausverwaltung oder Eigentümergemeinschaft, nicht wir. Wir stellen die Leistung wie vereinbart in Rechnung, die interne Aufteilung liegt bei der Verwaltung.",
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Haus in Pankow – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "kanzleireinigung-berlin",
@@ -507,6 +601,39 @@ export const combos: Combo[] = [
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
       "Charlottenburg-Wilmersdorf ist geprägt von Altbauten und Wohn-Geschäftshäusern, in denen ein gepflegtes Treppenhaus Teil des repräsentativen Erscheinungsbilds ist, das Kanzleien und Praxen ihren Mandanten und Patienten bieten möchten.",
+    metaDescription:
+      "Treppenhausreinigung in Charlottenburg-Wilmersdorf – schonend für Altbau-Oberflächen, abgestimmt auf Kanzleien und Praxen mit Publikumsverkehr. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Anders als in einem reinen Bürogebäude sieht hier nicht nur das eigene Personal das Treppenhaus, sondern jeder Mandant und jeder Patient auf dem Weg zur Tür – das Treppenhaus wird Teil des ersten Eindrucks, bevor überhaupt eine Kanzlei- oder Praxistür erreicht ist.",
+    localAngle: [
+      "In den Altbauten des Bezirks bestehen Treppenhäuser häufig aus Naturstein, Holzhandläufen oder historischen Fliesen – Materialien, die Charakter zeigen sollen und nicht wie in einem Neubau makellos glatt wirken. Wir reinigen sie entsprechend schonend, ohne die Patina zu verändern, die zu einem gepflegten Altbau gehört.",
+      "Weil Mandanten und Patienten das Treppenhaus als Teil ihres Besuchs wahrnehmen, achten wir besonders auf Eingangsbereich und Briefkastenanlage: Das sind die ersten Flächen, die jemand sieht, bevor er überhaupt bei der Kanzlei oder Praxis ankommt.",
+    ],
+    scopeBullets: [
+      "Eingangsbereich und Hausflur",
+      "Naturstein-, Holz- und Fliesenoberflächen im Treppenhaus",
+      "Handläufe und Geländer",
+      "Briefkasten- und Klingelanlage",
+    ],
+    additionalLinks: [
+      { label: "Für das gesamte Gebäude: Gebäudereinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/gebaeudereinigung-berlin/charlottenburg-wilmersdorf" },
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Material und gewünschtem Rhythmus erhalten Sie ein Angebot. Bei denkmalgeschützten oder besonders empfindlichen Oberflächen klären wir das Vorgehen vorab, statt es beim ersten Termin zu improvisieren.",
+    faq: [
+      {
+        question: "Werden historische Oberflächen wie Naturstein oder Holz schonend behandelt?",
+        answer:
+          "Ja. Wir stimmen Reinigungsmittel und Verfahren auf das jeweilige Material ab, statt überall dieselbe Methode anzuwenden – gerade bei Altbau-Oberflächen ist das wichtig, um die Substanz nicht zu belasten.",
+      },
+      {
+        question: "Reinigen Sie auch, wenn die Kanzlei oder Praxis bereits Publikumsverkehr hat?",
+        answer:
+          "Ja, wir legen die Reinigungstermine so, dass sie sich nicht mit Sprechzeiten oder Mandantenterminen überschneiden – das stimmen wir vorab mit Ihnen ab.",
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Treppenhaus in Charlottenburg-Wilmersdorf – wir melden uns mit einem individuellen Angebot.",
   },
 ];
 
