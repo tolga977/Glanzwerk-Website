@@ -113,6 +113,15 @@ const faqItems = [
     answer: "Fahrzeugaufbereitung gehört nicht automatisch zur Gebäudereinigung und muss gegebenenfalls separat vereinbart werden.",
   },
   {
+    question: "Ist der Werkstattbereich in der Reinigung enthalten?",
+    answer:
+      "Der eigentliche Werkstattbereich gehört meist nicht zum Standardumfang, da hier andere Reinigungsanforderungen gelten. Kundennahe Sozialräume in Werkstattnähe lassen sich auf Wunsch einbeziehen.",
+  },
+  {
+    question: "Ist eine Reinigung vor besonderen Terminen möglich?",
+    answer: "Ja, vor Kundentagen oder Veranstaltungen lässt sich ein zusätzlicher Reinigungstermin einplanen.",
+  },
+  {
     question: "Kann außerhalb der Öffnungszeiten gereinigt werden?",
     answer: "Ja, abhängig von Objekt und Einsatzplanung.",
   },
@@ -131,6 +140,12 @@ const faqItems = [
   {
     question: "Wie wird der Preis berechnet?",
     answer: "Nach Fläche, Bereichen, Intervall, Materialien und Reinigungszeiten.",
+  },
+  {
+    question: "Was passiert, wenn ich mit einem Termin einmal nicht zufrieden bin?",
+    answer:
+      "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
   },
   {
     question: "Wie kann ich ein Angebot anfordern?",

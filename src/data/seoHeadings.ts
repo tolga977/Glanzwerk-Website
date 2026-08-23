@@ -1040,14 +1040,15 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1: "Gebäudereinigung für Unternehmen in Berlin-Spandau",
     h1Highlight: "Gebäudereinigung",
     sectionHeadings: [
-      "Gebäudereinigung für Autohäuser und Gewerbeflächen mit Büros",
+      "Gebäudereinigung für Gewerbeflächen mit Büro- und Lagerbereich",
       "Alle Leistungen in Spandau im Überblick",
     ],
     faqHeading: "Fragen zur Gebäudereinigung in Berlin-Spandau",
     ctaHeading: "Gebäudereinigung in Spandau unverbindlich anfragen",
-    mainTopic: "Gebündelte Reinigung für Gewerbeflächen mit angeschlossenen Büros",
+    mainTopic: "Gebündelte Reinigung für Gewerbeflächen mit angeschlossenen Büro- und Lagerbereichen",
     mostSimilarUrl: "/leistungen/autohausreinigung-berlin/spandau",
-    differentiation: "Gebündelte Mehrleistung statt der spezialisierten Showroom-Reinigung.",
+    differentiation:
+      "Gebündelte Mehrleistung für allgemeine Gewerbeflächen mit Büro/Lager statt der spezialisierten Showroom-Reinigung – Autohaus-spezifisches Vokabular 2026-08 entfernt und der Autohausreinigungs-Kombiseite überlassen, die das spezifischere Keyword trägt.",
   },
   "/leistungen/gebaeudereinigung-berlin/pankow": {
     h1: "Gebäudereinigung Berlin-Pankow mit abgestimmten Leistungen",
@@ -1518,14 +1519,19 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1: "Autohausreinigung für Betriebe in Berlin-Spandau",
     h1Highlight: "Autohausreinigung",
     sectionHeadings: [
-      "Autohausreinigung für Showroom und Kundenbereich",
+      "Autohäuser und Werkstätten am Stadtrand",
+      "Leistungsumfang für Showroom und Kundenbereich",
+      "So planen wir rund um Öffnungs- und Werkstattzeiten",
+      "Für welche Betriebe sich das eignet",
+      "Mehr zur Autohausreinigung im gesamten Berliner Stadtgebiet",
       "Alle Leistungen in Spandau im Überblick",
     ],
     faqHeading: "Fragen zur Autohausreinigung in Berlin-Spandau",
     ctaHeading: "Autohausreinigung in Spandau unverbindlich anfragen",
     mainTopic: "Reinigung von Showroom, Glasflächen und Kundenbereichen, abgestimmt auf Öffnungszeiten",
     mostSimilarUrl: "/leistungen/gebaeudereinigung-berlin/spandau",
-    differentiation: "Spezialisierte Showroom-Reinigung statt gebündelter Mehrleistung.",
+    differentiation:
+      "Spezialisierte Showroom-Reinigung statt gebündelter Mehrleistung – ausgebaut 2026-08 (Entscheidungsanalyse-Bewertung B: einer der besten Existenzgründe aller 38 dünnen Kombis, vorher aber der schwächste Text). Führt jetzt das Spandauer Autohaus-Thema, das zuvor auch auf der Gebäudereinigungs-Kombiseite stand.",
   },
 
   // ==========================================================

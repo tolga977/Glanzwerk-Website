@@ -763,6 +763,31 @@ export const combos: Combo[] = [
     districtSlug: "spandau",
     intro:
       "Autohäuser und Werkstätten mit Kundenbereich in Spandau profitieren von einer auf Öffnungszeiten abgestimmten Reinigung von Showroom, Glasflächen und Kundenbereichen.",
+    localAngle: [
+      "Spandau gehört zu den Berliner Bezirken mit besonders vielen Autohäusern und Werkstätten mit Kundenbereich – häufig in größeren, zusammenhängenden Gewerbegebieten am Stadtrand statt in kleinteiligen Innenstadtlagen.",
+      "Showroom, Kundenbereich und angrenzende Büros lassen sich in einem Vertrag bündeln, statt Glas-, Boden- und Büroreinigung einzeln zu vergeben. Der eigentliche Werkstattbereich bleibt davon getrennt, da dort andere Anforderungen an Reinigungsmittel und Bodenschutz gelten.",
+    ],
+    scopeBullets: [
+      "Showroom-Böden und Glasflächen im Kundenbereich",
+      "Empfang und Beratungsbereiche",
+      "Angrenzende Büroflächen",
+      "Sanitäranlagen für Kunden und Mitarbeitende",
+    ],
+    processText:
+      "Wir stimmen Öffnungszeiten von Showroom und Werkstatt vorab ab, damit die Reinigung Kundenverkehr und Fahrzeugübergaben nicht stört – bei Bedarf auch früh morgens oder nach Geschäftsschluss.",
+    faq: [
+      {
+        question: "Warum gibt es in Spandau besonders viele Autohäuser?",
+        answer: "Der Bezirk bietet größere, zusammenhängende Gewerbeflächen am Stadtrand, die sich für Showrooms und Werkstätten mit Kundenbereich eignen.",
+      },
+      {
+        question: "Was ist der Unterschied zur allgemeinen Gebäudereinigung im Bezirk?",
+        answer:
+          "Die Autohausreinigung konzentriert sich auf Showroom, Glasflächen und Kundenbereiche. Für Gewerbeflächen ohne Showroom, etwa mit Büro- und Lagerbereich, ist die allgemeine Gebäudereinigung in Spandau oft die passendere Wahl.",
+        relatedLink: { label: "Zur Gebäudereinigung in Spandau", href: "/leistungen/gebaeudereinigung-berlin/spandau" },
+      },
+    ],
+    ctaSubtitle: "Nennen Sie uns Größe von Showroom und Kundenbereich sowie Ihre Öffnungszeiten in Spandau – wir schlagen einen passenden Reinigungsrhythmus vor.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -1346,7 +1371,7 @@ export const combos: Combo[] = [
     serviceSlug: "gebaeudereinigung-berlin",
     districtSlug: "spandau",
     intro:
-      "Für Autohäuser, Werkstätten und Gewerbeflächen mit angeschlossenen Büros in Spandau kombinieren wir Unterhaltsreinigung der Büroflächen mit Glasreinigung für Ausstellungs- und Kundenbereiche in einem Vertrag.",
+      "Für Gewerbeflächen mit angeschlossenen Büro- und Lagerbereichen in Spandau bündeln wir Unterhaltsreinigung, Sanitär- und Glasreinigung in einem Vertrag mit einem festen Ansprechpartner. Für Autohäuser mit Showroom ist die eigenständige Autohausreinigung im Bezirk oft die passendere Wahl.",
   },
   {
     serviceSlug: "kanzleireinigung-berlin",
