@@ -161,7 +161,8 @@ const faqItems = [
   },
   {
     question: "Werden Treppenhäuser regelmäßig gereinigt?",
-    answer: "Ja. Intervalle und Leistungsumfang werden passend zum Gebäude festgelegt.",
+    answer: "Ja, als Teil des gebündelten Gebäudereinigungsvertrags. Soll ausschließlich das Treppenhaus vergeben werden, etwa bei geteilter Wohn- und Gewerbenutzung, ist die eigenständige Treppenhausreinigung in Pankow die passendere Leistung.",
+    relatedLink: { label: "Zur Treppenhausreinigung in Pankow", href: "/leistungen/treppenhausreinigung-berlin/pankow" },
   },
   {
     question: "Sind Reinigungen außerhalb der Geschäftszeiten möglich?",

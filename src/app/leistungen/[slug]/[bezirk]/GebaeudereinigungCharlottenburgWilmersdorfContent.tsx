@@ -67,20 +67,20 @@ const scopeCards = [
 
 const representativeCards = [
   {
-    title: "Empfangsbereiche",
-    description: "Reinigung von Böden, Theken, Sitzbereichen und frei zugänglichen Oberflächen.",
+    title: "Schaufenster und Eingangsglas",
+    description: "Regelmäßige Reinigung der Schaufensterflächen von Ladengeschäften und Autohäusern am Ku'damm.",
+  },
+  {
+    title: "Empfangs- und Wartebereiche",
+    description: "Böden, Sitzbereiche und Theken in Kanzleien, Praxen und Verkaufsräumen.",
   },
   {
     title: "Besprechungsräume",
-    description: "Pflege von Tischen, Böden und abgestimmten Flächen.",
-  },
-  {
-    title: "Glasflächen",
-    description: "Entfernung sichtbarer Fingerabdrücke und Gebrauchsspuren im vereinbarten Umfang.",
+    description: "Pflege außerhalb laufender Mandantentermine und Sprechzeiten.",
   },
   {
     title: "Sanitäranlagen",
-    description: "Regelmäßige Reinigung abhängig von Nutzung und Besucheraufkommen.",
+    description: "Reinigung passend zu Kunden-, Mandanten- und Mitarbeiteraufkommen.",
   },
 ];
 
@@ -139,24 +139,25 @@ const neighborDistrictLinks = [
 
 const faqItems = [
   {
-    question: "Welche Gewerbeobjekte reinigt Glanzwerk im Bezirk?",
-    answer: "Unter anderem Büros, Praxen, Kanzleien, Verkaufsflächen, Treppenhäuser und weitere gewerblich genutzte Räume.",
+    question: "Reinigt Glanzwerk auch Schaufenster und Glasflächen am Kurfürstendamm?",
+    answer: "Ja, Schaufenster- und Eingangsglas lassen sich als fester Bestandteil des Gebäudereinigungsvertrags einplanen, statt sie separat zu beauftragen.",
+  },
+  {
+    question: "Wird bei Kanzleien und Praxen auf Sprechzeiten Rücksicht genommen?",
+    answer: "Ja, Zutritt und Reinigungszeiten werden so abgestimmt, dass laufende Mandanten- oder Patiententermine nicht gestört werden.",
+  },
+  {
+    question: "Was ist der Unterschied zur eigenständigen Treppenhausreinigung im Bezirk?",
+    answer: "Die Gebäudereinigung bündelt mehrere Gewerke – etwa Büro, Empfang und Glas – unter einem Vertrag. Soll ausschließlich das Treppenhaus gereinigt werden, ist die eigenständige Treppenhausreinigung in Charlottenburg-Wilmersdorf die passendere Leistung.",
+    relatedLink: { label: "Zur Treppenhausreinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/treppenhausreinigung-berlin/charlottenburg-wilmersdorf" },
   },
   {
     question: "Arbeitet Glanzwerk in Charlottenburg und Wilmersdorf?",
     answer: "Anfragen aus allen sieben Ortsteilen des Bezirks werden geprüft.",
   },
   {
-    question: "Können Reinigungen außerhalb der Geschäftszeiten stattfinden?",
-    answer: "Je nach Objekt und Einsatzplanung können passende Zeitfenster vereinbart werden.",
-  },
-  {
     question: "Werden hochwertige Böden und Möbel materialgerecht gereinigt?",
     answer: "Reinigungsmittel und Verfahren werden passend zu Material und Verschmutzung ausgewählt.",
-  },
-  {
-    question: "Können Fenster und Glaswände mitgereinigt werden?",
-    answer: "Ja, sofern Zugänglichkeit und Leistungsumfang vorab abgestimmt wurden.",
   },
   {
     question: "Wie wird der Preis berechnet?",
@@ -241,7 +242,7 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Büro-, Praxis- und Geschäftsstandorte" title={heading.sectionHeadings[0]} />
+        <SectionHeading eyebrow="Publikumsflächen und Altbaubüros" title={heading.sectionHeadings[0]} />
         <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Charlottenburg-Wilmersdorf ist geprägt von Bürohäusern, Kanzleien, Arztpraxen,
@@ -279,17 +280,19 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
 
       {/* 4. Repräsentative Bereiche */}
       <Section background="muted">
-        <SectionHeading eyebrow="Erster Eindruck für Besucher" title={heading.sectionHeadings[2]} />
+        <SectionHeading eyebrow="Schaufenster und Kanzleiflur in einem Vertrag" title={heading.sectionHeadings[2]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            In Kanzleien, Praxen, Büros und Verkaufsflächen sind Eingänge und Empfangsbereiche
-            häufig der erste Kontaktpunkt für Besucher. Sichtbare Laufspuren, Fingerabdrücke auf
-            Glas oder ungepflegte Sitzbereiche wirken sich unmittelbar auf den Gesamteindruck
-            aus.
+            Am Kurfürstendamm und in den angrenzenden Geschäftsstraßen hängt der Gesamteindruck
+            eines Ladengeschäfts oder Autohauses stark von der Schaufensterscheibe ab – Fingerabdrücke
+            oder Straßenstaub fallen dort schneller auf als in einem Bürogebäude ohne Publikumsverkehr.
+            In den Altbaulagen dahinter zählt dagegen weniger die Fensterscheibe als ein ruhiger,
+            unauffälliger Ablauf für Kanzleien und Praxen.
           </p>
           <p>
-            Deshalb können stark sichtbare Bereiche in kürzeren Intervallen gereinigt werden als
-            Nebenräume oder wenig genutzte Flächen.
+            Die Gebäudereinigung bündelt beide Anforderungen in einem Vertrag: Glas- und
+            Eingangsreinigung für publikumsstarke Flächen, abgestimmte Zeitfenster für Kanzleien und
+            Praxen – statt zwei getrennte Dienstleister für dieselbe Immobilie zu koordinieren.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -350,9 +353,10 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
         <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Naturstein, Holz, Glas, Metall, textile Bodenbeläge und beschichtete Möbel benötigen
-            unterschiedliche Reinigungsverfahren. Glanzwerk verwendet je nach Einsatzbereich
-            professionelle Produkte, unter anderem von Kiehl, Dr. Schnell und Buzil.
+            Gerade in den Altbauten des Bezirks kommen häufig Naturstein, Holzböden und historische
+            Fliesen vor, während Schaufenster und moderne Büroflächen eher Glas, Metall und
+            beschichtete Oberflächen mitbringen. Glanzwerk wählt Mittel und Verfahren je nach
+            Material aus – unter anderem professionelle Produkte von Kiehl, Dr. Schnell und Buzil.
           </p>
           <p>
             Mittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen Bedarf

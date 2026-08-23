@@ -68,8 +68,14 @@ const h1Lead = h1Words.slice(0, -1).join(" ");
 export const metadata: Metadata = {
   ...buildMetadata({
     title: heading.metaTitle ?? heading.h1,
+    // Überarbeitet 2026-08 (SEO-Redaktionsrunde 2, Audit-Befund P0-3): die
+    // vorherige Beschreibung nannte ausschließlich die Gebäudereinigung und
+    // las sich damit fast wie die Meta-Description der Leistungsseite
+    // /leistungen/gebaeudereinigung-berlin. Die Startseite bündelt tatsächlich
+    // alle 12 Leistungen (siehe Leistungsraster weiter unten) – das trägt
+    // jetzt auch die Beschreibung.
     description:
-      "Glanzwerk übernimmt die Gebäudereinigung für Büros, Praxen, Kanzleien und Gewerbeobjekte in ganz Berlin. Klare Abläufe, feste Ansprechpartner und flexible Reinigungszeiten.",
+      "Glanzwerk ist Ihre Reinigungsfirma für Gebäude-, Büro-, Praxis- und weitere gewerbliche Reinigungen in ganz Berlin. Klare Abläufe, feste Ansprechpartner und flexible Reinigungszeiten.",
     path: "/",
   }),
   title: { absolute: heading.metaTitle ?? heading.h1 },

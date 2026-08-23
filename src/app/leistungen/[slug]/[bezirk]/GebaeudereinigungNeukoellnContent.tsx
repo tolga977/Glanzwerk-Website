@@ -65,22 +65,22 @@ const scopeCards = [
   },
 ];
 
-const representativeCards = [
+const bundleCards = [
   {
-    title: "Empfangsbereiche",
-    description: "Reinigung von Böden, Theken, Sitzbereichen und frei zugänglichen Oberflächen.",
+    title: "Gewerbeparks in Rudow",
+    description: "Zusammenhängende Bürogebäude mit mehreren Gewerken in einem Vertrag.",
   },
   {
-    title: "Besprechungsräume",
-    description: "Pflege von Tischen, Böden und vereinbarten Flächen.",
+    title: "Kleinere Büros im Kern",
+    description: "Einzelne Etagen oder Einheiten, oft als schlankere Einzelleistung.",
   },
   {
-    title: "Glasflächen",
-    description: "Entfernung sichtbarer Fingerabdrücke und alltäglicher Gebrauchsspuren.",
+    title: "Fitnessstudios und Gemeinschaftsbüros",
+    description: "Gut getaktete Reinigung für neuere, publikumsstarke Nutzungen.",
   },
   {
-    title: "Sanitäranlagen",
-    description: "Regelmäßige Reinigung entsprechend Besucheraufkommen und Nutzung.",
+    title: "Sanitär- und Empfangsbereiche",
+    description: "Abgestimmt auf Besucheraufkommen und Objektgröße.",
   },
 ];
 
@@ -131,12 +131,17 @@ const neighborDistrictLinks = [
 
 const faqItems = [
   {
-    question: "Welche Gewerbeobjekte reinigt Glanzwerk in Neukölln?",
-    answer: "Unter anderem Büros, Praxen, Kanzleien, Verkaufsflächen, Treppenhäuser und weitere gewerblich genutzte Räume.",
+    question: "Werden auch Gewerbeflächen in Rudow bedient?",
+    answer: "Ja, Rudow gehört zu unserem Einsatzgebiet in Neukölln, ebenso wie die dichter bebauten Lagen im Kern des Bezirks.",
   },
   {
-    question: "Arbeitet Glanzwerk in allen Ortsteilen Neuköllns?",
-    answer: "Anfragen aus allen fünf Ortsteilen des Bezirks werden geprüft.",
+    question: "Lohnt sich eine gebündelte Gebäudereinigung auch für kleinere Büros im Kern?",
+    answer: "Bei kleineren, einzelnen Einheiten reicht häufig eine schlankere Einzelleistung wie die Unterhaltsreinigung. Die gebündelte Gebäudereinigung zahlt sich vor allem bei größeren, zusammenhängenden Objekten wie in Rudow aus.",
+    relatedLink: { label: "Zur Unterhaltsreinigung in Berlin", href: "/leistungen/unterhaltsreinigung-berlin" },
+  },
+  {
+    question: "Reinigt Glanzwerk auch kleinere Fitnessstudios?",
+    answer: "Ja, wir reinigen Studios unterschiedlicher Größe und richten den Rhythmus nach der jeweiligen Frequentierung aus.",
   },
   {
     question: "Können Reinigungen außerhalb der Geschäftszeiten erfolgen?",
@@ -145,10 +150,6 @@ const faqItems = [
   {
     question: "Werden empfindliche Oberflächen materialgerecht gereinigt?",
     answer: "Reinigungsmittel und Verfahren werden passend zu Material und Verschmutzung ausgewählt.",
-  },
-  {
-    question: "Können Fenster und Glasflächen mitgereinigt werden?",
-    answer: "Ja, sofern Zugänglichkeit und Leistungsumfang vorab abgestimmt wurden.",
   },
   {
     question: "Wie wird der Preis berechnet?",
@@ -196,7 +197,7 @@ export default function GebaeudereinigungNeukoellnContent({
       <Section background="white" className="pt-12">
         <div className="max-w-3xl">
           <p className="mb-4 inline-flex items-center rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-500">
-            Reinigungsservice für Unternehmen im Berliner Süden
+            Reinigungsservice für Unternehmen im Berliner Südosten
           </p>
           <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
             {renderHighlightedH1(heading.h1, heading.h1Highlight)}
@@ -233,7 +234,7 @@ export default function GebaeudereinigungNeukoellnContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Büro-, Praxis- und Geschäftsstandorte" title={heading.sectionHeadings[0]} />
+        <SectionHeading eyebrow="Vom dichten Kern bis Rudow" title={heading.sectionHeadings[0]} />
         <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Neukölln gehört zu den vielfältigsten Wirtschaftsstandorten Berlins. Neben
@@ -269,23 +270,24 @@ export default function GebaeudereinigungNeukoellnContent({
         </div>
       </Section>
 
-      {/* 4. Repräsentative Bereiche */}
+      {/* 4. Objektgröße bestimmt den Bündelzuschnitt */}
       <Section background="muted">
-        <SectionHeading eyebrow="Erster Eindruck für Besucher" title={heading.sectionHeadings[2]} />
+        <SectionHeading eyebrow="Ein Bezirk, zwei Objektgrößen" title={heading.sectionHeadings[2]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Empfangsbereiche, Wartezonen und Besprechungsräume prägen häufig den ersten
-            Eindruck eines Unternehmens. Saubere Böden, gepflegte Glasflächen und hygienische
-            Sanitäranlagen tragen zu einem professionellen Erscheinungsbild gegenüber Kunden,
-            Patienten und Geschäftspartnern bei.
+            Im dicht bebauten Kern Neuköllns sind Gewerbeeinheiten meist kleinteilig – hier reicht
+            häufig eine einzelne, klar umrissene Leistung. In Rudow und den südlichen Gewerbeparks
+            stehen dagegen größere, zusammenhängende Bürogebäude, bei denen sich mehrere Gewerke wie
+            Büro, Empfang, Sanitär und Außenflächen sinnvoll in einem Vertrag bündeln lassen.
           </p>
           <p>
-            Je nach Nutzung können besonders stark frequentierte Bereiche häufiger gereinigt
-            werden als interne Arbeitsräume.
+            Hinzu kommt eine wachsende Zahl an Fitnessstudios und Gemeinschaftsbüros im Bezirk, die
+            eine eigene Taktung brauchen: hohe Frequentierung, aber oft nur wenige feste
+            Ansprechpartner vor Ort.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {representativeCards.map((card, index) => (
+          {bundleCards.map((card, index) => (
             <FadeIn
               key={card.title}
               delay={index * 60}
@@ -343,10 +345,10 @@ export default function GebaeudereinigungNeukoellnContent({
         <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Holz, Naturstein, Glas, Metall, textile Bodenbeläge und beschichtete Oberflächen
-            benötigen unterschiedliche Reinigungsverfahren. Glanzwerk verwendet je nach
-            Einsatzbereich professionelle Produkte, unter anderem von Kiehl, Dr. Schnell und
-            Buzil.
+            Die Gewerbeparks in Rudow bringen häufig große Bodenflächen und viel Glas mit, die
+            kleinteiligen Einheiten im Bezirkskern eher ältere Bausubstanz. Glanzwerk wählt Mittel
+            und Verfahren je nach Material – unter anderem professionelle Produkte von Kiehl, Dr.
+            Schnell und Buzil.
           </p>
           <p>
             Reinigungsmittel und Dosierung werden passend zum Material und zum tatsächlichen

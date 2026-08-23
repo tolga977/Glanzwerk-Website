@@ -70,7 +70,17 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     faqHeading: "Fragen zur Gebäudereinigung in Berlin",
     ctaHeading: "Lassen Sie uns über Ihr Objekt sprechen",
     secondaryCtaHeading: "Glanzwerk drei Monate flexibel testen",
-    metaTitle: "Gebäudereinigung Berlin für Unternehmen | Glanzwerk",
+    // Meta-Title bewusst überarbeitet (2026-08, SEO-Redaktionsrunde 2): die
+    // H1 bleibt unverändert auf ausdrücklichen Wunsch exakt "Gebäudereinigung
+    // Berlin" (siehe Kommentar oben). Der frühere Meta-Title trug dasselbe
+    // Einzelkeyword wie /leistungen/gebaeudereinigung-berlin und trennte nur
+    // über "für Unternehmen" vs. "für Gewerbe" – keine echte Abgrenzung
+    // (Audit-Befund P0-3, redaktion-audit-2026-08-23.md). Der Titel führt
+    // jetzt mit der Marke und nennt mehrere Leistungen, wie es dem
+    // tatsächlichen Seiteninhalt (Leistungsraster mit allen 12 Leistungen)
+    // entspricht, statt wie ein zweiter Auftritt derselben Einzelleistung zu
+    // wirken.
+    metaTitle: "Glanzwerk Berlin – Gebäudereinigung, Büro- & Praxisreinigung",
     mainTopic: "Markenübersicht: Einstieg in alle zentralen Leistungen, Standorte und Vertrauenssignale",
     mostSimilarUrl: "/leistungen/gebaeudereinigung-berlin",
     differentiation:
@@ -181,6 +191,7 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1: "Reinigungsfirma in Berlin für Gewerbe und Unternehmen",
     h1Highlight: "Reinigungsfirma",
     sectionHeadings: [
+      "Warum überhaupt eine Reinigungsfirma statt eigenem Personal",
       "Worauf Sie bei einer Reinigungsfirma achten sollten",
       "Wie wir als Reinigungsfirma arbeiten",
       "Unsere Leistungen im Überblick",
@@ -188,9 +199,17 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     ],
     faqHeading: "Häufige Fragen zur Auswahl einer Reinigungsfirma",
     ctaHeading: "Lernen Sie Glanzwerk als Reinigungsfirma kennen",
-    mainTopic: "Auswahlkriterien für eine Reinigungsfirma, dann Einordnung von Glanzwerk",
-    mostSimilarUrl: "/ueber-uns",
-    differentiation: "Vergleichs-/Ratgeberperspektive für den Markt statt reiner Unternehmensvorstellung.",
+    // Überarbeitet 2026-08 (SEO-Redaktionsrunde 2, Audit-Befund P1-5): die
+    // Seite war mit ~285 Wörtern die dünnste kommerzielle Seite und
+    // überschnitt sich zu 5 von 6 Kriterien mit dem Wissen-Artikel. Die
+    // Kriterien stehen jetzt kompakt (mit Verweis auf den Artikel für die
+    // ausführliche Fassung), dafür trägt die Seite jetzt zusätzlich echten
+    // Hub-Inhalt: Arbeitsweise/Ablauf, Leistungsportfolio, Einsatzgebiet.
+    mainTopic:
+      "Kommerzielle Hub-Seite für die Anbieterwahl: kompakte Auswahlkriterien, Glanzwerks Arbeitsweise, Leistungsportfolio und Einsatzgebiet.",
+    mostSimilarUrl: "/wissen/reinigungsdienstleister-auswaehlen",
+    differentiation:
+      "Der Wissen-Artikel erklärt die Auswahlkriterien ausführlich als neutraler Ratgeber; diese Seite fasst sie kompakt zusammen und verlinkt dorthin, der eigentliche Schwerpunkt liegt hier auf Glanzwerks Portfolio, Arbeitsweise und Einsatzgebiet.",
   },
 
   // ==========================================================
@@ -1602,7 +1621,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     moreArticlesHeading: "Weitere Artikel zur Anbieterwahl",
     mainTopic: "Auswahlcheckliste für einen gewerblichen Reinigungsdienstleister",
     mostSimilarUrl: "/reinigungsfirma-berlin",
-    differentiation: "Ausführliche Checkliste; die Reinigungsfirma-Seite fasst die Kriterien kompakter zusammen.",
+    differentiation:
+      "Ausführlicher, neutraler Ratgeber als eigenständiger Artikel; die Reinigungsfirma-Seite verweist hierher für die Details und legt den eigenen Schwerpunkt auf Glanzwerks Portfolio, Arbeitsweise und Einsatzgebiet.",
   },
   "/wissen/objektbesichtigung-vorbereiten": {
     h1: "Objektbesichtigung vor der Gebäudereinigung: So bereiten Sie sich vor",

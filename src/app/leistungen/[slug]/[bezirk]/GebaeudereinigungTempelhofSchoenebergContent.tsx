@@ -66,22 +66,22 @@ const scopeCards = [
   },
 ];
 
-const representativeCards = [
+const bundleCards = [
   {
-    title: "Empfangsbereiche",
-    description: "Reinigung von Böden, Theken, Sitzbereichen und frei zugänglichen Oberflächen.",
+    title: "Büroflächen mehrerer Mieter",
+    description: "Ein Reinigungskonzept statt mehrerer Einzelverträge pro Mietpartei.",
   },
   {
-    title: "Besprechungsräume",
-    description: "Pflege von Tischen, Böden und vereinbarten Flächen.",
+    title: "Gemeinschaftsflächen",
+    description: "Flure, Aufzugbereiche und Treppenhaus als Teil des Gesamtvertrags.",
+  },
+  {
+    title: "Empfang und Sanitäranlagen",
+    description: "Abgestimmt auf Besucheraufkommen und Nutzung durch mehrere Mieter.",
   },
   {
     title: "Glasflächen",
-    description: "Entfernung sichtbarer Fingerabdrücke und Gebrauchsspuren.",
-  },
-  {
-    title: "Sanitäranlagen",
-    description: "Regelmäßige Reinigung entsprechend Nutzung und Besucheraufkommen.",
+    description: "Fenster und Eingangsglas nach vereinbartem Rhythmus.",
   },
 ];
 
@@ -132,12 +132,17 @@ const neighborDistrictLinks = [
 
 const faqItems = [
   {
-    question: "Welche Gewerbeobjekte reinigt Glanzwerk im Bezirk?",
-    answer: "Unter anderem Büros, Praxen, Kanzleien, Verkaufsflächen, Treppenhäuser und weitere gewerblich genutzte Räume.",
+    question: "Werden auch größere Gewerbegebäude mit mehreren Mietern in Tempelhof betreut?",
+    answer: "Ja, wir reinigen sowohl einzelne Büroeinheiten als auch ganze Gebäude mit mehreren Mietparteien unter einem gebündelten Vertrag.",
   },
   {
-    question: "Arbeitet Glanzwerk in allen Ortsteilen von Tempelhof-Schöneberg?",
-    answer: "Anfragen aus allen Ortsteilen des Bezirks werden geprüft.",
+    question: "Was ist der Unterschied zur eigenständigen Treppenhausreinigung im Bezirk?",
+    answer: "Die Gebäudereinigung bündelt Büro-, Gemeinschafts- und Treppenhausflächen für die Hausverwaltung. Soll ausschließlich das Treppenhaus vergeben werden, ist die eigenständige Treppenhausreinigung in Tempelhof-Schöneberg die passendere Leistung.",
+    relatedLink: { label: "Zur Treppenhausreinigung in Tempelhof-Schöneberg", href: "/leistungen/treppenhausreinigung-berlin/tempelhof-schoeneberg" },
+  },
+  {
+    question: "Gibt es Unterschiede zwischen dem Schöneberger und dem Tempelhofer Bezirksteil?",
+    answer: "Ja. In Schöneberg überwiegen kompakte Büros in Wohn-Geschäftshäusern, im Tempelhofer Teil eher größere Gewerbebauten mit mehreren Mietern – der Leistungsumfang wird entsprechend zugeschnitten.",
   },
   {
     question: "Können Reinigungen außerhalb der Geschäftszeiten stattfinden?",
@@ -146,10 +151,6 @@ const faqItems = [
   {
     question: "Werden hochwertige Böden und Möbel materialgerecht gereinigt?",
     answer: "Reinigungsmittel und Verfahren werden passend zu Material und Verschmutzung ausgewählt.",
-  },
-  {
-    question: "Können Fenster und Glasflächen mitgereinigt werden?",
-    answer: "Ja, sofern Zugänglichkeit und Leistungsumfang vorab abgestimmt wurden.",
   },
   {
     question: "Wie wird der Preis berechnet?",
@@ -234,7 +235,7 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Büro-, Praxis- und Geschäftsstandorte" title={heading.sectionHeadings[0]} />
+        <SectionHeading eyebrow="Zwei Bezirksteile, zwei Gebäudetypen" title={heading.sectionHeadings[0]} />
         <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Tempelhof-Schöneberg verbindet etablierte Geschäftsstraßen, Bürostandorte,
@@ -270,23 +271,25 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
         </div>
       </Section>
 
-      {/* 4. Repräsentative Bereiche */}
+      {/* 4. Bündelung bei mehreren Mietparteien */}
       <Section background="muted">
-        <SectionHeading eyebrow="Erster Eindruck für Besucher" title={heading.sectionHeadings[2]} />
+        <SectionHeading eyebrow="Ein Vertrag für ein ganzes Gebäude" title={heading.sectionHeadings[2]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Der erste Eindruck entsteht häufig bereits im Eingangsbereich. Gepflegte
-            Empfangszonen, saubere Besprechungsräume und gereinigte Glasflächen tragen zu
-            einem professionellen Erscheinungsbild gegenüber Kunden, Besuchern und
-            Geschäftspartnern bei.
+            In den größeren Gewerbe- und Bürogebäuden rund um Tempelhof teilen sich häufig mehrere
+            Firmen ein Haus. Ohne gebündelten Vertrag entstehen dabei leicht mehrere parallele
+            Reinigungsverhältnisse für Büroflächen, Flure und Treppenhaus – mit unterschiedlichen
+            Ansprechpartnern und Rhythmen, die sich gegenseitig kaum abstimmen.
           </p>
           <p>
-            Je nach Nutzung können stark frequentierte Bereiche häufiger gereinigt werden als
-            Nebenräume oder interne Arbeitsbereiche.
+            Die Gebäudereinigung fasst diese Teilleistungen für die Hausverwaltung oder Eigentümerin
+            in einem Vertrag zusammen. Soll ausschließlich das Treppenhaus vergeben werden, etwa weil
+            die Büroflächen bereits eigenständig gereinigt werden, ist die eigenständige
+            Treppenhausreinigung im Bezirk die passendere Wahl.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {representativeCards.map((card, index) => (
+          {bundleCards.map((card, index) => (
             <FadeIn
               key={card.title}
               delay={index * 60}
@@ -344,10 +347,10 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
         <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Naturstein, Holz, Glas, Metall, textile Bodenbeläge und beschichtete Oberflächen
-            benötigen unterschiedliche Reinigungsverfahren. Glanzwerk verwendet je nach
-            Einsatzbereich professionelle Produkte, unter anderem von Kiehl, Dr. Schnell und
-            Buzil.
+            In größeren Gewerbebauten kommen häufig robuste Bodenbeläge und viel Glasfläche vor, in
+            den Wohn-Geschäftshäusern Schönebergs eher Parkett und ältere Bausubstanz. Glanzwerk
+            wählt Mittel und Verfahren je nach Material – unter anderem professionelle Produkte von
+            Kiehl, Dr. Schnell und Buzil.
           </p>
           <p>
             Reinigungsmittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen

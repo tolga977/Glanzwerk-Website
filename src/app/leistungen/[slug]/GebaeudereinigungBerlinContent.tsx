@@ -11,6 +11,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
 import { districts } from "@/data/districts";
+import { combos } from "@/data/combos";
 import { siteConfig } from "@/data/site";
 import { servicePhotos } from "@/data/servicePhotos";
 import { serviceContentPhotos } from "@/data/serviceContentPhotos";
@@ -27,6 +28,11 @@ import Button from "@/components/ui/Button";
  * anderen Leistungsseiten durchlaufen weiterhin unverändert den generischen Zweig
  * in page.tsx.
  */
+
+/** Bezirke mit eigener Gebäudereinigung-Kombiseite – im Einsatzgebiet gezielt dorthin statt zur allgemeinen Bezirksseite verlinken. */
+const comboDistrictSlugs = new Set(
+  combos.filter((combo) => combo.serviceSlug === "gebaeudereinigung-berlin").map((combo) => combo.districtSlug),
+);
 
 const scopeCards = [
   {
@@ -554,7 +560,11 @@ export default function GebaeudereinigungBerlinContent({
           {districts.map((district) => (
             <Link
               key={district.slug}
-              href={`/standorte/${district.slug}`}
+              href={
+                comboDistrictSlugs.has(district.slug)
+                  ? `/leistungen/${service.slug}/${district.slug}`
+                  : `/standorte/${district.slug}`
+              }
               className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}
