@@ -606,12 +606,48 @@ export const combos: Combo[] = [
     districtSlug: "mitte",
     intro:
       "Kanzleien in Mitte benötigen häufig kurze, verlässliche Zeitfenster außerhalb dichter Terminpläne. Wir reinigen Empfang, Besprechungsräume und Büroflächen diskret und mit festen Reinigungsteams.",
+    localAngle: [
+      "Rund um das Regierungsviertel und die angrenzenden Gerichts- und Verwaltungsstandorte hat sich in Mitte eine hohe Dichte an Kanzleien angesiedelt. Viele davon arbeiten eng getaktet zwischen Terminen, Anhörungen und Mandantengesprächen – für die Reinigung bedeutet das kurze, verlässliche Zeitfenster statt eines ganzen freien Vormittags.",
+      "Gleichzeitig bleibt Vertraulichkeit unabhängig von der Lage der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und Zugang wird individuell mit der Kanzleileitung abgestimmt.",
+    ],
+    faq: [
+      {
+        question: "Warum ist eine enge Taktung in Mitte besonders wichtig?",
+        answer: "Kanzleien im Zentrum haben durch die Nähe zu Behörden und Gerichten oft dicht gefüllte Terminpläne – die Reinigung muss deshalb zuverlässig in kurze Zeitfenster passen.",
+      },
+      {
+        question: "Wird Vertraulichkeit trotz kurzer Zeitfenster gewahrt?",
+        answer: "Ja, unabhängig vom Zeitfenster werden Unterlagen nicht bewegt und der Zugang wird individuell mit Ihnen abgestimmt.",
+      },
+    ],
   },
   {
     serviceSlug: "kanzleireinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
       "Viele Kanzleien in Charlottenburg-Wilmersdorf liegen in repräsentativen Altbaulagen. Wir legen bei der Reinigung besonderen Wert auf ein gepflegtes Erscheinungsbild für Mandanten sowie auf Vertraulichkeit im Umgang mit Unterlagen.",
+    localAngle: [
+      "Kanzleien in Charlottenburg-Wilmersdorf sitzen häufig in Altbauten mit Stuckdecken, Parkett, hohen Räumen und Kastenfenstern – Oberflächen, die einen anderen Pflegeaufwand haben als moderne Bürobauten. Empfangs- und Besprechungsbereiche prägen hier den ersten Eindruck für Mandanten besonders stark.",
+      "Gleichzeitig bleibt Vertraulichkeit der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und Zugang wird individuell mit der Kanzleileitung abgestimmt – unabhängig davon, ob es sich um eine einzelne Kanzleietage oder ein ganzes Altbauhaus handelt.",
+    ],
+    scopeBullets: [
+      "Empfangsbereich und Besprechungsräume mit Blick auf den Mandanteneindruck",
+      "Parkett, Stuck und historische Oberflächen im Altbau",
+      "Kastenfenster und hohe Räume mit entsprechendem Pflegeaufwand",
+      "Vertrauliche Unterlagen bleiben unberührt",
+    ],
+    faq: [
+      {
+        question: "Wird auf historische Oberflächen wie Parkett und Stuck Rücksicht genommen?",
+        answer: "Ja, Mittel und Verfahren wählen wir passend zum jeweiligen Material im Altbau aus.",
+      },
+      {
+        question: "Unterscheidet sich das von einer allgemeinen Büroreinigung im selben Bezirk?",
+        answer:
+          "Ja, bei der Kanzleireinigung stehen Vertraulichkeit und das Erscheinungsbild für Mandanten im Vordergrund. Für allgemeine Bürotätigkeit ohne diesen Fokus ist die Büroreinigung im Bezirk oft die passendere Wahl.",
+        relatedLink: { label: "Zur Büroreinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/bueroreinigung-berlin/charlottenburg-wilmersdorf" },
+      },
+    ],
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",

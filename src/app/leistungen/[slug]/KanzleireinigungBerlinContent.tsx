@@ -266,6 +266,10 @@ const faqItems = [
       "Persönliche Unterlagen, Akten und nicht freigegebene Arbeitsmaterialien werden nicht eigenständig bewegt. Der Umgang mit frei zugänglichen Arbeitsflächen wird vor Beginn abgestimmt.",
   },
   {
+    question: "Ist eine Vertraulichkeitsvereinbarung möglich?",
+    answer: "Ja, auf Wunsch treffen wir eine schriftliche Vertraulichkeitsvereinbarung mit Ihrer Kanzlei.",
+  },
+  {
     question: "Ist eine Reinigung außerhalb der Geschäftszeiten möglich?",
     answer:
       "Ja. Je nach Objekt und Einsatzplanung kann die Reinigung vor Arbeitsbeginn, nach Geschäftsschluss oder innerhalb anderer fest vereinbarter Zeitfenster stattfinden.",
@@ -294,6 +298,12 @@ const faqItems = [
     question: "Gibt es einen festen Ansprechpartner?",
     answer:
       "Ja. Für die laufende Abstimmung erhalten Sie eine feste Kontaktperson, die Fragen und Änderungen Ihrem Objekt zuordnen kann.",
+  },
+  {
+    question: "Was passiert, wenn ich mit einem Termin einmal nicht zufrieden bin?",
+    answer:
+      "Melden Sie den Mangel innerhalb von 24 Stunden nach dem Termin bei Ihrem Ansprechpartner. Bei berechtigten Fällen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
   },
   {
     question: "Wie kann ich ein Angebot anfordern?",
