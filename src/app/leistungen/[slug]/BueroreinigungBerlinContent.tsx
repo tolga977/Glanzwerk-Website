@@ -285,6 +285,17 @@ const faqItems = [
       "Ja. Für die laufende Abstimmung erhalten Sie eine feste Kontaktperson, die Fragen und Änderungen Ihrem Objekt zuordnen kann.",
   },
   {
+    question: "Wie erhält das Reinigungsteam Zutritt zum Büro?",
+    answer:
+      "Das klären wir individuell: über einen Schlüssel, einen Zugangscode oder feste Zeitfenster, in denen jemand aus Ihrem Team anwesend ist.",
+  },
+  {
+    question: "Was passiert, wenn ich mit einem Termin einmal nicht zufrieden bin?",
+    answer:
+      "Melden Sie den Mangel innerhalb von 24 Stunden nach dem Termin bei Ihrem Ansprechpartner. Bei berechtigten Fällen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+  },
+  {
     question: "Wie kann ich ein Angebot anfordern?",
     answer: `Nutzen Sie das Kontaktformular oder den Preisrechner, rufen Sie uns unter ${siteConfig.phone} an oder schreiben Sie an ${siteConfig.email}. Hilfreich sind Angaben zu Standort, Bürofläche, Anzahl der Arbeitsplätze und gewünschtem Reinigungsintervall.`,
   },

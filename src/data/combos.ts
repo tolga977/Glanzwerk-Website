@@ -84,19 +84,73 @@ export const combos: Combo[] = [
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
-      "Entlang des Kurfürstendamms und in den angrenzenden Altbaulagen arbeiten viele Unternehmen in repräsentativen Büroflächen. Wir reinigen diese Büros in Charlottenburg-Wilmersdorf mit besonderem Blick auf ein gepflegtes Erscheinungsbild für Kunden und Mandanten.",
+      "Entlang des Kurfürstendamms und in den angrenzenden Altbaulagen teilen sich häufig mehrere kleinere Büros ein Gebäude – von der einzelnen Beratungsfirma bis zur Etage mit mehreren Mietparteien. Wir richten die Büroreinigung nach der jeweiligen Objektstruktur aus.",
+    localAngle: [
+      "Entlang des Kurfürstendamms und in den Altbaulagen dahinter teilen sich häufig mehrere kleinere Büros ein Gebäude. Das unterscheidet sich von der einzelnen Kanzleietage: hier braucht es oft eine Abstimmung über das ganze Haus statt über eine einzelne Praxis oder Kanzlei.",
+      "Wir richten die Büroreinigung deshalb nach der jeweiligen Objektstruktur aus – vom Einzelbüro bis zum Gebäude mit mehreren Firmen, die sich Empfang oder Treppenhaus teilen.",
+    ],
+    faq: [
+      {
+        question: "Was unterscheidet die Büroreinigung von der Kanzleireinigung im selben Bezirk?",
+        answer:
+          "Die Büroreinigung deckt allgemeine Bürotätigkeit und die Abstimmung zwischen mehreren Mietparteien ab. Die Kanzleireinigung ist zusätzlich auf Vertraulichkeit im Umgang mit Mandantenunterlagen ausgerichtet – für eine Kanzlei mit hohem Vertraulichkeitsbedarf ist sie meist die passendere Wahl.",
+        relatedLink: { label: "Zur Kanzleireinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/kanzleireinigung-berlin/charlottenburg-wilmersdorf" },
+      },
+      {
+        question: "Werden mehrere Firmen im selben Altbau gemeinsam betreut?",
+        answer: "Ja, bei mehreren Mietparteien im selben Haus stimmen wir Zugang und Zeiten gemeinsam ab.",
+      },
+    ],
   },
   {
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "In Friedrichshain-Kreuzberg teilen sich häufig mehrere kleinere Unternehmen ein Bürohaus oder einen umgenutzten Gewerbehof. Wir stimmen die Büroreinigung hier oft mit mehreren Ansprechpartnern oder einer gemeinsamen Hausverwaltung ab.",
+    localAngle: [
+      "In Friedrichshain-Kreuzberg teilen sich häufig mehrere kleinere Unternehmen ein Bürohaus oder einen umgenutzten Gewerbehof. Anders als in einem Gebäude mit nur einem Mieter gibt es hier oft mehrere Ansprechpartner, die sich Zugang, Zeitfenster und teils auch Gemeinschaftsflächen teilen.",
+      "Wir stimmen die Büroreinigung deshalb häufig nicht nur mit einer einzelnen Firma ab, sondern mit mehreren Mietparteien oder einer gemeinsamen Hausverwaltung – etwa wenn Empfang, Treppenhaus oder ein gemeinsamer Besprechungsraum von mehreren Unternehmen genutzt werden.",
+    ],
+    scopeBullets: [
+      "Einzelne Büroeinheiten innerhalb eines geteilten Gewerbehofs",
+      "Gemeinschaftlich genutzte Empfangs- und Besprechungsbereiche",
+      "Abstimmung mit mehreren Mietparteien oder einer Hausverwaltung",
+      "Sanitär- und Küchenbereiche bei gemeinsamer Nutzung",
+    ],
+    processText:
+      "Weil mehrere Unternehmen oft dieselben Gemeinschaftsflächen nutzen, klären wir vorab, wer für welchen Bereich Ansprechpartner ist – damit nicht jeder Mieter einzeln abgestimmt werden muss, sondern ein gemeinsamer Rhythmus für das ganze Objekt entsteht.",
+    faq: [
+      {
+        question: "Wird die Reinigung mit mehreren Firmen im selben Gewerbehof koordiniert?",
+        answer: "Ja, wenn mehrere Mieter dieselben Gemeinschaftsflächen nutzen, stimmen wir Zeiten und Zuständigkeiten gemeinsam ab, etwa über eine Hausverwaltung.",
+      },
+      {
+        question: "Werden auch einzelne Büroeinheiten unabhängig von den anderen Mietern gereinigt?",
+        answer: "Ja, einzelne Firmen können die Büroreinigung auch unabhängig von den übrigen Mietern im selben Haus beauftragen.",
+      },
+    ],
+    ctaSubtitle: "Nennen Sie uns, ob mehrere Unternehmen im selben Gewerbehof beteiligt sind – wir stimmen den Ablauf entsprechend ab.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
     districtSlug: "tempelhof-schoeneberg",
     intro:
       "Im urbanen Schöneberg und den Gewerbegebäuden rund um Tempelhof reinigen wir Büroflächen unterschiedlicher Größe – von einzelnen Kanzleietagen bis zu mehrstöckigen Gewerbeobjekten mit mehreren Mietern.",
+    localAngle: [
+      "Im Tempelhofer Teil des Bezirks liegen häufig größere Bürogebäude mit mehreren Mietern, in Schöneberg dagegen eher kompakte Büros in Wohn-Geschäftshäusern. Für die Büroreinigung bedeutet das unterschiedliche Zugangswege: in Tempelhof stimmen wir uns oft mit mehreren Firmen im selben Haus ab, in Schöneberg meist direkt mit der einzelnen Bürofläche.",
+      "Wird im selben Gebäude auch das Treppenhaus benötigt, lässt sich das zusätzlich zur Büroreinigung vereinbaren oder eigenständig über die Treppenhausreinigung im Bezirk beauftragen.",
+    ],
+    faq: [
+      {
+        question: "Wird bei mehreren Firmen im selben Bürogebäude ein gemeinsamer Termin abgestimmt?",
+        answer: "Ja, in größeren Tempelhofer Gewerbebauten stimmen wir Zeiten häufig mit mehreren Mietern oder der Hausverwaltung ab.",
+      },
+      {
+        question: "Ist auch das Treppenhaus im Leistungsumfang enthalten?",
+        answer: "Auf Wunsch ja. Soll ausschließlich das Treppenhaus gereinigt werden, ist die eigenständige Treppenhausreinigung in Tempelhof-Schöneberg die passendere Leistung.",
+        relatedLink: { label: "Zur Treppenhausreinigung in Tempelhof-Schöneberg", href: "/leistungen/treppenhausreinigung-berlin/tempelhof-schoeneberg" },
+      },
+    ],
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -1097,6 +1151,20 @@ export const combos: Combo[] = [
     districtSlug: "neukoelln",
     intro:
       "Im dicht bebauten Kern Neuköllns wächst die Zahl kleinerer Büros und Gemeinschaftsbüros, während Rudow eher größere Bürogebäude bietet – wir richten die Büroreinigung nach der jeweiligen Objektgröße aus.",
+    localAngle: [
+      "Im dicht bebauten Kern Neuköllns wächst die Zahl kleinerer Büros und Gemeinschaftsbüros, in denen sich mehrere Selbstständige oder kleine Teams eine Fläche teilen. Rudow bietet dagegen größere, zusammenhängende Bürogebäude mit einzelnen Firmen als Mieter.",
+      "Bei Gemeinschaftsbüros ist häufig nicht eine einzelne Firma, sondern der Betreiber der Fläche unser Ansprechpartner – Zugang und Zeiten stimmen wir entsprechend mit der Coworking-Verwaltung statt mit einzelnen Nutzern ab.",
+    ],
+    faq: [
+      {
+        question: "Wer ist bei einem Gemeinschaftsbüro der Ansprechpartner für die Reinigung?",
+        answer: "In der Regel der Betreiber der Fläche, nicht die einzelnen Nutzer oder Mietparteien.",
+      },
+      {
+        question: "Unterscheidet sich der Umfang zwischen Rudow und dem Neuköllner Kern?",
+        answer: "Ja, in Rudow planen wir häufig größere, zusammenhängende Flächen, im Kern eher kompakte Einzelbüros oder Gemeinschaftsflächen.",
+      },
+    ],
   },
   {
     serviceSlug: "bueroreinigung-berlin",
