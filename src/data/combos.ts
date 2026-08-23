@@ -610,6 +610,92 @@ export const combos: Combo[] = [
     districtSlug: "lichtenberg",
     intro:
       "Die neueren Bürokomplexe in Lichtenberg setzen häufig auf große Glasflächen und offene Bürolandschaften – dafür kombinieren wir Glas- und Fensterreinigung regelmäßig mit der laufenden Unterhaltsreinigung, um das moderne Erscheinungsbild dauerhaft zu erhalten.",
+    metaDescription:
+      "Glas- und Fensterreinigung in Berlin-Lichtenberg für moderne Bürokomplexe mit großen Glasflächen. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Neubauten ohne die vorspringenden Fassadenelemente älterer Gebäude bieten Glasflächen weniger Witterungsschutz – mit direkten Folgen für den Reinigungsrhythmus.",
+    localAngle: [
+      "Viele der neueren Bürokomplexe in Lichtenberg wurden mit großflächiger Elementfassade gebaut – durchgehende Glasflächen ohne einzelne Fensterrahmen, oft über mehrere Stockwerke hinweg. Das ermöglicht eine effizientere, großflächige Reinigung, verlangt aber auch entsprechende Technik statt klassischer Handarbeit an Einzelfenstern.",
+      "Ältere Gebäude mit vorspringenden Gesimsen oder Fensterbänken bieten der Fassade darunter einen gewissen Witterungsschutz. Bei modernen, glatten Fassaden ohne solche Vorsprünge trifft Regen und Straßenstaub die Glasfläche dagegen ungebremst – was sich in der Praxis oft in einem etwas kürzeren Reinigungsintervall niederschlägt, um Wasserflecken vorzubeugen.",
+      "In offenen Bürolandschaften mit viel Glas – etwa bei Trennwänden zwischen Arbeitsbereichen – kommt hinzu, dass diese Flächen von innen genauso häufig auffallen wie die Fassade von außen. Wir stimmen deshalb oft einen kombinierten Rhythmus für Innen- und Außenflächen ab, statt beides getrennt zu planen.",
+      "Viele moderne Bürogebäude setzen zusätzlich auf Sonnenschutzverglasung mit einer hauchdünnen, meist kaum sichtbaren Beschichtung, die Wärme reflektiert. Diese Beschichtung verträgt keine scharfkantigen oder abrasiven Werkzeuge – wir arbeiten deshalb mit weichen Materialien, die die Beschichtung nicht angreifen.",
+      "Offene Bürolandschaften mit raumhohen Glastrennwänden werden zudem oft für Besprechungen genutzt, bei denen direkt auf der Glasfläche mit abwischbaren Stiften geschrieben wird. Solche Rückstände lassen sich in der Regel gut entfernen, sollten aber nicht mit denselben Mitteln behandelt werden wie normaler Staub oder Fingerabdrücke.",
+      "Neubauten in Lichtenberg entstanden häufig auf ehemaligen Industrie- oder Gewerbeflächen, die in den vergangenen Jahren zu modernen Bürostandorten umgewandelt wurden. Anders als in gewachsenen Innenstadtlagen gibt es hier selten historische Bausubstanz, die bei der Reinigung besondere Rücksicht erfordert – das vereinfacht die Verfahrenswahl.",
+      "Bei neu bezogenen Bürokomplexen ist häufig eine erste, gründliche Reinigung nach Bauabschluss sinnvoll, bevor ein regelmäßiger Rhythmus beginnt – etwa um Bauschutzfolien-Rückstände oder Montagespuren an Rahmen zu entfernen, die im laufenden Betrieb sonst dauerhaft sichtbar blieben.",
+      "Offene Grundrisse mit viel Tageslicht sind ein häufiges Verkaufsargument neuerer Bürokomplexe. Damit dieser Vorteil auch nach einigen Monaten Nutzung sichtbar bleibt, lohnt sich ein regelmäßiger statt ein sporadischer Reinigungsrhythmus – gerade bei großen Glasflächen fällt Vernachlässigung optisch stärker auf als bei kleinteiligeren Fensterfronten.",
+      "Bei der Wahl der Reinigungsmethode spielt auch die Gebäudeausrichtung eine Rolle: Fassaden, die tagsüber viel direkter Sonneneinstrahlung ausgesetzt sind, zeigen Wasserflecken und Kalkränder schneller als schattigere Gebäudeseiten – ein Grund, weshalb wir nicht automatisch alle Fassadenseiten im selben Rhythmus reinigen.",
+      "Bei Objekten mit mehreren Baukörpern auf einem gemeinsamen Grundstück – wie es bei größeren Bürokomplexen üblich ist – lässt sich die Glasreinigung aller Gebäude gemeinsam beauftragen. Das vereinfacht die Koordination gegenüber getrennten Verträgen pro Baukörper.",
+      "Bei der Erstbegehung eines neueren Bürokomplexes prüfen wir neben der Fassadenkonstruktion auch, ob eine automatische Gebäudereinigungsanlage vorhanden ist – manche Neubauten verfügen über fest installierte Schienensysteme für Reinigungsgondeln. Ist eine solche Anlage vorhanden, richten wir unser Vorgehen danach aus, statt sie ungenutzt zu lassen.",
+      "Fassaden mit vielen kleinteiligen Glaselementen statt einer durchgehenden Fläche wirken auf den ersten Blick moderner, bedeuten aber mehr Fugen und Rahmenprofile pro Quadratmeter – und damit mehr Aufwand als eine gleich große, ungeteilte Scheibe. Auch das fließt in die Preiskalkulation ein.",
+    ],
+    scopeBullets: [
+      "Großflächige Elementfassaden",
+      "Glastrennwände in offenen Bürolandschaften",
+      "Eingangsverglasung",
+      "Fensterflächen einzelner Mietbereiche",
+    ],
+    additionalLinks: [
+      { label: "Kombiniert mit Unterhaltsreinigung in Lichtenberg", href: "/leistungen/unterhaltsreinigung-berlin/lichtenberg" },
+    ],
+    processText:
+      "Nach Prüfung der Fassadenkonstruktion und der gewünschten Kombination mit der Unterhaltsreinigung erhalten Sie ein abgestimmtes Angebot für Innen- und Außenflächen.",
+    priceFactorsText:
+      "Bei modernen Elementfassaden ohne Witterungsschutz kalkulieren wir häufig ein etwas engeres Intervall ein als bei geschützteren Altbau-Fensterfronten, um Wasserflecken vorzubeugen, bevor sie sich festsetzen. Enthält das Objekt zusätzlich innenliegende Glastrennwände, bieten wir häufig ein kombiniertes Paket aus Innen- und Außenreinigung an, das günstiger kalkuliert wird als zwei getrennte Aufträge.",
+    faq: [
+      {
+        question: "Werden große Fassadenflächen anders berechnet als einzelne Fenster?",
+        answer: "Ja, großflächige Elementfassaden lassen sich meist effizienter am Stück reinigen als viele einzelne Fensterflügel, was sich im Preis pro Quadratmeter niederschlägt.",
+      },
+      {
+        question: "Warum sollten moderne Glasfassaden häufiger gereinigt werden als ältere Gebäude?",
+        answer: "Weil ihnen oft der Witterungsschutz durch vorspringende Fassadenelemente fehlt. Regen und Straßenstaub treffen die Fläche direkter, was Wasserflecken begünstigt.",
+      },
+      {
+        question: "Lässt sich die Reinigung mit der Unterhaltsreinigung kombinieren?",
+        answer: "Ja, gerade bei modernen Bürokomplexen mit viel Glas bündeln wir das häufig in einem gemeinsamen Rhythmus.",
+        relatedLink: { label: "Zur Unterhaltsreinigung in Lichtenberg", href: "/leistungen/unterhaltsreinigung-berlin/lichtenberg" },
+      },
+      {
+        question: "Ist Sonnenschutzverglasung empfindlicher bei der Reinigung?",
+        answer: "Die Beschichtung reflektiert Wärme und verträgt keine scharfkantigen Werkzeuge. Wir arbeiten dort ausschließlich mit weichen, für beschichtetes Glas geeigneten Materialien.",
+      },
+      {
+        question: "Werden Stiftreste von Glaswänden entfernt, die als Whiteboard genutzt werden?",
+        answer: "In der Regel ja. Solche Rückstände behandeln wir anders als normalen Staub oder Fingerabdrücke, damit die Fläche nicht stumpf wird.",
+      },
+      {
+        question: "Ist nach dem Bezug eines Neubaus eine erste Grundreinigung der Glasflächen sinnvoll?",
+        answer: "Oft ja, um Montagespuren oder Rückstände von Schutzfolien zu entfernen, bevor ein regelmäßiger Rhythmus beginnt.",
+      },
+      {
+        question: "Warum fällt vernachlässigte Glasreinigung bei modernen Bürokomplexen stärker auf?",
+        answer: "Weil große, offene Glasflächen ein zentrales Gestaltungselement sind. Verschmutzung ist hier optisch präsenter als bei kleinteiligeren Fensterfronten älterer Gebäude.",
+      },
+      {
+        question: "Werden alle Fassadenseiten im selben Rhythmus gereinigt?",
+        answer: "Nicht zwingend. Stärker der Sonne ausgesetzte Seiten zeigen Wasserflecken schneller als schattigere Gebäudeseiten – das lässt sich unterschiedlich takten.",
+      },
+      {
+        question: "Lässt sich die Reinigung mehrerer Gebäude auf einem Grundstück gemeinsam beauftragen?",
+        answer: "Ja, das vereinfacht die Koordination gegenüber getrennten Verträgen pro Baukörper und wird bei größeren Komplexen häufig so gehandhabt.",
+      },
+      {
+        question: "Nutzen Sie vorhandene Reinigungsgondel-Systeme am Gebäude?",
+        answer: "Ja, sofern ein Gebäude über eine fest installierte Anlage verfügt, richten wir unser Vorgehen danach aus, statt eigenes Gerät aufzubauen.",
+      },
+      {
+        question: "Kosten kleinteilig verglaste Fassaden mehr als große, ungeteilte Scheiben?",
+        answer: "In der Regel ja, weil mehr Fugen und Rahmenprofile pro Quadratmeter zusätzlichen Aufwand bedeuten. Das fließt in die Kalkulation ein.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Gebäude in Lichtenberg – wir melden uns mit einem individuellen Angebot für Innen- und Außenflächen.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -640,18 +726,271 @@ export const combos: Combo[] = [
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
       "Große Schaufensterflächen, Vitrinen und Showrooms entlang des Kurfürstendamms zeigen Straßenstaub, Fingerabdrücke und Fettspuren besonders deutlich. Wir reinigen diese Flächen in einem regelmäßigen, auf den Kundenverkehr abgestimmten Rhythmus und legen dabei besonderen Wert auf ein rückstandsfreies, repräsentatives Ergebnis.",
+    metaDescription:
+      "Glas- und Fensterreinigung für Schaufenster, Vitrinen und Showrooms in Charlottenburg-Wilmersdorf – rückstandsfrei, abgestimmt auf den Kundenverkehr. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Anders als ein Bürofenster wird ein Schaufenster nicht nur von innen, sondern vor allem von außen bewertet – von jedem, der am Laden vorbeigeht, nicht nur von den eigenen Kunden.",
+    localAngle: [
+      "Schaufenster entlang des Kurfürstendamms bestehen häufig aus Einscheibensicherheitsglas (ESG) – stoßfest und für große, ebenerdige Flächen geeignet, aber empfindlicher gegenüber feinen Kratzern durch ungeeignete Werkzeuge als gewöhnliches Glas. Wir arbeiten deshalb mit weichen, für ESG geeigneten Abziehern statt mit scharfkantigem Werkzeug, das auf Dauer sichtbare Spuren hinterlassen würde.",
+      "Fingerabdrücke und Fettspuren an Eingangstüren und Vitrinen fallen an stark frequentierten Lagen schneller auf als in ruhigeren Nebenstraßen – nicht weil das Glas anders ist, sondern weil mehr Menschen es berühren. Deshalb richten wir den Reinigungsrhythmus stärker nach dem tatsächlichen Kundenverkehr als nach einem festen Kalenderintervall.",
+      "Viele Schaufenster sind zusätzlich mit Werbefolien oder Beschriftungen versehen. Beim Reinigen der angrenzenden Flächen nehmen wir Rücksicht auf die Klebekanten, damit sich Folien nicht lösen oder Ränder unschön wirken.",
+      "Showrooms mit großen Glasfronten – etwa bei Autohäusern oder größeren Ladengeschäften – benötigen häufig eine andere Taktung als ein einzelnes Schaufenster: Hier zählt neben der Außenwirkung auch der ungehinderte Blick von innen nach außen, der bei Streifen oder Rückständen besonders auffällt.",
+      "Die meisten Geschäfte am Kurfürstendamm öffnen erst gegen 10 Uhr. Das gibt uns am frühen Morgen ein Zeitfenster, in dem wir Schaufenster reinigen können, ohne Kunden oder Personal beim Öffnen des Ladens zu stören – ein Vorteil gegenüber Bürostandorten, wo der Betrieb oft schon deutlich früher beginnt.",
+      "Neben klassischen Ladengeschäften gibt es entlang der Einkaufsstraßen auch zahlreiche Gastronomiebetriebe. Fettspuren an Eingangstüren und Fensterfronten in deren Nähe erfordern häufig ein anderes Reinigungsmittel als reiner Straßenstaub, weil sich Fett nicht allein mit Wasser lösen lässt.",
+      "Anders als bei einer Bürofassade lässt sich bei Schaufenstern die Reinigung selten unbemerkt durchführen – Passanten sehen direkt zu. Wir arbeiten deshalb zügig und mit ruhiger Vorgehensweise, damit der Eindruck professionell bleibt, auch während der Arbeiten selbst.",
+      "Manche Ladengeschäfte am Kurfürstendamm wechseln ihre Schaufensterdekoration häufig, etwa saisonal oder bei neuen Kollektionen. Bei jedem Dekorationswechsel wird die Innenseite des Schaufensters meist ohnehin zugänglich – das lässt sich gut mit einem zusätzlichen Reinigungstermin verbinden, wenn gewünscht.",
+      "Bei mehreren Ladeneinheiten im selben Gebäude – etwa in einer kleinen Einkaufspassage abseits der Hauptstraße – lässt sich die Reinigung aller Schaufenster gemeinsam beauftragen. Das senkt den Preis pro Fläche gegenüber einer Einzelbeauftragung jedes Geschäfts, weil sich Anfahrt und Grundorganisation auf mehrere Einheiten verteilen.",
+      "Vitrinen im Innenbereich, etwa für Produktpräsentationen, werden von Kunden oft aus kurzer Distanz betrachtet – Fingerabdrücke und Staub fallen hier schneller auf als an einer hohen Schaufensterscheibe. Wir reinigen solche Flächen deshalb häufig in kürzeren Abständen als die übrige Verglasung.",
+      "Nicht jedes Schaufenster ist identisch verglast – manche Geschäfte kombinieren mehrere Glasscheiben zu einer optischen Einheit, mit schmalen Fugen dazwischen, die zusätzliche Aufmerksamkeit bei der Reinigung erfordern, damit kein ungleichmäßiges Ergebnis zwischen den einzelnen Scheiben entsteht.",
+    ],
+    scopeBullets: [
+      "Schaufenster innen und außen",
+      "Eingangstüren und Vitrinen",
+      "Glasflächen im Kundenbereich",
+      "Werbefolien-Randbereiche schonend behandelt",
+    ],
+    additionalLinks: [
+      { label: "Für das gesamte Objekt: Gebäudereinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/gebaeudereinigung-berlin/charlottenburg-wilmersdorf" },
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Fläche, Glasart und gewünschtem Rhythmus erhalten Sie ein Angebot. Bei stark einsehbaren Lagen legen wir Termine bevorzugt vor Ladenöffnung oder in ruhigere Tagesabschnitte, damit die Reinigung selbst nicht zum Blickfang wird.",
+    priceFactorsText:
+      "Der Preis richtet sich neben Fläche und Zugänglichkeit auch nach der Häufigkeit: Bei stark frequentierten Schaufenstern lohnt sich oft ein festes wöchentliches oder zweiwöchentliches Intervall, das im Abonnement günstiger kalkuliert wird als einzelne Spontaneinsätze. Zusätzliche Positionen wie Werbefolien-Ränder oder aufwendig gerahmte Vitrinen wirken sich auf den Zeitaufwand aus und werden entsprechend im Angebot ausgewiesen, statt pauschal in den Grundpreis eingerechnet zu werden.",
+    faq: [
+      {
+        question: "Wird bei Schaufenstern mit Werbefolie anders gereinigt?",
+        answer: "Ja. Wir reinigen die Glasflächen um die Folie herum schonend, ohne Klebekanten zu lösen oder die Ränder zu beschädigen.",
+      },
+      {
+        question: "Wie oft sollte ein Schaufenster am Kurfürstendamm gereinigt werden?",
+        answer:
+          "Das hängt vom Kundenverkehr ab. Bei stark frequentierten Lagen ist ein wöchentlicher bis zweiwöchentlicher Rhythmus üblich, weniger belebte Nebenlagen kommen oft mit größeren Abständen aus.",
+      },
+      {
+        question: "Reinigen Sie auch Glasflächen in Autohaus-Showrooms?",
+        answer:
+          "Ja, große Showroom-Verglasungen gehören zu unserem Leistungsspektrum – dort zählt neben der Außenwirkung besonders der klare Blick von innen nach außen.",
+      },
+      {
+        question: "Ist Einscheibensicherheitsglas empfindlicher bei der Reinigung?",
+        answer: "Es ist stoßfester, aber anfälliger für feine Kratzer durch scharfkantige Werkzeuge. Wir arbeiten deshalb mit dafür geeigneten, weichen Abziehern.",
+      },
+      {
+        question: "Warum reinigen Sie oft vor Ladenöffnung?",
+        answer: "Weil die meisten Geschäfte hier erst gegen 10 Uhr öffnen. Das gibt uns ein ungestörtes Zeitfenster am frühen Morgen, ohne den Betrieb zu beeinträchtigen.",
+      },
+      {
+        question: "Werden Fettspuren in der Nähe von Restaurants anders behandelt?",
+        answer: "Ja, Fett lässt sich nicht allein mit Wasser lösen. Wir setzen dafür geeignete, fettlösende Reinigungsmittel ein, die die Glasoberfläche trotzdem nicht angreifen.",
+      },
+      {
+        question: "Kann die Reinigung mit einem Schaufenster-Dekorationswechsel kombiniert werden?",
+        answer: "Ja, das bietet sich oft an. Sprechen Sie uns rechtzeitig an, wenn ein Wechsel ansteht, dann stimmen wir einen passenden Termin ab.",
+      },
+      {
+        question: "Wird die Reinigung während der Öffnungszeiten oder außerhalb durchgeführt?",
+        answer: "Nach Möglichkeit außerhalb der Öffnungszeiten oder früh morgens. Ist das nicht möglich, arbeiten wir zügig und unauffällig, ohne den Kundenverkehr zu behindern.",
+      },
+      {
+        question: "Können mehrere Geschäfte im selben Gebäude die Reinigung gemeinsam beauftragen?",
+        answer: "Ja, das senkt häufig den Preis pro Fläche, weil sich Anfahrt und Organisation auf mehrere Einheiten verteilen.",
+      },
+      {
+        question: "Werden Vitrinen anders behandelt als große Schaufenster?",
+        answer: "Oft ja – sie werden aus kurzer Distanz betrachtet, weshalb Fingerabdrücke schneller auffallen. Wir reinigen sie häufig in kürzeren Abständen als die übrige Verglasung.",
+      },
+      {
+        question: "Werden zusammengesetzte Schaufenster mit mehreren Scheiben gleichmäßig gereinigt?",
+        answer: "Ja, wir achten besonders auf ein einheitliches Ergebnis über alle Scheiben hinweg, damit an den Fugen kein sichtbarer Unterschied entsteht.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Schaufenster oder Ihren Showroom in Charlottenburg-Wilmersdorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "mitte",
     intro:
       "Bürogebäude in Mitte mit großen Fensterflächen und Glastrennwänden profitieren von einem regelmäßigen Reinigungsrhythmus, der Kalk- und Wasserflecken vorbeugt und den Lichteinfall in den Innenräumen erhält – wir reinigen rückstandsfrei, ohne den laufenden Betrieb zu stören.",
+    metaDescription:
+      "Glas- und Fensterreinigung in Berlin-Mitte für Bürogebäude und historische Fassaden – abgestimmt auf Baujahr und Zugänglichkeit. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Mitte vereint auf engem Raum historische Altbaufenster und moderne Glasfassaden – zwei unterschiedliche Ausgangslagen für die Reinigung.",
+    localAngle: [
+      "Rund um Alexanderplatz und das Regierungsviertel prägen moderne Bürotürme mit großflächigen Glasfassaden das Bild – oft als durchgehende Elementfassade ohne einzelne Fensterrahmen, sogenannte Structural-Glazing-Konstruktionen. Solche Flächen werden meist großflächig mit speziellem Gerät gereinigt, nicht Fenster für Fenster wie bei klassischer Sprossenverglasung.",
+      "In den angrenzenden Altbaulagen von Mitte stehen dagegen oft noch klassische Fenster mit einzelnen Flügeln, Sprossen und teils historischen Rahmen – hier ist Handarbeit gefragt, Scheibe für Scheibe, statt großflächiger Technik.",
+      "Diese Mischung aus Alt und Neu bedeutet für uns: Wir legen den Umfang nicht nach einem Standardschema fest, sondern prüfen bei jedem Objekt, ob es sich um klassische Einzelfenster oder eine große zusammenhängende Fassadenfläche handelt – das beeinflusst sowohl Verfahren als auch Preis.",
+      "Viele Objekte in Mitte liegen zudem in stark frequentierten Lagen mit dichtem Terminplan im Tagesgeschäft. Deshalb reinigen wir Glasflächen hier bevorzugt früh morgens oder in ruhigeren Randzeiten, damit der laufende Betrieb nicht gestört wird.",
+      "Der Alexanderplatz zählt zu den am stärksten frequentierten Plätzen Deutschlands. Gewerbeobjekte in unmittelbarer Nähe sind entsprechend hohem Passantenverkehr und den damit verbundenen Fingerabdrücken an Eingangsbereichen ausgesetzt – ein Faktor, den wir bei der Rhythmusplanung berücksichtigen.",
+      "Bei Objekten im unmittelbaren Regierungsviertel ist der Zugang oft reglementierter als in einem gewöhnlichen Bürogebäude. Wir stimmen deshalb frühzeitig ab, welche Zutrittsregelungen gelten und wie viel Vorlauf für eine Terminvereinbarung realistisch ist.",
+      "Bürogebäude im Regierungsviertel sind häufig auf Sicherheit und Diskretion ausgelegt – große Glasfassaden stehen hier oft im Kontrast zu strengen Zutrittskontrollen. Für uns bedeutet das, dass wir Reinigungstermine mit ausreichend Vorlauf anmelden, statt kurzfristig vorbeizukommen.",
+      "In den Neubauten rund um den Alexanderplatz kommen häufig große, ungeteilte Glasflächen zum Einsatz, die über mehrere Stockwerke reichen. Solche Flächen werden in der Regel mit spezieller Ausrüstung von außen bearbeitet, was eine andere Planung erfordert als die Reinigung einzelner Bürofenster von innen.",
+      "Neubau-Bürotürme in Mitte verfügen häufig über eine Klimatisierung, die auf gleichbleibende Lichtverhältnisse angewiesen ist. Verschmutzte Fassaden beeinträchtigen dann nicht nur die Optik, sondern auch die Lichtmenge, die ins Gebäude gelangt – ein Argument, das bei rein ästhetischer Betrachtung leicht übersehen wird.",
+      "In direkter Nähe zu Regierungsgebäuden und internationalen Vertretungen ist mitunter auch die Diskretion beim Reinigungspersonal ein Thema. Feste, eingespielte Teams statt wechselndem Personal erleichtern es, Vertrauen für den wiederkehrenden Zugang zum Objekt aufzubauen.",
+      "Objekte, die sowohl an einer Hauptstraße als auch an einer ruhigeren Nebenstraße liegen, haben oft zwei unterschiedlich stark verschmutzte Fassadenseiten. Wir kalkulieren beide Seiten getrennt, statt einen einheitlichen Rhythmus für das gesamte Gebäude anzusetzen, der einer Seite nicht gerecht würde.",
+    ],
+    scopeBullets: [
+      "Einzelfenster in Altbaulagen",
+      "Großflächige Fassadenverglasung in Neubauten",
+      "Glastrennwände in Büros",
+      "Eingangsbereiche und Vitrinen",
+    ],
+    additionalLinks: [
+      { label: "Für das gesamte Gebäude: Gebäudereinigung in Berlin-Mitte", href: "/leistungen/gebaeudereinigung-berlin/mitte" },
+    ],
+    processText:
+      "Nach kurzer Prüfung, ob es sich um Einzelfenster oder eine zusammenhängende Fassadenfläche handelt, erhalten Sie ein passendes Angebot. Bei dicht getakteten Bürostandorten stimmen wir Termine auf frühe Morgenstunden oder ruhigere Randzeiten ab.",
+    priceFactorsText:
+      "Der Preis unterscheidet sich deutlich zwischen klassischen Einzelfenstern, die Scheibe für Scheibe gereinigt werden, und großflächigen Fassadenverglasungen, die sich effizienter am Stück bearbeiten lassen. Welches Verfahren zu Ihrem Objekt passt, klären wir vor dem Angebot. Bei Mischformen – etwa einem Altbau-Vorderhaus mit modernem Anbau – kalkulieren wir beide Gebäudeteile getrennt, statt einen Mischpreis für das gesamte Objekt anzusetzen.",
+    faq: [
+      {
+        question: "Werden historische Altbaufenster anders gereinigt als moderne Glasfassaden?",
+        answer:
+          "Ja. Altbaufenster mit Sprossen und einzelnen Flügeln erfordern Handarbeit Scheibe für Scheibe, während große Fassadenflächen oft effizienter am Stück gereinigt werden.",
+      },
+      {
+        question: "Reinigen Sie auch große Fassadenverglasungen ohne einzelne Fensterrahmen?",
+        answer: "Ja, solche sogenannten Structural-Glazing-Fassaden gehören zu unserem Leistungsspektrum, sofern die Zugänglichkeit das zulässt.",
+      },
+      {
+        question: "Kann die Reinigung außerhalb der Kernarbeitszeit stattfinden?",
+        answer: "Ja, gerade in Mitte mit dicht getakteten Terminplänen legen wir Reinigungstermine bevorzugt früh morgens oder in ruhigere Randzeiten.",
+      },
+      {
+        question: "Was kostet die Reinigung einer großen Fassade im Vergleich zu Einzelfenstern?",
+        answer:
+          "Das hängt vom Verfahren ab: Großflächige Fassaden lassen sich oft effizienter bearbeiten als viele einzelne Fensterflügel. Eine pauschale Aussage ohne Objektprüfung wäre nicht seriös.",
+      },
+      {
+        question: "Warum ist der Alexanderplatz für die Fensterreinigung relevant?",
+        answer:
+          "Er zählt zu den am stärksten frequentierten Plätzen Deutschlands. Objekte in der Nähe zeigen entsprechend schneller Fingerabdrücke an Eingangsbereichen, was sich auf den sinnvollen Reinigungsrhythmus auswirkt.",
+      },
+      {
+        question: "Gibt es besondere Zugangsregelungen im Regierungsviertel?",
+        answer: "Das ist möglich und objektabhängig. Wir stimmen Zutritt und nötigen Vorlauf frühzeitig mit Ihnen ab, statt das erst kurzfristig zu klären.",
+      },
+      {
+        question: "Reinigen Sie auch Fassaden, die mehrere Stockwerke durchgehend umfassen?",
+        answer: "Ja, sofern die Zugänglichkeit das zulässt. Solche Flächen werden meist mit spezieller Ausrüstung von außen bearbeitet, was wir vorab prüfen.",
+      },
+      {
+        question: "Wie viel Vorlauf brauchen Sie für einen Termin im Regierungsviertel?",
+        answer: "Das hängt vom jeweiligen Objekt und dessen Sicherheitsvorgaben ab. Wir klären den nötigen Vorlauf frühzeitig mit Ihnen, damit der Termin reibungslos stattfinden kann.",
+      },
+      {
+        question: "Wirkt sich verschmutztes Glas auf die Innenraumbeleuchtung aus?",
+        answer: "Bei stark verschmutzten Fassaden kann die Lichtmenge im Innenraum spürbar abnehmen, besonders bei großflächiger Verglasung. Ein regelmäßiger Rhythmus wirkt dem entgegen.",
+      },
+      {
+        question: "Arbeiten bei Ihnen feste Teams statt wechselndem Personal?",
+        answer: "Ja, feste Teams sind bei uns die Regel – das erleichtert gerade bei Objekten mit erhöhtem Diskretionsbedarf den wiederkehrenden Zugang.",
+      },
+      {
+        question: "Werden Vorder- und Rückseite eines Gebäudes im selben Rhythmus gereinigt?",
+        answer: "Nicht zwingend. Liegt eine Seite an einer stärker befahrenen Straße, kalkulieren wir beide Fassadenseiten oft getrennt.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Gebäude in Mitte – Einzelfenster oder Fassadenfläche – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "glas-und-fensterreinigung-berlin",
     districtSlug: "tempelhof-schoeneberg",
     intro:
       "Rund um Tempelhof gehören Glastrennwände und Eingangsbereiche in Gewerbegebäuden mit mehreren Mietparteien zu den am stärksten frequentierten Flächen – wir stimmen die Glas- und Fensterreinigung häufig direkt mit der Hausverwaltung ab.",
+    metaDescription:
+      "Glas- und Fensterreinigung in Tempelhof-Schöneberg für Gewerbeobjekte mit mehreren Mietparteien – abgestimmt mit der Hausverwaltung. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Anders als eine einzelne Fensterfront wird eine gemeinsam genutzte Glastrennwand von mehreren Firmen gleichzeitig beansprucht – entsprechend häufiger fallen Fingerabdrücke und Gebrauchsspuren auf.",
+    localAngle: [
+      "In Gewerbegebäuden mit mehreren Mietparteien sind Glastrennwände zwischen Fluren und Büros oder an gemeinsamen Empfangsbereichen oft die am stärksten beanspruchten Glasflächen im ganzen Objekt – nicht weil das Material anders ist, sondern weil deutlich mehr Menschen es täglich berühren als eine einzelne Bürofensterfront.",
+      "Die Fassade selbst betrifft meist das ganze Gebäude und wird über die Hausverwaltung beauftragt, während einzelne Glastrennwände innerhalb einer Mietfläche oft von der jeweiligen Firma separat in Auftrag gegeben werden. Wir klären vorab, wer für welche Fläche zuständig ist, damit am Ende keine Fläche zwischen den Zuständigkeiten übersehen wird.",
+      "Bei mehrstöckigen Gewerbegebäuden variiert die Fassade zudem oft zwischen den Stockwerken, oder es gibt einen gemeinsamen Eingangsbereich mit besonders repräsentativer Verglasung. Diesen Bereich reinigen wir häufig in kürzeren Abständen als die übrigen Fensterflächen, weil er den ersten Eindruck für alle Besucher des Hauses prägt.",
+      "In vielen Gewerbeobjekten mit mehreren Mietparteien gibt es einen Hausmeister oder technischen Dienst, der kleinere Verschmutzungen zwischen den vereinbarten Reinigungsterminen selbst beseitigt. Wir stimmen unseren Rhythmus mit solchen bestehenden Abläufen ab, statt sie zu verdoppeln oder Lücken entstehen zu lassen.",
+      "Bei Gebäuden mit unterschiedlich stark frequentierten Etagen bietet sich oft ein gestaffelter Rhythmus an: Der Empfang im Erdgeschoss profitiert von häufigeren Terminen, während Glastrennwände in ruhigeren oberen Stockwerken seltener gereinigt werden müssen, ohne dass der Eindruck darunter leidet.",
+      "Bei der Terminplanung mit mehreren Firmen im selben Objekt hilft eine feste Ansprechperson auf Verwaltungsseite, die Rückmeldungen aller Mieter bündelt. Ohne diese Bündelung erreichen uns Beanstandungen sonst über verschiedene Kanäle, was die Zuordnung erschwert.",
+      "Manche Gewerbegebäude in Tempelhof-Schöneberg verfügen über einen repräsentativen Empfangsbereich mit Glasfronten zur Straße, während die übrigen Etagen eher funktional gestaltet sind. Diese Kontraste in der baulichen Qualität spiegeln sich häufig auch im gewünschten Reinigungsstandard wider.",
+      "Bei Vertragsverhandlungen für ein neu bezogenes Gewerbeobjekt lohnt es sich, die Zuständigkeit für Glasflächen von Anfang an schriftlich festzuhalten – wer welche Fläche beauftragt, klärt sich sonst oft erst im laufenden Betrieb, wenn eine Fläche längere Zeit unbeachtet blieb.",
+      "Gewerbeobjekte mit Publikumsverkehr, etwa Bankfilialen oder Versicherungsbüros im Erdgeschoss, haben oft einen höheren Anspruch an makellose Eingangsverglasung als reine Büroflächen in den oberen Stockwerken. Wir berücksichtigen das bei der Angebotserstellung, statt für das gesamte Gebäude denselben Standard anzusetzen.",
+      "Bei der Angebotserstellung für ein Gewerbeobjekt mit mehreren Mietparteien hilft eine grobe Skizze oder ein Lageplan, um Glasflächen den jeweiligen Zuständigkeiten korrekt zuzuordnen. Fehlt ein solcher Plan, klären wir das bei der ersten Besichtigung gemeinsam vor Ort.",
+    ],
+    scopeBullets: [
+      "Glastrennwände zwischen Fluren und Büros",
+      "Gemeinsam genutzte Eingangsverglasung",
+      "Fensterflächen der einzelnen Mietflächen",
+      "Vitrinen und Aushangkästen im Eingangsbereich",
+    ],
+    additionalLinks: [
+      { label: "Für das Treppenhaus: Treppenhausreinigung in Tempelhof-Schöneberg", href: "/leistungen/treppenhausreinigung-berlin/tempelhof-schoeneberg" },
+    ],
+    processText:
+      "Nach Abstimmung mit der Hausverwaltung oder der einzelnen Mietpartei legen wir fest, welche Flächen zum gemeinsamen Vertrag gehören und welche separat beauftragt werden. Das vermeidet doppelte Zuständigkeiten und übersehene Flächen.",
+    priceFactorsText:
+      "Gemeinsam genutzte Flächen wie der Haupteingang profitieren häufig von einem kürzeren, zentral beauftragten Rhythmus, während einzelne Mietflächen ihren eigenen, meist selteneren Turnus vereinbaren. Beides lässt sich unabhängig voneinander kalkulieren. Wird eine Fläche später zusätzlich vereinbart, etwa weil eine neue Mietpartei einzieht, passen wir das bestehende Angebot entsprechend an, statt einen komplett neuen Vertrag aufzusetzen.",
+    faq: [
+      {
+        question: "Wer beauftragt die Reinigung der Fassade – die Hausverwaltung oder die einzelne Firma?",
+        answer:
+          "In der Regel die Hausverwaltung für die Gebäudehülle, während einzelne Glastrennwände innerhalb einer Mietfläche oft separat von der jeweiligen Firma beauftragt werden. Wir klären das vorab, damit keine Fläche übersehen wird.",
+      },
+      {
+        question: "Warum wird der Eingangsbereich häufiger gereinigt als andere Glasflächen?",
+        answer: "Weil er von allen Besuchern des Hauses gesehen wird und entsprechend schneller Gebrauchsspuren zeigt. Ein kürzerer Rhythmus für diesen Bereich ist deshalb üblich.",
+      },
+      {
+        question: "Können mehrere Firmen im selben Objekt unterschiedliche Rhythmen vereinbaren?",
+        answer: "Ja. Jede Mietfläche kann ihren eigenen Turnus für die eigenen Glasflächen festlegen, unabhängig vom Rhythmus der gemeinsam genutzten Bereiche.",
+      },
+      {
+        question: "Gibt es einen Ansprechpartner vor Ort, mit dem Sie sich abstimmen?",
+        answer: "Häufig ja – viele Objekte haben einen Hausmeister oder technischen Dienst. Wir stimmen unseren Rhythmus mit bestehenden Abläufen ab, statt sie zu verdoppeln.",
+      },
+      {
+        question: "Können obere Etagen seltener gereinigt werden als der Eingangsbereich?",
+        answer: "Ja, das ist bei unterschiedlich frequentierten Etagen üblich. Wir schlagen einen gestaffelten Rhythmus vor, wenn das für Ihr Objekt sinnvoll ist.",
+      },
+      {
+        question: "Wer bündelt Rückmeldungen, wenn mehrere Firmen im selben Objekt sind?",
+        answer: "Idealerweise eine feste Ansprechperson auf Verwaltungsseite. Das erleichtert die Zuordnung von Rückmeldungen erheblich gegenüber mehreren getrennten Kontaktwegen.",
+      },
+      {
+        question: "Wird der Empfangsbereich anders behandelt als funktionale Büroetagen?",
+        answer: "Häufig ja, wenn der Empfangsbereich repräsentativer gestaltet ist. Wir passen den Reinigungsstandard an die jeweilige bauliche Qualität und Nutzung an.",
+      },
+      {
+        question: "Sollte die Zuständigkeit für Glasflächen im Mietvertrag festgehalten werden?",
+        answer: "Das empfiehlt sich, ja. Ohne schriftliche Regelung klärt sich die Zuständigkeit oft erst, wenn eine Fläche längere Zeit unbeachtet blieb.",
+      },
+      {
+        question: "Gilt für alle Mieter im Gebäude derselbe Reinigungsstandard?",
+        answer: "Nicht zwingend. Publikumsintensive Flächen im Erdgeschoss haben oft einen höheren Anspruch als reine Büroflächen – das berücksichtigen wir individuell.",
+      },
+      {
+        question: "Brauchen Sie einen Lageplan für das Angebot?",
+        answer: "Hilfreich, aber nicht zwingend. Fehlt ein Plan, klären wir die Zuordnung der Glasflächen bei der ersten Besichtigung gemeinsam vor Ort.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Nennen Sie uns, welche Glasflächen in Ihrem Gewerbeobjekt in Tempelhof-Schöneberg gereinigt werden sollen – wir melden uns mit einem Angebot.",
   },
   {
     serviceSlug: "bueroreinigung-berlin",
