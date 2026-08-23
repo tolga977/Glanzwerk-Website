@@ -1548,6 +1548,7 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
       "Reinigungshäufigkeit",
       "Sanitärbereiche und Küchen",
       "Mindestpreis und Fahrtkosten",
+      "Ein Rechenbeispiel zur Orientierung",
       "Wie Sie eine realistische erste Einschätzung erhalten",
     ],
     ctaHeading: "Jetzt Ihren eigenen Richtpreis berechnen",

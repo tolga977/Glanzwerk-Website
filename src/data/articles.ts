@@ -56,6 +56,13 @@ export const articles: Article[] = [
         ],
       },
       {
+        heading: "Ein Rechenbeispiel zur Orientierung",
+        paragraphs: [
+          "Für ein 300 m² großes Büro mit einer Küche, drei Sanitärbereichen und dreimal wöchentlicher Reinigung kommt der Glanzwerk-Preisrechner auf rund 1.225 € netto im Monat. Ein kleineres Objekt mit selteneren Intervallen liegt entsprechend darunter, ein größeres Objekt mit täglicher Reinigung und mehreren Sanitärbereichen darüber.",
+          "Diese Zahl ersetzt keine individuelle Berechnung, zeigt aber die Größenordnung, in der sich die meisten Gewerbeobjekte bewegen.",
+        ],
+      },
+      {
         heading: "Wie Sie eine realistische erste Einschätzung erhalten",
         paragraphs: [
           "Ein Preisrechner kann auf Basis von Fläche, Bodenart und Häufigkeit eine erste, unverbindliche Richtpreis-Schätzung liefern. Für ein verbindliches Angebot lohnt sich anschließend eine kurze Objektbesichtigung, da sich Details wie Zugänglichkeit oder besondere Anforderungen erst vor Ort klären lassen.",
