@@ -135,6 +135,12 @@ const faqItems = [
     answer: "Nach Fläche, Bereichen, Intervall, Reinigungszeiten und vereinbartem Leistungsumfang.",
   },
   {
+    question: "Was passiert, wenn ich mit einem Termin einmal nicht zufrieden bin?",
+    answer:
+      "Melden Sie den Mangel innerhalb von 24 Stunden nach dem Termin bei Ihrem Ansprechpartner. Bei berechtigten Fällen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+  },
+  {
     question: "Wie kann ich ein Angebot anfordern?",
     answer: `Unter ${siteConfig.phone} oder per E-Mail an ${siteConfig.email}.`,
   },
