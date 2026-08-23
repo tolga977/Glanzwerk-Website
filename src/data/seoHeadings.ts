@@ -679,8 +679,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/charlottenburg-wilmersdorf/charlottenburg": {
     h1: "Gebäudereinigung für Unternehmen in Berlin-Charlottenburg",
     h1Highlight: "Berlin-Charlottenburg",
-    sectionHeadings: ["Charlottenburg als Geschäftslage", "Gefragte Reinigungsleistungen in Charlottenburg"],
-    ctaHeading: "Angebot für Ihr Objekt in Charlottenburg",
+    sectionHeadings: ["Charlottenburg als Geschäftslage", "Am stärksten gefragt: Autohaus-, Glas- und Gebäudereinigung"],
+    ctaHeading: "Angebot für Ihr Autohaus oder Ladengeschäft in Charlottenburg",
     mainTopic: "Ku'damm-nahe Geschäftslage mit Ladengeschäften, Autohäusern und repräsentativen Büros",
     mostSimilarUrl: "/standorte/charlottenburg-wilmersdorf",
     differentiation:
@@ -689,8 +689,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/charlottenburg-wilmersdorf/wilmersdorf": {
     h1: "Gewerbliche Gebäudereinigung in Berlin-Wilmersdorf",
     h1Highlight: "Berlin-Wilmersdorf",
-    sectionHeadings: ["Wilmersdorf abseits des Ku'damms", "Gefragte Reinigungsleistungen in Wilmersdorf"],
-    ctaHeading: "Angebot für Ihr Objekt in Wilmersdorf",
+    sectionHeadings: ["Wilmersdorf abseits des Ku'damms", "Für Kanzleien und Praxen gefragt: Kanzlei-, Praxis- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihre Kanzlei oder Praxis in Wilmersdorf",
     mainTopic: "Ruhigere Altbaulagen mit Kanzleien und Arztpraxen",
     mostSimilarUrl: "/standorte/charlottenburg-wilmersdorf",
     differentiation:
@@ -699,8 +699,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/steglitz-zehlendorf/steglitz": {
     h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Steglitz",
     h1Highlight: "Berlin-Steglitz",
-    sectionHeadings: ["Steglitz als Geschäftslage", "Gefragte Reinigungsleistungen in Steglitz"],
-    ctaHeading: "Angebot für Ihr Objekt in Steglitz",
+    sectionHeadings: ["Steglitz als Geschäftslage", "An der Schloßstraße gefragt: Büro-, Kanzlei- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihr Büro oder Ihre Kanzlei in Steglitz",
     mainTopic: "Urbanerer Bezirksteil mit der Schloßstraße als Geschäfts- und Bürolage",
     mostSimilarUrl: "/standorte/steglitz-zehlendorf",
     differentiation:
@@ -709,8 +709,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/steglitz-zehlendorf/zehlendorf": {
     h1: "Gewerblicher Reinigungsservice in Berlin-Zehlendorf",
     h1Highlight: "Berlin-Zehlendorf",
-    sectionHeadings: ["Zehlendorf in ruhiger Wohnlage", "Gefragte Reinigungsleistungen in Zehlendorf"],
-    ctaHeading: "Angebot für Ihr Objekt in Zehlendorf",
+    sectionHeadings: ["Zehlendorf in ruhiger Wohnlage", "In Wohnnähe gefragt: Praxis-, Schul- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihre Praxis oder Schule in Zehlendorf",
     mainTopic: "Villenartige Wohnlagen mit Arztpraxen und Schulen in Wohnnähe",
     mostSimilarUrl: "/standorte/steglitz-zehlendorf",
     differentiation:
@@ -719,8 +719,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/tempelhof-schoeneberg/tempelhof": {
     h1: "Gebäudereinigung für Unternehmen in Berlin-Tempelhof",
     h1Highlight: "Berlin-Tempelhof",
-    sectionHeadings: ["Tempelhof rund um das ehemalige Flughafengelände", "Gefragte Reinigungsleistungen in Tempelhof"],
-    ctaHeading: "Angebot für Ihr Objekt in Tempelhof",
+    sectionHeadings: ["Tempelhof rund um das ehemalige Flughafengelände", "Rund um das Flughafengelände gefragt: Treppenhaus-, Gebäude- und Büroreinigung"],
+    ctaHeading: "Angebot für Ihr Gewerbegebäude in Tempelhof",
     mainTopic: "Größere Gewerbe- und Bürogebäude mit mehreren Mietparteien rund um das Tempelhofer Feld",
     mostSimilarUrl: "/standorte/tempelhof-schoeneberg",
     differentiation:
@@ -729,8 +729,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/tempelhof-schoeneberg/schoeneberg": {
     h1: "Gewerbliche Gebäudereinigung in Berlin-Schöneberg",
     h1Highlight: "Berlin-Schöneberg",
-    sectionHeadings: ["Schöneberg als urbaner Bezirksteil", "Gefragte Reinigungsleistungen in Schöneberg"],
-    ctaHeading: "Angebot für Ihr Objekt in Schöneberg",
+    sectionHeadings: ["Schöneberg als urbaner Bezirksteil", "In Wohn-Geschäftshäusern gefragt: Büro-, Kanzlei- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihr Büro oder Ihre Kanzlei in Schöneberg",
     mainTopic: "Dichter bebaute Wohn-Geschäftshäuser mit Büros und Kanzleien",
     mostSimilarUrl: "/standorte/tempelhof-schoeneberg",
     differentiation:
@@ -739,8 +739,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/neukoelln/rudow": {
     h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Rudow",
     h1Highlight: "Berlin-Rudow",
-    sectionHeadings: ["Rudow im Vergleich zum Neuköllner Kern", "Gefragte Reinigungsleistungen in Rudow"],
-    ctaHeading: "Angebot für Ihr Objekt in Rudow",
+    sectionHeadings: ["Rudow im Vergleich zum Neuköllner Kern", "In den Gewerbeparks gefragt: Gebäude-, Unterhalts- und Büroreinigung"],
+    ctaHeading: "Angebot für Ihre Gewerbefläche in Rudow",
     mainTopic: "Größere, zusammenhängende Gewerbeflächen und Gewerbeparks im Gegensatz zum dichten Bezirkskern",
     mostSimilarUrl: "/standorte/neukoelln",
     differentiation:
@@ -749,8 +749,8 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
   "/standorte/treptow-koepenick/koepenick": {
     h1: "Gewerblicher Reinigungsservice in Berlin-Köpenick",
     h1Highlight: "Berlin-Köpenick",
-    sectionHeadings: ["Der Ortskern Köpenick", "Gefragte Reinigungsleistungen in Köpenick"],
-    ctaHeading: "Angebot für Ihr Objekt in Köpenick",
+    sectionHeadings: ["Der Ortskern Köpenick", "Im Ortskern gefragt: Praxis-, Unterhalts- und Glasreinigung"],
+    ctaHeading: "Angebot für Ihre Praxis oder Ihr Geschäft in Köpenick",
     mainTopic: "Kompakter, historischer Ortskern mit Geschäften und Praxen statt weitläufiger Gewerbegebiete",
     mostSimilarUrl: "/leistungen/gebaeudereinigung-berlin/treptow-koepenick",
     differentiation:
