@@ -180,6 +180,20 @@ export const combos: Combo[] = [
     districtSlug: "steglitz-zehlendorf",
     intro:
       "Steglitz-Zehlendorf hat in seinen ruhigen Wohnlagen überdurchschnittlich viele Arztpraxen. Wir reinigen diese Praxen diskret außerhalb der Sprechzeiten und mit besonderer Rücksicht auf das ruhige Umfeld.",
+    localAngle: [
+      "Steglitz-Zehlendorf hat überdurchschnittlich viele Arztpraxen, Facharztzentren und Gemeinschaftspraxen – vor allem entlang der Schloßstraße und in den umliegenden Vierteln. Mit der Praxisdichte steigt auch die Zahl der Patiententermine pro Tag und damit der Bedarf an einer verlässlich getakteten Reinigung.",
+      "Viele dieser Praxen teilen sich ein Gebäude mit weiteren medizinischen oder therapeutischen Einrichtungen. Reinigungszeiten stimmen wir deshalb bei Bedarf nicht nur auf eine einzelne Praxis, sondern auf mehrere Parteien im selben Haus ab.",
+    ],
+    faq: [
+      {
+        question: "Mehrere Praxen im selben Haus – wird das koordiniert?",
+        answer: "Ja, bei Bedarf stimmen wir Reinigungszeiten mit mehreren Praxen im selben Gebäude ab, etwa über eine gemeinsame Hausverwaltung.",
+      },
+      {
+        question: "Wie wirkt sich die hohe Praxisdichte auf den Reinigungsrhythmus aus?",
+        answer: "Bei hoher Terminfrequenz sind kürzere Intervalle für Empfang und Sanitärbereiche sinnvoll als bei kleineren Einzelpraxen.",
+      },
+    ],
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -238,6 +252,30 @@ export const combos: Combo[] = [
     districtSlug: "mitte",
     intro:
       "Praxen in Mitte liegen häufig in stark frequentierten Lagen mit hohem Publikumsverkehr. Wir reinigen Warte- und Behandlungsräume in engen Zeitfenstern, die sich an die jeweiligen Sprechzeiten anpassen.",
+    localAngle: [
+      "Praxen in Berlin-Mitte liegen häufig in stark frequentierten Lagen rund um das Regierungsviertel, den Alexanderplatz und die angrenzenden Geschäftsstraßen. Hoher Publikumsverkehr bedeutet für viele Einrichtungen eng getaktete Sprechstunden mit kurzen Pausen zwischen den Terminen.",
+      "Empfang und Wartebereich werden dabei oft durchgängig genutzt, ohne die längeren Ruhephasen, die kleinere Praxen in ruhigeren Lagen haben. Die Reinigung muss deshalb in verlässliche, kurze Zeitfenster passen, statt einen ganzen Vormittag zu beanspruchen.",
+    ],
+    scopeBullets: [
+      "Wartezimmer und Empfang zwischen dicht getakteten Sprechstunden",
+      "Sanitärbereiche mit hohem Besucheraufkommen",
+      "Kontaktflächen wie Türgriffe und Anmeldetresen",
+      "Böden in stark frequentierten Fluren",
+    ],
+    processText:
+      "Weil viele Praxen in Mitte nur kurze Zeitfenster zwischen den Sprechstunden oder in der Mittagspause bieten, sprechen wir vorab genau ab, welche Bereiche in welcher Reihenfolge gereinigt werden – damit ein Einsatz zuverlässig in die verfügbare Zeit passt.",
+    faq: [
+      {
+        question: "Reicht die Mittagspause für eine gründliche Reinigung aus?",
+        answer:
+          "Für die täglich stark beanspruchten Bereiche wie Empfang, Wartezimmer und Sanitär in der Regel ja – wir planen den Ablauf so, dass er in das verfügbare Zeitfenster passt. Umfangreichere Arbeiten legen wir auf andere Zeiten.",
+      },
+      {
+        question: "Was, wenn sich die Sprechstundenzeiten kurzfristig ändern?",
+        answer: "Sprechen Sie uns an – wir passen den Reinigungstermin nach Möglichkeit an veränderte Praxiszeiten an.",
+      },
+    ],
+    ctaSubtitle: "Nennen Sie uns die Sprechstundenzeiten Ihrer Praxis in Mitte – wir schlagen ein passendes Zeitfenster vor.",
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",
@@ -1153,7 +1191,17 @@ export const combos: Combo[] = [
     serviceSlug: "praxisreinigung-berlin",
     districtSlug: "pankow",
     intro:
-      "In Pankow wächst die Zahl an Arztpraxen in Wohnnähe – wir reinigen außerhalb der Sprechzeiten und mit Rücksicht auf die Wohnungen in den oberen Etagen vieler gemischt genutzter Gebäude.",
+      "Mit dem Bevölkerungswachstum in Pankow ist auch die Zahl der Arztpraxen in Wohnnähe gestiegen – wir richten Reinigungszeiten und Rhythmus nach der jeweiligen Sprechstundentaktung aus, unabhängig davon, ob sich im Gebäude auch Wohnungen befinden.",
+    faq: [
+      {
+        question: "Warum wächst die Nachfrage nach Praxisreinigung in Pankow?",
+        answer: "Mit dem Bevölkerungswachstum im Bezirk ist die Zahl an Arztpraxen in Wohnnähe gestiegen – entsprechend steigt auch der Bedarf an regelmäßig getakteter Reinigung.",
+      },
+      {
+        question: "Wird bei Praxen in Wohnhäusern besondere Rücksicht genommen?",
+        answer: "Ja, liegt die Praxis in einem gemischt genutzten Gebäude, stimmen wir Zeiten so ab, dass sie sich in den Tagesablauf der übrigen Bewohner einfügen.",
+      },
+    ],
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",

@@ -1062,14 +1062,17 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1: "Praxisreinigung in Steglitz-Zehlendorf",
     h1Highlight: "Praxisreinigung",
     sectionHeadings: [
-      "Praxisreinigung in ruhigen Wohnlagen",
+      "Hohe Praxisdichte entlang der Schloßstraße",
+      "Für welche Praxen sich das eignet",
+      "Mehr zur Praxisreinigung im gesamten Berliner Stadtgebiet",
       "Alle Leistungen in Steglitz-Zehlendorf im Überblick",
     ],
     faqHeading: "Fragen zur Praxisreinigung in Steglitz-Zehlendorf",
     ctaHeading: "Praxisreinigung in Steglitz-Zehlendorf anfragen",
-    mainTopic: "Diskrete Praxisreinigung mit Rücksicht auf das ruhige Umfeld",
+    mainTopic: "Praxisreinigung bei hoher Praxisdichte, teils mehrere Praxen im selben Gebäude",
     mostSimilarUrl: "/leistungen/praxisreinigung-berlin/charlottenburg-wilmersdorf",
-    differentiation: "Ruhiges Wohnumfeld statt der Altbau-mit-Wohnnutzung-Konstellation in Charlottenburg-Wilmersdorf.",
+    differentiation:
+      "Praxisdichte und geteilte Gebäude mit mehreren Praxen als eigenes Argument statt des generischen 'ruhig/diskret'-Motivs, das im Bezirk bereits auf mehreren anderen Leistungsseiten steht – ausgebaut 2026-08 (Entscheidungsanalyse-Bewertung B).",
   },
   "/leistungen/praxisreinigung-berlin/charlottenburg-wilmersdorf": {
     h1: "Praxisreinigung in Charlottenburg-Wilmersdorf",
@@ -1091,13 +1094,18 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1Highlight: "Praxisreinigung",
     sectionHeadings: [
       "Praxisreinigung bei hohem Publikumsverkehr",
+      "Leistungsumfang für stark frequentierte Praxen",
+      "So passt die Reinigung in Ihre Sprechzeiten",
+      "Für welche Praxen sich das eignet",
+      "Mehr zur Praxisreinigung im gesamten Berliner Stadtgebiet",
       "Alle Leistungen in Mitte im Überblick",
     ],
     faqHeading: "Fragen zur Praxisreinigung in Berlin-Mitte",
     ctaHeading: "Praxisreinigung in Mitte unverbindlich anfragen",
     mainTopic: "Praxisreinigung mit engen Zeitfenstern bei hohem Publikumsverkehr",
     mostSimilarUrl: "/standorte/mitte",
-    differentiation: "Vertieft ausschließlich Praxisreinigung statt aller Bezirksleistungen.",
+    differentiation:
+      "Vertieft die Praxisreinigung mit Fokus auf eng getaktete Sprechstunden und kurze Reinigungsfenster bei hohem Publikumsverkehr im Zentrum – ausgebaut 2026-08 (Entscheidungsanalyse-Bewertung A).",
   },
   "/leistungen/praxisreinigung-berlin/marzahn-hellersdorf": {
     h1: "Praxisreinigung in Marzahn-Hellersdorf",
