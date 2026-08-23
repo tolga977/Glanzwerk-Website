@@ -58,7 +58,7 @@ const glanzwerkPrinciple = [
   { title: "Bedarf verstehen", description: "Wir klären Fläche, Nutzung und Anforderungen Ihres Objekts, bevor wir etwas anbieten." },
   { title: "Leistungen klar festlegen", description: "Der Leistungsumfang steht vorher fest – keine versteckten Zusatzkosten im Nachhinein." },
   { title: "Sorgfältig ausführen", description: "Feste Teams arbeiten nach abgestimmtem Ablauf statt spontaner Improvisation." },
-  { title: "Qualität kontrollieren", description: "Mängel melden Sie uns direkt – wir bessern in der Regel innerhalb von 24 Stunden nach." },
+  { title: "Qualität kontrollieren", description: "Melden Sie einen Mangel innerhalb von 24 Stunden, wir bessern in der Regel kostenlos nach." },
   { title: "Persönlich abstimmen", description: "Änderungen am Bedarf besprechen Sie mit Ihrem festen Ansprechpartner, nicht mit wechselndem Personal." },
 ];
 
