@@ -149,6 +149,17 @@ const faqItems = [
     answer: "Ja, die Glas- und Fensterreinigung kann ergänzend vereinbart werden.",
   },
   {
+    question: "Ist eine Bauendreinigung in der Grundreinigung enthalten?",
+    answer:
+      "Die Grundreinigung deckt die intensive Aufbereitung von Flächen ab. Ob zusätzlich eine klassische Bauendreinigung mit Entfernung von Bauschutt und Folien benötigt wird, klären wir vorab mit Ihnen.",
+  },
+  {
+    question: "Was passiert, wenn ich mit dem Ergebnis einmal nicht zufrieden bin?",
+    answer:
+      "Melden Sie den Mangel innerhalb von 24 Stunden nach dem Termin. Bei berechtigten Fällen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+  },
+  {
     question: "Wie kann ich ein Angebot anfordern?",
     answer: `Unter ${siteConfig.phone} oder per E-Mail an ${siteConfig.email}.`,
   },
@@ -228,11 +239,17 @@ export default function GrundreinigungBerlinContent({
               <p>
                 Bei der laufenden Unterhaltsreinigung werden regelmäßig anfallende Verschmutzungen
                 entfernt. Mit der Zeit können dennoch hartnäckige Rückstände, Pflegefilme oder
-                Verschmutzungen in schwer erreichbaren Bereichen entstehen.
+                Verschmutzungen in schwer erreichbaren Bereichen wie Fugen und Sockelleisten
+                entstehen, die im laufenden Betrieb selten gründlich mitgereinigt werden.
               </p>
               <p>
                 Eine Grundreinigung geht über die üblichen laufenden Arbeiten hinaus. Welche
                 Flächen intensiv bearbeitet werden, wird vor Beginn genau festgelegt.
+              </p>
+              <p>
+                Sie eignet sich deshalb auch als sauberer Ausgangspunkt: Ohne eine gründliche
+                erste Aufbereitung lässt sich ein neuer Unterhaltsreinigungsrhythmus nur schwer
+                etablieren.
               </p>
             </div>
           </div>

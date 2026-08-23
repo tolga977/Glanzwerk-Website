@@ -686,12 +686,32 @@ export const combos: Combo[] = [
     districtSlug: "neukoelln",
     intro:
       "Bei Neubezug oder nach Renovierung in Neukölln – ob im dicht bebauten Kern oder in den Gewerbeflächen Rudows – sorgt eine einmalige Grundreinigung für einen sauberen Ausgangspunkt.",
+    faq: [
+      {
+        question: "Wird bei Neubezug auch eine Bauendreinigung mit übernommen?",
+        answer: "Die Grundreinigung deckt die intensive Aufbereitung von Flächen ab. Ob zusätzlich eine Bauendreinigung mit Entfernung von Bauschutt und Folien nötig ist, klären wir vorab.",
+      },
+      {
+        question: "Ist die Grundreinigung auch bei laufendem Betrieb möglich?",
+        answer: "Ja, bei Bedarf teilen wir die Arbeiten in Etappen auf oder führen sie außerhalb der Geschäftszeiten durch.",
+      },
+    ],
   },
   {
     serviceSlug: "grundreinigung-berlin",
     districtSlug: "mitte",
     intro:
       "Nach Bauarbeiten oder bei Neubezug von Büroflächen in Mitte übernehmen wir die intensive Aufbereitung der Räume, bevor ein regelmäßiger Unterhaltsreinigungsrhythmus beginnt.",
+    faq: [
+      {
+        question: "Reicht eine Grundreinigung vor dem Einzug in neue Büroflächen aus?",
+        answer: "In den meisten Fällen ja. Bei starker Verschmutzung oder nach umfangreichen Bauarbeiten klären wir vorab, ob zusätzliche Schritte sinnvoll sind.",
+      },
+      {
+        question: "Wie lange dauert die Grundreinigung vor einem Umzug?",
+        answer: "Das hängt von Fläche und Verschmutzungsgrad ab. Nach einer kurzen Einschätzung nennen wir einen realistischen Zeitrahmen.",
+      },
+    ],
   },
   {
     serviceSlug: "kita-und-schulreinigung-berlin",
@@ -739,6 +759,16 @@ export const combos: Combo[] = [
     districtSlug: "treptow-koepenick",
     intro:
       "Nach Neubezug oder Umbau größerer Gewerbeflächen in Treptow-Köpenick übernehmen wir die intensive Aufbereitung – auch bei weitläufigen Grundrissen mit mehreren Gebäudeteilen im Ortskern Köpenick.",
+    faq: [
+      {
+        question: "Werden bei weitläufigen Objekten mehrere Gebäudeteile in einem Auftrag zusammengefasst?",
+        answer: "Ja, bei mehreren Gebäudeteilen im selben Objekt stimmen wir Umfang und Reihenfolge gemeinsam ab.",
+      },
+      {
+        question: "Ist die Grundreinigung auch bei laufendem Betrieb möglich?",
+        answer: "Ja, bei Bedarf teilen wir die Arbeiten in Etappen auf oder führen sie außerhalb der Geschäftszeiten durch.",
+      },
+    ],
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
