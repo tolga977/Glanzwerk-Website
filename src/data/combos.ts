@@ -526,12 +526,32 @@ export const combos: Combo[] = [
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "Kleinere Büros und Agenturen in Friedrichshain-Kreuzberg profitieren von einer wiederkehrenden Unterhaltsreinigung in einem festen, an die jeweilige Nutzung angepassten Rhythmus.",
+    faq: [
+      {
+        question: "Eignet sich die Unterhaltsreinigung auch für kleinere Büros und Agenturen?",
+        answer: "Ja, gerade kleinere Büros profitieren von einem festen, planbaren Rhythmus statt spontaner Einzeleinsätze mit schwankender Qualität.",
+      },
+      {
+        question: "Was unterscheidet die Unterhaltsreinigung von einer einmaligen Grundreinigung?",
+        answer: "Die Unterhaltsreinigung pflegt das Objekt wiederkehrend, die Grundreinigung reinigt einmalig besonders intensiv, etwa nach einem Umzug.",
+      },
+    ],
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "steglitz-zehlendorf",
     intro:
       "Für Praxen, Kanzleien und Büros in den ruhigen Lagen von Steglitz-Zehlendorf bieten wir eine regelmäßige Unterhaltsreinigung, die sich unauffällig in den Tagesablauf des Umfelds einfügt.",
+    faq: [
+      {
+        question: "Wird bei Praxen und Kanzleien auf Sprechzeiten Rücksicht genommen?",
+        answer: "Ja, Reinigungszeiten stimmen wir so ab, dass sie sich unauffällig in den Praxis- oder Kanzleialltag einfügen.",
+      },
+      {
+        question: "Wie häufig wird gereinigt?",
+        answer: "Der Rhythmus richtet sich nach Nutzung und Publikumsverkehr – von wöchentlich bis täglich.",
+      },
+    ],
   },
   {
     serviceSlug: "grundreinigung-berlin",
@@ -574,6 +594,17 @@ export const combos: Combo[] = [
     districtSlug: "treptow-koepenick",
     intro:
       "Der flächenmäßig größte Berliner Bezirk bringt weitläufige Gewerbe- und Betriebsflächen mit sich – wir richten den Reinigungsrhythmus nach der tatsächlichen Nutzung aus, statt pauschal jeden Winkel gleich intensiv zu bedenken.",
+    faq: [
+      {
+        question: "Werden auch weitläufige Gewerbeflächen mit mehreren Gebäudeteilen betreut?",
+        answer: "Ja, bei größeren Flächen richten wir den Rhythmus nach der tatsächlichen Nutzung der einzelnen Bereiche aus, statt jeden Winkel gleich intensiv zu bedenken.",
+      },
+      {
+        question: "Ist eine Kombination mit einer einmaligen Grundreinigung möglich?",
+        answer: "Ja, insbesondere nach einem Umbau lässt sich eine einmalige Grundreinigung vor Beginn der laufenden Unterhaltsreinigung ergänzen.",
+        relatedLink: { label: "Zur Grundreinigung in Treptow-Köpenick", href: "/leistungen/grundreinigung-berlin/treptow-koepenick" },
+      },
+    ],
   },
   {
     serviceSlug: "grundreinigung-berlin",
@@ -592,6 +623,16 @@ export const combos: Combo[] = [
     districtSlug: "marzahn-hellersdorf",
     intro:
       "Marzahn-Hellersdorf bietet großzügig geschnittene Büro- und Verkaufsflächen, für die wir Reinigungseinsätze mit klar abgegrenzten Bereichen planen – kleinere Praxen und Dienstleister in Wohnnähe erhalten dagegen einen kompakteren Rhythmus.",
+    faq: [
+      {
+        question: "Werden auch kleinere Praxen und Dienstleister in Wohnnähe bedient?",
+        answer: "Ja, für kleinere Flächen planen wir einen kompakteren Rhythmus als für die großzügig geschnittenen Gewerbeflächen des Bezirks.",
+      },
+      {
+        question: "Kann die Unterhaltsreinigung mit Fenster- oder Sanitärreinigung kombiniert werden?",
+        answer: "Ja, das lässt sich bei Bedarf in einem gemeinsamen Reinigungskonzept bündeln.",
+      },
+    ],
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -702,6 +743,17 @@ export const combos: Combo[] = [
     districtSlug: "lichtenberg",
     intro:
       "Lichtenberg hat eine wachsende Zahl neuerer Gewerbeflächen mit offenen Bürolandschaften und größeren Glasflächen, die anders gepflegt werden müssen als klassisch aufgeteilte Altbau-Büros – darauf richten wir die Unterhaltsreinigung aus.",
+    faq: [
+      {
+        question: "Werden offene Bürolandschaften anders gereinigt als klassische Altbau-Büros?",
+        answer: "Ja, große Glasflächen und lange, offene Laufwege erfordern einen anderen Zuschnitt als kleinteilige Zellenbüros.",
+      },
+      {
+        question: "Kann Glasreinigung bei modernen Bürokomplexen ergänzt werden?",
+        answer: "Ja, gerade bei viel Glasfläche lässt sich das gut mit der laufenden Unterhaltsreinigung kombinieren.",
+        relatedLink: { label: "Zur Glas- und Fensterreinigung in Lichtenberg", href: "/leistungen/glas-und-fensterreinigung-berlin/lichtenberg" },
+      },
+    ],
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -714,6 +766,16 @@ export const combos: Combo[] = [
     districtSlug: "reinickendorf",
     intro:
       "Rund um das ehemalige Flughafengelände in Reinickendorf haben viele mittelständische Betriebe größer geschnittene Büro- und Lagerflächen – dafür planen wir einen Reinigungsrhythmus, der sich nach der tatsächlichen Nutzung richtet.",
+    faq: [
+      {
+        question: "Werden Büro- und Lagerflächen gemeinsam gereinigt?",
+        answer: "Ja, bei größer geschnittenen Objekten planen wir Büro- und Lagerbereiche in einem gemeinsamen Rhythmus.",
+      },
+      {
+        question: "Eignet sich die Leistung auch für kleinere Praxen in Wohnnähe?",
+        answer: "Ja, dafür planen wir einen kompakteren, auf die tatsächliche Größe abgestimmten Umfang.",
+      },
+    ],
   },
   {
     serviceSlug: "praxisreinigung-berlin",

@@ -291,9 +291,11 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1Highlight: "Unterhaltsreinigung Berlin",
     sectionHeadings: [
       "Regelmäßige Reinigung mit nachvollziehbarem Leistungsplan",
+      "Was ohne regelmäßige Pflege im Alltag passiert",
       "Welche Arbeiten zur Unterhaltsreinigung gehören können",
       "Täglich, mehrmals pro Woche oder individuell vereinbart",
       "Unterhaltsreinigung für unterschiedliche Gewerbeobjekte",
+      "Wer besonders von einem festen Rhythmus profitiert",
       "Was vor dem ersten Einsatz festgelegt wird",
       "Regelmäßige Reinigung bei Bedarf ergänzen",
       "Reinigungsmittel passend zu Material und Verschmutzung",

@@ -11,6 +11,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
 import { districts } from "@/data/districts";
+import { combos } from "@/data/combos";
 import { siteConfig } from "@/data/site";
 import { servicePhotos } from "@/data/servicePhotos";
 import { serviceContentPhotos } from "@/data/serviceContentPhotos";
@@ -144,6 +145,11 @@ const costFactors = [
   "zusätzliche Leistungen",
 ];
 
+/** Bezirke mit eigener Unterhaltsreinigung-Kombiseite – im Einsatzgebiet gezielt dorthin statt zur allgemeinen Bezirksseite verlinken. */
+const comboDistrictSlugs = new Set(
+  combos.filter((combo) => combo.serviceSlug === "unterhaltsreinigung-berlin").map((combo) => combo.districtSlug),
+);
+
 const faqItems = [
   {
     question: "Was ist eine Unterhaltsreinigung?",
@@ -172,6 +178,12 @@ const faqItems = [
   {
     question: "Kann der Reinigungsplan angepasst werden?",
     answer: "Ja, wenn sich Nutzung oder Bedarf verändern.",
+  },
+  {
+    question: "Was passiert, wenn ich mit einem Termin einmal nicht zufrieden bin?",
+    answer:
+      "Sagen Sie uns kurz Bescheid. Berechtigte Beanstandungen bessern wir zeitnah nach – die genauen Bedingungen unseres Nachbesserungs-Versprechens stehen auf der Über-uns-Seite.",
+    relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
   },
   {
     question: "Wie kann ich ein Angebot anfordern?",
@@ -273,9 +285,25 @@ export default function UnterhaltsreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* Ausgangslage */}
+      <Section background="warm">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
+          <h2 className="font-display display-lg text-2xl font-medium text-brand-900 sm:text-3xl">
+            {heading.sectionHeadings[1]}
+          </h2>
+          <ul className="divide-y divide-line">
+            {service.challenges.map((challenge) => (
+              <li key={challenge} className="measure py-4 text-base leading-relaxed text-ink-soft first:pt-0 last:pb-0">
+                {challenge}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
       {/* Leistungen */}
       <Section background="white">
-        <SectionHeading eyebrow="Möglicher Leistungsumfang" title={heading.sectionHeadings[1]} />
+        <SectionHeading eyebrow="Möglicher Leistungsumfang" title={heading.sectionHeadings[2]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {scopeCards.map((card, index) => (
             <FadeIn
@@ -292,7 +320,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Intervalle */}
       <Section background="muted">
-        <SectionHeading eyebrow="Passender Rhythmus" title={heading.sectionHeadings[2]} />
+        <SectionHeading eyebrow="Passender Rhythmus" title={heading.sectionHeadings[3]} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {frequencyCards.map((card, index) => (
             <FadeIn
@@ -309,7 +337,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Objektarten */}
       <Section background="white">
-        <SectionHeading eyebrow="Passend zu Ihrem Objekt" title={heading.sectionHeadings[3]} />
+        <SectionHeading eyebrow="Passend zu Ihrem Objekt" title={heading.sectionHeadings[4]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {objectTypeLinks.map((link) => (
             <Link
@@ -323,9 +351,42 @@ export default function UnterhaltsreinigungBerlinContent({
         </FadeIn>
       </Section>
 
+      {/* Zielgruppen und Vorteile */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Für wen sich der feste Rhythmus lohnt" title={heading.sectionHeadings[5]} />
+        <div className="mt-10 grid gap-10 lg:grid-cols-2">
+          <div>
+            <h3 className="font-display text-lg font-medium text-brand-900">Besonders gefragt bei</h3>
+            <ul className="mt-5 space-y-2.5">
+              {service.audiences.map((audience) => (
+                <li
+                  key={audience}
+                  className="rounded-control border border-line bg-white px-4 py-2.5 text-sm font-medium text-brand-900"
+                >
+                  {audience}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-display text-lg font-medium text-brand-900">Der Vorteil eines festen Plans</h3>
+            <ul className="mt-5 space-y-2.5">
+              {service.benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="mt-0.5 shrink-0 text-brand-500">
+                    <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
       {/* Reinigungsplan */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Klare Abstimmung vor Beginn" title={heading.sectionHeadings[4]} />
+        <SectionHeading eyebrow="Klare Abstimmung vor Beginn" title={heading.sectionHeadings[6]} />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {planItems.map((item) => (
             <div
@@ -340,7 +401,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Ergänzende Leistungen */}
       <Section background="white">
-        <SectionHeading eyebrow="Bei Bedarf erweiterbar" title={heading.sectionHeadings[5]} />
+        <SectionHeading eyebrow="Bei Bedarf erweiterbar" title={heading.sectionHeadings[7]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {supplementaryLinks.map((link) => (
             <Link
@@ -356,7 +417,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Materialschutz */}
       <Section background="muted">
-        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[6]} />
+        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[8]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Glanzwerk verwendet je nach Einsatzbereich professionelle Reinigungsprodukte, unter
@@ -372,7 +433,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[7]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[9]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -380,7 +441,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Unterhaltsreinigung" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Preis der Unterhaltsreinigung" title={heading.sectionHeadings[10]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -404,12 +465,16 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Berlin */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[9]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[11]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link
               key={district.slug}
-              href={`/standorte/${district.slug}`}
+              href={
+                comboDistrictSlugs.has(district.slug)
+                  ? `/leistungen/${service.slug}/${district.slug}`
+                  : `/standorte/${district.slug}`
+              }
               className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900 hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {district.name}
