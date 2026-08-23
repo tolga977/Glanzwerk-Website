@@ -1488,13 +1488,18 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     h1Highlight: "Kita- und Schulreinigung",
     sectionHeadings: [
       "Kita- und Schulreinigung für eine wachsende Zahl an Einrichtungen",
+      "Leistungsumfang für Kitas und Schulen",
+      "So stimmen wir uns mit Trägern und Hausmeisterdiensten ab",
+      "Für welche Einrichtungen sich das eignet",
+      "Mehr zur Kita- und Schulreinigung im gesamten Berliner Stadtgebiet",
       "Alle Leistungen in Pankow im Überblick",
     ],
     faqHeading: "Fragen zur Kita- und Schulreinigung in Berlin-Pankow",
     ctaHeading: "Kita- und Schulreinigung in Pankow anfragen",
-    mainTopic: "Reinigung außerhalb der Betreuungs- und Unterrichtszeiten",
+    mainTopic: "Reinigung außerhalb der Betreuungs- und Unterrichtszeiten bei wachsender Einrichtungszahl",
     mostSimilarUrl: "/leistungen/praxisreinigung-berlin/pankow",
-    differentiation: "Betreuungszeiten-Taktung statt Sprechzeiten einer Praxis.",
+    differentiation:
+      "Betreuungszeiten- und Ferientaktung sowie Abstimmung mit Trägern/Hausmeisterdiensten statt Sprechzeiten einer Praxis – ausgebaut 2026-08 (Entscheidungsanalyse-Bewertung A, einzige Kombi der Familie, kein Geschwisterkonflikt).",
   },
   "/leistungen/fitnessstudioreinigung-berlin/friedrichshain-kreuzberg": {
     h1: "Fitnessstudioreinigung in Friedrichshain-Kreuzberg",

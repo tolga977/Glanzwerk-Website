@@ -718,12 +718,45 @@ export const combos: Combo[] = [
     districtSlug: "pankow",
     intro:
       "Mit der wachsenden Zahl an Kitas und Schulen in Pankow steigt auch der Bedarf an verlässlicher Reinigung außerhalb der Betreuungszeiten. Wir richten unsere Einsätze nach den jeweiligen Öffnungs- und Ferienzeiten der Einrichtung.",
+    localAngle: [
+      "Mit dem Bevölkerungswachstum in Pankow ist die Zahl an Kitas und Schulen in den vergangenen Jahren spürbar gestiegen. Entsprechend wächst auch der Bedarf an einer verlässlichen Reinigung, die sich nach Betreuungs- und Unterrichtszeiten statt nach einem starren Wochenplan richtet.",
+      "Viele Einrichtungen werden von Trägern oder externen Hausmeisterdiensten verwaltet, mit denen wir Zutritt, Zeitfenster und Zuständigkeiten direkt abstimmen – zusätzlich zu den Ferienzeiten, in denen sich intensivere Reinigungstermine anbieten.",
+    ],
+    scopeBullets: [
+      "Gruppen- und Klassenräume nach Betreuungs- oder Unterrichtsende",
+      "Sanitärbereiche mit besonderem Hygienefokus",
+      "Turnhallen und Gemeinschaftsräume",
+      "Zusätzliche, intensivere Termine in den Ferien",
+    ],
+    processText:
+      "Weil Zutritt und Zeitfenster in Pankow häufig über Träger oder Hausmeisterdienste laufen, klären wir vor dem ersten Einsatz, wer vor Ort Ansprechpartner ist – damit Reinigungstermine zuverlässig stattfinden, ohne den Betreuungs- oder Unterrichtsbetrieb zu stören.",
+    faq: [
+      {
+        question: "Warum wächst der Bedarf an Kita- und Schulreinigung in Pankow?",
+        answer: "Mit dem Bevölkerungswachstum im Bezirk ist auch die Zahl an Kitas und Schulen gestiegen – entsprechend steigt der Bedarf an regelmäßiger, verlässlicher Reinigung.",
+      },
+      {
+        question: "Wird mit Trägern oder Hausmeisterdiensten zusammengearbeitet?",
+        answer: "Ja, Zutritt, Zeitfenster und Zuständigkeiten stimmen wir direkt mit Trägern oder vorhandenen Hausmeisterdiensten ab.",
+      },
+    ],
+    ctaSubtitle: "Nennen Sie uns Betreuungs- oder Unterrichtszeiten Ihrer Einrichtung in Pankow – wir schlagen passende Reinigungstermine vor.",
   },
   {
     serviceSlug: "fitnessstudioreinigung-berlin",
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "Friedrichshain-Kreuzberg hat zahlreiche Studios und Kursräume, deren Trainingsflächen, Geräte und Umkleiden wir in einem an die Frequentierung angepassten Rhythmus reinigen.",
+    faq: [
+      {
+        question: "Wird der Rhythmus an die Öffnungszeiten des Studios angepasst?",
+        answer: "Ja, wir richten Reinigungszeiten nach der tatsächlichen Frequentierung und den Öffnungszeiten des Studios aus.",
+      },
+      {
+        question: "Werden auch Umkleiden und Sanitärbereiche mitgereinigt?",
+        answer: "Ja, diese gehören je nach Vereinbarung zum regulären Leistungsumfang.",
+      },
+    ],
   },
   {
     serviceSlug: "autohausreinigung-berlin",
