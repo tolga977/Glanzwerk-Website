@@ -354,6 +354,16 @@ export default function TreppenhausreinigungBerlinContent({
             Erdgeschoss andere Ansprüche an Sauberkeit und Zeitfenster haben als die Bewohner in
             den oberen Etagen.
           </p>
+          <p>
+            Der Hintergrund ist mehr als Ordnungssinn: Wer ein Treppenhaus unterhält, trägt die
+            sogenannte Verkehrssicherungspflicht dafür – die Pflicht, es zu jeder Jahreszeit
+            gefahrlos begehbar zu halten. Dazu gehört auch, Reinigungsmittel und Verfahren so zu
+            wählen, dass keine zusätzliche Rutschgefahr entsteht, etwa durch zu glatt gewischte
+            Stufen. Diese Aufgabe lässt sich an ein Reinigungsunternehmen übertragen, die
+            Verantwortung dafür, dass sorgfältig gearbeitet wird, bleibt aber bei der
+            Hausverwaltung oder Eigentümergemeinschaft. Genau deshalb ist ein fester, verlässlicher
+            Ansprechpartner hier wichtiger als der niedrigste Stundenpreis.
+          </p>
         </div>
       </Section>
 
@@ -423,6 +433,14 @@ export default function TreppenhausreinigungBerlinContent({
             unterschiedliche Reinigungsverfahren. Glanzwerk setzt je nach Material und
             Verschmutzung professionelle Reinigungsprodukte ein, unter anderem von Kiehl, Dr.
             Schnell und Buzil.
+          </p>
+          <p>
+            Naturstein etwa reagiert empfindlich auf säurehaltige Reiniger, die Kalk lösen und die
+            Oberfläche auf Dauer angreifen können – deshalb kommen bei diesen Belägen möglichst
+            pH-neutrale Mittel zum Einsatz, auch wenn ein aggressiveres Produkt kurzfristig
+            schneller wirken würde. Beschichtete Böden vertragen wiederum keine zu alkalischen
+            Reiniger, die die Versiegelung angreifen. Welches Mittel zu Ihrem Bodenbelag passt,
+            klären wir vor dem ersten Einsatz.
           </p>
           <p>
             Die Dosierung richtet sich nach Herstellerangaben und tatsächlichem Bedarf. Ziel ist
@@ -497,9 +515,31 @@ export default function TreppenhausreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* 9b. Umlage und Steuervorteil */}
+      <Section background="white">
+        <SectionHeading eyebrow="Rechtlicher Rahmen" title={heading.sectionHeadings[10]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Die Kosten der Treppenhausreinigung zählen nach der Betriebskostenverordnung zu den
+            Kosten der Gebäudereinigung und lassen sich grundsätzlich auf die Mieter umlegen,
+            sofern das im Mietvertrag vereinbart ist. Das gilt für laufende Reinigungskosten – für
+            die Pflege von Zugängen, Fluren, Treppen und, sofern vorhanden, den Aufzug.
+          </p>
+          <p>
+            Für Eigentümergemeinschaften kommt ein zweiter Punkt hinzu: Treppenhausreinigung zählt
+            als haushaltsnahe Dienstleistung nach § 35a Einkommensteuergesetz. Wohnungseigentümer
+            können einen Teil der Kosten steuerlich geltend machen, auch wenn nicht sie selbst,
+            sondern die Verwaltung den Auftrag erteilt hat – die Kostenaufstellung der
+            Hausgeldabrechnung genügt dafür in der Regel als Nachweis. Die genaue steuerliche
+            Handhabung im Einzelfall besprechen Sie am besten mit Ihrem Steuerberater; hier geht es
+            nur um den grundsätzlichen Rahmen, den viele Eigentümer nicht kennen.
+          </p>
+        </div>
+      </Section>
+
       {/* 10. Einsatzgebiet */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[10]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[11]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link
