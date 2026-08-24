@@ -1141,6 +1141,47 @@ export const combos: Combo[] = [
     districtSlug: "neukoelln",
     intro:
       "Bei Neubezug oder nach Renovierung in Neukölln – ob im dicht bebauten Kern oder in den Gewerbeflächen Rudows – sorgt eine einmalige Grundreinigung für einen sauberen Ausgangspunkt.",
+    metaDescription:
+      "Grundreinigung in Neukölln für frisch sanierte Altbauflächen im Kern und moderne Gewerbeflächen in Rudow – einmalig intensiv vor Neubezug. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Ob kleinteilige Altbau-Etage oder großzügige Gewerbehalle in Rudow – wir passen Verfahren und Zeitaufwand an die tatsächliche Bausubstanz an, statt ein einheitliches Vorgehen für den gesamten Bezirk anzusetzen.",
+    localAngle: [
+      "Nach einer Sanierung in den dicht bebauten Altbauvierteln Neuköllns treffen frisch renovierte Flächen häufig auf noch vorhandene Stuckdecken oder historische Dielenböden, die bei der Grundreinigung besondere Rücksicht erfordern. Wir setzen dort schonendere Verfahren ein als bei robusteren Neubauflächen.",
+      "In den moderneren Gewerbeflächen Rudows, näher am Flughafengelände BER gelegen, dominieren dagegen großzügig geschnittene Grundrisse mit robusteren Bodenbelägen wie Fliesen oder Industrieestrich. Dort lässt sich eine Grundreinigung meist mit großflächigeren, maschinellen Verfahren durchführen als in kleinteiligen Altbau-Etagen.",
+      "Nach Bauarbeiten bleiben häufig Baustaub und feine Rückstände auf Oberflächen zurück, die sich mit einer gewöhnlichen Unterhaltsreinigung nicht vollständig entfernen lassen. Die Grundreinigung arbeitet deshalb mit intensiveren Verfahren und einem höheren Zeitaufwand pro Quadratmeter.",
+      "Renovierte Altbauwohnungen, die zu Büro- oder Praxisflächen umgenutzt werden, haben oft noch einzelne, kleinteilige Zimmer aus der ursprünglichen Wohnnutzung. Der Zeitaufwand für den Wechsel zwischen den Räumen ist dabei höher als bei einer zusammenhängenden Gewerbefläche gleicher Gesamtgröße.",
+      "Bauschutzfolien, wie sie während Renovierungsarbeiten häufig auf Böden und Fensterbänken ausgelegt werden, hinterlassen nach dem Entfernen mitunter Klebstoffreste. Diese lassen sich in der Regel mit geeigneten, materialschonenden Mitteln entfernen, ohne den darunterliegenden Belag anzugreifen.",
+      "Bei größeren Gewerbeflächen in Rudow mit mehreren Hallenabschnitten empfiehlt sich eine Grundreinigung in Etappen, bei der ein Bereich nach dem anderen bearbeitet wird – so kann der laufende Betrieb in bereits fertiggestellten Abschnitten schon vor Abschluss der Gesamtreinigung wieder aufgenommen werden.",
+      "Fensterrahmen und Fensterbänke in Altbauwohnungen sind häufig aus Holz gefertigt und benötigen andere Pflegemittel als die meist robusteren Kunststoff- oder Aluminiumrahmen neuerer Gewerbeflächen. Wir wählen das Verfahren nach dem tatsächlich vorhandenen Material.",
+      "Bei der Auswahl eines Dienstleisters für eine Grundreinigung nach Sanierung lohnt sich die Frage, ob tatsächlich zwischen empfindlicher Altbausubstanz und robusteren Neubauflächen unterschieden wird, statt ein einheitliches Verfahren für jedes Objekt im Bezirk anzubieten.",
+      "Nach Abschluss einer Grundreinigung in Altbau-Etagen bietet sich ein gemeinsamer Rundgang mit dem Auftraggeber an, um empfindliche Bereiche wie Stuckdecken oder historische Fußböden gezielt zu begutachten, bevor der reguläre Betrieb beginnt.",
+      "Grundreinigungen vor Neubezug lassen sich mit einer anschließenden, regelmäßigen Unterhaltsreinigung kombinieren, sodass der frisch gereinigte Zustand nicht nach kurzer Zeit wieder nachlässt.",
+      "In vielen Altbauwohnungen, die zu Gewerbeflächen umgenutzt werden, sind Heizkörper noch aus der ursprünglichen Wohnnutzung vorhanden. Der Bereich hinter und unter den Heizkörpern sammelt über Jahre besonders viel Staub an und wird im Rahmen der Grundreinigung gezielt mit erfasst, anders als bei der laufenden Unterhaltsreinigung.",
+      "Souterrain- oder Kellerräume, die in Altbauten häufig als zusätzliche Lager- oder Archivfläche genutzt werden, haben ein anderes Verschmutzungsbild als die oberirdischen Geschäftsräume – meist mehr Feuchtigkeit und Staub. Wir stimmen das Verfahren für solche Bereiche gesondert ab.",
+      "Bei gemischt genutzten Altbauten mit Gewerbe im Erdgeschoss und Wohnungen in den oberen Etagen gehört der gemeinsame Hausflur nicht automatisch zur Grundreinigung der gewerblichen Einheit – dieser wird in der Regel separat über die Treppenhausreinigung des gesamten Hauses organisiert.",
+      "Lieferantenzufahrten zu den Gewerbeflächen in Rudow gehören zum Außenbereich und damit nicht automatisch zur Grundreinigung der Innenräume. Den unmittelbaren Übergang zwischen Zufahrt und Innenraum klären wir vorab gesondert.",
+      "Beleuchtungskörper werden im Rahmen der Grundreinigung im frei zugänglichen Bereich vom Staub befreit. Höher hängende oder fest verbaute Leuchten, die eine Leiter oder ein Hubgerät erfordern, sowie jegliche Elektroarbeiten gehören nicht zum Leistungsumfang.",
+      "Nach einer Grundreinigung lässt sich bei bestimmten Bodenbelägen wie Fliesen oder Naturstein eine zusätzliche Versiegelung als separate Zusatzleistung vereinbaren, die den frisch gereinigten Zustand länger erhält – das ist jedoch nicht automatisch Teil der Grundreinigung selbst.",
+      "Bei Gewerbeflächen mit direktem Zugang zur Karl-Marx-Straße oder anderen belebten Hauptstraßen im Kern Neuköllns setzt sich durch den Publikumsverkehr direkt vor der Tür mehr Straßenschmutz im Eingangsbereich fest als bei den ruhiger gelegenen Gewerbeflächen in Rudow – ein Umstand, den wir bei der Einschätzung des Reinigungsaufwands für den Eingangsbereich berücksichtigen.",
+      "Türzargen und Türblätter in stark frequentierten Eingangsbereichen sammeln über die Zeit Fingerabdrücke und Griffspuren an, die bei einer gewöhnlichen Unterhaltsreinigung oft nur oberflächlich mitgenommen werden. Im Rahmen der Grundreinigung arbeiten wir diese Flächen gründlicher auf.",
+      "Bei Gewerbeflächen, die zuvor leer standen, bevor sie neu vermietet wurden, ist der Verschmutzungsgrad oft höher als bei einem direkten Mieterwechsel ohne Leerstand – abgelagerter Staub und vereinzelt Spinnweben in Ecken sind keine Seltenheit. Wir passen den Aufwand an den tatsächlich vorgefundenen Zustand an.",
+      "Fliesenfugen in älteren Sanitärbereichen der Altbauten benötigen bei starker Verschmutzung eine intensivere Behandlung als bei regelmäßig gepflegten Flächen. Eine vollständige Farbauffrischung stark vergilbter Fugen ist damit allerdings nicht automatisch verbunden.",
+      "Nach Abschluss der Arbeiten in Rudow bietet sich bei größeren Hallenflächen eine kurze gemeinsame Begehung mit dem Auftraggeber an, um die einzelnen Hallenabschnitte vor der Wiederinbetriebnahme gemeinsam abzunehmen.",
+      "Bei Gewerbeflächen im Erdgeschoss ehemaliger Wohnhäuser sind Fensterbänke innen häufig aus Holz und außen zusätzlich mit einem Metallabschluss versehen. Beide Materialien behandeln wir mit unterschiedlichen, jeweils geeigneten Pflegemitteln.",
+      "Nach dem Rückbau einer vorherigen Ladeneinrichtung bleiben mitunter Dübellöcher oder Klebereste von Regalsystemen an Wänden zurück. Deren Entfernung im Rahmen der Grundreinigung beschränkt sich auf die Reinigung der Oberfläche – ein Verschließen der Löcher oder eine Wandausbesserung gehört nicht zum Leistungsumfang.",
+      "Bei der Objektbegehung vor einer Grundreinigung in Neukölln prüfen wir zusätzlich, ob im jeweiligen Gebäude Denkmalschutzauflagen für bestimmte Oberflächen bestehen, die bestimmte Reinigungsmittel oder Verfahren ausschließen – das betrifft insbesondere historische Fassadenelemente im dicht bebauten Kern.",
+      "Bei Gewerbeflächen mit eigenem kleinen Vorgarten oder Eingangsbereich, wie sie bei einigen Ladenlokalen im Kern Neuköllns vorkommen, gehört die Außenfläche nicht automatisch zur Grundreinigung der Innenräume. Wir klären das vorab gesondert, ähnlich wie bei anderen Außenbereichen des Grundstücks.",
+    ],
+    scopeBullets: [
+      "Böden je nach Material intensiv aufbereitet",
+      "Fensterbänke und Rahmen",
+      "Entfernen von Bauschutzfolien-Rückständen",
+      "Sanitärbereiche gründlich aufbereitet",
+    ],
+    processText:
+      "Nach kurzer Objektbegehung zur Einschätzung von Bausubstanz und Verschmutzungsgrad erhalten Sie ein individuelles Angebot mit realistischem Zeitrahmen – bei größeren Flächen auch in Etappen.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Verschmutzungsgrad und Bausubstanz. Empfindliche Altbau-Oberflächen benötigen mitunter mehr Zeit pro Quadratmeter als robustere Neubauflächen.",
     faq: [
       {
         question: "Wird bei Neubezug auch eine Bauendreinigung mit übernommen?",
@@ -1150,13 +1191,69 @@ export const combos: Combo[] = [
         question: "Ist die Grundreinigung auch bei laufendem Betrieb möglich?",
         answer: "Ja, bei Bedarf teilen wir die Arbeiten in Etappen auf oder führen sie außerhalb der Geschäftszeiten durch.",
       },
+      {
+        question: "Wird bei Altbau-Sanierungen anders vorgegangen als bei modernen Gewerbeflächen in Rudow?",
+        answer: "Ja, empfindliche Bausubstanz wie Stuckdecken oder Dielenböden erfordert schonendere Verfahren als robuste Neubauflächen mit Fliesen oder Industrieestrich.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Neukölln – Altbau oder Gewerbefläche in Rudow – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "grundreinigung-berlin",
     districtSlug: "mitte",
     intro:
       "Nach Bauarbeiten oder bei Neubezug von Büroflächen in Mitte übernehmen wir die intensive Aufbereitung der Räume, bevor ein regelmäßiger Unterhaltsreinigungsrhythmus beginnt.",
+    metaDescription:
+      "Grundreinigung in Berlin-Mitte für Büroflächen nach Bauarbeiten oder bei Mieterwechsel – auch innerhalb kurzer Übergabefenster. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Gerade bei einem Mieterwechsel in gefragten Bürolagen zählt oft jeder Tag – wir richten Termin und Umfang der Grundreinigung nach dem vorgegebenen Übergabedatum aus, statt einen starren Ablauf vorzugeben.",
+    localAngle: [
+      "Zwischen dem Auszug eines Mieters und dem Einzug des nächsten liegt in den gefragten Bürolagen Mittes oft nur ein kurzes Zeitfenster. Eine Grundreinigung muss sich in solchen Fällen eng an den vorgegebenen Übergabetermin halten, statt flexibel über mehrere Wochen verteilt zu werden.",
+      "Nach Auszug eines Mieters bleiben häufig Spuren von Möbeln, Klebeband oder Beschriftungen an Wänden und Böden zurück. Wir entfernen solche Rückstände im Rahmen der Grundreinigung, sofern sie sich ohne Beschädigung der darunterliegenden Oberfläche lösen lassen.",
+      "Büroflächen in denkmalgeschützten Altbauten Mittes haben teils noch originale Fußböden oder Stuckelemente, die bei der Grundreinigung besondere Rücksicht erfordern – anders als die robusteren Materialien in den neueren Bürogebäuden der Friedrichstraße-Umgebung.",
+      "Nach Bauarbeiten in neu bezogenen Büroflächen bleiben Baustaub und feine Rückstände zurück, die sich mit einer gewöhnlichen Unterhaltsreinigung nicht vollständig entfernen lassen. Die Grundreinigung arbeitet mit intensiveren Verfahren und einem entsprechend höheren Zeitaufwand pro Quadratmeter.",
+      "Teppichböden, wie sie in vielen Büroflächen Mittes nach Jahren der Nutzung sichtbare Abnutzung zeigen, lassen sich im Rahmen einer Grundreinigung intensiv aufbereiten – das ersetzt jedoch keinen Austausch bei bereits stark abgenutztem Material.",
+      "Bei Bürogebäuden mit mehreren aufeinanderfolgenden Mieterwechseln im selben Jahr lässt sich eine wiederkehrende Grundreinigung zwischen den Mietverhältnissen mit der Hausverwaltung als planbarer Baustein vereinbaren, statt jedes Mal neu einen Dienstleister zu suchen.",
+      "Fensterfronten in modernen Bürogebäuden Mittes sind oft größer als in den umliegenden Altbauten. Nach längerer Standzeit ohne regelmäßige Pflege lohnt sich vor einem Neubezug eine gründliche Aufbereitung, damit der erste Eindruck für neue Mieter stimmt.",
+      "Bei der Auswahl eines Dienstleisters für eine Mieterwechsel-Grundreinigung lohnt sich die Frage, ob kurzfristige Termine innerhalb des engen Übergabefensters realistisch eingeplant werden können, statt Wochen im Voraus feste Termine zu verlangen.",
+      "Sanitärbereiche in Büroflächen, die längere Zeit ungenutzt standen, etwa während einer Renovierung, benötigen häufig eine intensivere Aufbereitung als regelmäßig genutzte Bereiche, da sich Kalkablagerungen und Verschmutzungen über die Zeit stärker festsetzen.",
+      "Nach Abschluss einer Mieterwechsel-Grundreinigung bietet sich ein gemeinsamer Rundgang mit der Hausverwaltung an, um den Zustand vor Übergabe an den neuen Mieter zu dokumentieren.",
+      "Deckenverkleidungen und abgehängte Decken in modernisierten Büroetagen werden im frei zugänglichen Bereich vom Staub befreit. Fest verbaute Elemente außerhalb der Reichweite sowie technische Einbauten darüber gehören nicht zum Leistungsumfang.",
+      "Bodentanks für Strom- und Netzwerkanschlüsse, wie sie in modernen Bürogebäuden Mittes häufig in den Boden integriert sind, werden von uns nur äußerlich gereinigt. Die Abdeckungen bleiben geschlossen, eine technische Prüfung der Anschlüsse gehört nicht zum Umfang.",
+      "Bei Bürogebäuden mit einem gemeinsamen Empfang für mehrere Mieter klären wir vorab, ob die Grundreinigung nur die einzelne Mietfläche oder auch anteilig die Gemeinschaftsflächen des Empfangs umfasst.",
+      "Nach einem Mieterwechsel bleiben mitunter noch Kabelreste oder Befestigungsmaterial ehemaliger Einbauten an Wänden oder Böden zurück. Wir entfernen sichtbare Rückstände im Rahmen der Grundreinigung, sofern sich dies ohne Beschädigung der Oberfläche durchführen lässt.",
+      "Fensterbänke aus Naturstein, wie sie in vielen der repräsentativen Altbauten Mittes verbaut sind, benötigen andere Pflegemittel als die meist robusteren Kunststoff- oder Aluminiumausführungen moderner Bürogebäude.",
+      "Bei besonders kurzfristigen Übergabeterminen lässt sich die Grundreinigung mit einem zusätzlichen Team durchführen, um den engen Zeitrahmen einzuhalten – das wirkt sich allerdings auf die Kalkulation aus, da mehr Personal gleichzeitig eingeplant wird.",
+      "Nach der Grundreinigung eines neu bezogenen Büros empfiehlt sich vor dem ersten Arbeitstag eine kurze Objektbegehung mit dem neuen Mieter, um den Zustand gemeinsam zu bestätigen, bevor der reguläre Betrieb beginnt.",
+      "Türzargen und Lichtschalter in stark frequentierten Bürofluren sammeln über die Zeit Fingerabdrücke an, die bei der Grundreinigung gründlicher aufgearbeitet werden als im laufenden Unterhaltsreinigungsrhythmus.",
+      "Bei besonders lange leerstehenden Büroflächen ist der Verschmutzungsgrad oft höher als bei einem direkten Mieterwechsel ohne Leerstand. Wir passen den Aufwand an den tatsächlich vorgefundenen Zustand bei der Objektbegehung an, statt einen pauschalen Zeitrahmen für jede Leerstandsdauer anzusetzen.",
+      "Fliesenfugen in Sanitärbereichen, die während einer längeren Renovierungsphase nicht genutzt wurden, benötigen bei starker Verschmutzung eine intensivere Behandlung als regelmäßig gepflegte Flächen.",
+      "Nach der Grundreinigung eines Mieterwechsel-Objekts lässt sich der Übergang zu einem regelmäßigen Unterhaltsreinigungsvertrag direkt im Anschluss vereinbaren, sodass der frisch aufbereitete Zustand vom ersten Tag an erhalten bleibt.",
+      "Aufzugsinnenräume in Bürogebäuden mit mehreren Mietparteien werden im Rahmen der Grundreinigung mit erfasst, sofern sie zur beauftragten Fläche zählen. Die technische Wartung der Aufzugsanlage selbst bleibt davon unabhängig geregelt.",
+      "Nach dem Rückbau einer vorherigen Büroeinrichtung bleiben mitunter Dübellöcher oder Klebereste an Wänden zurück. Deren Entfernung im Rahmen der Grundreinigung beschränkt sich auf die Reinigung der Oberfläche – eine Wandausbesserung gehört nicht zum Leistungsumfang.",
+      "Bei der Objektbegehung vor einer Grundreinigung in denkmalgeschützten Altbauten Mittes prüfen wir zusätzlich, ob für bestimmte Oberflächen Auflagen bestehen, die bestimmte Reinigungsmittel oder Verfahren ausschließen.",
+      "Empfangsbereiche mit repräsentativem Anspruch, wie sie in den gefragten Bürolagen Mittes üblich sind, erhalten bei der Grundreinigung besondere Aufmerksamkeit, da dieser Bereich für neue Mieter und deren Besucher den ersten Eindruck des gesamten Objekts prägt.",
+      "Besprechungsräume mit Glaswänden, wie sie in modernisierten Büroflächen Mittes zunehmend verbaut werden, benötigen bei der Grundreinigung eine intensivere Aufbereitung der Glasflächen als die übrigen Raumteile, insbesondere nach längerem Leerstand mit Baustaub.",
+      "Bei der Kalkulation einer Grundreinigung nach Mieterwechsel berücksichtigen wir zusätzlich, ob bereits ein Termin für die anschließende Unterhaltsreinigung feststeht – so lässt sich der Übergang zwischen beiden Leistungen nahtlos planen, ohne Lücke im Reinigungsrhythmus.",
+      "Kantinen oder kleine Küchenbereiche in größeren Bürogebäuden Mittes sammeln während eines Mieterwechsels ähnliche Rückstände an wie die übrigen Gemeinschaftsflächen und werden deshalb im selben intensiven Verfahren der Grundreinigung mit erfasst.",
+    ],
+    scopeBullets: [
+      "Böden materialgerecht intensiv aufbereitet",
+      "Entfernen von Kleberesten und Möbelspuren",
+      "Fensterflächen gründlich aufbereitet",
+      "Sanitärbereiche intensiv aufbereitet",
+    ],
+    processText:
+      "Nach kurzer Einschätzung von Fläche und Verschmutzungsgrad erhalten Sie ein Angebot mit realistischem Zeitrahmen – bei Mieterwechseln richten wir den Termin nach dem vorgegebenen Übergabedatum aus.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Verschmutzungsgrad und Bausubstanz. Denkmalgeschützte Altbauflächen benötigen mitunter mehr Zeit pro Quadratmeter als moderne Bürogebäude.",
     faq: [
       {
         question: "Reicht eine Grundreinigung vor dem Einzug in neue Büroflächen aus?",
@@ -1166,7 +1263,19 @@ export const combos: Combo[] = [
         question: "Wie lange dauert die Grundreinigung vor einem Umzug?",
         answer: "Das hängt von Fläche und Verschmutzungsgrad ab. Nach einer kurzen Einschätzung nennen wir einen realistischen Zeitrahmen.",
       },
+      {
+        question: "Lässt sich die Grundreinigung innerhalb eines kurzen Übergabefensters zwischen zwei Mietern durchführen?",
+        answer: "Ja, wir richten Termin und Ablauf nach dem vorgegebenen Übergabedatum aus – gerade bei gefragten Bürolagen mit kurzer Leerstandszeit.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Büroflächen in Mitte – wir melden uns mit einem individuellen Angebot, auch bei kurzfristigem Übergabetermin.",
   },
   {
     serviceSlug: "kita-und-schulreinigung-berlin",
@@ -1323,6 +1432,49 @@ export const combos: Combo[] = [
     districtSlug: "treptow-koepenick",
     intro:
       "Nach Neubezug oder Umbau größerer Gewerbeflächen in Treptow-Köpenick übernehmen wir die intensive Aufbereitung – auch bei weitläufigen Grundrissen mit mehreren Gebäudeteilen im Ortskern Köpenick.",
+    metaDescription:
+      "Grundreinigung in Treptow-Köpenick für weitläufige Gewerbeflächen mit mehreren Gebäudeteilen sowie historische Objekte im Ortskern Köpenick. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Bei einem so großflächigen Bezirk lohnt sich eine etappenweise Herangehensweise: Nicht jeder Gebäudeteil muss gleichzeitig bearbeitet werden, damit der Betrieb in bereits fertiggestellten Bereichen früher wieder anlaufen kann.",
+    localAngle: [
+      "Bei weitläufigen Gewerbeflächen mit mehreren Gebäudeteilen empfiehlt sich eine Grundreinigung in Etappen: Ein Gebäudeteil nach dem anderen wird intensiv aufbereitet, während in den bereits fertiggestellten Bereichen der Betrieb schon wieder aufgenommen werden kann.",
+      "Nach einem Umbau oder einer Erweiterung bestehender Gewerbeflächen im Bezirk grenzen frisch renovierte Bereiche häufig unmittelbar an ältere, unverändert gebliebene Gebäudeteile. Wir grenzen bei der Grundreinigung klar ab, welcher Bereich tatsächlich zum aktuellen Auftrag gehört.",
+      "Im historischen Ortskern Köpenicks stehen manche Gewerbeobjekte in Altbauten mit empfindlicheren Böden wie Parkett, während die moderneren Gewerbehallen am Bezirksrand meist robusteren Belag wie Fliesen oder Industrieestrich haben. Wir wählen das Grundreinigungsverfahren nach dem tatsächlich vorhandenen Material.",
+      "Nach Bauarbeiten bleiben Baustaub und feine Rückstände zurück, die sich mit einer gewöhnlichen Unterhaltsreinigung nicht vollständig entfernen lassen. Bei großflächigen Objekten mit mehreren Gebäudeteilen ist der Gesamtaufwand entsprechend höher als bei einer einzelnen, kompakten Gewerbefläche.",
+      "Bei Objekten mit größerem Abstand zwischen den einzelnen Gebäudeteilen plant das Reinigungsteam die Reihenfolge der Etappen so, dass Wegzeiten zwischen den Bereichen möglichst gering bleiben, statt beliebig zwischen weit auseinanderliegenden Abschnitten zu wechseln.",
+      "Lagerhallen mit hohen Decken und schwer erreichbaren oberen Regalböden benötigen bei der Grundreinigung eine gesonderte Abstimmung, welche Bereiche tatsächlich im Rahmen der Bodenreinigung mit erfasst werden und welche aus Sicherheitsgründen ausgenommen bleiben.",
+      "Fensterfronten in neueren Gewerbehallen am Bezirksrand sind oft großflächiger als in den Altbauten des Ortskerns. Nach längerer Bauzeit ohne regelmäßige Pflege lohnt sich vor der Wiederinbetriebnahme eine gründliche Aufbereitung dieser Flächen.",
+      "Bei der Auswahl eines Dienstleisters für ein weitläufiges Objekt mit mehreren Gebäudeteilen lohnt sich die Frage, ob eine realistische Einschätzung des Zeitaufwands pro Abschnitt erfolgt, statt ein Pauschalangebot allein nach Gesamtquadratmetern zu erstellen.",
+      "Sanitärbereiche in Gebäudeteilen, die während eines Umbaus längere Zeit ungenutzt standen, benötigen häufig eine intensivere Aufbereitung als durchgehend genutzte Bereiche, da sich Verschmutzungen über die Zeit stärker festsetzen.",
+      "Nach Abschluss der Grundreinigung eines weitläufigen Objekts bietet sich ein gemeinsamer Rundgang durch alle Gebäudeteile an, um den Zustand vor Wiederaufnahme des regulären Betriebs zu dokumentieren – gerade bei mehreren Abschnitten hilft das, spätere Missverständnisse zu vermeiden.",
+      "Deckenverkleidungen und Lüftungsgitter in Gewerbehallen werden im frei zugänglichen Bereich vom Staub befreit. Höher gelegene oder fest verbaute technische Einbauten gehören nicht zum Leistungsumfang und bleiben Aufgabe eines spezialisierten Wartungsbetriebs.",
+      "Nach einem Umbau bleiben mitunter Bohrstaub und Montagereste an Wänden und Böden zurück, die über den reinen Baustaub hinausgehen. Wir erfassen den tatsächlichen Zustand bei der Objektbegehung, statt pauschal von einer gewöhnlichen Neubau-Verschmutzung auszugehen.",
+      "Bei Gewerbeflächen mit eigenem Vorplatz oder Zufahrt für Lieferverkehr gehört der Außenbereich nicht automatisch zur Grundreinigung der Innenräume. Den unmittelbaren Übergang zwischen Außen- und Innenbereich klären wir vorab gesondert.",
+      "Nach einer Grundreinigung lässt sich bei robusten Bodenbelägen wie Industrieestrich eine zusätzliche Versiegelung als separate Zusatzleistung vereinbaren, die den frisch gereinigten Zustand länger erhält – das ist jedoch nicht automatisch Teil der Grundreinigung selbst.",
+      "Bei Objekten mit mehreren Gebäudeteilen unterschiedlichen Baualters kann sich die Grundreinigung eines neueren Anbaus deutlich vom Aufwand für einen historischen Altbau-Gebäudeteil unterscheiden. Wir kalkulieren beide Bereiche getrennt, statt einen Durchschnittswert für das gesamte Objekt anzusetzen.",
+      "Für Betriebe mit mehreren Standorten im Bezirk, die zeitgleich saniert oder umgebaut werden, lässt sich die Grundreinigung aller Standorte über einen gemeinsamen Ansprechpartner koordinieren, statt für jeden Standort einzeln zu planen.",
+      "Beleuchtungskörper in Lagerhallen mit hohen Decken werden im mit regulärem Gerät erreichbaren Bereich vom Staub befreit. Höher hängende Leuchten, die Hubgerät oder eine gesonderte Einweisung erfordern, gehören nicht zum Standardumfang und lassen sich bei Bedarf gesondert vereinbaren.",
+      "Türzargen und Handläufe in stark frequentierten Bereichen größerer Gewerbeobjekte sammeln über die Zeit Fingerabdrücke und Griffspuren an, die bei der Grundreinigung gründlicher aufgearbeitet werden als im laufenden Unterhaltsreinigungsrhythmus.",
+      "Bei Gebäudeteilen, die vor der Sanierung längere Zeit leer standen, ist der Verschmutzungsgrad oft höher als bei durchgehend genutzten Bereichen. Wir erfassen den tatsächlichen Zustand jedes Gebäudeteils separat, statt einen Durchschnittswert für das gesamte Objekt anzunehmen.",
+      "Fliesenfugen in älteren Sanitärbereichen des Ortskerns Köpenick benötigen bei starker Verschmutzung eine intensivere Behandlung als in neueren, regelmäßig gepflegten Gebäudeteilen am Bezirksrand.",
+      "Nach Abschluss der Grundreinigung eines weitläufigen Objekts lässt sich der Übergang zu einer regelmäßigen, nach Gebäudeteilen gestaffelten Unterhaltsreinigung direkt im Anschluss vereinbaren, sodass der frisch aufbereitete Zustand erhalten bleibt.",
+      "Aufzugsinnenräume in mehrstöckigen Gewerbeobjekten werden im Rahmen der Grundreinigung mit erfasst, sofern sie zur beauftragten Fläche zählen. Die technische Wartung der Anlage selbst bleibt davon unabhängig geregelt.",
+      "Nach dem Rückbau einer vorherigen Nutzung, etwa beim Wechsel von Lager- zu Büroflächen in einem Gebäudeteil, bleiben mitunter Dübellöcher oder Klebereste an Wänden zurück. Deren Entfernung im Rahmen der Grundreinigung beschränkt sich auf die Reinigung der Oberfläche.",
+      "Bei der Objektbegehung vor einer Grundreinigung im historischen Ortskern Köpenick prüfen wir zusätzlich, ob für bestimmte Oberflächen Denkmalschutzauflagen bestehen, die bestimmte Reinigungsmittel oder Verfahren ausschließen – anders als bei den moderneren Gewerbehallen am Bezirksrand.",
+      "Bei sehr großflächigen Objekten mit mehreren Gebäudeteilen empfiehlt sich vor Vertragsbeginn eine schriftliche Auflistung, welcher Gebäudeteil in welcher Reihenfolge bearbeitet wird – das schafft für beide Seiten Klarheit über den Ablauf, bevor die eigentliche Grundreinigung beginnt.",
+      "Bei Gewerbeflächen mit eigenem Werksgelände, das mehrere unabhängige Zufahrten hat, klären wir vor Beginn der Grundreinigung, über welchen Zugang das Reinigungsteam die einzelnen Gebäudeteile am effizientesten erreicht.",
+      "Kantinen oder Gemeinschaftsküchen, wie sie in größeren Gewerbeobjekten des Bezirks vorkommen, benötigen bei der Grundreinigung eine ähnlich intensive Aufbereitung wie die übrigen Gemeinschaftsflächen, unabhängig vom jeweiligen Gebäudeteil.",
+    ],
+    scopeBullets: [
+      "Böden je nach Gebäudeteil und Material aufbereitet",
+      "Fensterflächen gründlich aufbereitet",
+      "Sanitärbereiche intensiv aufbereitet",
+      "Etappenweise Bearbeitung mehrerer Gebäudeteile",
+    ],
+    processText:
+      "Nach einer Objektbegehung, bei der wir die einzelnen Gebäudeteile und deren Zustand erfassen, erhalten Sie ein Angebot mit realistischem Zeitrahmen – bei Bedarf in Etappen.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Verschmutzungsgrad und Bausubstanz der einzelnen Gebäudeteile. Historische Bausubstanz im Ortskern Köpenick benötigt mitunter mehr Zeit pro Quadratmeter als moderne Gewerbehallen am Bezirksrand.",
     faq: [
       {
         question: "Werden bei weitläufigen Objekten mehrere Gebäudeteile in einem Auftrag zusammengefasst?",
@@ -1332,7 +1484,19 @@ export const combos: Combo[] = [
         question: "Ist die Grundreinigung auch bei laufendem Betrieb möglich?",
         answer: "Ja, bei Bedarf teilen wir die Arbeiten in Etappen auf oder führen sie außerhalb der Geschäftszeiten durch.",
       },
+      {
+        question: "Wird bei Altbauten im Ortskern Köpenick anders vorgegangen als bei modernen Gewerbehallen am Bezirksrand?",
+        answer: "Ja, empfindlichere Böden wie Parkett in Altbauten erfordern schonendere Verfahren als robuste Beläge wie Fliesen oder Industrieestrich in moderneren Hallen.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Treptow-Köpenick – wir melden uns mit einem individuellen Angebot, bei Bedarf in Etappen.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
