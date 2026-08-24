@@ -1282,18 +1282,48 @@ export const combos: Combo[] = [
     districtSlug: "pankow",
     intro:
       "Mit der wachsenden Zahl an Kitas und Schulen in Pankow steigt auch der Bedarf an verlässlicher Reinigung außerhalb der Betreuungszeiten. Wir richten unsere Einsätze nach den jeweiligen Öffnungs- und Ferienzeiten der Einrichtung.",
+    metaDescription:
+      "Kita- und Schulreinigung in Pankow – abgestimmt auf Betreuungs- und Unterrichtszeiten sowie die wachsende Zahl an Einrichtungen im Bezirk. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Kitas und Schulen unterscheiden sich in Reinigungsanspruch und Rhythmus deutlich voneinander – wir richten Verfahren und Zeitfenster nach der jeweiligen Einrichtungsart aus, statt ein einheitliches Konzept für beide anzusetzen.",
     localAngle: [
       "Mit dem Bevölkerungswachstum in Pankow ist die Zahl an Kitas und Schulen in den vergangenen Jahren spürbar gestiegen. Entsprechend wächst auch der Bedarf an einer verlässlichen Reinigung, die sich nach Betreuungs- und Unterrichtszeiten statt nach einem starren Wochenplan richtet.",
       "Viele Einrichtungen werden von Trägern oder externen Hausmeisterdiensten verwaltet, mit denen wir Zutritt, Zeitfenster und Zuständigkeiten direkt abstimmen – zusätzlich zu den Ferienzeiten, in denen sich intensivere Reinigungstermine anbieten.",
+      "Kitas mit überwiegend jüngeren Kindern benötigen bei der Reinigung eine besondere Rücksicht auf Produkte, die mit Haut und Spielzeug in Kontakt kommen können. Wir setzen dort besonders schonende, für den Kontakt mit Kleinkindern geeignete Mittel ein, unabhängig davon, welches Reinigungsmittel in angrenzenden Verwaltungsräumen verwendet wird.",
+      "Schulen mit mehreren hundert Schülerinnen und Schülern haben ein anderes Verschmutzungsbild in Fluren und Treppenhäusern als eine kleinere Kita mit wenigen Gruppenräumen. Wir richten die Reinigungsintensität für Gemeinschaftsflächen an der tatsächlichen Schülerzahl aus.",
+      "Turnhallen benötigen für den Sporthallenboden spezielle, rutschfeste Pflegeverfahren, die sich von der Reinigung gewöhnlicher Klassen- oder Gruppenräume unterscheiden. Eine falsche Behandlung könnte die Rutschfestigkeit des Bodens beeinträchtigen, weshalb wir hier auf für Sporthallenböden geeignete Mittel setzen.",
+      "Mensen und Essensbereiche an Schulen mit Mittagsverpflegung benötigen einen engeren Reinigungstakt für Tische und Böden als reine Unterrichtsräume, da hier täglich mit Lebensmitteln gearbeitet wird.",
+      "Sandkästen und Außenspielflächen von Kitas gehören zum Außenbereich und damit nicht zur Innenraumreinigung. Die Pflege dieser Flächen liegt in der Regel beim Träger oder einem separaten Außendienst.",
+      "Allgemeine Hygieneanforderungen für Gemeinschaftseinrichtungen wie Kitas, wie sie im Infektionsschutzgesetz verankert sind, verlangen eine besonders sorgfältige Reinigung von Sanitärbereichen und häufig berührten Kontaktflächen. Wir richten unseren Reinigungsplan an diesen allgemein bekannten Anforderungen aus, unabhängig von einer gesonderten Zertifizierung.",
+      "Garderoben mit offenen Fächern für viele Kinder gleichzeitig sammeln durch häufiges Kommen und Gehen mehr Schmutz an als ein geschlossener Verwaltungsbereich. Wir passen den Reinigungstakt für solche stark frequentierten Übergangsbereiche entsprechend an.",
+      "Klassenräume mit Teppichboden, wie sie in manchen Grundschulen für den Sitzkreis vorgesehen sind, benötigen eine andere Pflege als die meist robusteren Linoleum- oder PVC-Böden in weiterführenden Schulen. Wir stimmen das Verfahren nach dem tatsächlich vorhandenen Belag ab.",
+      "Während der Sommerferien, in denen die Einrichtungen über mehrere Wochen nicht durchgehend genutzt werden, bietet sich eine intensivere Grundreinigung an, die während des laufenden Betriebs schwerer umsetzbar wäre – etwa eine gründliche Aufbereitung von Böden oder eine Reinigung schwer zugänglicher Bereiche.",
+      "Bei der Auswahl eines Dienstleisters für Kita- und Schulreinigung lohnt sich die Frage, ob tatsächlich unterschiedliche Verfahren für Kita und Schule angeboten werden, statt ein einheitliches Konzept für beide Einrichtungsarten anzuwenden.",
+      "Aulen und Mehrzweckräume, die für schulische Veranstaltungen genutzt werden, benötigen bei unregelmäßiger, ereignisabhängiger Nutzung einen flexibleren Reinigungstermin als die täglich genutzten Klassenräume.",
+      "Nach der Übernahme einer neuen Kita oder Schule gehen wir zunächst durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand realistisch einzuschätzen.",
+      "Bibliotheken oder Leseecken, wie sie in vielen Schulen zusätzlich zu den Klassenräumen eingerichtet sind, benötigen eine behutsamere Reinigung als reguläre Unterrichtsräume, um Bücher und Regale nicht zu beschädigen. Regale werden dabei nur im frei zugänglichen Bereich abgestaubt.",
+      "Fachräume für Kunst, Werken oder Naturwissenschaften haben ein anderes Verschmutzungsbild als reguläre Klassenräume – etwa Farbreste oder Materialspuren auf Arbeitsflächen. Wir richten das Reinigungsverfahren nach den tatsächlich vorhandenen Rückständen im jeweiligen Fachraum aus.",
+      "Pausenhöfe und Außenspielflächen an Schulen gehören zum Außenbereich und damit nicht zur Innenraumreinigung. Die Pflege dieser Flächen liegt in der Regel beim Träger, dem Bezirksamt oder einem separaten Außendienst.",
+      "Lehrerzimmer und Verwaltungsbüros unterscheiden sich in der Nutzung von den eigentlichen Unterrichtsräumen und werden entsprechend eher wie ein reguläres Büro behandelt, mit einem an die tatsächliche Anwesenheit angepassten Rhythmus.",
+      "Bei Kitas mit Krippenbereich für die jüngsten Kinder gilt ein noch höherer Hygieneanspruch für Wickelbereiche und Bodenflächen als in Gruppenräumen für ältere Kinder, da hier direkter Körperkontakt mit dem Boden häufiger vorkommt.",
+      "Nach größeren schulischen Veranstaltungen, etwa einem Tag der offenen Tür mit vielen externen Besuchern, lässt sich kurzfristig eine zusätzliche Reinigung vereinbaren, um den regulären Rhythmus nicht durch den einmalig erhöhten Publikumsverkehr zu belasten.",
+      "Verwaltungsräume mit Aktenschränken für Schüler- oder Kindesakten werden nur äußerlich abgewischt, der Inhalt bleibt unangetastet – vergleichbar mit dem Umgang bei Patientenunterlagen in Arztpraxen.",
+      "Bei Schulen mit Nachmittagsbetreuung oder Hort im selben Gebäude verlängert sich die tatsächliche Nutzungszeit der Räume über den regulären Unterricht hinaus. Wir stimmen den Reinigungstermin auf das Ende der jeweils letzten Betreuungsform ab, statt uns allein am offiziellen Unterrichtsende zu orientieren.",
+      "Fensterbänke in Klassenräumen, auf denen häufig Pflanzen oder Bastelarbeiten abgestellt werden, reinigen wir um die vorhandenen Gegenstände herum, ohne diese zu verschieben oder zu entsorgen.",
+      "Sporthallen, die außerhalb der Schulzeiten auch von Vereinen genutzt werden, benötigen bei geteilter Nutzung eine Abstimmung, welcher Nutzer für welchen Zeitraum verantwortlich ist – wir richten unseren Reinigungstermin nach dem Ende der schulischen Nutzung aus, unabhängig von einer möglichen Vereinsnutzung danach.",
+      "Bei mehreren Gebäudeteilen auf einem Schulgelände, etwa einem separaten Verwaltungsgebäude neben dem Hauptgebäude, stimmen wir vorab ab, welche Gebäudeteile zum vereinbarten Umfang gehören, um Missverständnisse über den tatsächlichen Leistungsumfang zu vermeiden.",
     ],
     scopeBullets: [
       "Gruppen- und Klassenräume nach Betreuungs- oder Unterrichtsende",
       "Sanitärbereiche mit besonderem Hygienefokus",
       "Turnhallen und Gemeinschaftsräume",
+      "Garderoben und Übergangsbereiche",
       "Zusätzliche, intensivere Termine in den Ferien",
     ],
     processText:
       "Weil Zutritt und Zeitfenster in Pankow häufig über Träger oder Hausmeisterdienste laufen, klären wir vor dem ersten Einsatz, wer vor Ort Ansprechpartner ist – damit Reinigungstermine zuverlässig stattfinden, ohne den Betreuungs- oder Unterrichtsbetrieb zu stören.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Gruppen- oder Klassenräume und gewünschtem Rhythmus. Schulen mit Mensa oder Turnhalle benötigen zusätzlichen Aufwand gegenüber einer reinen Unterrichtsflächenreinigung.",
     faq: [
       {
         question: "Warum wächst der Bedarf an Kita- und Schulreinigung in Pankow?",
@@ -1303,6 +1333,17 @@ export const combos: Combo[] = [
         question: "Wird mit Trägern oder Hausmeisterdiensten zusammengearbeitet?",
         answer: "Ja, Zutritt, Zeitfenster und Zuständigkeiten stimmen wir direkt mit Trägern oder vorhandenen Hausmeisterdiensten ab.",
       },
+      {
+        question: "Wird bei Kitas und Schulen unterschiedlich vorgegangen?",
+        answer:
+          "Ja, Kitas benötigen besonders schonende Produkte für den Kontakt mit Kleinkindern, während Schulen eher auf höhere Schülerzahlen und größere Gemeinschaftsflächen ausgerichtete Verfahren benötigen.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
     ctaSubtitle: "Nennen Sie uns Betreuungs- oder Unterrichtszeiten Ihrer Einrichtung in Pankow – wir schlagen passende Reinigungstermine vor.",
   },
@@ -1311,6 +1352,52 @@ export const combos: Combo[] = [
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "Friedrichshain-Kreuzberg hat zahlreiche Studios und Kursräume, deren Trainingsflächen, Geräte und Umkleiden wir in einem an die Frequentierung angepassten Rhythmus reinigen.",
+    metaDescription:
+      "Fitnessstudioreinigung in Friedrichshain-Kreuzberg für Trainingsflächen, Geräte und Umkleiden – im an die Frequentierung angepassten Rhythmus. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Trainingsgeräte, Kursräume und Sanitärbereiche haben jeweils einen eigenen Reinigungsanspruch – wir richten Verfahren und Rhythmus nach der tatsächlichen Nutzung der einzelnen Bereiche aus.",
+    localAngle: [
+      "Krafttrainingsgeräte mit gepolsterten Griffen und Sitzflächen sind durch direkten Hautkontakt und Schweiß besonders stark beansprucht. Sie werden bei jedem regulären Termin oberflächlich gereinigt – die technische Wartung der Geräte selbst, etwa Kabelzüge oder Gewichtsmechanik, gehört nicht zum Leistungsumfang.",
+      "Cardiogeräte wie Laufbänder oder Ergometer verfügen über Bildschirme und Touchpanels, die wir nur äußerlich mit geeigneten, für Displays verträglichen Tüchern abwischen. Eine technische Prüfung der Elektronik bleibt Aufgabe des Geräteherstellers oder eines spezialisierten Wartungsdienstes.",
+      "Bodenbeläge in Kursräumen unterscheiden sich häufig von den robusteren Gummiböden im Kraftbereich – etwa Sportböden mit einer gewissen Elastizität für Tanz- oder Yogakurse. Wir wählen das Reinigungsverfahren nach dem tatsächlich vorhandenen Belag, statt beide Bereiche gleich zu behandeln.",
+      "Umkleiden und Duschbereiche benötigen durch die tägliche Nutzung mit Feuchtigkeit und Körperkontakt einen deutlich engeren Reinigungstakt als reine Trainingsflächen. Wir richten den Rhythmus für Sanitär- und Umkleidebereiche entsprechend intensiver aus.",
+      "Spiegelflächen, die in Trainingsbereichen zur Haltungskontrolle dienen, werden mit streifenfrei arbeitenden Mitteln behandelt, da Schlieren hier optisch besonders auffallen und den Gesamteindruck des Studios beeinträchtigen würden.",
+      "Desinfektionsmittelspender, die viele Studios für Mitglieder zur Gerätereinigung zwischen den Trainingseinheiten bereitstellen, werden von uns äußerlich gereinigt. Das Nachfüllen des Desinfektionsmittels selbst bleibt Aufgabe des Studios, da es sich um einen laufenden Betriebsvorgang handelt.",
+      "Saunabereiche mit Holzverkleidung, wie sie in manchen Studios als Wellnessangebot vorhanden sind, benötigen andere, holzverträgliche Pflegemittel als die meist robusteren Fliesenflächen der übrigen Sanitärbereiche.",
+      "Kleingeräte wie Hanteln, Kettlebells oder Widerstandsbänder werden im Rahmen der Reinigung äußerlich abgewischt. Eine Inventur oder Sortierung der Geräte gehört nicht zum Leistungsumfang, da die Zuordnung zu bestimmten Trainingsstationen allein Sache des Studios ist.",
+      "Getränke- oder Shake-Bereiche, wie sie manche Studios zusätzlich anbieten, benötigen aufgrund des Lebensmittelkontakts einen anderen Hygieneanspruch als die übrigen Trainingsflächen. Wir richten Verfahren und Takt für solche Bereiche gesondert aus.",
+      "Empfangs- und Check-in-Bereiche mit digitalen Terminals für die Mitgliedskarte zählen zu den Kontaktflächen, die bei jedem regulären Termin mitgereinigt werden – ähnlich wie Türgriffe oder Handläufe im übrigen Studio.",
+      "Handtuchausgabestellen, sofern vom Studio angeboten, werden im Bereich um die Ausgabe gereinigt. Die Handtücher selbst sowie deren Wäsche gehören nicht zum Leistungsumfang der Fitnessstudioreinigung.",
+      "Bei der Auswahl eines Dienstleisters für ein Fitnessstudio lohnt sich die Frage, ob der Rhythmus tatsächlich an die Frequentierung zu unterschiedlichen Tageszeiten angepasst wird – etwa mit intensiverer Reinigung nach den üblichen Stoßzeiten am frühen Morgen oder frühen Abend, statt eines starren, gleichbleibenden Zeitplans.",
+      "Yoga- und Pilatesmatten, sofern vom Studio zur gemeinsamen Nutzung bereitgestellt, werden im Rahmen der Reinigung äußerlich abgewischt. Eine Desinfektion nach jeder einzelnen Nutzung durch verschiedene Mitglieder bleibt Aufgabe des Studios selbst.",
+      "Freihantelbereiche mit Hantelscheiben und Langhanteln sammeln durch häufigen Bodenkontakt mehr Staub und Abrieb an als die übrigen Trainingsflächen. Wir richten die Reinigungsintensität für solche Bereiche entsprechend intensiver aus.",
+      "Funktionsbereiche mit Klettergerüsten, Sprossenwänden oder Trainingsseilen benötigen eine gesonderte Abstimmung, welche Elemente im Rahmen der regulären Reinigung erfasst werden – höher gelegene oder schwer zugängliche Konstruktionen gehören nicht automatisch zum Standardumfang.",
+      "Garderobenschränke für Mitglieder werden von uns nur von außen gereinigt. Der Innenraum einzelner Schließfächer bleibt unberührt, da hier persönliche Gegenstände der Mitglieder aufbewahrt werden.",
+      "Lüftungsgitter in Trainingsräumen mit hoher körperlicher Belastung und entsprechend erhöhtem Luftaustausch werden im frei zugänglichen Bereich vom Staub befreit. Die technische Wartung der Lüftungsanlage selbst bleibt Aufgabe eines spezialisierten Fachbetriebs.",
+      "Trinkwasserspender oder Wasserspender für Mitglieder werden von uns nur äußerlich gereinigt. Die Wartung des Filtersystems bleibt Aufgabe des Herstellers oder eines spezialisierten Wartungsdienstes.",
+      "Bei Studios mit Gruppenkursräumen für unterschiedliche Kursformate, etwa Cycling neben klassischem Bodentraining, richten wir die Reinigung nach dem jeweils zuletzt stattgefundenen Kurstyp aus, da sich das Verschmutzungsbild je nach Kursart unterscheidet.",
+      "Bei der Auswahl eines Dienstleisters für ein Fitnessstudio lohnt sich außerdem die Frage, ob Erfahrung mit den besonderen Hygieneanforderungen von Trainingsflächen mit viel Hautkontakt vorhanden ist, statt Verfahren anzuwenden, die eher für klassische Büroflächen konzipiert wurden.",
+      "Boxsäcke und Kampfsportausrüstung, sofern im Studio vorhanden, werden von uns nur äußerlich abgewischt. Eine Innenreinigung oder der Austausch von Füllmaterial gehört nicht zum Leistungsumfang.",
+      "Trainingsflächen mit viel Tageslicht durch große Fensterfronten zeigen Staub und Fingerabdrücke auf Geräten optisch deutlicher als schwächer beleuchtete Bereiche. Wir richten die Reinigungsintensität für stark einsehbare Trainingsbereiche entsprechend gründlicher aus.",
+      "Bei Studios mit separatem Frauen- und Männerumkleidebereich stimmen wir Zutritt und Reinigungszeiten für beide Bereiche getrennt ab, um den laufenden Betrieb möglichst wenig zu stören.",
+      "Wandpolster in Kampfsport- oder Funktionsbereichen, die vor Verletzungen schützen sollen, werden mit Mitteln behandelt, die das Polstermaterial nicht angreifen – aggressive Reiniger könnten das Material auf Dauer rissig machen.",
+      "Bei der Auswahl eines Dienstleisters für ein Fitnessstudio lohnt sich zusätzlich die Frage, ob Reinigungstermine auch früh morgens vor Öffnung oder spät abends nach Schließung realistisch angeboten werden, da viele Studios durchgehend bis in die späten Abendstunden geöffnet sind.",
+      "Personal-Training-Bereiche oder abgetrennte Kleingruppenräume, wie sie in manchen Studios zusätzlich zum offenen Trainingsbereich eingerichtet sind, werden nach demselben Prinzip wie die übrigen Trainingsflächen gereinigt, mit einem an die tatsächliche Nutzung angepassten Rhythmus.",
+      "Rezeptionsbereiche mit Verkaufsflächen für Nahrungsergänzungsmittel oder Trainingszubehör benötigen bei der Reinigung besondere Vorsicht im Umgang mit ausgestellter Ware – wir reinigen die umgebende Fläche, ohne Produkte zu verschieben oder neu anzuordnen.",
+      "Kinderbetreuungsräume, wie sie manche größere Studios für Mitglieder mit Kindern anbieten, benötigen einen ähnlich hohen Hygieneanspruch wie ein Kita-Gruppenraum und werden mit entsprechend schonenden Mitteln gereinigt.",
+      "Bei Studios mit Mitgliedschaftsverträgen über mehrere Jahre lässt sich der Reinigungsvertrag ebenfalls langfristig anlegen, mit der Möglichkeit, den Rhythmus bei wachsender oder schrumpfender Mitgliederzahl anzupassen.",
+      "Bei Studios mit angeschlossenem Physiotherapie- oder Reha-Bereich unterscheidet sich der Hygieneanspruch von dem des allgemeinen Trainingsbereichs, ähnlich wie bei einer Praxis. Wir stimmen Verfahren und Rhythmus für solche Bereiche gesondert ab.",
+    ],
+    scopeBullets: [
+      "Trainingsgeräte äußerlich gereinigt",
+      "Kursräume und Bodenbeläge materialgerecht behandelt",
+      "Umkleiden und Duschbereiche",
+      "Empfangs- und Kontaktflächen",
+    ],
+    processText:
+      "Nach Abstimmung zu Fläche, Geräteausstattung und Öffnungszeiten erhalten Sie ein individuelles Angebot mit einem an die Frequentierung angepassten Reinigungsrhythmus.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Geräteausstattung und gewünschtem Rhythmus. Studios mit Sauna oder Wellnessbereich benötigen zusätzlichen Aufwand gegenüber einem reinen Trainingsbereich.",
     faq: [
       {
         question: "Wird der Rhythmus an die Öffnungszeiten des Studios angepasst?",
@@ -1320,7 +1407,18 @@ export const combos: Combo[] = [
         question: "Werden auch Umkleiden und Sanitärbereiche mitgereinigt?",
         answer: "Ja, diese gehören je nach Vereinbarung zum regulären Leistungsumfang.",
       },
+      {
+        question: "Werden auch Trainingsgeräte wie Laufbänder und Kraftgeräte gereinigt?",
+        answer: "Ja, Griffe, Sitzflächen und Bedienelemente werden bei jedem Termin äußerlich gereinigt. Eine technische Wartung der Geräte gehört nicht zum Leistungsumfang.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle: "Beschreiben Sie kurz Ihr Studio – wir schlagen einen passenden, an die Frequentierung angepassten Reinigungsrhythmus vor.",
   },
   {
     serviceSlug: "autohausreinigung-berlin",
@@ -1330,6 +1428,34 @@ export const combos: Combo[] = [
     localAngle: [
       "Spandau gehört zu den Berliner Bezirken mit besonders vielen Autohäusern und Werkstätten mit Kundenbereich – häufig in größeren, zusammenhängenden Gewerbegebieten am Stadtrand statt in kleinteiligen Innenstadtlagen.",
       "Showroom, Kundenbereich und angrenzende Büros lassen sich in einem Vertrag bündeln, statt Glas-, Boden- und Büroreinigung einzeln zu vergeben. Der eigentliche Werkstattbereich bleibt davon getrennt, da dort andere Anforderungen an Reinigungsmittel und Bodenschutz gelten.",
+      "Fahrzeuge selbst – ob Ausstellungsfahrzeuge im Showroom oder Kundenfahrzeuge im Übergabebereich – gehören nicht zum Leistungsumfang der Autohausreinigung. Wir reinigen die umgebenden Flächen wie Boden und Glas, die Fahrzeugpflege bleibt Aufgabe der Fahrzeugaufbereitung.",
+      "Showroom-Böden aus Fliesen oder Naturstein benötigen andere Pflegemittel als robusterer Industrieboden im angrenzenden Werkstattbereich. Wir wählen das Verfahren nach dem tatsächlich verbauten Material im jeweiligen Bereich.",
+      "Ölspuren auf dem Kundenparkplatz vor der Werkstatt gehören zum Außenbereich und damit nicht automatisch zur Innenraumreinigung. Wir klären vorab gesondert, ob und in welchem Umfang solche Außenflächen zum vereinbarten Umfang gehören.",
+      "Rund um die Reifenwechsel-Saison im Frühjahr und Herbst steigt der Kundenverkehr in vielen Autohäusern spürbar an, mit entsprechend mehr eingetragenem Schmutz im Eingangsbereich. Für solche bekannten Spitzenzeiten lässt sich der Reinigungstakt vorübergehend erhöhen.",
+      "Glastüren am Eingang werden durch den direkten Kundenkontakt stärker mit Fingerabdrücken belastet als die großflächigen Schaufenster des Showrooms selbst. Wir richten den Reinigungstakt für Eingangstüren entsprechend enger aus als für die übrigen Glasflächen.",
+      "Sitzmöbel in Beratungsbereichen bestehen je nach Ausstattung aus Echt- oder Kunstleder, die unterschiedliche Pflegemittel benötigen – Echtleder verträgt aggressivere Reiniger deutlich schlechter als robusteres Kunstleder. Wir stimmen das Verfahren nach dem tatsächlich verbauten Material ab.",
+      "Kundentoiletten in Autohäusern mit hohem Besucheraufkommen benötigen einen engeren Reinigungstakt als reine Personaltoiletten für Mitarbeitende, da hier deutlich mehr fremde Besucher durchgehen.",
+      "Bei der Auswahl eines Dienstleisters für ein Autohaus lohnt sich die Frage, ob zwischen Showroom, Kundenbereich und Werkstatt unterschieden wird, statt ein einheitliches Verfahren für das gesamte Objekt anzubieten – die Anforderungen an Bodenschutz und Reinigungsmittel unterscheiden sich hier deutlich.",
+      "Nach der Übernahme eines neuen Autohaus-Standorts gehen wir zunächst durch Showroom, Kundenbereich und angrenzende Büros, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand realistisch einzuschätzen.",
+      "Beratungstische mit Glas- oder Hochglanzoberflächen im Kundenbereich zeigen Fingerabdrücke und Staub deutlicher als matte Materialien. Wir reinigen solche Flächen mit streifenfrei arbeitenden Mitteln, um den repräsentativen Eindruck des Showrooms zu erhalten.",
+      "Werkstattannahmebereiche, in denen Kunden ihr Fahrzeug für die Reparatur übergeben, liegen häufig zwischen Kundenbereich und eigentlicher Werkstatt. Wir klären vorab, ob dieser Übergangsbereich zum Kundenbereich oder zur separat geregelten Werkstattreinigung zählt.",
+      "Beleuchtungskörper im Showroom, die Fahrzeuge gezielt in Szene setzen, werden im frei zugänglichen Bereich vom Staub befreit. Höher hängende oder fest verbaute Lichtsysteme, die ein Hubgerät erfordern, gehören nicht zum Standardumfang.",
+      "Kundenparkplätze vor dem Showroom gehören zum Außenbereich und damit nicht automatisch zur Innenraumreinigung. Den unmittelbaren Übergang zwischen Parkplatz und Eingangsbereich klären wir vorab gesondert.",
+      "Broschürenständer und Informationsmaterial im Kundenbereich werden bei der Reinigung nicht verschoben oder neu sortiert – wir reinigen die umgebende Fläche, die Anordnung der Materialien bleibt Sache des Autohauses.",
+      "Bei Autohäusern mit mehreren Marken unter einem Dach, wie es in größeren Gewerbegebieten vorkommt, klären wir vorab, ob eine zentrale Ansprechperson für das gesamte Objekt koordiniert oder jede Marke separat beauftragt.",
+      "Kaffee- oder Wartebereiche für Kunden während der Fahrzeugannahme benötigen einen ähnlichen Hygieneanspruch wie eine kleine Teeküche und werden entsprechend in den regulären Rhythmus für Kundenbereiche integriert.",
+      "Nach besonders publikumsstarken Verkaufsaktionen oder Eröffnungsveranstaltungen lässt sich kurzfristig eine zusätzliche Reinigung vereinbaren, um den durch den einmalig erhöhten Besucherverkehr entstandenen Mehraufwand aufzufangen.",
+      "Aufzüge oder Rampen, über die Fahrzeuge zwischen mehreren Showroom-Ebenen transportiert werden, wie sie in größeren Autohäusern vorkommen, unterliegen einem anderen Verschmutzungsbild als die Fußböden des Kundenbereichs und werden gesondert betrachtet.",
+      "Fahrzeugschlüssel-Übergabetresen im Empfangsbereich zählen zu den Kontaktflächen, die bei jedem regulären Termin mitgereinigt werden – ähnlich wie Türgriffe oder Anmeldetresen in anderen Gewerbeobjekten.",
+      "Bei Autohäusern mit angeschlossenem Ersatzteilverkauf für Kunden ohne Werkstatttermin unterscheidet sich der Publikumsverkehr von dem der reinen Fahrzeugberatung. Wir berücksichtigen diesen zusätzlichen Bereich bei der Einschätzung des Reinigungsaufwands, sofern er zum vereinbarten Umfang gehört.",
+      "Digitale Preisschilder oder Infobildschirme an den ausgestellten Fahrzeugen werden von uns nur äußerlich mit für Displays geeigneten Tüchern abgewischt, um die Anzeige nicht zu beschädigen.",
+      "Nach der Anlieferung neuer Ausstellungsfahrzeuge, die häufig noch mit Schutzfolien versehen sind, bietet sich eine kurze Objektbegehung an, um zu klären, welche Flächen um das neue Fahrzeug herum in den regulären Reinigungsplan aufgenommen werden.",
+      "Bei Autohäusern mit angeschlossenem Leasing- oder Finanzierungsbüro für Vertragsabschlüsse unterscheidet sich der Reinigungsbedarf dieses Verwaltungsbereichs von dem des eigentlichen Showrooms – wir behandeln ihn eher wie ein reguläres Büro.",
+      "Kundenevents wie Neuwagenpräsentationen, bei denen der Showroom kurzfristig umgestaltet wird, benötigen häufig eine zusätzliche Reinigung vor und nach der Veranstaltung, die sich außerhalb des regulären Rhythmus separat vereinbaren lässt.",
+      "Fahrradstellplätze für Mitarbeitende, wie sie auch in Autohäusern zunehmend vorhanden sind, unterliegen einem anderen Verschmutzungsbild als der Kundenbereich und werden in einem eigenen, meist selteneren Rhythmus mitgereinigt, sofern vertraglich vereinbart.",
+      "Bei der Auswahl eines Dienstleisters für ein Autohaus lohnt sich zusätzlich die Frage, ob Erfahrung mit den besonderen Anforderungen an Bodenschutz in Werkstattnähe vorhanden ist, etwa bei Ölspuren, die sich anders behandeln lassen als gewöhnlicher Straßenschmutz.",
+      "Poststellen für den Schriftverkehr mit Kunden und Herstellern werden im Bereich um die Sortierfächer mitgereinigt, ohne dass einzelne Fächer geöffnet oder Post umsortiert wird.",
+      "Bei Autohäusern mit eigener Waschstraße für Kundenfahrzeuge gehört dieser Bereich aufgrund der andersartigen technischen Anforderungen nicht zum Leistungsumfang der Autohausreinigung. Wir konzentrieren uns auf Showroom, Kundenbereich und angrenzende Büroflächen.",
     ],
     scopeBullets: [
       "Showroom-Böden und Glasflächen im Kundenbereich",
@@ -1339,6 +1465,8 @@ export const combos: Combo[] = [
     ],
     processText:
       "Wir stimmen Öffnungszeiten von Showroom und Werkstatt vorab ab, damit die Reinigung Kundenverkehr und Fahrzeugübergaben nicht stört – bei Bedarf auch früh morgens oder nach Geschäftsschluss.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Größe von Showroom und Kundenbereich sowie gewünschtem Rhythmus. Saisonale Spitzenzeiten mit erhöhtem Kundenverkehr lassen sich bei Bedarf mit einem vorübergehend engeren Takt abdecken.",
     faq: [
       {
         question: "Warum gibt es in Spandau besonders viele Autohäuser?",
@@ -1349,6 +1477,16 @@ export const combos: Combo[] = [
         answer:
           "Die Autohausreinigung konzentriert sich auf Showroom, Glasflächen und Kundenbereiche. Für Gewerbeflächen ohne Showroom, etwa mit Büro- und Lagerbereich, ist die allgemeine Gebäudereinigung in Spandau oft die passendere Wahl.",
         relatedLink: { label: "Zur Gebäudereinigung in Spandau", href: "/leistungen/gebaeudereinigung-berlin/spandau" },
+      },
+      {
+        question: "Werden auch die ausgestellten Fahrzeuge im Showroom gereinigt?",
+        answer: "Nein, die Fahrzeugpflege selbst gehört nicht zum Leistungsumfang. Wir reinigen die umgebenden Flächen wie Boden und Glas rund um die Ausstellungsfahrzeuge.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
       },
     ],
     ctaSubtitle: "Nennen Sie uns Größe von Showroom und Kundenbereich sowie Ihre Öffnungszeiten in Spandau – wir schlagen einen passenden Reinigungsrhythmus vor.",
