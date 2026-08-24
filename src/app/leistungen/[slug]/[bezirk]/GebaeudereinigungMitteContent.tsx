@@ -261,6 +261,20 @@ export default function GebaeudereinigungMitteContent({
             Beginn fest, welche Flächen gereinigt werden, wie häufig die Einsätze stattfinden und
             welche Zeitfenster zum Arbeitsalltag passen.
           </p>
+          <p>
+            Die Bausubstanz in Mitte reicht von sanierten Gründerzeitbauten mit Stuckdecken und
+            historischen Treppenhäusern bis zu modernen Bürohochhäusern mit Glasfassaden und
+            Aufzugsanlagen. Ein einheitliches Reinigungsverfahren für den gesamten Bezirk würde
+            weder der empfindlichen Altbausubstanz noch den großflächigen Verglasungen moderner
+            Neubauten gerecht – wir wählen Mittel und Vorgehen deshalb nach dem tatsächlich
+            vorhandenen Material.
+          </p>
+          <p>
+            Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für
+            unterschiedliche Teilleistungen: Unterhalts-, Treppenhaus- und Fensterreinigung laufen
+            über dieselbe Kontaktperson, statt drei getrennte Dienstleister für ein einziges
+            Gebäude zu koordinieren.
+          </p>
         </div>
       </Section>
 
@@ -298,6 +312,18 @@ export default function GebaeudereinigungMitteContent({
             Deshalb klären wir vor dem Start, wann Räume zugänglich sind, welche Bereiche
             besondere Aufmerksamkeit benötigen und ob die Reinigung vor Arbeitsbeginn, nach
             Geschäftsschluss oder in einem festen Tageszeitfenster erfolgen soll.
+          </p>
+          <p>
+            Bürogebäude mit mehreren vermieteten Etagen benötigen zusätzlich eine Abstimmung mit
+            der Hausverwaltung, welche Gemeinschaftsflächen wie Aufzüge, Empfang und Treppenhaus
+            zentral abgerechnet werden und welche Fläche jede Mietpartei separat beauftragt. Das
+            verhindert, dass Bereiche versehentlich doppelt oder gar nicht erfasst werden.
+          </p>
+          <p>
+            Nach Bauarbeiten oder bei länger leerstehenden Flächen bleiben Baustaub und feine
+            Rückstände zurück, die sich mit der laufenden Unterhaltsreinigung allein nicht
+            vollständig entfernen lassen. Für solche Fälle lässt sich dem gebündelten Vertrag eine
+            einmalige Grundreinigung voranstellen, bevor der reguläre Rhythmus beginnt.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -350,6 +376,12 @@ export default function GebaeudereinigungMitteContent({
             Zugänge, Schlüsselregelungen, Empfangszeiten und mögliche Einschränkungen werden vor
             dem ersten Einsatz geklärt.
           </p>
+          <p>
+            Bei Objekten mit einer zentralen Zutrittskontrolle über Chipkarte oder Code stimmen
+            wir vorab mit der Hausverwaltung ab, wie das Reinigungsteam außerhalb der Bürozeiten
+            Zugang zu den einzelnen Etagen erhält – damit am ersten Termin keine Verzögerung am
+            Empfang entsteht.
+          </p>
         </div>
       </Section>
 
@@ -400,6 +432,45 @@ export default function GebaeudereinigungMitteContent({
           <p>
             Desinfektionsmittel werden nur dort eingesetzt, wo dies vereinbart oder hygienisch
             erforderlich ist.
+          </p>
+          <p>
+            Naturstein-Eingangsbereiche, wie sie bei repräsentativen Bürogebäuden entlang der
+            Friedrichstraße oder am Gendarmenmarkt vorkommen, benötigen andere Pflegemittel als
+            die robusteren Fliesen- oder PVC-Böden in reinen Verwaltungsflächen. Wir prüfen bei
+            der Objektbegehung, welches Material tatsächlich vorhanden ist, statt ein einheitliches
+            Verfahren für das gesamte Gebäude anzusetzen.
+          </p>
+          <p>
+            Großflächige Glasfassaden moderner Bürohochhäuser verlangen bei der Fensterreinigung
+            eine andere Herangehensweise als die kleinteiligeren Fensterfronten historischer
+            Altbauten. Innerhalb des gebündelten Vertrags stimmen wir Verfahren und Rhythmus für
+            beide Fassadentypen gesondert ab.
+          </p>
+          <p>
+            Kanzleien und Praxen in Mitte benötigen bei der Gebäudereinigung besondere Rücksicht
+            auf vertrauliche Unterlagen und laufende Termine – Schreibtische und Aktenschränke
+            werden nur äußerlich abgewischt, der Inhalt bleibt unangetastet.
+          </p>
+          <p>
+            Bei Objekten mit historischer Bausubstanz und Denkmalschutzauflagen prüfen wir vorab,
+            ob für bestimmte Oberflächen besondere Reinigungsvorschriften gelten, die bestimmte
+            Mittel oder Verfahren ausschließen.
+          </p>
+          <p>
+            Kunstwerke und dekorative Objekte in den Empfangsbereichen repräsentativer
+            Bürogebäude werden bei der Reinigung nicht verschoben oder poliert – wir reinigen die
+            umgebende Fläche, die Pflege solcher Objekte bleibt Sache eines darauf spezialisierten
+            Restaurators oder des Eigentümers.
+          </p>
+          <p>
+            Firmenschilder und Klingeltableaus am Eingang mehrerer Mieter zählen zu den
+            Kontaktflächen, die innerhalb des gebündelten Vertrags bei jedem regulären Termin
+            mitgereinigt werden.
+          </p>
+          <p>
+            Bei Objekten mit repräsentativem Foyer, das mehreren Mietparteien gemeinsam gehört,
+            klären wir vorab, welcher Anteil der Reinigungskosten über die
+            Nebenkostenabrechnung der Hausverwaltung läuft.
           </p>
         </div>
         <Link

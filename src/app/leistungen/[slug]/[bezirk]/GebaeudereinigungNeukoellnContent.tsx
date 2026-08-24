@@ -248,6 +248,12 @@ export default function GebaeudereinigungNeukoellnContent({
             Ein individuell abgestimmter Reinigungsplan berücksichtigt deshalb
             Flächengröße, Besucheraufkommen, Nutzung, Materialien und betriebliche Abläufe.
           </p>
+          <p>
+            Für ein Objekt mit mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem
+            organisatorische Vorteile gegenüber getrennten Einzelaufträgen: Unterhalts-,
+            Treppenhaus- und Fensterreinigung laufen über denselben festen Ansprechpartner, statt
+            mit drei unterschiedlichen Firmen koordiniert zu werden.
+          </p>
         </div>
       </Section>
 
@@ -284,6 +290,12 @@ export default function GebaeudereinigungNeukoellnContent({
             Hinzu kommt eine wachsende Zahl an Fitnessstudios und Gemeinschaftsbüros im Bezirk, die
             eine eigene Taktung brauchen: hohe Frequentierung, aber oft nur wenige feste
             Ansprechpartner vor Ort.
+          </p>
+          <p>
+            Bei gemischt genutzten Altbauten mit Gewerbe im Erdgeschoss und Wohnungen darüber
+            klären wir vor Vertragsbeginn, ob der gemeinsame Hausflur zur gewerblichen
+            Gebäudereinigung zählt oder ob die Eigentümergemeinschaft dafür bereits einen eigenen
+            Treppenhausreinigungs-Vertrag für das gesamte Haus hat.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -337,6 +349,12 @@ export default function GebaeudereinigungNeukoellnContent({
             Schlüsselübergaben, Alarmanlagen und Zutrittsregelungen werden im Vorfeld
             abgestimmt.
           </p>
+          <p>
+            Fitnessstudios und Gemeinschaftsbüros mit längeren Öffnungszeiten benötigen häufig
+            einen anderen Rhythmus als ein klassisches Büro mit fester Kernarbeitszeit – wir
+            richten den Termin nach der tatsächlichen Frequentierung des jeweiligen Objekts aus,
+            statt ein einheitliches Zeitfenster für den gesamten Bezirk vorzugeben.
+          </p>
         </div>
       </Section>
 
@@ -354,6 +372,69 @@ export default function GebaeudereinigungNeukoellnContent({
             Reinigungsmittel und Dosierung werden passend zum Material und zum tatsächlichen
             Bedarf ausgewählt. Desinfektionsmittel werden ausschließlich eingesetzt, wenn dies
             vereinbart oder erforderlich ist.
+          </p>
+          <p>
+            Bei neu bezogenen Gewerbeflächen in Rudow empfiehlt sich eine ergänzende
+            Grundreinigung vor dem ersten regulären Termin, um Montagespuren oder
+            Bauschutzfolien-Rückstände zu entfernen, die eine gewöhnliche Unterhaltsreinigung
+            allein nicht vollständig erfasst.
+          </p>
+          <p>
+            Bei Gewerbeparks in Rudow mit mehreren Gebäudeteilen auf einem gemeinsamen Grundstück
+            lässt sich die Anfahrt für alle im gebündelten Vertrag enthaltenen Teilleistungen
+            zusammenlegen, was sich auf die Gesamtkalkulation auswirken kann.
+          </p>
+          <p>
+            Kleinere Büroeinheiten im dicht bebauten Kern Neuköllns benötigen einen schlankeren
+            Leistungsumfang als die großen, zusammenhängenden Gewerbeparks in Rudow – wir
+            kalkulieren beide Objektgrößen getrennt.
+          </p>
+          <p>
+            Bei Fitnessstudios mit längeren Öffnungszeiten bis in den Abend richten wir den
+            Reinigungstermin auf die ruhigsten Randzeiten aus, statt den laufenden
+            Trainingsbetrieb während der Hauptnutzungszeit zu stören.
+          </p>
+          <p>
+            Der feste Ansprechpartner für das gebündelte Leistungspaket kennt sowohl die
+            kleinteiligen Einheiten im Bezirkskern als auch die großflächigen Gewerbeparks in
+            Rudow, sodass Rückfragen nicht bei jedem Kontakt neu erklärt werden müssen.
+          </p>
+          <p>
+            Wochenmärkte und temporäre Verkaufsstände rund um Hermannplatz und Karl-Marx-Straße
+            tragen zeitweise mehr Straßenschmutz in angrenzende Gewerbeeingänge ein als an
+            marktfreien Tagen – das lässt sich bei der Taktung des Eingangsbereichs
+            berücksichtigen.
+          </p>
+          <p>
+            Produktionsbetriebe mit angeschlossenem Verkaufsraum, wie sie im Bezirk neben reinen
+            Bürodienstleistern vorkommen, benötigen für den Produktionsbereich robustere Verfahren
+            als für den kundenzugänglichen Verkaufsraum.
+          </p>
+          <p>
+            Bei mehreren Gewerbeeinheiten im selben Gebäude in Rudow lässt sich eine gemeinsame
+            Kantine oder ein gemeinsamer Pausenraum für alle Mieter zentral über den gebündelten
+            Vertrag abrechnen, statt für jede Firma einzeln zu kalkulieren.
+          </p>
+          <p>
+            Second-Hand-Läden und inhabergeführte Geschäfte entlang der Karl-Marx-Straße haben ein
+            anderes Reinigungsbedürfnis als die größeren Einzelhandelsflächen in den Neukölln
+            Arcaden – wir kalkulieren beide Objektarten getrennt.
+          </p>
+          <p>
+            Zieht ein neuer Mieter in eine bereits vom gebündelten Vertrag erfasste Gewerbefläche
+            in Rudow ein, passen wir den bestehenden Vertrag an die neue Nutzung an, statt für die
+            gleiche Fläche einen komplett neuen Vertrag zu verhandeln.
+          </p>
+          <p>
+            Bäckereien und Imbisse, wie sie häufig im Erdgeschoss der Gewerbeobjekte im
+            Bezirkskern zu finden sind, benötigen aufgrund des Lebensmittelkontakts einen anderen
+            Hygieneanspruch als die übrigen Büro- oder Verkaufsflächen im selben Gebäude.
+          </p>
+          <p>
+            Bei Fitnessstudios und Gemeinschaftsbüros mit hoher Mitgliederfluktuation stimmen wir
+            den Reinigungsumfang in regelmäßigen Abständen neu ab, da sich die tatsächliche
+            Nutzung schneller ändert als bei einem klassischen Bürogebäude mit stabiler
+            Mieterstruktur.
           </p>
         </div>
       </Section>

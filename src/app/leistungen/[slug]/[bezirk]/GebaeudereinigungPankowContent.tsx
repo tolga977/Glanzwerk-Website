@@ -257,6 +257,22 @@ export default function GebaeudereinigungPankowContent({
             werden Räume, Flächen, Intervalle, Zugangsregeln und geeignete Reinigungszeiten
             festgelegt.
           </p>
+          <p>
+            Mit dem anhaltenden Bevölkerungswachstum in Pankow ist auch die Zahl gewerblich
+            genutzter Gebäude gestiegen – von neu bezogenen Büroetagen in Prenzlauer Berg bis zu
+            Gewerbeflächen in den wachsenden äußeren Ortsteilen. Für ein einzelnes Gebäude mit
+            mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem organisatorische
+            Vorteile: Statt Unterhalts-, Treppenhaus- und Fensterreinigung bei drei
+            unterschiedlichen Anbietern zu koordinieren, läuft die gesamte Kommunikation über
+            einen festen Ansprechpartner.
+          </p>
+          <p>
+            In vielen älteren Gebäuden des Bezirks liegen Gewerbeflächen im Erdgeschoss unter
+            Wohnungen in den oberen Etagen. Das gemeinsame Treppenhaus gehört dann meist nicht zur
+            Gebäudereinigung der gewerblichen Einheit, sondern wird separat über die
+            Treppenhausreinigung des gesamten Hauses abgerechnet – diese Abgrenzung klären wir vor
+            Vertragsbeginn.
+          </p>
         </div>
       </Section>
 
@@ -332,6 +348,13 @@ export default function GebaeudereinigungPankowContent({
             Arbeitszeiten, Patienten- oder Besucherverkehr und sensible Flächen eine größere
             Rolle.
           </p>
+          <p>
+            Objekte in den äußeren Ortsteilen wie Buch, Karow oder Blankenfelde sind oft
+            großzügiger geschnitten und liegen weiter auseinander als die dicht bebauten Lagen
+            rund um Prenzlauer Berg. Bei mehreren nah beieinanderliegenden Objekten im selben
+            Ortsteil lässt sich die Anfahrt für alle gebündelten Teilleistungen zusammenlegen, was
+            sich auf die Gesamtkalkulation auswirken kann.
+          </p>
         </div>
       </Section>
 
@@ -343,6 +366,17 @@ export default function GebaeudereinigungPankowContent({
             Je nach Objekt kann die Reinigung vor Arbeitsbeginn, nach Geschäftsschluss oder
             innerhalb fester Zeitfenster stattfinden. Vor dem Start klären wir Zugänge,
             Schlüsselregelungen und mögliche Einschränkungen.
+          </p>
+          <p>
+            Bei Bürogebäuden mit mehreren vermieteten Etagen klären wir zusätzlich mit der
+            Hausverwaltung, welche Gemeinschaftsflächen zentral über den gebündelten Vertrag
+            abgerechnet werden und welche Fläche jede Mietpartei separat beauftragt.
+          </p>
+          <p>
+            Bei neu bezogenen Gewerbeflächen in den wachsenden äußeren Ortsteilen empfiehlt sich
+            vor Beginn des regulären Rhythmus häufig eine einmalige Grundreinigung, um
+            Bauschutzfolien-Rückstände oder Montagespuren zu entfernen, die sich sonst dauerhaft
+            in den frisch fertiggestellten Räumen halten.
           </p>
         </div>
       </Section>
@@ -386,6 +420,60 @@ export default function GebaeudereinigungPankowContent({
             Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte,
             unter anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl richtet sich nach
             Material, Verschmutzung und Nutzung.
+          </p>
+          <p>
+            Fassaden und Fensterrahmen in den gründerzeitlichen Altbauten rund um Prenzlauer Berg
+            bestehen häufig aus anderen Materialien als die neueren Gewerbebauten in den
+            wachsenden äußeren Ortsteilen. Innerhalb des gebündelten Vertrags prüfen wir bei jedem
+            Objekt, welches Material tatsächlich verbaut ist, statt ein einheitliches Verfahren
+            für den gesamten Bezirk anzusetzen.
+          </p>
+          <p>
+            Bodenbeläge in neueren Gewerbeflächen sind meist robuster und pflegeleichter als die
+            teils empfindlicheren Dielenböden älterer Gebäude. Das wirkt sich auf Verfahren und
+            Zeitaufwand innerhalb der gebündelten Unterhaltsreinigung aus.
+          </p>
+          <p>
+            Bei Büroflächen mit Kundenverkehr in Prenzlauer Berg legen wir besonderen Wert auf den
+            Eingangsbereich, da dieser für Besucher den ersten Eindruck des gesamten Objekts
+            prägt.
+          </p>
+          <p>
+            Bei Objekten mit mehreren unabhängigen Eingängen für unterschiedliche Mieter klären
+            wir vorab, welcher Eingang zu welchem Teil des gebündelten Vertrags gehört, um
+            Doppelarbeit oder Lücken zu vermeiden.
+          </p>
+          <p>
+            Statt am Monatsende Rechnungen von drei unterschiedlichen Anbietern für Unterhalts-,
+            Treppenhaus- und Fensterreinigung abzugleichen, erhalten Sie für das gesamte
+            Leistungsbündel eine einzige, nachvollziehbare Abrechnung.
+          </p>
+          <p>
+            Neu errichtete Wohn- und Geschäftshäuser in den wachsenden Ortsteilen wie Buch oder
+            Karow haben häufig noch keine eingespielte Hausverwaltungsstruktur – wir klären
+            deshalb bei der ersten Objektbegehung gemeinsam mit dem Eigentümer, wer als
+            Ansprechpartner für den gebündelten Vertrag fungiert.
+          </p>
+          <p>
+            Fahrradabstellräume, wie sie in neueren Wohn- und Geschäftshäusern des Bezirks
+            zunehmend vorhanden sind, unterliegen einem anderen Verschmutzungsbild als Büroflächen
+            und werden nur bei ausdrücklicher Vereinbarung in den gebündelten Vertrag
+            aufgenommen.
+          </p>
+          <p>
+            Bei Objekten mit eigenem Vorgarten oder kleinem Vorplatz, wie sie in den ruhigeren
+            äußeren Ortsteilen häufiger vorkommen als in der dichten Innenstadt, klären wir vorab,
+            ob dieser Außenbereich zum vereinbarten Umfang gehört.
+          </p>
+          <p>
+            Sitzbänke und kleine Wartebereiche vor Praxen und Dienstleistern in den Wohngebieten
+            werden deutlich seltener frequentiert als vergleichbare Bereiche in den belebten
+            Geschäftsstraßen um Prenzlauer Berg.
+          </p>
+          <p>
+            Bei größeren Wohn-Geschäftshäusern mit gewerblicher Nutzung im Erdgeschoss klären wir
+            vorab, welcher Anteil der Gebäudereinigungskosten über die Nebenkostenabrechnung der
+            Eigentümergemeinschaft läuft.
           </p>
         </div>
         <Link

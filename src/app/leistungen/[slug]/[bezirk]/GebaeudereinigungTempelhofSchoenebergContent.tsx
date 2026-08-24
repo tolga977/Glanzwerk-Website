@@ -249,6 +249,13 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
             Besucheraufkommen, Geschäftszeiten, Bodenbeläge und individuelle Anforderungen des
             jeweiligen Unternehmens.
           </p>
+          <p>
+            Der Tempelhofer Bezirksteil ist geprägt von größeren, oft neueren Gewerbebauten mit
+            mehreren Mietern unter einem Dach, während in Schöneberg kompaktere Büros in
+            Wohn-Geschäftshäusern überwiegen. Ein Reinigungskonzept für ein großes
+            Mehrmieter-Gebäude unterscheidet sich entsprechend deutlich von dem für ein einzelnes
+            Büro in einem Altbau.
+          </p>
         </div>
       </Section>
 
@@ -339,6 +346,17 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
             Schlüsselübergabe, Zutrittsregelungen und Alarmanlagen werden vor Beginn gemeinsam
             abgestimmt.
           </p>
+          <p>
+            Bei größeren Gewerbebauten mit mehreren Mietern ohne durchgehend besetzten Empfang
+            stimmen wir Zugang und Zeitfenster schriftlich mit der Hausverwaltung ab, statt am
+            ersten Termin vor Ort improvisieren zu müssen.
+          </p>
+          <p>
+            Bei Objekten mit mehreren Mietparteien, die sich Empfang und Treppenhaus teilen,
+            legen wir im gebündelten Vertrag fest, welche Gemeinschaftsflächen zentral über die
+            Hausverwaltung abgerechnet werden und welche Fläche jede Mietpartei separat
+            beauftragt.
+          </p>
         </div>
       </Section>
 
@@ -356,6 +374,71 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
             Reinigungsmittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen
             Bedarf ausgewählt. Desinfektionsmittel werden ausschließlich eingesetzt, wenn dies
             vereinbart oder erforderlich ist.
+          </p>
+          <p>
+            Großflächige Fensterfronten, wie sie in den neueren Gewerbebauten Tempelhofs häufig
+            vorkommen, benötigen ein anderes Reinigungsverfahren als die kleinteiligeren
+            Fensterfronten der Schöneberger Altbauten. Innerhalb des gebündelten Vertrags stimmen
+            wir Verfahren und Rhythmus für beide Fassadentypen gesondert ab.
+          </p>
+          <p>
+            Bei länger leerstehenden Gewerbeflächen im Tempelhofer Bezirksteil ist der
+            Verschmutzungsgrad vor Neubezug oft höher als bei einem direkten Mieterwechsel ohne
+            Leerstand – hier ergänzt eine einmalige Grundreinigung das gebündelte Konzept
+            sinnvoll, bevor der reguläre Rhythmus beginnt.
+          </p>
+          <p>
+            Kompaktere Büros in den Wohn-Geschäftshäusern Schönebergs benötigen einen schlankeren
+            Leistungsumfang als die großen Mehrmieter-Objekte im Tempelhofer Teil – wir
+            kalkulieren beide Objektarten getrennt, statt einen Durchschnittswert für den gesamten
+            Bezirk anzusetzen.
+          </p>
+          <p>
+            Bei Objekten mit eigenem Vorplatz oder Zufahrt für Lieferverkehr klären wir vorab, ob
+            dieser Außenbereich zum vereinbarten Umfang gehört – Außenflächen sind nicht
+            automatisch Teil der gebündelten Innenraumreinigung.
+          </p>
+          <p>
+            Der feste Ansprechpartner für das gebündelte Leistungspaket kennt die Aufteilung
+            zwischen Tempelhofer und Schöneberger Bezirksteil, sodass Rückfragen nicht bei jedem
+            Kontakt neu erklärt werden müssen.
+          </p>
+          <p>
+            Das Rathaus Schöneberg und angrenzende öffentliche Einrichtungen ziehen zusätzlichen
+            Publikumsverkehr in die umliegenden Gewerbeflächen, was sich auf den Reinigungsbedarf
+            der dortigen Eingangsbereiche auswirken kann.
+          </p>
+          <p>
+            Ärztehäuser mit mehreren Praxen unter einem Dach, wie sie im Tempelhofer Teil
+            vorkommen, benötigen für die gemeinsamen Wartebereiche einen anderen Rhythmus als für
+            die einzelnen Behandlungsräume der jeweiligen Praxis.
+          </p>
+          <p>
+            Bei Gewerbeflächen mit eigenem Vorplatz oder Zufahrt für Lieferverkehr im Tempelhofer
+            Gewerbegebiet klären wir vorab, ob dieser Außenbereich zum vereinbarten Umfang gehört.
+          </p>
+          <p>
+            Fahrstühle in den größeren Mehrmieter-Gebäuden Tempelhofs sind für viele Beschäftigte
+            der zentrale Zugang zu den einzelnen Etagen und entsprechend stärker frequentiert als
+            ein einzelnes Treppenhaus in einem kompakten Schöneberger Altbau.
+          </p>
+          <p>
+            Schulungsräume oder kleine Konferenzbereiche, die manche Mehrmieter-Gebäude im
+            Tempelhofer Teil gemeinsam anbieten, benötigen einen an die unregelmäßige Nutzung
+            angepassten, flexibleren Reinigungstakt als die täglich genutzten Büroflächen.
+          </p>
+          <p>
+            Bei Gewerbeobjekten mit eigenem Hinterhof für Anlieferungen klären wir vorab, ob
+            dieser Übergangsbereich zwischen Anlieferung und Innenraum zum gebündelten Vertrag
+            gehört oder separat organisiert wird.
+          </p>
+          <p>
+            Reisebüros und Versicherungsvertretungen, wie sie in den kompakten
+            Wohn-Geschäftshäusern Schönebergs häufig neben Arztpraxen zu finden sind, benötigen
+            einen ähnlich unauffälligen Reinigungstermin wie eine Kanzlei, damit Kundentermine
+            nicht gestört werden. Auch hier gilt: Der genaue Rhythmus richtet sich nach der
+            tatsächlichen Kundenfrequenz und nicht nach einem pauschalen Zeitplan für den gesamten
+            Bezirk.
           </p>
         </div>
       </Section>

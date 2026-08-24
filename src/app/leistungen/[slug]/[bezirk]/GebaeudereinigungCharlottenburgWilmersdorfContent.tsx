@@ -256,6 +256,12 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
             auch Besucheraufkommen, Geschäftszeiten, Materialien und den gewünschten Eindruck
             auf Kunden oder Patienten.
           </p>
+          <p>
+            Wer für Unterhalts-, Treppenhaus- und Fensterreinigung sonst drei unterschiedliche
+            Firmen koordinieren müsste, spart sich mit einem gebündelten Vertrag den
+            Abstimmungsaufwand: Ein Ansprechpartner ist für alle drei Teilleistungen im selben
+            Gebäude zuständig.
+          </p>
         </div>
       </Section>
 
@@ -293,6 +299,12 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
             Die Gebäudereinigung bündelt beide Anforderungen in einem Vertrag: Glas- und
             Eingangsreinigung für publikumsstarke Flächen, abgestimmte Zeitfenster für Kanzleien und
             Praxen – statt zwei getrennte Dienstleister für dieselbe Immobilie zu koordinieren.
+          </p>
+          <p>
+            Bürogebäude mit mehreren vermieteten Etagen benötigen zusätzlich eine Abstimmung mit
+            der Hausverwaltung, welche Gemeinschaftsflächen wie Empfang und Treppenhaus zentral
+            über den gebündelten Vertrag abgerechnet werden und welche Fläche jede Mietpartei
+            separat beauftragt.
           </p>
         </div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -345,6 +357,12 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
             Zugangsregeln, Schlüssel, Alarmanlagen und mögliche Einschränkungen werden vor
             Beginn abgestimmt.
           </p>
+          <p>
+            Bei Kanzleien und Praxen richten wir das Zeitfenster zusätzlich nach Sprechzeiten
+            oder Mandantenterminen aus, während Ladengeschäfte am Kurfürstendamm meist eine
+            Reinigung vor Öffnung bevorzugen, damit Schaufenster und Eingangsbereich bereits zu
+            Geschäftsbeginn makellos wirken.
+          </p>
         </div>
       </Section>
 
@@ -362,6 +380,65 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
             Mittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen Bedarf
             ausgewählt. Desinfektionsmittel werden nur dort eingesetzt, wo dies vereinbart oder
             erforderlich ist.
+          </p>
+          <p>
+            Messingbeschläge und Türgriffe, wie sie an vielen historischen Eingängen im Bezirk
+            noch original erhalten sind, benötigen speziell auf das Metall abgestimmte
+            Pflegemittel, da handelsübliche Allzweckreiniger die Oberfläche auf Dauer stumpf
+            werden lassen können.
+          </p>
+          <p>
+            Villenbüros und umgenutzte Wohnhäuser, wie sie in Grunewald und Westend vorkommen,
+            haben oft empfindlichere Böden wie Parkett als die Geschäftshäuser entlang der
+            Hauptstraßen. Innerhalb des gebündelten Vertrags arbeiten wir dort mit angepasster
+            Feuchtigkeit und für Holz geeigneten Produkten.
+          </p>
+          <p>
+            Bei Geschäftshäusern mit mehreren Ladenlokalen im Erdgeschoss und Büros in den oberen
+            Etagen klären wir vorab, welche Gemeinschaftsflächen zentral über den gebündelten
+            Vertrag abgerechnet werden und welche Fläche jeder Mieter separat beauftragt.
+          </p>
+          <p>
+            Autohäuser mit Showroom entlang der Kantstraße haben einen eigenen Reinigungsbedarf
+            rund um Glasflächen und Kundenbereiche. Dafür ist die eigenständige Autohausreinigung
+            meist die passendere Wahl als das allgemeine Gebäudereinigungs-Bündel.
+          </p>
+          <p>
+            Nach einem Ladenumbau bleiben häufig Montagespuren oder Schutzfolien-Reste zurück, die
+            eine gewöhnliche Unterhaltsreinigung allein nicht vollständig entfernt – eine
+            ergänzende Grundreinigung schafft hier einen sauberen Start vor der Neueröffnung.
+          </p>
+          <p>
+            Antiquitätengeschäfte und Galerien, wie sie in den Seitenstraßen abseits des
+            Kurfürstendamms häufig vorkommen, haben ein anderes Reinigungsbedürfnis als ein
+            Ladengeschäft mit hoher Kundenfrequenz – der Bodenbereich um ausgestellte Objekte wird
+            besonders vorsichtig behandelt.
+          </p>
+          <p>
+            Hotelnahe Gewerbeflächen rund um den Kurfürstendamm haben teils sehr frühe oder späte
+            Reinigungsfenster, da Gäste rund um die Uhr im Haus sein können. Wir stimmen den
+            Termin entsprechend mit der jeweiligen Rezeption ab.
+          </p>
+          <p>
+            Empfangsbereiche mit Concierge-Service, wie sie in manchen repräsentativen
+            Bürogebäuden entlang des Kurfürstendamms vorhanden sind, stimmen den Zutritt für das
+            Reinigungsteam direkt mit dem Concierge-Dienst ab, statt eine separate Lösung zu
+            suchen.
+          </p>
+          <p>
+            Bei einem Wechsel des Ladeninhabers in einem bereits vom gebündelten Vertrag erfassten
+            Geschäft passen wir den bestehenden Vertrag an die neue Nutzung an, statt einen
+            komplett neuen Vertrag aufzusetzen.
+          </p>
+          <p>
+            Bei größeren Bürohäusern mit gemeinsamer Tiefgarage klären wir vorab, ob dieser
+            Bereich zum gebündelten Vertrag gehört oder über einen separaten Parkhausbetreiber
+            organisiert wird.
+          </p>
+          <p>
+            Bei Praxen mit Zugang über einen separaten Seiteneingang, wie er in manchen
+            Altbauten des Bezirks neben dem Haupteingang vorhanden ist, klären wir vorab, ob
+            dieser Eingang zum gebündelten Vertrag gehört oder gesondert vereinbart wird.
           </p>
         </div>
       </Section>

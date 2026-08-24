@@ -252,6 +252,19 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
             sind nicht nur Fläche und Raumzahl, sondern auch Öffnungszeiten, Publikumsverkehr,
             Bodenbeläge, Sanitärbereiche und Zugänglichkeit.
           </p>
+          <p>
+            Viele Gewerbeflächen im Bezirk liegen in umgenutzten Altbauten oder ehemaligen
+            Fabriketagen mit unregelmäßigen Grundrissen – kleinteilige Zimmer statt offener
+            Bürolandschaften, historische Treppenhäuser als Hauptzugang und Sprossenfenster statt
+            großflächiger moderner Verglasung. Ein Reinigungskonzept, das für ein neu gebautes
+            Bürohaus konzipiert wurde, passt selten unverändert auf solche Objekte.
+          </p>
+          <p>
+            Statt für Unterhalts-, Treppenhaus- und Fensterreinigung mit drei unterschiedlichen
+            Firmen zu verhandeln, deckt ein einziger Vertrag alle drei Teilleistungen ab – mit
+            einem Ansprechpartner, der bei Rückfragen den gesamten Leistungsumfang des Objekts
+            kennt.
+          </p>
         </div>
       </Section>
 
@@ -277,6 +290,21 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
       {/* 4. Unterschiedliche Objektarten */}
       <Section background="muted">
         <SectionHeading eyebrow="Passend zu Branche und Nutzung" title={heading.sectionHeadings[2]} />
+        <div className="max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            In Gewerbehöfen mit mehreren kleinen Firmen unter einem Dach teilen sich die Mieter
+            häufig Empfang, Treppenhaus und Innenhof, ohne dass eine Firma allein für die
+            Gemeinschaftsflächen zuständig ist. Für solche Objekte stimmen wir den gebündelten
+            Vertrag meist mit der Hausverwaltung statt mit einer einzelnen Firma ab.
+          </p>
+          <p>
+            Gastronomiebetriebe und Kulturstätten mit Abendöffnung haben einen anderen
+            Reinigungsbedarf als ein Bürostandort mit klassischer Kernarbeitszeit: Eingänge und
+            Sanitärbereiche sind nach einem Veranstaltungsabend stärker beansprucht als nach einem
+            gewöhnlichen Bürotag. Der gebündelte Vertrag berücksichtigt das mit einem entsprechend
+            angepassten Rhythmus.
+          </p>
+        </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {objectTypeCards.map((card, index) => (
             <FadeIn
@@ -328,6 +356,17 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
             Einschränkungen. Kurzfristige Nacht- oder Wochenendeinsätze werden nur angeboten,
             wenn sie tatsächlich planbar sind.
           </p>
+          <p>
+            Bei Objekten mit mehreren kleinen Mietparteien und wechselnden Ansprechpartnern
+            dokumentieren wir die vereinbarte Zutrittsregelung schriftlich, statt sie bei jedem
+            Personalwechsel auf Mieterseite erneut mündlich abzustimmen.
+          </p>
+          <p>
+            Bei Gewerbehöfen, die nach längerem Leerstand neu vermietet werden, ist der
+            Verschmutzungsgrad häufig höher als bei einem direkten Mieterwechsel ohne Leerstand.
+            Eine ergänzende, einmalige Grundreinigung lässt sich dem gebündelten Vertrag für solche
+            Fälle voranstellen, bevor der reguläre Rhythmus beginnt.
+          </p>
         </div>
       </Section>
 
@@ -374,6 +413,72 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
           <p>
             Desinfektionsmittel kommen nur dort zum Einsatz, wo dies vereinbart oder hygienisch
             erforderlich ist.
+          </p>
+          <p>
+            Raue, unverputzte Wandflächen im Industrial-Look erfordern bei der Staubentfernung
+            andere Werkzeuge als glatte Gipskartonwände – ein Umstand, den wir bei der
+            Materialauswahl innerhalb des gebündelten Vertrags berücksichtigen, statt ein
+            einheitliches Tuch für alle Wandoberflächen im Objekt zu verwenden.
+          </p>
+          <p>
+            Alte Holzfensterrahmen, wie sie in vielen Altbauten des Bezirks noch original erhalten
+            sind, vertragen aggressive Reinigungsmittel schlechter als die robusteren Aluminium-
+            oder Kunststoffrahmen neuerer Gewerbeflächen. Die im Rahmen der Fensterreinigung
+            eingesetzten Mittel wählen wir entsprechend nach dem tatsächlich verbauten
+            Rahmenmaterial.
+          </p>
+          <p>
+            Kreativagenturen und Start-ups mit häufigem Personalwechsel benötigen eine schriftlich
+            festgehaltene Zutrittsregelung, damit sich bei jedem neuen Ansprechpartner auf
+            Mieterseite nicht die gesamte Absprache wiederholen muss.
+          </p>
+          <p>
+            Alte Fabrikfenster mit vielen kleinen Einzelscheiben statt großflächiger moderner
+            Verglasung benötigen bei der Fensterreinigung mehr Zeit pro Quadratmeter als eine
+            gleich große, ungeteilte Scheibe – das fließt in die Kalkulation des gebündelten
+            Vertrags ein.
+          </p>
+          <p>
+            Bei Objekten mit gemeinsam genutzter Dachterrasse oder begrüntem Innenhof gehört
+            dieser Außenbereich nur dann zum gebündelten Vertrag, wenn er ausdrücklich vereinbart
+            wurde.
+          </p>
+          <p>
+            Individuell gestaltete Einrichtung und Second-Hand-Möbel, wie sie in vielen
+            Kreativbüros des Bezirks anstelle einheitlicher Büromöbel-Serien stehen, benötigen bei
+            der Reinigung mehr Rücksicht auf unterschiedliche Materialien als eine durchgehend
+            gleich ausgestattete Bürolandschaft.
+          </p>
+          <p>
+            Außensportflächen oder kleine Pausenbereiche im Freien, wie sie manche Gewerbehöfe des
+            Bezirks bieten, gehören zum Außenbereich und damit nicht zur Innenraum-
+            Gebäudereinigung.
+          </p>
+          <p>
+            Fahrradabstellräume, die in vielen Gewerbehöfen des Bezirks durch die hohe Zahl an
+            Radfahrenden zur Standardausstattung gehören, unterliegen einem anderen
+            Verschmutzungsbild als Büroflächen und werden nur bei ausdrücklicher Vereinbarung in
+            den gebündelten Vertrag aufgenommen.
+          </p>
+          <p>
+            Bei einem Wechsel der Hausverwaltung eines Gewerbehofs bleibt der bestehende
+            gebündelte Vertrag unberührt – lediglich der Ansprechpartner auf Verwaltungsseite
+            ändert sich.
+          </p>
+          <p>
+            Second-Hand-Möbel-Läden und Vintage-Geschäfte, wie sie im Bezirk neben klassischen
+            Büros vorkommen, benötigen für ihre Verkaufsflächen eine andere Herangehensweise als
+            ein reines Bürolayout.
+          </p>
+          <p>
+            Streetart und Graffiti, wie sie an manchen Gebäudefassaden im Bezirk bewusst toleriert
+            oder sogar gefördert werden, bleiben von der regulären Gebäudereinigung unberührt,
+            sofern keine gesonderte Entfernung ausdrücklich vereinbart wurde.
+          </p>
+          <p>
+            Bei Gewerbehöfen mit gemeinsamem Innenhof, den mehrere Firmen als Zufahrt und
+            Fahrradabstellfläche nutzen, klären wir vorab, welcher Anteil der Reinigung dieses
+            Hofs über den gebündelten Vertrag mit der Hausverwaltung abgerechnet wird.
           </p>
         </div>
       </Section>
