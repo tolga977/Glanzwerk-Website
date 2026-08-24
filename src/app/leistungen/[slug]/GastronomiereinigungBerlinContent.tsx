@@ -272,6 +272,11 @@ export default function GastronomiereinigungBerlinContent({
             Solche Leistungen werden nur genannt, wenn sie ausdrücklich vereinbart und technisch
             tatsächlich angeboten werden.
           </p>
+          <p>
+            Diese Trennung schützt beide Seiten: Sie wissen genau, wofür der vereinbarte
+            Reinigungsvertrag gilt, und wir übernehmen keine Zusagen zu Bereichen, die besondere
+            technische Ausstattung oder Fachkenntnisse voraussetzen.
+          </p>
         </div>
       </Section>
 
@@ -298,9 +303,126 @@ export default function GastronomiereinigungBerlinContent({
         </div>
       </Section>
 
-      {/* Materialgerechte Reinigung */}
+      {/* Vorbereitung */}
       <Section background="white">
-        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
+        <SectionHeading eyebrow="Kurze Abstimmung erleichtert den Ablauf" title={heading.sectionHeadings[5]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Ein paar einfache Vorbereitungen erleichtern den Ablauf: Werden Stühle nach
+            Betriebsschluss hochgestellt und Tische freigeräumt, lassen sich Böden schneller und
+            gründlicher bearbeiten. Bargeld, Wertgegenstände und sensible Unterlagen sollten wie in
+            jedem Gewerbebetrieb nicht offen zugänglich liegen bleiben.
+          </p>
+          <p>
+            Zugangsregelungen für die Reinigungszeit außerhalb der Öffnungszeiten – etwa Schlüssel,
+            Code oder ein anwesender Mitarbeiter – werden vorab schriftlich festgehalten, damit am
+            Reinigungstag nichts ungeklärt bleibt.
+          </p>
+        </div>
+      </Section>
+
+      {/* Betriebsarten */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Angepasst an den Betrieb" title={heading.sectionHeadings[6]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Ein Schnellrestaurant mit hohem Gästedurchlauf hat einen anderen Reinigungsbedarf als
+            ein Café mit ruhigeren Tagesrandzeiten oder eine Kantine mit festen Essenszeiten. Wir
+            richten Umfang und Intervall nach der tatsächlichen Betriebsart aus – von der
+            täglichen Reinigung stark frequentierter Gasträume bis zu selteneren Terminen für
+            ruhigere Betriebe.
+          </p>
+        </div>
+      </Section>
+
+      {/* Sonderanlässe */}
+      <Section background="white">
+        <SectionHeading eyebrow="Flexibel bei besonderen Anlässen" title={heading.sectionHeadings[7]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Private Feiern, Firmenveranstaltungen oder saisonale Aktionen bringen oft ein höheres
+            Gästeaufkommen oder eine andere Nutzung der Räume mit sich als der reguläre Betrieb.
+            Für solche Anlässe lässt sich zusätzlich zum bestehenden Reinigungsplan ein einmaliger
+            Termin vereinbaren, etwa am Folgetag einer größeren Veranstaltung.
+          </p>
+          <p>
+            Wie kurzfristig ein solcher Zusatztermin möglich ist, hängt von der aktuellen
+            Einsatzplanung ab – eine frühzeitige Anfrage schafft mehr Spielraum bei der Terminwahl.
+          </p>
+        </div>
+      </Section>
+
+      {/* Terrassen */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Auch außerhalb des Gastraums" title={heading.sectionHeadings[8]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Viele gastronomische Betriebe haben Terrassen oder Außensitzbereiche, die anderen
+            Verschmutzungen ausgesetzt sind als der Innenraum – Laub, Vogelkot, Straßenstaub und
+            Witterung wirken hier unmittelbarer.
+          </p>
+          <p>
+            Je nach Saison und Wetterlage lässt sich für Außenflächen ein eigener Rhythmus
+            vereinbaren, unabhängig vom Reinigungsplan des Gastraums.
+          </p>
+        </div>
+      </Section>
+
+      {/* Zusammenspiel Personal */}
+      <Section background="white">
+        <SectionHeading eyebrow="Klare Aufgabenteilung" title={heading.sectionHeadings[9]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Manche Aufgaben, etwa das Abwischen von Tischen zwischen zwei Gästen oder das
+            Nachfüllen von Servietten, übernimmt in der Regel das eigene Servicepersonal während
+            des laufenden Betriebs. Die vereinbarte Reinigung deckt die tiefergehende, regelmäßige
+            Pflege ab – etwa Böden, Sanitärbereiche und Kontaktflächen außerhalb der unmittelbaren
+            Servicezeiten.
+          </p>
+          <p>
+            Diese Aufteilung legen wir vor Beginn konkret fest, damit keine Aufgabe doppelt oder
+            gar nicht erledigt wird.
+          </p>
+        </div>
+      </Section>
+
+      {/* Technische Abgrenzung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Weitere Leistungsgrenzen" title={heading.sectionHeadings[10]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Lüftungs- und Dunstabzugsanlagen benötigen eine technische Wartung durch spezialisierte
+            Fachbetriebe und sind kein Bestandteil der Gastronomiereinigung. Auch eine
+            Schädlingsbekämpfung ist eine eigene Leistung mit eigenen rechtlichen Anforderungen und
+            wird nicht von uns übernommen.
+          </p>
+        </div>
+      </Section>
+
+      {/* Neueröffnung */}
+      <Section background="white">
+        <SectionHeading eyebrow="Sauberer Start" title={heading.sectionHeadings[11]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Vor der Neueröffnung eines gastronomischen Betriebs oder nach Umbau- und
+            Renovierungsarbeiten liegt in der Regel eine andere Ausgangslage vor als im laufenden
+            Betrieb: Baustaub, Reste von Schutzfolien oder Verschmutzungen an neu verlegten Böden
+            erfordern eine intensivere Erstreinigung.
+          </p>
+          <p>
+            Eine Grundreinigung vor der Eröffnung schafft die Ausgangsbasis, auf der die
+            anschließende, regelmäßige Gastronomiereinigung aufbauen kann.{" "}
+            <Link href="/leistungen/grundreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+              Mehr zur Grundreinigung
+            </Link>
+            .
+          </p>
+        </div>
+      </Section>
+
+      {/* Materialgerechte Reinigung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[12]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Holz, Fliesen, Naturstein, Edelstahl, Glas und beschichtete Flächen benötigen
@@ -321,9 +443,29 @@ export default function GastronomiereinigungBerlinContent({
         </FadeIn>
       </Section>
 
+      {/* Auswahlkriterien */}
+      <Section background="white">
+        <SectionHeading eyebrow="Worauf Sie achten sollten" title={heading.sectionHeadings[13]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Bei der Auswahl eines Reinigungsdienstleisters für einen gastronomischen Betrieb lohnt
+            sich ein Blick auf einige konkrete Punkte: Wird nach Betriebsart, Gästeaufkommen und
+            tatsächlichen Öffnungszeiten gefragt, oder wird ein pauschaler Preis ohne Bezug zum
+            Betrieb genannt? Lässt sich die Reinigung flexibel auf frühe, späte oder
+            Wochenendtermine legen, ohne den laufenden Service zu stören?
+          </p>
+          <p>
+            Ebenso wichtig ist eine klare, schriftliche Abgrenzung dessen, was zur vereinbarten
+            Reinigung gehört und was Sache des eigenen Personals oder spezialisierter Fachbetriebe
+            bleibt – etwa bei Küchengeräten, Abluftanlagen oder Fettabscheidern. Ein fester
+            Ansprechpartner für kurzfristige Rückfragen rundet eine verlässliche Zusammenarbeit ab.
+          </p>
+        </div>
+      </Section>
+
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[6]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[14]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -331,7 +473,7 @@ export default function GastronomiereinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Gastronomiereinigung" title={heading.sectionHeadings[7]} />
+        <SectionHeading eyebrow="Preis der Gastronomiereinigung" title={heading.sectionHeadings[15]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -355,7 +497,7 @@ export default function GastronomiereinigungBerlinContent({
 
       {/* Berlin */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[16]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link

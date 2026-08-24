@@ -399,9 +399,123 @@ export default function UnterhaltsreinigungBerlinContent({
         </div>
       </Section>
 
-      {/* Ergänzende Leistungen */}
+      {/* Zugang und Ablauf am Reinigungstag */}
       <Section background="white">
-        <SectionHeading eyebrow="Bei Bedarf erweiterbar" title={heading.sectionHeadings[7]} />
+        <SectionHeading eyebrow="Reibungsloser Ablauf vor Ort" title={heading.sectionHeadings[7]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Je nach Objekt findet die Reinigung während der Öffnungszeiten, in einer ruhigeren
+            Randzeit oder außerhalb der Geschäftszeiten statt. Welche Variante passt, richtet sich
+            danach, wie das Objekt genutzt wird und wer zu welcher Zeit vor Ort ist – das wird vor
+            Vertragsbeginn festgelegt.
+          </p>
+          <p>
+            Damit die vereinbarte Zeit effizient genutzt werden kann, hilft es, wenn Schreibtische
+            und Ablageflächen zum Termin einigermaßen frei zugänglich sind und persönliche
+            Wertgegenstände nicht offen liegen. Zugangsregelungen – etwa Schlüssel, Transponder
+            oder Codes – werden vorab schriftlich festgehalten.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abgrenzung Facility Management */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Klare Leistungsgrenze" title={heading.sectionHeadings[8]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Die Unterhaltsreinigung deckt die regelmäßige Pflege von Böden, Oberflächen, Sanitär-
+            und Küchenbereichen ab. Technische Gebäudeinstandhaltung – etwa die Wartung von
+            Heizungs- oder Lüftungsanlagen, kleinere Reparaturen oder der Winterdienst – gehört
+            nicht automatisch dazu und wird, wenn benötigt, als eigene Leistung besprochen.
+          </p>
+          <p>
+            Diese Trennung ist keine Formalität, sondern schafft von Anfang an Klarheit darüber,
+            wofür der vereinbarte Reinigungsvertrag tatsächlich gilt und wer bei technischen
+            Anliegen der richtige Ansprechpartner ist.
+          </p>
+        </div>
+      </Section>
+
+      {/* Absprachen über die Zeit */}
+      <Section background="white">
+        <SectionHeading eyebrow="Verlässliche Grundlage" title={heading.sectionHeadings[9]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Ein schriftlicher Reinigungsplan hält fest, welche Flächen in welchem Rhythmus
+            gereinigt werden. Diese Übersicht dient während der gesamten Zusammenarbeit als
+            gemeinsamer Bezugspunkt – etwa wenn eine neue Kollegin im Unternehmen erstmals mit der
+            Reinigung zu tun hat oder wenn nach längerer Zeit ein Detail geklärt werden muss.
+          </p>
+          <p>
+            Ändert sich die Nutzung Ihres Objekts, etwa durch mehr Mitarbeitende oder eine neue
+            Raumaufteilung, wird der bestehende Plan angepasst, statt die Zusammenarbeit von Grund
+            auf neu zu verhandeln.
+          </p>
+        </div>
+      </Section>
+
+      {/* Qualitätssicherung über die Zeit */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Kontinuität über viele Termine" title={heading.sectionHeadings[10]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Eine Unterhaltsreinigung wird über Wochen und Monate hinweg von denselben oder
+            wechselnden Kräften ausgeführt. Damit die Qualität dabei gleich bleibt, orientiert sich
+            das Team am schriftlich festgehaltenen Reinigungsplan statt an individuellem Ermessen –
+            so lässt sich jederzeit nachvollziehen, was zu welchem Termin gehört.
+          </p>
+          <p>
+            Rückmeldungen zu einzelnen Terminen erreichen uns über einen festen Ansprechpartner.
+            So lässt sich schnell klären, ob eine Abweichung einmalig war oder der Plan angepasst
+            werden sollte.
+          </p>
+        </div>
+      </Section>
+
+      {/* Umzug/Erweiterung */}
+      <Section background="white">
+        <SectionHeading eyebrow="Wenn sich das Objekt ändert" title={heading.sectionHeadings[11]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Zieht Ihr Unternehmen in neue Räume um oder kommen zusätzliche Flächen hinzu, wird der
+            bestehende Reinigungsplan entsprechend erweitert oder neu abgestimmt, statt die
+            Zusammenarbeit komplett neu aufzusetzen.
+          </p>
+          <p>
+            Der feste Ansprechpartner bleibt dabei in der Regel bestehen, auch wenn sich Fläche
+            oder Adresse ändern – das erspart Ihnen, Zuständigkeiten und Absprachen ein zweites Mal
+            von vorne zu klären.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abgrenzung Grundreinigung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Häufig verwechselt" title={heading.sectionHeadings[12]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Unterhaltsreinigung und Grundreinigung verfolgen unterschiedliche Ziele. Die
+            Unterhaltsreinigung hält ein bereits gepflegtes Objekt im laufenden Betrieb sauber und
+            wird in festen Intervallen wiederholt. Die Grundreinigung entfernt dagegen tiefsitzenden,
+            über längere Zeit angesammelten Schmutz, der im normalen Reinigungsrhythmus nicht erfasst
+            wird.
+          </p>
+          <p>
+            In der Praxis ergänzen sich beide Leistungen: Eine turnusmäßige Grundreinigung schafft
+            die Grundlage, auf der die Unterhaltsreinigung den erreichten Zustand halten kann. Ob und
+            wann eine Grundreinigung sinnvoll ist, hängt vom Zustand des Objekts und der bisherigen
+            Pflege ab.{" "}
+            <Link href="/leistungen/grundreinigung-berlin" className="font-semibold text-brand-500 hover:underline">
+              Mehr zur Grundreinigung
+            </Link>
+            .
+          </p>
+        </div>
+      </Section>
+
+      {/* Ergänzende Leistungen */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Bei Bedarf erweiterbar" title={heading.sectionHeadings[13]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {supplementaryLinks.map((link) => (
             <Link
@@ -417,7 +531,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Materialschutz */}
       <Section background="muted">
-        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[14]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Glanzwerk verwendet je nach Einsatzbereich professionelle Reinigungsprodukte, unter
@@ -433,7 +547,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[9]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[15]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -441,7 +555,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Unterhaltsreinigung" title={heading.sectionHeadings[10]} />
+        <SectionHeading eyebrow="Preis der Unterhaltsreinigung" title={heading.sectionHeadings[16]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -465,7 +579,7 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Berlin */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[11]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[17]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link

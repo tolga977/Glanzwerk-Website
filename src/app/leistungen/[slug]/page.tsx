@@ -34,6 +34,8 @@ import UnterhaltsreinigungBerlinContent from "./UnterhaltsreinigungBerlinContent
 import AutohausreinigungBerlinContent from "./AutohausreinigungBerlinContent";
 import GlasUndFensterreinigungBerlinContent from "./GlasUndFensterreinigungBerlinContent";
 import GastronomiereinigungBerlinContent from "./GastronomiereinigungBerlinContent";
+import KitaUndSchulreinigungBerlinContent from "./KitaUndSchulreinigungBerlinContent";
+import FitnessstudioreinigungBerlinContent from "./FitnessstudioreinigungBerlinContent";
 
 /** Leistungsseiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
 const customContentSlugs = {
@@ -47,6 +49,8 @@ const customContentSlugs = {
   "autohausreinigung-berlin": AutohausreinigungBerlinContent,
   "glas-und-fensterreinigung-berlin": GlasUndFensterreinigungBerlinContent,
   "gastronomiereinigung-berlin": GastronomiereinigungBerlinContent,
+  "kita-und-schulreinigung-berlin": KitaUndSchulreinigungBerlinContent,
+  "fitnessstudioreinigung-berlin": FitnessstudioreinigungBerlinContent,
 } as const;
 
 interface Props {

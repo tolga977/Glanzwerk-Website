@@ -312,9 +312,143 @@ export default function GrundreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* Grob-/Feinreinigung */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Zwei Arbeitsschritte" title={heading.sectionHeadings[4]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Nach Bauarbeiten läuft eine Grundreinigung in der Praxis meist zweistufig ab. Die
+            Grobreinigung entfernt zunächst sichtbaren Bauschmutz wie Staub, Klebereste,
+            Farbspritzer und grobe Verschmutzungen auf Böden und Oberflächen. Erst danach folgt die
+            eigentliche Feinreinigung mit Detailarbeiten an Fensterbänken, Ecken, Fugen und
+            Sanitärbereichen.
+          </p>
+          <p>
+            Wird nur eine der beiden Stufen beauftragt, obwohl das Objekt beide benötigt, bleibt
+            das Ergebnis hinter den Erwartungen zurück. Deshalb klären wir vorab den tatsächlichen
+            Zustand der Flächen, statt pauschal von einer einzelnen Grundreinigung auszugehen.
+          </p>
+        </div>
+      </Section>
+
+      {/* Bauendreinigung vs Grundreinigung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Häufig verwechselt" title={heading.sectionHeadings[5]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Eine Bauendreinigung und eine Grundreinigung werden oft gleichgesetzt, decken aber
+            unterschiedliche Arbeiten ab. Zur Bauendreinigung gehört typischerweise auch das
+            Entfernen von grobem Bauschutt, Schutzfolien, Klebebandresten und
+            Verpackungsmaterialien – also Arbeiten, die eher der Baustelle als der eigentlichen
+            Reinigung zuzuordnen sind.
+          </p>
+          <p>
+            Die Grundreinigung setzt dagegen erst an einem bereits vom gröbsten Bauschutt befreiten
+            Objekt an und konzentriert sich auf die intensive Aufbereitung von Böden, Oberflächen
+            und Sanitärbereichen. Ob im konkreten Fall beide Arbeitsschritte benötigt werden, klären
+            wir vor der Angebotserstellung.
+          </p>
+        </div>
+      </Section>
+
+      {/* Vorbereitung */}
+      <Section background="white">
+        <SectionHeading eyebrow="Kurze Abstimmung vorab" title={heading.sectionHeadings[6]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Sind nach Bauarbeiten noch grober Schutt, Verpackungsmaterial oder Folien vorhanden,
+            sollte vorab geklärt sein, ob deren Entsorgung Teil des Auftrags ist oder bereits vom
+            Bauunternehmen übernommen wurde. Auch der Zugang zu allen zu reinigenden Räumen sowie
+            die Verfügbarkeit von Wasser und Strom vor Ort wirken sich auf den Ablauf aus.
+          </p>
+          <p>
+            Sinnvoll ist außerdem, empfindliche oder noch nicht endgültig montierte Gegenstände –
+            etwa lose Dekoration, Regale oder frisch montierte Beschläge – vor dem Termin zu
+            sichern oder abzudecken, damit sie bei der intensiven Bearbeitung angrenzender Flächen
+            nicht in Mitleidenschaft gezogen werden.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abgrenzung Sanierung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Klare Leistungsgrenze" title={heading.sectionHeadings[7]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Schäden durch Wasser, Brand oder Vandalismus erfordern andere Verfahren als eine
+            Grundreinigung und oft spezialisierte Sanierungsunternehmen – das ist keine
+            Grundreinigung im eigentlichen Sinn und wird entsprechend nicht als Standardleistung
+            angeboten.
+          </p>
+          <p>
+            Ebenso ist die fachgerechte Entsorgung größerer Mengen Bauschutt oder Sondermüll in der
+            Regel Sache des Bauunternehmens, nicht der Reinigungsfirma. Was im konkreten Fall dazu
+            gehört, klären wir vor dem Angebot.
+          </p>
+        </div>
+      </Section>
+
+      {/* Realistische Erwartungen */}
+      <Section background="white">
+        <SectionHeading eyebrow="Ehrliche Einschätzung" title={heading.sectionHeadings[8]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Nicht jede Verschmutzung lässt sich vollständig entfernen. Eingebrannte Fettspuren,
+            jahrelang unbehandelte Fugen oder tief in poröses Material eingezogene Flecken lassen
+            sich je nach Alter und Untergrund oft nur teilweise verbessern.
+          </p>
+          <p>
+            Bei einer kurzen Einschätzung vor Ort lässt sich in der Regel gut abschätzen, was
+            realistisch erreichbar ist – das schafft Klarheit, bevor ein Angebot erstellt wird,
+            statt nach der Reinigung für Überraschungen zu sorgen.
+          </p>
+          <p>
+            Auch der Untergrund spielt eine Rolle: Ein glasierter Fliesenboden verzeiht deutlich
+            mehr als offenporiger Naturstein oder unbehandeltes Holz, bei denen sich Verschmutzungen
+            tiefer festsetzen können. Diese Unterschiede fließen in die Einschätzung mit ein.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abnahme */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Gemeinsamer Rundgang" title={heading.sectionHeadings[9]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Nach Abschluss der Arbeiten bietet sich ein kurzer gemeinsamer Rundgang durch die
+            bearbeiteten Bereiche an. So lässt sich direkt vor Ort klären, ob das Ergebnis der
+            vorab besprochenen Einschätzung entspricht, statt Rückfragen erst Tage später zu klären.
+          </p>
+          <p>
+            Fällt bei diesem Rundgang eine Stelle auf, die noch einmal nachbearbeitet werden sollte,
+            wird das direkt besprochen und, soweit im vereinbarten Leistungsumfang möglich, vor Ort
+            erledigt.
+          </p>
+        </div>
+      </Section>
+
+      {/* Auswahlkriterien */}
+      <Section background="white">
+        <SectionHeading eyebrow="Worauf Sie achten sollten" title={heading.sectionHeadings[10]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Bei der Auswahl eines Anbieters für eine Grundreinigung lohnt sich ein Blick auf einige
+            konkrete Punkte: Wird vorab nach Material, Verschmutzungsgrad und Zugänglichkeit
+            gefragt, oder wird ein pauschaler Preis ohne Einschätzung des Objekts genannt? Wird
+            offen benannt, welche Flecken sich voraussichtlich nicht vollständig entfernen lassen,
+            statt ein pauschales Ergebnis zu versprechen?
+          </p>
+          <p>
+            Ebenso hilfreich ist ein fester Ansprechpartner für Rückfragen vor und nach dem Termin
+            sowie eine klare, schriftliche Abgrenzung des Leistungsumfangs – so lassen sich spätere
+            Missverständnisse über den vereinbarten Umfang vermeiden.
+          </p>
+        </div>
+      </Section>
+
       {/* Planung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Materialgerechtes Vorgehen" title={heading.sectionHeadings[4]} />
+        <SectionHeading eyebrow="Materialgerechtes Vorgehen" title={heading.sectionHeadings[11]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Bodenbeläge und Oberflächen reagieren unterschiedlich auf Wasser, Reinigungsmittel und
@@ -331,7 +465,7 @@ export default function GrundreinigungBerlinContent({
 
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zur Durchführung" title={heading.sectionHeadings[5]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zur Durchführung" title={heading.sectionHeadings[12]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -339,7 +473,7 @@ export default function GrundreinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Grundreinigung" title={heading.sectionHeadings[6]} />
+        <SectionHeading eyebrow="Preis der Grundreinigung" title={heading.sectionHeadings[13]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -374,7 +508,7 @@ export default function GrundreinigungBerlinContent({
 
       {/* Berlin-Bezug */}
       <Section background="white">
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[7]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[14]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link

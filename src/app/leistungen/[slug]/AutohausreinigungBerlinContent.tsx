@@ -61,6 +61,25 @@ const scopeCards = [
   },
 ];
 
+const rhythmCards = [
+  {
+    title: "Showroom",
+    description: "In der Regel täglich, um Staub, Schlieren und Laufspuren gering zu halten.",
+  },
+  {
+    title: "Sanitärbereiche",
+    description: "Täglich bis mehrmals wöchentlich, abhängig vom Kunden- und Personalaufkommen.",
+  },
+  {
+    title: "Büros und Sozialräume",
+    description: "Meist mehrmals wöchentlich, angepasst an die tatsächliche Nutzung.",
+  },
+  {
+    title: "Übergangszonen zur Werkstatt",
+    description: "Eigener, engerer Rhythmus bei starkem Reifen- oder Ölabrieb.",
+  },
+];
+
 const supplementaryLinks = [
   { label: "Glas- und Fensterreinigung", href: "/leistungen/glas-und-fensterreinigung-berlin" },
   { label: "Grundreinigung", href: "/leistungen/grundreinigung-berlin" },
@@ -286,6 +305,11 @@ export default function AutohausreinigungBerlinContent({
             Außenreinigung ausgestellter Fahrzeuge ist nur Bestandteil des Angebots, wenn dies
             ausdrücklich separat vereinbart und tatsächlich angeboten wird.
           </p>
+          <p>
+            Diese Abgrenzung betrifft auch die Fläche unter und um ausgestellte Fahrzeuge: Der
+            sichtbare Boden wird im vereinbarten Rhythmus mitgereinigt, eine Bewegung der Fahrzeuge
+            selbst gehört jedoch nicht automatisch dazu und wird bei Bedarf vorab abgesprochen.
+          </p>
         </div>
       </Section>
 
@@ -301,9 +325,143 @@ export default function AutohausreinigungBerlinContent({
         </div>
       </Section>
 
+      {/* Rhythmus je nach Bereich */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Nicht jeder Bereich gleich oft"
+          title={heading.sectionHeadings[5]}
+          subtitle="Showroom, Sanitärbereiche, Büros und die Übergangszonen zur Werkstatt sind unterschiedlich stark beansprucht. Der Reinigungsplan berücksichtigt das."
+        />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {rhythmCards.map((card, index) => (
+            <FadeIn key={card.title} delay={index * 60} className="rounded-card border border-line bg-white p-6 shadow-raise">
+              <p className="font-display text-base font-medium text-brand-900">{card.title}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{card.description}</p>
+            </FadeIn>
+          ))}
+        </div>
+        <p className="mt-8 max-w-3xl text-sm text-ink-soft">
+          Diese Einteilung ist kein starres Schema: Steigt das Besucheraufkommen etwa durch eine
+          neue Modellreihe oder eine Verkaufsaktion spürbar an, lässt sich der Rhythmus einzelner
+          Bereiche entsprechend anpassen, statt am ursprünglich vereinbarten Plan festzuhalten.
+        </p>
+      </Section>
+
+      {/* Sicherheit */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Rutschgefahr im Blick" title={heading.sectionHeadings[6]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Frisch gewischte Böden im Showroom sind kurzzeitig rutschig – ein Risiko, das bei
+            laufendem Kundenverkehr anders zu handhaben ist als in einem geschlossenen Büro. Wo
+            nötig, setzen wir Warnschilder ein und stimmen den Ablauf so ab, dass stark
+            frequentierte Bereiche nach Möglichkeit außerhalb der Stoßzeiten nass gewischt werden.
+          </p>
+          <p>
+            Bei glatten Natursteinböden oder frisch versiegelten Oberflächen gilt diese Vorsicht
+            besonders lange, da sie Feuchtigkeit langsamer abgeben als beschichtete Beläge.
+          </p>
+        </div>
+      </Section>
+
+      {/* Vorbereitung */}
+      <Section background="white">
+        <SectionHeading eyebrow="Kurze Abstimmung vorab" title={heading.sectionHeadings[7]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Fahrzeuge, die im Reinigungsbereich stehen, lassen sich am schnellsten bewegen, wenn
+            vorab klar ist, welche Flächen zum vereinbarten Termin frei sein sollen. Bei besonders
+            wertvollen Ausstellungsstücken ist es hilfreich, das vorab zu benennen, damit wir
+            entsprechend vorsichtig arbeiten.
+          </p>
+        </div>
+      </Section>
+
+      {/* Wechselnde Ausstellung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Flexibel bei besonderen Anlässen" title={heading.sectionHeadings[8]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Autohäuser wechseln ihre Ausstellungsflächen häufiger als viele andere Gewerbebetriebe
+            – neue Modelle kommen hinzu, Sonderausstellungen oder Kundentage verändern kurzfristig
+            den Zuschnitt des Showrooms. Ein zusätzlicher Reinigungstermin vor einem solchen Anlass
+            lässt sich bei rechtzeitiger Anfrage einplanen, ohne den regulären Rhythmus zu
+            verändern.
+          </p>
+        </div>
+      </Section>
+
+      {/* Übergangszonen */}
+      <Section background="white">
+        <SectionHeading eyebrow="Schnittstelle zur Werkstatt" title={heading.sectionHeadings[9]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            An Zufahrten und Übergängen zwischen Werkstatt und Kundenbereich sammeln sich häufig
+            Reifenabrieb und Ölspuren, die in den eigentlichen Kundenbereich hineingetragen werden.
+            Diese Übergangszonen lassen sich bei Bedarf mit einem eigenen, engeren Rhythmus
+            behandeln, unabhängig vom übrigen Showroom.
+          </p>
+          <p>
+            Gerade an Regentagen verstärkt sich dieser Effekt zusätzlich, da Feuchtigkeit von
+            Fahrzeugen und Kundschaft den Schmutz weiter in Richtung Showroom trägt. In solchen
+            Phasen lässt sich die Reinigung dieser Zonen bei Bedarf kurzfristig verdichten.
+          </p>
+        </div>
+      </Section>
+
+      {/* Auswahlkriterien */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Worauf es ankommt" title={heading.sectionHeadings[10]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Nicht jede Reinigungsfirma hat Erfahrung mit den großen, offenen Flächen und der
+            Kombination aus Kundenverkehr und wertvollen Ausstellungsstücken, die ein Autohaus
+            mitbringt. Achten Sie auf einen Anbieter, der Termine zuverlässig auch außerhalb
+            klassischer Bürozeiten anbietet, der auf Rückfragen zu speziellen Bodenbelägen oder
+            Glasflächen konkret antworten kann und der einen festen Ansprechpartner benennt statt
+            wechselnder Kontaktpersonen.
+          </p>
+        </div>
+      </Section>
+
+      {/* Realistische Erwartungen */}
+      <Section background="white">
+        <SectionHeading eyebrow="Ehrliche Einschätzung" title={heading.sectionHeadings[11]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Öl- und Reifenspuren, die über längere Zeit in einen porösen Estrich oder
+            unversiegelten Fliesenboden eingezogen sind, lassen sich durch reguläre Reinigung oft
+            nur verringern, nicht vollständig entfernen.
+          </p>
+          <p>
+            Eine kurze Einschätzung vor Ort zeigt, was mit den vorhandenen Mitteln realistisch
+            erreichbar ist. Bei stark betroffenen Flächen kann eine zusätzliche Grundreinigung
+            sinnvoller sein als eine wiederholte reguläre Reinigung.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abnahme und Rückmeldung */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Kurzer Rundgang nach dem Termin" title={heading.sectionHeadings[12]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Bei größeren Terminen oder nach einer intensiveren Reinigung bietet sich ein kurzer
+            gemeinsamer Rundgang durch Showroom und Kundenbereiche an, statt Rückfragen erst Tage
+            später zu klären. So lässt sich direkt vor Ort besprechen, ob eine Stelle noch einmal
+            nachbearbeitet werden sollte.
+          </p>
+          <p>
+            Für die laufende Zusammenarbeit erhalten Sie einen festen Ansprechpartner, an den sich
+            Ihr Team auch zwischen den regulären Terminen mit kurzfristigen Rückmeldungen wenden
+            kann.
+          </p>
+        </div>
+      </Section>
+
       {/* Materialschutz */}
       <Section background="white">
-        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[5]} />
+        <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[13]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Showrooms kombinieren häufig Fliesen, Naturstein, beschichtete Böden, Glas, Metall
@@ -326,7 +484,7 @@ export default function AutohausreinigungBerlinContent({
 
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[6]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zum Reinigungsstart" title={heading.sectionHeadings[14]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -334,7 +492,7 @@ export default function AutohausreinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Autohausreinigung" title={heading.sectionHeadings[7]} />
+        <SectionHeading eyebrow="Preis der Autohausreinigung" title={heading.sectionHeadings[15]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -358,7 +516,7 @@ export default function AutohausreinigungBerlinContent({
 
       {/* Berlin */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[16]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link

@@ -421,9 +421,66 @@ export default function GlasUndFensterreinigungBerlinContent({
         </FadeIn>
       </Section>
 
+      {/* Wetterabhängigkeit */}
+      <Section background="tint" decor>
+        <SectionHeading eyebrow="Der richtige Zeitpunkt" title={heading.sectionHeadings[7]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Ein für den Vormittag vereinbarter Termin verliert seinen Wert, wenn kurz zuvor
+            starker Regen niedergeht. Wir behalten die Wetterlage im Blick und schlagen bei Bedarf
+            eine kurzfristige Verschiebung vor, statt einen Kalendertermin bei strömendem Regen
+            stur durchzuziehen – das Ergebnis wäre am Ende ohnehin nicht besser, nur der Einsatz
+            umsonst.
+          </p>
+          <p>
+            Frost wirkt sich zusätzlich auf das Ergebnis aus: Wischwasser trocknet auf kalten
+            Scheiben schneller an und hinterlässt eher Schlieren als bei milderen Temperaturen.
+            Deshalb passen wir Termine bei Minusgraden nach Möglichkeit an, statt ein Ergebnis zu
+            liefern, das der eigentlichen Arbeit nicht gerecht wird.
+          </p>
+        </div>
+      </Section>
+
+      {/* Vorbereitung */}
+      <Section background="white">
+        <SectionHeading eyebrow="Kurze Vorbereitung, glatter Ablauf" title={heading.sectionHeadings[8]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Für Innenseiten ist Zugang zu den jeweiligen Räumen nötig. Bei Besprechungsräumen oder
+            Büros mit vertraulichen Unterlagen sollte vorab klar sein, wer den Zutritt begleitet
+            oder ob eine Reinigung außerhalb der Nutzungszeiten sinnvoller ist. Gegenstände auf
+            Fensterbänken, die im Weg stehen, lassen sich schneller entfernen, wenn sie vorher zur
+            Seite geräumt wurden.
+          </p>
+          <p>
+            Bei Objekten, für die eine Hubarbeitsbühne oder ein Fahrzeug mit Anhänger benötigt
+            wird, ist eine kurzfristig freigehaltene Stellfläche vor dem Gebäude hilfreich, damit
+            der Termin wie geplant stattfinden kann und nicht an einem zugeparkten Gehweg
+            scheitert.
+          </p>
+        </div>
+      </Section>
+
+      {/* Abgrenzung Fassade */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Klare Leistungsgrenze" title={heading.sectionHeadings[9]} />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Die Glas- und Fensterreinigung deckt Fenster, Glastüren, Trennwände und vergleichbare
+            Flächen ab. Eine großflächige Fassadenreinigung von Naturstein-, Putz- oder
+            Klinkerflächen mit Spezialverfahren ist eine andere Leistung mit anderen Anforderungen
+            an Verfahren und Ausrüstung als das Einwascher-Abzieher-Verfahren für Glas.
+          </p>
+          <p>
+            Sie wird deshalb nicht automatisch mitgeliefert, sondern bei konkretem Bedarf gesondert
+            besprochen – so bleibt für Sie nachvollziehbar, wofür das Angebot tatsächlich gilt.
+          </p>
+        </div>
+      </Section>
+
       {/* Ablauf */}
       <Section background="brand" decor>
-        <SectionHeading eyebrow="Von der Anfrage bis zur Durchführung" title={heading.sectionHeadings[7]} light />
+        <SectionHeading eyebrow="Von der Anfrage bis zur Durchführung" title={heading.sectionHeadings[10]} light />
         <div className="mt-10">
           <ProcessSteps steps={processSteps} light />
         </div>
@@ -431,7 +488,7 @@ export default function GlasUndFensterreinigungBerlinContent({
 
       {/* Kosten */}
       <Section background="warm">
-        <SectionHeading eyebrow="Preis der Fensterreinigung" title={heading.sectionHeadings[8]} />
+        <SectionHeading eyebrow="Preis der Fensterreinigung" title={heading.sectionHeadings[11]} />
         <p className="mt-6 max-w-3xl text-sm font-semibold text-brand-900">Folgende Faktoren beeinflussen den Preis:</p>
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-2">
           {costFactors.map((factor) => (
@@ -461,7 +518,7 @@ export default function GlasUndFensterreinigungBerlinContent({
 
       {/* Einsatzgebiete */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[9]} />
+        <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[12]} />
         <FadeIn className="mt-8 flex flex-wrap gap-2">
           {districts.map((district) => (
             <Link
