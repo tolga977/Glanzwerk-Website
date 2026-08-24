@@ -861,10 +861,49 @@ export const combos: Combo[] = [
     districtSlug: "mitte",
     intro:
       "Kanzleien in Mitte benötigen häufig kurze, verlässliche Zeitfenster außerhalb dichter Terminpläne. Wir reinigen Empfang, Besprechungsräume und Büroflächen diskret und mit festen Reinigungsteams.",
+    metaDescription:
+      "Kanzleireinigung in Berlin-Mitte – diskret, mit festen Reinigungsteams und kurzen Zeitfenstern für Kanzleien nahe Behörden und Gerichten. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Für die Kanzleireinigung bedeutet die Nähe zu Behörden und Gerichten vor allem eines: wenig Spielraum zwischen den Terminen. Wir legen Reinigungstermine deshalb meist in enge Zeitfenster außerhalb der Kernzeiten.",
     localAngle: [
       "Rund um das Regierungsviertel und die angrenzenden Gerichts- und Verwaltungsstandorte hat sich in Mitte eine hohe Dichte an Kanzleien angesiedelt. Viele davon arbeiten eng getaktet zwischen Terminen, Anhörungen und Mandantengesprächen – für die Reinigung bedeutet das kurze, verlässliche Zeitfenster statt eines ganzen freien Vormittags.",
       "Gleichzeitig bleibt Vertraulichkeit unabhängig von der Lage der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und Zugang wird individuell mit der Kanzleileitung abgestimmt.",
+      "Empfangs- und Besprechungsbereiche prägen bei Kanzleien den ersten Eindruck für Mandanten besonders stark – anders als bei einer allgemeinen Büroreinigung, bei der dieser Aspekt eine untergeordnete Rolle spielt. Wir richten Reinigungsintensität und Sichtbarkeit des Ergebnisses entsprechend darauf aus.",
+      "Aktenvernichtung größerer Mengen, etwa bei Mandatsende oder einer Büroauflösung, ist eine eigene, gesondert zu vereinbarende Leistung mit besonderen Anforderungen an den Datenschutz. Die reguläre Reinigung deckt lediglich das Leeren üblicher Papierkörbe ab.",
+      "Bei Kanzleien mit mehreren Partnern und getrennten Sekretariaten stimmen wir vorab ab, ob eine zentrale Ansprechperson für die gesamte Kanzlei koordiniert oder jeder Partnerbereich eigene Absprachen trifft – je nach interner Organisation Ihrer Kanzlei.",
+      "Bei der Auswahl eines Dienstleisters für eine Kanzlei in zentraler Lage lohnt sich die Frage nach einem festen, eingespielten Team statt wechselndem Personal – das erleichtert den Aufbau von Vertrauen im Umgang mit vertraulichen Mandantenunterlagen.",
+      "Besprechungsräume mit Glaswänden, wie sie in modernen Kanzleien in Mitte häufig vorkommen, benötigen eine andere Pflege als geschlossene Wände. Fingerabdrücke und Stiftreste an Glasflächen entfernen wir mit dafür geeigneten Mitteln, die weder Kratzer hinterlassen noch die Fläche stumpf wirken lassen.",
+      "Drucker, Scanner und Aktenvernichter in Kanzleien werden von uns nur äußerlich mit geeigneten Tüchern gereinigt. Eine technische Wartung oder Innenreinigung der Geräte gehört nicht zum Leistungsumfang.",
+      "Empfangstresen aus Naturstein oder Echtholz, wie sie in gehobenen Kanzleien vorkommen, benötigen andere Pflegemittel als eine Kunststoffoberfläche. Wir prüfen das Material bei der ersten Besichtigung und wählen Verfahren entsprechend aus.",
+      "Nach der Übernahme einer neuen Kanzlei gehen wir zunächst durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen. So lassen sich Unterschiede im bisherigen Pflegezustand vor dem ersten regulären Termin feststellen.",
+      "Papierkörbe werden im Rahmen jedes regulären Termins geleert. Fällt bei einem Umzug oder einer Kanzleiauflösung eine größere Menge Akten zur Entsorgung an, besprechen wir das als eigene, gesondert kalkulierte Position mit besonderen Datenschutzanforderungen.",
+      "Bei Kanzleien mit häufigem Mandantenbesuch lohnt sich eine kurze interne Abstimmung, zu welcher Tageszeit am wenigsten los ist – Termine unmittelbar vor wichtigen Besprechungen lassen sich meist vermeiden, wenn die übliche Terminstruktur der Kanzlei bei der Planung bekannt ist.",
+      "Reinigung und Aktenordnung sind zwei getrennte Aufgaben: Wir stellen sichtbaren Staub und Verschmutzung ab, ordnen aber keine Unterlagen oder Aktenstapel neu. Was auf dem Schreibtisch liegt, bleibt in der vorgefundenen Reihenfolge liegen.",
+      "Bei mehreren Sozietäten im selben Bürogebäude in Mitte klären wir vor Vertragsbeginn, ob eine gemeinsame Reinigung für das ganze Haus sinnvoll ist oder jede Kanzlei separat beauftragt, insbesondere wenn die Sozietäten unterschiedliche Sicherheitsvorgaben haben.",
+      "Nach einer größeren Veranstaltung, etwa einem Mandantenempfang, lässt sich kurzfristig eine zusätzliche Reinigung außerhalb des regulären Rhythmus vereinbaren, damit die Kanzlei am nächsten Arbeitstag wieder in gewohntem Zustand ist.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart ist.",
+      "Bei der Auswahl eines Dienstleisters für eine Kanzlei lohnt sich die Frage, ob konkret nach Zutrittsregelungen und Vertraulichkeitsanforderungen gefragt wird, statt ein pauschales Büroreinigungsangebot ohne diesen Fokus zu erstellen.",
+      "Fensterbänke in Kanzleien werden häufig für Aktenordner, Dekoration oder Pflanzen genutzt. Vor einem Termin hilft es, wenn zumindest die unmittelbar zu reinigende Fläche zugänglich ist – solche Details klären wir bei Bedarf direkt mit Ihrem Team vor Ort.",
+      "Für Kanzleien, die in Mitte mehrere Standorte betreiben, lässt sich die Kanzleireinigung über mehrere Objekte hinweg bündeln – mit einem gemeinsamen Ansprechpartner statt getrennter Verträge pro Standort.",
+      "Bibliotheksregale mit Fachliteratur werden bei der Reinigung nur in den unteren, gut erreichbaren Bereichen berücksichtigt. Für obere Fächer wäre zusätzliches Gerät nötig, das außerhalb des regulären Umfangs liegt, sofern nicht ausdrücklich vereinbart.",
+      "Wächst eine Kanzlei und mietet eine zusätzliche Fläche im selben oder einem benachbarten Gebäude an, lässt sich der bestehende Reinigungsvertrag meist einfach erweitern, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Besprechungsraumtische aus Echtholz, wie sie in vielen Kanzleien für Mandantengespräche genutzt werden, benötigen eine andere Pflege als beschichtete Oberflächen. Wir wählen Mittel und Verfahren passend zum jeweiligen Material aus.",
+      "Bei Kanzleien mit häufigem Publikumsverkehr durch Gerichtstermine in unmittelbarer Nähe lohnt sich ein etwas intensiverer Rhythmus für Empfang und Wartebereich als bei Kanzleien ohne direkten Mandantenverkehr vor Ort.",
+      "Nach einer größeren Grundreinigung, etwa bei Kanzleineugründung, bietet sich ein kurzer gemeinsamer Rundgang mit der Kanzleileitung an, um das Ergebnis direkt zu bestätigen, statt Rückfragen erst zum nächsten regulären Termin zu klären.",
+      "Sanitärbereiche für Mandanten und Personal werden im selben Rhythmus behandelt, sofern nichts anderes vereinbart wird. Bei deutlich unterschiedlicher Nutzung lässt sich der Takt für beide Bereiche getrennt anpassen.",
+      "Bei einer Kanzlei mit mehreren Standorten in Berlin lässt sich die Reinigung über alle Objekte hinweg mit einem einzigen Ansprechpartner koordinieren, statt für jeden Standort einen eigenen Vertrag zu verhandeln.",
+      "Glasflächen an Empfang oder Besprechungsräumen mit Blick auf viel Publikumsverkehr rund um Behörden und Gerichte lassen sich bei Bedarf mit einer ergänzenden Glas- und Fensterreinigung kombinieren, unabhängig vom regulären Rhythmus der Innenräume.",
     ],
+    scopeBullets: [
+      "Empfang und Besprechungsräume mit Mandanteneindruck",
+      "Büroflächen zwischen dicht getakteten Terminen",
+      "Sanitärbereiche",
+      "Vertrauliche Unterlagen bleiben unberührt",
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Fläche, Zugang und gewünschtem Rhythmus erhalten Sie ein individuelles Angebot. Zutritt und Zeitfenster legen wir gemeinsam mit der Kanzleileitung fest, bevor die Reinigung nach dem vereinbarten Plan beginnt.",
+    priceFactorsText:
+      "Neben Fläche und Intervall wirkt sich bei Kanzleien in Mitte oft auch der nötige Vorlauf für Zutrittsformalitäten in der Nähe von Behörden auf die Terminplanung aus. Repräsentative Empfangsbereiche mit höherem Pflegeanspruch fließen ebenfalls in die Kalkulation ein.",
     faq: [
       {
         question: "Warum ist eine enge Taktung in Mitte besonders wichtig?",
@@ -874,16 +913,58 @@ export const combos: Combo[] = [
         question: "Wird Vertraulichkeit trotz kurzer Zeitfenster gewahrt?",
         answer: "Ja, unabhängig vom Zeitfenster werden Unterlagen nicht bewegt und der Zugang wird individuell mit Ihnen abgestimmt.",
       },
+      {
+        question: "Wird größere Aktenvernichtung mitübernommen?",
+        answer:
+          "Nein, das ist eine eigene Leistung mit besonderen Datenschutzanforderungen. Die reguläre Reinigung deckt lediglich das Leeren üblicher Papierkörbe ab.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Kanzlei in Mitte – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "kanzleireinigung-berlin",
     districtSlug: "charlottenburg-wilmersdorf",
     intro:
       "Viele Kanzleien in Charlottenburg-Wilmersdorf liegen in repräsentativen Altbaulagen. Wir legen bei der Reinigung besonderen Wert auf ein gepflegtes Erscheinungsbild für Mandanten sowie auf Vertraulichkeit im Umgang mit Unterlagen.",
+    metaDescription:
+      "Kanzleireinigung in Charlottenburg-Wilmersdorf – für repräsentative Altbaukanzleien, mit Vertraulichkeit und Materialschutz für historische Oberflächen. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Anders als bei einer allgemeinen Büroreinigung steht hier neben der reinen Flächenpflege besonders der Eindruck im Vordergrund, den Empfang und Besprechungsräume auf Mandanten machen.",
     localAngle: [
       "Kanzleien in Charlottenburg-Wilmersdorf sitzen häufig in Altbauten mit Stuckdecken, Parkett, hohen Räumen und Kastenfenstern – Oberflächen, die einen anderen Pflegeaufwand haben als moderne Bürobauten. Empfangs- und Besprechungsbereiche prägen hier den ersten Eindruck für Mandanten besonders stark.",
       "Gleichzeitig bleibt Vertraulichkeit der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und Zugang wird individuell mit der Kanzleileitung abgestimmt – unabhängig davon, ob es sich um eine einzelne Kanzleietage oder ein ganzes Altbauhaus handelt.",
+      "Parkettböden in Altbaukanzleien vertragen keine stehende Nässe und keine aggressiven Reinigungsmittel. Wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten, damit die Oberfläche langfristig nicht leidet.",
+      "Deckenhohe Aktenschränke und Bibliotheksregale, wie sie in vielen Kanzleien für Fachliteratur und Aktenordner genutzt werden, werden bei der Reinigung nur in den unteren, gut erreichbaren Bereichen berücksichtigt – für die oberen Fächer wäre zusätzliches Gerät nötig, das außerhalb des regulären Umfangs liegt.",
+      "Bei Sozietäten mit mehreren Partnern im selben Altbauhaus klären wir vorab, ob eine zentrale Ansprechperson für die gesamte Kanzlei koordiniert oder jeder Partnerbereich eigene Absprachen trifft.",
+      "Bei der Auswahl eines Dienstleisters für eine Altbau-Kanzlei lohnt sich die Frage nach Erfahrung mit historischen Oberflächen und einem festen, eingespielten Team statt wechselndem Personal – beides schafft Vertrauen im Umgang mit vertraulichen Mandantenunterlagen.",
+      "Kastenfenster, wie sie für Gründerzeit-Altbauten typisch sind, bestehen aus zwei getrennten Fensterebenen. Für die reguläre Kanzleireinigung zählen dazu meist nur die von innen zugänglichen Flächen; die äußere Ebene wird über die separate Glas- und Fensterreinigung abgedeckt.",
+      "Drucker, Scanner und Aktenvernichter werden von uns nur äußerlich mit geeigneten Tüchern gereinigt. Eine technische Wartung oder Innenreinigung der Geräte gehört nicht zum Leistungsumfang.",
+      "Heizkörper und Fensterbänke in den hohen Altbauräumen sammeln durch die große Raumhöhe oft sichtbar mehr Staub als in einer niedrigeren, modernen Kanzlei. Wir berücksichtigen das bei der Zeitplanung für den jeweiligen Termin.",
+      "Das Leeren der Papierkörbe gehört zu jedem regulären Termin. Steht dagegen eine größere Aktenvernichtung an, etwa bei einer Kanzleiauflösung im Altbauhaus, handeln wir das als eigene Position mit besonderen Datenschutzanforderungen.",
+      "Nach der Übernahme einer neuen Altbau-Kanzlei gehen wir zunächst durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen – gerade bei historischen Oberflächen lässt sich so der Pflegezustand vor dem ersten regulären Termin einschätzen.",
+      "Bei uns bleibt Aktenordnung strikt Sache der Kanzlei: Wir entfernen Staub und sichtbaren Schmutz von Oberflächen, verändern aber nie die Reihenfolge von Unterlagen oder Aktenstapeln, die auf dem Schreibtisch liegen.",
+      "Bei mehreren Kanzleien im selben Altbauhaus mit unterschiedlichen Sicherheitsvorgaben klären wir vor Vertragsbeginn, welche Zutrittsregelungen für welche Etage gelten, statt ein einheitliches Verfahren für das gesamte Gebäude anzunehmen.",
+      "Nach einer größeren Veranstaltung, etwa einem Mandantenempfang in den repräsentativen Altbauräumen, lässt sich kurzfristig eine zusätzliche Reinigung außerhalb des regulären Rhythmus vereinbaren.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart ist.",
+      "Bei der Auswahl eines Dienstleisters für eine Altbau-Kanzlei lohnt sich die Frage, ob konkret nach Erfahrung mit historischen Oberflächen und Vertraulichkeitsanforderungen gefragt wird, statt ein pauschales Büroreinigungsangebot zu erstellen.",
+      "Fensterbänke in Altbaukanzleien werden häufig für Aktenordner oder Dekoration genutzt. Vor einem Termin hilft es, wenn zumindest die unmittelbar zu reinigende Fläche zugänglich ist – solche Details klären wir bei Bedarf direkt mit Ihrem Team vor Ort.",
+      "Bei Umbauten innerhalb einer bestehenden Kanzlei, etwa der Erweiterung um einen zusätzlichen Besprechungsraum, passen wir den bestehenden Reinigungsplan an die neue Raumaufteilung an, statt ihn unverändert fortzuführen.",
+      "Deckenhohe Regalwände mit Kommentaren und Gesetzessammlungen, wie sie viele Altbaukanzleien pflegen, decken wir nur in den unteren, per Hand erreichbaren Reihen ab – für die oberen Regalböden wäre eine Leiter nötig, die außerhalb des regulären Umfangs liegt.",
+      "Bei einer Kanzlei, die eine ganze Altbau-Etage mit mehreren kleinen Räumen anmietet, empfiehlt sich zu Beginn eine kurze Begehung mit dem Team vor Ort, um Zuständigkeiten für einzelne Räume – etwa ein gemeinsam genutztes Archiv – von Anfang an zu klären.",
+      "Wächst eine Kanzlei und mietet eine zusätzliche Etage im selben Altbauhaus an, lässt sich der bestehende Reinigungsvertrag meist einfach erweitern, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Echtholztische in den Besprechungsräumen, wie sie viele Altbaukanzleien für Mandantengespräche nutzen, vertragen keine aggressiven Reiniger – wir setzen dort auf für Holz geeignete, milde Pflegeprodukte.",
+      "In den Altbauten des Bezirks bestehen manche Kanzleiflure aus Naturstein oder Terrazzo statt Teppich – ein Material, das robuster ist als empfindlicheres Parkett, aber ebenfalls angepasste Reinigungsverfahren benötigt.",
+      "Nach einer größeren Grundreinigung, etwa bei einer neu übernommenen Altbau-Kanzlei, bietet sich ein kurzer gemeinsamer Rundgang mit der Kanzleileitung an, um das Ergebnis direkt zu bestätigen.",
+      "Ist in einer Altbau-Kanzlei eine eigene Personaltoilette vorhanden, richten wir deren Reinigungsintervall nach der tatsächlichen Nutzerzahl aus – meist seltener als bei der von Mandanten mitgenutzten Toilette.",
+      "Unterhält eine Sozietät neben der Altbau-Kanzlei in Charlottenburg-Wilmersdorf weitere Standorte, lässt sich die Reinigung aller Objekte über einen gemeinsamen Ansprechpartner koordinieren, statt jeden Standort einzeln zu verhandeln.",
+      "Große Kastenfenster zur Straßenseite lassen sich bei Bedarf mit einer ergänzenden Glas- und Fensterreinigung kombinieren, unabhängig vom regulären Rhythmus der Innenräume – gerade in repräsentativen Erdgeschosslagen mit hohem Passantenaufkommen ein sichtbarer Unterschied für den Mandanteneindruck von außen und innen gleichermaßen.",
     ],
     scopeBullets: [
       "Empfangsbereich und Besprechungsräume mit Blick auf den Mandanteneindruck",
@@ -891,6 +972,10 @@ export const combos: Combo[] = [
       "Kastenfenster und hohe Räume mit entsprechendem Pflegeaufwand",
       "Vertrauliche Unterlagen bleiben unberührt",
     ],
+    processText:
+      "Nach kurzer Abstimmung zu Fläche, Bodenbelag und Zugang erhalten Sie ein Angebot. Bei mehreren Partnern im selben Haus klären wir vorab, welche Bereiche gemeinsam und welche einzeln beauftragt werden.",
+    priceFactorsText:
+      "In Altbaukanzleien mit empfindlichen Materialien wie Parkett und Stuck ist der Pflegeaufwand pro Quadratmeter oft höher als in einer modernen Kanzlei mit robustem Belag – das fließt in die Kalkulation ein, nachdem wir das Material vor Ort geprüft haben.",
     faq: [
       {
         question: "Wird auf historische Oberflächen wie Parkett und Stuck Rücksicht genommen?",
@@ -902,7 +987,20 @@ export const combos: Combo[] = [
           "Ja, bei der Kanzleireinigung stehen Vertraulichkeit und das Erscheinungsbild für Mandanten im Vordergrund. Für allgemeine Bürotätigkeit ohne diesen Fokus ist die Büroreinigung im Bezirk oft die passendere Wahl.",
         relatedLink: { label: "Zur Büroreinigung in Charlottenburg-Wilmersdorf", href: "/leistungen/bueroreinigung-berlin/charlottenburg-wilmersdorf" },
       },
+      {
+        question: "Werden Bibliotheksregale und Aktenschränke mitgereinigt?",
+        answer:
+          "Nur die gut erreichbaren unteren Bereiche gehören zum regulären Umfang. Für obere Fächer wäre zusätzliches Gerät nötig, das gesondert vereinbart werden müsste.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Kanzlei in Charlottenburg-Wilmersdorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -1946,7 +2044,69 @@ export const combos: Combo[] = [
     serviceSlug: "kanzleireinigung-berlin",
     districtSlug: "steglitz-zehlendorf",
     intro:
-      "Kanzleien in den ruhigen Wohnlagen von Steglitz-Zehlendorf reinigen wir diskret und mit besonderer Rücksicht auf Vertraulichkeit im Umgang mit Unterlagen – abgestimmt auf einen unauffälligen Ablauf im überwiegend ruhigen Umfeld.",
+      "Kanzleien in Steglitz-Zehlendorf finden sich sowohl in modernen Geschäftshäusern an der Schloßstraße als auch in umgenutzten Villen in Zehlendorf – zwei bauliche Ausgangslagen, die wir bei der Reinigung unterschiedlich behandeln.",
+    metaDescription:
+      "Kanzleireinigung in Steglitz-Zehlendorf – für Geschäftshauskanzleien an der Schloßstraße ebenso wie für Villenkanzleien in Zehlendorf. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Unabhängig vom Gebäudetyp bleibt Vertraulichkeit der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und Zugang wird individuell mit der Kanzleileitung abgestimmt.",
+    localAngle: [
+      "Kanzleien an der Schloßstraße liegen meist in modernen Geschäftshäusern mit mehreren Mietparteien, robusten Bodenbelägen und einer gemeinsamen Hausverwaltung. Kanzleien in Zehlendorfer Villen sind dagegen häufig die einzige Nutzerin des Gebäudes, mit kleineren Zimmern und empfindlicheren Materialien wie Parkett.",
+      "Vertraulichkeit bleibt bei beiden Gebäudetypen der zentrale Maßstab: Akten und Unterlagen auf Schreibtischen werden nicht bewegt, und der Zugang wird individuell mit der Kanzleileitung abgestimmt – unabhängig davon, ob es sich um eine Kanzleietage im Geschäftshaus oder eine ganze Villa handelt.",
+      "Parkett- und Dielenböden, wie sie in vielen Villenkanzleien vorkommen, vertragen keine stehende Nässe und keine aggressiven Reinigungsmittel. Wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten.",
+      "Deckenhohe Aktenschränke für Fachliteratur und Mandantenakten werden bei der Reinigung nur in den unteren, gut erreichbaren Bereichen berücksichtigt – für obere Fächer wäre zusätzliches Gerät nötig, das gesondert vereinbart werden müsste.",
+      "Bei Kanzleien mit mehreren Partnern im selben Geschäftshaus klären wir vorab, ob eine zentrale Ansprechperson für die gesamte Kanzlei koordiniert oder jeder Partnerbereich eigene Absprachen trifft – bei einer Villenkanzlei mit nur einer Sozietät entfällt diese Abstimmung meist.",
+      "Bei der Auswahl eines Dienstleisters lohnt sich die Frage nach einem festen, eingespielten Team statt wechselndem Personal – das erleichtert den Aufbau von Vertrauen im Umgang mit vertraulichen Mandantenunterlagen, unabhängig vom Gebäudetyp.",
+      "Bürogeräte wie Drucker, Scanner oder Aktenvernichter wischen wir ausschließlich außen mit dafür geeigneten Tüchern ab – eine technische Wartung dieser Geräte gehört weder in der Villenkanzlei noch im Geschäftshaus zu unserer Leistung.",
+      "Große Fenster mit Sprossen, wie sie in vielen Villenkanzleien noch original erhalten sind, benötigen bei der Innenreinigung mehr Zeit als eine gleich große, ungeteilte Fensterfläche in einem modernen Geschäftshaus – das fließt in die Kalkulation ein.",
+      "Villenkanzleien mit eigenem Garten oder Vorplatz haben teils einen separaten Mandanteneingang, der besonders gepflegt wirken soll. Wir richten Reinigungsintensität und Sichtbarkeit des Ergebnisses gezielt darauf aus.",
+      "Bei den regulären Terminen gehört das Leeren der Papierkörbe selbstverständlich dazu. Eine größere Aktenvernichtung, etwa bei Umzug in ein anderes Gebäude, behandeln wir als eigene Position mit besonderen Anforderungen an den Datenschutz.",
+      "Nach der Übernahme einer neuen Kanzlei gehen wir zunächst durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen – das gilt für ein modernes Geschäftshaus an der Schloßstraße ebenso wie für eine kleinere Villenkanzlei.",
+      "Ordnung auf dem Schreibtisch gehört nicht zu unserer Aufgabe: Wir wischen Staub und sichtbare Verschmutzung ab, lassen Aktenstapel und Unterlagen aber unangetastet in der vorgefundenen Anordnung liegen – unabhängig davon, ob es sich um eine Villenkanzlei oder ein Geschäftshausbüro handelt.",
+      "Bei mehreren Kanzleien im selben Geschäftshaus an der Schloßstraße klären wir vor Vertragsbeginn, welche Gemeinschaftsflächen zentral über die Hausverwaltung abgerechnet werden und welche jede Kanzlei einzeln beauftragt.",
+      "Nach einer größeren Veranstaltung, etwa einem Mandantenempfang in einer Villenkanzlei mit eigenem Garten, lässt sich kurzfristig eine zusätzliche Reinigung außerhalb des regulären Rhythmus vereinbaren.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart ist.",
+      "Bei der Auswahl eines Dienstleisters lohnt sich die Frage, ob konkret nach Gebäudetyp und Vertraulichkeitsanforderungen gefragt wird, statt ein pauschales Büroreinigungsangebot ohne diesen Fokus zu erstellen.",
+      "Fensterbänke in Villenkanzleien werden häufig für Aktenordner oder Dekoration genutzt. Vor einem Termin hilft es, wenn zumindest die unmittelbar zu reinigende Fläche zugänglich ist – solche Details klären wir bei Bedarf direkt mit Ihrem Team vor Ort.",
+      "Bei Umbauten innerhalb einer bestehenden Kanzlei, etwa der Erweiterung um einen zusätzlichen Besprechungsraum in der Villa, passen wir den bestehenden Reinigungsplan an die neue Raumaufteilung an, statt ihn unverändert fortzuführen.",
+      "In Villenkanzleien eingebaute Bücherregale mit Fachliteratur behandeln wir nur in den unteren, ohne Leiter erreichbaren Reihen – höhere Fächer gehören nur dazu, wenn das ausdrücklich vereinbart wurde.",
+      "Bei einer Kanzlei, die eine ganze Villa mit mehreren kleinen Räumen nutzt, empfiehlt sich zu Beginn eine kurze Begehung mit dem Team vor Ort, um Zuständigkeiten für einzelne Räume – etwa ein gemeinsam genutztes Archiv – von Anfang an zu klären.",
+      "Wächst eine Kanzlei und benötigt zusätzliche Fläche, lässt sich der bestehende Reinigungsvertrag meist einfach erweitern, sobald der neue Gebäudetyp und Bodenbelag geprüft wurden, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Ob Echtholztisch in der Villenkanzlei oder beschichtete Oberfläche im Geschäftshausbüro – wir prüfen bei jedem neuen Objekt, welches Material im Besprechungsraum tatsächlich verbaut ist, statt pauschal dasselbe Mittel zu verwenden.",
+      "Bei Kanzleien mit Publikumsverkehr durch nahegelegene Gerichte oder Behörden lohnt sich ein etwas intensiverer Rhythmus für Empfang und Wartebereich als bei Villenkanzleien ohne direkten Publikumsverkehr vor Ort.",
+      "Nach einer größeren Grundreinigung, etwa bei Kanzleineugründung in einer Villa oder einem Geschäftshaus, bietet sich ein kurzer gemeinsamer Rundgang mit der Kanzleileitung an, um das Ergebnis direkt zu bestätigen.",
+      "Ist in einer größeren Kanzlei eine eigene Personaltoilette vorhanden, richten wir deren Reinigungsintervall nach der tatsächlichen Nutzerzahl aus – unabhängig davon, ob es sich um eine Villenkanzlei oder ein Geschäftshausbüro handelt.",
+      "Betreibt eine Sozietät mehrere Standorte in Berlin, lässt sich die Kanzleireinigung über alle Objekte hinweg mit einem einzigen Ansprechpartner koordinieren, statt für jeden Standort einzeln zu verhandeln.",
+      "Große Sprossenfenster, wie sie in vielen Villenkanzleien noch original erhalten sind, lassen sich bei Bedarf mit einer ergänzenden Glas- und Fensterreinigung kombinieren, unabhängig vom regulären Rhythmus der Innenräume – auch für die großflächigen Schaufenster moderner Geschäftshausbüros an der Schloßstraße gilt das gleichermaßen, unabhängig vom jeweiligen Gebäudetyp und der Größe der Kanzlei oder Sozietät. Beide Leistungen lassen sich unabhängig voneinander beauftragen oder gemeinsam abstimmen, je nachdem, was für Ihre Kanzlei sinnvoller ist.",
+    ],
+    scopeBullets: [
+      "Empfang und Besprechungsräume mit Mandanteneindruck",
+      "Parkett- und Holzböden materialgerecht behandelt",
+      "Sanitärbereiche",
+      "Vertrauliche Unterlagen bleiben unberührt",
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Gebäudeart, Fläche und Bodenbelag erhalten Sie ein Angebot. Bei mehreren Partnern im selben Geschäftshaus klären wir Zuständigkeiten vorab mit der Hausverwaltung.",
+    priceFactorsText:
+      "Geschäftshauskanzleien mit robustem Belag lassen sich meist effizienter reinigen als Villenkanzleien mit empfindlichen Holzböden und kleinteiligen Grundrissen – das fließt in die Kalkulation ein.",
+    faq: [
+      {
+        question: "Wird eine Villenkanzlei anders gereinigt als eine Kanzlei im Geschäftshaus?",
+        answer:
+          "Ja. Villenkanzleien haben häufig kleinere Zimmer und empfindlichere Böden wie Parkett, während Geschäftshäuser meist offene Flächen mit robusterem Belag bieten. Wir stimmen Verfahren und Zeitaufwand entsprechend ab.",
+      },
+      {
+        question: "Wird Vertraulichkeit unabhängig vom Gebäudetyp gewahrt?",
+        answer: "Ja, unabhängig davon, ob es sich um eine Kanzleietage im Geschäftshaus oder eine ganze Villa handelt, werden Unterlagen nicht bewegt und der Zugang individuell abgestimmt.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Kanzlei in Steglitz-Zehlendorf – Geschäftshaus oder Villenkanzlei – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
