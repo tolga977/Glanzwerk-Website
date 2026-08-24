@@ -19,12 +19,13 @@
 
 ### Phase 2 — 47 Kombiseiten (familienweise, gemeinsame Themenbank pro Familie, aber pro Bezirk unterschiedliche Auswahl/Reihenfolge)
 - [ ] Gebäudereinigung (11): mitte, charlottenburg-wilmersdorf, tempelhof-schoeneberg, pankow, neukoelln, friedrichshain-kreuzberg, spandau, treptow-koepenick, reinickendorf, lichtenberg, marzahn-hellersdorf
-- [ ] Büroreinigung (7): mitte, pankow, friedrichshain-kreuzberg, charlottenburg-wilmersdorf, neukoelln, tempelhof-schoeneberg, steglitz-zehlendorf
-- [ ] Praxisreinigung (5): mitte, charlottenburg-wilmersdorf, steglitz-zehlendorf, pankow, marzahn-hellersdorf, reinickendorf (6 total, siehe Tabelle)
+- [x] Büroreinigung (7): mitte (1342), CW (1315), FK (1367), TS (1307), Neukölln (1306), Pankow (1317, Mischnutzung-Argument bewusst zugunsten Bezirkswachstum reduziert), ST-Z (1329, neues Hauptargument Schloßstraße-vs-Villenbüro statt "ruhig") — ABGESCHLOSSEN, Commit 3a90792
+- [x] Praxisreinigung (6): steglitz-zehlendorf (1316), charlottenburg-wilmersdorf (1301), mitte (1302), marzahn-hellersdorf (1306), reinickendorf (1304), pankow (1307) — ABGESCHLOSSEN. Reinickendorf: neue Unterscheidung Hausarztpraxis vs. arbeitsmedizinische Praxis (Tegel-Gewerbegebiet). Marzahn-Hellersdorf: neue Unterscheidung Einzelpraxis vs. Gesundheitszentrum in Großwohnsiedlung.
 - [ ] Kanzleireinigung (3): charlottenburg-wilmersdorf, mitte, steglitz-zehlendorf
 - [x] Treppenhausreinigung (4): pankow (1301), tempelhof-schoeneberg (1352), charlottenburg-wilmersdorf (1322), neukoelln (1309) — ABGESCHLOSSEN
 - [x] Glas-/Fensterreinigung (4): charlottenburg-wilmersdorf (1303), lichtenberg (1313), mitte (1303), tempelhof-schoeneberg (1315) — ABGESCHLOSSEN
-- [ ] WICHTIG gelernt: FAQ-Antworten ab Index 1 rendern NICHT in der SSR-HTML (Accordion, nur erstes Item offen) — zählen NICHT zum Wortzahl-Ziel. Für Wortzahl IMMER localAngle-Absätze/scopeBullets/processText/priceFactorsText nutzen, FAQ nur für Themenvielfalt/Schema.
+- [ ] WICHTIG gelernt (1): FAQ-Antworten ab Index 1 rendern NICHT in der SSR-HTML (Accordion, nur erstes Item offen) — zählen NICHT zum Wortzahl-Ziel. Für Wortzahl IMMER localAngle-Absätze/scopeBullets/processText/priceFactorsText nutzen, FAQ nur für Themenvielfalt/Schema.
+- [ ] WICHTIG gelernt (2): Beim seitenweisen Ausbau mit wiederkehrenden Themen (IT-Geräte-Abgrenzung, Papierkorb-Hinweis, Objektübernahme-Prüfung) entstehen leicht exakte Satz-Dopplungen — auch INNERHALB derselben Seite. Nach jeder Familie `node find_dupes.js src/data/combos.ts` laufen lassen (Skript in scratchpad, sucht Strings ≥40 Zeichen, die 2+x vorkommen) und echte Dopplungen individuell umformulieren, bevor committet wird.
 - [ ] Unterhaltsreinigung (6): friedrichshain-kreuzberg, steglitz-zehlendorf, treptow-koepenick, marzahn-hellersdorf, lichtenberg, reinickendorf
 - [ ] Grundreinigung (3): neukoelln, mitte, treptow-koepenick
 - [ ] Kita/Fitness/Autohaus Kombi (3): kita-pankow, fitness-friedrichshain-kreuzberg (KEINE neuen Lokalfakten!), autohaus-spandau

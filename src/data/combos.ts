@@ -346,20 +346,70 @@ export const combos: Combo[] = [
     districtSlug: "steglitz-zehlendorf",
     intro:
       "Steglitz-Zehlendorf hat in seinen ruhigen Wohnlagen überdurchschnittlich viele Arztpraxen. Wir reinigen diese Praxen diskret außerhalb der Sprechzeiten und mit besonderer Rücksicht auf das ruhige Umfeld.",
+    metaDescription:
+      "Praxisreinigung in Steglitz-Zehlendorf für Facharztzentren und Gemeinschaftspraxen entlang der Schloßstraße. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "In Facharztzentren mit mehreren Praxen unter einem Dach ist häufig nicht eine einzelne Arztpraxis, sondern die Zentrumsverwaltung unser Ansprechpartner für Zeitfenster und Zugang.",
     localAngle: [
       "Steglitz-Zehlendorf hat überdurchschnittlich viele Arztpraxen, Facharztzentren und Gemeinschaftspraxen – vor allem entlang der Schloßstraße und in den umliegenden Vierteln. Mit der Praxisdichte steigt auch die Zahl der Patiententermine pro Tag und damit der Bedarf an einer verlässlich getakteten Reinigung.",
       "Viele dieser Praxen teilen sich ein Gebäude mit weiteren medizinischen oder therapeutischen Einrichtungen. Reinigungszeiten stimmen wir deshalb bei Bedarf nicht nur auf eine einzelne Praxis, sondern auf mehrere Parteien im selben Haus ab.",
+      "In einem Facharztzentrum mit gemeinsamer Anmeldung für mehrere Praxen fällt der Publikumsverkehr im Empfangsbereich oft höher aus als bei einer einzelnen Praxis mit eigener Anmeldung. Wir richten die Reinigungsintensität für Empfang und Wartebereich danach aus, wie viele Praxen tatsächlich denselben Bereich nutzen.",
+      "Medizinischer Sonderabfall – etwa gebrauchte Kanülen oder kontaminierte Materialien – unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt, nicht über die reguläre Reinigung. Wir entfernen ausschließlich normalen Hausmüll aus den vereinbarten Bereichen.",
+      "Bodenbeläge in Wartezimmern und Fluren bestehen in vielen Praxen aus pflegeleichtem PVC oder Linoleum, das fugenlos verlegt ist und sich gut feucht wischen lässt. Ältere Praxisräume in Altbauten haben dagegen teils noch Parkett oder Fliesen, die andere Reinigungsverfahren erfordern.",
+      "Bei der Auswahl eines Reinigungsdienstleisters für ein Facharztzentrum lohnt sich die Frage, ob Erfahrung mit mehreren gleichzeitig zu koordinierenden Praxen vorhanden ist, statt einen Anbieter zu wählen, der nur auf einzelne, unabhängige Praxisräume ausgelegt ist.",
+      "Nach der Übernahme eines neuen Facharztzentrums prüfen wir zunächst gemeinsam mit der Zentrumsverwaltung, welche Flächen zu welcher Praxis gehören und welche als Gemeinschaftsbereich gelten, bevor der reguläre Reinigungsplan beginnt.",
+      "Diagnosegeräte wie Ultraschallgeräte oder EKG-Monitore werden von uns ausschließlich äußerlich mit dafür geeigneten Tüchern gereinigt. Kalibrierung, technische Wartung oder die Reinigung von Sonden und Anschlüssen bleiben Aufgabe des medizintechnischen Kundendienstes.",
+      "Kinderarztpraxen im Bezirk haben häufig eine eigene Spielecke im Wartebereich mit Spielzeug, Matten oder Kissen. Solche Bereiche behandeln wir nur nach vorheriger Absprache über geeignete, kindgerechte Reinigungsmittel, statt Standardverfahren unbesehen zu übertragen.",
+      "Nach einem größeren Reinigungstermin, etwa nach einer zusätzlichen Grundreinigung, bietet sich ein kurzer gemeinsamer Rundgang mit der Praxisleitung an, um das Ergebnis direkt zu bestätigen, statt Rückfragen erst beim nächsten regulären Termin zu klären.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Barrierefreie Facharztzentren mit ebenerdigem Zugang oder Rampen erleichtern den Transport von Reinigungsgerät gegenüber Praxen in Altbauten mit Treppenstufen im Eingangsbereich. Wir berücksichtigen das bei der Zeitplanung für den jeweiligen Termin.",
+      "Zeitschriften, Spielzeug oder Give-aways im Wartebereich werden bei der Reinigung an ihrem Platz belassen und die umgebende Fläche vorsichtig gereinigt, statt Gegenstände willkürlich zu verräumen, wo sie später vom Praxispersonal wieder gesucht werden müssten.",
+      "Viele Facharztpraxen haben feste Fortbildungstage, an denen die Sprechstunde ruht. Dieser Tag eignet sich besonders für umfangreichere Arbeiten wie eine gründlichere Bodenpflege, die im engen Zeitfenster zwischen regulären Sprechstunden sonst kaum möglich wäre.",
+      "Der Zugang außerhalb der Sprechzeiten läuft je nach Praxis über einen Schlüssel, einen Code oder eine Vereinbarung mit einem Hausmeisterdienst im Gebäude. Welche Variante für Ihre Praxis passt, klären wir vor dem ersten Termin schriftlich.",
+      "Für Rückfragen oder kurzfristige Änderungswünsche erhalten Sie einen festen Ansprechpartner, der mit dem Ablauf Ihrer Praxis vertraut ist – statt bei jeder Anfrage neu erklären zu müssen, wie Ihre Räume aufgeteilt sind.",
+      "Getrennte Sanitärbereiche für Patienten und Personal, wie sie in größeren Facharztzentren üblich sind, werden im selben Rhythmus behandelt, sofern nichts anderes vereinbart wird. Bei deutlich unterschiedlicher Nutzung – etwa einem stark frequentierten Patienten-WC gegenüber einem selten genutzten Personal-WC – lässt sich der Takt für beide Bereiche getrennt anpassen.",
+      "Für die technische Wartung von Lüftungs- und Klimaanlagen in Facharztzentren ist ein spezialisierter Fachbetrieb zuständig, nicht die Praxisreinigung – lediglich sichtbarer Staub auf frei zugänglichen Gittern wird bei uns mit erfasst.",
+      "Behandlungsliegen und Wartezimmerstühle mit Kunstlederbezug benötigen eine andere Pflege als textile Polster: zu aggressive Reiniger können das Material auf Dauer rissig machen. Wir stimmen Mittel und Häufigkeit nach dem tatsächlich verbauten Material ab.",
+      "Vor einem Reinigungstermin hilft es, wenn Instrumente und Verbrauchsmaterial in Behandlungsräumen an ihrem vorgesehenen Platz verstaut sind – so lässt sich die Fläche darum gründlicher abwischen, ohne dass etwas verschoben werden muss.",
+      "Neben der reinen Praxisreinigung lässt sich bei Bedarf eine ergänzende Glas- und Fensterreinigung für große Wartezimmerfenster vereinbaren, insbesondere wenn die Praxis in stark einsehbarer Lage liegt.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime auf einer Fläche. Wir führen Desinfektionsmaßnahmen nur dort durch, wo dies ausdrücklich vereinbart wurde oder nach den Vorgaben Ihrer Praxis erforderlich ist – eine pauschale Desinfektion aller Flächen ist nicht automatisch Teil der Reinigung.",
+      "Wartezimmerbereiche mit hoher Fluktuation, etwa bei einem Facharztzentrum mit mehreren gleichzeitig laufenden Sprechstunden, profitieren von einer Zwischenreinigung während des laufenden Betriebs, statt nur einmal täglich gereinigt zu werden. Ob das sinnvoll ist, besprechen wir bei der Objektbegehung.",
+      "Bei der Auswahl eines Dienstleisters lohnt sich außerdem, nach einem festen Team statt wechselndem Personal zu fragen – gerade in einem Facharztzentrum mit mehreren Praxen erleichtert das den Aufbau von Vertrauen für den wiederkehrenden Zugang.",
+      "Reinigungsmittel für Praxisräume werden bei uns nach Material und Verschmutzung ausgewählt, nicht nach einem einheitlichen Standardprodukt für alle Flächen. Glanzwerk verwendet dafür unter anderem professionelle Produkte von Kiehl, Dr. Schnell und Buzil.",
     ],
+    scopeBullets: [
+      "Warte- und Empfangsbereiche, auch bei gemeinsamer Anmeldung mehrerer Praxen",
+      "Behandlungsräume gemäß vereinbartem Umfang",
+      "Sanitärbereiche mit hoher Patientenfrequenz",
+      "Kontaktflächen wie Türgriffe und Anmeldetresen",
+    ],
+    processText:
+      "Nach Abstimmung mit der einzelnen Praxis oder der Zentrumsverwaltung legen wir Zeitfenster fest, die zur Sprechstundentaktung passen. Bei mehreren Praxen im selben Facharztzentrum klären wir vorab, welche Flächen gemeinsam und welche einzeln beauftragt werden.",
+    priceFactorsText:
+      "In Facharztzentren mit mehreren Praxen richtet sich der Preis für Gemeinschaftsflächen nach der Gesamtzahl der beteiligten Praxen, während einzelne Behandlungsräume separat kalkuliert werden. Das rechnen wir im Angebot transparent vor.",
     faq: [
       {
         question: "Mehrere Praxen im selben Haus – wird das koordiniert?",
-        answer: "Ja, bei Bedarf stimmen wir Reinigungszeiten mit mehreren Praxen im selben Gebäude ab, etwa über eine gemeinsame Hausverwaltung.",
+        answer: "Ja, bei Bedarf stimmen wir Reinigungszeiten mit mehreren Praxen im selben Gebäude ab, etwa über eine gemeinsame Hausverwaltung oder Zentrumsverwaltung.",
       },
       {
         question: "Wie wirkt sich die hohe Praxisdichte auf den Reinigungsrhythmus aus?",
         answer: "Bei hoher Terminfrequenz sind kürzere Intervalle für Empfang und Sanitärbereiche sinnvoll als bei kleineren Einzelpraxen.",
       },
+      {
+        question: "Wird medizinischer Sonderabfall mitentsorgt?",
+        answer:
+          "Nein. Kanülen und kontaminierte Materialien unterliegen eigenen Entsorgungsvorschriften und werden über spezialisierte Entsorger abgeholt, nicht über die reguläre Reinigung.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Praxis oder Ihr Facharztzentrum in Steglitz-Zehlendorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -370,6 +420,33 @@ export const combos: Combo[] = [
       "Praxisreinigung für Arztpraxen in Charlottenburg-Wilmersdorf – abgestimmt auf Ihre Sprechzeiten, mit klar geregeltem Leistungsumfang. Jetzt Angebot anfragen.",
     introSecondParagraph:
       "Wir reinigen Warte-, Empfangs- und Behandlungsräume diskret und mit einem auf Ihre Sprechzeiten abgestimmten Zeitfenster – meist nach Praxisschluss oder früh morgens vor der ersten Sprechstunde.",
+    localAngle: [
+      "Viele Praxen in Charlottenburg-Wilmersdorf liegen in repräsentativen Altbauten mit hohen Räumen, Stuckdecken und historischen Böden – ein anderer Rahmen als eine moderne Praxis im Neubau. Wir passen Verfahren und Mittel an das jeweilige Material an, statt überall dieselbe Methode anzuwenden.",
+      "Neben klassischen Hausarztpraxen gibt es entlang des Kurfürstendamms und in Wilmersdorf auch spezialisierte Praxen für ästhetische und kosmetische Behandlungen, die häufig einen besonders gepflegten, hellen Empfangsbereich erwarten. Wir richten Reinigungsintensität und Rhythmus danach aus, welchen Eindruck der Empfang für die jeweilige Patientenklientel vermitteln soll.",
+      "Parkettböden, wie sie in vielen Altbau-Praxen verlegt sind, vertragen keine stehende Nässe und keine aggressiven Mittel. Wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten, damit die Oberfläche langfristig nicht leidet.",
+      "Medizinischer Sonderabfall wie gebrauchte Kanülen wird über spezialisierte Entsorgungsunternehmen abgeholt und ist kein Bestandteil der regulären Reinigung. Wir entfernen ausschließlich normalen Hausmüll aus den vereinbarten Bereichen.",
+      "Bei Gemeinschaftspraxen mit mehreren Fachrichtungen unter einem Dach – etwa Allgemeinmedizin und Physiotherapie im selben Altbauhaus – klären wir vorab, ob eine gemeinsame Reinigung für das ganze Haus sinnvoll ist oder jede Praxis einzeln beauftragt.",
+      "Bei der Auswahl eines Dienstleisters für eine Praxis im Altbau lohnt sich die Frage, ob Erfahrung mit empfindlichen historischen Oberflächen vorhanden ist, statt pauschal dieselben Verfahren wie in einem modernen Ärztehaus anzuwenden.",
+      "Diagnose- und Behandlungsgeräte wie Ultraschall- oder Lasergeräte in ästhetischen Praxen werden von uns nur äußerlich gereinigt. Kalibrierung und technische Wartung bleiben Aufgabe des Herstellers oder eines spezialisierten Kundendienstes, nicht der Praxisreinigung.",
+      "Manche Altbau-Praxen sind aufgrund der historischen Bausubstanz nicht vollständig barrierefrei zugänglich, etwa durch Stufen im Eingangsbereich. Für die Reinigung selbst spielt das keine Rolle, wohl aber für die Terminplanung, wenn Reinigungsgerät durch enge Treppenhäuser transportiert werden muss.",
+      "Nach größeren Terminen, etwa nach einer zusätzlichen Grundreinigung der Praxisräume, bietet sich ein kurzer gemeinsamer Rundgang mit der Praxisleitung an, um das Ergebnis zu bestätigen, statt Rückfragen erst beim nächsten regulären Termin zu klären.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Für Wartebereiche mit Zeitschriften oder Spielzeug für kleine Patienten gilt: Gegenstände werden an ihrem Platz belassen, die umgebende Fläche wird sorgfältig gereinigt, statt Ordnung nach eigenem Ermessen herzustellen.",
+      "Manche ästhetische Praxen entlang des Kurfürstendamms haben einen separaten Empfangsbereich mit besonders hochwertiger Ausstattung, etwa Naturstein oder Echtholzmöbel. Für solche Flächen stimmen wir Reinigungsmittel und Verfahren gesondert ab, statt den Standardablauf der übrigen Praxisräume zu übertragen.",
+      "Fortbildungstage, an denen viele Praxen ihre Sprechstunde aussetzen, eignen sich gut für umfangreichere Arbeiten wie eine gründlichere Bodenpflege im Altbau, die im normalen Praxisbetrieb sonst kaum unterzubringen wäre.",
+      "Der Zugang außerhalb der Sprechzeiten läuft je nach Gebäude über einen Schlüssel, einen Code oder eine Absprache mit dem Hausmeisterdienst des Altbauhauses. Welche Lösung zu Ihrer Praxis passt, klären wir vor dem ersten Termin schriftlich.",
+      "Für Rückfragen oder kurzfristige Änderungswünsche erhalten Sie einen festen Ansprechpartner, der mit den Besonderheiten Ihres Altbaus vertraut ist, statt bei jeder Anfrage neu erklären zu müssen, welche Materialien in Ihrer Praxis verbaut sind.",
+      "Patienten- und Personaltoiletten werden im selben Rhythmus behandelt, sofern nichts anderes vereinbart wird. Bei einer stark frequentierten Patiententoilette gegenüber einer selten genutzten Personaltoilette lässt sich der Takt für beide Bereiche getrennt anpassen.",
+      "Heizkörper und Fensterbänke in den hohen Altbauräumen sammeln durch die große Raumhöhe oft sichtbar mehr Staub als in einer niedrigeren, modernen Praxis. Wir berücksichtigen das bei der Zeitplanung für den jeweiligen Termin.",
+      "Behandlungsliegen mit Kunstlederbezug, wie sie in vielen Praxen stehen, vertragen keine aggressiven Reiniger, da diese das Material auf Dauer rissig machen können. Wir wählen Mittel und Häufigkeit passend zum verbauten Material.",
+      "Vor einem Termin hilft es, wenn Instrumente und Verbrauchsmaterial an ihrem vorgesehenen Platz verstaut sind, statt lose auf Ablageflächen zu liegen – so lässt sich die Fläche gründlicher abwischen.",
+      "Bei Praxen mit großen Schaufenstern zum Kurfürstendamm hin lässt sich eine ergänzende Glas- und Fensterreinigung vereinbaren, unabhängig vom regulären Reinigungsrhythmus der Innenräume.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime. Desinfektionsmaßnahmen führen wir nur durch, wenn sie ausdrücklich beauftragt und nach den Vorgaben Ihrer Praxis festgelegt wurden – eine pauschale Desinfektion aller Flächen gehört nicht automatisch dazu.",
+      "Bei der Auswahl eines Dienstleisters für eine repräsentative Altbau-Praxis lohnt sich die Frage nach einem festen, eingespielten Team statt wechselndem Personal – das erleichtert den Aufbau von Vertrauen bei einem wiederkehrenden Zugang zu Ihrer Praxis.",
+      "Empfangstresen aus Naturstein oder Echtholz, wie sie in gehobenen Praxen des Bezirks verbaut sind, benötigen andere Pflegemittel als eine Kunststoffoberfläche. Wir prüfen das Material bei der ersten Besichtigung und wählen Verfahren entsprechend aus.",
+      "Bei Umbauten innerhalb einer bestehenden Praxis, etwa der Erweiterung um einen zusätzlichen Behandlungsraum, passen wir den bestehenden Reinigungsplan an die neue Raumaufteilung an, statt ihn unverändert fortzuführen.",
+      "Deckenhohe Aktenschränke, wie sie in vielen Altbau-Praxen für Patientenunterlagen genutzt werden, werden bei der Reinigung nur in den unteren, gut erreichbaren Bereichen berücksichtigt – für die oberen Fächer wäre zusätzliches Gerät nötig, das außerhalb des regulären Umfangs liegt, sofern nicht ausdrücklich vereinbart und im Angebot berücksichtigt.",
+    ],
     scopeBullets: [
       "Warte- und Empfangsbereiche",
       "Reinigung der vereinbarten Flächen in Behandlungsräumen",
@@ -381,6 +458,8 @@ export const combos: Combo[] = [
     ],
     processText:
       "Bei Gemeinschaftspraxen mit mehreren Ärzten legen wir den genauen Ablauf gemeinsam mit der Praxisleitung fest. Für organisatorische Fragen und Beanstandungen erhalten Sie eine klar geregelte Kontaktmöglichkeit.",
+    priceFactorsText:
+      "In Altbau-Praxen mit historischen Böden ist der Pflegeaufwand pro Quadratmeter oft höher als in einer modernen Praxis mit robustem Vinylboden, da empfindlichere Verfahren mehr Zeit benötigen. Das fließt in die Kalkulation ein, nachdem wir das Material vor Ort geprüft haben.",
     faq: [
       {
         question: "Passt die Reinigung zu den Sprechzeiten meiner Praxis?",
@@ -421,6 +500,30 @@ export const combos: Combo[] = [
     localAngle: [
       "Praxen in Berlin-Mitte liegen häufig in stark frequentierten Lagen rund um das Regierungsviertel, den Alexanderplatz und die angrenzenden Geschäftsstraßen. Hoher Publikumsverkehr bedeutet für viele Einrichtungen eng getaktete Sprechstunden mit kurzen Pausen zwischen den Terminen.",
       "Empfang und Wartebereich werden dabei oft durchgängig genutzt, ohne die längeren Ruhephasen, die kleinere Praxen in ruhigeren Lagen haben. Die Reinigung muss deshalb in verlässliche, kurze Zeitfenster passen, statt einen ganzen Vormittag zu beanspruchen.",
+      "Viele Praxen in Mitte liegen in Bürogebäuden mit mehreren medizinischen und nicht-medizinischen Mietern gleichzeitig. Der Zugang außerhalb der Sprechzeiten läuft dann oft über eine zentrale Hausverwaltung statt über die einzelne Praxis, was wir vorab konkret klären.",
+      "Medizinischer Sonderabfall wie gebrauchte Kanülen oder kontaminierte Materialien unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt. Das ist kein Bestandteil der regulären Reinigung, die sich auf normalen Hausmüll und die vereinbarten Oberflächen beschränkt.",
+      "Bodenbeläge in modernen Mitte-Praxen bestehen häufig aus pflegeleichtem, fugenlosem Vinyl, das sich gut feucht wischen lässt und weniger empfindlich ist als Parkett oder Naturstein. Das erlaubt oft ein zügigeres Vorgehen als in Altbau-Praxen mit historischen Oberflächen.",
+      "Bei mehreren Fachrichtungen im selben Ärztehaus – etwa Allgemeinmedizin, Zahnmedizin und Physiotherapie unter einem Dach – lässt sich die Reinigung von Gemeinschaftsflächen wie Empfang und Fluren zentral bündeln, während einzelne Behandlungsräume separat je Praxis beauftragt werden.",
+      "Bei der Auswahl eines Dienstleisters für eine Praxis mit dicht getakteten Sprechstunden lohnt sich die Frage, wie zuverlässig sich Termine tatsächlich in kurze Zeitfenster einhalten lassen – ein Anbieter, der übliche Verzögerungen einkalkuliert, passt hier besser als einer mit starren Zeitplänen.",
+      "Diagnosegeräte wie Ultraschall- oder EKG-Geräte werden von uns nur äußerlich gereinigt. Kalibrierung, technische Wartung oder die Reinigung von Sonden bleiben Aufgabe des medizintechnischen Kundendienstes.",
+      "Manche Praxen in Mitte betreuen viele internationale Patienten mit unterschiedlichen Erwartungen an Sauberkeit und Diskretion im Wartebereich. Wir richten Häufigkeit und Sichtbarkeit der Reinigung danach aus, welchen Eindruck die Praxis vermitteln möchte, statt einen einheitlichen Standard für alle Lagen anzusetzen.",
+      "Nach einer zusätzlichen Grundreinigung, etwa vor einer Praxisneueröffnung, bietet sich ein kurzer gemeinsamer Rundgang mit der Praxisleitung an, um das Ergebnis direkt zu bestätigen, statt Rückfragen erst zum nächsten regulären Termin zu klären.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Praxen in unmittelbarer Nähe zum Regierungsviertel oder größeren Verwaltungsgebäuden haben teils erhöhte Sicherheitsvorgaben für externes Personal. Wir klären nötige Zutrittsformalitäten frühzeitig, damit sich ein vereinbarter Termin nicht wegen fehlender Anmeldung verschiebt.",
+      "An Fortbildungstagen, an denen die Sprechstunde ruht, lässt sich eine gründlichere Bodenpflege einplanen, die im dicht getakteten Alltag zwischen Sprechstunden sonst kaum Platz findet.",
+      "Für Rückfragen oder kurzfristige Terminänderungen erhalten Sie einen festen Ansprechpartner, der mit dem engen Zeitplan Ihrer Praxis vertraut ist, statt bei jeder Anfrage neu erklären zu müssen, wie eng Ihre Sprechstunden getaktet sind.",
+      "Ist in einer größeren Praxis eine eigene Toilette nur für das Personal vorgesehen, richten wir deren Reinigungsintervall nach der tatsächlichen Nutzerzahl aus – meist seltener als bei der stärker frequentierten Patiententoilette, sofern keine andere Regelung gewünscht ist.",
+      "Klimaanlagen, wie sie in modernen Mitte-Praxen häufig zur Kühlung stark frequentierter Wartebereiche eingesetzt werden, benötigen eine technische Wartung durch spezialisierte Fachbetriebe. Das ist kein Bestandteil der Praxisreinigung, sichtbarer Staub auf zugänglichen Gittern wird aber mitgenommen.",
+      "Behandlungsliegen mit Kunstlederbezug vertragen keine aggressiven Reiniger, da diese das Material auf Dauer rissig machen können. Wir wählen Mittel und Häufigkeit passend zum tatsächlich verbauten Material.",
+      "Vor einem Termin hilft es, wenn Instrumente und Verbrauchsmaterial in den Behandlungsräumen an ihrem vorgesehenen Platz verstaut sind, damit sich die umgebende Fläche gründlicher abwischen lässt.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime auf einer Fläche. Wir führen Desinfektionsmaßnahmen nur dort durch, wo dies ausdrücklich vereinbart wurde oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Bei mehreren Praxen im selben Ärztehaus mit stark schwankendem Publikumsverkehr über den Tag lässt sich eine kurze Zwischenreinigung während der Mittagspause ergänzen, statt nur einmal täglich außerhalb der Sprechzeiten zu reinigen.",
+      "Bei der Auswahl eines Dienstleisters für eine Praxis in zentraler Lage lohnt sich die Frage nach einem festen Team statt wechselndem Personal – das erleichtert den wiederkehrenden Zugang und den Umgang mit sensiblen Praxisbereichen.",
+      "Empfangstresen und Anmeldebereiche in modernen Mitte-Praxen bestehen häufig aus pflegeleichten Kunststoff- oder Laminatoberflächen, die sich unkomplizierter reinigen lassen als Naturstein oder Echtholz in traditionelleren Einrichtungen.",
+      "Bei einer Praxiserweiterung, etwa durch einen zusätzlichen Behandlungsraum im selben Gebäude, passen wir den bestehenden Reinigungsplan unkompliziert an die neue Fläche an, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Aktenschränke für Patientenunterlagen werden bei der Reinigung nur äußerlich abgewischt, der Inhalt bleibt unangetastet – unabhängig davon, ob es sich um Papierakten oder digitale Ablagesysteme mit physischen Sicherungskopien handelt.",
+      "Bei Praxen mit besonders dicht getakteten Sprechstunden lohnt sich gelegentlich eine kurze Rückmeldung, welche Bereiche im Tagesverlauf am stärksten beansprucht werden – so lässt sich der Reinigungsablauf noch gezielter auf die tatsächliche Nutzung abstimmen.",
+      "Bei einer Praxisneueröffnung mitten im dicht bebauten Zentrum empfiehlt sich vor dem ersten regulären Termin eine kurze Objektbegehung, um Bodenbelag und tatsächlichen Bedarf realistisch einzuschätzen, statt ein pauschales Angebot ohne Vor-Ort-Prüfung zu erstellen.",
     ],
     scopeBullets: [
       "Wartezimmer und Empfang zwischen dicht getakteten Sprechstunden",
@@ -430,6 +533,8 @@ export const combos: Combo[] = [
     ],
     processText:
       "Weil viele Praxen in Mitte nur kurze Zeitfenster zwischen den Sprechstunden oder in der Mittagspause bieten, sprechen wir vorab genau ab, welche Bereiche in welcher Reihenfolge gereinigt werden – damit ein Einsatz zuverlässig in die verfügbare Zeit passt.",
+    priceFactorsText:
+      "Bei sehr kurzen, engen Zeitfenstern zwischen Sprechstunden kalkulieren wir realistisch, wie viel sich in der verfügbaren Zeit gründlich erledigen lässt – umfangreichere Arbeiten legen wir auf ruhigere Zeiten wie den frühen Morgen oder nach Praxisschluss, was sich im Angebot widerspiegelt.",
     faq: [
       {
         question: "Reicht die Mittagspause für eine gründliche Reinigung aus?",
@@ -1005,6 +1110,68 @@ export const combos: Combo[] = [
     districtSlug: "marzahn-hellersdorf",
     intro:
       "Kleinere Praxen in den Wohngebieten von Marzahn-Hellersdorf berechnen wir nicht nach einem Standardpaket für größere Gewerbeflächen – wir passen den Reinigungsumfang an die tatsächliche Größe der Praxis an.",
+    metaDescription:
+      "Praxisreinigung in Marzahn-Hellersdorf – für Einzelpraxen in Wohnnähe ebenso wie für Gesundheitszentren mit mehreren Praxen. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "In den Großwohnsiedlungen des Bezirks gibt es daneben auch größere, gebündelte Gesundheitszentren mit mehreren Praxen unter einem Dach – für diese richten wir Umfang und Koordination anders aus als für eine einzelne Praxis.",
+    localAngle: [
+      "Marzahn-Hellersdorf ist geprägt von Großwohnsiedlungen, in denen medizinische Versorgung teils in eigens dafür errichteten Gesundheitszentren gebündelt ist – mehrere Praxen unterschiedlicher Fachrichtungen unter einem Dach, oft mit gemeinsamer Anmeldung. Das unterscheidet sich deutlich von der einzelnen Arztpraxis in einem Wohnhaus.",
+      "In einem Gesundheitszentrum mit gemeinsamer Anmeldung für mehrere Praxen ist häufig die Zentrumsverwaltung unser Ansprechpartner, nicht die einzelne Praxis. Wir klären vorab, welche Flächen zentral beauftragt werden und welche jede Praxis für ihre eigenen Behandlungsräume separat vereinbart.",
+      "Kleinere Einzelpraxen in den Wohngebieten haben dagegen oft nur zwei bis drei Behandlungsräume und einen kompakten Empfangsbereich. Für solche Praxen kalkulieren wir einen entsprechend schlankeren Umfang, statt ein Paket anzubieten, das für ein großes Gesundheitszentrum konzipiert wurde.",
+      "Medizinischer Sonderabfall wie gebrauchte Kanülen oder kontaminierte Materialien unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt – unabhängig davon, ob es sich um eine kleine Einzelpraxis oder ein größeres Gesundheitszentrum handelt.",
+      "Bodenbeläge in den überwiegend in den 1980er- und 1990er-Jahren errichteten Gebäuden des Bezirks sind meist robuste, pflegeleichte Beläge wie PVC oder Fliesen – anders als in vielen Altbau-Praxen anderer Bezirke, wo empfindlichere Materialien wie Parkett vorherrschen.",
+      "Bei der Auswahl eines Dienstleisters für ein Gesundheitszentrum mit mehreren Praxen lohnt sich die Frage, ob Erfahrung mit der Koordination mehrerer gleichzeitig zu betreuender Praxen vorhanden ist, statt einen Anbieter zu wählen, der nur einzelne, unabhängige Praxisräume gewohnt ist.",
+      "Diagnosegeräte wie Ultraschallgeräte werden von uns nur äußerlich gereinigt. Kalibrierung und technische Wartung bleiben Aufgabe des medizintechnischen Kundendienstes.",
+      "Viele Gesundheitszentren in den Großwohnsiedlungen sind ebenerdig oder mit Aufzug erschlossen, was den Transport von Reinigungsgerät gegenüber Altbau-Praxen mit engen Treppenhäusern erleichtert – ein Vorteil, der sich in der Praxis auf den nötigen Zeitaufwand auswirkt.",
+      "Nach einer zusätzlichen Grundreinigung, etwa bei einer neu bezogenen Praxis in einem Gesundheitszentrum, bietet sich ein kurzer gemeinsamer Rundgang mit der Praxisleitung oder Zentrumsverwaltung an, um das Ergebnis zu bestätigen.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Für Spielbereiche in kinderärztlichen Praxen der Gesundheitszentren gilt eine besondere Sorgfaltspflicht: Spielzeug und Sitzkissen bleiben unangetastet, sofern nicht ausdrücklich eine Reinigung dieser Gegenstände vereinbart wurde, und die umgebenden Flächen werden mit besonders schonenden, für Kinder geeigneten Mitteln behandelt.",
+      "Der Zugang zu einem Gesundheitszentrum außerhalb der Sprechzeiten läuft meist über die Zentrumsverwaltung, nicht über die einzelne Praxis – etwa per Schlüssel oder Code für den gesamten Gebäudekomplex. Diese Regelung klären wir vor dem ersten Termin schriftlich.",
+      "Für Rückfragen erhalten sowohl die Zentrumsverwaltung als auch die einzelnen Praxen einen festen Ansprechpartner, der die Aufteilung der Flächen im jeweiligen Gesundheitszentrum kennt, statt bei jeder Anfrage neu erklären zu müssen, welche Praxis welchen Bereich nutzt.",
+      "In größeren Gesundheitszentren mit gemeinsamer Anmeldung teilen sich mehrere Praxen häufig auch die Patiententoiletten, während jede Praxis eine eigene, seltener genutzte Personaltoilette hat. Wir richten die Reinigungsintensität für beide Bereiche nach der tatsächlichen Nutzung aus.",
+      "Lüftungsanlagen, wie sie in den größeren Gesundheitszentren des Bezirks verbaut sind, benötigen eine technische Wartung durch spezialisierte Fachbetriebe und sind kein Bestandteil der Praxisreinigung. Sichtbaren Staub auf frei zugänglichen Gittern nehmen wir bei der regulären Reinigung mit.",
+      "Kunstlederbezogene Behandlungsliegen, wie sie sowohl in Einzelpraxen als auch in Gesundheitszentren üblich sind, reagieren empfindlich auf zu aggressive Reinigungsmittel, die das Material mit der Zeit rissig werden lassen. Wir stimmen Mittel und Intervall auf das jeweilige Material ab.",
+      "Vor einem Termin hilft es, wenn Instrumente und Verbrauchsmaterial an ihrem vorgesehenen Platz verstaut sind, damit sich die umgebende Fläche in den kompakten Praxisräumen gründlicher abwischen lässt.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime. Desinfektionsmaßnahmen führen wir nur durch, wenn sie ausdrücklich beauftragt und nach den Vorgaben der jeweiligen Praxis festgelegt wurden.",
+      "Bei der Auswahl eines Dienstleisters für ein Gesundheitszentrum lohnt sich die Frage nach einem festen Team statt wechselndem Personal – das erleichtert die laufende Koordination mit mehreren Praxen gleichzeitig.",
+      "Empfangstresen in den gemeinsam genutzten Anmeldebereichen der Gesundheitszentren bestehen meist aus robusten, pflegeleichten Materialien, die für hohen Publikumsverkehr ausgelegt sind. Wir richten Reinigungsintervall und Verfahren danach aus.",
+      "Zieht eine zusätzliche Praxis in ein bestehendes Gesundheitszentrum ein, lässt sich der bestehende Reinigungsvertrag der Zentrumsverwaltung um die neue Fläche erweitern, statt für jede neue Praxis einen komplett eigenen Vertrag aufzusetzen.",
+      "Aktenschränke für Patientenunterlagen werden bei der Reinigung nur äußerlich abgewischt, der Inhalt bleibt unangetastet. Das gilt unabhängig davon, ob eine einzelne Praxis oder mehrere Praxen im selben Gesundheitszentrum betreut werden.",
+      "Bei Einzelpraxen mit besonders schmalem Empfangsbereich lohnt sich eine kurze Abstimmung, zu welcher Tageszeit am wenigsten Patientenverkehr herrscht, damit die Reinigung möglichst wenig mit ankommenden oder wartenden Patienten kollidiert.",
+      "Bei einer Praxisneueröffnung in einem der Großwohnsiedlungs-Gesundheitszentren empfiehlt sich vor dem ersten regulären Termin eine kurze Objektbegehung, um Bodenbelag, Raumaufteilung und tatsächlichen Bedarf realistisch einzuschätzen.",
+      "Steigt die Patientenzahl einer bestehenden Praxis im Gesundheitszentrum spürbar an, lässt sich der bestehende Reinigungsplan an die höhere Frequentierung anpassen, statt starr am ursprünglich vereinbarten Umfang festzuhalten.",
+      "Wartebereiche mit gepolsterten Sitzgruppen aus Stoff benötigen eine andere Pflege als Kunstlederbezüge, da sich Flüssigkeiten hier nicht einfach abwischen lassen. Wir stimmen das Verfahren nach dem tatsächlich verbauten Material ab.",
+    ],
+    scopeBullets: [
+      "Empfang und Wartebereiche, auch bei gemeinsamer Anmeldung mehrerer Praxen",
+      "Behandlungsräume gemäß vereinbartem Umfang",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Anmeldetresen",
+    ],
+    processText:
+      "Nach Abstimmung mit der einzelnen Praxis oder der Zentrumsverwaltung erhalten Sie ein Angebot, das zur tatsächlichen Größe passt – vom kompakten Umfang für eine kleine Einzelpraxis bis zur koordinierten Reinigung eines größeren Gesundheitszentrums.",
+    priceFactorsText:
+      "Der Preis richtet sich vor allem nach Fläche und Zahl der Behandlungsräume. Bei Gesundheitszentren mit mehreren Praxen wird zusätzlich unterschieden, welche Flächen gemeinsam genutzt und zentral abgerechnet werden und welche jede Praxis einzeln beauftragt.",
+    faq: [
+      {
+        question: "Wird eine kleine Einzelpraxis genauso berechnet wie ein großes Gesundheitszentrum?",
+        answer:
+          "Nein. Der Umfang wird auf die tatsächliche Fläche und Zahl der Behandlungsräume abgestimmt – eine kleine Praxis mit zwei Räumen benötigt spürbar weniger Aufwand als ein Gesundheitszentrum mit mehreren Praxen.",
+      },
+      {
+        question: "Wer ist bei einem Gesundheitszentrum mit mehreren Praxen der Ansprechpartner?",
+        answer:
+          "Für Gemeinschaftsflächen meist die Zentrumsverwaltung, für einzelne Behandlungsräume die jeweilige Praxis selbst. Wir klären das vor Vertragsbeginn konkret.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Praxis in Marzahn-Hellersdorf – Einzelpraxis oder Gesundheitszentrum – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -1167,6 +1334,69 @@ export const combos: Combo[] = [
     districtSlug: "reinickendorf",
     intro:
       "Abseits der größeren Gewerbeparks am Stadtrand liegen in den Wohngebieten Reinickendorfs klassische Praxen und kleinere Büros, die wir mit einem kompakteren, auf die tatsächliche Größe abgestimmten Umfang reinigen.",
+    metaDescription:
+      "Praxisreinigung in Reinickendorf – für Hausarztpraxen in Wohnnähe ebenso wie für arbeitsmedizinische Praxen rund um das Gewerbegebiet am ehemaligen Flughafen Tegel. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Rund um das Gewerbegebiet auf dem ehemaligen Flughafengelände gibt es daneben auch arbeitsmedizinische Praxen und Betriebsärzte, die überwiegend Beschäftigte der umliegenden Betriebe versorgen – für diese unterscheidet sich der Reinigungsbedarf von einer klassischen Hausarztpraxis in Wohnnähe.",
+    localAngle: [
+      "Arbeitsmedizinische Praxen in Gewerbegebietsnähe haben oft einen anderen Tagesablauf als eine klassische Hausarztpraxis: weniger spontane Patiententermine, dafür häufig fest gebuchte Untersuchungstermine für ganze Belegschaften an bestimmten Tagen. Das lässt sich bei der Reinigungsplanung gezielt berücksichtigen.",
+      "Klassische Hausarztpraxen in den Wohngebieten Reinickendorfs sind dagegen meist kompakter geschnitten, mit zwei bis drei Behandlungsräumen und einem überschaubaren Empfangsbereich. Für solche Praxen kalkulieren wir einen entsprechend schlankeren Umfang.",
+      "Medizinischer Sonderabfall wie gebrauchte Kanülen unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt – unabhängig davon, ob es sich um eine arbeitsmedizinische Praxis oder eine klassische Hausarztpraxis handelt.",
+      "Bei arbeitsmedizinischen Praxen mit Reihenuntersuchungen für mehrere Beschäftigte an einem Termin kann der Publikumsverkehr an bestimmten Tagen deutlich höher ausfallen als üblich. Wir passen den Reinigungsrhythmus an solche bekannten Stoßzeiten an, statt einen starren Wochenplan vorzugeben.",
+      "Bei der Auswahl eines Dienstleisters für eine arbeitsmedizinische Praxis lohnt sich die Frage, ob Erfahrung mit stark schwankendem, terminweise gebündeltem Publikumsverkehr vorhanden ist, statt einen Anbieter zu wählen, der nur gleichmäßig verteilten Praxisbetrieb kennt.",
+      "Diagnosegeräte wie Hörtest- oder Sehtestgeräte, wie sie in arbeitsmedizinischen Praxen häufig vorkommen, werden von uns nur äußerlich gereinigt. Kalibrierung und technische Wartung bleiben Aufgabe des Herstellers oder eines spezialisierten Kundendienstes.",
+      "Nach Reihenuntersuchungen mit vielen Beschäftigten an einem Tag bietet sich am Folgetermin ein kurzer Rundgang mit der Praxisleitung an, um zu prüfen, ob der erhöhte Publikumsverkehr besondere Nacharbeit an Wartebereich oder Sanitärräumen nötig macht.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach betrieblichen Vorgaben erforderlich ist.",
+      "Arbeitsmedizinische Praxen mit Untersuchungsräumen für Hör- oder Sehtests benötigen häufig verdunkelte oder schallgedämmte Kabinen, deren Ausstattung empfindlicher auf falsche Reinigungsmittel reagieren kann als ein gewöhnlicher Behandlungsraum. Wir stimmen das Vorgehen für solche Kabinen gesondert ab.",
+      "Zwischen zwei größeren Reihenuntersuchungsterminen liegen oft ruhigere Wochen mit deutlich weniger Publikumsverkehr. Für solche Phasen lässt sich der Rhythmus vorübergehend reduzieren, statt ganzjährig denselben Takt wie an Untersuchungstagen anzusetzen.",
+      "Der Zugang außerhalb der Betriebszeiten läuft je nach Praxis über einen Schlüssel, einen Code oder eine Absprache mit dem Hausmeisterdienst des Gewerbegebäudes. Welche Lösung passt, klären wir vor dem ersten Termin schriftlich.",
+      "Personaltoiletten in arbeitsmedizinischen Praxen werden seltener frequentiert als der Patientenbereich für Reihenuntersuchungen und entsprechend in einem eigenen, meist selteneren Rhythmus behandelt.",
+      "Lüftungsanlagen in Gewerbegebäuden benötigen eine technische Wartung durch spezialisierte Fachbetriebe und sind kein Bestandteil der Praxisreinigung. Sichtbaren Staub auf frei zugänglichen Lüftungsgittern nehmen wir bei der regulären Reinigung mit.",
+      "Untersuchungsliegen und Wartezimmerstühle mit Kunstlederbezug vertragen keine aggressiven Reiniger, da diese das Material auf Dauer rissig machen können. Wir wählen Mittel und Häufigkeit passend zum tatsächlich verbauten Material.",
+      "Vor Reihenuntersuchungen hilft es, wenn Testgeräte und Verbrauchsmaterial an ihrem vorgesehenen Platz verstaut sind, damit sich die umgebende Fläche zwischen den Terminen gründlicher abwischen lässt.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime. Desinfektionsmaßnahmen führen wir nur durch, wenn sie ausdrücklich beauftragt und nach den betrieblichen Vorgaben festgelegt wurden.",
+      "Bei der Auswahl eines Dienstleisters für eine arbeitsmedizinische Praxis lohnt sich die Frage nach einem festen Team statt wechselndem Personal – gerade bei Reihenuntersuchungen mit mehreren Beschäftigten erleichtert das einen reibungslosen, eingespielten Ablauf.",
+      "Nach besonders intensiven Untersuchungstagen mit vielen Beschäftigten bietet sich ein kurzer Rückblick mit der Praxisleitung an, um zu klären, ob der bestehende Reinigungsrhythmus für Wartebereich und Sanitärräume noch ausreicht oder angepasst werden sollte.",
+      "Empfangstresen und Anmeldebereiche in arbeitsmedizinischen Praxen sind meist auf robuste, pflegeleichte Materialien ausgelegt, da hier an Untersuchungstagen viele Beschäftigte kurz hintereinander abgefertigt werden. Wir richten Verfahren und Intervall danach aus.",
+      "Erweitert eine arbeitsmedizinische Praxis ihr Leistungsspektrum um zusätzliche Untersuchungsräume, passen wir den bestehenden Reinigungsplan an die neue Fläche an, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Aktenschränke für Untersuchungsunterlagen werden bei der Reinigung nur äußerlich abgewischt, der Inhalt bleibt unangetastet – gerade bei arbeitsmedizinischen Praxen mit sensiblen Gesundheitsdaten vieler Beschäftigter ist diese Zurückhaltung Standard, keine gesonderte Zusatzleistung.",
+      "Rund um das ehemalige Flughafengelände Tegel entstehen laufend neue Gewerbeansiedlungen, wodurch auch die Nachfrage nach arbeitsmedizinischer Betreuung für neue Belegschaften wächst. Neu gegründete Praxen profitieren von einer etwas engmaschigeren Anfangsphase, bevor sich der tatsächliche Bedarf realistisch einschätzen lässt.",
+      "Empfangsbereiche mit stark schwankendem Publikumsverkehr durch Reihenuntersuchungen benötigen eine andere Herangehensweise als eine gleichmäßig frequentierte Hausarztpraxis: Statt eines starren Wochenplans richten wir uns nach den tatsächlich bekannten Untersuchungsterminen der jeweiligen Betriebe.",
+      "Kleinere Hausarztpraxen in den Wohngebieten Reinickendorfs profitieren dagegen von einem gleichmäßigen, planbaren Rhythmus, der sich nicht an schwankenden Betriebsterminen orientieren muss – ein deutlicher Unterschied zur arbeitsmedizinischen Praxis mit ihren Stoßzeiten.",
+      "Bei Praxen mit besonders schmalem Empfangsbereich lohnt sich eine kurze Abstimmung, zu welcher Tageszeit am wenigsten Publikumsverkehr herrscht, damit die Reinigung möglichst wenig mit ankommenden Patienten oder Beschäftigten kollidiert.",
+      "Bei einer arbeitsmedizinischen Neugründung rund um das Gewerbegebiet Tegel empfiehlt sich vor dem ersten regulären Termin eine kurze Objektbegehung, um Bodenbelag und tatsächlichen Bedarf realistisch einzuschätzen, statt ein pauschales Angebot ohne Vor-Ort-Prüfung zu erstellen.",
+      "Steigt die Zahl der zu untersuchenden Beschäftigten bei einem Betrieb spürbar an, lässt sich der bestehende Reinigungsplan der Praxis an die höhere Frequentierung anpassen, statt starr am ursprünglich vereinbarten Umfang festzuhalten.",
+      "Wartebereiche mit gepolsterten Sitzgruppen aus Stoff benötigen eine andere Pflege als Kunstlederbezüge, da sich Flüssigkeiten hier nicht einfach abwischen lassen – gerade bei hohem Durchlauf während Reihenuntersuchungen ein relevanter Unterschied.",
+    ],
+    scopeBullets: [
+      "Warte- und Empfangsbereiche",
+      "Behandlungs- und Untersuchungsräume gemäß vereinbartem Umfang",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Anmeldetresen",
+    ],
+    processText:
+      "Nach Abstimmung zu Praxisart, Fläche und typischem Terminaufkommen erhalten Sie ein passendes Angebot – kompakt für eine klassische Hausarztpraxis, angepasst an Stoßzeiten für eine arbeitsmedizinische Praxis mit Reihenuntersuchungen.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche und Zahl der Behandlungsräume. Bei arbeitsmedizinischen Praxen mit terminweise stark schwankendem Publikumsverkehr besprechen wir zusätzlich, ob an bestimmten Tagen eine intensivere Reinigung sinnvoll ist.",
+    faq: [
+      {
+        question: "Unterscheidet sich der Umfang zwischen Hausarztpraxis und arbeitsmedizinischer Praxis?",
+        answer:
+          "Ja. Arbeitsmedizinische Praxen haben oft terminweise gebündelten Publikumsverkehr durch Reihenuntersuchungen, während Hausarztpraxen gleichmäßiger frequentiert sind. Wir richten den Rhythmus entsprechend aus.",
+      },
+      {
+        question: "Werden auch kleinere Hausarztpraxen in Wohnnähe bedient?",
+        answer: "Ja, dafür kalkulieren wir einen kompakteren, auf die tatsächliche Größe abgestimmten Umfang.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Praxis in Reinickendorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "glas-und-fensterreinigung-berlin",
@@ -1723,6 +1953,48 @@ export const combos: Combo[] = [
     districtSlug: "pankow",
     intro:
       "Mit dem Bevölkerungswachstum in Pankow ist auch die Zahl der Arztpraxen in Wohnnähe gestiegen – wir richten Reinigungszeiten und Rhythmus nach der jeweiligen Sprechstundentaktung aus, unabhängig davon, ob sich im Gebäude auch Wohnungen befinden.",
+    metaDescription:
+      "Praxisreinigung in Berlin-Pankow – abgestimmt auf Sprechstundentaktung und Praxisgröße, vom Altbau im Prenzlauer Berg bis zu neueren Praxisräumen. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Neu gegründete Praxen, die im Zuge des Bezirkswachstums entstehen, haben häufig noch keinen etablierten Reinigungsrhythmus – hier hilft eine etwas engmaschigere Anfangsphase, um den tatsächlichen Bedarf realistisch einzuschätzen.",
+    localAngle: [
+      "Praxen im Prenzlauer Berg liegen häufig in Altbauten mit Parkett- oder Dielenböden, die keine stehende Nässe und keine aggressiven Mittel vertragen. Wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten. In den äußeren Ortsteilen Pankows sind Praxisräume dagegen oft in neueren Gebäuden mit robusterem Vinyl- oder Fliesenboden untergebracht.",
+      "Neu gegründete Praxen profitieren von einem etwas engmaschigeren Reinigungsplan in den ersten Wochen, bevor sich Patientenaufkommen und tatsächlicher Bedarf realistisch einschätzen lassen. Danach passen wir Rhythmus und Umfang an die etablierte Praxisroutine an.",
+      "Medizinischer Sonderabfall wie gebrauchte Kanülen oder kontaminierte Materialien unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt – das ist unabhängig von Lage oder Größe der Praxis kein Bestandteil unserer Reinigung.",
+      "Bei Gemeinschaftspraxen mit mehreren Ärzten im selben Altbauhaus klären wir vor Vertragsbeginn, ob eine gemeinsame Reinigung für das ganze Haus sinnvoll ist oder jede Praxis separat beauftragt, insbesondere wenn die Praxen unterschiedliche Fachrichtungen und Sprechzeiten haben.",
+      "Bei der Auswahl eines Dienstleisters für eine neu gegründete Praxis lohnt sich die Frage, ob sich der Reinigungsplan flexibel an ein wachsendes Patientenaufkommen anpassen lässt, statt von Beginn an einen starren, über Jahre unveränderten Vertrag vorzugeben.",
+      "An medizinischen Geräten in den Behandlungsräumen beschränken wir uns strikt auf die äußere Reinigung zugänglicher Flächen. Für Kalibrierung, Software-Updates oder eine technische Prüfung ist ausschließlich der medizintechnische Kundendienst zuständig.",
+      "Zieht eine Praxis innerhalb Pankows in größere Räume um, etwa weil sich die Patientenzahl erhöht hat, lässt sich der bestehende Reinigungsvertrag meist unkompliziert auf das neue Objekt übertragen, sobald Fläche und Bodenbelag geprüft wurden.",
+      "Glanzwerk verwendet je nach Oberfläche professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Desinfektionsmittel setzen wir nur dort ein, wo dies ausdrücklich vereinbart oder nach den Vorgaben Ihrer Praxis erforderlich ist.",
+      "Bei einer Spielecke im Wartebereich einer Kinderarztpraxis sprechen wir vorab ab, welche Gegenstände zur Reinigung gehören und welche unberührt bleiben sollen – und setzen dort ausschließlich Mittel ein, die für den Kontakt mit kleinen Kindern geeignet sind.",
+      "An Fortbildungstagen, an denen viele Praxen ihre Sprechstunde aussetzen, lässt sich eine gründlichere Bodenpflege einplanen, die im normalen Praxisalltag zwischen Sprechstunden sonst kaum unterzubringen wäre.",
+      "Der Zugang außerhalb der Sprechzeiten läuft je nach Gebäude über einen Schlüssel, einen Code oder eine Absprache mit dem Hausmeisterdienst. Welche Regelung zu Ihrer Praxis passt, klären wir vor dem ersten Termin schriftlich.",
+      "Ist in einer größeren Praxis eine eigene Personaltoilette vorhanden, richten wir deren Reinigungsintervall nach der tatsächlichen Nutzerzahl aus – meist seltener als bei der stärker frequentierten Patiententoilette.",
+      "Klimaanlagen in neueren Praxisräumen werden technisch nicht von uns gewartet – das bleibt Aufgabe eines spezialisierten Fachbetriebs. Sichtbaren Staub auf zugänglichen Lüftungsgittern reinigen wir im Rahmen des regulären Termins mit.",
+      "Bei Behandlungsliegen mit Kunstlederbezug setzen wir bewusst keine aggressiven Reinigungsmittel ein, da diese die Oberfläche mit der Zeit rissig machen würden. Welches Mittel im Einzelfall geeignet ist, richtet sich nach dem konkret verbauten Material.",
+      "Vor einem Termin hilft es, wenn Instrumente und Verbrauchsmaterial an ihrem vorgesehenen Platz verstaut sind, damit sich die umgebende Fläche gründlicher abwischen lässt, statt Gegenstände erst zur Seite räumen zu müssen.",
+      "Reinigung und Desinfektion sind zwei unterschiedliche Vorgänge: Reinigung entfernt sichtbaren Schmutz, Desinfektion reduziert gezielt Keime. Desinfektionsmaßnahmen führen wir nur durch, wenn sie ausdrücklich beauftragt und nach den Vorgaben Ihrer Praxis festgelegt wurden.",
+      "Für eine neu gegründete oder wachsende Praxis lohnt sich bei der Anbieterwahl ein Blick darauf, ob feste Ansprechpersonen statt wechselnden Kontakten arbeiten – gerade in der Anfangsphase erspart das wiederholte Erklärungen zu Praxisaufbau und Besonderheiten.",
+      "Empfangstresen in Pankower Praxen reichen von einfachen Kunststoffoberflächen in neueren Räumen bis zu Holz- oder Natursteinelementen in Altbau-Praxen. Wir prüfen das Material bei der ersten Besichtigung und wählen Pflegeprodukte entsprechend aus.",
+      "Erweitert eine Praxis ihre Fläche im selben Haus, etwa durch einen zusätzlichen Behandlungsraum, passen wir den bestehenden Reinigungsplan unkompliziert an, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Bei Aktenschränken und Ablagen mit Patientenunterlagen beschränken wir uns auf die äußere Reinigung der Oberflächen; der Inhalt selbst wird nicht geöffnet oder umsortiert, ganz gleich wie neu oder etabliert die jeweilige Praxis ist.",
+      "Mit dem anhaltenden Zuzug in den Bezirk verändert sich die Nutzung mancher Praxisgebäude auch nach der Erstvermietung weiter, etwa wenn eine zusätzliche Fachrichtung ins selbe Haus einzieht. Wir prüfen bei solchen Veränderungen, ob der bestehende Reinigungsplan noch zur neuen Situation passt.",
+      "Ist der Empfangsbereich einer Praxis besonders kompakt geschnitten, sprechen wir vorab ab, in welchem ruhigeren Zeitfenster sich die Reinigung am wenigsten mit dem Patientenaufkommen überschneidet.",
+      "Für Praxen, die im Zuge des Bezirkswachstums neu eröffnen, empfiehlt sich vor dem ersten regulären Termin eine kurze Objektbegehung, um Bodenbelag, Raumaufteilung und tatsächlichen Bedarf realistisch einzuschätzen, statt ein pauschales Angebot ohne Vor-Ort-Prüfung zu erstellen.",
+      "Steigt die Patientenzahl einer bestehenden Praxis spürbar an, etwa durch den anhaltenden Zuzug in den Bezirk, lässt sich der bestehende Reinigungsplan an die höhere Frequentierung anpassen, statt starr am ursprünglich vereinbarten Umfang festzuhalten.",
+      "Möbel und Ausstattung in neu bezogenen Pankower Praxisräumen sind häufig noch original verpackt oder frisch montiert. Vor dem ersten regulären Termin klären wir, ob Montagerückstände oder Verpackungsreste bereits entfernt wurden oder Teil einer ersten intensiveren Reinigung sein sollen.",
+      "Wartebereiche mit Sitzgruppen aus Stoff statt Kunstleder benötigen eine andere Pflege, da Flüssigkeiten hier nicht einfach abgewischt werden können. Wir stimmen das passende Verfahren nach dem tatsächlich verbauten Bezugsstoff ab.",
+    ],
+    scopeBullets: [
+      "Warte- und Empfangsbereiche",
+      "Behandlungsräume gemäß vereinbartem Umfang",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Anmeldetresen",
+    ],
+    processText:
+      "Nach Abstimmung zu Praxisgröße, Lage und Sprechstundentaktung erhalten Sie ein individuelles Angebot. Bei neu gegründeten Praxen empfehlen wir eine etwas engmaschigere Anfangsphase, die sich nach wenigen Wochen an den tatsächlichen Bedarf anpassen lässt.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Zahl der Behandlungsräume und Bodenbelag. Altbau-Praxen mit empfindlicheren Materialien wie Parkett benötigen tendenziell mehr Zeit als eine gleich große Praxis mit robustem Vinylboden in einem neueren Gebäude.",
     faq: [
       {
         question: "Warum wächst die Nachfrage nach Praxisreinigung in Pankow?",
@@ -1732,7 +2004,20 @@ export const combos: Combo[] = [
         question: "Wird bei Praxen in Wohnhäusern besondere Rücksicht genommen?",
         answer: "Ja, liegt die Praxis in einem gemischt genutzten Gebäude, stimmen wir Zeiten so ab, dass sie sich in den Tagesablauf der übrigen Bewohner einfügen.",
       },
+      {
+        question: "Wird medizinischer Sonderabfall mitentsorgt?",
+        answer:
+          "Nein. Kanülen und kontaminierte Materialien unterliegen eigenen Entsorgungsvorschriften und werden über spezialisierte Entsorger abgeholt, unabhängig von Lage oder Größe der Praxis.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihre Praxis in Pankow – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "treppenhausreinigung-berlin",
