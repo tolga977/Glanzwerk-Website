@@ -1496,6 +1496,79 @@ export const combos: Combo[] = [
     districtSlug: "treptow-koepenick",
     intro:
       "Treptow-Köpenick bringt weitläufige Gewerbeflächen und einen eigenständigen Ortskern in Köpenick mit – dafür bündeln wir Unterhalts-, Fenster- und Grundreinigung in einem Konzept, das auf größere Grundrisse und längere Anfahrtswege abgestimmt ist.",
+    metaDescription:
+      "Gebäudereinigung in Treptow-Köpenick für weitläufige Gewerbeflächen – Unterhalts-, Fenster- und Grundreinigung gebündelt in einem Vertrag. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Statt für Unterhalts-, Fenster- und Grundreinigung getrennte Dienstleister zu koordinieren, bündeln wir die passenden Teilleistungen für Ihr Objekt in einem gemeinsamen Vertrag mit einer festen Kontaktperson.",
+    localAngle: [
+      "Der flächenmäßig größte Berliner Bezirk bringt besonders viele weitläufige Gewerbeobjekte mit sich, bei denen Unterhalts-, Fenster- und gelegentliche Grundreinigung sinnvoll in einem gemeinsamen Konzept zusammenlaufen, statt über mehrere unabhängige Verträge verteilt zu werden.",
+      "Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für unterschiedliche Teilleistungen. Bei einem weitläufigen Objekt mit mehreren Gebäudeteilen ist das ein spürbarer organisatorischer Vorteil gegenüber getrennten Einzelaufträgen.",
+      "Objekte im historischen Ortskern Köpenick bringen oft andere bauliche Voraussetzungen mit als die moderneren Gewerbeflächen am Bezirksrand – etwa empfindlichere Fensterrahmen oder Böden. Wir stimmen das Leistungsbündel auf die tatsächlich vorhandene Bausubstanz ab, statt ein einheitliches Konzept für den gesamten Bezirk anzusetzen.",
+      "Bei mehreren Gebäudeteilen auf einem gemeinsamen Grundstück lässt sich die Fensterreinigung direkt mit der laufenden Unterhaltsreinigung koordinieren, sodass beide Teilleistungen am selben Termin stattfinden können, statt zwei separate Anfahrten einzuplanen.",
+      "Nach einem Umbau oder einer Erweiterung bestehender Gewerbeflächen lässt sich eine einmalige Grundreinigung dem laufenden Gebäudereinigungs-Vertrag voranstellen, sodass die anschließende Unterhaltsreinigung auf einem bereits sauberen Ausgangszustand aufbaut.",
+      "Höfe, Zufahrten oder Lagerplätze im Freien, wie sie bei größeren Gewerbeobjekten des Bezirks häufig vorkommen, zählen zum Außenbereich und werden im gebündelten Vertrag nur dann mit erfasst, wenn dies ausdrücklich vereinbart wurde.",
+      "Ein gebündelter Vertrag lässt sich im laufenden Betrieb anpassen: Kommt ein weiterer Gebäudeteil hinzu, etwa durch eine Erweiterung des Betriebs, wird der bestehende Vertrag entsprechend erweitert, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Bei der Auswahl eines Dienstleisters für ein weitläufiges Objekt mit mehreren Teilleistungen lohnt sich die Frage, ob eine realistische Einschätzung des Zeitaufwands für Anfahrt und Koordination zwischen den Gebäudeteilen erfolgt, statt ein Pauschalangebot allein nach Gesamtquadratmetern zu erstellen.",
+      "Für Betriebe mit mehreren Standorten im Bezirk lässt sich das gesamte Leistungsbündel – Unterhalts-, Fenster- und Grundreinigung – über alle Objekte hinweg mit einem gemeinsamen Ansprechpartner koordinieren.",
+      "Sanitärbereiche gehören in nahezu jedem gebündelten Vertrag zum Kernumfang, unabhängig davon, ob es sich um ein Altbau-Objekt im Ortskern oder eine moderne Gewerbehalle am Bezirksrand handelt.",
+      "Nach der Übernahme eines neuen, weitläufigen Objekts gehen wir zunächst durch alle vereinbarten Gebäudeteile und Teilleistungsbereiche, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand realistisch einzuschätzen.",
+      "Kantinen oder Gemeinschaftsküchen für größere Belegschaften, wie sie in manchen Betrieben des Bezirks vorhanden sind, benötigen innerhalb des gebündelten Vertrags einen deutlich engeren Reinigungstakt als eine kleine Teeküche.",
+      "Aufzüge in mehrstöckigen Gewerbeobjekten werden im Rahmen des gebündelten Vertrags mit erfasst, sofern sie zur beauftragten Fläche zählen – die technische Wartung der Anlage bleibt davon unabhängig geregelt.",
+      "Werkstätten mit angeschlossenem Verkaufsraum benötigen für den Werkstattbereich robustere Verfahren als für den kundenzugänglichen Verkaufsraum – innerhalb des gebündelten Vertrags behandeln wir beide Bereiche unterschiedlich.",
+      "Poststellen innerhalb größerer Gewerbeobjekte werden im Rahmen des gebündelten Vertrags im Bereich um die Sortierfächer mitgereinigt, ohne dass einzelne Fächer geöffnet werden.",
+      "Bei Betrieben mit Schichtbetrieb sind Gebäudeteile zu unterschiedlichen Tageszeiten unterschiedlich stark besetzt. Wir stimmen den Reinigungstermin für das gebündelte Leistungspaket auf die schichtärmste Zeitspanne ab.",
+      "Bei mehreren nah beieinanderliegenden Objekten im selben Gewerbegebiet lässt sich die Anfahrt für alle im gebündelten Vertrag enthaltenen Teilleistungen zusammenlegen, was sich auf die Gesamtkalkulation auswirken kann.",
+      "Rückmeldungen zu einzelnen Gebäudeteilen lassen sich über denselben festen Ansprechpartner klären, der für das gesamte gebündelte Leistungspaket über alle Teilbereiche hinweg zuständig ist.",
+      "Ein gebündelter Vertrag für ein weitläufiges Objekt lässt sich bei einer Erweiterung um einen zusätzlichen Gebäudeteil unkompliziert anpassen, statt für den neuen Bereich einen komplett eigenen Vertrag zu verhandeln.",
+      "Bei der Erstbegehung eines neuen, weitläufigen Objekts dokumentieren wir den Ausgangszustand jedes Gebäudeteils getrennt, damit spätere Rückfragen zum vereinbarten Umfang klar zuzuordnen sind.",
+      "Rechnungsstellung für das gebündelte Leistungspaket erfolgt gesammelt für alle enthaltenen Teilleistungen und Gebäudeteile, statt mehrere getrennte Rechnungen unterschiedlicher Dienstleister abgleichen zu müssen.",
+      "Betriebe mit saisonal schwankendem Bedarf, etwa durch temporär höheres Aufkommen in bestimmten Monaten, können den Rhythmus einzelner Teilleistungen im gebündelten Vertrag flexibel anpassen, ohne den gesamten Vertrag neu zu verhandeln.",
+      "Bei Objekten, die neben Büro- und Verwaltungsflächen auch eine kleine Werkstatt oder Produktionsfläche umfassen, richten wir innerhalb des gebündelten Vertrags für diesen Bereich ein robusteres Reinigungsverfahren ein als für die übrigen Büroräume.",
+      "Kundenparkplätze vor größeren Gewerbeobjekten gehören zum Außenbereich und werden nur bei ausdrücklicher Vereinbarung in den gebündelten Vertrag aufgenommen.",
+      "Bei Betrieben mit mehreren unabhängigen Eingängen für unterschiedliche Abteilungen klären wir vorab, welcher Eingang zu welchem Teil des gebündelten Vertrags gehört, um Doppelarbeit oder Lücken zu vermeiden.",
+      "Bei der Auswahl eines Dienstleisters für ein weitläufiges Objekt mit mehreren Teilleistungen lohnt sich zusätzlich die Frage, ob ein einziges Team alle Gebäudeteile abdeckt, statt für jeden Abschnitt ein anderes Team einzuplanen.",
+      "Bei größeren Objekten mit eigener Fuhrparkverwaltung für Betriebsfahrzeuge klären wir vorab, ob die angrenzenden Werkstatt- oder Abstellbereiche zum gebündelten Vertrag gehören oder separat organisiert werden.",
+      "Weil derselbe Ansprechpartner für alle Gebäudeteile und Teilleistungen zuständig ist, muss bei Rückfragen nicht jedes Mal neu erklärt werden, welcher Bereich zu welchem Vertragsteil gehört.",
+      "Bei Objekten mit angeschlossenem kleinen Verwaltungsgebäude neben der eigentlichen Werkhalle richten wir für beide Gebäudeteile innerhalb des gebündelten Vertrags unterschiedliche, an die jeweilige Nutzung angepasste Verfahren ein.",
+      "Ein gebündeltes Leistungspaket lässt sich auch bei einem Wechsel des Mieters innerhalb desselben Gebäudeteils unkompliziert fortführen – der bestehende Vertrag läuft mit dem neuen Nutzer weiter, sofern sich der Leistungsumfang nicht wesentlich ändert.",
+    ],
+    scopeBullets: [
+      "Unterhaltsreinigung von Büro- und Verwaltungsflächen",
+      "Fensterreinigung nach Bedarf integriert",
+      "Sanitärbereiche",
+      "Optionale Grundreinigung bei Umbau oder Neubezug",
+    ],
+    additionalLinks: [
+      { label: "Unterhaltsreinigung separat anfragen", href: "/leistungen/unterhaltsreinigung-berlin/treptow-koepenick" },
+      { label: "Grundreinigung separat anfragen", href: "/leistungen/grundreinigung-berlin/treptow-koepenick" },
+    ],
+    processText:
+      "Nach einer Objektbesichtigung, bei der wir die einzelnen Gebäudeteile erfassen, legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Gebäudeteile und gewünschtem Leistungsumfang. Historische Bausubstanz im Ortskern Köpenick benötigt mitunter mehr Zeit pro Quadratmeter als moderne Gewerbehallen am Bezirksrand.",
+    faq: [
+      {
+        question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Treptow-Köpenick?",
+        answer:
+          "Das hängt vom Objekt ab – meist Unterhaltsreinigung, Fensterreinigung und bei Bedarf eine ergänzende Grundreinigung. Den genauen Umfang legen wir vorab gemeinsam fest.",
+      },
+      {
+        question: "Werden mehrere Gebäudeteile in einem gemeinsamen Vertrag zusammengefasst?",
+        answer: "Ja, bei mehreren Gebäudeteilen im selben Objekt stimmen wir Umfang und Rhythmus für das gesamte Leistungsbündel gemeinsam ab.",
+      },
+      {
+        question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
+        answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Treptow-Köpenick – wir melden uns mit einem individuellen Angebot für das passende Leistungsbündel.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -1641,6 +1714,81 @@ export const combos: Combo[] = [
     districtSlug: "marzahn-hellersdorf",
     intro:
       "Die großzügig geschnittenen Gewerbegebiete und Einkaufszentren in Marzahn-Hellersdorf erlauben effiziente, gut planbare Reinigungseinsätze mit klar abgegrenzten Bereichen – wir bündeln Unterhalts-, Fenster- und Sanitärreinigung in einem Konzept.",
+    metaDescription:
+      "Gebäudereinigung in Marzahn-Hellersdorf für Gewerbeflächen und Einkaufszentren – Unterhalts-, Fenster- und Sanitärreinigung gebündelt. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Statt Unterhalts-, Fenster- und Sanitärreinigung bei mehreren Anbietern einzeln zu beauftragen, bündeln wir die passenden Teilleistungen für Ihr Objekt in einem gemeinsamen Vertrag mit einer festen Kontaktperson.",
+    localAngle: [
+      "Die überwiegend in den 1970er- und 1980er-Jahren errichteten Großwohnsiedlungen des Bezirks bringen großzügig geschnittene Gewerbeflächen und Einkaufszentren mit klar abgegrenzten Bereichen mit sich – ein guter Ausgangspunkt für ein gebündeltes Reinigungskonzept mit gut planbaren Einsätzen.",
+      "Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für unterschiedliche Teilleistungen. Gerade bei größeren Einkaufszentren mit mehreren Mietern ist das ein spürbarer organisatorischer Vorteil gegenüber getrennten Einzelaufträgen für Unterhalts-, Fenster- und Sanitärreinigung.",
+      "Bei Objekten mit großzügigen Glasflächen, wie sie in modernen Gewerbebauten des Bezirks häufig vorkommen, lässt sich die Fensterreinigung direkt mit der laufenden Unterhaltsreinigung koordinieren, statt zwei getrennte Anfahrten für unterschiedliche Dienstleister einzuplanen.",
+      "Sanitärbereiche in Einkaufszentren mit hohem Kundenaufkommen benötigen einen anderen Takt als eine Personaltoilette in einer kleineren Gewerbefläche nebenan. Wir stimmen das gebündelte Leistungspaket auf diese unterschiedliche Nutzungsintensität ab.",
+      "Bei größeren Einkaufszentren mit mehreren Mietern übernimmt im gebündelten Vertrag meist die Zentrumsverwaltung die zentrale Koordination für Gemeinschaftsflächen, während einzelne Ladenflächen bei Bedarf separat vereinbart werden.",
+      "Bodenbeläge in den überwiegend robusten, pflegeleichten Gebäuden des Bezirks wie PVC oder Fliesen lassen sich im Rahmen der gebündelten Unterhaltsreinigung mit großflächigeren, effizienteren Verfahren behandeln als kleinteilige Altbau-Grundrisse anderer Bezirke.",
+      "Ein gebündelter Vertrag lässt sich im laufenden Betrieb anpassen: Kommt ein weiterer Mietbereich hinzu, etwa durch die Erweiterung eines Einkaufszentrums, wird der bestehende Vertrag entsprechend erweitert, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Bei der Auswahl eines Dienstleisters für ein größeres Gewerbeobjekt lohnt sich die Frage, ob Erfahrung mit der Koordination mehrerer Teilleistungen für mehrere gleichzeitig zu betreuende Mieter vorhanden ist, statt einen Anbieter zu wählen, der nur einzelne, unabhängige Ladenflächen gewohnt ist.",
+      "Für Einzelhändler, die in einem der Einkaufszentren mehrere Filialen betreiben, lässt sich das gesamte Leistungsbündel über alle Standorte im Bezirk hinweg mit einem gemeinsamen Ansprechpartner koordinieren, statt für jede Filiale einen eigenen Vertrag zu verhandeln.",
+      "Nach Neubezug oder größerem Umbau lässt sich eine einmalige Grundreinigung dem laufenden Gebäudereinigungs-Vertrag voranstellen, sodass die anschließende Unterhaltsreinigung auf einem bereits sauberen Ausgangszustand aufbaut.",
+      "Nach der Übernahme eines neuen Objekts gehen wir zunächst durch alle vereinbarten Bereiche und Teilleistungsbereiche, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand realistisch einzuschätzen.",
+      "Rolltreppen und Aufzüge in größeren Einkaufszentren werden innerhalb des gebündelten Vertrags oberflächlich gereinigt – Handläufe, Trittstufen und Bedienelemente gehören zum Umfang, die technische Wartung der Anlagen liegt beim zuständigen Wartungsunternehmen.",
+      "Anlieferzonen und Ladezonen hinter den Einkaufszentren des Bezirks gehören nicht automatisch zum gebündelten Vertrag, da sie meist einem separaten Außendienst zugeordnet sind.",
+      "Vor Feiertagen und in stark besuchten Wochen steigt das Kundenaufkommen in den Einkaufszentren des Bezirks spürbar an. Für solche bekannten Spitzenzeiten lässt sich der Reinigungstakt innerhalb des gebündelten Vertrags vorübergehend erhöhen.",
+      "Schaufenster der einzelnen Geschäfte innerhalb eines Einkaufszentrums gehören in der Regel zur Verantwortung des jeweiligen Mieters und nicht automatisch zum zentral beauftragten Leistungsbündel der Gemeinschaftsflächen.",
+      "Kleinere Praxen und Dienstleister in den Wohngebieten des Bezirks lassen sich mit einem kompakteren, auf die tatsächliche Größe abgestimmten Leistungsbündel bedienen als die großen Einkaufszentren.",
+      "Bei der Auswahl eines Dienstleisters für ein größeres Objekt im Bezirk lohnt sich die Frage, ob innerhalb des gebündelten Vertrags tatsächlich unterschiedliche Rhythmen für Büro-, Verkaufs- und Gemeinschaftsflächen kalkuliert werden, statt eines Pauschalpakets.",
+      "Rückmeldungen zu einzelnen Mietbereichen eines Einkaufszentrums lassen sich über denselben festen Ansprechpartner klären, der für das gesamte gebündelte Leistungspaket zuständig ist.",
+      "Ein gebündelter Vertrag für ein Einkaufszentrum lässt sich bei Neuvermietung eines bislang leerstehenden Ladenlokals unkompliziert um die neue Fläche erweitern, statt einen komplett eigenen Vertrag für den neuen Mieter aufzusetzen.",
+      "Bei der Erstbegehung eines neuen Objekts dokumentieren wir den Ausgangszustand von Verkaufs-, Büro- und Gemeinschaftsflächen getrennt, damit spätere Rückfragen zum vereinbarten Umfang klar zuzuordnen sind.",
+      "Rechnungsstellung für das gebündelte Leistungspaket erfolgt gesammelt für alle enthaltenen Teilleistungen, statt mehrere getrennte Rechnungen unterschiedlicher Dienstleister abgleichen zu müssen.",
+      "Wechselt die Zentrumsverwaltung eines Einkaufszentrums, bleibt der bestehende gebündelte Vertrag davon unberührt – lediglich der Ansprechpartner auf Verwaltungsseite ändert sich.",
+      "Bei Objekten mit angeschlossenem kleinen Lagerbereich für Einzelhändler richten wir innerhalb des gebündelten Vertrags für diesen Bereich ein anderes Verfahren ein als für die eigentliche Verkaufsfläche.",
+      "Parkflächen vor den Einkaufszentren des Bezirks zählen zum Außenbereich; sie werden nur bei ausdrücklicher Vereinbarung Teil des gebündelten Vertrags, ansonsten konzentrieren wir uns auf die Innenräume.",
+      "Bei einem Gewerbeobjekt mit getrennten Eingängen für unterschiedliche Mieter legen wir im gebündelten Vertrag fest, welcher Eingang zu welchem Vertragsteil zählt, damit keine Fläche versehentlich doppelt oder gar nicht erfasst wird.",
+      "Bei der Auswahl eines Dienstleisters für ein größeres Objekt im Bezirk lohnt sich zusätzlich die Frage, ob dieselbe Reinigungskraft mehrere Mietbereiche gleichzeitig betreuen kann, statt für jeden Bereich separates Personal einzuteilen.",
+      "Bei Objekten mit eigener Verwaltung für mehrere Filialen im selben Einkaufszentrum klären wir vorab, ob eine zentrale Abrechnung für alle Filialen im gebündelten Vertrag sinnvoll ist oder jede Filiale separat abgerechnet wird.",
+      "Der für das gebündelte Leistungspaket zuständige Ansprechpartner kennt sowohl die Verkaufsflächen als auch die Gemeinschaftsbereiche des jeweiligen Einkaufszentrums aus eigener Erfahrung.",
+      "Bei Objekten mit angeschlossenem kleinen Verwaltungsbüro neben der Verkaufsfläche richten wir für beide Bereiche innerhalb des gebündelten Vertrags unterschiedliche, an die jeweilige Nutzung angepasste Verfahren ein.",
+      "Zieht ein neuer Mieter in eine bereits vom gebündelten Vertrag erfasste Ladenfläche ein, übernimmt er in der Regel die bestehende Vereinbarung, solange sich Fläche und Umfang nicht wesentlich von der vorherigen Nutzung unterscheiden.",
+      "Bei einer Umstrukturierung innerhalb eines Einkaufszentrums, etwa dem Zusammenlegen zweier kleinerer Ladenflächen zu einer größeren, passen wir den gebündelten Vertrag an den neuen Zuschnitt an, statt am ursprünglichen Flächenmaß festzuhalten.",
+    ],
+    scopeBullets: [
+      "Unterhaltsreinigung von Büro- und Verkaufsflächen",
+      "Fensterreinigung nach Bedarf integriert",
+      "Sanitärbereiche",
+      "Optionale Grundreinigung bei Neubezug",
+    ],
+    additionalLinks: [
+      { label: "Unterhaltsreinigung separat anfragen", href: "/leistungen/unterhaltsreinigung-berlin/marzahn-hellersdorf" },
+      { label: "Praxisreinigung in Marzahn-Hellersdorf", href: "/leistungen/praxisreinigung-berlin/marzahn-hellersdorf" },
+    ],
+    processText:
+      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Teilbereiche und gewünschtem Rhythmus. Bei Einkaufszentren mit mehreren Mietern wird zusätzlich unterschieden, welche Flächen gemeinsam genutzt und zentral abgerechnet werden.",
+    faq: [
+      {
+        question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Marzahn-Hellersdorf?",
+        answer:
+          "Das hängt vom Objekt ab – meist Unterhaltsreinigung, Fensterreinigung und Sanitärbereiche, bei Bedarf ergänzt um eine Grundreinigung.",
+      },
+      {
+        question: "Ist im Leistungsbündel auch eine Grundreinigung enthalten?",
+        answer:
+          "Nicht standardmäßig, aber bei Neubezug oder größerem Umbau lässt sich eine einmalige Grundreinigung dem laufenden Vertrag voranstellen.",
+      },
+      {
+        question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
+        answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Marzahn-Hellersdorf – wir melden uns mit einem individuellen Angebot für das passende Leistungsbündel.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -1785,6 +1933,79 @@ export const combos: Combo[] = [
     districtSlug: "lichtenberg",
     intro:
       "Rund um die neu entstandenen Bürokomplexe und Gewerbeparks in Lichtenberg kombinieren wir Unterhalts-, Glas- und Treppenhausreinigung, um das moderne Erscheinungsbild dieser technisch anders ausgestatteten Gebäude zu erhalten.",
+    metaDescription:
+      "Gebäudereinigung in Lichtenberg für moderne Bürokomplexe – Unterhalts-, Glas- und Treppenhausreinigung gebündelt in einem Vertrag. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Statt Unterhalts-, Glas- und Treppenhausreinigung bei mehreren Dienstleistern einzeln zu beauftragen, bündeln wir die passenden Teilleistungen für Ihr Objekt in einem gemeinsamen Vertrag mit einer festen Kontaktperson.",
+    localAngle: [
+      "Neubauten in Lichtenberg entstanden häufig auf ehemaligen Industrie- oder Gewerbeflächen, die zu modernen Bürostandorten umgewandelt wurden. Diese Gebäude sind technisch oft anders ausgestattet als gewachsene Altbaulagen – etwa mit großflächigen Elementfassaden statt einzelner Fensterrahmen, was ein gebündeltes Reinigungskonzept aus Unterhalts- und Glasreinigung sinnvoll macht.",
+      "Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für unterschiedliche Teilleistungen. Bei modernen Bürokomplexen mit mehreren Mietern ist das ein spürbarer organisatorischer Vorteil gegenüber getrennten Einzelaufträgen für Unterhalts-, Glas- und Treppenhausreinigung.",
+      "Aufzüge sind in den Neubauten des Bezirks meist der primäre Weg zwischen den Etagen, während Treppenhäuser häufiger nur als Fluchtweg dienen. Wir richten die Treppenhausreinigung innerhalb des gebündelten Vertrags entsprechend seltener aus als bei Altbauten mit dem Treppenhaus als Hauptzugang.",
+      "Große Glasflächen in Trennwänden und Fassaden lassen sich innerhalb des gebündelten Vertrags mit demselben Team koordinieren, das auch die laufende Unterhaltsreinigung übernimmt – das vermeidet doppelte Anfahrten für zwei separat beauftragte Dienstleister.",
+      "Bei mehreren vermieteten Etagen im selben Bürokomplex klären wir vorab mit der Hausverwaltung, welche Gemeinschaftsflächen zentral über den gebündelten Vertrag abgerechnet werden und welche Bereiche jeder Mieter separat beauftragt.",
+      "Nach Bezug eines neuen Bürokomplexes lässt sich eine einmalige Grundreinigung dem laufenden Gebäudereinigungs-Vertrag voranstellen, etwa um Montagespuren oder Rückstände von Schutzfolien zu entfernen, bevor der reguläre Rhythmus beginnt.",
+      "Ein gebündelter Vertrag lässt sich im laufenden Betrieb anpassen: Mietet ein Unternehmen eine weitere Etage im selben Komplex an, wird der bestehende Vertrag um die neue Fläche erweitert, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Bei der Auswahl eines Dienstleisters für einen modernen Bürokomplex lohnt sich die Frage, ob Erfahrung mit großflächigen Elementfassaden und offenen Grundrissen vorhanden ist, statt Verfahren anzuwenden, die für kleinteilige Altbau-Objekte konzipiert wurden.",
+      "Sanitärbereiche, die von mehreren Firmen als Mieter gemeinschaftlich genutzt werden, gehören in nahezu jedem gebündelten Vertrag zum Kernumfang, unabhängig von der übrigen Zusammensetzung des Leistungspakets.",
+      "Nach der Übernahme eines neuen Bürokomplexes gehen wir zunächst durch alle vereinbarten Bereiche und Teilleistungsbereiche, statt den Zustand nur stichprobenartig zu prüfen, um Unterschiede im bisherigen Pflegezustand zwischen einzelnen Etagen festzustellen.",
+      "Rauchmelder und Fluchtwegbeschilderung in Treppenhäusern werden im Rahmen der gebündelten Reinigung nur oberflächlich vom Staub befreit. Eine technische Prüfung dieser Sicherheitseinrichtungen bleibt Aufgabe eines dafür zugelassenen Fachbetriebs.",
+      "Bei Bürokomplexen mit einer zentralen Zutrittskontrolle über Chipkarte oder Code stimmen wir im Rahmen des gebündelten Vertrags vorab mit der Hausverwaltung ab, wie das Reinigungsteam außerhalb der Bürozeiten Zugang zu den einzelnen Etagen erhält.",
+      "Klingeltableaus und Namensschilder am Empfang mehrerer Mieter zählen zu den Kontaktflächen, die im Rahmen des gebündelten Vertrags bei jedem regulären Termin mitgereinigt werden.",
+      "Bei neu bezogenen Bürokomplexen lässt sich dem gebündelten Vertrag eine einmalige Grundreinigung voranstellen, um Montagespuren oder Schutzfolien-Rückstände zu entfernen, bevor der reguläre Rhythmus beginnt.",
+      "Bei Bürokomplexen mit repräsentativem Empfangsbereich für Besucher externer Firmen legen wir im Rahmen des gebündelten Vertrags besonderen Wert auf Fensterflächen und Bodenbeläge in diesem ersten Sichtbereich, da er den Gesamteindruck des gesamten Objekts prägt.",
+      "Bei der Auswahl eines Dienstleisters für einen modernen Bürokomplex mit mehreren Teilleistungen lohnt sich die Frage, ob ein einziges Team alle drei Bereiche – Unterhalt, Glas und Treppenhaus – abdeckt, statt für jede Teilleistung ein anderes Team einzuplanen.",
+      "Rückmeldungen zu einzelnen Etagen eines Bürokomplexes lassen sich über denselben festen Ansprechpartner klären, der für das gesamte gebündelte Leistungspaket zuständig ist.",
+      "Ein gebündelter Vertrag für einen Bürokomplex lässt sich bei Neuvermietung einer bislang leerstehenden Etage unkompliziert erweitern, statt für den neuen Mieter einen komplett eigenen Vertrag aufzusetzen.",
+      "Bei der Erstbegehung eines neuen Bürokomplexes dokumentieren wir den Ausgangszustand der einzelnen Etagen getrennt, damit spätere Rückfragen zum vereinbarten Umfang klar zuzuordnen sind.",
+      "Rechnungsstellung für das gebündelte Leistungspaket aus Unterhalts-, Glas- und Treppenhausreinigung erfolgt gesammelt, statt mehrere getrennte Rechnungen unterschiedlicher Dienstleister abgleichen zu müssen.",
+      "Wechselt die Hausverwaltung eines Bürokomplexes, bleibt der bestehende gebündelte Vertrag davon unberührt – lediglich der Ansprechpartner auf Verwaltungsseite ändert sich, die vereinbarten Teilleistungen laufen unverändert weiter.",
+      "Bei Bürokomplexen mit angeschlossenem kleinen Besprechungszentrum für externe Veranstaltungen richten wir innerhalb des gebündelten Vertrags für diesen Bereich einen flexibleren, ereignisabhängigen Takt ein.",
+      "Außenanlagen wie Parkplätze vor modernen Bürokomplexen gehören nicht automatisch zum gebündelten Vertrag – eine Einbeziehung ist nur nach ausdrücklicher gesonderter Absprache möglich.",
+      "Haben mehrere Mieter eines Bürokomplexes eigene, getrennte Eingänge, legen wir innerhalb des gebündelten Vertrags fest, welcher Eingang zu welchem Vertragsteil zählt.",
+      "Bei der Auswahl eines Dienstleisters für einen modernen Bürokomplex lohnt sich zusätzlich die Frage, ob dasselbe Team über alle Etagen hinweg im Einsatz ist, statt für jede Etage neues Personal einzuarbeiten.",
+      "Bei Bürokomplexen mit eigener Concierge- oder Empfangsdienstleistung stimmen wir die Zutrittsregelung für das Reinigungsteam direkt mit diesem Dienst ab, statt eine separate Lösung für den gebündelten Vertrag zu suchen.",
+      "Ein einziger Ansprechpartner für Unterhalts-, Glas- und Treppenhausreinigung erleichtert es, bei einer neuen Anfrage direkt auf das bereits bekannte Objekt Bezug zu nehmen, statt jedes Detail erneut zu erläutern.",
+      "Bei Bürokomplexen mit angeschlossenem kleinen Schulungs- oder Seminarraum richten wir für diesen Bereich innerhalb des gebündelten Vertrags einen an die unregelmäßige Nutzung angepassten, flexibleren Takt ein.",
+      "Übernimmt ein neues Unternehmen eine bereits vom gebündelten Vertrag erfasste Etage, führen wir die bestehende Vereinbarung mit dem neuen Mieter fort, statt für denselben Bereich einen komplett neuen Vertrag zu verhandeln.",
+      "Baut ein Mieter seine Bürofläche innerhalb desselben Komplexes um zusätzliche Räume aus, erweitern wir den gebündelten Vertrag entsprechend, statt für die neue Fläche gesondert zu verhandeln.",
+    ],
+    scopeBullets: [
+      "Unterhaltsreinigung von Büro- und Gemeinschaftsflächen",
+      "Glasreinigung nach Bedarf integriert",
+      "Treppenhaus- und Aufzugsbereiche",
+      "Optionale Grundreinigung bei Neubezug",
+    ],
+    additionalLinks: [
+      { label: "Unterhaltsreinigung separat anfragen", href: "/leistungen/unterhaltsreinigung-berlin/lichtenberg" },
+      { label: "Glas- und Fensterreinigung separat anfragen", href: "/leistungen/glas-und-fensterreinigung-berlin/lichtenberg" },
+    ],
+    processText:
+      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Teilbereiche und gewünschtem Rhythmus. Ein hoher Glasflächenanteil oder eine zusätzliche Grundreinigung nach Neubezug wirken sich auf die Gesamtkalkulation aus.",
+    faq: [
+      {
+        question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Lichtenberg?",
+        answer:
+          "Das hängt vom Objekt ab – meist Unterhaltsreinigung, Glasreinigung und Treppenhausbereiche, bei Bedarf ergänzt um eine Grundreinigung.",
+      },
+      {
+        question: "Werden Aufzüge und Treppenhäuser unterschiedlich häufig gereinigt?",
+        answer: "Ja, in vielen Neubauten sind Aufzüge der primäre Zugangsweg, während Treppenhäuser seltener genutzt werden – der Rhythmus richtet sich nach der tatsächlichen Nutzung.",
+      },
+      {
+        question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
+        answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Glasreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihren Bürokomplex in Lichtenberg – wir melden uns mit einem individuellen Angebot für das passende Leistungsbündel.",
   },
   {
     serviceSlug: "glas-und-fensterreinigung-berlin",
@@ -1972,6 +2193,80 @@ export const combos: Combo[] = [
     districtSlug: "reinickendorf",
     intro:
       "Rund um das Gebiet des ehemaligen Flughafens Tegel bündeln wir für mittelständische Betriebe in Reinickendorf Unterhalts-, Fenster- und Sanitärreinigung in einem gemeinsamen Konzept für Büro- und Lagerflächen.",
+    metaDescription:
+      "Gebäudereinigung in Reinickendorf für Büro- und Lagerflächen – Unterhalts-, Fenster- und Sanitärreinigung gebündelt in einem Vertrag. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Statt Unterhalts-, Fenster- und Sanitärreinigung bei mehreren Dienstleistern einzeln zu beauftragen, bündeln wir die passenden Teilleistungen für Ihr Objekt in einem gemeinsamen Vertrag mit einer festen Kontaktperson.",
+    localAngle: [
+      "Mittelständische Betriebe rund um das Gewerbegebiet auf dem ehemaligen Flughafengelände Tegel haben häufig größer geschnittene Objekte mit kombinierten Büro- und Lagerflächen – ein guter Ausgangspunkt für ein gebündeltes Reinigungskonzept aus mehreren Teilleistungen.",
+      "Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für unterschiedliche Teilleistungen. Bei Objekten mit getrennten Büro- und Lagerbereichen ist das ein spürbarer organisatorischer Vorteil gegenüber getrennten Einzelaufträgen für Unterhalts-, Fenster- und Sanitärreinigung.",
+      "Büro- und Lagerbereiche im selben Objekt haben unterschiedliche Reinigungsanforderungen: Büros mit Teppich oder Laminat benötigen andere Verfahren als Lagerflächen mit Industrieboden. Wir stimmen das gebündelte Leistungspaket auf diese Unterschiede ab, statt ein einheitliches Verfahren für das gesamte Objekt anzubieten.",
+      "Bei Objekten mit größerem Fensteranteil im Bürobereich lässt sich die Fensterreinigung direkt in den Gebäudereinigungs-Vertrag integrieren, statt sie separat zu beauftragen und mit einem zweiten Dienstleister zu koordinieren.",
+      "Innerhalb des gebündelten Vertrags richten wir für Büro- und Lagersanitärbereiche jeweils einen eigenen Takt ein, statt beide Bereiche unabhängig von der tatsächlichen Nutzerzahl gleich zu behandeln.",
+      "Gewerbeobjekte rund um das ehemalige Flughafengelände sind teils über ein eigenes Werkstor mit Schranke gesichert. Die Zugangsregelung für das Reinigungsteam stimmen wir vorab schriftlich mit der Objektverwaltung oder dem Werkschutz ab, damit alle gebündelten Teilleistungen ohne Verzögerung anlaufen können.",
+      "Bei einer Erweiterung des Lager- oder Bürobereichs lässt sich dem gebündelten Vertrag eine ergänzende, einmalige Grundreinigung der neuen Fläche voranstellen, damit die laufende Unterhaltsreinigung von Beginn an auf einem sauberen Ausgangszustand aufbaut.",
+      "Ein gebündelter Vertrag lässt sich im laufenden Betrieb anpassen: Erweitert ein Betrieb seine Lagerfläche, wird der bestehende Vertrag um die neue Fläche ergänzt, statt einen komplett neuen Vertrag aufzusetzen.",
+      "Bei mittelständischen Betrieben mit mehreren Standorten im Umfeld des ehemaligen Flughafengeländes lässt sich das gesamte Leistungsbündel über mehrere Objekte hinweg mit einem gemeinsamen Ansprechpartner koordinieren, statt getrennter Verträge pro Standort.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit kombinierten Büro- und Lagerflächen lohnt sich die Frage, ob unterschiedliche Verfahren für beide Bereiche innerhalb des gebündelten Vertrags angeboten werden, statt pauschal denselben Ansatz für Büro und Lager zu verwenden.",
+      "Nach der Übernahme eines neuen Objekts mit kombinierten Büro- und Lagerflächen gehen wir zunächst durch beide Bereiche, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand für Büro und Lager getrennt einzuschätzen.",
+      "Bei Objekten mit eigener Kantine für mehrere Dutzend Mitarbeitende benötigt dieser Bereich innerhalb des gebündelten Vertrags einen engeren Takt als die übrigen Büro- und Lagerflächen, da hier täglich mit Lebensmitteln gearbeitet wird.",
+      "Fensterfronten im Bürobereich lassen sich innerhalb des gebündelten Vertrags direkt mit der laufenden Unterhaltsreinigung koordinieren, sodass für beide Teilleistungen nur eine Anfahrt nötig ist.",
+      "Bei mittelständischen Betrieben mit angeschlossenem Ausstellungsraum für Kunden, etwa im Großhandel, unterscheidet sich der Reinigungsanspruch dieses Bereichs von dem des reinen Lagerteils – wir kalkulieren ihn im gebündelten Vertrag eher wie einen Kundenbereich.",
+      "Aktenvernichtung über eigene, abschließbare Behälter, wie sie in vielen mittelständischen Verwaltungsbereichen üblich ist, bleibt außerhalb des gebündelten Vertrags – solche Behälter öffnen oder leeren wir nicht.",
+      "Empfangsbereiche mit Kundenverkehr, wie sie bei Betrieben mit direktem Endkundengeschäft vorkommen, benötigen einen anderen Reinigungstakt als ein reiner Verwaltungsbereich ohne Publikumsverkehr – das berücksichtigen wir bei der Zusammenstellung des Leistungsbündels.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit kombinierten Büro- und Lagerflächen lohnt sich die Frage, ob innerhalb des gebündelten Vertrags tatsächlich unterschiedliche Reinigungsintervalle für Büro und Lager kalkuliert werden, statt eines Pauschalpakets ohne Rücksicht auf die tatsächliche Nutzung.",
+      "Rückmeldungen zu Büro- oder Lagerbereich lassen sich über denselben festen Ansprechpartner klären, der für das gesamte gebündelte Leistungspaket zuständig ist.",
+      "Ein gebündelter Vertrag lässt sich bei einer Erweiterung des Betriebs um zusätzliche Büro- oder Lagerfläche unkompliziert anpassen, statt für die neue Fläche einen komplett eigenen Vertrag zu verhandeln.",
+      "Bei der Erstbegehung eines neuen Objekts dokumentieren wir den Ausgangszustand von Büro- und Lagerbereich getrennt, damit spätere Rückfragen zum vereinbarten Umfang klar zuzuordnen sind.",
+      "Statt mehrere getrennte Rechnungen unterschiedlicher Dienstleister für Unterhalts-, Fenster- und Sanitärreinigung abzugleichen, erhalten Sie für das gesamte gebündelte Leistungspaket eine gesammelte Abrechnung.",
+      "Bei mittelständischen Betrieben mit saisonal schwankendem Lagerbetrieb lässt sich der Rhythmus einzelner Teilleistungen im gebündelten Vertrag flexibel anpassen, ohne den gesamten Vertrag neu zu verhandeln.",
+      "Bei Objekten mit angeschlossenem kleinen Ausstellungsraum für Kunden richten wir innerhalb des gebündelten Vertrags für diesen Bereich einen anderen Takt ein als für die eigentlichen Lagerflächen.",
+      "Kundenparkplätze vor größeren Gewerbeobjekten rund um Tegel bleiben ohne gesonderte Vereinbarung außerhalb des gebündelten Vertrags, da sie zum Außenbereich zählen.",
+      "Wechselt die Geschäftsführung eines mittelständischen Betriebs, bleibt der bestehende gebündelte Vertrag davon unberührt – die vereinbarten Teilleistungen laufen unverändert mit demselben Ansprechpartner weiter.",
+      "Bei Betrieben mit eigener Fuhrparkverwaltung klären wir vorab, ob die angrenzenden Abstellbereiche für Firmenfahrzeuge zum gebündelten Vertrag gehören oder separat organisiert werden.",
+      "Da eine Person für Büro- und Lagerbereich gleichermaßen zuständig ist, lassen sich Rückfragen zu beiden Bereichen in einem einzigen Gespräch klären, statt zwei getrennte Kontakte zu benötigen.",
+      "Bei mittelständischen Betrieben mit eigenem kleinen Musterraum für Produktpräsentationen richten wir innerhalb des gebündelten Vertrags einen an den unregelmäßigen Kundenbesuch angepassten Takt ein.",
+      "Ein gebündeltes Leistungspaket lässt sich auch bei einem Wechsel der zuständigen Ansprechperson im Betrieb unkompliziert fortführen – der bestehende Vertrag läuft unverändert weiter, sofern sich der Leistungsumfang nicht ändert.",
+      "Erweitert ein mittelständischer Betrieb seinen Lagerbereich um eine zusätzliche Halle auf demselben Gelände, lässt sich der gebündelte Vertrag um die neue Fläche ergänzen, statt gesondert zu verhandeln.",
+    ],
+    scopeBullets: [
+      "Unterhaltsreinigung von Büro- und Lagerflächen",
+      "Fensterreinigung nach Bedarf integriert",
+      "Sanitärbereiche",
+      "Optionale Grundreinigung bei Neubezug",
+    ],
+    additionalLinks: [
+      { label: "Unterhaltsreinigung separat anfragen", href: "/leistungen/unterhaltsreinigung-berlin/reinickendorf" },
+      { label: "Praxisreinigung in Reinickendorf", href: "/leistungen/praxisreinigung-berlin/reinickendorf" },
+    ],
+    processText:
+      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Teilbereiche und gewünschtem Rhythmus. Objekte mit kombinierten Büro- und Lagerflächen werden getrennt nach Nutzungsintensität kalkuliert.",
+    faq: [
+      {
+        question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Reinickendorf?",
+        answer:
+          "Das hängt vom Objekt ab – meist Unterhaltsreinigung von Büro- und Lagerflächen, Sanitärbereiche und bei Bedarf Fensterreinigung.",
+      },
+      {
+        question: "Ist im Leistungsbündel auch eine Fensterreinigung enthalten?",
+        answer:
+          "Bei Bedarf ja. Wir integrieren die Fensterreinigung des Bürobereichs bei Objekten mit größerem Fensteranteil direkt in den gebündelten Vertrag.",
+      },
+      {
+        question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
+        answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Reinickendorf – wir melden uns mit einem individuellen Angebot für das passende Leistungsbündel.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
@@ -2656,6 +2951,78 @@ export const combos: Combo[] = [
     districtSlug: "spandau",
     intro:
       "Für Gewerbeflächen mit angeschlossenen Büro- und Lagerbereichen in Spandau bündeln wir Unterhaltsreinigung, Sanitär- und Glasreinigung in einem Vertrag mit einem festen Ansprechpartner. Für Autohäuser mit Showroom ist die eigenständige Autohausreinigung im Bezirk oft die passendere Wahl.",
+    metaDescription:
+      "Gebäudereinigung in Spandau für Büro- und Lagerflächen – Unterhalts-, Sanitär- und Glasreinigung gebündelt in einem Vertrag. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Statt Unterhalts-, Fenster- und Treppenhausreinigung bei mehreren Dienstleistern einzeln zu beauftragen, bündeln wir die für Ihr Objekt passenden Teilleistungen in einem gemeinsamen Vertrag mit einer einzigen Kontaktperson für alle Rückfragen.",
+    localAngle: [
+      "Spandau bietet am Stadtrand größere, zusammenhängende Gewerbegebiete, in denen Büro- und Lagerflächen häufig in einem einzigen Objekt kombiniert sind. Für solche Objekte ergibt ein gebündelter Vertrag mehr Sinn als mehrere Einzelaufträge für unterschiedliche Teilbereiche.",
+      "Ein Gewerbeobjekt mit Büro-, Lager- und Sanitärbereich hat pro Bereich einen eigenen Pflegebedarf: Büroflächen benötigen einen anderen Rhythmus als selten betretene Lagerflächen, und Sanitärbereiche für Kunden unterscheiden sich von reinen Personaltoiletten. Wir stimmen den Gesamtvertrag auf diese Unterschiede ab, statt ein einheitliches Paket für das gesamte Objekt anzubieten.",
+      "Bei Objekten mit größerem Fensteranteil, etwa Bürobereichen mit durchgehender Verglasung, lässt sich die Glasreinigung direkt in den Gebäudereinigungs-Vertrag integrieren, statt sie separat zu beauftragen und mit einem zweiten Dienstleister zu koordinieren.",
+      "Größere Gewerbeobjekte am Stadtrand sind teils über eine Schranke oder einen zentralen Pförtner gesichert. Die Zugangsregelung für das Reinigungsteam stimmen wir vorab schriftlich mit der Objektverwaltung ab, damit alle gebündelten Teilleistungen ohne Verzögerung am Werkstor anlaufen können.",
+      "Bei Gewerbeobjekten mit mehreren Mietparteien unter einem Dach klären wir vorab, welche Gemeinschaftsflächen zentral über die Hausverwaltung abgerechnet werden und welche Bereiche jede Mietpartei separat beauftragt – wichtig, damit im gebündelten Vertrag keine Fläche doppelt oder gar nicht erfasst wird.",
+      "Nach Neubezug oder nach größeren Umbauten lässt sich eine einmalige Grundreinigung dem laufenden Gebäudereinigungs-Vertrag voranstellen, sodass die anschließende Unterhaltsreinigung auf einem bereits sauberen Ausgangszustand aufbaut, statt bestehende Verschmutzung erst über mehrere Wochen abzutragen.",
+      "Autohäuser mit Showroom haben einen eigenen Reinigungsbedarf rund um Glasflächen und Kundenbereiche, der sich deutlich von einem reinen Büro- und Lagerobjekt unterscheidet. Dafür ist die eigenständige Autohausreinigung im Bezirk in der Regel die passendere Wahl als das allgemeine Gebäudereinigungs-Bündel.",
+      "Bei Objekten mit eigenem Vorplatz oder Zufahrt für Lieferverkehr klären wir vorab, ob dieser Außenbereich zum vereinbarten Umfang gehört – Außenflächen sind nicht automatisch Teil der gebündelten Innenraumreinigung.",
+      "Ein gebündelter Vertrag bringt vor allem organisatorische Vorteile: Statt für Unterhalts-, Sanitär- und Glasreinigung mit drei unterschiedlichen Firmen Termine und Beanstandungen zu koordinieren, läuft die gesamte Kommunikation über einen festen Ansprechpartner bei Glanzwerk.",
+      "Bei der Auswahl eines Dienstleisters für ein Gewerbeobjekt mit mehreren Teilbereichen lohnt sich die Frage, ob tatsächlich für jeden Bereich – Büro, Lager, Sanitär, Glas – ein passender, unterschiedlicher Rhythmus kalkuliert wird, statt ein Pauschalpaket ohne Rücksicht auf die tatsächliche Nutzung anzubieten.",
+      "Der Umfang eines gebündelten Vertrags lässt sich im laufenden Betrieb anpassen: Wächst der Bedarf an einer bestimmten Teilleistung, etwa durch eine neu hinzugekommene Bürofläche, wird der bestehende Vertrag erweitert, statt einen komplett neuen Vertrag für die zusätzliche Fläche aufzusetzen.",
+      "Fensterrahmen und Rahmenprofile in älteren Gewerbebauten benötigen andere Pflegemittel als die meist robusteren Aluminiumrahmen neuerer Hallenbauten am Stadtrand. Wir wählen das Verfahren im Rahmen der gebündelten Glasreinigung nach dem tatsächlich vorhandenen Material.",
+      "Nach der Übernahme eines neuen Objekts mit mehreren Teilleistungen gehen wir zunächst durch alle vereinbarten Bereiche, statt den Zustand nur stichprobenartig zu prüfen, um den bisherigen Pflegezustand für Büro-, Lager- und Sanitärbereiche getrennt einzuschätzen.",
+      "Größere Lagerhallen mit hohen Decken benötigen bei der Unterhaltsreinigung eine gesonderte Abstimmung, welche Bereiche tatsächlich im Rahmen des gebündelten Vertrags erfasst werden – höher gelegene Regalböden oder Deckenkonstruktionen gehören meist nicht zum Standardumfang.",
+      "Bei Gewerbeobjekten mit eigenem Werksgelände und mehreren unabhängigen Zufahrten klären wir vorab, über welchen Zugang das Reinigungsteam die einzelnen Gebäudeteile am effizientesten erreicht.",
+      "Aufzüge oder Lastenaufzüge, wie sie in größeren Gewerbeobjekten am Stadtrand vorkommen, werden im Rahmen des gebündelten Vertrags mit erfasst, sofern sie zur beauftragten Fläche zählen – die technische Wartung bleibt davon unabhängig geregelt.",
+      "Bei Gewerbeobjekten mit Kantine oder Gemeinschaftsküche für mehrere Mitarbeitende benötigt dieser Bereich einen engeren Reinigungstakt als die übrigen Büro- und Lagerflächen, da hier täglich mit Lebensmitteln gearbeitet wird.",
+      "Rangierflächen und Verladerampen für Lkw gehören zum Außenbereich und werden nur bei ausdrücklicher Vereinbarung in den gebündelten Vertrag aufgenommen – standardmäßig konzentrieren wir uns auf die Innenräume.",
+      "Nach Bauarbeiten oder größeren Umbauten in Teilen des Objekts bleiben Baustaub und feine Rückstände zurück, die sich mit der laufenden Unterhaltsreinigung allein nicht vollständig entfernen lassen – hier ergänzt eine einmalige Grundreinigung das gebündelte Konzept sinnvoll.",
+      "Rückmeldungen zu einzelnen Teilleistungen, etwa wenn im Lagerbereich ein anderer Rhythmus gewünscht wird als im Büro, lassen sich über denselben festen Ansprechpartner klären, der für das gesamte Leistungsbündel zuständig ist.",
+      "Ein gebündelter Vertrag lässt sich bei saisonalen Schwankungen im Lagerbetrieb flexibel anpassen, etwa mit vorübergehend engerem Takt für Sanitär- und Pausenbereiche in umsatzstarken Monaten.",
+      "Bei der Erstbegehung eines neuen Objekts mit mehreren Teilleistungen dokumentieren wir den Ausgangszustand von Büro-, Lager- und Sanitärbereichen getrennt, damit spätere Rückfragen zum vereinbarten Umfang klar zuzuordnen sind.",
+      "Rechnungsstellung für ein gebündeltes Leistungspaket erfolgt gesammelt für alle enthaltenen Teilleistungen, statt mehrere getrennte Rechnungen unterschiedlicher Dienstleister abgleichen zu müssen.",
+      "Wechselt die Hausverwaltung eines Gewerbeobjekts, bleibt der bestehende gebündelte Vertrag davon unberührt – lediglich der Ansprechpartner auf Seiten der Verwaltung ändert sich, die vereinbarten Teilleistungen laufen unverändert weiter.",
+      "Bei Objekten, die neben Büro und Lager auch einen kleinen Verkaufs- oder Ausstellungsbereich haben, lässt sich dieser Bereich mit einem eigenen, an den Kundenverkehr angepassten Takt in das gebündelte Leistungspaket aufnehmen.",
+      "Nach einer Erweiterung des Betriebs um eine zusätzliche Halle lässt sich der bestehende gebündelte Vertrag um die neue Fläche ergänzen, statt einen komplett neuen Vertrag für den Zubau aufzusetzen.",
+    ],
+    scopeBullets: [
+      "Unterhaltsreinigung von Büro- und Lagerflächen",
+      "Sanitärbereiche",
+      "Glasreinigung nach Bedarf integriert",
+      "Optionale Grundreinigung bei Neubezug",
+    ],
+    additionalLinks: [
+      { label: "Unterhaltsreinigung separat anfragen", href: "/leistungen/unterhaltsreinigung-berlin/spandau" },
+      { label: "Autohausreinigung in Spandau", href: "/leistungen/autohausreinigung-berlin/spandau" },
+    ],
+    processText:
+      "Nach einer kurzen Objektbesichtigung legen wir fest, welche Teilleistungen in Ihr Gebäudereinigungs-Bündel gehören, und stimmen Rhythmus und Zeitfenster mit Ihnen ab.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Anzahl der Teilbereiche und gewünschtem Rhythmus. Objekte mit größerem Fensteranteil oder zusätzlicher Grundreinigung benötigen entsprechend mehr Aufwand als ein reines Unterhaltsreinigungs-Paket.",
+    faq: [
+      {
+        question: "Was genau gehört zum Leistungsbündel der Gebäudereinigung in Spandau?",
+        answer:
+          "Das hängt vom Objekt ab – meist Unterhaltsreinigung von Büro- und Lagerflächen, Sanitärbereiche und bei Bedarf Glasreinigung. Den genauen Umfang legen wir vorab gemeinsam fest.",
+      },
+      {
+        question: "Ist die Gebäudereinigung auch für Autohäuser mit Showroom geeignet?",
+        answer:
+          "Für Autohäuser mit Showroom und Kundenbereich ist die eigenständige Autohausreinigung meist die passendere Wahl, da sie auf Glasflächen und Kundenverkehr spezialisiert ist.",
+        relatedLink: { label: "Zur Autohausreinigung in Spandau", href: "/leistungen/autohausreinigung-berlin/spandau" },
+      },
+      {
+        question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
+        answer:
+          "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
+    ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Gewerbeobjekt in Spandau – wir melden uns mit einem individuellen Angebot für das passende Leistungsbündel.",
   },
   {
     serviceSlug: "kanzleireinigung-berlin",
