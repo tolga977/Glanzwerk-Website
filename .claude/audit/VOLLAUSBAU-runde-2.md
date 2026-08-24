@@ -30,8 +30,9 @@
 - [x] Grundreinigung (3): neukoelln (1335), mitte (1310), treptow-koepenick (1312) — ABGESCHLOSSEN, Commit 6592809. Angles: Neukoelln = Altbau-Sanierung vs. Neubau-Gewerbeflaeche Rudow; Mitte = Mieterwechsel-Grundreinigung mit engem Uebergabefenster; Treptow-Koepenick = weitlaeufige Objekte mit gestaffelten Gebaeudeteilen.
 - [x] Kita/Fitness/Autohaus Kombi (3): kita-pankow (1308), fitness-friedrichshain-kreuzberg (1293, KEINE neuen Lokalfakten — nur allgemeine Fachinhalte, Bezirkszuordnung unveraendert dokumentiert), autohaus-spandau (1302) — ABGESCHLOSSEN, Commit 9e67b23.
 
-### Phase 3 — 12 Bezirksseiten
-mitte, friedrichshain-kreuzberg, pankow, charlottenburg-wilmersdorf, spandau, steglitz-zehlendorf, tempelhof-schoeneberg, neukoelln, treptow-koepenick, marzahn-hellersdorf, lichtenberg, reinickendorf
+### Phase 3 — 12 Bezirksseiten — ABGESCHLOSSEN (Commit ec3d657)
+- [x] mitte (1316), friedrichshain-kreuzberg (1303), pankow (1300), charlottenburg-wilmersdorf (1314), spandau (1324), steglitz-zehlendorf (1305), tempelhof-schoeneberg (1314), neukoelln (1316), treptow-koepenick (1320), marzahn-hellersdorf (1308), lichtenberg (1306), reinickendorf (1304)
+- Alle bleiben bewusst auf Überblicksebene (Wirtschaftsstruktur, Objektmix, Baubestand, allgemeine Zielgruppen) statt der Tiefe einzelner Kombiseiten, um Kannibalisierung zu vermeiden. ST-Z ohne erneute "ruhig"-Wiederholung (neues Argument: Schloßstraße vs. Villenlagen).
 
 ### Phase 4 — 8 Ortsteilseiten
 charlottenburg, wilmersdorf, steglitz, zehlendorf, tempelhof, schoeneberg, koepenick, rudow
