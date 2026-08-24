@@ -56,6 +56,9 @@ const nextConfig: NextConfig = {
   // Next.js liefert Antworten standardmäßig gzip-komprimiert aus (compress: true).
   // Brotli, HTTP/2 bzw. HTTP/3 und ein CDN werden nicht von Next.js selbst,
   // sondern vom gewählten Hosting bereitgestellt – siehe docs/DEPLOYMENT.md.
+  // Unterdrückt den "X-Powered-By: Next.js"-Header, der sonst unnötig den
+  // eingesetzten Stack verrät (SEO-Audit technical.md, Low-Finding).
+  poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
     // Lizenzfreie Unsplash-/Pexels-Platzhalterfotos für Hero/Leistungsbereiche,
