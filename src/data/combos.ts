@@ -350,6 +350,9 @@ export const combos: Combo[] = [
       "Wir betreuen Gewerbeobjekte unterschiedlicher Größe in ganz Berlin, von einzelnen Kanzleietagen bis zu mehrstöckigen Verwaltungsgebäuden mit mehreren Mietparteien. Das heißt nicht, dass jedes Objekt gleich behandelt wird – gerade die Frage, wie viele Ansprechpartner es gibt und wie der Zutritt organisiert ist, unterscheidet sich von Haus zu Haus, und genau darauf stellen wir uns bei jedem neuen Objekt neu ein.",
       "Für Hausverwaltungen ist neben dem Preis vor allem Verlässlichkeit wichtig: feste Reinigungstage statt unregelmäßiger Einsätze, damit sich Mieter, Kunden und Besucher auf einen wiederkehrenden Rhythmus einstellen können. Fällt ein Termin aus betrieblichen Gründen einmal aus, informieren wir die Verwaltung rechtzeitig, statt den Ausfall unkommentiert stehen zu lassen.",
       "Größere Gewerbeobjekte mit mehreren Etagen benötigen häufig auch eine differenzierte Reinigung: Der Eingangsbereich im Erdgeschoss sieht mehr Publikumsverkehr als das Treppenhaus zur fünften Etage, in der nur wenige Mitarbeitende einer einzelnen Firma unterwegs sind. Ein einheitlicher Rhythmus für das gesamte Gebäude ist deshalb nicht immer die wirtschaftlichste Lösung – wir besprechen mit Ihrer Hausverwaltung, ob eine gestaffelte Reinigung sinnvoller ist.",
+      "Bei Gewerbeobjekten mit eigenem Vorplatz oder Zugangsweg stellt sich im Winter zusätzlich die Frage nach Räum- und Streupflicht. Diese Pflicht betrifft den Bereich vor dem Gebäude und ist rechtlich von der eigentlichen Treppenhausreinigung im Inneren getrennt – in vielen Gewerbemietverträgen wird sie separat geregelt, teils an den Mieter, teils an einen eigenen Winterdienst übertragen. Ob und wie sich das mit unserer Treppenhausreinigung koordinieren lässt, klären wir auf Wunsch direkt mit Ihrer Hausverwaltung.",
+      "In den Wintermonaten tragen Kunden und Mitarbeitende Split, Salzreste und Feuchtigkeit von draußen in den Eingangsbereich – bei einem stark frequentierten Gewerbeobjekt deutlich mehr als in einem ruhigen Wohnhaus. Deshalb verdichten wir den Reinigungsrhythmus für Eingang und erste Treppenläufe in dieser Zeit häufig, statt das ganze Jahr über denselben Turnus anzusetzen.",
+      "Bei der Auswahl eines Reinigungsdienstleisters für ein Gewerbeobjekt mit mehreren Mietparteien lohnt sich ein Blick darauf, ob nach der tatsächlichen Zahl der Firmen und dem Publikumsverkehr gefragt wird, statt ein pauschales Angebot allein nach Quadratmetern zu erstellen. Ebenso wichtig ist ein fester Ansprechpartner auf unserer Seite, der Rückfragen der Hausverwaltung direkt beantworten kann, statt bei jeder Anfrage neu eingearbeitet werden zu müssen.",
     ],
     scopeBullets: [
       "Eingangsbereich und Empfangszone",
@@ -411,6 +414,16 @@ export const combos: Combo[] = [
           "Ja, das ist sogar üblich. Verwaltet Ihre Hausverwaltung mehrere Gewerbeobjekte in Tempelhof-Schöneberg oder anderen Bezirken, lässt sich die Koordination über einen gemeinsamen Ansprechpartner bündeln.",
       },
       {
+        question: "Wird im Winter häufiger gereinigt als im Sommer?",
+        answer:
+          "Häufig ja, zumindest für Eingang und erste Treppenläufe: Split, Salzreste und Feuchtigkeit werden dann stärker ins Gebäude getragen. Wir passen den Rhythmus bei Bedarf saisonal an.",
+      },
+      {
+        question: "Ist der Winterdienst vor dem Gebäude Teil der Treppenhausreinigung?",
+        answer:
+          "Nein, das sind zwei getrennte Leistungen. Die Räum- und Streupflicht für den Bereich vor dem Gebäude wird meist separat im Mietvertrag geregelt – wir stimmen auf Wunsch ab, ob und wie sich beides bei Ihrem Objekt koordinieren lässt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
@@ -438,6 +451,9 @@ export const combos: Combo[] = [
       "Bei Objekten mit mehreren Aufgängen ist für uns vor allem die Organisation entscheidend: ein Ansprechpartner für das gesamte Haus, ein gemeinsamer Reinigungsplan für alle Aufgänge und eine Rechnung statt mehrerer. Das entlastet vor allem Hausverwaltungen, die sonst für jeden Aufgang einzeln koordinieren müssten.",
       "Auch innerhalb des dicht bebauten Kerns gibt es Unterschiede: Manche Blockrandgebäude wurden nach Kriegszerstörungen im Rahmen der Nachkriegs-Blockrandbebauung neu errichtet und haben dadurch modernere Treppenhäuser als die ursprüngliche Gründerzeit-Bausubstanz nebenan. Das wirkt sich auf Material und Pflegeaufwand aus, auch wenn sich beide Gebäude äußerlich in dieselbe Blockrandzeile einfügen.",
       "Für Eigentümergemeinschaften mit mehreren Aufgängen ist neben dem Preis oft auch die Kommunikation entscheidend: Statt mit mehreren Dienstleistern für jeden Aufgang einzeln zu sprechen, gibt es einen Ansprechpartner für das gesamte Objekt, der Rückfragen zu allen Aufgängen gleichermaßen beantworten kann.",
+      "Bei mehreren Aufgängen unter einer Adresse achten wir außerdem darauf, dass die Qualität zwischen den einzelnen Treppenhäusern nicht auseinanderdriftet – etwa weil ein Aufgang durch einen Nebeneingang stärker frequentiert wird als die übrigen. Auffälligkeiten aus einzelnen Aufgängen erreichen uns über denselben festen Ansprechpartner, sodass sich schnell klären lässt, ob es sich um eine einmalige Ausnahme handelt oder der Reinigungsplan für diesen einen Aufgang angepasst werden sollte.",
+      "Übernehmen wir ein Objekt neu, etwa weil die Eigentümergemeinschaft den bisherigen Dienstleister gewechselt hat, gehen wir bei mehreren Aufgängen zunächst durch jeden einzelnen, statt den Zustand nur stichprobenartig an einem Aufgang zu prüfen. So fällt ein möglicher unterschiedlicher Pflegezustand zwischen den Aufgängen bereits vor dem ersten regulären Termin auf, statt erst im laufenden Betrieb.",
+      "In den Wintermonaten steigt gerade an stark frequentierten Eingängen im dicht bebauten Kern der Reinigungsbedarf spürbar an, weil Split und Feuchtigkeit von mehreren Aufgängen gleichzeitig in die jeweiligen Eingangsbereiche getragen werden. Wir verdichten den Rhythmus für diese Bereiche in dieser Zeit bei Bedarf, ohne dass sich das auf den vereinbarten Grundvertrag für den Rest des Jahres auswirkt.",
     ],
     scopeBullets: [
       "Eingangsbereiche aller Aufgänge",
@@ -500,6 +516,16 @@ export const combos: Combo[] = [
           "Ja, grundsätzlich für jeden Zugang, den Sie unterhalten. Bei mehreren Aufgängen im selben Objekt achten wir deshalb darauf, dass alle Zugänge im vereinbarten Rhythmus gereinigt werden, nicht nur der am stärksten frequentierte.",
       },
       {
+        question: "Prüfen Sie den Zustand aller Aufgänge, wenn Sie ein Objekt neu übernehmen?",
+        answer:
+          "Ja. Gerade bei einem Dienstleisterwechsel gehen wir bei mehreren Aufgängen jeden einzeln durch, statt nur stichprobenartig einen zu prüfen, damit Unterschiede im Pflegezustand vor dem ersten Termin auffallen.",
+      },
+      {
+        question: "Was, wenn nur einer von mehreren Aufgängen Probleme macht, die übrigen nicht?",
+        answer:
+          "Melden Sie das über Ihren festen Ansprechpartner. Wir klären das gezielt für den betroffenen Aufgang, ohne dass es die Vereinbarung für die übrigen Aufgänge oder das gesamte Objekt berührt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
@@ -528,6 +554,8 @@ export const combos: Combo[] = [
       "Eigentümergemeinschaften mit gemischter Nutzung haben oft einen höheren Abstimmungsbedarf als reine Wohnungseigentümergemeinschaften, weil Wohn- und Gewerbeeigentümer teilweise unterschiedliche Interessen verfolgen. Ein fester Ansprechpartner auf unserer Seite erleichtert es der Verwaltung, Rückfragen aus beiden Gruppen an einer Stelle zu bündeln, statt mit wechselndem Personal neu anfangen zu müssen.",
       "Auch innerhalb Pankows gibt es deutliche Unterschiede: Der Prenzlauer Berg ist urban und dicht bebaut, die äußeren Teile des Bezirks eher durch Einfamilienhäuser und kleinere Mehrfamilienhäuser geprägt. Für die Treppenhausreinigung heißt das, dass ein Konzept, das für ein sechsgeschossiges Mietshaus im Prenzlauer Berg passt, für ein kleineres Gebäude am Stadtrand oft überdimensioniert wäre.",
       "Bei Eigentümergemeinschaften, die noch keinen festen Reinigungsdienstleister haben, hilft häufig ein kurzes Gespräch mit allen Beteiligten – Wohnungs- und Gewerbeeigentümer gemeinsam –, um Erwartungen an Rhythmus und Umfang von Anfang an abzugleichen, statt sie erst nach den ersten Beanstandungen zu klären.",
+      "Wechselt die Gewerbeeinheit im Erdgeschoss den Mieter, ändert sich oft auch der Publikumsverkehr im Treppenhaus – eine vorherige Anwaltskanzlei mit wenig Laufkundschaft wird zum Beispiel durch ein Ladengeschäft mit deutlich mehr Besuchern ersetzt. Ein solcher Wechsel ist ein guter Anlass, den bestehenden Reinigungsplan gemeinsam mit der Verwaltung zu überprüfen, statt ihn unverändert aus der Zeit des Vormieters fortzuführen.",
+      "Bei gemischt genutzten Häusern mit eigenem Vorgarten oder Gehwegabschnitt liegt die Räum- und Streupflicht im Winter meist separat von der Treppenhausreinigung geregelt – oft bei der Eigentümergemeinschaft oder einem beauftragten Winterdienst. Beide Leistungen berühren sich nur an der Eingangsschwelle: Nasse, mit Splitt behaftete Schuhe der Bewohner und Kunden erhöhen in dieser Zeit den Reinigungsbedarf im Eingangsbereich, unabhängig davon, wer für den Gehweg draußen zuständig ist.",
     ],
     scopeBullets: [
       "Eingangsbereich und Hausflur",
@@ -578,6 +606,16 @@ export const combos: Combo[] = [
         question: "Unterscheidet sich der Aufwand zwischen Prenzlauer Berg und den äußeren Teilen Pankows?",
         answer:
           "Ja, meist über die Gebäudegröße: Dichtere, mehrgeschossige Mietshäuser im Prenzlauer Berg haben andere Anforderungen als kleinere Gebäude in den äußeren Ortsteilen. Wir richten den Umfang nach dem tatsächlichen Objekt aus, nicht nach der Lage allein.",
+      },
+      {
+        question: "Was passiert mit dem Reinigungsplan, wenn die Gewerbeeinheit im Erdgeschoss den Mieter wechselt?",
+        answer:
+          "Ein Mieterwechsel ist ein guter Anlass, den Plan zu überprüfen: Ändert sich der Publikumsverkehr spürbar, passen wir Rhythmus oder Umfang gemeinsam mit Ihrer Verwaltung an, statt den bisherigen Plan unverändert fortzuführen.",
+      },
+      {
+        question: "Ist der Winterdienst vor dem Haus Teil Ihrer Leistung?",
+        answer:
+          "Nein, das ist meist separat bei der Eigentümergemeinschaft oder einem eigenen Winterdienst geregelt. Wir berücksichtigen aber den erhöhten Reinigungsbedarf im Eingangsbereich durch Splitt und Feuchtigkeit in dieser Zeit.",
       },
       {
         question: "Können Treppenhausreinigung und Kita-Reinigung im selben Haus kombiniert werden?",
@@ -884,6 +922,10 @@ export const combos: Combo[] = [
       "Bei Objekten mit mehreren Baukörpern auf einem gemeinsamen Grundstück – wie es bei größeren Bürokomplexen üblich ist – lässt sich die Glasreinigung aller Gebäude gemeinsam beauftragen. Das vereinfacht die Koordination gegenüber getrennten Verträgen pro Baukörper.",
       "Bei der Erstbegehung eines neueren Bürokomplexes prüfen wir neben der Fassadenkonstruktion auch, ob eine automatische Gebäudereinigungsanlage vorhanden ist – manche Neubauten verfügen über fest installierte Schienensysteme für Reinigungsgondeln. Ist eine solche Anlage vorhanden, richten wir unser Vorgehen danach aus, statt sie ungenutzt zu lassen.",
       "Fassaden mit vielen kleinteiligen Glaselementen statt einer durchgehenden Fläche wirken auf den ersten Blick moderner, bedeuten aber mehr Fugen und Rahmenprofile pro Quadratmeter – und damit mehr Aufwand als eine gleich große, ungeteilte Scheibe. Auch das fließt in die Preiskalkulation ein.",
+      "Bei mehreren vermieteten Etagen im selben Bürokomplex ist für die Innenreinigung der Glastrennwände der Zutritt zu jeder einzelnen Mietfläche nötig. Wir stimmen deshalb vorab mit der Hausverwaltung ab, welche Etagen zu welchen Zeiten zugänglich sind, statt am Tag des Termins mit einzelnen Mietern separat zu klären, wer wann anwesend ist.",
+      "Nach größeren Terminen an Elementfassaden bietet sich ein kurzer Blick vom Innenraum aus an, da sich Schlieren oder verbliebene Streifen von innen oft anders zeigen als von der Straße aus. Fällt dabei etwas auf, lässt sich das über den festen Ansprechpartner kurzfristig klären, statt bis zum nächsten regulären Termin zu warten.",
+      "Für die Innenreinigung der Glastrennwände hilft es, wenn Mitarbeitende an Arbeitsplätzen direkt an der Trennwand kurz informiert werden, dass am Reinigungstag jemand an ihrem Platz vorbeikommt – gerade in offenen Bürolandschaften mit vielen kurzen Wegen lässt sich der Ablauf so reibungsloser gestalten, als wenn die Reinigung unangekündigt zwischen den Arbeitsplätzen stattfindet.",
+      "Bei der Auswahl eines Dienstleisters für moderne Elementfassaden lohnt sich ein Blick darauf, ob konkret nach Fassadenkonstruktion und vorhandener Reinigungsanlage gefragt wird, statt ein pauschales Verfahren für jedes Gebäude anzubieten. Ebenso hilfreich ist ein fester Ansprechpartner, der Rückfragen zu Sonnenschutzverglasung oder Whiteboard-Trennwänden direkt beantworten kann, statt bei jeder Anfrage neu einzuarbeiten. Gerade bei neu bezogenen Objekten zeigt sich das schon beim ersten Angebot: Wird die Fassadenkonstruktion tatsächlich geprüft, oder wird ein Pauschalpreis ohne Objektbesichtigung genannt?",
     ],
     scopeBullets: [
       "Großflächige Elementfassaden",
@@ -943,6 +985,21 @@ export const combos: Combo[] = [
       {
         question: "Kosten kleinteilig verglaste Fassaden mehr als große, ungeteilte Scheiben?",
         answer: "In der Regel ja, weil mehr Fugen und Rahmenprofile pro Quadratmeter zusätzlichen Aufwand bedeuten. Das fließt in die Kalkulation ein.",
+      },
+      {
+        question: "Werden Mitarbeitende vorab informiert, wenn Glastrennwände an ihrem Arbeitsplatz gereinigt werden?",
+        answer:
+          "Das empfehlen wir, ja. Eine kurze Ankündigung im Vorfeld macht den Ablauf für alle Beteiligten angenehmer, gerade in offenen Bürolandschaften mit vielen Arbeitsplätzen direkt an der Trennwand.",
+      },
+      {
+        question: "Wie wird der Zutritt zu einzelnen vermieteten Etagen für die Innenreinigung organisiert?",
+        answer:
+          "Das stimmen wir vorab mit Ihrer Hausverwaltung ab, welche Etagen zu welchen Zeiten zugänglich sind – so muss am Termintag nicht mit jedem einzelnen Mieter separat geklärt werden, wer anwesend ist.",
+      },
+      {
+        question: "Was, wenn nach einem Termin von innen noch Schlieren an der Fassade zu sehen sind?",
+        answer:
+          "Melden Sie das kurzfristig Ihrem festen Ansprechpartner. Wir prüfen die Stelle und bessern nach, statt bis zum nächsten regulären Termin zu warten.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1020,6 +1077,10 @@ export const combos: Combo[] = [
       "Bei mehreren Ladeneinheiten im selben Gebäude – etwa in einer kleinen Einkaufspassage abseits der Hauptstraße – lässt sich die Reinigung aller Schaufenster gemeinsam beauftragen. Das senkt den Preis pro Fläche gegenüber einer Einzelbeauftragung jedes Geschäfts, weil sich Anfahrt und Grundorganisation auf mehrere Einheiten verteilen.",
       "Vitrinen im Innenbereich, etwa für Produktpräsentationen, werden von Kunden oft aus kurzer Distanz betrachtet – Fingerabdrücke und Staub fallen hier schneller auf als an einer hohen Schaufensterscheibe. Wir reinigen solche Flächen deshalb häufig in kürzeren Abständen als die übrige Verglasung.",
       "Nicht jedes Schaufenster ist identisch verglast – manche Geschäfte kombinieren mehrere Glasscheiben zu einer optischen Einheit, mit schmalen Fugen dazwischen, die zusätzliche Aufmerksamkeit bei der Reinigung erfordern, damit kein ungleichmäßiges Ergebnis zwischen den einzelnen Scheiben entsteht.",
+      "Bei starkem Regen oder Wind verschiebt sich ein fest geplanter Außentermin mitunter um ein bis zwei Tage, da frisch gereinigtes Glas sonst schnell wieder fleckig wirkt. Für Ladengeschäfte am Kurfürstendamm mit hohem Anspruch an das äußere Erscheinungsbild informieren wir in solchen Fällen frühzeitig über den neuen Termin, statt am ursprünglichen Datum ein Ergebnis abzuliefern, das nur wenige Stunden hält.",
+      "Bei der Auswahl eines Dienstleisters für Schaufenster in Toplage lohnt sich ein Blick darauf, ob konkret nach Glasart und Kundenverkehr gefragt wird, oder ob ein pauschales Intervall ohne Bezug zum Standort angeboten wird. Ebenso hilfreich ist ein fester Ansprechpartner, der auch kurzfristig auf einen anstehenden Dekorationswechsel oder ein besonderes Ereignis reagieren kann.",
+      "Vor einem Termin an der Schaufensterinnenseite hilft es, wenn empfindliche Dekorationsstücke oder lose Preisschilder kurz zur Seite geräumt werden, statt sie während der Reinigung im Weg stehen zu lassen. Bei aufwendig gestalteten Auslagen sprechen wir das im Zweifel vorher kurz mit dem Ladenpersonal ab, statt selbst Gegenstände zu verschieben.",
+      "Bei der Auswahl eines Anbieters für Schaufenster in Toplage zeigt sich Erfahrung oft an Details: Wird nach der Art der Werbefolie gefragt, bevor angrenzende Flächen behandelt werden? Gibt es einen Ansprechpartner, der auch bei einem spontanen Dekorationswechsel kurzfristig einen zusätzlichen Termin ermöglicht, statt auf den nächsten regulären Turnus zu verweisen? Solche Details fallen erst im laufenden Betrieb auf, lassen sich aber schon beim Erstgespräch erfragen, bevor der erste Vertrag unterschrieben wird und Erwartungen unausgesprochen bleiben.",
     ],
     scopeBullets: [
       "Schaufenster innen und außen",
@@ -1082,6 +1143,16 @@ export const combos: Combo[] = [
         answer: "Ja, wir achten besonders auf ein einheitliches Ergebnis über alle Scheiben hinweg, damit an den Fugen kein sichtbarer Unterschied entsteht.",
       },
       {
+        question: "Sollte ich die Schaufensterdekoration vor dem Termin räumen?",
+        answer:
+          "Bei empfindlichen oder aufwendig gestalteten Auslagen ist das hilfreich. Bei loser Dekoration sprechen wir das vorher kurz mit Ihrem Personal ab, statt selbst Gegenstände zu verschieben.",
+      },
+      {
+        question: "Was passiert, wenn es am geplanten Reinigungstag regnet?",
+        answer:
+          "Bei starkem Regen oder Wind verschieben wir den Außentermin meist um ein bis zwei Tage, da das Ergebnis sonst nur kurz hält. Wir informieren Sie frühzeitig über den neuen Termin.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1112,6 +1183,11 @@ export const combos: Combo[] = [
       "Neubau-Bürotürme in Mitte verfügen häufig über eine Klimatisierung, die auf gleichbleibende Lichtverhältnisse angewiesen ist. Verschmutzte Fassaden beeinträchtigen dann nicht nur die Optik, sondern auch die Lichtmenge, die ins Gebäude gelangt – ein Argument, das bei rein ästhetischer Betrachtung leicht übersehen wird.",
       "In direkter Nähe zu Regierungsgebäuden und internationalen Vertretungen ist mitunter auch die Diskretion beim Reinigungspersonal ein Thema. Feste, eingespielte Teams statt wechselndem Personal erleichtern es, Vertrauen für den wiederkehrenden Zugang zum Objekt aufzubauen.",
       "Objekte, die sowohl an einer Hauptstraße als auch an einer ruhigeren Nebenstraße liegen, haben oft zwei unterschiedlich stark verschmutzte Fassadenseiten. Wir kalkulieren beide Seiten getrennt, statt einen einheitlichen Rhythmus für das gesamte Gebäude anzusetzen, der einer Seite nicht gerecht würde.",
+      "Bei anhaltendem Regen oder starkem Wind verschieben wir einen geplanten Außentermin meist um ein bis zwei Tage, da frisch gereinigtes Glas sonst rasch wieder fleckig wirkt. Gerade bei Objekten mit hohem Anspruch an ein repräsentatives Erscheinungsbild informieren wir frühzeitig über den neuen Termin, statt ein Ergebnis abzuliefern, das nur kurz hält.",
+      "Nach der Reinigung großflächiger Fassaden lohnt sich ein kurzer Blick von innen, da sich Schlieren am Glas von dort oft anders zeigen als von der Straße aus. Fällt dabei etwas auf, lässt sich das über den festen Ansprechpartner kurzfristig klären, statt bis zum nächsten Turnus zu warten.",
+      "Für die Innenreinigung von Einzelfenstern in Altbaubüros hilft es, wenn Fensterbänke vorab von Pflanzen, Aktenstapeln oder Dekoration freigeräumt werden – gerade bei denkmalgeschützten Sprossenfenstern mit vielen einzelnen Feldern verlängert jeder zusätzliche Gegenstand die Reinigungszeit spürbar.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit gemischter Bausubstanz lohnt sich ein Blick darauf, ob sowohl Erfahrung mit klassischer Sprossenverglasung als auch mit großflächiger Structural-Glazing-Fassade vorhanden ist – viele Anbieter sind auf nur eine der beiden Bauweisen spezialisiert, was bei einem Mischobjekt zu zwei getrennten Verträgen führen kann, wo ein einziger ausreichen würde.",
+      "Bei Objekten im Regierungsviertel oder in dessen unmittelbarer Nähe fragen manche Sicherheitsdienste vorab nach den eingesetzten Reinigungskräften, bevor der Zugang für einen Termin freigegeben wird. Wir stellen die dafür nötigen Angaben rechtzeitig zur Verfügung, damit sich der vereinbarte Termin nicht wegen fehlender Formalitäten verschiebt – ein Vorlauf, den wir bereits bei der ersten Terminabstimmung einplanen, statt ihn erst kurz vor dem Termin nachzureichen und damit den vereinbarten Ablauf ohne Not zu gefährden.",
     ],
     scopeBullets: [
       "Einzelfenster in Altbaulagen",
@@ -1175,6 +1251,21 @@ export const combos: Combo[] = [
         answer: "Nicht zwingend. Liegt eine Seite an einer stärker befahrenen Straße, kalkulieren wir beide Fassadenseiten oft getrennt.",
       },
       {
+        question: "Sollten Fensterbänke vor dem Termin freigeräumt werden?",
+        answer:
+          "Das beschleunigt die Reinigung, ja. Gerade bei Sprossenfenstern mit vielen einzelnen Feldern verlängert jeder zusätzliche Gegenstand auf der Fensterbank die Arbeitszeit spürbar.",
+      },
+      {
+        question: "Prüfen Sie bei einem Mischobjekt beide Fassadentypen mit derselben Sorgfalt?",
+        answer:
+          "Ja. Bei Objekten mit Altbau-Vorderhaus und modernem Anbau prüfen wir beide Bauteile getrennt, statt für das gesamte Gebäude nur ein Verfahren anzusetzen, das nicht zu jedem Teil passt.",
+      },
+      {
+        question: "Was passiert, wenn es am geplanten Termin regnet?",
+        answer:
+          "Bei anhaltendem Regen oder Wind verschieben wir den Außentermin meist um ein bis zwei Tage, da das Ergebnis sonst nur kurz hält. Sie werden über den neuen Termin frühzeitig informiert.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich bei Ihrem Ansprechpartner, sobald Ihnen etwas auffällt. Berechtigte Mängel bessern wir zeitnah nach – Details dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1204,6 +1295,11 @@ export const combos: Combo[] = [
       "Bei Vertragsverhandlungen für ein neu bezogenes Gewerbeobjekt lohnt es sich, die Zuständigkeit für Glasflächen von Anfang an schriftlich festzuhalten – wer welche Fläche beauftragt, klärt sich sonst oft erst im laufenden Betrieb, wenn eine Fläche längere Zeit unbeachtet blieb.",
       "Gewerbeobjekte mit Publikumsverkehr, etwa Bankfilialen oder Versicherungsbüros im Erdgeschoss, haben oft einen höheren Anspruch an makellose Eingangsverglasung als reine Büroflächen in den oberen Stockwerken. Wir berücksichtigen das bei der Angebotserstellung, statt für das gesamte Gebäude denselben Standard anzusetzen.",
       "Bei der Angebotserstellung für ein Gewerbeobjekt mit mehreren Mietparteien hilft eine grobe Skizze oder ein Lageplan, um Glasflächen den jeweiligen Zuständigkeiten korrekt zuzuordnen. Fehlt ein solcher Plan, klären wir das bei der ersten Besichtigung gemeinsam vor Ort.",
+      "Bei stark einsehbaren Außenflächen verschiebt sich ein Termin bei anhaltendem Regen oder starkem Wind meist um ein bis zwei Tage, da frisch gereinigtes Glas sonst rasch wieder fleckig wirkt. Wir informieren die Hausverwaltung in solchen Fällen frühzeitig, damit sich auch die einzelnen Mietparteien darauf einstellen können.",
+      "Nach der Reinigung des Haupteingangs oder größerer Glastrennwände bietet sich für die Hausverwaltung ein kurzer Blick auf das Ergebnis an, bevor der reguläre Publikumsverkehr wieder einsetzt. Fällt dabei eine Stelle auf, lässt sich das über den festen Ansprechpartner kurzfristig klären, statt bis zum nächsten Turnus zu warten.",
+      "Bei mehreren Mietparteien im selben Objekt hilft es, wenn die Hausverwaltung den anstehenden Termin kurz an die betroffenen Firmen weitergibt, besonders wenn Glastrennwände direkt an Arbeitsplätzen gereinigt werden. Eine solche kurze Vorabinformation lässt sich meist ohne zusätzlichen Aufwand mit der ohnehin üblichen Terminankündigung verbinden.",
+      "Bei der Auswahl eines Dienstleisters für ein Gewerbeobjekt mit mehreren Mietparteien lohnt sich ein Blick darauf, ob konkret nach der Aufteilung zwischen Gebäudehülle und einzelnen Mietflächen gefragt wird, statt ein pauschales Angebot für das gesamte Objekt zu erstellen, das am Ende doch nicht alle Flächen abdeckt. Ein fester Ansprechpartner, der Rückfragen einzelner Firmen genauso beantwortet wie die der Hausverwaltung, erleichtert die laufende Zusammenarbeit zusätzlich.",
+      "Zieht in einem Gewerbeobjekt eine neue Firma ein, die eigene Glastrennwände oder eine gesonderte Empfangsverglasung mitbringt, lohnt sich ein kurzer Abgleich mit dem bestehenden Vertrag der Hausverwaltung, damit die neue Fläche entweder direkt mit aufgenommen oder bewusst separat vereinbart wird – nicht, weil das automatisch geschieht, sondern weil sich Zuständigkeiten sonst erst nach Monaten klären, wenn eine Fläche auffällt, die bislang niemand beauftragt hat und entsprechend ungepflegt wirkt. Ein kurzer Hinweis der Verwaltung beim Einzug genügt in der Regel, damit wir das rechtzeitig prüfen können.",
     ],
     scopeBullets: [
       "Glastrennwände zwischen Fluren und Büros",
@@ -1257,8 +1353,23 @@ export const combos: Combo[] = [
         answer: "Nicht zwingend. Publikumsintensive Flächen im Erdgeschoss haben oft einen höheren Anspruch als reine Büroflächen – das berücksichtigen wir individuell.",
       },
       {
+        question: "Werden die einzelnen Mietparteien über den Termin informiert?",
+        answer:
+          "Das übernimmt in der Regel Ihre Hausverwaltung im Rahmen der ohnehin üblichen Terminankündigung – besonders wichtig, wenn Glastrennwände direkt an Arbeitsplätzen gereinigt werden.",
+      },
+      {
+        question: "Was passiert, wenn eine neue Firma mit eigenen Glasflächen einzieht?",
+        answer:
+          "Wir gleichen das mit dem bestehenden Vertrag Ihrer Hausverwaltung ab, damit die neue Fläche entweder mit aufgenommen oder ganz bewusst separat vereinbart wird, statt später einfach unbeauftragt zu bleiben.",
+      },
+      {
         question: "Brauchen Sie einen Lageplan für das Angebot?",
         answer: "Hilfreich, aber nicht zwingend. Fehlt ein Plan, klären wir die Zuordnung der Glasflächen bei der ersten Besichtigung gemeinsam vor Ort.",
+      },
+      {
+        question: "Was passiert, wenn es am geplanten Termin regnet?",
+        answer:
+          "Bei anhaltendem Regen oder Wind verschieben wir den Außentermin meist um ein bis zwei Tage. Wir informieren die Hausverwaltung frühzeitig, damit sich auch die Mietparteien darauf einstellen können.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1414,6 +1525,9 @@ export const combos: Combo[] = [
       "Kanzleien und Praxen in Altbaulagen haben häufig einen hohen Anspruch an Diskretion und ein gepflegtes Erscheinungsbild – nicht nur in den eigenen Räumen, sondern schon im gemeinsam genutzten Treppenhaus. Wir stimmen deshalb nicht nur Material und Rhythmus ab, sondern auch, wie unauffällig die Reinigung im laufenden Praxis- oder Kanzleibetrieb ablaufen soll.",
       "Neben Kanzleien und Praxen liegen in den Altbauten des Bezirks häufig auch klassische Wohnungen in den oberen Etagen – viele Häuser sind bis heute gemischt genutzt, auch wenn das Erdgeschoss längst gewerblich vermietet ist. Das Treppenhaus verbindet dann unterschiedliche Nutzergruppen, ähnlich wie in anderen Berliner Altbaubezirken, nur mit dem zusätzlichen Anspruch, dass es auch für Mandanten und Patienten repräsentativ wirken soll.",
       "Gerade bei stark frequentierten Kanzleien mit mehreren Sozietäten im selben Haus lohnt sich häufig eine höhere Reinigungsfrequenz als bei einer einzelnen kleinen Praxis – nicht weil das Material stärker beansprucht wird, sondern weil mehr Besucher gleichzeitig einen gepflegten Eindruck erwarten. Wir passen den Rhythmus entsprechend an, statt ihn allein an der Quadratmeterzahl festzumachen.",
+      "Bei empfindlichen Natursteinoberflächen lohnt sich nach den ersten Terminen ein kurzer gemeinsamer Blick auf das Ergebnis, statt sich allein auf die eigene Einschätzung zu verlassen – gerade weil sich eine falsche Verfahrenswahl bei poliertem Stein erst nach mehreren Anwendungen zeigt. Fällt Ihnen eine Veränderung an der Oberfläche auf, melden Sie sich zeitnah bei Ihrem festen Ansprechpartner, damit wir das Verfahren gegebenenfalls anpassen, bevor sich ein Effekt verstärkt.",
+      "Für Kanzleien und Praxen mit häufigem Mandanten- oder Patientenverkehr lohnt sich eine kurze interne Abstimmung, wann in der Woche am wenigsten los ist – Termine unmittelbar vor Sprechstundenbeginn oder in stark gebuchten Vormittagsstunden lassen sich meist vermeiden, wenn die übliche Terminstruktur der Praxis oder Kanzlei bei der Planung bekannt ist.",
+      "Bei der Auswahl eines Dienstleisters für ein historisches Treppenhaus lohnt sich ein Blick darauf, ob konkret nach dem verbauten Material gefragt wird, statt pauschal dasselbe Verfahren für jedes Altbauobjekt anzubieten. Ebenso hilfreich ist ein fester Ansprechpartner, der auch bei denkmalgeschützten Details Rückfragen der Eigentümergemeinschaft direkt beantworten kann.",
     ],
     scopeBullets: [
       "Eingangsbereich und Hausflur",
@@ -1468,6 +1582,16 @@ export const combos: Combo[] = [
         question: "Wirkt sich der Publikumsverkehr am Kurfürstendamm auf den Reinigungsbedarf aus?",
         answer:
           "Indirekt schon: Der Kurfürstendamm gehört zu den meistbesuchten Einkaufsstraßen Berlins, was sich auch auf angrenzende Eingangsbereiche auswirken kann. Bei stark frequentierten Lagen passen wir den Rhythmus entsprechend an.",
+      },
+      {
+        question: "Was, wenn mir nach einigen Terminen eine Veränderung am Naturstein auffällt?",
+        answer:
+          "Melden Sie sich zeitnah bei Ihrem festen Ansprechpartner. Wir prüfen die Ursache und passen das Verfahren bei Bedarf an, statt unverändert weiterzumachen.",
+      },
+      {
+        question: "Berücksichtigen Sie die Sprechzeiten der Praxis oder Kanzlei bei der Terminplanung?",
+        answer:
+          "Ja, sofern uns die übliche Terminstruktur bekannt ist. Wir vermeiden dann Termine unmittelbar vor Sprechstundenbeginn oder in stark gebuchten Stunden.",
       },
       {
         question: "Können Treppenhaus- und Praxisreinigung gemeinsam beauftragt werden?",
