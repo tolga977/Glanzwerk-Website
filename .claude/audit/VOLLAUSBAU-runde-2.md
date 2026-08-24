@@ -34,8 +34,12 @@
 - [x] mitte (1316), friedrichshain-kreuzberg (1303), pankow (1300), charlottenburg-wilmersdorf (1314), spandau (1324), steglitz-zehlendorf (1305), tempelhof-schoeneberg (1314), neukoelln (1316), treptow-koepenick (1320), marzahn-hellersdorf (1308), lichtenberg (1306), reinickendorf (1304)
 - Alle bleiben bewusst auf Überblicksebene (Wirtschaftsstruktur, Objektmix, Baubestand, allgemeine Zielgruppen) statt der Tiefe einzelner Kombiseiten, um Kannibalisierung zu vermeiden. ST-Z ohne erneute "ruhig"-Wiederholung (neues Argument: Schloßstraße vs. Villenlagen).
 
-### Phase 4 — 8 Ortsteilseiten
-charlottenburg, wilmersdorf, steglitz, zehlendorf, tempelhof, schoeneberg, koepenick, rudow
+### Phase 4 — 8 Ortsteilseiten — ABGESCHLOSSEN (Commit 4f3a2dc)
+- [x] charlottenburg (1353), wilmersdorf (1309), steglitz (1317), zehlendorf (1320), tempelhof (1315), schoeneberg (1321), koepenick (1303), rudow (1321)
+- Individuelle, geografisch verankerte Inhalte (reale Straßen/Plätze/Landmarken je Ortsteil) statt generischer Wiederholung. Mehrere Runden Dopplungsjagd nötig: exakte Duplikate (find_dupes.js) UND naeherungsweise Duplikate (nur Ortsname getauscht, sonst identischer Satz) wurden über eine eigene Jaccard-Ähnlichkeitsprüfung (near_dupes_new.js, Schwelle 0.55 Wort-Überlappung) gegen den Gesamtbestand sowie gegeneinander geprüft und individuell umformuliert.
+- **WICHTIG gelernt (3):** Beim schnellen seitenweisen Auffüllen auf Wortziel entstehen leicht Sätze, die sich nur durch den ausgetauschten Ortsnamen von einem bereits vorhandenen Satz unterscheiden (z. B. "Notariate ... in Tempelhof" vs. "... in den Bürogebäuden Tempelhofs" wortidentisch bis auf einen Halbsatz). `find_dupes.js` erkennt nur exakte ≥40-Zeichen-Treffer und übersieht solche Fast-Duplikate. Zusätzlich immer eine Wort-Jaccard-Ähnlichkeitsprüfung über alle neu hinzugefügten Sätze laufen lassen, bevor committet wird.
+
+**Damit ist der gesamte 81-Seiten-Auftrag (Phase 1–4) abgeschlossen.**
 
 ## Kannibalisierungsregeln, die beim Ausbau NICHT verletzt werden dürfen (bereits etabliert, weiter einhalten)
 
