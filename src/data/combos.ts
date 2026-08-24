@@ -1007,6 +1007,43 @@ export const combos: Combo[] = [
     districtSlug: "friedrichshain-kreuzberg",
     intro:
       "Kleinere Büros und Agenturen in Friedrichshain-Kreuzberg profitieren von einer wiederkehrenden Unterhaltsreinigung in einem festen, an die jeweilige Nutzung angepassten Rhythmus.",
+    metaDescription:
+      "Unterhaltsreinigung in Friedrichshain-Kreuzberg für Büros, Agenturen und Gewerbehöfe – flexibel im Rhythmus, mit festem Ansprechpartner. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Viele Unternehmen im Bezirk arbeiten mit flexiblen Teamgrößen und hybriden Arbeitsmodellen – wir richten den Reinigungsplan danach aus, statt einen starren Rhythmus über Jahre unverändert vorzugeben.",
+    localAngle: [
+      "In umgenutzten Gewerbehöfen und Fabriketagen teilen sich oft mehrere kleine Unternehmen ein Gebäude, ohne dass eine Firma allein für die Gemeinschaftsflächen zuständig ist. Wir stimmen die Unterhaltsreinigung deshalb häufig nicht nur mit einer einzelnen Firma ab, sondern mit mehreren Mietparteien oder einer gemeinsamen Hausverwaltung.",
+      "Kreativagenturen und Start-ups im Bezirk haben oft unregelmäßige Arbeitszeiten mit Projektspitzen und ruhigeren Phasen. Ein starrer, gleichmäßig verteilter Reinigungsplan passt hier seltener als einer, der sich an den tatsächlich stark genutzten Tagen orientiert.",
+      "Bodenbeläge in umgenutzten Gewerbehöfen reichen von rohem Industrieestrich bis zu nachträglich verlegtem Laminat, je nachdem, wann und von wem eine Fläche zuletzt umgebaut wurde. Wir prüfen bei jedem Objekt, welche Böden tatsächlich vorhanden sind, statt von einem einheitlichen Belag auszugehen.",
+      "Bei kleinen Unternehmen, die zum ersten Mal eine regelmäßige Unterhaltsreinigung beauftragen, empfiehlt sich ein etwas engmaschigerer Starttermin in den ersten Wochen, um den tatsächlichen Bedarf realistisch einzuschätzen, bevor der endgültige Rhythmus festgelegt wird.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit mehreren kleinen Mietparteien lohnt sich ein Blick darauf, ob eine klare Aufteilung der Zuständigkeiten zwischen den Firmen und der Hausverwaltung erfragt wird, statt ein Pauschalangebot ohne Rücksicht auf die tatsächliche Aufteilung zu erstellen.",
+      "Mülltrennung wird in vielen Kreativ- und Gewerbehöfen des Bezirks besonders ernst genommen, oft mit mehreren getrennten Behältern für Papier, Verpackung und Restmüll. Wir richten uns nach dem vor Ort vorhandenen Trennsystem, statt ein eigenes Schema vorzugeben, und leeren die vereinbarten Behälter im festgelegten Turnus, ohne die bestehende Sortierung durcheinanderzubringen.",
+      "Teeküchen und kleine Gemeinschaftsküchen in Gewerbehöfen werden von unterschiedlich vielen Mitarbeitenden genutzt, je nach Teamgröße und tatsächlicher Anwesenheit im Büro. Wir richten die Reinigungsintensität an der tatsächlichen Nutzung aus, statt für eine große Gemeinschaftsküche denselben Aufwand anzusetzen wie für eine kaum genutzte Kleinstküche in einem Einzelbüro.",
+      "In manchen umgenutzten Fabriketagen gibt es keinen durchgehend besetzten Empfang, sondern Zutritt über einen gemeinsamen Hoftorschlüssel oder eine elektronische Torsteuerung. Wir stimmen vorab ab, wie das Reinigungsteam Zugang zum Innenhof und den einzelnen Büroeinheiten erhält, damit am ersten Termin nichts ungeklärt bleibt.",
+      "Nach der Übernahme eines neuen Objekts mit mehreren kleinen Mietparteien gehen wir zunächst durch alle vereinbarten Bereiche, statt den Zustand nur stichprobenartig zu prüfen. So lassen sich Unterschiede im bisherigen Pflegezustand zwischen den einzelnen Firmenflächen vor dem ersten regulären Termin feststellen, was spätere Missverständnisse über den vereinbarten Umfang vermeidet.",
+      "Der Empfang in vielen Gewerbehöfen dient gleichzeitig als Paketannahme für mehrere Firmen – tagsüber stapeln sich dort oft Sendungen unterschiedlicher Empfänger. Wir reinigen die Fläche um die abgestellten Pakete herum, ohne sie zu verschieben oder umzusortieren, da die Zuordnung allein Sache der jeweiligen Firma ist.",
+      "Fahrradabstellräume gehören in Friedrichshain-Kreuzberg durch die hohe Zahl an Radfahrenden häufiger zur Gebäudeausstattung als in anderen Bezirken. Solche Räume unterliegen einem anderen Verschmutzungsbild als reine Büroflächen – meist mehr Staub und Reifenabrieb am Boden – und werden deshalb in einem eigenen, meist selteneren Rhythmus behandelt.",
+      "In Gewerbehöfen mit kurzfristig vermieteten Einheiten wechseln Mieter mitunter häufiger als in klassischen Bürogebäuden. Zieht eine neue Firma in eine bestehende Fläche, passen wir den laufenden Vertrag der Hausverwaltung um die neue Einheit an, statt für jeden Mieterwechsel einen komplett neuen Vertrag aufzusetzen.",
+      "Besprechungsräume, die Agenturen gezielt für Kundentermine nutzen, benötigen mitunter eine kurzfristige Zusatzreinigung außerhalb des festen Rhythmus – etwa direkt vor einem wichtigen Termin. Das lässt sich bei Bedarf über den festen Ansprechpartner anfragen, ohne den regulären Vertrag neu zu verhandeln.",
+      "Manche der umgenutzten Fabriketagen im Bezirk haben noch die ursprünglichen Sprossenfenster mit vielen kleinen Einzelscheiben statt großflächiger moderner Verglasung. Die Fensterbänke und Rahmen dieser Fenster gehören zur Unterhaltsreinigung, die eigentliche Glasreinigung der Scheiben selbst ist bei Bedarf als separate Leistung buchbar.",
+      "Bei der Auswahl eines Dienstleisters für einen Gewerbehof mit mehreren kleinen Firmen lohnt sich die Frage, ob Erfahrung mit häufigeren Mieterwechseln und wechselnden Ansprechpartnern vorhanden ist, statt eine Struktur vorauszusetzen, die eher zu einem klassischen Bürogebäude mit einem einzigen langfristigen Mieter passt.",
+      "Manche Gewerbehöfe verfügen über eine gemeinsam genutzte Dachterrasse oder einen begrünten Innenhof, der von mehreren Firmen als informeller Pausen- und Besprechungsbereich genutzt wird. Solche Außenflächen gehören nur dann zum vereinbarten Umfang, wenn sie ausdrücklich als Teil des Vertrags festgelegt wurden – standardmäßig beschränkt sich die Unterhaltsreinigung auf die Innenräume.",
+      "Bei einer gemeinsamen Briefkastenanlage für mehrere kleine Firmen im selben Gewerbehof reinigen wir die Außenfläche der Anlage, ohne einzelne Fächer zu öffnen oder Post zu sortieren – die Zuordnung der Sendungen bleibt Sache der jeweiligen Firma.",
+      "Konferenztechnik wie Beamer, Kabel und Anschlussleisten in Besprechungsräumen wird von uns nur äußerlich abgewischt. Eine technische Prüfung oder Wartung der Geräte gehört nicht zum Leistungsumfang und liegt beim IT-Dienstleister der jeweiligen Firma.",
+      "Bei Firmen mit hohem Home-Office-Anteil schwankt die tatsächliche Bürobelegung von Woche zu Woche stärker als in einem klassischen Bürogebäude mit fester Anwesenheitspflicht. Wir überprüfen den vereinbarten Rhythmus deshalb in regelmäßigen Abständen gemeinsam mit dem Ansprechpartner, statt ihn einmalig festzulegen und dauerhaft unverändert beizubehalten.",
+      "In manchen Gewerbehöfen teilen sich mehrere kleine Firmen einen gemeinsamen Druckerraum mit Kopierer und Scanner. Die Geräte selbst werden von uns nur äußerlich abgewischt, eine technische Reinigung des Innenraums bleibt Aufgabe des Wartungsdienstes – die umgebende Fläche reinigen wir dagegen im regulären Rhythmus.",
+      "Sichtbetonwände und unverputzte Ziegelflächen, wie sie im Industrial-Look vieler umgenutzter Fabriketagen bewusst erhalten wurden, sammeln durch ihre raue Oberfläche mehr Staub als glatte Gipskartonwände. Wir setzen dort geeignete, für die raue Struktur passende Werkzeuge ein, statt Verfahren für glatte Wandflächen unverändert zu übertragen.",
+    ],
+    scopeBullets: [
+      "Büro- und Gemeinschaftsflächen in Gewerbehöfen",
+      "Sanitär- und Küchenbereiche",
+      "Kontaktflächen wie Türgriffe und Lichtschalter",
+      "Böden je nach Belag angepasst behandelt",
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Fläche, Zugang und gewünschtem Rhythmus erhalten Sie ein individuelles Angebot. Bei mehreren Mietparteien im selben Gewerbehof klären wir vorab mit der Hausverwaltung, welche Gemeinschaftsflächen zum Vertrag gehören.",
+    priceFactorsText:
+      "Bei geteilten Gewerbehöfen hängt der Preis pro Firma auch davon ab, wie viele Gemeinschaftsflächen zentral abgerechnet werden können. Flexible, an die tatsächliche Nutzung angepasste Reinigungstage wirken sich ebenfalls auf den Gesamtaufwand aus.",
     faq: [
       {
         question: "Eignet sich die Unterhaltsreinigung auch für kleinere Büros und Agenturen?",
@@ -1016,13 +1053,65 @@ export const combos: Combo[] = [
         question: "Was unterscheidet die Unterhaltsreinigung von einer einmaligen Grundreinigung?",
         answer: "Die Unterhaltsreinigung pflegt das Objekt wiederkehrend, die Grundreinigung reinigt einmalig besonders intensiv, etwa nach einem Umzug.",
       },
+      {
+        question: "Wird die Reinigung mit mehreren Firmen im selben Gewerbehof koordiniert?",
+        answer: "Ja, wenn mehrere Mieter dieselben Gemeinschaftsflächen nutzen, stimmen wir Zeiten und Zuständigkeiten gemeinsam ab, etwa über eine Hausverwaltung.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Büro oder Ihren Gewerbehof in Friedrichshain-Kreuzberg – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "unterhaltsreinigung-berlin",
     districtSlug: "steglitz-zehlendorf",
     intro:
-      "Für Praxen, Kanzleien und Büros in den ruhigen Lagen von Steglitz-Zehlendorf bieten wir eine regelmäßige Unterhaltsreinigung, die sich unauffällig in den Tagesablauf des Umfelds einfügt.",
+      "Praxen, Kanzleien und Büros in Steglitz-Zehlendorf haben trotz gemeinsamer Nutzung der Unterhaltsreinigung sehr unterschiedliche Anforderungen an Rhythmus und Umfang – wir stimmen den Plan auf die jeweilige Objektart ab, statt ein einheitliches Schema anzusetzen.",
+    metaDescription:
+      "Unterhaltsreinigung in Steglitz-Zehlendorf für Praxen, Kanzleien und Büros – individuell nach Objektart und Publikumsverkehr abgestimmt. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Eine Arztpraxis mit täglichem Patientenverkehr benötigt einen anderen Takt als ein ruhiges Einzelbüro mit wenigen Mitarbeitenden – diese Unterschiede legen wir bereits im Erstgespräch fest.",
+    localAngle: [
+      "Praxen mit hohem Patientenaufkommen benötigen häufig einen täglichen Rhythmus für Empfang, Wartebereich und Sanitäranlagen, während ein kleines Büro mit wenigen Mitarbeitenden oft mit wöchentlicher Reinigung auskommt. Wir legen den passenden Takt objektbezogen fest, statt für alle Nutzungsarten denselben Plan anzusetzen.",
+      "Kanzleien stellen zusätzlich zur reinen Taktung besondere Anforderungen an Vertraulichkeit: Unterlagen auf Schreibtischen werden nicht bewegt, unabhängig davon, wie häufig die Reinigung stattfindet.",
+      "Villenbüros und umgenutzte Wohnhäuser, wie sie in Zehlendorf häufig vorkommen, haben oft empfindlichere Böden wie Parkett als moderne Geschäftshäuser an der Schloßstraße. Wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten.",
+      "Bei Objekten mit mehreren Nutzern unter einem Dach – etwa einer Praxis im Erdgeschoss und Büros in den oberen Etagen – klären wir vorab, ob eine gemeinsame Reinigung für das ganze Haus sinnvoll ist oder jede Nutzung separat beauftragt.",
+      "Bei der Auswahl eines Dienstleisters lohnt sich die Frage, ob der Rhythmus tatsächlich auf die jeweilige Nutzung abgestimmt wird, statt ein pauschales Paket für alle Objektarten im Bezirk anzubieten.",
+      "Bildschirme, Tastaturen und weitere Bürogeräte werden bei uns nur äußerlich mit geeigneten, antistatischen Tüchern gereinigt, unabhängig davon, ob es sich um eine Praxis, eine Kanzlei oder ein reines Büro handelt. Eine technische Innenreinigung oder Wartung gehört in keinem Fall zum Leistungsumfang.",
+      "Papierkörbe werden bei jedem regulären Termin geleert, sofern nichts anderes vereinbart ist. Bei Praxen fällt zusätzlich medizinischer Sonderabfall an, der eigenen Entsorgungsvorschriften unterliegt und über spezialisierte Entsorgungsunternehmen abgeholt wird, nicht über die reguläre Unterhaltsreinigung.",
+      "Bei Objekten mit mehreren Nutzungsarten im selben Gebäude – etwa einer Praxis im Erdgeschoss und Büros darüber – richten wir für jeden Bereich einen eigenen, zur tatsächlichen Nutzung passenden Rhythmus ein, statt das gesamte Haus über einen einzigen Vertrag mit einheitlichem Takt abzudecken.",
+      "Nach der Übernahme eines neuen Objekts gehen wir zunächst durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen. Das gilt unabhängig davon, ob es sich um eine Praxis, eine Kanzlei oder ein Villenbüro handelt.",
+      "Kanzleien mit anstehenden Fristen oder Gerichtsterminen haben mitunter kurzfristig erhöhten Bedarf an einer gründlichen Reinigung von Besprechungsräumen, in denen Mandantengespräche stattfinden. Ein solcher zusätzlicher Termin lässt sich bei Bedarf kurzfristig über den festen Ansprechpartner ergänzen, ohne den regulären Vertrag zu ändern.",
+      "Aktenvernichtung in Kanzleien läuft in der Regel über eigene, abschließbare Schredder-Behälter, die getrennt von den regulären Papierkörben stehen. Diese Behälter werden von uns nicht geöffnet oder geleert – die Entsorgung des vertraulichen Inhalts organisiert die Kanzlei über einen spezialisierten Aktenvernichtungsdienst.",
+      "Geschäftshäuser an der Schloßstraße verfügen häufig über einen zentralen Empfang oder Concierge-Service, über den der Zutritt für mehrere Mietparteien organisiert wird. Villenbüros in Zehlendorf haben dagegen meist keinen durchgehend besetzten Empfang, sodass der Zugang über einen persönlich übergebenen Schlüssel oder Code geregelt wird.",
+      "Bei Villenbüros mit eigenem Vorgarten oder Eingangsweg klären wir vorab, ob dieser Außenbereich zum vereinbarten Umfang gehört – anders als bei einem Geschäftshaus an der Schloßstraße, wo der Eingangsbereich meist direkt an die öffentliche Gehwegfläche grenzt und keine gesonderte Vereinbarung nötig ist.",
+      "Empfangsbereiche von Praxen mit gepolsterten Wartezimmerstühlen aus Stoff benötigen eine andere Pflege als die eher schlicht ausgestatteten Empfangsbereiche vieler Büros im Bezirk, da sich Flecken auf Stoffbezügen nicht einfach abwischen lassen. Wir stimmen das Verfahren nach dem tatsächlich vorhandenen Material ab.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit mehreren Nutzungsarten im Bezirk lohnt sich die Frage, ob tatsächlich für jede Objektart – Praxis, Kanzlei, Villenbüro oder Geschäftshaus – ein eigener, passender Rhythmus kalkuliert wird, statt ein einziges Paket für alle Nutzungsarten gleichermaßen anzubieten.",
+      "In vielen Altbauten Zehlendorfs ohne nachträglich eingebauten Aufzug erreicht das Reinigungsteam obere Etagen ausschließlich über das Treppenhaus – bei umfangreicherem Reinigungsgerät kalkulieren wir diesen zusätzlichen Aufwand in den Zeitrahmen ein. Geschäftshäuser an der Schloßstraße verfügen dagegen meist über einen Aufzug, was den Transport zwischen den Etagen vereinfacht.",
+      "Nachträglich eingebaute Klimasplitgeräte, wie sie in vielen Altbau-Villenbüros zur Nachrüstung üblich sind, werden von uns nur äußerlich abgewischt. Die Reinigung der Filter und die technische Wartung sind Aufgabe eines spezialisierten Kältetechnik-Betriebs.",
+      "Umfangreiche Aktenbibliotheken, wie sie in etablierten Kanzleien häufig vorkommen, werden im frei zugänglichen Bereich abgestaubt – höher gelegene Regalböden, die nur mit einer Trittleiter erreichbar sind, gehören nicht zum Standardumfang und lassen sich bei Bedarf gesondert vereinbaren.",
+      "Teilen sich mehrere Kanzleien oder Praxen ein Gebäude mit gestaffelten Sprechzeiten, stimmen wir den Reinigungstermin auf die ruhigste gemeinsame Zeitspanne ab, statt einen Zeitpunkt zu wählen, der mit den Terminen einer der Parteien kollidiert.",
+      "Mandantenparkplätze vor Geschäftshäusern an der Schloßstraße sind in der Regel öffentlicher Straßenraum und gehören nicht zum Reinigungsumfang der Kanzlei. Der unmittelbare Hauseingang dagegen zählt zu den Flächen, die wir im regulären Rhythmus mitreinigen.",
+      "Besprechungstische aus Massivholz, wie sie in traditionsreichen Kanzleien häufig als repräsentatives Möbelstück dienen, benötigen holzverträgliche Pflegemittel statt der Universalreiniger, die auf robusteren Laminatoberflächen moderner Geschäftshäuser zum Einsatz kommen.",
+      "Bei Villenbüros mit mehreren kleinen Firmen unter einem Dach, die sich Empfang und Treppenhaus teilen, klären wir vorab, ob eine gemeinsame Hausverwaltung die Reinigung der Gemeinschaftsflächen zentral beauftragt oder jede Firma anteilig einen eigenen Vertrag abschließt.",
+      "Zahnarztpraxen mit eigenem Röntgenraum, wie sie unter den Praxen des Bezirks vertreten sind, benötigen für den Röntgenbereich keine besonderen Reinigungsvorgaben über die übliche Flächendesinfektion hinaus – die technische Abschirmung des Raums selbst ist baulich geregelt und nicht Teil der Reinigungsleistung.",
+      "Bei Büros in ehemaligen Wohnhäusern mit einzelnen, kleinteiligen Zimmern statt eines offenen Grundrisses braucht das Reinigungsteam mehr Zeit für den Wechsel zwischen den Räumen als in einem zusammenhängenden Großraumbüro gleicher Gesamtfläche. Das berücksichtigen wir bei der Kalkulation des Zeitaufwands.",
+    ],
+    scopeBullets: [
+      "Empfang und Wartebereiche bei Praxen und Kanzleien",
+      "Büroflächen und Besprechungsräume",
+      "Sanitärbereiche",
+      "Böden je nach Material materialgerecht behandelt",
+    ],
+    processText:
+      "Nach Abstimmung zu Objektart, Fläche und Publikumsverkehr erhalten Sie ein individuelles Angebot. Bei Praxen und Kanzleien richten wir das Zeitfenster zusätzlich nach Sprechzeiten oder Mandantenterminen aus.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Objektart und Reinigungsintervall. Praxen mit hohem Patientenaufkommen benötigen häufigere Termine als ein ruhiges Einzelbüro gleicher Größe, was sich in der Kalkulation niederschlägt.",
     faq: [
       {
         question: "Wird bei Praxen und Kanzleien auf Sprechzeiten Rücksicht genommen?",
@@ -1032,7 +1121,20 @@ export const combos: Combo[] = [
         question: "Wie häufig wird gereinigt?",
         answer: "Der Rhythmus richtet sich nach Nutzung und Publikumsverkehr – von wöchentlich bis täglich.",
       },
+      {
+        question: "Wird ein Villenbüro anders gereinigt als ein Geschäftshaus an der Schloßstraße?",
+        answer:
+          "Ja. Villenbüros haben häufig empfindlichere Böden wie Parkett, während Geschäftshäuser meist robusteren Belag bieten. Wir stimmen Verfahren und Zeitaufwand entsprechend ab.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Steglitz-Zehlendorf – Praxis, Kanzlei oder Büro – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "grundreinigung-berlin",
@@ -1153,6 +1255,45 @@ export const combos: Combo[] = [
     districtSlug: "treptow-koepenick",
     intro:
       "Der flächenmäßig größte Berliner Bezirk bringt weitläufige Gewerbe- und Betriebsflächen mit sich – wir richten den Reinigungsrhythmus nach der tatsächlichen Nutzung aus, statt pauschal jeden Winkel gleich intensiv zu bedenken.",
+    metaDescription:
+      "Unterhaltsreinigung in Treptow-Köpenick für weitläufige Gewerbeflächen und historische Gebäudeteile im Ortskern Köpenick. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Bei einem so großflächigen Bezirk lohnt sich eine differenzierte Betrachtung: Nicht jeder Gebäudeteil eines weitläufigen Objekts wird gleich stark genutzt.",
+    localAngle: [
+      "Weitläufige Gewerbeflächen mit mehreren Gebäudeteilen haben oft unterschiedlich stark frequentierte Bereiche: Ein zentraler Empfang oder eine Werkhalle mit Publikumsverkehr benötigt einen anderen Rhythmus als ein selten genutztes Lager im hinteren Gebäudeteil. Wir staffeln die Reinigungsintensität entsprechend, statt für das gesamte Objekt denselben Takt anzusetzen.",
+      "Im historischen Ortskern Köpenicks stehen manche Gewerbeobjekte in Altbauten mit Parkett oder anderen empfindlichen Böden, während neuere Gewerbeflächen am Bezirksrand meist robusteren Belag wie Fliesen oder Industrieestrich haben. Wir prüfen bei jedem Objekt, welches Material tatsächlich verbaut ist.",
+      "Bei Objekten mit großen Außenflächen, etwa Höfen oder Zufahrten zu Lagerhallen, klären wir vorab, ob diese Bereiche zum vereinbarten Umfang gehören oder separat organisiert werden – Außenflächen sind nicht automatisch Teil der Innenraumreinigung.",
+      "Nach der Übernahme eines neuen, weitläufigen Objekts gehen wir zunächst durch alle vereinbarten Gebäudeteile, statt den Zustand nur stichprobenartig zu prüfen. So lassen sich Unterschiede im bisherigen Pflegezustand vor dem ersten regulären Termin feststellen.",
+      "Bei der Auswahl eines Dienstleisters für ein großflächiges Objekt lohnt sich die Frage, ob eine realistische Einschätzung des Zeitaufwands pro Gebäudeteil erfolgt, statt ein Pauschalangebot allein nach Gesamtquadratmetern zu erstellen.",
+      "Sanitärbereiche in weitläufigen Objekten mit mehreren Gebäudeteilen sind unterschiedlich stark frequentiert – ein zentraler Sanitärbereich nahe dem Empfang benötigt einen anderen Takt als eine selten genutzte Toilette in einem entlegenen Gebäudeteil. Wir richten den Rhythmus für jeden Bereich einzeln aus, statt einen einheitlichen Plan für das gesamte Objekt anzusetzen.",
+      "Teeküchen und Aufenthaltsräume in großen Gewerbeobjekten werden oft von wechselnden Teamgrößen genutzt, je nachdem, welcher Gebäudeteil gerade wie stark besetzt ist. Wir passen die Reinigungsintensität an die tatsächliche Nutzung an, statt einen starren Plan unabhängig von Belegungsschwankungen zu verfolgen.",
+      "Bei Objekten mit eigenem Vorplatz oder Zufahrtsweg für Lieferverkehr klären wir vorab, ob diese Übergangsbereiche zwischen Außen- und Innenraum zum vereinbarten Umfang gehören, da hier häufig mehr Schmutz eingetragen wird als in ruhigeren Bürobereichen.",
+      "Für Betriebe mit mehreren Standorten im Bezirk lässt sich die Unterhaltsreinigung über alle Objekte hinweg mit einem gemeinsamen Ansprechpartner koordinieren, statt für jeden Standort einen eigenen Vertrag zu verhandeln.",
+      "Bei Gewerbeparks mit mehreren Gebäuden auf einem gemeinsamen, weitläufigen Grundstück liegt zwischen den einzelnen Baukörpern mitunter eine größere Fußwegstrecke als in kompakteren Innenstadtobjekten. Das berücksichtigen wir bei der Zeitplanung des Reinigungsteams, damit die Wegzeiten zwischen den Gebäudeteilen nicht zulasten der eigentlichen Reinigungszeit gehen.",
+      "Größere Betriebe mit eigener Kantine oder Gemeinschaftsküche für mehrere hundert Beschäftigte benötigen einen deutlich engeren Reinigungstakt als eine kleine Teeküche in einem einzelnen Bürotrakt. Wir richten den Rhythmus für solche Gemeinschaftsflächen an der tatsächlichen Nutzerzahl aus, statt sie wie eine gewöhnliche Teeküche zu behandeln.",
+      "Manche der größeren Gewerbeparks im Bezirk sind über eine Schranke oder einen zentralen Pförtner gesichert, über den der Zutritt für externe Dienstleister geregelt wird. Diese Zugangsregelung stimmen wir vorab schriftlich mit der Objektverwaltung ab, damit das Reinigungsteam am ersten Termin nicht am Werkstor abgewiesen wird.",
+      "Flachdächer und Oberlichter, wie sie bei modernen Gewerbehallen am Bezirksrand häufiger vorkommen als in den Altbauten des Ortskerns, benötigen eine technische Wartung durch spezialisierte Fachbetriebe und gehören nicht zur Unterhaltsreinigung. Sichtbaren Staub auf von innen erreichbaren Fensterbänken unterhalb der Oberlichter nehmen wir bei der regulären Reinigung mit.",
+      "In der Nähe von Spree und Müggelsee tragen Mitarbeitende und Besucher in den Übergangsjahreszeiten mitunter mehr Laub und Feuchtigkeit in die Eingangsbereiche ein als in dicht bebauten Innenstadtlagen ohne größere Grünflächen in unmittelbarer Nähe. Wir passen den Reinigungstakt für Eingangsbereiche in diesen Monaten entsprechend an.",
+      "Bei der Auswahl eines Dienstleisters für ein weitläufiges Objekt mit mehreren Standorten im Bezirk lohnt sich die Frage, ob ein fester Ansprechpartner die Koordination über alle Standorte hinweg übernimmt, statt für jeden Standort einzeln neu Kontakt aufnehmen zu müssen.",
+      "Größere Betriebe im Bezirk mit Schichtbetrieb sind zu unterschiedlichen Tageszeiten unterschiedlich stark besetzt als ein klassisches Büro mit einheitlicher Kernarbeitszeit. Wir stimmen den Reinigungstermin auf die schichtärmste Zeitspanne ab, statt den laufenden Betrieb während einer Vollbesetzung zu stören.",
+      "Durch die Nähe zu Spree und Müggelsee ist die Luftfeuchtigkeit in manchen Gebäudeteilen etwas höher als in trockeneren Innenstadtlagen, was insbesondere schlecht belüftete Ecken und Sanitärbereiche betreffen kann. Wir achten bei der Reinigung gezielt auf solche Bereiche, um Feuchtigkeitsrückstände nicht unbeachtet zu lassen.",
+      "Überdachte Fahrradstellplätze, wie sie bei größeren Gewerbestandorten zunehmend neben den regulären Parkflächen für Autos angelegt werden, unterliegen einem anderen Verschmutzungsbild als Innenräume und werden in einem eigenen, meist selteneren Rhythmus mitgereinigt, sofern dies vertraglich vereinbart ist.",
+      "Bei Objekten mit eigenem Betriebssportbereich oder einer kleinen Sporthalle für Beschäftigte klären wir vorab, ob diese Fläche einer speziellen Sportboden-Pflege bedarf, die sich von der Reinigung regulärer Büro- oder Verwaltungsflächen unterscheidet.",
+      "Werkstätten mit angeschlossenem Verkaufsraum, wie sie in gewerblich geprägten Teilen des Bezirks vorkommen, benötigen für den Werkstattbereich robustere Verfahren als für den kundenzugänglichen Verkaufsraum. Wir behandeln beide Bereiche unterschiedlich, statt ein einheitliches Verfahren für das gesamte Objekt anzusetzen.",
+      "Bei Objekten mit eigenem Bootssteg oder Uferzugang, wie sie durch die Nähe zu Spree und Dahme in Teilen des Bezirks vorkommen, gehört der Außenbereich am Wasser nicht automatisch zur Innenraum-Unterhaltsreinigung. Wir klären das vorab gesondert, ähnlich wie bei anderen Außenflächen des Grundstücks.",
+      "In den Gewerbegebieten am Bezirksrand sind Anfahrtswege für das Reinigungsteam mitunter länger als in dicht bebauten Innenstadtlagen. Bei mehreren nah beieinanderliegenden Objekten im selben Gewerbegebiet lässt sich die Anfahrt bündeln, was sich auf die Gesamtkalkulation auswirken kann.",
+      "Bei Gewerbeobjekten, die über mehrere Jahrzehnte hinweg schrittweise erweitert wurden, treffen häufig unterschiedliche Baualtersstufen mit jeweils eigenem Bodenbelag in einem einzigen Gebäude aufeinander. Wir erfassen bei der Objektbegehung, welcher Belag in welchem Anbau tatsächlich verlegt ist, statt vom ältesten oder neuesten Gebäudeteil auf das gesamte Objekt zu schließen.",
+    ],
+    scopeBullets: [
+      "Büro- und Verwaltungsflächen",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Handläufe",
+      "Böden je nach Gebäudeteil unterschiedlich getaktet",
+    ],
+    processText:
+      "Nach einer Objektbegehung, bei der wir die einzelnen Gebäudeteile und deren tatsächliche Nutzung erfassen, erhalten Sie ein Angebot mit gestaffeltem Rhythmus statt eines Pauschalpakets.",
+    priceFactorsText:
+      "Bei weitläufigen Objekten richtet sich der Preis nach der tatsächlich zu reinigenden Fläche und deren Nutzungsintensität, nicht allein nach der Gesamtgröße des Grundstücks. Selten genutzte Gebäudeteile fließen entsprechend geringer in die Kalkulation ein.",
     faq: [
       {
         question: "Werden auch weitläufige Gewerbeflächen mit mehreren Gebäudeteilen betreut?",
@@ -1163,7 +1304,19 @@ export const combos: Combo[] = [
         answer: "Ja, insbesondere nach einem Umbau lässt sich eine einmalige Grundreinigung vor Beginn der laufenden Unterhaltsreinigung ergänzen.",
         relatedLink: { label: "Zur Grundreinigung in Treptow-Köpenick", href: "/leistungen/grundreinigung-berlin/treptow-koepenick" },
       },
+      {
+        question: "Werden Außenflächen wie Höfe oder Zufahrten automatisch mitgereinigt?",
+        answer: "Nein, das klären wir vorab gesondert. Außenflächen sind nicht automatisch Teil der Innenraum-Unterhaltsreinigung.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Treptow-Köpenick – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "grundreinigung-berlin",
@@ -1192,6 +1345,47 @@ export const combos: Combo[] = [
     districtSlug: "marzahn-hellersdorf",
     intro:
       "Marzahn-Hellersdorf bietet großzügig geschnittene Büro- und Verkaufsflächen, für die wir Reinigungseinsätze mit klar abgegrenzten Bereichen planen – kleinere Praxen und Dienstleister in Wohnnähe erhalten dagegen einen kompakteren Rhythmus.",
+    metaDescription:
+      "Unterhaltsreinigung in Marzahn-Hellersdorf für großzügige Gewerbeflächen und Einkaufszentren ebenso wie kleinere Dienstleister in Wohnnähe. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Der Bezirk ist geprägt von den in den 1970er- und 1980er-Jahren errichteten Großwohnsiedlungen, in denen Gewerbeflächen und Einkaufszentren oft von vornherein großzügig und offen geplant wurden – ein anderer Ausgangspunkt als in dicht bebauten Innenstadtbezirken.",
+    localAngle: [
+      "Einkaufszentren und größere Gewerbeflächen im Bezirk haben durch ihre offene Bauweise oft klar abgegrenzte, gut überschaubare Bereiche, was eine effiziente Reinigungsplanung erleichtert – anders als bei kleinteiligen Altbau-Grundrissen mit vielen einzelnen Räumen.",
+      "Kleinere Praxen und Dienstleister in Wohnnähe haben dagegen einen kompakteren Zuschnitt mit überschaubarem Publikumsverkehr. Für solche Objekte kalkulieren wir einen entsprechend schlankeren Umfang, statt ein Paket anzubieten, das für ein großes Einkaufszentrum konzipiert wurde.",
+      "Bodenbeläge in den überwiegend in den 1970er- und 1980er-Jahren errichteten Gebäuden des Bezirks sind meist robuste, pflegeleichte Beläge wie PVC oder Fliesen – anders als in vielen Altbau-Objekten anderer Bezirke, wo empfindlichere Materialien wie Parkett vorherrschen.",
+      "Bei größeren Einkaufszentren mit mehreren Mietern klären wir vorab, ob eine zentrale Ansprechperson für die gesamte Verwaltung koordiniert oder jeder Mieter separat beauftragt, insbesondere bei stark unterschiedlichem Publikumsverkehr zwischen den einzelnen Geschäften.",
+      "Bei der Auswahl eines Dienstleisters für ein größeres Einkaufszentrum lohnt sich die Frage, ob Erfahrung mit der Koordination mehrerer gleichzeitig zu betreuender Mieter vorhanden ist, statt einen Anbieter zu wählen, der nur einzelne, unabhängige Ladenflächen gewohnt ist.",
+      "Sanitärbereiche in Einkaufszentren mit hohem Kundenaufkommen benötigen einen deutlich engeren Reinigungstakt als eine Personaltoilette in einer kleineren Praxis nebenan. Wir richten die Intensität an der tatsächlichen Besucherzahl aus, statt für alle Sanitärbereiche im Bezirk denselben Rhythmus anzusetzen.",
+      "Gemeinschaftsflächen wie Passagen und Sitzbereiche in Einkaufszentren werden von deutlich mehr Menschen genutzt als der Empfang eines kleineren Dienstleisters. Bodenbeläge in solchen stark frequentierten Bereichen benötigen entsprechend häufigere Pflege, was wir bei der Rhythmusplanung berücksichtigen.",
+      "Bei kleineren Dienstleistern und Praxen in den Wohngebieten des Bezirks lohnt sich nach der Übernahme eines neuen Objekts ein kurzer Rundgang durch alle vereinbarten Räume, statt den Zustand nur stichprobenartig zu prüfen – so lässt sich der bisherige Pflegezustand realistisch einschätzen.",
+      "Für Einzelhändler, die in einem der Einkaufszentren mehrere Filialen betreiben, lässt sich die Unterhaltsreinigung über alle Standorte im Bezirk hinweg mit einem gemeinsamen Ansprechpartner koordinieren, statt für jede Filiale einen eigenen Vertrag zu verhandeln.",
+      "Anlieferzonen und Ladezonen hinter den Einkaufszentren des Bezirks gehören nicht automatisch zur Unterhaltsreinigung der Innenflächen, da sie meist der allgemeinen Gebäudereinigung oder einem separaten Außendienst zugeordnet sind. Wir klären vorab, welche Übergangsbereiche zwischen Anlieferung und Verkaufsfläche tatsächlich zum vereinbarten Umfang gehören.",
+      "Rolltreppen und Aufzüge in den größeren Einkaufszentren werden von uns oberflächlich gereinigt – Handläufe, Trittstufen und Bedienelemente gehören zum Umfang, die technische Wartung der Anlagen selbst liegt beim zuständigen Wartungsunternehmen.",
+      "Vor Feiertagen und in stark besuchten Wochen steigt das Kundenaufkommen in den Einkaufszentren des Bezirks spürbar an. Für solche bekannten Spitzenzeiten lässt sich der Reinigungstakt für Gemeinschaftsflächen und Sanitärbereiche vorübergehend erhöhen, statt ganzjährig denselben Rhythmus wie in ruhigeren Wochen anzusetzen.",
+      "Schaufenster der einzelnen Geschäfte innerhalb eines Einkaufszentrums gehören in der Regel zur Verantwortung des jeweiligen Mieters und nicht automatisch zur zentral beauftragten Unterhaltsreinigung der Gemeinschaftsflächen. Wir klären das bei Vertragsbeginn mit der Zentrumsverwaltung, damit keine Unklarheit über die Zuständigkeit einzelner Glasflächen entsteht.",
+      "Sitzbänke und kleine Wartebereiche vor Praxen und Dienstleistern in den Wohngebieten des Bezirks werden deutlich seltener frequentiert als vergleichbare Sitzbereiche in den Passagen der großen Einkaufszentren. Wir richten den Reinigungstakt für beide Situationen unterschiedlich aus, statt einen einheitlichen Plan unabhängig von der tatsächlichen Nutzung anzusetzen.",
+      "Bei der Auswahl eines Dienstleisters für ein Einkaufszentrum lohnt sich die Frage, ob Erfahrung mit der Koordination stark schwankender Besucherzahlen vorhanden ist, statt einen Anbieter zu wählen, der nur gleichmäßig frequentierte Bürogebäude gewohnt ist.",
+      "In den Passagen größerer Einkaufszentren werden gelegentlich temporäre Verkaufsstände oder Promotion-Flächen aufgebaut, die nicht zur festen Ausstattung gehören. Die Fläche um solche Stände wird regulär mitgereinigt, der Stand selbst und die dort ausgestellte Ware bleiben unberührt.",
+      "Lüftungsgitter zentraler Klimaanlagen, wie sie in größeren Einkaufszentren verbaut sind, werden von uns nur oberflächlich vom sichtbaren Staub befreit. Die technische Wartung der Anlage selbst obliegt einem spezialisierten Fachbetrieb.",
+      "Die überwiegend in den 1970er- und 1980er-Jahren errichteten Großwohnsiedlungen des Bezirks wurden mit vergleichsweise breiten Fluren und durchgehenden Aufzügen geplant – ein Vorteil beim Transport von Reinigungsgerät gegenüber engeren Altbau-Treppenhäusern anderer Bezirke.",
+      "Bei kleineren Dienstleistern in den Wohngebieten, die sich einen gemeinsamen Eingang mit einer Wohnanlage teilen, klären wir vorab, welcher Teil des Eingangsbereichs zur gewerblichen Fläche gehört und welcher zur allgemeinen Hausreinigung der Wohnanlage zählt, um Doppelarbeit oder Lücken zu vermeiden.",
+      "Bankfilialen und Poststellen, wie sie in den Einkaufszentren des Bezirks häufig als Ankermieter vertreten sind, haben durch Kundenverkehr mit Bargeld und Formularen ein eigenes Verschmutzungsbild am Schalterbereich. Wir richten Verfahren und Takt für solche Bereiche gesondert aus.",
+      "Geschäfte mit hoher Kundenfrequenz, wie sie in den Einkaufszentren des Bezirks oft neben inhabergeführten Fachgeschäften zu finden sind, benötigen einen anderen Reinigungstakt für die Gemeinschaftsflächen davor als ruhigere Läden mit weniger Laufkundschaft.",
+      "Kinderwagenabstellplätze und Spielecken, wie sie in familienfreundlich ausgerichteten Einkaufszentren des Bezirks eingerichtet sind, werden mit besonders schonenden, für den Kontakt mit Kindern geeigneten Mitteln behandelt.",
+      "Poststellen innerhalb größerer Bürokomplexe des Bezirks, über die mehrere Firmen ihre Sendungen gemeinsam abwickeln, werden von uns im Bereich um die Sortierfächer gereinigt, ohne einzelne Fächer zu öffnen oder Post umzusortieren.",
+      "Bei kleineren Dienstleistern, die im Erdgeschoss einer Großwohnsiedlung direkt an Wohnungen angrenzen, richten wir den Reinigungstermin nach Möglichkeit auf Zeiten außerhalb der üblichen Ruhezeiten der angrenzenden Wohnbebauung aus, um Störungen für die Nachbarschaft gering zu halten.",
+      "Gastronomiebetriebe mit Sitzbereich innerhalb der Einkaufszentren, etwa Cafés oder Imbisse, haben ein anderes Verschmutzungsbild an Böden und Tischflächen als die umliegenden Verkaufsflächen und werden bei Bedarf mit einem eigenen, engeren Reinigungstakt bedacht.",
+    ],
+    scopeBullets: [
+      "Büro- und Verkaufsflächen",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Handläufe",
+      "Gemeinschaftsflächen in Einkaufszentren",
+    ],
+    processText:
+      "Nach Abstimmung zu Objektgröße und Nutzung erhalten Sie ein passendes Angebot – kompakt für kleinere Dienstleister, koordiniert über mehrere Mieter hinweg für größere Einkaufszentren.",
+    priceFactorsText:
+      "Der Preis richtet sich vor allem nach Fläche und Zahl der zu betreuenden Bereiche. Bei Einkaufszentren mit mehreren Mietern wird zusätzlich unterschieden, welche Flächen gemeinsam genutzt und zentral abgerechnet werden.",
     faq: [
       {
         question: "Werden auch kleinere Praxen und Dienstleister in Wohnnähe bedient?",
@@ -1201,7 +1395,20 @@ export const combos: Combo[] = [
         question: "Kann die Unterhaltsreinigung mit Fenster- oder Sanitärreinigung kombiniert werden?",
         answer: "Ja, das lässt sich bei Bedarf in einem gemeinsamen Reinigungskonzept bündeln.",
       },
+      {
+        question: "Wird bei einem Einkaufszentrum jeder Mieter einzeln beauftragt?",
+        answer:
+          "Das hängt vom Objekt ab. Bei mehreren Mietern klären wir vorab, ob eine zentrale Ansprechperson koordiniert oder jeder Mieter separat beauftragt.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Marzahn-Hellersdorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
@@ -1393,6 +1600,47 @@ export const combos: Combo[] = [
     districtSlug: "lichtenberg",
     intro:
       "Lichtenberg hat eine wachsende Zahl neuerer Gewerbeflächen mit offenen Bürolandschaften und größeren Glasflächen, die anders gepflegt werden müssen als klassisch aufgeteilte Altbau-Büros – darauf richten wir die Unterhaltsreinigung aus.",
+    metaDescription:
+      "Unterhaltsreinigung in Lichtenberg für moderne Bürokomplexe mit offenen Grundrissen und großen Glasflächen. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Neubauten in Lichtenberg entstanden häufig auf ehemaligen Industrie- oder Gewerbeflächen, die zu modernen Bürostandorten umgewandelt wurden – mit entsprechend anderen Anforderungen an die laufende Reinigung als in gewachsenen Altbaulagen.",
+    localAngle: [
+      "Offene Bürolandschaften ohne klassische Zellenaufteilung haben lange, durchgehende Laufwege und weniger einzelne Türen und Ecken als ein kleinteiliges Altbau-Büro. Das verändert den Reinigungsablauf: größere zusammenhängende Flächen statt vieler kurzer Wegstrecken zwischen Räumen.",
+      "Große Glasflächen in Trennwänden und Fassaden werden von uns bei der Unterhaltsreinigung innen mitgepflegt; die Außenreinigung der Fassade selbst gehört zur separaten Glas- und Fensterreinigung, die sich bei Bedarf kombinieren lässt.",
+      "Teeküchen und Gemeinschaftsbereiche in modernen Bürokomplexen werden oft von mehreren Teams gleichzeitig genutzt, was einen anderen Reinigungsbedarf erzeugt als eine kleine Teeküche für ein einzelnes Team in einem Altbau-Büro. Wir richten die Reinigungsintensität an der tatsächlichen Nutzerzahl aus.",
+      "Bei neu bezogenen Bürokomplexen ist häufig eine erste, gründliche Reinigung nach Bauabschluss sinnvoll, bevor ein regelmäßiger Rhythmus beginnt – etwa um Bauschutzfolien-Rückstände oder Montagespuren zu entfernen, die im laufenden Betrieb sonst dauerhaft sichtbar blieben.",
+      "Bei der Auswahl eines Dienstleisters für einen modernen Bürokomplex lohnt sich die Frage, ob Erfahrung mit großflächigen, offenen Grundrissen vorhanden ist, statt Verfahren anzuwenden, die für kleinteilige Altbau-Büros konzipiert wurden.",
+      "Bildschirme, Tastaturen und weitere IT-Geräte in offenen Bürolandschaften werden von uns nur äußerlich mit geeigneten, antistatischen Tüchern gereinigt. Eine technische Innenreinigung oder Wartung gehört nicht zum Leistungsumfang und liegt beim IT-Dienstleister des jeweiligen Unternehmens.",
+      "Sanitärbereiche in modernen Bürokomplexen mit mehreren Firmen als Mieter werden häufig gemeinschaftlich genutzt und entsprechend stärker frequentiert als eine Sanitäranlage in einem einzelnen Altbau-Büro. Wir richten den Reinigungstakt an der tatsächlichen Nutzerzahl aus.",
+      "Bei Firmen, die in einem der neueren Gewerbeparks mehrere Etagen anmieten, klären wir vorab, ob eine zentrale Ansprechperson für alle Etagen koordiniert oder jede Etage separat beauftragt, insbesondere wenn unterschiedliche Abteilungen unterschiedliche Zutrittsregelungen haben.",
+      "Nach der Übernahme eines neuen Bürokomplexes gehen wir zunächst durch alle vereinbarten Bereiche, statt den Zustand nur stichprobenartig zu prüfen. So lassen sich Unterschiede im bisherigen Pflegezustand zwischen einzelnen Etagen oder Gebäudeteilen vor dem ersten regulären Termin feststellen.",
+      "Akustikpaneele und abgehängte Deckensegel, wie sie in modernen Großraumbüros häufig zur Lärmreduzierung eingesetzt werden, werden von uns nur an frei zugänglichen, tiefer hängenden Elementen abgestaubt. Fest verbaute Deckenelemente außerhalb der Reichweite gehören nicht zum regulären Leistungsumfang.",
+      "Aufzüge in den mehrstöckigen Neubauten des Bezirks sind für viele Beschäftigte der zentrale Zugang zu den einzelnen Etagen und entsprechend stärker frequentiert als ein einzelnes Treppenhaus in einem kleineren Altbau. Bedienelemente und Kabineninnenraum reinigen wir in einem an die Nutzerzahl angepassten Takt.",
+      "Manche der neueren Bürokomplexe setzen auf Pflanzenwände oder größere Grünelemente als Gestaltungsmerkmal der offenen Bürolandschaft. Die Pflege der Pflanzen selbst liegt bei einem spezialisierten Gärtnerdienst, sichtbaren Staub auf angrenzenden Flächen nehmen wir bei der regulären Reinigung mit.",
+      "Anders als in vielen Altbau-Bürogebäuden mit einem zentralen Treppenhaus als Hauptzugang setzen die Neubauten in Lichtenberg meist auf Aufzüge als primären Weg zwischen den Etagen. Treppenhäuser dienen dort häufiger nur als Fluchtweg mit entsprechend selteneren Reinigungsintervallen.",
+      "Klingeltableaus und Namensschilder am Empfang mehrerer Mieter in einem Bürokomplex zählen zu den Kontaktflächen, die bei jedem regulären Termin mitgereinigt werden – gerade bei häufigem Mieterwechsel in neueren Gewerbeparks ein kleiner, aber regelmäßig zu prüfender Bestandteil.",
+      "Bei der Auswahl eines Dienstleisters für einen modernen Bürokomplex mit mehreren Mietern lohnt sich die Frage, ob eine zentrale Koordination mit der Hausverwaltung für Gemeinschaftsflächen wie Aufzüge und Empfang angeboten wird, statt jede Mietpartei separat für dieselben Flächen zu beauftragen.",
+      "Serverräume und Technikräume in modernen Bürokomplexen sind aus Sicherheitsgründen häufig nur für autorisiertes Personal zugänglich. Sofern kein gesonderter Zutritt vereinbart ist, bleiben diese Räume von der regulären Unterhaltsreinigung ausgenommen.",
+      "Manche neuere Bürokomplexe verfügen über eine Dachterrasse, die von mehreren Mietern gemeinsam als Pausenfläche genutzt wird. Eine solche Außenfläche gehört nur dann zum Vertrag, wenn sie ausdrücklich vereinbart wurde – der Innenbereich der Unterhaltsreinigung bleibt davon unabhängig geregelt.",
+      "Tiefgaragen und Parkflächen unter modernen Bürokomplexen unterliegen einem anderen Verschmutzungsbild als die Büroetagen darüber und werden in der Regel über einen separaten Vertrag für die Gebäudereinigung abgedeckt, nicht über die Unterhaltsreinigung der Büroflächen.",
+      "Empfangstresen aus Naturstein oder Verbundwerkstoffen wie Corian, wie sie in neueren Bürokomplexen häufig zum Einsatz kommen, benötigen andere Pflegemittel als die robusteren Laminatoberflächen älterer Gebäude. Wir richten das Verfahren nach dem tatsächlich verbauten Material aus, um Kratzer oder stumpfe Stellen zu vermeiden.",
+      "Gemeinschaftlich genutzte Kopier- und Druckerräume in modernen Bürokomplexen mit mehreren Mietern werden von uns im Bereich um die Geräte gereinigt, die Geräte selbst nur äußerlich abgewischt. Eine technische Wartung bleibt Aufgabe des jeweiligen IT-Dienstleisters.",
+      "Fahrradabstellräume, wie sie in neueren Bürokomplexen zunehmend als Ausstattungsmerkmal für umweltbewusst pendelnde Beschäftigte eingeplant werden, unterliegen einem anderen Verschmutzungsbild als Büroflächen und werden in einem eigenen, meist selteneren Rhythmus mitgereinigt, sofern vertraglich vereinbart.",
+      "Bei Bürokomplexen mit mehreren Eingängen für unterschiedliche Mieter klären wir vorab, welcher Eingang zu welchem Vertrag gehört, um Doppelarbeit oder Lücken bei der Reinigung der Eingangsbereiche zu vermeiden.",
+      "Trinkwasserspender, wie sie in modernen Bürokomplexen häufig anstelle klassischer Wasserkocher in der Teeküche stehen, werden von uns nur äußerlich gereinigt. Die Wartung des Filtersystems bleibt Aufgabe des Herstellers oder eines spezialisierten Wartungsdienstes.",
+      "Poststellen für mehrere Mieter innerhalb eines Bürokomplexes werden von uns im Bereich um die Sortierfächer gereinigt, ohne einzelne Fächer zu öffnen. Die Zuordnung der Post zu den einzelnen Firmen bleibt Sache der Hausverwaltung oder der jeweiligen Mieter.",
+      "Bei modernen Bürokomplexen mit einer zentralen Zutrittskontrolle über Chipkarte oder Code stimmen wir vorab mit der Hausverwaltung ab, wie das Reinigungsteam außerhalb der Bürozeiten Zugang zu den einzelnen Etagen erhält, statt am ersten Termin vor verschlossenen Türen zu stehen.",
+    ],
+    scopeBullets: [
+      "Offene Bürolandschaften und Einzelbüros",
+      "Glastrennwände innen",
+      "Teeküchen und Gemeinschaftsbereiche",
+      "Sanitärbereiche",
+    ],
+    processText:
+      "Nach kurzer Abstimmung zu Fläche, Grundriss und gewünschtem Rhythmus erhalten Sie ein individuelles Angebot. Bei Kombination mit der Glas- und Fensterreinigung stimmen wir beide Leistungen aufeinander ab.",
+    priceFactorsText:
+      "Offene Bürolandschaften lassen sich meist effizienter reinigen als kleinteilige Zellenbüros gleicher Gesamtfläche, was sich im Angebot niederschlägt. Der Anteil an Glasflächen und die gewünschte Kombination mit der Fensterreinigung fließen ebenfalls in die Kalkulation ein.",
     faq: [
       {
         question: "Werden offene Bürolandschaften anders gereinigt als klassische Altbau-Büros?",
@@ -1403,7 +1651,19 @@ export const combos: Combo[] = [
         answer: "Ja, gerade bei viel Glasfläche lässt sich das gut mit der laufenden Unterhaltsreinigung kombinieren.",
         relatedLink: { label: "Zur Glas- und Fensterreinigung in Lichtenberg", href: "/leistungen/glas-und-fensterreinigung-berlin/lichtenberg" },
       },
+      {
+        question: "Ist nach dem Bezug eines Neubaus eine erste Grundreinigung sinnvoll?",
+        answer: "Oft ja, um Montagespuren oder Rückstände von Schutzfolien zu entfernen, bevor ein regelmäßiger Rhythmus beginnt.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihren Bürokomplex in Lichtenberg – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "gebaeudereinigung-berlin",
@@ -1416,6 +1676,48 @@ export const combos: Combo[] = [
     districtSlug: "reinickendorf",
     intro:
       "Rund um das ehemalige Flughafengelände in Reinickendorf haben viele mittelständische Betriebe größer geschnittene Büro- und Lagerflächen – dafür planen wir einen Reinigungsrhythmus, der sich nach der tatsächlichen Nutzung richtet.",
+    metaDescription:
+      "Unterhaltsreinigung in Reinickendorf für Büro- und Lagerflächen rund um das Gewerbegebiet Tegel. Jetzt Angebot anfragen.",
+    introSecondParagraph:
+      "Büro- und Lagerbereiche im selben Objekt haben oft sehr unterschiedliche Reinigungsanforderungen – wir behandeln beide Bereiche nicht automatisch gleich, sondern passen Verfahren und Rhythmus an die jeweilige Nutzung an.",
+    localAngle: [
+      "Bürobereiche in Gewerbeobjekten rund um Tegel benötigen häufig einen anderen Rhythmus als angeschlossene Lagerflächen: Büros mit täglicher Nutzung durch Mitarbeitende brauchen regelmäßigere Termine als ein Lager, das nur gelegentlich betreten wird.",
+      "Lagerflächen mit Industrieboden vertragen robustere Reinigungsverfahren als Bürobereiche mit Teppich oder Laminat. Wir prüfen bei der Objektbegehung, welche Böden in welchem Bereich tatsächlich vorhanden sind, statt ein einheitliches Verfahren für das gesamte Objekt anzunehmen.",
+      "Bei mittelständischen Betrieben mit mehreren Standorten im Umfeld des ehemaligen Flughafengeländes lässt sich die Unterhaltsreinigung über mehrere Objekte hinweg bündeln – mit einem gemeinsamen Ansprechpartner statt getrennter Verträge pro Standort.",
+      "Kleinere Praxen und Dienstleister in den Wohngebieten abseits der größeren Gewerbeflächen haben einen kompakteren Zuschnitt mit überschaubarem Publikumsverkehr. Für solche Objekte kalkulieren wir einen entsprechend schlankeren Umfang.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit kombinierten Büro- und Lagerflächen lohnt sich die Frage, ob unterschiedliche Verfahren für beide Bereiche angeboten werden, statt pauschal denselben Ansatz für Büro und Lager zu verwenden.",
+      "Bildschirme, Tastaturen und weitere Bürogeräte werden bei uns nur äußerlich mit geeigneten, antistatischen Tüchern gereinigt. Eine technische Innenreinigung oder Wartung gehört nicht zum Leistungsumfang und liegt beim IT-Dienstleister des jeweiligen Betriebs.",
+      "Sanitärbereiche für Büropersonal und für Mitarbeitende im Lagerbereich werden je nach tatsächlicher Nutzerzahl unterschiedlich getaktet – ein häufig genutzter Sanitärbereich im Bürotrakt benötigt einen anderen Rhythmus als eine selten aufgesuchte Toilette im Lager.",
+      "Bei mittelständischen Betrieben mit saisonal schwankendem Lagerbetrieb, etwa durch höheres Aufkommen in bestimmten Monaten, lässt sich der Reinigungsrhythmus für den Lagerbereich flexibel anpassen, während der Bürobereich im gleichbleibenden Takt weiterläuft.",
+      "Nach der Übernahme eines neuen Objekts mit kombinierten Büro- und Lagerflächen gehen wir zunächst durch beide Bereiche, statt den Zustand nur stichprobenartig zu prüfen. So lässt sich der bisherige Pflegezustand für Büro und Lager getrennt einschätzen.",
+      "Verladerampen und Rangierflächen für Lkw gehören nicht zum Innenraum und damit nicht automatisch zur Unterhaltsreinigung. Wir klären vorab, ob der Übergangsbereich zwischen Rampe und Lagerinnenraum zum vereinbarten Umfang zählt oder separat organisiert wird.",
+      "Hochregale in Lagerbereichen werden aus Sicherheitsgründen nur im bodennah erreichbaren Bereich gereinigt. Höher gelegene Regalböden gehören nicht zum Leistungsumfang der Unterhaltsreinigung, da hierfür spezielles Hebe- oder Steiggerät sowie eine gesonderte Einweisung nötig wären.",
+      "Pausenräume für Lagerpersonal unterscheiden sich in der Nutzung häufig von Teeküchen im Bürobereich desselben Objekts: mehr wechselnde Nutzer über den Tag verteilt, dafür oft eine einfachere Ausstattung. Wir richten Reinigungsintensität und Verfahren nach der tatsächlichen Nutzung des jeweiligen Raums aus.",
+      "Gewerbeobjekte rund um das ehemalige Flughafengelände sind teils über ein eigenes Werkstor mit Schranke gesichert. Den Zutritt für das Reinigungsteam stimmen wir vorab schriftlich mit der Objektverwaltung oder dem Werkschutz ab, damit am ersten Termin keine Verzögerung am Tor entsteht.",
+      "Bei saisonal höherem Lagerbetrieb, etwa durch zusätzliches Personal in umsatzstarken Monaten, steigt auch die Nutzung von Sanitär- und Pausenbereichen im Lagerteil spürbar an. Wir passen den Reinigungstakt für diese Bereiche vorübergehend an die höhere Personenzahl an, statt ganzjährig denselben Rhythmus wie in ruhigeren Monaten anzusetzen.",
+      "Bei der Auswahl eines Dienstleisters für ein Objekt mit kombinierten Büro- und Lagerflächen lohnt sich die Frage, ob Erfahrung mit den unterschiedlichen Sicherheitsanforderungen an Werkstoren und Rangierflächen vorhanden ist, statt einen Anbieter zu wählen, der nur reine Büroobjekte ohne Zufahrtskontrolle gewohnt ist.",
+      "Kantinen oder Betriebsrestaurants, wie sie bei größeren mittelständischen Betrieben rund um Tegel üblich sind, benötigen einen deutlich engeren Reinigungstakt als eine kleine Teeküche im Bürobereich, da hier täglich mit Lebensmitteln gearbeitet wird. Wir richten Rhythmus und Verfahren an der tatsächlichen Nutzung aus.",
+      "Umkleide- und Duschbereiche für Lagerpersonal, wie sie in größeren Betriebsstätten üblich sind, unterliegen einem anderen Hygieneanspruch als reguläre Bürotoiletten und werden entsprechend eigenständig getaktet, unabhängig vom Rhythmus der Bürosanitärbereiche.",
+      "Gefahrstofflager, wie sie in manchen Gewerbebetrieben für Chemikalien oder Betriebsstoffe vorgehalten werden, unterliegen eigenen Sicherheitsvorschriften und werden nicht von der regulären Unterhaltsreinigung erfasst. Die Reinigung solcher Bereiche organisieren die Betriebe über spezialisierte Fachfirmen.",
+      "Stellplätze für Firmenfahrzeuge auf dem Betriebsgelände gehören nicht zum Innenraum und damit nicht zur Unterhaltsreinigung. Die angrenzenden Eingangsbereiche, über die Mitarbeitende ins Gebäude gelangen, reinigen wir dagegen im regulären Rhythmus mit.",
+      "Bei Betrieben mit eigenem Fuhrpark und häufigem Kommen und Gehen von Lieferfahrzeugen ist der Eingangsbereich stärker durch Straßenschmutz und Feuchtigkeit belastet als bei einem reinen Bürostandort ohne Anlieferverkehr. Wir passen den Reinigungstakt für solche Eingangszonen entsprechend an.",
+      "Frachtaufzüge, wie sie in Gewerbeobjekten mit kombinierten Büro- und Lagerflächen häufig neben dem regulären Personenaufzug vorhanden sind, werden von uns im Innenraum gereinigt – die technische Wartung der Anlage bleibt Aufgabe eines spezialisierten Wartungsdienstes.",
+      "Verpackungsmaterial wie Kartons und Folien, das im Lagerbereich anfällt, wird von uns nicht automatisch entsorgt, sofern dies nicht ausdrücklich vereinbart ist – die Zuordnung zu den betrieblichen Entsorgungswegen bleibt Sache des jeweiligen Betriebs.",
+      "Bei Betrieben mit eigener Poststelle für den Warenein- und -ausgang klären wir vorab, ob dieser Bereich zum Bürobereich oder zum Lagerbereich gerechnet wird, da sich die beiden Zonen häufig im Verschmutzungsbild und im nötigen Reinigungstakt unterscheiden.",
+      "Kleinere Nebenlager, die einzelnen Büroabteilungen direkt zugeordnet sind, unterscheiden sich in der Nutzung von den großen zentralen Lagerflächen des Betriebs und werden entsprechend eher wie ein Bürobereich behandelt als wie ein klassisches Lager mit Industrieboden.",
+      "Bei mittelständischen Betrieben mit eigener Poststelle im Bürobereich werden Sortierfächer und die umgebende Fläche im regulären Rhythmus gereinigt, ohne dass einzelne Fächer geöffnet oder Post umsortiert wird.",
+      "Zufahrten zu Lagerhallen mit automatischer Schranke oder Rolltor gehören zum Außenbereich und damit nicht automatisch zur Innenraum-Unterhaltsreinigung. Den Übergangsbereich direkt am Toreingang klären wir vorab gesondert, da hier häufig mehr Schmutz eingetragen wird als in weiter innen liegenden Büroflächen.",
+    ],
+    scopeBullets: [
+      "Büroflächen",
+      "Lagerbereiche mit angepasstem Verfahren",
+      "Sanitärbereiche",
+      "Kontaktflächen wie Türgriffe und Handläufe",
+    ],
+    processText:
+      "Nach Abstimmung zu Fläche, Nutzung von Büro- und Lagerbereichen sowie gewünschtem Rhythmus erhalten Sie ein individuelles Angebot mit auf die jeweilige Zone abgestimmten Verfahren.",
+    priceFactorsText:
+      "Der Preis richtet sich nach Fläche, Bodenbelag und Nutzungsintensität der einzelnen Bereiche. Lagerflächen mit seltenerer Nutzung fließen anders in die Kalkulation ein als täglich genutzte Bürobereiche.",
     faq: [
       {
         question: "Werden Büro- und Lagerflächen gemeinsam gereinigt?",
@@ -1425,7 +1727,20 @@ export const combos: Combo[] = [
         question: "Eignet sich die Leistung auch für kleinere Praxen in Wohnnähe?",
         answer: "Ja, dafür planen wir einen kompakteren, auf die tatsächliche Größe abgestimmten Umfang.",
       },
+      {
+        question: "Werden Büro und Lager mit demselben Verfahren gereinigt?",
+        answer:
+          "Nicht zwingend. Lagerflächen mit Industrieboden vertragen robustere Verfahren als Bürobereiche mit Teppich oder Laminat – wir stimmen das nach dem tatsächlichen Belag ab.",
+      },
+      {
+        question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
+        answer:
+          "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
+        relatedLink: { label: "Zu unserem Nachbesserungs-Versprechen", href: "/ueber-uns#garantie" },
+      },
     ],
+    ctaSubtitle:
+      "Beschreiben Sie kurz Ihr Objekt in Reinickendorf – wir melden uns mit einem individuellen Angebot.",
   },
   {
     serviceSlug: "praxisreinigung-berlin",
