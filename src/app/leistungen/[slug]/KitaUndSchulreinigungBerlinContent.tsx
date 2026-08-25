@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -481,6 +482,34 @@ export default function KitaUndSchulreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Kitas und Schulen wachsen dort, wo Berlin wächst" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            In neueren Wohngebieten am Stadtrand entstehen derzeit viele zusätzliche Kita- und
+            Schulplätze, weil dort in den vergangenen Jahren besonders viele Familien hingezogen
+            sind. In etablierten Innenstadtkiezen sind die Einrichtungen dagegen oft älter und
+            kleinteiliger untergebracht, teils in umgebauten Altbauten.
+          </p>
+          <p>
+            Ein Neubau mit großen, offenen Gruppenräumen braucht eine andere Taktung als ein
+            Altbau mit mehreren kleinen Räumen auf verschiedenen Etagen. Wir passen den
+            Reinigungsplan an die räumliche Situation der jeweiligen Einrichtung an.
+          </p>
+          <p>
+            Welche Bezirke wir abdecken, sehen Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Testphase */}

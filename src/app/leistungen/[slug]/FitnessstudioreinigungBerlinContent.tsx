@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -491,6 +492,36 @@ export default function FitnessstudioreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Zwischen Kiezstudio und Kette im Einkaufszentrum" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            In urbanen Kiezen wie Friedrichshain oder Prenzlauer Berg gibt es viele kleinere,
+            oft spezialisierte Studios mit direktem Bezug zur Nachbarschaft. In den äußeren
+            Bezirken sind Fitnessstudios dagegen häufiger Teil größerer Kettenanbieter, oft in
+            Einkaufszentren mit entsprechend höherem Publikumsaufkommen zu bestimmten
+            Tageszeiten.
+          </p>
+          <p>
+            Ein kleines Studio lässt sich meist mit festen Zeitfenstern abdecken, ein größeres
+            mit mehreren Kursräumen braucht dagegen oft mehrere Reinigungstermine über den Tag
+            verteilt. Wir richten den Rhythmus nach der tatsächlichen Auslastung des jeweiligen
+            Studios aus.
+          </p>
+          <p>
+            Die Bezirke im Überblick finden Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Testphase */}

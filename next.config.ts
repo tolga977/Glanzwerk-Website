@@ -41,6 +41,9 @@ const cspHeader = {
     "img-src 'self' data: https://images.unsplash.com https://images.pexels.com https://lh3.googleusercontent.com",
     "font-src 'self' data:",
     "connect-src 'self'",
+    // Erlaubt ausschließlich das Google-Maps-Embed der Einsatzgebiet-Karte
+    // (EinsatzgebietKarte.tsx, klassischer output=embed-Modus, kein API-Key).
+    "frame-src https://www.google.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",

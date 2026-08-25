@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -532,6 +533,35 @@ export default function AutohausreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Berlin" title="Autohäuser liegen meist am Stadtrand" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Showrooms und Werkstätten brauchen viel Fläche für Ausstellung, Kundenparkplätze und
+            Anlieferung. Deshalb liegen die meisten Berliner Autohäuser nicht in der dichten
+            Innenstadt, sondern entlang großer Ausfallstraßen und in Gewerbegebieten etwa in
+            Spandau, Reinickendorf oder Marzahn.
+          </p>
+          <p>
+            Diese Lagen sind gut mit dem Auto erreichbar, aber oft weitläufiger als ein
+            Innenstadtstandort. Bei mehreren Autohäusern eines Händlers in unterschiedlichen
+            Bezirken lässt sich die Reinigung über einen gemeinsamen Ansprechpartner koordinieren,
+            statt für jeden Standort einzeln zu planen.
+          </p>
+          <p>
+            Die Bezirke, in denen wir aktiv sind, stehen auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* FAQ */}

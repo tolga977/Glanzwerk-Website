@@ -7,6 +7,8 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -576,6 +578,9 @@ export default function GebaeudereinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Objektgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 10. Kosten */}
@@ -645,6 +650,34 @@ export default function GebaeudereinigungBerlinContent({
           </Link>
           .
         </p>
+      </Section>
+
+      {/* 11b. Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt weiter oben) */}
+      <Section background="tint">
+        <SectionHeading eyebrow="Berlin" title="Unterschiedliche Bausubstanz, ein Vertrag" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Berlin ist baulich uneinheitlich gewachsen. Gründerzeithäuser mit hohen Räumen und
+            Stuckdecken stehen oft nur wenige Straßen von Nachkriegsbauten oder sanierten
+            Bürokomplexen entfernt. Das wirkt sich direkt auf die Gebäudereinigung aus: Ein Altbau
+            in Charlottenburg hat andere Böden und Fensterformate als ein Neubau in Adlershof.
+          </p>
+          <p>
+            Bei einem Objekt mit mehreren Gebäudeteilen aus unterschiedlichen Bauepochen prüfen wir
+            deshalb vorab, welche Materialien in welchem Trakt verbaut sind. Erst danach legen wir
+            fest, mit welchen Mitteln und in welchem Rhythmus gereinigt wird.
+          </p>
+          <p>
+            Welche Bezirke wir dabei abdecken, sehen Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standorte-Übersicht
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 12. Dreimonatige Testphase */}

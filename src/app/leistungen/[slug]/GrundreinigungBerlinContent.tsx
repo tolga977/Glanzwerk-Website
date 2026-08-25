@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -524,6 +525,34 @@ export default function GrundreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Neubau und Sanierung sorgen für unterschiedlichen Bedarf" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            In wachsenden Stadtteilen wie Adlershof oder Teilen von Pankow entstehen laufend neue
+            Gewerbeflächen, die vor dem ersten Bezug eine gründliche Grundreinigung benötigen. In
+            älteren Gewerbegebieten steht dagegen häufiger eine Sanierung oder ein Mieterwechsel
+            an, bei dem Rückstände aus jahrelanger Nutzung entfernt werden müssen.
+          </p>
+          <p>
+            Beide Anlässe verlangen eine intensivere Aufbereitung als eine laufende
+            Unterhaltsreinigung. Welche Bereiche davon betroffen sind, klären wir vorab bei einer
+            kurzen Besichtigung des Objekts.
+          </p>
+          <p>
+            Eine Übersicht unserer Einsatzbezirke steht auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* FAQ */}

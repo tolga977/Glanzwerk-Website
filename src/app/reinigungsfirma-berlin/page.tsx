@@ -8,6 +8,8 @@ import CTASection from "@/components/ui/CTASection";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
@@ -322,6 +324,38 @@ export default function ReinigungsfirmaBerlinPage() {
           >
             Standorte mit lokalen Ansprechpunkten ansehen
           </Link>
+          <div className="mt-8 max-w-2xl">
+            <EinsatzgebietKarte />
+          </div>
+        </div>
+      </Section>
+
+      {/* Berlin-Abschnitt, getrennt vom Einsatzgebiet-Abschnitt oben */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Berlin" title="Eine Reinigungsfirma für ganz Berlin statt für einen Kiez" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Wer in Berlin nach einer Reinigungsfirma sucht, findet oft kleinere Anbieter, die nur
+            in ihrem eigenen Kiez oder Bezirk tätig sind, neben größeren Firmen mit stadtweitem
+            Einsatzgebiet. Für ein Unternehmen mit nur einem Standort mag das keinen Unterschied
+            machen, für eine Filialkette oder Hausverwaltung mit Objekten in mehreren Bezirken
+            schon.
+          </p>
+          <p>
+            Glanzwerk ist bewusst berlinweit aufgestellt, mit einem festen Ansprechpartner
+            unabhängig davon, in welchem Bezirk sich Ihr Objekt befindet. Das erspart es Ihnen,
+            für unterschiedliche Standorte unterschiedliche Dienstleister zu koordinieren.
+          </p>
+          <p>
+            Einen Überblick über unsere Bezirke gibt die{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 

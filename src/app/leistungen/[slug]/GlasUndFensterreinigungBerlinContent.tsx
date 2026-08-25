@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -538,6 +539,35 @@ export default function GlasUndFensterreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Berlin" title="Von kleinteiligen Altbaufenstern bis zur Glasfassade" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Gründerzeitfenster mit mehreren Sprossen und Flügeln, wie sie in weiten Teilen Berlins
+            vorkommen, brauchen mehr Zeit pro Fensterfläche als eine durchgehende Glasfassade an
+            einem Bürostandort etwa am Potsdamer Platz oder in der City West. Kalk- und
+            Wetterspuren setzen sich zudem unterschiedlich schnell fest, je nachdem wie exponiert
+            das Gebäude liegt.
+          </p>
+          <p>
+            Wir kalkulieren den Aufwand deshalb nicht nach der Quadratmeterzahl allein, sondern
+            nach Fensterform, Zugänglichkeit und Anzahl der Flügel. Bei größeren Fassaden klären
+            wir vorab, welche Ausrüstung nötig ist.
+          </p>
+          <p>
+            Die abgedeckten Bezirke sehen Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* FAQ */}

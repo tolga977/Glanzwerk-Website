@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -725,6 +726,35 @@ export default function KanzleireinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Objektgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Zwischen Geschäftsadresse und ruhiger Lage" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Viele Berliner Kanzleien sitzen in repräsentativen Lagen wie rund um die
+            Fasanenstraße oder in der Nähe der Gerichte in Mitte. Andere haben sich bewusst in
+            ruhigeren Villenlagen etwa in Steglitz-Zehlendorf angesiedelt, fernab vom
+            Publikumsverkehr der Innenstadt.
+          </p>
+          <p>
+            Beide Adressformen haben denselben Anspruch an Vertraulichkeit, aber unterschiedliche
+            Zugangswege: ein Geschäftshaus mit Empfang und mehreren Kanzleien unter einem Dach,
+            oder ein einzelnes Büro mit eigenem Schlüssel. Wir stimmen die Reinigung auf die
+            jeweilige Zutrittssituation ab.
+          </p>
+          <p>
+            Mehr zu den einzelnen Bezirken finden Sie unter{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standorte
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 14. Dreimonatige Testphase */}

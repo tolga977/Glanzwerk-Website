@@ -22,6 +22,8 @@ import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import ClientLogos from "@/components/home/ClientLogos";
 import ProcessTimeline, { type TimelineStep } from "@/components/home/ProcessTimeline";
 import GoogleRating from "@/components/ui/GoogleRating";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import { getGoogleRating } from "@/lib/googleRating";
 import { serviceVehiclePhoto } from "@/data/owner";
@@ -1771,8 +1773,43 @@ export default async function HomePage() {
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von Objektgröße,
           Leistungsumfang und Reinigungsintervall ab.
         </p>
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
+      {/*
+        Eigener Berlin-Abschnitt, getrennt vom Einsatzgebiet-Register oben:
+        dort geht es um die konkrete Bezirksliste, hier um die Größe Berlins
+        als Grund für eine bezirksweise statt zentrale Einsatzplanung.
+      */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Berlin" title="Berlin ist größer, als es von innen wirkt" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Berlin gehört flächenmäßig zu den größten Stadtgebieten Deutschlands. Von Spandau
+            nach Marzahn sind es je nach Verkehrslage über eine Stunde Fahrzeit, obwohl beide
+            Bezirke zur selben Stadt gehören. Für die Reinigungsplanung heißt das: Ein Team, das
+            morgens in Charlottenburg beginnt, kann nicht ohne Weiteres denselben Tag noch in
+            Köpenick eingesetzt werden.
+          </p>
+          <p>
+            Deshalb organisieren wir Einsätze nach Bezirken statt nach einem einzigen zentralen
+            Fahrplan. Jedes Objekt bekommt einen Ansprechpartner, der die jeweilige Ecke Berlins
+            tatsächlich kennt, nicht nur die Adresse auf dem Papier.
+          </p>
+          <p>
+            Mehr zu den einzelnen Bezirken finden Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
+      </Section>
 
       {/*
         ── Hier stand der Kontaktmoment mit Hintergrundvideo ────────────
@@ -1787,7 +1824,7 @@ export default async function HomePage() {
         `ContactMoment.tsx` selbst bleibt unangetastet liegen, falls die
         Komponente an anderer Stelle wieder gebraucht wird.
 
-        Farbfolge bleibt dadurch: Einsatzgebiet (tint) → Wissen (weiss).
+        Farbfolge bleibt dadurch: Einsatzgebiet (tint) → Berlin-Abschnitt (muted) → Wissen (weiss).
       */}
 
       {/*

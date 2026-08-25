@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -599,6 +600,34 @@ export default function UnterhaltsreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Publikumsverkehr ist von Lage zu Lage verschieden" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Ein Ladengeschäft an einer belebten Einkaufsstraße wie der Schloßstraße oder dem
+            Kurfürstendamm hat einen ganz anderen Publikumsverkehr als ein Bürostandort in einem
+            ruhigeren Gewerbegebiet am Stadtrand. Entsprechend unterschiedlich sammelt sich auch
+            Verschmutzung in Eingangsbereichen und Fluren an.
+          </p>
+          <p>
+            Bei der Unterhaltsreinigung richten wir den Rhythmus deshalb nicht nach der Fläche
+            allein, sondern danach, wie das Objekt tatsächlich frequentiert wird. Zwei gleich
+            große Objekte können so einen unterschiedlichen Reinigungstakt bekommen.
+          </p>
+          <p>
+            Die Bezirke, in denen wir bereits aktiv sind, finden Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Testphase */}

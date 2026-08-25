@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import Section from "@/components/ui/Section";
+import Section, { SectionHeading } from "@/components/ui/Section";
 import LocationCard from "@/components/ui/LocationCard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import { districts } from "@/data/districts";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
@@ -47,6 +48,16 @@ export default function StandortePage() {
             <LocationCard key={district.slug} district={district} />
           ))}
         </FadeIn>
+      </Section>
+
+      <Section background="tint">
+        <SectionHeading
+          eyebrow="Firmensitz"
+          title="Wo Glanzwerk zu finden ist"
+        />
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       <Section background="muted">

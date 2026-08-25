@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -559,6 +560,34 @@ export default function TreppenhausreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Altbau-Treppenhäuser und moderne Aufgänge" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Berlins Gründerzeitviertel prägen bis heute viele hohe Treppenhäuser mit mehreren
+            Stockwerken und oft ohne Aufzug. In neueren Wohn- und Geschäftshäusern übernimmt
+            dagegen häufig der Aufzug den Hauptweg zwischen den Etagen, während das Treppenhaus
+            seltener genutzt wird.
+          </p>
+          <p>
+            Das wirkt sich auf den Reinigungsaufwand aus. Ein fünfgeschossiger Altbau ohne Aufzug
+            braucht einen anderen Rhythmus als ein Neubau, in dem die Treppe nur ein Fluchtweg
+            ist. Wir legen die Taktung mit der Hausverwaltung entsprechend fest.
+          </p>
+          <p>
+            Welche Bezirke wir abdecken, steht auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 11. Testphase */}

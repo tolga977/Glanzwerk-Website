@@ -3,6 +3,7 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section from "@/components/ui/Section";
 import ContactForm from "@/components/forms/ContactForm";
 import BrandPhoto from "@/components/ui/BrandPhoto";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig } from "@/data/site";
 import { photos } from "@/data/photos";
@@ -123,6 +124,9 @@ export default function KontaktPage() {
                   </span>
                 </li>
               </ul>
+            </div>
+            <div className="mt-6">
+              <EinsatzgebietKarte />
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -687,6 +688,34 @@ export default function PraxisreinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Praxisgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Arztpraxen liegen unterschiedlich dicht" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            In einigen Berliner Lagen, etwa rund um den Kurfürstendamm oder in der Nähe größerer
+            Kliniken, haben sich mehrere Praxen zu Ärztehäusern zusammengeschlossen. In den
+            Wohngebieten der äußeren Bezirke überwiegen dagegen einzelne Hausarztpraxen mit
+            kleinerem Publikumsverkehr.
+          </p>
+          <p>
+            Ein Ärztehaus mit gemeinsamem Wartebereich braucht eine andere Abstimmung als eine
+            Einzelpraxis im selben Haus wie eine Wohnnutzung, schon wegen Lärm und Zugangszeiten.
+            Wir sprechen das vorab mit der jeweiligen Praxis oder Hausverwaltung ab.
+          </p>
+          <p>
+            Auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortübersicht
+            </Link>{" "}
+            sehen Sie, in welchen Bezirken wir bereits aktiv sind.
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 13. Dreimonatige Testphase */}

@@ -7,6 +7,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -675,6 +676,35 @@ export default function BueroreinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von Bürogröße,
           Reinigungsumfang und gewünschtem Intervall ab.
         </p>
+      </Section>
+
+      {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
+      <Section background="white">
+        <SectionHeading eyebrow="Berlin" title="Bürolagen sind unterschiedlich organisiert" />
+        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+          <p>
+            Große, zusammenhängende Bürostandorte gibt es in Berlin vor allem in Mitte, entlang der
+            City West und in neueren Gewerbegebieten wie Adlershof. Daneben arbeiten viele kleinere
+            Unternehmen in Gewerbehöfen oder umgebauten Altbauwohnungen, oft mit nur einer Handvoll
+            Arbeitsplätzen.
+          </p>
+          <p>
+            Diese beiden Bürotypen brauchen unterschiedlich viel Abstimmung. Ein Bürohaus mit
+            mehreren Mietparteien läuft meist über die Hausverwaltung, ein Einzelbüro direkt über
+            die Ansprechperson vor Ort. Wir richten Zutritt und Zeitfenster danach aus, wie das
+            jeweilige Objekt organisiert ist.
+          </p>
+          <p>
+            Alle Bezirke im Überblick finden Sie auf der{" "}
+            <Link href="/standorte" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+              Standortseite
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* 13. Dreimonatige Testphase */}
