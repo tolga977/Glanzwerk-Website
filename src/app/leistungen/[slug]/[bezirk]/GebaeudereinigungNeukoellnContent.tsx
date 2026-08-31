@@ -365,8 +365,8 @@ export default function GebaeudereinigungNeukoellnContent({
           <p>
             Die Gewerbeparks in Rudow bringen häufig große Bodenflächen und viel Glas mit, die
             kleinteiligen Einheiten im Bezirkskern eher ältere Bausubstanz. Glanzwerk wählt Mittel
-            und Verfahren je nach Material – unter anderem professionelle Produkte von Kiehl, Dr.
-            Schnell und Buzil.
+            und Verfahren je nach Material aus, statt ein einzelnes Produkt für alle Flächen zu
+            verwenden.
           </p>
           <p>
             Reinigungsmittel und Dosierung werden passend zum Material und zum tatsächlichen
@@ -385,19 +385,9 @@ export default function GebaeudereinigungNeukoellnContent({
             zusammenlegen, was sich auf die Gesamtkalkulation auswirken kann.
           </p>
           <p>
-            Kleinere Büroeinheiten im dicht bebauten Kern Neuköllns benötigen einen schlankeren
-            Leistungsumfang als die großen, zusammenhängenden Gewerbeparks in Rudow – wir
-            kalkulieren beide Objektgrößen getrennt.
-          </p>
-          <p>
             Bei Fitnessstudios mit längeren Öffnungszeiten bis in den Abend richten wir den
             Reinigungstermin auf die ruhigsten Randzeiten aus, statt den laufenden
             Trainingsbetrieb während der Hauptnutzungszeit zu stören.
-          </p>
-          <p>
-            Der feste Ansprechpartner für das gebündelte Leistungspaket kennt sowohl die
-            kleinteiligen Einheiten im Bezirkskern als auch die großflächigen Gewerbeparks in
-            Rudow, sodass Rückfragen nicht bei jedem Kontakt neu erklärt werden müssen.
           </p>
           <p>
             Wochenmärkte und temporäre Verkaufsstände rund um Hermannplatz und Karl-Marx-Straße
@@ -409,21 +399,6 @@ export default function GebaeudereinigungNeukoellnContent({
             Produktionsbetriebe mit angeschlossenem Verkaufsraum, wie sie im Bezirk neben reinen
             Bürodienstleistern vorkommen, benötigen für den Produktionsbereich robustere Verfahren
             als für den kundenzugänglichen Verkaufsraum.
-          </p>
-          <p>
-            Bei mehreren Gewerbeeinheiten im selben Gebäude in Rudow lässt sich eine gemeinsame
-            Kantine oder ein gemeinsamer Pausenraum für alle Mieter zentral über den gebündelten
-            Vertrag abrechnen, statt für jede Firma einzeln zu kalkulieren.
-          </p>
-          <p>
-            Second-Hand-Läden und inhabergeführte Geschäfte entlang der Karl-Marx-Straße haben ein
-            anderes Reinigungsbedürfnis als die größeren Einzelhandelsflächen in den Neukölln
-            Arcaden – wir kalkulieren beide Objektarten getrennt.
-          </p>
-          <p>
-            Zieht ein neuer Mieter in eine bereits vom gebündelten Vertrag erfasste Gewerbefläche
-            in Rudow ein, passen wir den bestehenden Vertrag an die neue Nutzung an, statt für die
-            gleiche Fläche einen komplett neuen Vertrag zu verhandeln.
           </p>
           <p>
             Bäckereien und Imbisse, wie sie häufig im Erdgeschoss der Gewerbeobjekte im

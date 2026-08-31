@@ -178,7 +178,7 @@ const faqItems = [
   {
     question: "Welche Reinigungsmittel verwendet Glanzwerk?",
     answer:
-      "Je nach Oberfläche und Anwendungsbereich verwenden wir professionelle Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl richtet sich nach Material, Verschmutzung und hygienischen Anforderungen.",
+      "Je nach Oberfläche und Anwendungsbereich verwenden wir professionelle Reinigungsprodukte. Die Auswahl richtet sich nach Material, Verschmutzung und hygienischen Anforderungen, nicht nach einem einzigen Standardprodukt für alle Flächen.",
   },
   {
     question: "Kann der Reinigungsplan später angepasst werden?",
@@ -430,11 +430,15 @@ export default async function UeberUnsPage() {
                 verbessert das Ergebnis nicht automatisch und kann Materialien unnötig belasten.
               </p>
               <p>
-                Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte,
-                unter anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl richtet sich nach
-                Oberfläche, Verschmutzung und Nutzung. Wo es sinnvoll und im Objekt umsetzbar ist,
-                achten wir auf bedarfsgerechte Dosierung, einen bewussten Wasserverbrauch und die
-                vorhandene Mülltrennung.
+                Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte.
+                Die Auswahl richtet sich nach Oberfläche, Verschmutzung und Nutzung. Wo es sinnvoll
+                und im Objekt umsetzbar ist, achten wir auf bedarfsgerechte Dosierung, einen
+                bewussten Wasserverbrauch und die vorhandene Mülltrennung. Welche Hersteller wir
+                konkret einsetzen, steht auf der{" "}
+                <Link href="/umwelt-verantwortung" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+                  Umwelt-Seite
+                </Link>
+                .
               </p>
               <p>
                 Desinfektionsmittel werden dort eingesetzt, wo sie vereinbart oder hygienisch

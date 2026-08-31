@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section from "@/components/ui/Section";
 import { siteConfig } from "@/data/site";
+import { owner } from "@/data/owner";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -43,7 +44,9 @@ export default function ImpressumPage() {
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
             Vertretungsberechtigte Person
           </h2>
-          <p className="mt-2">[Name der/des Inhaber(s) / Geschäftsführung ergänzen]</p>
+          <p className="mt-2">
+            {owner.name}, {owner.role}
+          </p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
             Umsatzsteuer-Identifikationsnummer

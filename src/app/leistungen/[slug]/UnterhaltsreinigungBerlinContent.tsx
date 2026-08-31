@@ -5,9 +5,12 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -535,15 +538,36 @@ export default function UnterhaltsreinigungBerlinContent({
         <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[14]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Glanzwerk verwendet je nach Einsatzbereich professionelle Reinigungsprodukte, unter
-            anderem von Kiehl, Dr. Schnell und Buzil. Dosierung und Verfahren richten sich nach
-            Oberfläche, Verschmutzung und tatsächlichem Bedarf.
+            Dosierung und Verfahren richten sich nach Oberfläche, Verschmutzung und tatsächlichem
+            Bedarf, nicht nach einer pauschalen Menge für alle Flächen.
           </p>
           <p>
             Desinfektionsmittel werden nur dort eingesetzt, wo sie vereinbart oder hygienisch
             erforderlich sind.
           </p>
         </div>
+      </Section>
+
+      {/* Farbcodierungssystem für Reinigungstücher */}
+      <Section background="white">
+        <SectionHeading eyebrow="Hygienekonzept" title="Farbcodierte Reinigungstücher verhindern Verwechslungen" />
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Auch bei der laufenden Unterhaltsreinigung achten wir auf eine klare Trennung zwischen
+          Sanitär-, Wasch- und allgemeinen Bereichen. Glanzwerk setzt dafür ein vierfarbiges
+          Zuordnungssystem ein.
+        </p>
+        <div className="mt-8">
+          <HygieneFarbcodeSystem title="Die Vorteile auf einen Blick" />
+        </div>
+        <Link
+          href="/wissen/farbcodierung-reinigungstuecher"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        >
+          Mehr zum Farbsystem im Glanzwerk Wissen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
       </Section>
 
       {/* Ablauf */}
@@ -600,6 +624,9 @@ export default function UnterhaltsreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
@@ -644,6 +671,9 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* FAQ */}
       <Section background="white">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="unterhaltsreinigung" />

@@ -1,10 +1,31 @@
 import { siteConfig } from "@/data/site";
 import { owner } from "@/data/owner";
+import { googleBusiness } from "@/data/googleBusiness";
 
 /**
- * Centralized JSON-LD builders, sourced from `siteConfig`. Deliberately no
- * LocalBusiness/AggregateRating — no walk-in storefront, no real reviews yet.
+ * Centralized JSON-LD builders, sourced from `siteConfig`.
  */
+
+/**
+ * Geokoordinaten des Firmensitzes (Joachim-Gottschalk-Weg 12, 12353 Berlin).
+ * Per Adress-Lookup ermittelt (OpenStreetMap/Nominatim, hausnummerngenau),
+ * nicht geschätzt — Grundlage für `geo` in professionalServiceSchema().
+ */
+const OFFICE_GEO = {
+  latitude: 52.4224132,
+  longitude: 13.4763628,
+} as const;
+
+/**
+ * Geschäftszeiten Mo–Sa 08:00–18:00, vom Nutzer bestätigt (nicht erfunden).
+ * Grundlage für `openingHoursSpecification` in professionalServiceSchema().
+ */
+const OPENING_HOURS = {
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  opens: "08:00",
+  closes: "18:00",
+} as const;
 
 export function organizationSchema() {
   return {
@@ -44,7 +65,7 @@ interface ProfessionalServiceSchemaOptions {
   aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
-/** More specific than the sitewide Organization schema, without inventing ratings, hours or certifications. Used on the homepage, Über-uns- und Bewertungen-Seite. */
+/** More specific than the sitewide Organization schema, without inventing ratings. Used on the homepage, Über-uns- und Bewertungen-Seite. */
 export function professionalServiceSchema({
   aggregateRating,
 }: ProfessionalServiceSchemaOptions = {}) {
@@ -53,6 +74,7 @@ export function professionalServiceSchema({
     "@type": "ProfessionalService",
     name: siteConfig.name,
     url: siteConfig.url,
+    image: `${siteConfig.url}/brand/glanzwerk-logo.png`,
     telephone: siteConfig.phone,
     email: siteConfig.email,
     address: {
@@ -62,6 +84,13 @@ export function professionalServiceSchema({
       addressLocality: siteConfig.address.city,
       addressCountry: "DE",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: OFFICE_GEO.latitude,
+      longitude: OFFICE_GEO.longitude,
+    },
+    openingHoursSpecification: [OPENING_HOURS],
+    sameAs: [googleBusiness.profileUrl],
     areaServed: {
       "@type": "City",
       name: "Berlin",

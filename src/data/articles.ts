@@ -436,6 +436,55 @@ export const articles: Article[] = [
       alt: "Illustration einer Objektbesichtigung mit Grundriss-, Kamera- und Checklisten-Symbolen",
     },
   },
+  {
+    slug: "farbcodierung-reinigungstuecher",
+    title: "Farbcodierung bei Reinigungstüchern: Was Rot, Gelb, Blau und Grün bedeuten",
+    metaDescription:
+      "Wie das vierfarbige Zuordnungssystem für Reinigungstücher Kreuzkontamination verhindert und warum Glanzwerk es einsetzt.",
+    excerpt:
+      "Ein einfaches Farbsystem verhindert, dass ein Tuch aus der Toilette versehentlich in der Küche landet.",
+    intro:
+      "In der professionellen Gebäudereinigung hat sich eine vierfarbige Zuordnung für Reinigungstücher und Mopps etabliert. Sie sorgt dafür, dass ein Tuch aus einem Hochrisikobereich nicht versehentlich in einem sensiblen Bereich wie einer Küche verwendet wird.",
+    sections: [
+      {
+        heading: "Rot: Hochrisikobereiche",
+        paragraphs: [
+          "Toiletten und Sanitäranlagen gelten als Bereiche mit dem höchsten Kontaminationsrisiko. Tücher mit roter Kennzeichnung werden ausschließlich dort eingesetzt und nicht in andere Bereiche mitgenommen.",
+        ],
+      },
+      {
+        heading: "Gelb: Waschbereiche",
+        paragraphs: [
+          "Waschbecken, Armaturen und Spiegel benötigen einen eigenen Zuständigkeitsbereich, der getrennt von Toiletten und getrennt von Oberflächen mit Lebensmittelkontakt bleibt.",
+        ],
+      },
+      {
+        heading: "Blau: Allgemeine Bereiche",
+        paragraphs: [
+          "Böden, Türen und Oberflächen in Fluren und Büros machen den größten Teil der laufenden Reinigung aus. Die blaue Kennzeichnung deckt diese alltäglichen, weniger risikobehafteten Flächen ab.",
+        ],
+      },
+      {
+        heading: "Grün: Küchen- und Lebensmittelbereiche",
+        paragraphs: [
+          "Küchen, Kantinen und alle Bereiche mit Lebensmittelkontakt benötigen die strengste Trennung von den übrigen Kategorien. Ein grünes Tuch verlässt diesen Bereich nicht.",
+        ],
+      },
+      {
+        heading: "Warum sich das System in der Praxis bewährt",
+        paragraphs: [
+          "Der größte Vorteil liegt in der Eindeutigkeit: Die Zuordnung ist sofort erkennbar, unabhängig davon, wie lange eine Reinigungskraft schon im Team ist oder welche Sprache sie spricht. Das verkürzt die Einarbeitung neuer Mitarbeitender und reduziert das Risiko, dass ein Tuch versehentlich in einem falschen Bereich verwendet wird.",
+          "Glanzwerk setzt dieses Farbsystem in der laufenden Reinigung ein – von der klassischen Unterhaltsreinigung über Praxen und Kanzleien bis zu Gastronomiebetrieben, in denen die Trennung zwischen Küche und übrigen Bereichen besonders wichtig ist.",
+        ],
+      },
+    ],
+    relatedServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin", "praxisreinigung-berlin"],
+    category: "Hygienekonzept",
+    image: {
+      src: "/images/wissen/buerohygiene-massnahmen.png",
+      alt: "Illustration mit Desinfektionsmittel und Hygiene-Symbolen für Fenster, Türgriff und Mülleimer im Büro",
+    },
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {

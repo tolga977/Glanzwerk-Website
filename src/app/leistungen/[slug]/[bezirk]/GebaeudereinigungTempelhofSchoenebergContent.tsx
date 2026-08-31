@@ -366,9 +366,7 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             In größeren Gewerbebauten kommen häufig robuste Bodenbeläge und viel Glasfläche vor, in
-            den Wohn-Geschäftshäusern Schönebergs eher Parkett und ältere Bausubstanz. Glanzwerk
-            wählt Mittel und Verfahren je nach Material – unter anderem professionelle Produkte von
-            Kiehl, Dr. Schnell und Buzil.
+            den Wohn-Geschäftshäusern Schönebergs eher Parkett und ältere Bausubstanz.
           </p>
           <p>
             Reinigungsmittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen

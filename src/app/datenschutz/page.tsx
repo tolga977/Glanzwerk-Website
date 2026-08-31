@@ -76,7 +76,38 @@ export default function DatenschutzPage() {
           </p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
-            5. Ihre Rechte
+            5. Google Maps
+          </h2>
+          <p className="mt-2">
+            Auf Seiten mit unserem Einsatzgebiet binden wir eine Kartenvorschau ein, die
+            zunächst als lokal gespeichertes Bild angezeigt wird – ohne dass dabei bereits eine
+            Verbindung zu Google hergestellt wird. Erst wenn Sie aktiv auf &bdquo;Interaktive
+            Google-Maps-Karte laden&ldquo; klicken, wird der Kartendienst Google Maps von Google
+            Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland) geladen.
+          </p>
+          <p className="mt-2">
+            Mit diesem Klick erteilen Sie Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) zur
+            Übertragung Ihrer IP-Adresse sowie weiterer technisch notwendiger Daten an Google.
+            Eine Verarbeitung dieser Daten auf Servern in den USA ist dabei nicht auszuschließen.
+            Diese Einwilligung können Sie jederzeit für die Zukunft widerrufen, indem Sie die
+            Seite neu laden und die Karte nicht erneut aktivieren.
+          </p>
+          <p className="mt-2">
+            Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der
+            Datenschutzerklärung von Google:{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-500 hover:underline"
+            >
+              policies.google.com/privacy
+            </a>
+            .
+          </p>
+
+          <h2 className="mt-8 text-lg font-semibold text-brand-900">
+            6. Ihre Rechte
           </h2>
           <p className="mt-2">
             Sie haben jederzeit das Recht auf Auskunft über Ihre

@@ -5,6 +5,8 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
@@ -457,9 +459,9 @@ export default function GrundreinigungBerlinContent({
             berücksichtigt werden.
           </p>
           <p>
-            Glanzwerk verwendet je nach Einsatzbereich professionelle Produkte, unter anderem von
-            Kiehl, Dr. Schnell und Buzil. Es werden keine Ergebnisse versprochen, die ohne
-            vorherige Prüfung nicht realistisch beurteilt werden können.
+            Glanzwerk wählt Reinigungsprodukte je nach Einsatzbereich aus. Es werden keine
+            Ergebnisse versprochen, die ohne vorherige Prüfung nicht realistisch beurteilt werden
+            können.
           </p>
         </div>
       </Section>
@@ -525,6 +527,9 @@ export default function GrundreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
@@ -557,6 +562,9 @@ export default function GrundreinigungBerlinContent({
 
       {/* FAQ */}
       <Section background="muted">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="grundreinigung" />

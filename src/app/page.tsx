@@ -289,7 +289,7 @@ const homeFaqItems = [
   {
     question: "Welche Reinigungsmittel verwendet Glanzwerk?",
     answer:
-      "Wir setzen je nach Oberfläche und Anwendungsbereich professionelle Reinigungsmittel ein, unter anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl richtet sich nach Material, Verschmutzung und hygienischen Anforderungen.",
+      "Wir setzen je nach Oberfläche und Anwendungsbereich professionelle Reinigungsmittel ein. Die Auswahl richtet sich nach Material, Verschmutzung und hygienischen Anforderungen, nicht nach einem einzigen Standardprodukt für alle Flächen.",
   },
   {
     question: "Wie kann ich ein Angebot anfragen?",

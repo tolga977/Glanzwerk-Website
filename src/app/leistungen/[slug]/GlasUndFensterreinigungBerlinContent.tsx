@@ -5,6 +5,8 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
@@ -397,9 +399,8 @@ export default function GlasUndFensterreinigungBerlinContent({
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Beschichtete Gläser, Kunststoffrahmen, Aluminium, Holz und empfindliche Oberflächen
-            benötigen unterschiedliche Verfahren. Glanzwerk verwendet je nach Material und
-            Verschmutzung geeignete professionelle Produkte, unter anderem von Kiehl, Dr. Schnell
-            und Buzil.
+            benötigen unterschiedliche Verfahren. Glanzwerk richtet Reinigungsmittel und
+            Vorgehensweise nach Material und Verschmutzungsgrad aus, statt pauschal vorzugehen.
           </p>
           <p>
             Für streifenfreie Ergebnisse arbeiten wir im professionellen
@@ -539,6 +540,9 @@ export default function GlasUndFensterreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
@@ -572,6 +576,9 @@ export default function GlasUndFensterreinigungBerlinContent({
 
       {/* FAQ */}
       <Section background="white">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="glas-fensterreinigung" />

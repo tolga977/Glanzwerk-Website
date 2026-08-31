@@ -417,9 +417,8 @@ export default function GebaeudereinigungPankowContent({
         <SectionHeading eyebrow="Bedarfsgerechte Dosierung" title={heading.sectionHeadings[8]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte,
-            unter anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl richtet sich nach
-            Material, Verschmutzung und Nutzung.
+            Die Auswahl des Reinigungsmittels richtet sich nach Material, Verschmutzung und
+            Nutzung der jeweiligen Fläche, nicht nach einem festen Standardprodukt.
           </p>
           <p>
             Fassaden und Fensterrahmen in den gründerzeitlichen Altbauten rund um Prenzlauer Berg

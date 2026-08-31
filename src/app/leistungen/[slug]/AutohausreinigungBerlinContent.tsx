@@ -5,6 +5,8 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
@@ -466,8 +468,8 @@ export default function AutohausreinigungBerlinContent({
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
             Showrooms kombinieren häufig Fliesen, Naturstein, beschichtete Böden, Glas, Metall
-            und hochwertige Einrichtung. Glanzwerk verwendet geeignete Verfahren und
-            professionelle Produkte, unter anderem von Kiehl, Dr. Schnell und Buzil.
+            und hochwertige Einrichtung. Glanzwerk wählt Verfahren und Reinigungsprodukte passend
+            zu diesem Materialmix aus, statt ein einheitliches Vorgehen für alle Flächen anzusetzen.
           </p>
         </div>
         <FadeIn className="mt-8 flex flex-wrap gap-2">
@@ -533,6 +535,9 @@ export default function AutohausreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
@@ -566,6 +571,9 @@ export default function AutohausreinigungBerlinContent({
 
       {/* FAQ */}
       <Section background="white">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="autohausreinigung" />

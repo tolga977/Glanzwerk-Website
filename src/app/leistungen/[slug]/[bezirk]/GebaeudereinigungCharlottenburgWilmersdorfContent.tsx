@@ -373,8 +373,7 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
           <p>
             Gerade in den Altbauten des Bezirks kommen häufig Naturstein, Holzböden und historische
             Fliesen vor, während Schaufenster und moderne Büroflächen eher Glas, Metall und
-            beschichtete Oberflächen mitbringen. Glanzwerk wählt Mittel und Verfahren je nach
-            Material aus – unter anderem professionelle Produkte von Kiehl, Dr. Schnell und Buzil.
+            beschichtete Oberflächen mitbringen.
           </p>
           <p>
             Mittel und Dosierung werden passend zur Oberfläche und zum tatsächlichen Bedarf

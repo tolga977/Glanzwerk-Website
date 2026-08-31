@@ -742,6 +742,76 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     differentiation:
       "Seit 02.08.2026 mit eigenem localContext (ruhige Altbaulagen, Kanzleien/Praxen) und eigenen Leistungskarten, die sich von Charlottenburg unterscheiden – vorheriges 'kritisch'-Verdikt behoben.",
   },
+  "/standorte/mitte/wedding": {
+    h1: "Gebäudereinigung für Unternehmen in Berlin-Wedding",
+    h1Highlight: "Berlin-Wedding",
+    sectionHeadings: ["Wedding als Geschäftslage", "Gefragt in Wedding: Kita-, Unterhalts- und Praxisreinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Wedding",
+    mainTopic: "Kleinteiliger Einzelhandel, Handwerk und Klinikcampus abseits des repräsentativen Bezirkszentrums",
+    mostSimilarUrl: "/standorte/mitte",
+    differentiation:
+      "Eigener localContext (Müllerstraße/Leopoldplatz, Charité-Campus Virchow-Klinikum, Afrikanisches Viertel) und eigene Leistungskarten, die sich deutlich vom Regierungsviertel-Fokus der Bezirksseite Mitte unterscheiden. Angelegt am 30.08.2026.",
+  },
+  "/standorte/friedrichshain-kreuzberg/friedrichshain": {
+    h1: "Gewerbliche Gebäudereinigung in Berlin-Friedrichshain",
+    h1Highlight: "Berlin-Friedrichshain",
+    sectionHeadings: ["Friedrichshain zwischen Kiez und Nachtleben", "Gefragt in Friedrichshain: Gastronomie-, Büro- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Friedrichshain",
+    mainTopic: "Boxhagener Kiez, RAW-Gelände und Warschauer Straße mit hohem Ausgeh- und Tourismuspublikum",
+    mostSimilarUrl: "/standorte/friedrichshain-kreuzberg",
+    differentiation:
+      "Eigener localContext (Boxhagener Platz, RAW-Gelände, Karl-Marx-Allee) und eigene Leistungskarten, die sich vom übergreifenden Bezirksfokus auf Friedrichshain UND Kreuzberg unterscheiden. Angelegt am 30.08.2026.",
+  },
+  "/standorte/pankow/prenzlauer-berg": {
+    h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Prenzlauer Berg",
+    h1Highlight: "Berlin-Prenzlauer Berg",
+    sectionHeadings: ["Prenzlauer Berg als Geschäftslage", "Gefragt in Prenzlauer Berg: Praxis-, Kita- und Kanzleireinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Prenzlauer Berg",
+    mainTopic: "Dichte, sanierte Altbaulagen mit Familienpraxen, Kanzleien und inhabergeführten Geschäften",
+    mostSimilarUrl: "/standorte/pankow",
+    differentiation:
+      "Eigener localContext (Kollwitzplatz, Kulturbrauerei, Mauerpark, Schönhauser Allee) und eigene Leistungskarten, die sich vom Wachstums-/Außenbezirk-Fokus der Bezirksseite Pankow unterscheiden. Angelegt am 30.08.2026.",
+  },
+  "/standorte/spandau/altstadt-spandau": {
+    h1: "Gebäudereinigung für Gewerbeobjekte in der Altstadt Spandau",
+    h1Highlight: "Altstadt Spandau",
+    sectionHeadings: ["Die Altstadt Spandau als eigenständige Geschäftslage", "Gefragt in der Altstadt: Gebäude-, Glas- und Gastronomiereinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in der Altstadt Spandau",
+    mainTopic: "Historischer Stadtkern mit Zitadelle, Fußgängerzone und Einkaufszentrum am Bahnhof",
+    mostSimilarUrl: "/standorte/spandau",
+    differentiation:
+      "Eigener localContext (Zitadelle Spandau, Carl-Schurz-Straße, Spandau Arcaden, Havel) mit eigenständigem historischen Stadtkern-Fokus statt des allgemeinen Bezirksüberblicks. Angelegt am 30.08.2026.",
+  },
+  "/standorte/marzahn-hellersdorf/marzahn": {
+    h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Marzahn",
+    h1Highlight: "Berlin-Marzahn",
+    sectionHeadings: ["Marzahn als Geschäftslage", "Gefragt in Marzahn: Praxis-, Kita- und Gebäudereinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Marzahn",
+    mainTopic: "Plattenbaugeprägte Wohnlagen mit Praxen, Kitas und dem Ringcenter als Gewerbeschwerpunkt",
+    mostSimilarUrl: "/standorte/marzahn-hellersdorf",
+    differentiation:
+      "Eigener localContext (Gärten der Welt, Marzahner Promenade, Ringcenter, Plattenbaustruktur) und eigene Leistungskarten, abgegrenzt vom übergreifenden Bezirksfokus auf Marzahn UND Hellersdorf. Angelegt am 30.08.2026.",
+  },
+  "/standorte/lichtenberg/karlshorst": {
+    h1: "Gewerbliche Gebäudereinigung in Berlin-Karlshorst",
+    h1Highlight: "Berlin-Karlshorst",
+    sectionHeadings: ["Karlshorst abseits der dichten Bezirkslagen", "Gefragt in Karlshorst: Büro-, Praxis- und Unterhaltsreinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Karlshorst",
+    mainTopic: "Ruhiges Villenviertel mit Kanzleien und Praxen in umgenutzten Villen, abseits der dichteren Bezirkslagen",
+    mostSimilarUrl: "/standorte/lichtenberg",
+    differentiation:
+      "Eigener localContext (Deutsch-Russisches Museum, Trabrennbahn, Villenviertel) und eigene Leistungskarten, die sich deutlich vom dichter bebauten übrigen Bezirk Lichtenberg unterscheiden. Angelegt am 30.08.2026.",
+  },
+  "/standorte/reinickendorf/tegel": {
+    h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Tegel",
+    h1Highlight: "Berlin-Tegel",
+    sectionHeadings: ["Tegel im Wandel", "Gefragt in Tegel: Gebäude-, Gastronomie- und Grundreinigung"],
+    ctaHeading: "Angebot für Ihr Objekt in Tegel",
+    mainTopic: "Ehemaliges Flughafengelände im Umbau zu Gewerbestandort, historischer Ortskern und Tegeler See",
+    mostSimilarUrl: "/standorte/reinickendorf",
+    differentiation:
+      "Eigener localContext (Flughafen-Nachnutzung Berlin TXL, Alt-Tegel, Borsigturm, Tegeler See) und eigene Leistungskarten, die sich vom allgemeinen Bezirksüberblick Reinickendorf unterscheiden. Angelegt am 30.08.2026.",
+  },
   "/standorte/steglitz-zehlendorf/steglitz": {
     h1: "Gebäudereinigung für Gewerbeobjekte in Berlin-Steglitz",
     h1Highlight: "Berlin-Steglitz",
@@ -1726,5 +1796,22 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     mainTopic: "Vorbereitung einer Objektbesichtigung für ein verbindliches Angebot",
     mostSimilarUrl: "/preisrechner",
     differentiation: "Bereitet den persönlichen Vor-Ort-Termin vor, der Preisrechner liefert die vorherige Online-Schätzung.",
+  },
+  "/wissen/farbcodierung-reinigungstuecher": {
+    h1: "Farbcodierung bei Reinigungstüchern: Was Rot, Gelb, Blau und Grün bedeuten",
+    sectionHeadings: [
+      "Rot: Hochrisikobereiche",
+      "Gelb: Waschbereiche",
+      "Blau: Allgemeine Bereiche",
+      "Grün: Küchen- und Lebensmittelbereiche",
+      "Warum sich das System in der Praxis bewährt",
+    ],
+    ctaHeading: "Reinigung mit klarem Hygienekonzept anfragen",
+    relatedServicesHeading: "Leistungen, bei denen das Farbsystem zum Einsatz kommt",
+    moreArticlesHeading: "Weitere Artikel zum Hygienekonzept",
+    mainTopic: "Erklärung des vierfarbigen Zuordnungssystems für Reinigungstücher zur Vermeidung von Kreuzkontamination",
+    mostSimilarUrl: "/leistungen/gebaeudereinigung-berlin",
+    differentiation:
+      "Ausführlicher, eigenständiger Ratgeberartikel zum Farbsystem selbst; die Leistungsseiten zeigen dieselbe Farbtabelle nur kompakt mit einem seiten-spezifischen Anmoderationssatz und verlinken hierher für die vollständige Erklärung.",
   },
 };

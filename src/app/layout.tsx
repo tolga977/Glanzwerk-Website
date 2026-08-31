@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
@@ -8,14 +8,13 @@ import { siteConfig } from "@/data/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "./globals.css";
 
-// Display serif for headings only — pairs with the native system-font body copy to give the
-// site a distinctive, editorial "premium agency" character instead of the
-// single-sans look shared by most competitor sites.
-const fraunces = Fraunces({
+// Ein durchgängiges Sans-Schriftbild für Überschriften und Fließtext,
+// wie bei modernen Wettbewerber-Seiten.
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz", "SOFT"],
+  weight: ["400", "500", "600", "700", "800"],
   style: ["normal", "italic"],
 });
 
@@ -40,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${fraunces.variable} h-full antialiased`}>
+    <html lang="de" className={`${plusJakartaSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white text-ink">
         {/* Fallback für Browser ohne Unterstützung der scripting-Media-Query:
             ohne JavaScript dürfen Scroll-Einblendungen keine Inhalte verbergen. */}

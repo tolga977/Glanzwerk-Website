@@ -5,9 +5,12 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -574,9 +577,8 @@ export default function KanzleireinigungBerlinContent({
             unterschiedliche Reinigungsmittel und Arbeitsverfahren.
           </p>
           <p>
-            Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte, unter
-            anderem von Kiehl, Dr. Schnell und Buzil. Die Auswahl und Dosierung richtet sich nach
-            Oberfläche, Verschmutzung und Herstellerangaben.
+            Die Auswahl und Dosierung des Reinigungsmittels richtet sich nach Oberfläche,
+            Verschmutzung und Herstellerangaben, nicht nach einem festen Standardprodukt.
           </p>
           <p>
             Unser Ziel ist eine sorgfältige Reinigung, ohne Möbel und Materialien durch ungeeignete
@@ -589,6 +591,28 @@ export default function KanzleireinigungBerlinContent({
           className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
           Mehr über Umwelt und Verantwortung
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
+      </Section>
+
+      {/* Farbcodierungssystem für Reinigungstücher */}
+      <Section background="tint">
+        <SectionHeading eyebrow="Hygienekonzept" title="Klare Zuordnung auch in Kanzleiräumen" />
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Auch in einer Kanzlei mit Empfang, Besprechungsräumen und Sanitärbereich verhindert eine
+          feste Farbzuordnung, dass Reinigungstücher zwischen unterschiedlich sensiblen Bereichen
+          wechseln.
+        </p>
+        <div className="mt-8">
+          <HygieneFarbcodeSystem title="Die Vorteile auf einen Blick" />
+        </div>
+        <Link
+          href="/wissen/farbcodierung-reinigungstuecher"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        >
+          Mehr zum Farbsystem im Glanzwerk Wissen
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -726,6 +750,9 @@ export default function KanzleireinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Objektgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
+        <div className="mt-8 max-w-2xl">
+          <EinsatzgebietKarte />
+        </div>
       </Section>
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
@@ -771,6 +798,9 @@ export default function KanzleireinigungBerlinContent({
 
       {/* 15. FAQ */}
       <Section background="white">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="kanzleireinigung" />

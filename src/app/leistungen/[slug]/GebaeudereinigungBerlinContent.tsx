@@ -5,10 +5,12 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
+import TrustSignals from "@/components/ui/TrustSignals";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -530,9 +532,8 @@ export default function GebaeudereinigungBerlinContent({
             aus.
           </p>
           <p>
-            Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte, unter
-            anderem von Kiehl, Dr. Schnell und Buzil. Die Dosierung richtet sich nach
-            Herstellerangaben, Verschmutzungsgrad und Oberfläche.
+            Die Dosierung richtet sich dabei nach Herstellerangaben, Verschmutzungsgrad und
+            Oberfläche, nicht nach einer pauschal hohen Menge.
           </p>
           <p>
             Unser Ziel ist ein sauberes Ergebnis, ohne Materialien durch unnötig aggressive
@@ -545,6 +546,28 @@ export default function GebaeudereinigungBerlinContent({
           className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
           Mehr über Umwelt und Verantwortung
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
+      </Section>
+
+      {/* Farbcodierungssystem für Reinigungstücher */}
+      <Section background="muted">
+        <SectionHeading eyebrow="Hygienekonzept" title="Farbcodierte Reinigungstücher für klare Zuständigkeiten" />
+        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+          Bei einer gebündelten Gebäudereinigung mit mehreren Teilbereichen ist eindeutig geregelt,
+          welches Tuch wo verwendet wird. Glanzwerk setzt dafür ein vierfarbiges
+          Zuordnungssystem ein.
+        </p>
+        <div className="mt-8">
+          <HygieneFarbcodeSystem title="Ein System, das jede Reinigungskraft sofort versteht" />
+        </div>
+        <Link
+          href="/wissen/farbcodierung-reinigungstuecher"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+        >
+          Mehr zum Farbsystem im Glanzwerk Wissen
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -694,6 +717,9 @@ export default function GebaeudereinigungBerlinContent({
 
       {/* 13. FAQ */}
       <Section background="white">
+        <div className="mx-auto mb-12 max-w-3xl">
+          <TrustSignals />
+        </div>
         <SectionHeading eyebrow="Häufige Fragen" title={heading.faqHeading} align="center" />
         <FadeIn className="mx-auto mt-10 max-w-2xl">
           <FAQ items={faqItems} idPrefix="gebaeudereinigung" />

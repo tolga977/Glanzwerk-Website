@@ -425,9 +425,8 @@ export default function GebaeudereinigungMitteContent({
         <SectionHeading eyebrow="Sorgfältiger Umgang mit Oberflächen" title={heading.sectionHeadings[7]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Glanzwerk verwendet je nach Material und Einsatzbereich professionelle
-            Reinigungsprodukte, unter anderem von Kiehl, Dr. Schnell und Buzil. Mittel und
-            Dosierung werden an Oberfläche, Verschmutzung und tatsächlichen Bedarf angepasst.
+            Mittel und Dosierung werden an Oberfläche, Verschmutzung und tatsächlichen Bedarf
+            angepasst, statt ein einzelnes Produkt für alle Flächen zu verwenden.
           </p>
           <p>
             Desinfektionsmittel werden nur dort eingesetzt, wo dies vereinbart oder hygienisch

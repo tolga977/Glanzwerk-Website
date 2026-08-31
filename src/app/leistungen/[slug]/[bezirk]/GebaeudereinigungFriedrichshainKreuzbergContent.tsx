@@ -406,9 +406,8 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
         <SectionHeading eyebrow="Bedarfsgerechter Einsatz" title={heading.sectionHeadings[7]} />
         <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
           <p>
-            Glanzwerk verwendet abhängig von Oberfläche und Einsatzbereich professionelle
-            Produkte, unter anderem von Kiehl, Dr. Schnell und Buzil. Dosierung und Verfahren
-            werden auf Material, Verschmutzung und Nutzung abgestimmt.
+            Dosierung und Verfahren werden abhängig von Oberfläche, Verschmutzung und Nutzung
+            abgestimmt, nicht nach einer einheitlichen Vorgabe für alle Flächen.
           </p>
           <p>
             Desinfektionsmittel kommen nur dort zum Einsatz, wo dies vereinbart oder hygienisch
