@@ -26,16 +26,25 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  *
  * ── Die Logos ───────────────────────────────────────────────────────────
  * Unveränderte Originaldateien in Originalfarben — nicht nachgezeichnet,
- * nicht umgefärbt, nicht verzerrt. Skaliert wird nach `logo.hoehe`
- * (heroBrandLogos.ts), nicht nach einer einheitlichen Dateihöhe: die Dateien
- * haben stark unterschiedlich viel Weißraum um den eigentlichen Schriftzug
- * (DEISS z. B. nur ~45 % Wortmarken-Anteil, Vileda/VERMOP als Bildmarke-über-
- * Wortmarke-Lockup noch weniger). Eine gleiche Dateihöhe für alle fünf hätte
- * genau das Gegenteil von „gleich groß" bewirkt: DEISS und Vileda/VERMOP
- * wären neben Dr. Schnell und Numatic sichtbar kleiner geblieben, obwohl die
- * Boxen technisch identisch hoch sind. `hoehe` ist bereits so kalibriert,
- * dass der tatsächliche Schriftzug bei allen fünf auf rund 27–32 px kommt —
- * dieselbe Grundlage wie in der früheren ruhenden Reihen-Darstellung.
+ * nicht umgefärbt, nicht verzerrt.
+ *
+ * Skaliert wird NICHT nach `logo.hoehe` aus `heroBrandLogos.ts` (jene Datei
+ * ist bewusst unangetastet zu lassen — separates Projekt), sondern nach
+ * `TEXT_HEIGHT_OVERRIDE` unten. Grund: `hoehe` zielt auf die Dateihöhe der
+ * Wortmarke, ist aber nicht pixelgenau auf die tatsächliche Tinten-Höhe des
+ * Schriftzugs abgestimmt. Per Zeilen-Analyse der fünf Dateien gemessen (Anteil
+ * der reinen Wortmarke — ohne Icon/Unterzeile — an der Dateihöhe):
+ *
+ *   Dr. Schnell  82,1 %   DEISS  51,8 %   Numatic  86,5 %
+ *   Vileda "vileda" (ohne Blatt/PROFESSIONAL)  48,2 %
+ *   VERMOP "VERMOP" (ohne Oval-Icon)           28,3 %
+ *
+ * Mit den bisherigen `hoehe`-Werten hätte Vileda dadurch rund 50 % größer
+ * gerendert als Dr. Schnell (35 px vs. 23 px Tinten-Höhe) — sichtbar
+ * unterschiedlich, trotz behaupteter Gleichgröße. `TEXT_HEIGHT_OVERRIDE`
+ * kehrt die Rechnung um: Zielhöhe (26 px) geteilt durch den gemessenen
+ * Anteil ergibt die Boxhöhe, bei der der sichtbare Schriftzug bei allen
+ * fünf gleich groß wirkt.
  *
  * `grayscale` oder Deckkraft unter 100 % wäre hier eine Veränderung des
  * Logos und ist deshalb ausgeschlossen — auch als Ruhezustand.
@@ -48,7 +57,17 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  * reduzierter Bewegung steht die Reihe still und lässt sich mit dem Finger
  * schieben — exakt dieselbe, bereits geprüfte Zugänglichkeitslösung.
  */
+/** Boxhöhe (px, Desktop) je Logo, aus gemessenem Wortmarken-Anteil an der Dateihöhe errechnet (Zielhöhe 26 px sichtbarer Schriftzug). */
+const TEXT_HEIGHT_OVERRIDE: Record<string, number> = {
+  "Dr. Schnell": 32,
+  DEISS: 50,
+  Numatic: 30,
+  "Vileda Professional": 54,
+  VERMOP: 92,
+};
+
 function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
+  const boxHeight = TEXT_HEIGHT_OVERRIDE[logo.name] ?? logo.hoehe;
   return (
     <div className="flex shrink-0 items-center px-8 sm:px-10 lg:px-12">
       <Image
@@ -57,7 +76,7 @@ function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
         width={logo.width}
         height={logo.height}
         sizes="160px"
-        style={{ "--logo-h": `${logo.hoehe}px` } as React.CSSProperties}
+        style={{ "--logo-h": `${boxHeight}px` } as React.CSSProperties}
         className="h-[calc(var(--logo-h)*0.75)] w-auto sm:h-[var(--logo-h)]"
       />
     </div>
