@@ -46,6 +46,16 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  * Anteil ergibt die Boxhöhe, bei der der sichtbare Schriftzug bei allen
  * fünf gleich groß wirkt.
  *
+ * Ausnahme VERMOP: Bei rein textbasierter Rechnung (26 px Zielhöhe für
+ * „VERMOP") ergäbe sich eine Boxhöhe von 92 px — technisch korrekt für den
+ * Text, aber das große Oval-Icon darüber würde dadurch die ganze Reihe
+ * optisch dominieren (Nutzer-Feedback nach Sichtprüfung bestätigt das).
+ * Deshalb hier bewusst kein reiner Text-Höhen-Abgleich, sondern eine
+ * niedrigere Boxhöhe (60 px), die Icon und Schriftzug gemeinsam auf ein zur
+ * Reihe passendes Gesamtgewicht bringt — der Schriftzug selbst bleibt dabei
+ * mit rund 17 px zwar kleiner als bei den anderen vier, ist aber weiterhin
+ * gut lesbar.
+ *
  * `grayscale` oder Deckkraft unter 100 % wäre hier eine Veränderung des
  * Logos und ist deshalb ausgeschlossen — auch als Ruhezustand.
  *
@@ -63,7 +73,7 @@ const TEXT_HEIGHT_OVERRIDE: Record<string, number> = {
   DEISS: 50,
   Numatic: 30,
   "Vileda Professional": 54,
-  VERMOP: 92,
+  VERMOP: 60,
 };
 
 function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
