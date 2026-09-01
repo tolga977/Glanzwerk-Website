@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -750,8 +751,8 @@ export default function KanzleireinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Objektgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -779,9 +780,6 @@ export default function KanzleireinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* 14. Dreimonatige Testphase */}
@@ -806,6 +804,19 @@ export default function KanzleireinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="kanzleireinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* 16. Abschließender CTA */}
       <Section background="muted">

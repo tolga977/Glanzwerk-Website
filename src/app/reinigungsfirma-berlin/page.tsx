@@ -10,6 +10,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
@@ -324,8 +325,8 @@ export default function ReinigungsfirmaBerlinPage() {
           >
             Standorte mit lokalen Ansprechpunkten ansehen
           </Link>
-          <div className="mt-8 max-w-2xl">
-            <EinsatzgebietKarte />
+          <div className="mt-8 max-w-lg">
+            <BerlinEinsatzgebietKarte />
           </div>
         </div>
       </Section>
@@ -354,9 +355,6 @@ export default function ReinigungsfirmaBerlinPage() {
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       <Section background="white">
@@ -365,6 +363,19 @@ export default function ReinigungsfirmaBerlinPage() {
           <FAQ items={faqItems} idPrefix="reinigungsfirma" />
         </div>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="muted">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       <Section background="muted">
         <CTASection

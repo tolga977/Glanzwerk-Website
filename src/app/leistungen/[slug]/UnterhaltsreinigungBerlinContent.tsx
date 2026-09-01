@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -31,6 +32,12 @@ import Button from "@/components/ui/Button";
  * einer eigenen Abschnittsstruktur, die sich nicht in das gemeinsame
  * Positions-Schema der übrigen Leistungsseiten pressen lässt.
  */
+
+const ablaufPhoto = {
+  src: "/images/leistungen/unterhaltsreinigung-berlin/ablauf.webp",
+  alt: "Wischmopp im Vordergrund, im Hintergrund ein Reinigungswagen mit Eimer",
+  caption: "Der Wagen bleibt während des Einsatzes in Sichtweite. So ist auf einen Blick erkennbar, welcher Bereich gerade bearbeitet wird und welcher noch aussteht.",
+};
 
 const scopeCards = [
   {
@@ -405,20 +412,30 @@ export default function UnterhaltsreinigungBerlinContent({
 
       {/* Zugang und Ablauf am Reinigungstag */}
       <Section background="white">
-        <SectionHeading eyebrow="Reibungsloser Ablauf vor Ort" title={heading.sectionHeadings[7]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Je nach Objekt findet die Reinigung während der Öffnungszeiten, in einer ruhigeren
-            Randzeit oder außerhalb der Geschäftszeiten statt. Welche Variante passt, richtet sich
-            danach, wie das Objekt genutzt wird und wer zu welcher Zeit vor Ort ist – das wird vor
-            Vertragsbeginn festgelegt.
-          </p>
-          <p>
-            Damit die vereinbarte Zeit effizient genutzt werden kann, hilft es, wenn Schreibtische
-            und Ablageflächen zum Termin einigermaßen frei zugänglich sind und persönliche
-            Wertgegenstände nicht offen liegen. Zugangsregelungen – etwa Schlüssel, Transponder
-            oder Codes – werden vorab schriftlich festgehalten.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Reibungsloser Ablauf vor Ort" title={heading.sectionHeadings[7]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Je nach Objekt findet die Reinigung während der Öffnungszeiten, in einer ruhigeren
+                Randzeit oder außerhalb der Geschäftszeiten statt. Welche Variante passt, richtet sich
+                danach, wie das Objekt genutzt wird und wer zu welcher Zeit vor Ort ist – das wird vor
+                Vertragsbeginn festgelegt.
+              </p>
+              <p>
+                Damit die vereinbarte Zeit effizient genutzt werden kann, hilft es, wenn Schreibtische
+                und Ablageflächen zum Termin einigermaßen frei zugänglich sind und persönliche
+                Wertgegenstände nicht offen liegen. Zugangsregelungen – etwa Schlüssel, Transponder
+                oder Codes – werden vorab schriftlich festgehalten.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={ablaufPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -624,8 +641,8 @@ export default function UnterhaltsreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -652,9 +669,6 @@ export default function UnterhaltsreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* Testphase */}
@@ -679,6 +693,19 @@ export default function UnterhaltsreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="unterhaltsreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">

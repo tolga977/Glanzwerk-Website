@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -22,6 +23,12 @@ import Button from "@/components/ui/Button";
  * Grund wie GebaeudereinigungMitteContent.tsx / GebaeudereinigungPankowContent.tsx
  * / GebaeudereinigungCharlottenburgWilmersdorfContent.tsx.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/tempelhof-schoeneberg.webp",
+  alt: "Bodenreinigungsmaschine im Einsatz auf hellem Fliesenboden neben einer Treppe",
+  caption: "Größere Mehrmieter-Gebäude im Tempelhofer Bezirksteil verlangen andere Maschinen als die kompakteren Altbaubüros in Schöneberg.",
+};
 
 const scopeCards = [
   {
@@ -235,27 +242,37 @@ export default function GebaeudereinigungTempelhofSchoenebergContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Zwei Bezirksteile, zwei Gebäudetypen" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Tempelhof-Schöneberg verbindet etablierte Geschäftsstraßen, Bürostandorte,
-            medizinische Einrichtungen, Hotels, öffentliche Einrichtungen und Gewerbegebiete.
-            Rund um den Tempelhofer Damm, den Bayerischen Platz, den Nollendorfplatz, den
-            Südkreuz-Bereich sowie das Schöneberger Ufer treffen stark frequentierte
-            Arbeitsplätze auf repräsentative Kundenbereiche.
-          </p>
-          <p>
-            Ein passender Reinigungsplan berücksichtigt deshalb Flächengröße,
-            Besucheraufkommen, Geschäftszeiten, Bodenbeläge und individuelle Anforderungen des
-            jeweiligen Unternehmens.
-          </p>
-          <p>
-            Der Tempelhofer Bezirksteil ist geprägt von größeren, oft neueren Gewerbebauten mit
-            mehreren Mietern unter einem Dach, während in Schöneberg kompaktere Büros in
-            Wohn-Geschäftshäusern überwiegen. Ein Reinigungskonzept für ein großes
-            Mehrmieter-Gebäude unterscheidet sich entsprechend deutlich von dem für ein einzelnes
-            Büro in einem Altbau.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Zwei Bezirksteile, zwei Gebäudetypen" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Tempelhof-Schöneberg verbindet etablierte Geschäftsstraßen, Bürostandorte,
+                medizinische Einrichtungen, Hotels, öffentliche Einrichtungen und Gewerbegebiete.
+                Rund um den Tempelhofer Damm, den Bayerischen Platz, den Nollendorfplatz, den
+                Südkreuz-Bereich sowie das Schöneberger Ufer treffen stark frequentierte
+                Arbeitsplätze auf repräsentative Kundenbereiche.
+              </p>
+              <p>
+                Ein passender Reinigungsplan berücksichtigt deshalb Flächengröße,
+                Besucheraufkommen, Geschäftszeiten, Bodenbeläge und individuelle Anforderungen des
+                jeweiligen Unternehmens.
+              </p>
+              <p>
+                Der Tempelhofer Bezirksteil ist geprägt von größeren, oft neueren Gewerbebauten mit
+                mehreren Mietern unter einem Dach, während in Schöneberg kompaktere Büros in
+                Wohn-Geschäftshäusern überwiegen. Ein Reinigungskonzept für ein großes
+                Mehrmieter-Gebäude unterscheidet sich entsprechend deutlich von dem für ein einzelnes
+                Büro in einem Altbau.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 

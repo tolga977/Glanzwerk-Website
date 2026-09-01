@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -21,6 +22,12 @@ import Button from "@/components/ui/Button";
  * Bewusst getrennt vom generischen [slug]/[bezirk]-Template, aus demselben Grund
  * wie GebaeudereinigungMitteContent.tsx / GebaeudereinigungPankowContent.tsx.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/charlottenburg-wilmersdorf.webp",
+  alt: "Bodenreinigungsmaschine in einem hellen, repräsentativen Empfangsbereich mit Glasfront",
+  caption: "Polierter Naturstein in repräsentativen Eingangsbereichen braucht eine Maschine statt eines einfachen Wischmopps, um seinen Glanz zu behalten.",
+};
 
 const scopeCards = [
   {
@@ -242,26 +249,36 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Publikumsflächen und Altbaubüros" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Charlottenburg-Wilmersdorf ist geprägt von Bürohäusern, Kanzleien, Arztpraxen,
-            Einzelhandel, Hotellerie, Gastronomie und Wohn- und Geschäftshäusern. Rund um
-            Kurfürstendamm, Kantstraße, Bismarckstraße, Messe Berlin, City West und
-            Wilmersdorfer Straße treffen repräsentative Kundenbereiche auf intensiv genutzte
-            Arbeits- und Gemeinschaftsflächen.
-          </p>
-          <p>
-            Ein passender Reinigungsplan berücksichtigt deshalb nicht nur die Fläche, sondern
-            auch Besucheraufkommen, Geschäftszeiten, Materialien und den gewünschten Eindruck
-            auf Kunden oder Patienten.
-          </p>
-          <p>
-            Wer für Unterhalts-, Treppenhaus- und Fensterreinigung sonst drei unterschiedliche
-            Firmen koordinieren müsste, spart sich mit einem gebündelten Vertrag den
-            Abstimmungsaufwand: Ein Ansprechpartner ist für alle drei Teilleistungen im selben
-            Gebäude zuständig.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Publikumsflächen und Altbaubüros" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Charlottenburg-Wilmersdorf ist geprägt von Bürohäusern, Kanzleien, Arztpraxen,
+                Einzelhandel, Hotellerie, Gastronomie und Wohn- und Geschäftshäusern. Rund um
+                Kurfürstendamm, Kantstraße, Bismarckstraße, Messe Berlin, City West und
+                Wilmersdorfer Straße treffen repräsentative Kundenbereiche auf intensiv genutzte
+                Arbeits- und Gemeinschaftsflächen.
+              </p>
+              <p>
+                Ein passender Reinigungsplan berücksichtigt deshalb nicht nur die Fläche, sondern
+                auch Besucheraufkommen, Geschäftszeiten, Materialien und den gewünschten Eindruck
+                auf Kunden oder Patienten.
+              </p>
+              <p>
+                Wer für Unterhalts-, Treppenhaus- und Fensterreinigung sonst drei unterschiedliche
+                Firmen koordinieren müsste, spart sich mit einem gebündelten Vertrag den
+                Abstimmungsaufwand: Ein Ansprechpartner ist für alle drei Teilleistungen im selben
+                Gebäude zuständig.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 

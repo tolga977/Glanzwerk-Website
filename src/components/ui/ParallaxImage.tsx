@@ -6,6 +6,8 @@ import Image from "next/image";
 interface Photo {
   src: string;
   alt: string;
+  /** Kurzer, konkreter Bildtext – blendet als eigene Schicht über dem Foto ein, sobald es ins Blickfeld scrollt. Optional: nicht jedes Foto braucht einen. */
+  caption?: string;
 }
 
 interface ParallaxImageProps {
@@ -21,6 +23,10 @@ interface ParallaxImageProps {
  * Bild in einem maskierten Container mit dezentem Scroll-Tiefeneffekt
  * (kleines Translate-Y-Fenster, kein `background-attachment: fixed`).
  * Deaktiviert unterhalb von 1024px und bei `prefers-reduced-motion`.
+ *
+ * Trägt `photo.caption` einen Text, blendet zusätzlich eine Bildunterschrift
+ * über einem dunklen Verlauf ein – unabhängig vom Parallax-Effekt per eigenem
+ * IntersectionObserver, damit sie auch auf Mobilgeräten erscheint.
  */
 export default function ParallaxImage({
   photo,
@@ -32,6 +38,7 @@ export default function ParallaxImage({
 }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const [captionVisible, setCaptionVisible] = useState(false);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -57,6 +64,26 @@ export default function ParallaxImage({
     };
   }, []);
 
+  useEffect(() => {
+    if (!photo.caption) return;
+    const node = containerRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCaptionVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -60px 0px" },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [photo.caption]);
+
   return (
     <div
       ref={containerRef}
@@ -75,6 +102,19 @@ export default function ParallaxImage({
           style={objectPosition ? { objectPosition } : undefined}
         />
       </div>
+      {photo.caption && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-4 pt-12 sm:px-5 sm:pb-5">
+          <p
+            className="text-sm font-medium leading-snug text-white transition-all duration-700 ease-out motion-reduce:transition-none"
+            style={{
+              opacity: captionVisible ? 1 : 0,
+              transform: captionVisible ? "translateY(0)" : "translateY(14px)",
+            }}
+          >
+            {photo.caption}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

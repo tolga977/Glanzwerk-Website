@@ -131,4 +131,15 @@ export const serviceContentPhotos: Record<string, ServiceContentPhotoSet> = {
       alt: "Reinigungswagen in einem gepflegten Eingangsbereich",
     },
   },
+  "kanzleireinigung-berlin": {
+    hero: {
+      src: "/images/leistungen/kanzleireinigung-berlin/hero.webp",
+      alt: "Reinigungswagen in einem modernen Büro mit Blick auf die Berliner Skyline",
+      objectPosition: "50% 55%",
+    },
+    ctaUnten: {
+      src: "/images/leistungen/kanzleireinigung-berlin/cta-unten.webp",
+      alt: "Reinigungskraft wischt mit blauem Tuch einen Schreibtisch ab",
+    },
+  },
 };

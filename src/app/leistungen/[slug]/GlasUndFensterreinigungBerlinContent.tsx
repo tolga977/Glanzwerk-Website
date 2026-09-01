@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -36,6 +37,18 @@ const glasDistrictSlugs: Record<string, true> = {
   mitte: true,
   "tempelhof-schoeneberg": true,
   lichtenberg: true,
+};
+
+const aussenreinigungPhoto = {
+  src: "/images/leistungen/glas-und-fensterreinigung-berlin/aussenreinigung.webp",
+  alt: "Fensterreiniger zieht mit einem Abzieher eine große Schaufensterscheibe von außen ab",
+  caption: "Eingewaschen wird mit Wasser und Reiniger, abgezogen mit dem Abzieher in einem Zug von oben nach unten – nur so bleiben keine Streifen zurück.",
+};
+
+const rahmenreinigungPhoto = {
+  src: "/images/leistungen/glas-und-fensterreinigung-berlin/rahmenreinigung.webp",
+  alt: "Reinigungskraft wischt mit einem Tuch die Schiene einer Balkon- oder Terrassentür",
+  caption: "In Rahmen, Falzen und Schienen sammeln sich Staub und Kondenswasser, die eine reine Scheibenreinigung nicht erfasst – deshalb wird das im Angebot getrennt ausgewiesen.",
 };
 
 const scopeCards = [
@@ -307,27 +320,37 @@ export default function GlasUndFensterreinigungBerlinContent({
 
       {/* Rahmen und Falze */}
       <Section background="muted">
-        <SectionHeading eyebrow="Klare Abgrenzung" title={heading.sectionHeadings[2]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Eine reine Glasreinigung umfasst nicht automatisch die vollständige Reinigung von
-            Rahmen, Falzen, Fensterbänken oder angrenzenden Flächen. Deshalb wird vor Beginn
-            eindeutig festgelegt, welche Bestandteile enthalten sind.
-          </p>
-          <p>
-            Der Grund für diese Trennung liegt im Aufwand: Eine reine Scheibenreinigung im
-            Einwascher-Abzieher-Verfahren dauert deutlich kürzer als eine gründliche Reinigung von
-            Rahmen, Falzen und Fensterbänken, in denen sich Staub, Insekten und
-            Kondenswasserreste ansammeln können. Wird beides im selben Preis erwartet, ohne dass
-            es vereinbart wurde, führt das erfahrungsgemäß zu Missverständnissen – deshalb listen
-            wir den Umfang im Angebot konkret auf, statt ihn allgemein zu formulieren.
-          </p>
-          <p>
-            Fensterbänke im Innenbereich zählen in den meisten Fällen zum Leistungsumfang der
-            Unterhaltsreinigung, nicht automatisch zur Glas- und Fensterreinigung. Nutzen Sie
-            beide Leistungen gemeinsam, stimmen wir ab, welche Fläche zu welcher Leistung gehört,
-            damit nichts doppelt oder gar nicht gereinigt wird.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Klare Abgrenzung" title={heading.sectionHeadings[2]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Eine reine Glasreinigung umfasst nicht automatisch die vollständige Reinigung von
+                Rahmen, Falzen, Fensterbänken oder angrenzenden Flächen. Deshalb wird vor Beginn
+                eindeutig festgelegt, welche Bestandteile enthalten sind.
+              </p>
+              <p>
+                Der Grund für diese Trennung liegt im Aufwand: Eine reine Scheibenreinigung im
+                Einwascher-Abzieher-Verfahren dauert deutlich kürzer als eine gründliche Reinigung von
+                Rahmen, Falzen und Fensterbänken, in denen sich Staub, Insekten und
+                Kondenswasserreste ansammeln können. Wird beides im selben Preis erwartet, ohne dass
+                es vereinbart wurde, führt das erfahrungsgemäß zu Missverständnissen – deshalb listen
+                wir den Umfang im Angebot konkret auf, statt ihn allgemein zu formulieren.
+              </p>
+              <p>
+                Fensterbänke im Innenbereich zählen in den meisten Fällen zum Leistungsumfang der
+                Unterhaltsreinigung, nicht automatisch zur Glas- und Fensterreinigung. Nutzen Sie
+                beide Leistungen gemeinsam, stimmen wir ab, welche Fläche zu welcher Leistung gehört,
+                damit nichts doppelt oder gar nicht gereinigt wird.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={rahmenreinigungPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -445,21 +468,31 @@ export default function GlasUndFensterreinigungBerlinContent({
 
       {/* Vorbereitung */}
       <Section background="white">
-        <SectionHeading eyebrow="Kurze Vorbereitung, glatter Ablauf" title={heading.sectionHeadings[8]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Für Innenseiten ist Zugang zu den jeweiligen Räumen nötig. Bei Besprechungsräumen oder
-            Büros mit vertraulichen Unterlagen sollte vorab klar sein, wer den Zutritt begleitet
-            oder ob eine Reinigung außerhalb der Nutzungszeiten sinnvoller ist. Gegenstände auf
-            Fensterbänken, die im Weg stehen, lassen sich schneller entfernen, wenn sie vorher zur
-            Seite geräumt wurden.
-          </p>
-          <p>
-            Bei Objekten, für die eine Hubarbeitsbühne oder ein Fahrzeug mit Anhänger benötigt
-            wird, ist eine kurzfristig freigehaltene Stellfläche vor dem Gebäude hilfreich, damit
-            der Termin wie geplant stattfinden kann und nicht an einem zugeparkten Gehweg
-            scheitert.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Kurze Vorbereitung, glatter Ablauf" title={heading.sectionHeadings[8]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Für Innenseiten ist Zugang zu den jeweiligen Räumen nötig. Bei Besprechungsräumen oder
+                Büros mit vertraulichen Unterlagen sollte vorab klar sein, wer den Zutritt begleitet
+                oder ob eine Reinigung außerhalb der Nutzungszeiten sinnvoller ist. Gegenstände auf
+                Fensterbänken, die im Weg stehen, lassen sich schneller entfernen, wenn sie vorher zur
+                Seite geräumt wurden.
+              </p>
+              <p>
+                Bei Objekten, für die eine Hubarbeitsbühne oder ein Fahrzeug mit Anhänger benötigt
+                wird, ist eine kurzfristig freigehaltene Stellfläche vor dem Gebäude hilfreich, damit
+                der Termin wie geplant stattfinden kann und nicht an einem zugeparkten Gehweg
+                scheitert.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={aussenreinigungPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -540,8 +573,8 @@ export default function GlasUndFensterreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -569,9 +602,6 @@ export default function GlasUndFensterreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* FAQ */}
@@ -584,6 +614,19 @@ export default function GlasUndFensterreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="glas-fensterreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">

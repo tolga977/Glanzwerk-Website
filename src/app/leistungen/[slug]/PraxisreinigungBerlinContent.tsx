@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -32,6 +33,12 @@ import Button from "@/components/ui/Button";
  * anderen Leistungsseiten durchlaufen weiterhin unverändert den generischen
  * Zweig in page.tsx.
  */
+
+const hygienenachweisPhoto = {
+  src: "/images/leistungen/praxisreinigung-berlin/hygienenachweis.webp",
+  alt: "Toilette vor und nach der Reinigung im direkten Vergleich",
+  caption: "Kalkränder und Verfärbungen im Sanitärbereich fallen Patientinnen und Patienten als Erstes auf – und sind zugleich am schnellsten wieder beseitigt.",
+};
 
 const scopeCards = [
   {
@@ -561,11 +568,21 @@ export default function PraxisreinigungBerlinContent({
 
       {/* Farbcodierungssystem für Reinigungstücher */}
       <Section background="tint">
-        <SectionHeading eyebrow="Hygienekonzept" title="Besonders wichtig in medizinischen Räumen" />
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          In einer Praxis mit Behandlungsräumen, Wartebereich und Sanitäranlagen ist die Trennung
-          nach Farbcode ein zusätzlicher Baustein für konsequente Hygiene.
-        </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Hygienekonzept" title="Besonders wichtig in medizinischen Räumen" />
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+              In einer Praxis mit Behandlungsräumen, Wartebereich und Sanitäranlagen ist die Trennung
+              nach Farbcode ein zusätzlicher Baustein für konsequente Hygiene.
+            </p>
+          </div>
+          <ParallaxImage
+            photo={hygienenachweisPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
+        </div>
         <div className="mt-8">
           <HygieneFarbcodeSystem title="Die Vorteile auf einen Blick" />
         </div>
@@ -711,8 +728,8 @@ export default function PraxisreinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Praxisgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -739,9 +756,6 @@ export default function PraxisreinigungBerlinContent({
             sehen Sie, in welchen Bezirken wir bereits aktiv sind.
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* 13. Dreimonatige Testphase */}
@@ -766,6 +780,19 @@ export default function PraxisreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="praxisreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* 15. Abschließender CTA */}
       <Section background="muted">

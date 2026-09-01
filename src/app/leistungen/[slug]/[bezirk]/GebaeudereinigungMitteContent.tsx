@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -20,9 +21,15 @@ import Button from "@/components/ui/Button";
  * Bewusst getrennt vom generischen [slug]/[bezirk]-Template, aus demselben Grund wie
  * die individuell verfassten Leistungsseiten unter [slug]: der Auftragstext folgt einer
  * eigenen, deutlich umfangreicheren Abschnittsstruktur (12 Abschnitte statt der fixen
- * Slots des generischen Kombi-Templates). Bewusst photo-los gehalten, um am bestehenden,
- * bild-freien Erscheinungsbild der generischen Kombi-Seiten festzuhalten.
+ * Slots des generischen Kombi-Templates). Ergänzt um ein Foto in der Einleitung
+ * (August 2026), damit die Seite nicht ausschließlich aus Text besteht.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/mitte.webp",
+  alt: "Wischmopp auf einer hellen Treppe in einem modernen Treppenhaus",
+  caption: "Hoher Publikumsverkehr in einem zentralen Bezirk bedeutet auch: Eingänge und Treppenhäuser sind schneller wieder verschmutzt als anderswo.",
+};
 
 const scopeCards = [
   {
@@ -246,35 +253,45 @@ export default function GebaeudereinigungMitteContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Reinigung im zentralen Berliner Bezirk" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Berlin-Mitte vereint Bürostandorte, medizinische Einrichtungen, Kanzleien, Hotels,
-            Gastronomie, Einzelhandel und öffentliche Einrichtungen auf engem Raum. Rund um
-            Alexanderplatz, Friedrichstraße, Potsdamer Platz, Moabit, Tiergarten und den
-            Hauptbahnhof unterscheiden sich Gebäudenutzung und Besucheraufkommen teilweise
-            deutlich.
-          </p>
-          <p>
-            Ein Büro mit regelmäßigem Kundenverkehr benötigt einen anderen Reinigungsplan als
-            eine Praxis, ein Treppenhaus oder ein gastronomischer Betrieb. Deshalb legen wir vor
-            Beginn fest, welche Flächen gereinigt werden, wie häufig die Einsätze stattfinden und
-            welche Zeitfenster zum Arbeitsalltag passen.
-          </p>
-          <p>
-            Die Bausubstanz in Mitte reicht von sanierten Gründerzeitbauten mit Stuckdecken und
-            historischen Treppenhäusern bis zu modernen Bürohochhäusern mit Glasfassaden und
-            Aufzugsanlagen. Ein einheitliches Reinigungsverfahren für den gesamten Bezirk würde
-            weder der empfindlichen Altbausubstanz noch den großflächigen Verglasungen moderner
-            Neubauten gerecht – wir wählen Mittel und Vorgehen deshalb nach dem tatsächlich
-            vorhandenen Material.
-          </p>
-          <p>
-            Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für
-            unterschiedliche Teilleistungen: Unterhalts-, Treppenhaus- und Fensterreinigung laufen
-            über dieselbe Kontaktperson, statt drei getrennte Dienstleister für ein einziges
-            Gebäude zu koordinieren.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Reinigung im zentralen Berliner Bezirk" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Berlin-Mitte vereint Bürostandorte, medizinische Einrichtungen, Kanzleien, Hotels,
+                Gastronomie, Einzelhandel und öffentliche Einrichtungen auf engem Raum. Rund um
+                Alexanderplatz, Friedrichstraße, Potsdamer Platz, Moabit, Tiergarten und den
+                Hauptbahnhof unterscheiden sich Gebäudenutzung und Besucheraufkommen teilweise
+                deutlich.
+              </p>
+              <p>
+                Ein Büro mit regelmäßigem Kundenverkehr benötigt einen anderen Reinigungsplan als
+                eine Praxis, ein Treppenhaus oder ein gastronomischer Betrieb. Deshalb legen wir vor
+                Beginn fest, welche Flächen gereinigt werden, wie häufig die Einsätze stattfinden und
+                welche Zeitfenster zum Arbeitsalltag passen.
+              </p>
+              <p>
+                Die Bausubstanz in Mitte reicht von sanierten Gründerzeitbauten mit Stuckdecken und
+                historischen Treppenhäusern bis zu modernen Bürohochhäusern mit Glasfassaden und
+                Aufzugsanlagen. Ein einheitliches Reinigungsverfahren für den gesamten Bezirk würde
+                weder der empfindlichen Altbausubstanz noch den großflächigen Verglasungen moderner
+                Neubauten gerecht – wir wählen Mittel und Vorgehen deshalb nach dem tatsächlich
+                vorhandenen Material.
+              </p>
+              <p>
+                Ein gebündelter Vertrag erspart die Abstimmung mit mehreren Ansprechpartnern für
+                unterschiedliche Teilleistungen: Unterhalts-, Treppenhaus- und Fensterreinigung laufen
+                über dieselbe Kontaktperson, statt drei getrennte Dienstleister für ein einziges
+                Gebäude zu koordinieren.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 

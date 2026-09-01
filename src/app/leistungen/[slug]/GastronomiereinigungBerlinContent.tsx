@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -31,6 +32,18 @@ import Button from "@/components/ui/Button";
  * Anerkennung, garantierter Keimfreiheit oder Spezialreinigung von
  * Abluftanlagen/Fettabscheidern, da diese nicht nachgewiesen sind.
  */
+
+const bodenreinigungPhoto = {
+  src: "/images/leistungen/gastronomiereinigung-berlin/bodenreinigung.webp",
+  alt: "Wischmopp im Vordergrund, im Hintergrund ein Reinigungswagen mit Eimer",
+  caption: "Ob im Gastraum oder auf der Terrasse: Böden in der Gastronomie werden mehrmals täglich nachgewischt, nicht nur einmal am Ende des Tages.",
+};
+
+const hygieneSanitaerPhoto = {
+  src: "/images/leistungen/gastronomiereinigung-berlin/hygiene-sanitaer.webp",
+  alt: "Toilette vor und nach der Reinigung im direkten Vergleich",
+  caption: "Der Sanitärbereich ist für Gäste oft der einzige Blick hinter die Kulissen – ein ungepflegtes WC wirft ein schlechteres Licht auf den Betrieb als ein einzelner voller Tisch.",
+};
 
 const scopeCards = [
   {
@@ -358,35 +371,55 @@ export default function GastronomiereinigungBerlinContent({
 
       {/* Terrassen */}
       <Section background="muted">
-        <SectionHeading eyebrow="Auch außerhalb des Gastraums" title={heading.sectionHeadings[8]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Viele gastronomische Betriebe haben Terrassen oder Außensitzbereiche, die anderen
-            Verschmutzungen ausgesetzt sind als der Innenraum – Laub, Vogelkot, Straßenstaub und
-            Witterung wirken hier unmittelbarer.
-          </p>
-          <p>
-            Je nach Saison und Wetterlage lässt sich für Außenflächen ein eigener Rhythmus
-            vereinbaren, unabhängig vom Reinigungsplan des Gastraums.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Auch außerhalb des Gastraums" title={heading.sectionHeadings[8]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Viele gastronomische Betriebe haben Terrassen oder Außensitzbereiche, die anderen
+                Verschmutzungen ausgesetzt sind als der Innenraum – Laub, Vogelkot, Straßenstaub und
+                Witterung wirken hier unmittelbarer.
+              </p>
+              <p>
+                Je nach Saison und Wetterlage lässt sich für Außenflächen ein eigener Rhythmus
+                vereinbaren, unabhängig vom Reinigungsplan des Gastraums.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={bodenreinigungPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
       {/* Zusammenspiel Personal */}
       <Section background="white">
-        <SectionHeading eyebrow="Klare Aufgabenteilung" title={heading.sectionHeadings[9]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Manche Aufgaben, etwa das Abwischen von Tischen zwischen zwei Gästen oder das
-            Nachfüllen von Servietten, übernimmt in der Regel das eigene Servicepersonal während
-            des laufenden Betriebs. Die vereinbarte Reinigung deckt die tiefergehende, regelmäßige
-            Pflege ab – etwa Böden, Sanitärbereiche und Kontaktflächen außerhalb der unmittelbaren
-            Servicezeiten.
-          </p>
-          <p>
-            Diese Aufteilung legen wir vor Beginn konkret fest, damit keine Aufgabe doppelt oder
-            gar nicht erledigt wird.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Klare Aufgabenteilung" title={heading.sectionHeadings[9]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Manche Aufgaben, etwa das Abwischen von Tischen zwischen zwei Gästen oder das
+                Nachfüllen von Servietten, übernimmt in der Regel das eigene Servicepersonal während
+                des laufenden Betriebs. Die vereinbarte Reinigung deckt die tiefergehende, regelmäßige
+                Pflege ab – etwa Böden, Sanitärbereiche und Kontaktflächen außerhalb der unmittelbaren
+                Servicezeiten.
+              </p>
+              <p>
+                Diese Aufteilung legen wir vor Beginn konkret fest, damit keine Aufgabe doppelt oder
+                gar nicht erledigt wird.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={hygieneSanitaerPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -539,8 +572,8 @@ export default function GastronomiereinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -568,9 +601,6 @@ export default function GastronomiereinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* Testphase */}
@@ -595,6 +625,19 @@ export default function GastronomiereinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="gastronomiereinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">

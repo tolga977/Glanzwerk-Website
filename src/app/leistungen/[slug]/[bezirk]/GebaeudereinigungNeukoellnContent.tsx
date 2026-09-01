@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -21,6 +22,12 @@ import Button from "@/components/ui/Button";
  * Bewusst getrennt vom generischen [slug]/[bezirk]-Template, aus demselben
  * Grund wie GebaeudereinigungPankowContent.tsx / GebaeudereinigungTempelhofSchoenebergContent.tsx.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/neukoelln.webp",
+  alt: "Reinigungskraft mopft von oben fotografiert eine gefliestes Treppenhaus",
+  caption: "Vom dichten Kern bis Rudow reicht die Bandbreite an Treppenhäusern in Neukölln – entsprechend unterschiedlich fällt auch der Reinigungsaufwand je Objekt aus.",
+};
 
 const scopeCards = [
   {
@@ -234,26 +241,36 @@ export default function GebaeudereinigungNeukoellnContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Vom dichten Kern bis Rudow" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Neukölln gehört zu den vielfältigsten Wirtschaftsstandorten Berlins. Neben
-            klassischen Büroflächen finden sich Arztpraxen, Dienstleistungsunternehmen,
-            Hotels, Einzelhandel, Produktionsbetriebe und moderne Gewerbestandorte. Rund um
-            Hermannplatz, Sonnenallee, Karl-Marx-Straße, die Neukölln Arcaden, Britz und das
-            Gewerbegebiet Grenzallee entstehen unterschiedlichste Anforderungen an Sauberkeit
-            und Pflege.
-          </p>
-          <p>
-            Ein individuell abgestimmter Reinigungsplan berücksichtigt deshalb
-            Flächengröße, Besucheraufkommen, Nutzung, Materialien und betriebliche Abläufe.
-          </p>
-          <p>
-            Für ein Objekt mit mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem
-            organisatorische Vorteile gegenüber getrennten Einzelaufträgen: Unterhalts-,
-            Treppenhaus- und Fensterreinigung laufen über denselben festen Ansprechpartner, statt
-            mit drei unterschiedlichen Firmen koordiniert zu werden.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Vom dichten Kern bis Rudow" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Neukölln gehört zu den vielfältigsten Wirtschaftsstandorten Berlins. Neben
+                klassischen Büroflächen finden sich Arztpraxen, Dienstleistungsunternehmen,
+                Hotels, Einzelhandel, Produktionsbetriebe und moderne Gewerbestandorte. Rund um
+                Hermannplatz, Sonnenallee, Karl-Marx-Straße, die Neukölln Arcaden, Britz und das
+                Gewerbegebiet Grenzallee entstehen unterschiedlichste Anforderungen an Sauberkeit
+                und Pflege.
+              </p>
+              <p>
+                Ein individuell abgestimmter Reinigungsplan berücksichtigt deshalb
+                Flächengröße, Besucheraufkommen, Nutzung, Materialien und betriebliche Abläufe.
+              </p>
+              <p>
+                Für ein Objekt mit mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem
+                organisatorische Vorteile gegenüber getrennten Einzelaufträgen: Unterhalts-,
+                Treppenhaus- und Fensterreinigung laufen über denselben festen Ansprechpartner, statt
+                mit drei unterschiedlichen Firmen koordiniert zu werden.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 

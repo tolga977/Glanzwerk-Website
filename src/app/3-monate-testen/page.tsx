@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import EditorialIntro from "@/components/ui/EditorialIntro";
-import BrandPhoto from "@/components/ui/BrandPhoto";
 import ProcessSteps from "@/components/ui/ProcessSteps";
+import TrialCalendar from "@/components/home/TrialCalendar";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
-import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
 import { webPageSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
@@ -147,31 +146,49 @@ export default function DreiMonateTestenPage() {
         })}
       />
 
-      <Section background="white" className="pt-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="max-w-xl">
-            <p className="mb-4 inline-flex items-center rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-500">
+      {/*
+        Hero mit demselben Kalender-Visual wie der Testphase-Abschnitt der
+        Startseite (`TrialCalendar`, siehe dortige Begründung) — hier aber
+        als Seiten-Hero mit Text links, Kalender rechts (Standard-Leserichtung
+        dieser eigenständigen Seite, keine Notwendigkeit, das Muster wie auf
+        der Startseite zu spiegeln, da hier keine benachbarten Abschnitte im
+        selben Muster aufeinanderfolgen).
+      */}
+      <Section
+        background="navy"
+        decor
+        spacing="roomy"
+        surface="right"
+        backdrop={{
+          src: "/images/testphase/buero-nacht.webp",
+          imageClassName: "trial-backdrop",
+          tone: "carry",
+        }}
+      >
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+          <div>
+            <p className="mb-4 inline-flex items-center rounded-control border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-sm">
               Neu bei Glanzwerk
             </p>
-            <h1 className="font-display text-3xl font-medium tracking-tight text-brand-900 sm:text-4xl">
-              {renderHighlightedH1(heading.h1, heading.h1Highlight)}
+            <h1 className="font-display display-lg text-pretty text-3xl font-medium text-white sm:text-4xl">
+              {renderHighlightedH1(heading.h1, heading.h1Highlight, "text-brand-200")}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-brand-100">
               Lernen Sie Glanzwerk im laufenden Betrieb kennen – ohne dass Sie
               sich vorab langfristig binden müssen. Die Reinigung wird dabei
               ganz normal beauftragt und bezahlt; getestet wird die
               Zusammenarbeit.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              {/* Waren <a href> auf interne Ziele — damit lud jeder Klick die
-                  Seite komplett neu, statt im Router zu navigieren. */}
-              <Button href="/kontakt">Testphase anfragen</Button>
-              <Button href="/preisrechner" variant="outline">
+              <Button href="/kontakt" size="xl">Testphase anfragen</Button>
+              <Button href="/preisrechner" variant="onMedia" size="xl">
                 Preis berechnen
               </Button>
             </div>
           </div>
-          <BrandPhoto photo={photos.businessHandshake} priority className="shadow-deep" />
+          <div className="w-full">
+            <TrialCalendar />
+          </div>
         </div>
       </Section>
 

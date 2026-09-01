@@ -660,7 +660,7 @@ export default async function HomePage() {
               echtes Leerzeichen im Text steht. Der Textinhalt lautet wieder
               „Gebäudereinigung Berlin", identisch mit `seoHeadings`.
             */}
-            <h1 className="font-display display-xl text-balance text-[2.375rem] font-medium text-white sm:text-6xl lg:text-7xl lg:text-brand-900">
+            <h1 className="font-display display-xl text-balance text-[2.375rem] font-extrabold text-white sm:text-6xl lg:text-7xl lg:text-brand-900">
               {h1Lead && `${h1Lead} `}
               <span className="block text-brand-200 lg:text-brand-500">{h1Accent}</span>
             </h1>
@@ -1773,8 +1773,8 @@ export default async function HomePage() {
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von Objektgröße,
           Leistungsumfang und Reinigungsintervall ab.
         </p>
-        <div className="mt-8 max-w-md">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -1805,9 +1805,6 @@ export default async function HomePage() {
             </Link>
             .
           </p>
-        </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -1934,6 +1931,23 @@ export default async function HomePage() {
           <FadeIn>
             <FAQ items={homeFaqItems} />
           </FadeIn>
+        </div>
+      </Section>
+
+      {/*
+        10b. Google-Unternehmensprofil — eigener, später Abschnitt statt einer
+        Karte mitten im Einsatzgebiet-Kapitel. Wer bis hierhin gescrollt ist,
+        hat Leistungen, Bewertungen und FAQ bereits gesehen; der Sprung zu
+        Google (Karte + Profil) ist an dieser Stelle die naheliegende letzte
+        Bestätigung vor der Kontaktaufnahme.
+      */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
         </div>
       </Section>
 

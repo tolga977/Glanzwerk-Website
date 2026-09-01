@@ -15,11 +15,11 @@ interface Photo {
 
 /**
  * Featured (hero) photo per service. As of Juli 2026 (korrigiertes
- * Bilderpaket) the 10 services covered by the package use their dedicated
- * local `hero.png` from `serviceContentPhotos.ts`, explicitly replacing
- * the previous Unsplash/Pexels hero photo per the operator's correction.
- * "kanzleireinigung-berlin" and "fitnessstudioreinigung-berlin" were not
- * part of the package and keep their existing photo unchanged.
+ * Bilderpaket) the meisten Services nutzen ihr eigenes lokales `hero.*` aus
+ * `serviceContentPhotos.ts`. "kanzleireinigung-berlin" erhielt im August
+ * 2026 ebenfalls ein eigenes lokales Foto (vorher Pexels-Hotlink).
+ * "fitnessstudioreinigung-berlin" ist weiterhin nicht im Bilderpaket
+ * enthalten (kein passendes Motiv verfügbar) und behält ihr bisheriges Foto.
  */
 export const servicePhotos: Record<string, Photo> = {
   "gebaeudereinigung-berlin": serviceContentPhotos["gebaeudereinigung-berlin"].hero,
@@ -30,7 +30,7 @@ export const servicePhotos: Record<string, Photo> = {
   "glas-und-fensterreinigung-berlin": serviceContentPhotos["glas-und-fensterreinigung-berlin"].hero,
   "grundreinigung-berlin": serviceContentPhotos["grundreinigung-berlin"].hero,
   "kita-und-schulreinigung-berlin": serviceContentPhotos["kita-und-schulreinigung-berlin"].hero,
-  "kanzleireinigung-berlin": photos.lawOfficeReception,
+  "kanzleireinigung-berlin": serviceContentPhotos["kanzleireinigung-berlin"].hero,
   "fitnessstudioreinigung-berlin": photos.gymInterior,
   "autohausreinigung-berlin": serviceContentPhotos["autohausreinigung-berlin"].hero,
   "gastronomiereinigung-berlin": serviceContentPhotos["gastronomiereinigung-berlin"].hero,

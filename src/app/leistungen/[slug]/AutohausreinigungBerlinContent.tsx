@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -28,6 +29,12 @@ import Button from "@/components/ui/Button";
  * die übrigen individuell verfassten Leistungsseiten. Anders als die meisten
  * anderen Leistungen enthält der Auftrag hier bewusst keine Testphasen-Sektion.
  */
+
+const schaufensterPhoto = {
+  src: "/images/leistungen/autohausreinigung-berlin/schaufenster.webp",
+  alt: "Nasse Glasfläche eines Autohaus-Schaufensters mit Wassertropfen, im Hintergrund Grünpflanzen",
+  caption: "Auf einer nassen Schaufensterscheibe ist jeder Tropfen sichtbar, bis der letzte Zug mit dem Abzieher folgt – genau die Flächen, die Kundinnen und Kunden zuerst sehen.",
+};
 
 const scopeCards = [
   {
@@ -288,13 +295,23 @@ export default function AutohausreinigungBerlinContent({
 
       {/* Showroom */}
       <Section background="muted">
-        <SectionHeading eyebrow="Besondere Aufmerksamkeit" title={heading.sectionHeadings[2]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Große, offene Flächen und helle Beleuchtung machen Staub, Schlieren und Laufspuren
-            schnell sichtbar. Gleichzeitig muss die Reinigung so geplant werden, dass
-            Fahrzeugpräsentation und Kundenverkehr möglichst wenig beeinträchtigt werden.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Besondere Aufmerksamkeit" title={heading.sectionHeadings[2]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Große, offene Flächen und helle Beleuchtung machen Staub, Schlieren und Laufspuren
+                schnell sichtbar. Gleichzeitig muss die Reinigung so geplant werden, dass
+                Fahrzeugpräsentation und Kundenverkehr möglichst wenig beeinträchtigt werden.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={schaufensterPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -535,8 +552,8 @@ export default function AutohausreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -564,9 +581,6 @@ export default function AutohausreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* FAQ */}
@@ -579,6 +593,19 @@ export default function AutohausreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="autohausreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">

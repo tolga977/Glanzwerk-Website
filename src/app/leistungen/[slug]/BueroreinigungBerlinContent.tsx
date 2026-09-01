@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -31,6 +32,12 @@ import Button from "@/components/ui/Button";
  * übrigen Leistungsseiten pressen lässt. Die anderen Leistungsseiten
  * durchlaufen weiterhin unverändert den generischen Zweig in page.tsx.
  */
+
+const detailarbeitPhoto = {
+  src: "/images/leistungen/bueroreinigung-berlin/detailarbeit.webp",
+  alt: "Reinigungskraft wischt mit blauem Handschuh und Mikrofasertuch das Gestell eines Bürostuhls ab",
+  caption: "Staub setzt sich an Stuhlgestellen und Rollen ab, lange bevor er am Boden auffällt. Bei der Büroreinigung wird deshalb auch dort abgewischt, nicht nur an Tisch und Boden.",
+};
 
 const scopeCards = [
   {
@@ -518,33 +525,43 @@ export default function BueroreinigungBerlinContent({
 
       {/* 7. Materialgerechte Reinigung */}
       <Section background="white">
-        <SectionHeading eyebrow="Schutz von Einrichtung und Oberflächen" title={heading.sectionHeadings[5]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Moderne Büros kombinieren unterschiedliche Materialien. Dazu gehören beschichtete
-            Schreibtische, Holzoberflächen, Glaswände, Metall, Kunststoff, Teppichboden und
-            verschiedene Hartbodenbeläge.
-          </p>
-          <p>
-            Nicht jedes Reinigungsmittel eignet sich für jede Oberfläche. Deshalb wählen wir Mittel
-            und Verfahren passend zum jeweiligen Material aus, statt ein einzelnes Produkt für alle
-            Flächen zu verwenden.
-          </p>
-          <p>
-            Die Dosierung richtet sich nach Herstellerangaben, Verschmutzungsgrad und Oberfläche.
-            Desinfektionsmittel werden nur dort eingesetzt, wo dies vereinbart oder hygienisch
-            erforderlich ist.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Schutz von Einrichtung und Oberflächen" title={heading.sectionHeadings[5]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Moderne Büros kombinieren unterschiedliche Materialien. Dazu gehören beschichtete
+                Schreibtische, Holzoberflächen, Glaswände, Metall, Kunststoff, Teppichboden und
+                verschiedene Hartbodenbeläge.
+              </p>
+              <p>
+                Nicht jedes Reinigungsmittel eignet sich für jede Oberfläche. Deshalb wählen wir Mittel
+                und Verfahren passend zum jeweiligen Material aus, statt ein einzelnes Produkt für alle
+                Flächen zu verwenden.
+              </p>
+              <p>
+                Die Dosierung richtet sich nach Herstellerangaben, Verschmutzungsgrad und Oberfläche.
+                Desinfektionsmittel werden nur dort eingesetzt, wo dies vereinbart oder hygienisch
+                erforderlich ist.
+              </p>
+            </div>
+            <Link
+              href="/umwelt-verantwortung"
+              className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            >
+              Mehr über Umwelt und Verantwortung
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </div>
+          <ParallaxImage
+            photo={detailarbeitPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
-        <Link
-          href="/umwelt-verantwortung"
-          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-        >
-          Mehr über Umwelt und Verantwortung
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Link>
       </Section>
 
       {/* Farbcodierungssystem für Reinigungstücher */}
@@ -700,8 +717,8 @@ export default function BueroreinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von Bürogröße,
           Reinigungsumfang und gewünschtem Intervall ab.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -729,9 +746,6 @@ export default function BueroreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* 13. Dreimonatige Testphase */}
@@ -756,6 +770,19 @@ export default function BueroreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="bueroreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* 15. Abschließender CTA */}
       <Section background="muted">

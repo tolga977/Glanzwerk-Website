@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -38,6 +39,12 @@ import Button from "@/components/ui/Button";
 const comboDistrictSlugs = new Set(
   combos.filter((combo) => combo.serviceSlug === "kita-und-schulreinigung-berlin").map((combo) => combo.districtSlug),
 );
+
+const sicherheitPhoto = {
+  src: "/images/leistungen/kita-und-schulreinigung-berlin/sicherheit.webp",
+  alt: "Warnschild für nassen Boden neben einer Reinigungskraft mit Mopp und Eimer im Flur",
+  caption: "Ein nasser Boden ist in einer Einrichtung mit Kindern ein eigenes Sicherheitsthema. Das Warnschild steht deshalb, bis der Boden wirklich abgetrocknet ist.",
+};
 
 const scopeCards = [
   {
@@ -294,20 +301,30 @@ export default function KitaUndSchulreinigungBerlinContent({
 
       {/* Gesetzlicher Rahmen */}
       <Section background="muted">
-        <SectionHeading eyebrow="Warum Hygiene hier besonders zählt" title={heading.sectionHeadings[2]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Kindertagesstätten und Schulen gelten als Gemeinschaftseinrichtungen im Sinne des
-            Infektionsschutzgesetzes (IfSG). Träger und Einrichtungsleitungen sind dafür
-            verantwortlich, einen eigenen Hygieneplan zu führen, der unter anderem
-            Reinigungsintervalle für Sanitärbereiche und häufig berührte Flächen vorsieht.
-          </p>
-          <p>
-            Die vereinbarte Reinigung stimmen wir auf Wunsch so ab, dass sie zu den in Ihrem
-            Hygieneplan festgelegten Vorgaben passt. Die inhaltliche Verantwortung für den
-            Hygieneplan selbst bleibt bei Träger und Einrichtungsleitung – wir setzen die
-            vereinbarten Reinigungsarbeiten zuverlässig um.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Warum Hygiene hier besonders zählt" title={heading.sectionHeadings[2]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Kindertagesstätten und Schulen gelten als Gemeinschaftseinrichtungen im Sinne des
+                Infektionsschutzgesetzes (IfSG). Träger und Einrichtungsleitungen sind dafür
+                verantwortlich, einen eigenen Hygieneplan zu führen, der unter anderem
+                Reinigungsintervalle für Sanitärbereiche und häufig berührte Flächen vorsieht.
+              </p>
+              <p>
+                Die vereinbarte Reinigung stimmen wir auf Wunsch so ab, dass sie zu den in Ihrem
+                Hygieneplan festgelegten Vorgaben passt. Die inhaltliche Verantwortung für den
+                Hygieneplan selbst bleibt bei Träger und Einrichtungsleitung – wir setzen die
+                vereinbarten Reinigungsarbeiten zuverlässig um.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={sicherheitPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -505,8 +522,8 @@ export default function KitaUndSchulreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -533,9 +550,6 @@ export default function KitaUndSchulreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* Testphase */}
@@ -560,6 +574,19 @@ export default function KitaUndSchulreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="kita-schulreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">

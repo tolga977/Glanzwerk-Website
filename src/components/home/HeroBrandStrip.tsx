@@ -5,7 +5,7 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  * Markenleiste unmittelbar unter der Hero-Bühne.
  *
  * ── Bauform ─────────────────────────────────────────────────────────────
- * Eine Überschrift, darunter eine Reihe. Keine Karten, keine Plättchen,
+ * Eine Überschrift, darunter ein Laufband. Keine Karten, keine Plättchen,
  * keine Rahmen um die Logos — jede Umrandung würde aus einer Sachangabe ein
  * Siegel machen, und drei Siegel nebeneinander lesen sich als Zertifizierung.
  *
@@ -26,18 +26,41 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  *
  * ── Die Logos ───────────────────────────────────────────────────────────
  * Unveränderte Originaldateien in Originalfarben — nicht nachgezeichnet,
- * nicht umgefärbt, nicht verzerrt. Die Höhen sind je Logo einzeln gesetzt,
- * weil eine einheitliche Höhe bei diesen Seitenverhältnissen gerade NICHT
- * gleichwertig aussieht (Begründung an `heroBrandLogos`).
+ * nicht umgefärbt, nicht verzerrt. Jedes Logo bekommt hier bewusst dieselbe
+ * Anzeigehöhe (unabhängig vom individuellen `hoehe`-Wert in
+ * `heroBrandLogos.ts`, der für eine frühere, ruhende Reihen-Darstellung
+ * gedacht war) — im Laufband soll jede Marke optisch gleich viel Gewicht
+ * bekommen, statt nach Wortmarken-Anteil der Datei zu variieren.
  *
  * `grayscale` oder Deckkraft unter 100 % wäre hier eine Veränderung des
  * Logos und ist deshalb ausgeschlossen — auch als Ruhezustand.
  *
- * ── Reihenfolge und Umbruch ─────────────────────────────────────────────
- * Ab Tablet eine waagerechte Reihe mit großzügigem Abstand. Auf dem Telefon
- * bricht sie in zwei Zeilen um (`flex-wrap`) statt drei Logos auf 358 px zu
- * quetschen; die Höhen skalieren dort gemeinsam auf etwa drei Viertel.
+ * ── Laufband ────────────────────────────────────────────────────────────
+ * Dieselbe `.marquee`/`.marquee-track`-Mechanik wie bei `ReviewMarquee`
+ * (globals.css): die Spur enthält die Logoliste zweimal und verschiebt sich
+ * um genau die Hälfte, die zweite Hälfte ist `aria-hidden`+`inert`. Bewegung
+ * nur auf Zeigergeräten und pausiert bei Hover/Fokus; auf Touch und bei
+ * reduzierter Bewegung steht die Reihe still und lässt sich mit dem Finger
+ * schieben — exakt dieselbe, bereits geprüfte Zugänglichkeitslösung.
  */
+const LOGO_HEIGHT = 40;
+
+function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
+  return (
+    <div className="flex shrink-0 items-center px-8 sm:px-10 lg:px-12">
+      <Image
+        src={logo.src}
+        alt={logo.name}
+        width={logo.width}
+        height={logo.height}
+        sizes="160px"
+        className="w-auto object-contain"
+        style={{ height: `${LOGO_HEIGHT * 0.8}px` }}
+      />
+    </div>
+  );
+}
+
 export default function HeroBrandStrip() {
   return (
     <section
@@ -58,34 +81,25 @@ export default function HeroBrandStrip() {
           Qualität, auf die wir bei der Reinigung setzen
         </h2>
 
-        <ul className="mt-9 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:mt-10 sm:gap-x-16 lg:gap-x-24">
-          {heroBrandLogos.map((logo) => (
-            <li key={logo.name} className="flex items-center">
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={logo.width}
-                height={logo.height}
-                /*
-                  `sizes` ist knapp gehalten: die Logos werden nie breiter als
-                  rund 200 px dargestellt. Ohne die Angabe würde next/image
-                  eine Vollbreiten-Variante vorladen.
-                */
-                sizes="200px"
-                /*
-                  Die Höhe kommt als CSS-Variable und nicht als Inline-Wert:
-                  ein Inline-`height` wäre auf jeder Breite derselbe, und die
-                  Reihe braucht auf dem Telefon rund drei Viertel der
-                  Desktop-Höhe. Über die Variable greift die Breakpoint-Regel,
-                  und das Verhältnis der drei Logos untereinander bleibt in
-                  beiden Fällen erhalten.
-                */
-                style={{ "--logo-h": `${logo.hoehe}px` } as React.CSSProperties}
-                className="h-[calc(var(--logo-h)*0.75)] w-auto sm:h-[var(--logo-h)]"
-              />
-            </li>
-          ))}
-        </ul>
+        <div
+          className="marquee marquee-fade mt-9 sm:mt-10"
+          style={{ "--marquee-duration": "32s" } as React.CSSProperties}
+        >
+          <div className="marquee-track items-center">
+            {/* Original — dies ist die Fassung, die vorgelesen wird. */}
+            <div className="flex shrink-0 items-center">
+              {heroBrandLogos.map((logo) => (
+                <LogoItem key={logo.name} logo={logo} />
+              ))}
+            </div>
+            {/* Technische Kopie für den nahtlosen Umlauf, siehe ReviewMarquee.tsx. */}
+            <div className="flex shrink-0 items-center" aria-hidden="true" inert>
+              {heroBrandLogos.map((logo) => (
+                <LogoItem key={`${logo.name}-copy`} logo={logo} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

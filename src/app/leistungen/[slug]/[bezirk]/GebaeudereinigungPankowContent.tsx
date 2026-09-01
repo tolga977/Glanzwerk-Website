@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -24,6 +25,12 @@ import Button from "@/components/ui/Button";
  * „Pankow-Heinersdorf“ – eine fälschliche Dopplung der bereits separat aufgeführten
  * Ortsteile „Pankow“ und „Heinersdorf“ – und wurde deshalb entfernt.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/pankow.webp",
+  alt: "Reinigungskraft wischt einen Flur, im Hintergrund eine Kollegin und ein Feuerlöscher",
+  caption: "Mit der wachsenden Einwohnerzahl in Pankow steigt auch die Zahl der Gewerbeflächen, die regelmäßig betreut werden – oft durch mehrköpfige Teams.",
+};
 
 const scopeCards = [
   {
@@ -243,36 +250,46 @@ export default function GebaeudereinigungPankowContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Vielseitig genutzter Bezirk" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Der Bezirk Pankow reicht von dicht bebauten Geschäfts- und Wohnquartieren bis zu
-            Gewerbegebieten und ruhigeren äußeren Ortsteilen. Büroflächen rund um Prenzlauer
-            Berg oder Weißensee stellen teilweise andere Anforderungen als medizinische
-            Einrichtungen, Treppenhäuser oder Gewerbeobjekte in Buch, Karow oder Französisch
-            Buchholz.
-          </p>
-          <p>
-            Deshalb planen wir die Reinigung anhand der tatsächlichen Nutzung. Vor Beginn
-            werden Räume, Flächen, Intervalle, Zugangsregeln und geeignete Reinigungszeiten
-            festgelegt.
-          </p>
-          <p>
-            Mit dem anhaltenden Bevölkerungswachstum in Pankow ist auch die Zahl gewerblich
-            genutzter Gebäude gestiegen – von neu bezogenen Büroetagen in Prenzlauer Berg bis zu
-            Gewerbeflächen in den wachsenden äußeren Ortsteilen. Für ein einzelnes Gebäude mit
-            mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem organisatorische
-            Vorteile: Statt Unterhalts-, Treppenhaus- und Fensterreinigung bei drei
-            unterschiedlichen Anbietern zu koordinieren, läuft die gesamte Kommunikation über
-            einen festen Ansprechpartner.
-          </p>
-          <p>
-            In vielen älteren Gebäuden des Bezirks liegen Gewerbeflächen im Erdgeschoss unter
-            Wohnungen in den oberen Etagen. Das gemeinsame Treppenhaus gehört dann meist nicht zur
-            Gebäudereinigung der gewerblichen Einheit, sondern wird separat über die
-            Treppenhausreinigung des gesamten Hauses abgerechnet – diese Abgrenzung klären wir vor
-            Vertragsbeginn.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Vielseitig genutzter Bezirk" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Der Bezirk Pankow reicht von dicht bebauten Geschäfts- und Wohnquartieren bis zu
+                Gewerbegebieten und ruhigeren äußeren Ortsteilen. Büroflächen rund um Prenzlauer
+                Berg oder Weißensee stellen teilweise andere Anforderungen als medizinische
+                Einrichtungen, Treppenhäuser oder Gewerbeobjekte in Buch, Karow oder Französisch
+                Buchholz.
+              </p>
+              <p>
+                Deshalb planen wir die Reinigung anhand der tatsächlichen Nutzung. Vor Beginn
+                werden Räume, Flächen, Intervalle, Zugangsregeln und geeignete Reinigungszeiten
+                festgelegt.
+              </p>
+              <p>
+                Mit dem anhaltenden Bevölkerungswachstum in Pankow ist auch die Zahl gewerblich
+                genutzter Gebäude gestiegen – von neu bezogenen Büroetagen in Prenzlauer Berg bis zu
+                Gewerbeflächen in den wachsenden äußeren Ortsteilen. Für ein einzelnes Gebäude mit
+                mehreren Teilleistungen bringt ein gebündelter Vertrag vor allem organisatorische
+                Vorteile: Statt Unterhalts-, Treppenhaus- und Fensterreinigung bei drei
+                unterschiedlichen Anbietern zu koordinieren, läuft die gesamte Kommunikation über
+                einen festen Ansprechpartner.
+              </p>
+              <p>
+                In vielen älteren Gebäuden des Bezirks liegen Gewerbeflächen im Erdgeschoss unter
+                Wohnungen in den oberen Etagen. Das gemeinsame Treppenhaus gehört dann meist nicht zur
+                Gebäudereinigung der gewerblichen Einheit, sondern wird separat über die
+                Treppenhausreinigung des gesamten Hauses abgerechnet – diese Abgrenzung klären wir vor
+                Vertragsbeginn.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 

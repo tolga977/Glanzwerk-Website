@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { SeoHeadingSet } from "@/data/seoHeadings";
@@ -34,6 +35,12 @@ import Button from "@/components/ui/Button";
  * Grundreinigung eine Einmalleistung ist (siehe bereits vorhandene
  * oneOffServiceSlugs-Logik im generischen Template).
  */
+
+const tiefenreinigungPhoto = {
+  src: "/images/leistungen/grundreinigung-berlin/tiefenreinigung.webp",
+  alt: "Reinigungskraft wischt einen Sanitärbereich, im Hintergrund ein Reinigungswagen",
+  caption: "Sanitärbereiche gehören bei einer Grundreinigung zu den Flächen, die am gründlichsten nachbehandelt werden – Fugen, Ecken und Ablaufgitter eingeschlossen.",
+};
 
 const scopeCards = [
   {
@@ -317,20 +324,30 @@ export default function GrundreinigungBerlinContent({
 
       {/* Grob-/Feinreinigung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Zwei Arbeitsschritte" title={heading.sectionHeadings[4]} />
-        <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Nach Bauarbeiten läuft eine Grundreinigung in der Praxis meist zweistufig ab. Die
-            Grobreinigung entfernt zunächst sichtbaren Bauschmutz wie Staub, Klebereste,
-            Farbspritzer und grobe Verschmutzungen auf Böden und Oberflächen. Erst danach folgt die
-            eigentliche Feinreinigung mit Detailarbeiten an Fensterbänken, Ecken, Fugen und
-            Sanitärbereichen.
-          </p>
-          <p>
-            Wird nur eine der beiden Stufen beauftragt, obwohl das Objekt beide benötigt, bleibt
-            das Ergebnis hinter den Erwartungen zurück. Deshalb klären wir vorab den tatsächlichen
-            Zustand der Flächen, statt pauschal von einer einzelnen Grundreinigung auszugehen.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Zwei Arbeitsschritte" title={heading.sectionHeadings[4]} />
+            <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Nach Bauarbeiten läuft eine Grundreinigung in der Praxis meist zweistufig ab. Die
+                Grobreinigung entfernt zunächst sichtbaren Bauschmutz wie Staub, Klebereste,
+                Farbspritzer und grobe Verschmutzungen auf Böden und Oberflächen. Erst danach folgt die
+                eigentliche Feinreinigung mit Detailarbeiten an Fensterbänken, Ecken, Fugen und
+                Sanitärbereichen.
+              </p>
+              <p>
+                Wird nur eine der beiden Stufen beauftragt, obwohl das Objekt beide benötigt, bleibt
+                das Ergebnis hinter den Erwartungen zurück. Deshalb klären wir vorab den tatsächlichen
+                Zustand der Flächen, statt pauschal von einer einzelnen Grundreinigung auszugehen.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={tiefenreinigungPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
@@ -527,8 +544,8 @@ export default function GrundreinigungBerlinContent({
           Nach Absprache prüfen wir außerdem Aufträge in Potsdam, Schönefeld und weiteren gut
           erreichbaren Orten im Berliner Umland.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -555,9 +572,6 @@ export default function GrundreinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* FAQ */}
@@ -570,6 +584,19 @@ export default function GrundreinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="grundreinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="white">

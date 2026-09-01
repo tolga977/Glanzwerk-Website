@@ -10,6 +10,7 @@ import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -32,6 +33,12 @@ import Button from "@/components/ui/Button";
  * anderen Leistungsseiten durchlaufen weiterhin unverändert den generischen Zweig
  * in page.tsx.
  */
+
+const hygieneBereichPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/hygienebereich.webp",
+  alt: "Reinigungskraft säubert mit blauem Handschuh und Mikrofasertuch eine Waschtischreihe",
+  caption: "Waschtische in Gemeinschaftsbereichen werden von allen genutzt – entsprechend häufig kommt hier das passende Tuch aus dem Farbsystem zum Einsatz.",
+};
 
 /** Bezirke mit eigener Gebäudereinigung-Kombiseite – im Einsatzgebiet gezielt dorthin statt zur allgemeinen Bezirksseite verlinken. */
 const comboDistrictSlugs = new Set(
@@ -554,12 +561,22 @@ export default function GebaeudereinigungBerlinContent({
 
       {/* Farbcodierungssystem für Reinigungstücher */}
       <Section background="muted">
-        <SectionHeading eyebrow="Hygienekonzept" title="Farbcodierte Reinigungstücher für klare Zuständigkeiten" />
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
-          Bei einer gebündelten Gebäudereinigung mit mehreren Teilbereichen ist eindeutig geregelt,
-          welches Tuch wo verwendet wird. Glanzwerk setzt dafür ein vierfarbiges
-          Zuordnungssystem ein.
-        </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Hygienekonzept" title="Farbcodierte Reinigungstücher für klare Zuständigkeiten" />
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-ink-soft">
+              Bei einer gebündelten Gebäudereinigung mit mehreren Teilbereichen ist eindeutig geregelt,
+              welches Tuch wo verwendet wird. Glanzwerk setzt dafür ein vierfarbiges
+              Zuordnungssystem ein.
+            </p>
+          </div>
+          <ParallaxImage
+            photo={hygieneBereichPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
+        </div>
         <div className="mt-8">
           <HygieneFarbcodeSystem title="Ein System, das jede Reinigungskraft sofort versteht" />
         </div>
@@ -601,8 +618,8 @@ export default function GebaeudereinigungBerlinContent({
           erreichbaren Orten im Berliner Umland. Ob ein Einsatz möglich ist, hängt von
           Objektgröße, Reinigungsumfang und gewünschtem Intervall ab.
         </p>
-        <div className="mt-8 max-w-2xl">
-          <EinsatzgebietKarte />
+        <div className="mt-8 max-w-lg">
+          <BerlinEinsatzgebietKarte />
         </div>
       </Section>
 
@@ -698,9 +715,6 @@ export default function GebaeudereinigungBerlinContent({
             .
           </p>
         </div>
-        <div className="mt-8 max-w-lg">
-          <BerlinEinsatzgebietKarte />
-        </div>
       </Section>
 
       {/* 12. Dreimonatige Testphase */}
@@ -725,6 +739,19 @@ export default function GebaeudereinigungBerlinContent({
           <FAQ items={faqItems} idPrefix="gebaeudereinigung" />
         </FadeIn>
       </Section>
+
+      {/* Google-Unternehmensprofil — eigener Platz kurz vor dem Abschluss-CTA */}
+      <Section background="white">
+        <SectionHeading
+          eyebrow="Auf Google zu finden"
+          title="Unser Standort und Unternehmensprofil bei Google"
+        />
+        <div className="mt-8 max-w-md">
+          <EinsatzgebietKarte />
+        </div>
+      </Section>
+
+      <GoogleReviewsAuto />
 
       {/* 14. Abschließender CTA */}
       <Section background="muted">

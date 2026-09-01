@@ -5,6 +5,7 @@ import ProcessSteps from "@/components/ui/ProcessSteps";
 import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -21,10 +22,15 @@ import Button from "@/components/ui/Button";
  * Bewusst getrennt vom generischen [slug]/[bezirk]-Template, aus demselben Grund
  * wie GebaeudereinigungMitteContent.tsx: der Auftragstext folgt einer eigenen,
  * deutlich umfangreicheren Abschnittsstruktur (12 Abschnitte statt der fixen
- * Slots des generischen Kombi-Templates). Bewusst photo-los gehalten, um am
- * bestehenden, bild-freien Erscheinungsbild der generischen Kombi-Seiten
- * festzuhalten.
+ * Slots des generischen Kombi-Templates). Ergänzt um ein Foto in der Einleitung
+ * (August 2026), damit die Seite nicht ausschließlich aus Text besteht.
  */
+
+const districtPhoto = {
+  src: "/images/leistungen/gebaeudereinigung-berlin/bezirke/friedrichshain-kreuzberg.webp",
+  alt: "Reinigungswagen mit Mopp in einem Treppenhaus",
+  caption: "In umgenutzten Altbauten und ehemaligen Fabriketagen gleicht kaum ein Treppenhaus dem nächsten – der Wagen wird deshalb für jedes Objekt neu bestückt.",
+};
 
 const scopeCards = [
   {
@@ -238,33 +244,43 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
 
       {/* 2. Einleitung */}
       <Section background="tint" decor>
-        <SectionHeading eyebrow="Vielseitig genutzter Bezirk" title={heading.sectionHeadings[0]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>
-            Friedrichshain-Kreuzberg ist geprägt von Bürostandorten, Agenturen, Start-ups,
-            Praxen, Gastronomie, Einzelhandel, Kulturstätten und Wohn- und Geschäftshäusern.
-            Rund um die Warschauer Straße, den Ostbahnhof, die Frankfurter Allee, den
-            Moritzplatz, das Kottbusser Tor und den Mehringdamm unterscheiden sich Nutzung und
-            Besucheraufkommen deutlich.
-          </p>
-          <p>
-            Deshalb stimmen wir jede Gebäudereinigung auf das konkrete Objekt ab. Entscheidend
-            sind nicht nur Fläche und Raumzahl, sondern auch Öffnungszeiten, Publikumsverkehr,
-            Bodenbeläge, Sanitärbereiche und Zugänglichkeit.
-          </p>
-          <p>
-            Viele Gewerbeflächen im Bezirk liegen in umgenutzten Altbauten oder ehemaligen
-            Fabriketagen mit unregelmäßigen Grundrissen – kleinteilige Zimmer statt offener
-            Bürolandschaften, historische Treppenhäuser als Hauptzugang und Sprossenfenster statt
-            großflächiger moderner Verglasung. Ein Reinigungskonzept, das für ein neu gebautes
-            Bürohaus konzipiert wurde, passt selten unverändert auf solche Objekte.
-          </p>
-          <p>
-            Statt für Unterhalts-, Treppenhaus- und Fensterreinigung mit drei unterschiedlichen
-            Firmen zu verhandeln, deckt ein einziger Vertrag alle drei Teilleistungen ab – mit
-            einem Ansprechpartner, der bei Rückfragen den gesamten Leistungsumfang des Objekts
-            kennt.
-          </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading eyebrow="Vielseitig genutzter Bezirk" title={heading.sectionHeadings[0]} />
+            <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>
+                Friedrichshain-Kreuzberg ist geprägt von Bürostandorten, Agenturen, Start-ups,
+                Praxen, Gastronomie, Einzelhandel, Kulturstätten und Wohn- und Geschäftshäusern.
+                Rund um die Warschauer Straße, den Ostbahnhof, die Frankfurter Allee, den
+                Moritzplatz, das Kottbusser Tor und den Mehringdamm unterscheiden sich Nutzung und
+                Besucheraufkommen deutlich.
+              </p>
+              <p>
+                Deshalb stimmen wir jede Gebäudereinigung auf das konkrete Objekt ab. Entscheidend
+                sind nicht nur Fläche und Raumzahl, sondern auch Öffnungszeiten, Publikumsverkehr,
+                Bodenbeläge, Sanitärbereiche und Zugänglichkeit.
+              </p>
+              <p>
+                Viele Gewerbeflächen im Bezirk liegen in umgenutzten Altbauten oder ehemaligen
+                Fabriketagen mit unregelmäßigen Grundrissen – kleinteilige Zimmer statt offener
+                Bürolandschaften, historische Treppenhäuser als Hauptzugang und Sprossenfenster statt
+                großflächiger moderner Verglasung. Ein Reinigungskonzept, das für ein neu gebautes
+                Bürohaus konzipiert wurde, passt selten unverändert auf solche Objekte.
+              </p>
+              <p>
+                Statt für Unterhalts-, Treppenhaus- und Fensterreinigung mit drei unterschiedlichen
+                Firmen zu verhandeln, deckt ein einziger Vertrag alle drei Teilleistungen ab – mit
+                einem Ansprechpartner, der bei Rückfragen den gesamten Leistungsumfang des Objekts
+                kennt.
+              </p>
+            </div>
+          </div>
+          <ParallaxImage
+            photo={districtPhoto}
+            aspect="aspect-[16/10]"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            className="shadow-deep"
+          />
         </div>
       </Section>
 
