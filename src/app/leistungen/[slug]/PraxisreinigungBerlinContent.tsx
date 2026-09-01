@@ -395,6 +395,8 @@ export default function PraxisreinigungBerlinContent({
         </div>
       </section>
 
+      <GoogleReviewsAuto />
+
       {/* 2. Einleitung */}
       <Section background="tint" decor>
         <div className={midPhoto ? "grid gap-10 lg:grid-cols-2 lg:items-center" : undefined}>
@@ -791,8 +793,6 @@ export default function PraxisreinigungBerlinContent({
           <EinsatzgebietKarte />
         </div>
       </Section>
-
-      <GoogleReviewsAuto />
 
       {/* 15. Abschließender CTA */}
       <Section background="muted">

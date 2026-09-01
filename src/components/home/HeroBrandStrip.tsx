@@ -26,11 +26,16 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  *
  * ── Die Logos ───────────────────────────────────────────────────────────
  * Unveränderte Originaldateien in Originalfarben — nicht nachgezeichnet,
- * nicht umgefärbt, nicht verzerrt. Jedes Logo bekommt hier bewusst dieselbe
- * Anzeigehöhe (unabhängig vom individuellen `hoehe`-Wert in
- * `heroBrandLogos.ts`, der für eine frühere, ruhende Reihen-Darstellung
- * gedacht war) — im Laufband soll jede Marke optisch gleich viel Gewicht
- * bekommen, statt nach Wortmarken-Anteil der Datei zu variieren.
+ * nicht umgefärbt, nicht verzerrt. Skaliert wird nach `logo.hoehe`
+ * (heroBrandLogos.ts), nicht nach einer einheitlichen Dateihöhe: die Dateien
+ * haben stark unterschiedlich viel Weißraum um den eigentlichen Schriftzug
+ * (DEISS z. B. nur ~45 % Wortmarken-Anteil, Vileda/VERMOP als Bildmarke-über-
+ * Wortmarke-Lockup noch weniger). Eine gleiche Dateihöhe für alle fünf hätte
+ * genau das Gegenteil von „gleich groß" bewirkt: DEISS und Vileda/VERMOP
+ * wären neben Dr. Schnell und Numatic sichtbar kleiner geblieben, obwohl die
+ * Boxen technisch identisch hoch sind. `hoehe` ist bereits so kalibriert,
+ * dass der tatsächliche Schriftzug bei allen fünf auf rund 27–32 px kommt —
+ * dieselbe Grundlage wie in der früheren ruhenden Reihen-Darstellung.
  *
  * `grayscale` oder Deckkraft unter 100 % wäre hier eine Veränderung des
  * Logos und ist deshalb ausgeschlossen — auch als Ruhezustand.
@@ -43,8 +48,6 @@ import { heroBrandLogos } from "@/data/heroBrandLogos";
  * reduzierter Bewegung steht die Reihe still und lässt sich mit dem Finger
  * schieben — exakt dieselbe, bereits geprüfte Zugänglichkeitslösung.
  */
-const LOGO_HEIGHT = 40;
-
 function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
   return (
     <div className="flex shrink-0 items-center px-8 sm:px-10 lg:px-12">
@@ -54,8 +57,8 @@ function LogoItem({ logo }: { logo: (typeof heroBrandLogos)[number] }) {
         width={logo.width}
         height={logo.height}
         sizes="160px"
-        className="w-auto object-contain"
-        style={{ height: `${LOGO_HEIGHT * 0.8}px` }}
+        style={{ "--logo-h": `${logo.hoehe}px` } as React.CSSProperties}
+        className="h-[calc(var(--logo-h)*0.75)] w-auto sm:h-[var(--logo-h)]"
       />
     </div>
   );

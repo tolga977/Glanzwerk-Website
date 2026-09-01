@@ -401,6 +401,8 @@ export default function KanzleireinigungBerlinContent({
         </div>
       </section>
 
+      <GoogleReviewsAuto />
+
       {/* 2. Einleitung */}
       <Section background="tint" decor>
         <div className={midPhoto ? "grid gap-10 lg:grid-cols-2 lg:items-center" : undefined}>
@@ -815,8 +817,6 @@ export default function KanzleireinigungBerlinContent({
           <EinsatzgebietKarte />
         </div>
       </Section>
-
-      <GoogleReviewsAuto />
 
       {/* 16. Abschließender CTA */}
       <Section background="muted">

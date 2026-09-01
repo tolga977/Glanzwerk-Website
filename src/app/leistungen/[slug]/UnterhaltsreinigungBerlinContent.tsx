@@ -267,6 +267,8 @@ export default function UnterhaltsreinigungBerlinContent({
         </div>
       </section>
 
+      <GoogleReviewsAuto />
+
       {/* Einleitung */}
       <Section background="tint" decor>
         <div className={midPhoto ? "grid gap-10 lg:grid-cols-2 lg:items-center" : undefined}>
@@ -704,8 +706,6 @@ export default function UnterhaltsreinigungBerlinContent({
           <EinsatzgebietKarte />
         </div>
       </Section>
-
-      <GoogleReviewsAuto />
 
       {/* Abschluss-CTA */}
       <Section background="muted">
