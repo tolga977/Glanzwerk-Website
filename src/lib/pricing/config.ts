@@ -43,10 +43,13 @@ export const pricingConfig = {
    *
    * Liegt die Schaetzung darunter, zeigt der Rechner bewusst KEINEN Preis,
    * sondern verweist auf ein Gespraech: eine Zahl zu nennen, die wir nicht
-   * anbieten, waere irrefuehrend, und eine kuenstlich auf 750 angehobene
+   * anbieten, waere irrefuehrend, und eine kuenstlich auf 599 angehobene
    * Zahl waere fuer kleine Objekte schlicht falsch.
+   *
+   * Phase 1E: von 750 auf 599 gesenkt — einzige Aenderung dieser Phase,
+   * alle uebrigen Kalkulationsparameter bleiben unberuehrt.
    */
-  minimumMonthlyOrderNet: 750,
+  minimumMonthlyOrderNet: 599,
 
   /** Fahrtkostenpauschale pro Einsatz in Euro netto. */
   travelFeePerVisit: 10,

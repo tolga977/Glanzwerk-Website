@@ -75,4 +75,32 @@ export const heroBrandLogos: HeroBrandLogo[] = [
     height: 96,
     hoehe: 32,
   },
+  /*
+   * Vileda Professional und VERMOP kamen als eine gemeinsame PDF-Vorlage
+   * (zwei Wortmarken nebeneinander auf Weiß) und wurden anhand des
+   * Alphakanals in zwei einzelne, eng zugeschnittene Dateien getrennt —
+   * unverändert in Form und Farbe, nur die leere Fläche drumherum entfernt.
+   *
+   * Beide sind Bildmarke-über-Wortmarke-Lockups, keine reinen Wortmarken wie
+   * die drei oberen — die Höhe folgt deshalb, wie dort begründet, nicht der
+   * Dateihöhe, sondern der Höhe des eigentlichen Namenszugs innerhalb der
+   * Datei (bei Vileda das Schriftzug-Band unter dem Blatt-Zeichen, bei
+   * VERMOP die Zeile „VERMOP" unter dem ovalen Zeichen). Beide Namenszüge
+   * treffen bei den Werten unten auf rund 27 px — dieselbe Zielgröße, auf die
+   * auch Dr. Schnell und Numatic ausgelegt sind.
+   */
+  {
+    name: "Vileda Professional",
+    src: "/images/marken/vileda-professional.webp",
+    width: 458,
+    height: 193,
+    hoehe: 80,
+  },
+  {
+    name: "VERMOP",
+    src: "/images/marken/vermop.webp",
+    width: 465,
+    height: 191,
+    hoehe: 95,
+  },
 ];

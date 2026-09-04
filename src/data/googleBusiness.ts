@@ -22,12 +22,18 @@ export const googleBusiness = {
   /**
    * Öffentliches Profil, auf das die Bewertungsanzeige verlinkt.
    *
-   * Die Maps-Suche nach dem Firmennamen führt zuverlässig auf das Profil und
-   * funktioniert ohne Place-ID. Sobald die echte Profil-URL vorliegt, kann
-   * sie hier eingesetzt werden.
+   * Vom Betreiber bestätigter Google-Share-Link (Phase 7B) — ein von Google
+   * selbst ausgestellter Kurzlink, der auf den Knowledge-Panel-Eintrag von
+   * Glanzwerk führt (verifiziert: zeigt Adresse, Telefonnummer und 5,0 aus
+   * 7 Rezensionen, deckungsgleich mit den Angaben in diesem Projekt). Das
+   * eigentliche Weiterleitungsziel trägt eine Google-eigene, sitzungsbe-
+   * zogene Such-URL mit Tracking-Parametern (u. a. `sei=`) — nicht stabil
+   * genug für einen dauerhaften Verweis. Der Kurzlink selbst ist Googles
+   * dafür vorgesehenes, dauerhaftes Format und bleibt deshalb die
+   * verwendete Adresse, statt selbst eine Profil-URL aus Firmennamen oder
+   * Place-ID zusammenzusetzen.
    */
-  profileUrl:
-    "https://www.google.com/maps/search/?api=1&query=Glanzwerk+Reinigungsservice+Berlin",
+  profileUrl: "https://share.google/Ko7qB5fwUIQJ1UU2L",
 
   /**
    * Von Hand geprüfter Stand, gültig bis die API antwortet.

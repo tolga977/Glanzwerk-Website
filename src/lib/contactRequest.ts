@@ -2,46 +2,42 @@
  * Die Anfrage — Datenmodell, Prüfung und Übermittlung an einer Stelle.
  *
  * ── Warum diese Datei existiert ─────────────────────────────────────────
- * Die Anfrage wird jetzt an zwei Stellen gestellt: im vierschrittigen
- * Formular in der Hero-Bühne der Startseite und im einstufigen Formular auf
- * /kontakt. Ohne eine gemeinsame Grundlage hätten beide ihre eigene
- * Feldliste, ihre eigenen Fehlermeldungen und ihre eigene Übermittlung —
- * und würden ab dem ersten Änderungswunsch auseinanderlaufen.
+ * Es gibt jetzt genau eine Formularkomponente für normale Anfragen
+ * (`QuoteWizard`, `src/components/forms/QuoteWizard.tsx`), eingebettet an
+ * vier Stellen der Website: Hero der Startseite, deren mobiler Zweitweg
+ * (`MobileContactSection`), /umwelt-verantwortung und /kontakt. Alle vier
+ * teilen dasselbe Datenmodell, dieselbe Prüfung und denselben Versand —
+ * das liegt hier. Vorher gab es daneben noch `ContactForm` mit einem
+ * eigenen, etwas anderen Feldsatz (u. a. „Firma" und „Art des Objekts" als
+ * eigene Felder); auf Entscheidung des Betreibers ist das entfallen, damit
+ * es website­weit nur noch eine Formularästhetik gibt.
  *
- * Hier liegt deshalb alles, was beide teilen. Was sich unterscheidet, ist
- * nur die Frage, WELCHE Felder Pflicht sind: das entscheidet die jeweilige
- * Oberfläche und übergibt es an `validateContactRequest`.
+ * ── Die Übermittlung ist jetzt echt ──────────────────────────────────────
+ * `submitContactRequest` simuliert keinen Erfolg mehr, sondern ruft
+ * tatsächlich die Route `/api/contact` auf. Diese prüft die Angaben
+ * serverseitig erneut und reicht sie an `dispatchContactRequest`
+ * (`src/lib/mail/dispatch.ts`) weiter, die den Versand über Brevo an
+ * info@glanzwerkberlin.de auslöst. Ein Formular zeigt „Erfolg" ausschließlich,
+ * wenn Brevo die Zustellung tatsächlich bestätigt hat.
  *
- * ── ACHTUNG: Es gibt noch keine Übermittlung ───────────────────────────
- * `submitContactRequest` sendet nichts. Der Projektstand hat keine
- * Server Action, keine API-Route und keinen Mailversand — das war schon vor
- * diesem Umbau so (siehe die TODO-Notiz, die vorher in ContactForm.tsx
- * stand). Diese Datei übernimmt den bestehenden Zustand unverändert und
- * erfindet bewusst keinen Ersatz: ein zusammengebauter Versand ohne
- * Zugangsdaten wäre entweder wirkungslos oder unehrlich.
- *
- * Solange das so ist, bestätigt die Oberfläche nach dem Absenden einen
- * Eingang, der nicht stattgefunden hat. Das ist kein Detail, sondern der
- * Punkt, der vor einer Veröffentlichung geklärt sein muss.
+ * Zweite Quelle seit dieser Erweiterung: der Kontakt-Schritt des Preisrechners
+ * (`src/components/calculator/PriceCalculator.tsx`) ruft dieselbe Funktion mit
+ * denselben Feldern auf — seine Berechnungslogik bleibt davon unberührt, nur
+ * der bereits vorhandene Kontakt-Schritt sendet jetzt zusätzlich echt.
  */
 
 export interface ContactRequestValues {
   /**
    * Gewählte Leistung — der Slug einer echten Leistung aus `services.ts`
    * oder `SONSTIGES_SLUG`.
-   *
-   * Nur das Hero-Formular füllt dieses Feld. Auf /kontakt beschreibt das
-   * Freitextfeld das Anliegen, dort gibt es keine Auswahlliste.
    */
   service: string;
   /** Freitext, wenn als Leistung „Sonstiges" gewählt wurde. */
   serviceOther: string;
+  /** Person oder Unternehmen — ein gemeinsames Feld, siehe `QuoteWizard`. */
   name: string;
-  company: string;
   email: string;
   phone: string;
-  /** „Art des Objekts" — nur im Formular auf /kontakt erhoben. */
-  objectType: string;
   message: string;
   privacy: boolean;
 }
@@ -55,18 +51,54 @@ export const emptyContactRequest: ContactRequestValues = {
   service: "",
   serviceOther: "",
   name: "",
-  company: "",
   email: "",
   phone: "",
-  objectType: "",
   message: "",
   privacy: false,
 };
 
+/**
+ * Begleitangaben zur Anfrage, die der Besucher nicht bewusst ausfüllt.
+ *
+ * `source` ist der Pfad der Seite, von der aus abgesendet wurde (z. B.
+ * "/kontakt") — eine reine Zuordnungshilfe für den Betreiber, keine
+ * personenbezogene oder verhaltensbezogene Angabe und kein Tracking.
+ *
+ * `honeypot` ist ein für Menschen unsichtbares Textfeld (siehe
+ * `QuoteWizard`). Ist es ausgefüllt, stammt die Anfrage vermutlich von
+ * einem automatisierten Absender, nicht von einem Menschen.
+ *
+ * `details` sind zusätzliche, quellenspezifische Angaben als Klartext-Zeilen
+ * (Label → Wert), die es in `ContactRequestValues` nicht gibt, weil sie nur
+ * an einer einzigen Quelle anfallen — bislang ausschließlich die bereits im
+ * Preisrechner vorhandenen Objektdaten und die berechnete Schätzung
+ * (siehe `PriceCalculator.tsx`). `QuoteWizard` lässt dieses Feld weg.
+ *
+ * `kind` unterscheidet, welches Ereignis die Mail überhaupt ausgelöst hat
+ * (Phase 1D): `PriceCalculator` löst seine Benachrichtigung automatisch beim
+ * Berechnen eines Richtwerts aus, ohne dass der Besucher damit bewusst "eine
+ * Anfrage abschickt" — das ist `"estimate"`. Jede Absendung von `QuoteWizard`
+ * (an allen vier Einbettungen) ist dagegen eine tatsächlich vom Besucher
+ * gewollte Kontaktanfrage und bleibt beim Standardwert `"request"`, den
+ * `QuoteWizard` deshalb gar nicht erst setzen muss. `dispatchContactRequest`
+ * (`src/lib/mail/dispatch.ts`) verwendet dieses Feld ausschließlich für
+ * Betreff und eine Kennzeichnungszeile im Mailtext — es fließt nicht in
+ * Empfänger, Absender oder `replyTo` ein und ist keine personenbezogene
+ * Angabe.
+ */
+export type ContactRequestKind = "request" | "estimate";
+
+export interface ContactRequestContext {
+  source: string;
+  honeypot: string;
+  details?: Record<string, string>;
+  kind?: ContactRequestKind;
+}
+
 /*
- * Bewusst dieselbe Prüfung wie zuvor in ContactForm.tsx: ein Zeichen vor
- * dem @, eines danach, ein Punkt im Domainteil. Keine strengere Regel —
- * eine Adresse abzulehnen, die tatsächlich existiert, kostet eine Anfrage.
+ * Bewusst dieselbe Prüfung wie zuvor: ein Zeichen vor dem @, eines danach,
+ * ein Punkt im Domainteil. Keine strengere Regel — eine Adresse abzulehnen,
+ * die tatsächlich existiert, kostet eine Anfrage.
  */
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -74,10 +106,8 @@ const messages: Record<keyof ContactRequestValues, string> = {
   service: "Bitte wählen Sie eine Leistung aus.",
   serviceOther: "Bitte beschreiben Sie kurz Ihr Anliegen.",
   name: "Bitte geben Sie Ihren Namen an.",
-  company: "Bitte geben Sie Ihr Unternehmen an.",
   email: "Bitte geben Sie Ihre E-Mail-Adresse an.",
   phone: "Bitte geben Sie Ihre Telefonnummer an.",
-  objectType: "Bitte geben Sie die Art des Objekts an.",
   message: "Bitte beschreiben Sie kurz Ihr Anliegen.",
   privacy: "Bitte bestätigen Sie die Datenschutzerklärung.",
 };
@@ -85,16 +115,11 @@ const messages: Record<keyof ContactRequestValues, string> = {
 /**
  * Prüft die übergebenen Felder.
  *
- * `required` bestimmt, was Pflicht ist — die beiden Oberflächen haben
- * unterschiedliche Ansprüche, und das ist Absicht:
- *
- *   /kontakt      name, company, email, message, privacy
- *                 (unveränderter Bestand)
- *   Hero-Formular service, name, email, privacy
- *                 (weniger Pflichtfelder: es steht im ersten Bildschirm und
- *                 soll den Einstieg nicht verstellen. Firma, Telefon und
- *                 Freitext bleiben freiwillig — zum Antworten genügen Name
- *                 und E-Mail.)
+ * `required` bestimmt, was Pflicht ist. `QuoteWizard` ruft dies je Schritt
+ * mit einer anderen Teilmenge auf (Schritt 1: `service`, Schritt 2: `name`
+ * und `email`, Schritt 4: `privacy`) — dieselbe Funktion prüft aber auch
+ * serverseitig in `/api/contact` mit der vollständigen Pflichtmenge auf
+ * einmal, unabhängig vom Schrittzustand des Clients.
  *
  * `serviceOther` wird zusätzlich geprüft, sobald „Sonstiges" gewählt ist:
  * eine Anfrage, deren Leistung „Sonstiges" ist und die keinen Text mitbringt,
@@ -106,15 +131,9 @@ export function validateContactRequest(
   /**
    * Abweichende Pflichtmeldungen für einzelne Felder.
    *
-   * Nötig geworden, weil dasselbe Feld in den beiden Oberflächen
-   * unterschiedlich beschriftet ist: auf /kontakt heißt es „Name" und hat ein
-   * eigenes Feld „Unternehmen" daneben, im Hero-Formular sind beide zu
-   * „Name / Unternehmen" zusammengefasst. Eine Meldung „Bitte geben Sie Ihren
-   * Namen an." wäre dort nur halb richtig.
-   *
-   * Bewusst als Überschreibung und nicht als zweiter Meldungssatz: die
-   * Standardtexte bleiben die eine Quelle, und an der Aufrufstelle steht
-   * genau die eine Abweichung, die sie braucht.
+   * Genutzt von `QuoteWizard`, weil das Feld `name` dort Person UND
+   * Unternehmen aufnimmt und der Standardtext („Bitte geben Sie Ihren Namen
+   * an.") das nicht widerspiegelt.
    */
   messageOverrides?: Partial<Record<keyof ContactRequestValues, string>>,
 ): ContactRequestErrors {
@@ -144,17 +163,27 @@ export function validateContactRequest(
 }
 
 /**
- * Übermittelt die Anfrage.
+ * Übermittelt die Anfrage an `/api/contact`.
  *
- * Siehe die Warnung im Dateikopf: hier passiert nichts außer einer kurzen
- * Wartezeit, damit die Oberfläche ihren Sendezustand zeigen kann. Das ist
- * der unveränderte Projektstand, an einer Stelle zusammengezogen statt in
- * zwei Komponenten verteilt.
- *
- * Sobald eine Server Action oder API-Route vorliegt, ist dies die einzige
- * Datei, die dafür angefasst werden muss — beide Formulare hängen daran.
+ * Wirft, wenn die Route mit einem Fehlerstatus antwortet — etwa weil Brevo
+ * die Zustellung ablehnt, ein Netzwerkfehler auftritt oder die
+ * Versandkonfiguration fehlt (`MailConfigError`/`MailDeliveryError` in
+ * `src/lib/mail/dispatch.ts`). Beide Aufrufer (`QuoteWizard` und der
+ * Kontakt-Schritt des Preisrechners) fangen das ab und zeigen ihren
+ * jeweiligen Fehlerzustand; es gibt keinen Fall, in dem diese Funktion
+ * erfolgreich zurückkehrt, ohne dass Brevo die Zustellung bestätigt hat.
  */
-export async function submitContactRequest(values: ContactRequestValues): Promise<void> {
-  void values;
-  await new Promise((resolve) => setTimeout(resolve, 600));
+export async function submitContactRequest(
+  values: ContactRequestValues,
+  context: ContactRequestContext,
+): Promise<void> {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ values, context }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Anfrage fehlgeschlagen (${response.status})`);
+  }
 }

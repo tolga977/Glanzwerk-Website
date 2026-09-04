@@ -24,7 +24,7 @@ export default function ImpressumPage() {
           </h1>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
-            Angaben gemäß § 5 TMG
+            Angaben gemäß § 5 DDG
           </h2>
           <p className="mt-2">
             {siteConfig.name}
@@ -47,11 +47,6 @@ export default function ImpressumPage() {
           <p className="mt-2">
             {owner.name}, {owner.role}
           </p>
-
-          <h2 className="mt-8 text-lg font-semibold text-brand-900">
-            Umsatzsteuer-Identifikationsnummer
-          </h2>
-          <p className="mt-2">[USt-IdNr. gemäß § 27 a Umsatzsteuergesetz ergänzen, falls vorhanden]</p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
             Streitschlichtung

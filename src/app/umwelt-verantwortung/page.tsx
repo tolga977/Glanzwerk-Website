@@ -4,7 +4,7 @@ import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import CTASection from "@/components/ui/CTASection";
-import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
+import QuoteWizard from "@/components/forms/QuoteWizard";
 import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
@@ -458,7 +458,7 @@ export default function UmweltVerantwortungPage() {
 
       {/*
         ── Anfrage-Moment in der Seitenmitte ──────────────────────────────
-        Dieselbe Komponente wie im Startseiten-Hero (`HeroQuoteWizard`) —
+        Dieselbe Komponente wie im Startseiten-Hero (`QuoteWizard`) —
         unverändert übernommen, kein neues Formular, keine neue Variante.
         Weder Felder noch Validierung noch Versandlogik sind angerührt.
         Ebenso wenig eine neue H2: alle sechs freigegebenen Überschriften
@@ -487,7 +487,7 @@ export default function UmweltVerantwortungPage() {
                 den Rest klären wir gemeinsam. Unverbindlich und in wenigen Minuten ausgefüllt.
               </p>
             </div>
-            <HeroQuoteWizard />
+            <QuoteWizard />
           </div>
         </div>
       </section>

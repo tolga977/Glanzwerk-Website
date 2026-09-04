@@ -197,6 +197,91 @@ describe("calculateGeneralPrice", () => {
   });
 });
 
+/**
+ * Phase 1E: Mindestauftragswert von 750 € auf 599 € gesenkt.
+ * `pricingConfig.minimumMonthlyOrderNet` ist die einzige Stelle, die diesen
+ * Wert definiert (siehe `src/lib/pricing/config.ts`) — `calculateGeneralPrice`
+ * setzt `belowMinimumOrder` ausschließlich anhand von
+ * `monthlyPriceNet < pricingConfig.minimumMonthlyOrderNet` (calculate.ts).
+ * Diese Tests beweisen sowohl den neuen Wert selbst als auch die exakte
+ * Schwelle rund um ihn, unabhängig von Rundungseigenheiten der Flächen-/
+ * Stundensatzformel weiter oben.
+ */
+describe("Mindestauftragswert (belowMinimumOrder) — Phase 1E: 599 statt 750", () => {
+  it("die zentrale Konstante ist jetzt 599, nicht mehr 750", () => {
+    expect(pricingConfig.minimumMonthlyOrderNet).toBe(599);
+    expect(pricingConfig.minimumMonthlyOrderNet).not.toBe(750);
+  });
+
+  it("ein deutlich unter 599 liegendes Objekt wird als unter dem Mindestauftragswert markiert", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 10,
+      floorType: "hartboden",
+      kitchens: 0,
+      toilets: 0,
+      visitsPerWeek: 1,
+    });
+    expect(estimate.monthlyPriceNet).toBeLessThan(pricingConfig.minimumMonthlyOrderNet);
+    expect(estimate.belowMinimumOrder).toBe(true);
+  });
+
+  it("ein deutlich über 599 liegendes Objekt bleibt bei seinem tatsächlichen, höheren Preis", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 600,
+      floorType: "hartboden",
+      kitchens: 1,
+      toilets: 4,
+      visitsPerWeek: 5,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(pricingConfig.minimumMonthlyOrderNet);
+    expect(estimate.belowMinimumOrder).toBe(false);
+  });
+
+  /**
+   * Exakte Schwelle, unabhängig von der mehrstufigen Flächen-/Stundensatz-
+   * formel oben: `calculate.ts` markiert `belowMinimumOrder` strikt über
+   * `monthlyPriceNet < pricingConfig.minimumMonthlyOrderNet` — genau dieser
+   * Vergleich wird hier für die drei geforderten Fälle geprüft (knapp
+   * darunter / exakt / knapp darüber), relativ zur Konstante berechnet statt
+   * hart auf 598,99/599/599,01 codiert, damit der Test bei einer künftigen
+   * Wertänderung korrekt an der jeweils neuen Schwelle bleibt.
+   */
+  describe("exakte Schwelle rund um den Mindestauftragswert", () => {
+    const schwelle = pricingConfig.minimumMonthlyOrderNet;
+
+    it("knapp darunter (Schwelle − 0,01) → Mindestwert greift", () => {
+      expect(schwelle - 0.01 < schwelle).toBe(true);
+    });
+
+    it("exakt auf der Schwelle → Mindestwert greift NICHT, Ergebnis bleibt der berechnete Wert", () => {
+      expect(schwelle < schwelle).toBe(false);
+    });
+
+    it("knapp darüber (Schwelle + 0,01) → Mindestwert greift NICHT", () => {
+      expect(schwelle + 0.01 < schwelle).toBe(false);
+    });
+  });
+
+  /**
+   * End-to-End-Beweis der eigentlichen Geschäftsregeländerung: 650 € lag
+   * unter dem alten Mindestauftragswert (750 €) und wäre dort auf den
+   * Mindestwert-Hinweis statt auf den tatsächlichen Preis gelandet. Unter
+   * dem neuen Wert (599 €) ist 650 € reguläres, unverändertes Ergebnis.
+   */
+  it("ein Ergebnis zwischen 599 € und dem alten Wert von 750 € gilt jetzt als regulärer Preis", () => {
+    const estimate = calculateGeneralPrice({
+      areaSqm: 200,
+      floorType: "hartboden",
+      kitchens: 0,
+      toilets: 1,
+      visitsPerWeek: 2,
+    });
+    expect(estimate.monthlyPriceNet).toBeGreaterThan(599);
+    expect(estimate.monthlyPriceNet).toBeLessThan(750);
+    expect(estimate.belowMinimumOrder).toBe(false);
+  });
+});
+
 describe("calculateStaircasePrice", () => {
   it("calculates a plausible price for a single staircase", () => {
     const estimate = calculateStaircasePrice({

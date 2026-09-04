@@ -69,6 +69,15 @@ export default function Footer() {
                 E-Mail: {siteConfig.email}
               </a>
             </li>
+            {/*
+              Erreichbarkeit Mo–Sa 08:00–18:00 — vom Betreiber bestätigt
+              (Phase 7B). Steht hier als schlichte Textzeile, nicht im Hero
+              und nicht als eigene Karte: dieselbe Zeitangabe trägt bereits
+              `openingHoursSpecification` in professionalServiceSchema()
+              (src/lib/schema.ts) — Structured Data und sichtbarer Inhalt
+              sollen übereinstimmen, mehr Gewicht braucht die Angabe nicht.
+            */}
+            <li>Mo–Sa: 08:00–18:00 Uhr</li>
           </ul>
         </div>
 

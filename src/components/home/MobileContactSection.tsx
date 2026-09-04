@@ -1,13 +1,14 @@
-import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
+import QuoteWizard from "@/components/forms/QuoteWizard";
 
 /**
  * Zweiter Anfrageweg — ausschließlich auf dem Telefon (`lg:hidden`).
  *
- * ── Warum jetzt derselbe Wizard wie im Hero, nicht `ContactForm` ─────────
+ * ── Warum jetzt derselbe Wizard wie im Hero, nicht ein eigenes Formular ──
  * Hier stand zuerst `ContactForm` (das schwerere, sechs Felder umfassende
- * Formular von /kontakt) — ausdrücklich als "zweiter", andersartiger Weg
- * gedacht. Auf Wunsch des Betreibers steht hier jetzt exakt derselbe
- * `HeroQuoteWizard` wie oben im Hero: dieselben vier Schritte, dieselbe
+ * Formular, das früher auch auf /kontakt stand) — ausdrücklich als
+ * "zweiter", andersartiger Weg gedacht. Auf Wunsch des Betreibers steht
+ * hier jetzt exakt dieselbe `QuoteWizard`-Komponente wie oben im Hero und
+ * inzwischen auch auf /kontakt: dieselben vier Schritte, dieselbe
  * Kopfzeile "Kostenloses Angebot anfordern", dieselbe Fläche. Wer im Hero
  * abgebrochen hat, findet hier keinen zweiten, andersartigen Weg, sondern
  * exakt denselben noch einmal.
@@ -40,7 +41,7 @@ export default function MobileContactSection() {
           Direkt anfragen
         </p>
         <div className="mt-6">
-          <HeroQuoteWizard />
+          <QuoteWizard />
         </div>
       </div>
     </section>

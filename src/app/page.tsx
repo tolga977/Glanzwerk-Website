@@ -10,7 +10,7 @@ import FAQ from "@/components/ui/FAQ";
 import FadeIn from "@/components/ui/FadeIn";
 import GlanzMark from "@/components/ui/GlanzMark";
 import HeroStage from "@/components/home/HeroStage";
-import HeroQuoteWizard from "@/components/forms/HeroQuoteWizard";
+import QuoteWizard from "@/components/forms/QuoteWizard";
 import HeroBrandStrip from "@/components/home/HeroBrandStrip";
 import HygieneSystem from "@/components/home/HygieneSystem";
 import MobileCTAStrip from "@/components/home/MobileCTAStrip";
@@ -38,6 +38,7 @@ import { photos } from "@/data/photos";
 import { servicePhotos } from "@/data/servicePhotos";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
+import { pricingConfig } from "@/lib/pricing/config";
 import { professionalServiceSchema } from "@/lib/schema";
 import { seoHeadings } from "@/data/seoHeadings";
 
@@ -239,7 +240,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Sie erhalten ein nachvollziehbares Angebot auf Grundlage der besprochenen Leistungen. Zusätzliche Arbeiten werden nicht ohne vorherige Abstimmung eingeplant.",
     facts: [
       "Leistungen und Termine schriftlich festgehalten",
-      "Wiederkehrende Reinigung ab 750 € netto im Monat",
+      `Wiederkehrende Reinigung ab ${pricingConfig.minimumMonthlyOrderNet} € netto im Monat`,
     ],
     photo: photos.businessHandshake,
   },
@@ -889,7 +890,7 @@ export default async function HomePage() {
             Panel wird entsprechend mehr von der Person frei.
           */}
           <div className="relative z-20 col-start-1 row-start-2 mt-10 lg:col-start-2 lg:row-start-1 lg:ml-auto lg:mt-[var(--hero-panel-offset)] lg:w-[var(--hero-panel-width)] xl:mr-[calc(-0.5*max(0rem,(100vw_-_80rem)/2))]">
-            <HeroQuoteWizard />
+            <QuoteWizard />
           </div>
         </div>
 
@@ -1159,7 +1160,8 @@ export default async function HomePage() {
                 Das Ergebnis ist eine unverbindliche Schätzung, kein Angebot.
               </strong>{" "}
               Was am Ende im Vertrag steht, hängt vom Objekt ab und wird vorher gemeinsam
-              festgelegt. Wiederkehrende Reinigung übernehmen wir ab 750 € netto im Monat.
+              festgelegt. Wiederkehrende Reinigung übernehmen wir ab{" "}
+              {pricingConfig.minimumMonthlyOrderNet} € netto im Monat.
             </p>
 
             <div className="pr-nutzen mt-10">
@@ -1893,11 +1895,13 @@ export default async function HomePage() {
         Anfrageformulare auf derselben Seite teilen die Aufmerksamkeit, und
         das schwächere von beiden gewinnt nichts dazu.
 
-        Entfernt wurde ausschließlich die Einbindung an dieser Stelle:
-        `ContactForm` selbst ist unverändert und trägt weiterhin die
-        Kontaktseite (`src/app/kontakt/page.tsx`). Prüfregeln und
-        Übermittlung liegen seit diesem Durchgang in
-        `src/lib/contactRequest.ts` und werden von beiden Formularen
+        Entfernt wurde ausschließlich die Einbindung an dieser Stelle.
+        `ContactForm` selbst gibt es inzwischen nicht mehr: auf Entscheidung
+        des Betreibers trägt seit Phase 1 der Go-Live-Vorbereitung auch die
+        Kontaktseite (`src/app/kontakt/page.tsx`) dieselbe `QuoteWizard`-
+        Komponente wie diese Bühne — eine einzige Formularästhetik statt
+        zweier auseinanderlaufender. Prüfregeln und Übermittlung liegen in
+        `src/lib/contactRequest.ts` und werden von allen Einbettungen
         gemeinsam benutzt.
 
         Die Verankerung `id="anfrage"` ist mit dem Abschnitt entfallen. Im

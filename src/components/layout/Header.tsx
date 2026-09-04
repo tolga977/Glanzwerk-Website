@@ -456,18 +456,13 @@ export default function Header() {
             className="h-7 w-px shrink-0 rotate-[36.87deg] rounded-full bg-line-strong"
           />
           {/*
-            Öffnungszeiten stehen hier absichtlich NICHT.
+            Öffnungszeiten stehen hier weiterhin NICHT.
 
-            Die Entwurfsvorlage zeigt unter der Nummer „Mo–Fr: 8–18 Uhr".
-            Diese Zeiten sind im Projekt nirgends hinterlegt — weder in
-            `siteConfig` noch im Schema noch auf der Kontaktseite. Belegt ist
-            nur der unbestimmte Begriff „Geschäftszeiten" (in
-            `owner.responseTimeQualifier` und in FAQ-Antworten). Eine
-            konkrete Zeitspanne daraus zu erfinden wäre eine Zusage, die
-            niemand geprüft hat.
-
-            Sobald die tatsächlichen Zeiten in `siteConfig` stehen, ist hier
-            eine zweite Zeile unter der Nummer der richtige Ort dafür.
+            Mo–Sa 08:00–18:00 ist seit Phase 7B vom Betreiber bestätigt und
+            steht sichtbar im Footer sowie in `openingHoursSpecification`
+            (professionalServiceSchema(), src/lib/schema.ts) — eine zweite
+            Zeile hier in der Kopfzeile würde dieselbe Angabe nur doppeln,
+            an der Stelle, die am wenigsten Raum dafür hat.
           */}
           <a
             href={siteConfig.phoneHref}

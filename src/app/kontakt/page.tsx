@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section from "@/components/ui/Section";
-import ContactForm from "@/components/forms/ContactForm";
+import QuoteWizard from "@/components/forms/QuoteWizard";
 import BrandPhoto from "@/components/ui/BrandPhoto";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
@@ -79,8 +79,14 @@ export default function KontaktPage() {
               Jetzt anrufen: {siteConfig.phone}
             </a>
 
-            <div className="mt-6 rounded-panel border border-line bg-white p-6 shadow-raise sm:p-8">
-              <ContactForm />
+            {/*
+              Kein eigener Rahmen mehr um das Formular: `QuoteWizard` bringt
+              seine eigene weiße Fläche samt Schatten mit (dieselbe wie im
+              Hero der Startseite) — eine zweite Rahmung außen herum hätte
+              eine Karte in der Karte ergeben.
+            */}
+            <div className="mt-6">
+              <QuoteWizard />
             </div>
           </div>
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import FormField from "@/components/forms/FormField";
 import { FormAlert } from "@/components/forms/FormError";
 import Button from "@/components/ui/Button";
@@ -16,7 +17,25 @@ import {
 } from "@/lib/contactRequest";
 
 /**
- * Angebotsanfrage in vier Schritten — das Panel in der Hero-Bühne.
+ * Angebotsanfrage in vier Schritten — die eine Formularkomponente der
+ * Website für normale Anfragen.
+ *
+ * ── Vom Hero-Formular zur zentralen Komponente ──────────────────────────
+ * Dieses Bauteil stand ursprünglich nur in der Hero-Bühne der Startseite
+ * (daher `HeroQuoteWizard`). Der Betreiber hat entschieden, dass es die
+ * verbindliche Referenz für alle normalen Kontakt-/Anfrageformulare der
+ * Website werden soll — Erscheinungsbild und Bedienkonzept gefallen ihm,
+ * eine zweite, andersartige Formularästhetik soll es nicht mehr geben.
+ * Deshalb der Umzug hierher und die Umbenennung. Eingebettet ist die
+ * Komponente unverändert an ihren bisherigen Stellen (Hero der Startseite,
+ * deren mobiler Zweitweg in `MobileContactSection`, /umwelt-verantwortung)
+ * und neu auf /kontakt, wo sie das bisherige, andersartige `ContactForm`
+ * ersetzt.
+ *
+ * Am sichtbaren Verhalten ändert der Umzug nichts: dieselben vier Schritte,
+ * dieselben Felder, dieselben Texte, dieselbe Prüfung. Neu hinzugekommen
+ * sind ausschließlich zwei für den Besucher unsichtbare Angaben (Herkunfts-
+ * Route und Bot-Falle, siehe unten) — keine sichtbare Änderung.
  *
  * ── Ein Flow, nicht vier Formulare ──────────────────────────────────────
  * Es gibt genau ein <form> und genau einen Zustand. Sichtbar ist immer nur
@@ -39,8 +58,19 @@ import {
  * Datenschutzbestätigung. Firma, Telefon und der Freitext bleiben
  * freiwillig. Dieses Formular steht im ersten Bildschirm — jedes zusätzliche
  * Pflichtfeld ist dort eine Hürde, und zum Antworten genügen Name und
- * E-Mail. Die Prüfregeln selbst liegen in `@/lib/contactRequest`, gemeinsam
- * mit dem Formular auf /kontakt.
+ * E-Mail. Die Prüfregeln selbst liegen in `@/lib/contactRequest`.
+ *
+ * Dieselben Pflichtangaben gelten jetzt auf allen vier Einbettungen — es
+ * gibt keine abweichenden Anforderungen je Oberfläche mehr, seit /kontakt
+ * dieselbe Komponente verwendet statt eines eigenen, strengeren Formulars.
+ *
+ * ── Herkunft und Bot-Schutz ──────────────────────────────────────────────
+ * Zwei Angaben reist die Anfrage zusätzlich zu den ausgefüllten Feldern:
+ * die Route, von der abgesendet wurde (`usePathname()` — reine
+ * Zuordnungshilfe, keine personenbezogene Angabe), und ein für Menschen
+ * unsichtbares Textfeld, das nur ausfüllt, wer die Seite nicht sieht,
+ * sondern automatisiert abschickt. Beides erhebt keine zusätzlichen
+ * persönlichen Daten und trackt nichts über den Formularinhalt hinaus.
  *
  * ── Barrierefreiheit ────────────────────────────────────────────────────
  * Beim Schrittwechsel wandert der Fokus auf die Überschrift des neuen
@@ -62,9 +92,11 @@ import {
  * nichts — Eingabefelder animieren nicht.
  *
  * ── Zur Übermittlung ────────────────────────────────────────────────────
- * `submitContactRequest` ist der unveränderte Projektstand und sendet noch
- * nichts (siehe die Warnung im Kopf von `@/lib/contactRequest`). Dieses
- * Bauteil erfindet dafür keinen Ersatz.
+ * `submitContactRequest` ruft jetzt echt `/api/contact` auf, statt einen
+ * Erfolg nur zu simulieren. Solange dort kein Versandweg eingerichtet ist
+ * (siehe `src/lib/mail/dispatch.ts`), antwortet die Route ehrlich mit einem
+ * Fehler — dieses Bauteil zeigt dann den bereits vorhandenen Fehlerzustand,
+ * nie einen vorgetäuschten Erfolg.
  */
 
 const SCHRITTE = 4;
@@ -107,15 +139,17 @@ function leistungLabel(values: ContactRequestValues): string {
   return services.find((s) => s.slug === values.service)?.shortTitle ?? "—";
 }
 
-export default function HeroQuoteWizard() {
+export default function QuoteWizard() {
   const [schritt, setSchritt] = useState(0);
   const [values, setValues] = useState<ContactRequestValues>(emptyContactRequest);
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<ContactRequestErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   /** Erst nach dem ersten Schrittwechsel den Fokus setzen — nicht beim Laden. */
   const bewegt = useRef(false);
   const titelRef = useRef<HTMLParagraphElement>(null);
   const panelId = useId();
+  const pathname = usePathname();
 
   function updateField<K extends keyof ContactRequestValues>(
     field: K,
@@ -142,9 +176,7 @@ export default function HeroQuoteWizard() {
     const pflicht = schritte[bis].pflicht;
     /*
      * Die Pflichtmeldung für `name` ist hier überschrieben, weil das Feld in
-     * diesem Formular Person UND Unternehmen aufnimmt. Der Standardtext
-     * („Bitte geben Sie Ihren Namen an.") gilt weiter auf /kontakt, wo es ein
-     * eigenes Feld für das Unternehmen gibt.
+     * diesem Formular Person UND Unternehmen aufnimmt.
      */
     const alle = validateContactRequest(values, pflicht, {
       name: "Bitte geben Sie Ihren Namen oder Ihr Unternehmen an.",
@@ -180,7 +212,7 @@ export default function HeroQuoteWizard() {
 
     setStatus("submitting");
     try {
-      await submitContactRequest(values);
+      await submitContactRequest(values, { source: pathname ?? "", honeypot });
       bewegt.current = true;
       setStatus("success");
     } catch {
@@ -293,6 +325,26 @@ export default function HeroQuoteWizard() {
 
       <form onSubmit={handleSubmit} noValidate className="mt-5">
         {/*
+          Bot-Falle: für Menschen unsichtbar (Position außerhalb des
+          sichtbaren Bereichs, nicht per Tastatur erreichbar), Bots füllen
+          sie häufig automatisch aus. Liegt außerhalb des Schrittwechsels,
+          damit sie in jedem Schritt aktiv ist, unabhängig davon, wie weit
+          jemand im Formular ist.
+        */}
+        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+          <label htmlFor={`${panelId}-website`}>Firmenwebsite</label>
+          <input
+            id={`${panelId}-website`}
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+          />
+        </div>
+
+        {/*
           `key` am Container: der Schrittwechsel soll die Einblendung erneut
           auslösen. Ohne den Schlüssel bliebe das Element dasselbe und die
           Animation liefe nur einmal.
@@ -359,27 +411,16 @@ export default function HeroQuoteWizard() {
               <>
                 {/*
                   ── Ein Feld für Person und Unternehmen ────────────────────
-                  Hier standen zwei getrennte Felder: „Name" (Pflicht) und
-                  „Unternehmen (optional)". Für eine Anfrage im ersten
-                  Bildschirm ist das eine Unterscheidung, die den Absender
-                  nichts angeht — wer schreibt, gibt an, wer er ist, und ob
-                  das eine Person oder eine Firma ist, ergibt sich aus der
-                  Eingabe selbst.
-
-                  „Name / Unternehmen" statt „Ihr Name oder Unternehmen": die
-                  übrigen Beschriftungen dieses Formulars und des Formulars auf
-                  /kontakt sind knappe Substantive („E-Mail-Adresse",
-                  „Telefonnummer", „Art des Objekts"). Eine ausgeschriebene
-                  Frage wäre hier die einzige Ausnahme.
+                  „Name / Unternehmen" statt zwei getrennter Felder: für eine
+                  Anfrage im ersten Bildschirm ist die Unterscheidung eine,
+                  die den Absender nichts angeht — wer schreibt, gibt an, wer
+                  er ist, und ob das eine Person oder eine Firma ist, ergibt
+                  sich aus der Eingabe selbst.
 
                   `autocomplete="name"` bleibt: bei einem gemischten Feld
                   trifft die Personenangabe den häufigeren Fall, und sie
                   verhindert, dass der Browser eine Firma dort einsetzt, wo
                   jemand seinen Namen erwartet.
-
-                  Das Feld `company` des gemeinsamen Datenmodells wird von
-                  diesem Formular nicht mehr gefüllt. Es bleibt im Modell, weil
-                  das Formular auf /kontakt es weiterhin eigenständig erhebt.
                 */}
                 <FormField
                   label="Name / Unternehmen"
@@ -450,9 +491,6 @@ export default function HeroQuoteWizard() {
                     { label: "Leistung", wert: leistungLabel(values), ziel: 0 },
                     {
                       label: "Kontakt",
-                      /* `company` steht hier nicht mehr: Schritt 2 erhebt es
-                         nicht, und ein Feld in der Zusammenfassung, das nie
-                         gefüllt werden kann, wäre eine leere Zeile. */
                       wert: [values.name.trim(), values.email.trim(), values.phone.trim()]
                         .filter(Boolean)
                         .join(" · "),
@@ -481,7 +519,7 @@ export default function HeroQuoteWizard() {
                   ))}
                 </dl>
 
-                {/* Unveränderte Datenschutzbestätigung — Pflicht wie im Formular auf /kontakt. */}
+                {/* Datenschutzbestätigung — Pflicht. */}
                 <div>
                   <label className="flex items-start gap-2.5 text-sm text-ink-soft">
                     <input
@@ -495,11 +533,24 @@ export default function HeroQuoteWizard() {
                     />
                     <span>
                       Ich habe die{" "}
+                      {/*
+                        Neuer Tab (Phase 1D): der Link steht im letzten
+                        Wizard-Schritt, nachdem der Besucher bereits alle
+                        vorherigen Schritte ausgefüllt hat. Eine normale
+                        Navigation würde `QuoteWizard` unmounten und seinen
+                        gesamten React-State verwerfen — bei "Zurück" müsste
+                        wieder bei Schritt 1 begonnen werden. Im neuen Tab
+                        bleibt dieser Tab mit dem Formular unverändert
+                        bestehen, ganz ohne Zwischenspeicherung der Eingaben.
+                      */}
                       <Link
                         href="/datenschutz"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-medium text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                       >
                         Datenschutzerklärung
+                        <span className="sr-only"> (öffnet in neuem Tab)</span>
                       </Link>{" "}
                       zur Kenntnis genommen. *
                     </span>

@@ -2,6 +2,7 @@
 
 import { useId, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CalculatorProgress from "@/components/calculator/CalculatorProgress";
 import { FieldError } from "@/components/forms/FormError";
 import {
@@ -20,6 +21,7 @@ import {
 } from "@/lib/pricing/validate";
 import type { CalculatorFormValues, PriceEstimate, ValidationError } from "@/lib/pricing/types";
 import Button from "@/components/ui/Button";
+import { submitContactRequest, type ContactRequestValues } from "@/lib/contactRequest";
 
 type Step = "objectType" | "details" | "contact" | "result";
 
@@ -55,6 +57,71 @@ function errorFor(errors: ValidationError[], field: string): string | undefined 
   return errors.find((e) => e.field === field)?.message;
 }
 
+/** Lesbare Objektart — oder die Freitextbeschreibung bei „Sonstige Gewerbefläche". */
+export function resolveObjectLabel(values: CalculatorFormValues): string {
+  if (values.objectType === "sonstige") return values.customObjectDescription;
+  return values.objectType ? objectTypeLabels[values.objectType] : "";
+}
+
+/**
+ * Baut aus den bereits im Rechner vorhandenen Daten die Anfrage für
+ * `/api/contact` — dieselbe Struktur, die auch `QuoteWizard` verwendet,
+ * damit beide Wege denselben serverseitigen Versand durchlaufen.
+ *
+ * Als eigenständige, exportierte Funktion (statt einer Closure in der
+ * Komponente) rein damit sie ohne DOM-Rendering testbar ist — das Projekt
+ * hat weder jsdom noch React Testing Library installiert. Verhalten und
+ * Aufrufstelle sind unverändert gegenüber der ursprünglichen Fassung in
+ * `PriceCalculator`.
+ *
+ * Übertragen wird ausschließlich, was der Rechner ohnehin schon kennt:
+ * Kontaktdaten aus Schritt 3, die gewählte Objektart bzw. deren
+ * Freitextbeschreibung, die objektspezifischen Angaben aus Schritt 2 und
+ * die bereits berechnete Schätzung. Keine Preislogik wird dafür angefasst
+ * — `estimateValue` ist das fertige Ergebnis von
+ * `calculateStaircasePrice`/`calculateGeneralPrice`.
+ */
+export function buildContactPayload(
+  values: CalculatorFormValues,
+  contact: { name: string; email: string; phone: string; privacyAccepted: boolean },
+  isStaircase: boolean,
+  estimateValue: PriceEstimate,
+): { requestValues: ContactRequestValues; details: Record<string, string> } {
+  const objectLabel = resolveObjectLabel(values);
+
+  const details: Record<string, string> = isStaircase
+    ? {
+        Wohneinheiten: values.units,
+        Etagen: values.floors,
+        Treppenhäuser: values.staircaseCount,
+        "Keller vorhanden": values.hasBasement ? "ja" : "nein",
+        "Fahrstuhl vorhanden": values.hasElevator ? "ja" : "nein",
+      }
+    : {
+        Fläche: `${values.areaSqm} m²`,
+        Bodenart: values.floorType ? floorTypeLabels[values.floorType as FloorType] : "",
+        Küchen: values.kitchens,
+        Toiletten: values.toilets,
+      };
+  details["Reinigungshäufigkeit"] = `${estimateValue.visitsPerWeek}× pro Woche`;
+  details["Geschätzter Monatspreis (netto)"] = estimateValue.belowMinimumOrder
+    ? "unter Mindestauftragswert"
+    : `${estimateValue.monthlyPriceNet.toLocaleString("de-DE", { maximumFractionDigits: 0 })} €`;
+
+  return {
+    requestValues: {
+      service: objectLabel,
+      serviceOther: "",
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
+      message: "",
+      privacy: contact.privacyAccepted,
+    },
+    details,
+  };
+}
+
 export default function PriceCalculator() {
   const [step, setStep] = useState<Step>("objectType");
   const [values, setValues] = useState<CalculatorFormValues>(initialValues);
@@ -68,6 +135,7 @@ export default function PriceCalculator() {
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [estimate, setEstimate] = useState<PriceEstimate | null>(null);
   const idBase = useId();
+  const pathname = usePathname();
 
   const isStaircase = values.objectType === "treppenhaus";
 
@@ -87,6 +155,34 @@ export default function PriceCalculator() {
     const stepErrors = isStaircase ? validateStaircaseStep(values) : validateGeneralStep(values);
     setErrors(stepErrors);
     if (stepErrors.length === 0) setStep("contact");
+  }
+
+  /**
+   * Reine Preisrechner-Benachrichtigung an den Betreiber (Phase 1D/1D.1) —
+   * `kind: "estimate"` sorgt dafür, dass `dispatchContactRequest`
+   * (`src/lib/mail/dispatch.ts`) sie eindeutig als "Preisrechner genutzt"
+   * kennzeichnet, nie als "Neue Website-Anfrage". Der Besucher hat an dieser
+   * Stelle noch keine Anfrage im Sinne von "bitte kontaktieren Sie mich"
+   * abgeschickt — dieser Versand ist deshalb für ihn irrelevant: Erfolg oder
+   * Fehlschlag werden bewusst nirgends angezeigt (kein `sendStatus`, kein
+   * Retry). Ein Fehlschlag hier bedeutet nur, dass die interne Info-Mail
+   * ausbleibt — die Richtpreis-Anzeige selbst ist davon unabhängig und bleibt
+   * unbedingt bestehen (siehe `handleContactSubmit`).
+   */
+  async function sendEstimateNotification(payload: {
+    requestValues: ContactRequestValues;
+    details: Record<string, string>;
+  }) {
+    try {
+      await submitContactRequest(payload.requestValues, {
+        source: pathname ?? "/preisrechner",
+        honeypot: contact.honeypot,
+        details: payload.details,
+        kind: "estimate",
+      });
+    } catch {
+      // Bewusst stumm — siehe Doc-Kommentar oben.
+    }
   }
 
   function handleContactSubmit(e: FormEvent) {
@@ -112,9 +208,16 @@ export default function PriceCalculator() {
           visitsPerWeek: Number(values.visitsPerWeek),
         });
 
+    // Anzeige der Schätzung bleibt sofort und unbedingt — sie ist eine
+    // lokale Berechnung und unabhängig davon, ob die interne
+    // Preisrechner-Benachrichtigung an den Betreiber zusätzlich ankommt. Die
+    // Benachrichtigung läuft danach still im Hintergrund (kein für den
+    // Besucher sichtbares Ergebnis, siehe `sendEstimateNotification`).
     setEstimate(result);
     setErrors([]);
     setStep("result");
+
+    void sendEstimateNotification(buildContactPayload(values, contact, isStaircase, result));
   }
 
   function goBack(target: Step) {
@@ -471,8 +574,24 @@ export default function PriceCalculator() {
               />
               <span>
                 Ich habe die{" "}
-                <Link href="/datenschutz" className="font-medium text-brand-500 hover:underline">
+                {/*
+                  Neuer Tab (Phase 1D): der Link steht mitten in einem
+                  teilweise ausgefüllten Formular. Eine normale Navigation
+                  würde diese Komponente unmounten und ihren gesamten
+                  React-State (bereits eingegebene Kontakt-/Objektdaten,
+                  aktueller Schritt) verwerfen — bei "Zurück" bliebe nur ein
+                  leeres Formular übrig. Im neuen Tab bleibt diese Seite
+                  unverändert im Hintergrund bestehen, ganz ohne
+                  Zwischenspeicherung der Eingaben.
+                */}
+                <Link
+                  href="/datenschutz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-brand-500 hover:underline"
+                >
                   Datenschutzerklärung
+                  <span className="sr-only"> (öffnet in neuem Tab)</span>
                 </Link>{" "}
                 zur Kenntnis genommen. *
               </span>
@@ -553,19 +672,14 @@ function ResultView({
   values: CalculatorFormValues;
   onRestart: () => void;
 }) {
-  const objectLabel =
-    values.objectType === "sonstige"
-      ? values.customObjectDescription
-      : values.objectType
-        ? objectTypeLabels[values.objectType]
-        : "";
+  const objectLabel = resolveObjectLabel(values);
 
   return (
     <div className="rounded-card border border-brand-100 bg-brand-50 p-6 text-center sm:p-8">
       {/*
         Unterhalb des Mindestauftragswerts zeigen wir bewusst keinen Preis.
         Eine Zahl zu nennen, die wir nicht anbieten, waere irrefuehrend — und
-        die Schaetzung kuenstlich auf 750 anzuheben waere fuer ein kleines
+        die Schaetzung kuenstlich auf 599 anzuheben waere fuer ein kleines
         Objekt schlicht falsch. Stattdessen der Hinweis plus Gespraechsangebot:
         bei mehreren Objekten oder Zusatzleistungen ist ein Auftrag oft
         trotzdem moeglich.
@@ -624,6 +738,22 @@ function ResultView({
         Der endgültige Preis kann sich nach einer Besichtigung und dem tatsächlichen Aufwand
         vor Ort ändern.
       </p>
+      )}
+
+      {/*
+        Phase 1D.1: Die Berechnung eines Richtwerts ist noch keine Anfrage —
+        hier darf deshalb an keiner Stelle behauptet werden, der Besucher
+        habe bereits Kontakt aufgenommen oder Glanzwerk melde sich deswegen.
+        Die interne Preisrechner-Benachrichtigung an den Betreiber (siehe
+        `sendEstimateNotification`) läuft davon unabhängig im Hintergrund und
+        ist für den Besucher nicht sichtbar — nur diese neutrale, unbedingte
+        Einladung zur eigentlichen, freiwilligen Anfrage.
+      */}
+      {!estimate.belowMinimumOrder && (
+        <p className="mx-auto mt-4 max-w-md text-sm text-ink-soft">
+          Passt der Richtpreis für Sie? Für ein konkretes, unverbindliches Angebot oder bei
+          Fragen senden Sie uns gerne eine Anfrage.
+        </p>
       )}
 
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">

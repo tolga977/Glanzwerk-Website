@@ -4,7 +4,49 @@ import { googleBusiness } from "@/data/googleBusiness";
 
 /**
  * Centralized JSON-LD builders, sourced from `siteConfig`.
+ *
+ * ── Eine Entity, mehrere Bausteine, eine @id ─────────────────────────────
+ * Glanzwerk erscheint an unterschiedlichen Stellen mit unterschiedlicher
+ * Ausführlichkeit: als schlichte `Organization` sitzt es global in jedem
+ * Seitenkopf (`layout.tsx`), als ausführlichere `ProfessionalService` mit
+ * Geokoordinaten, Öffnungszeiten und Bewertung nur auf Startseite, Über-uns
+ * und Bewertungen. Beides beschreibt dasselbe reale Unternehmen — deshalb
+ * tragen beide dieselbe `@id` (`ORGANIZATION_ID`). Suchmaschinen führen
+ * Knoten mit identischer `@id` zu einer Entity zusammen, statt zwei
+ * unabhängige Firmen zu vermuten. Es entsteht dadurch keine neue Tatsache:
+ * beide Bausteine bestanden vorher schon, nur ohne die Klammer, die sie als
+ * dieselbe Entity kenntlich macht.
+ *
+ * Aus demselben Grund tragen `Service.provider` und `Article.publisher`
+ * nur noch eine `@id`-Referenz statt eines eigenen, erneut ausgeschriebenen
+ * Organization-Objekts — pro Leistungs-/Bezirks-/Wissensseite eine weitere,
+ * für Suchmaschinen nicht von der Haupt-Entity unterscheidbare Kopie der
+ * Firma zu erzeugen, wäre die eigentliche Duplikation gewesen.
  */
+
+/**
+ * Stabile, seitenunabhängige Kennung der Glanzwerk-Unternehmensentity.
+ *
+ * Das Fragment `#organization` ist reine Konvention (verbreitet u. a. durch
+ * Yoast SEOs Schema-Graph) und trägt keine eigene Bedeutung für Google —
+ * entscheidend ist nur, dass exakt dieser eine String überall identisch
+ * wiederverwendet wird, nie neu zusammengesetzt.
+ */
+export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
+
+/** Stabile Kennung der WebSite-Entity, nach demselben Prinzip. */
+export const WEBSITE_ID = `${siteConfig.url}/#website`;
+
+/**
+ * Telefonnummer in E.164 für maschinenlesbare Structured Data.
+ *
+ * Erfindet keinen neuen Wert: `siteConfig.phoneHref` enthält dieselbe
+ * Nummer bereits international formatiert (`tel:+493083756816`), nur mit
+ * dem `tel:`-Präfix für Anruf-Links. Die sichtbare Darstellung
+ * (`siteConfig.phone`, „030 837 56816") bleibt davon unberührt — sie wird
+ * hier nicht verwendet.
+ */
+const SCHEMA_TELEPHONE = siteConfig.phoneHref.replace(/^tel:/, "");
 
 /**
  * Geokoordinaten des Firmensitzes (Joachim-Gottschalk-Weg 12, 12353 Berlin).
@@ -17,8 +59,10 @@ const OFFICE_GEO = {
 } as const;
 
 /**
- * Geschäftszeiten Mo–Sa 08:00–18:00, vom Nutzer bestätigt (nicht erfunden).
- * Grundlage für `openingHoursSpecification` in professionalServiceSchema().
+ * Geschäftszeiten Mo–Sa 08:00–18:00 — vom Betreiber ausdrücklich bestätigt
+ * (Phase 7B). Dieselben Zeiten stehen seither auch sichtbar im Footer
+ * (`src/components/layout/Footer.tsx`), damit Structured Data und
+ * sichtbarer Seiteninhalt übereinstimmen.
  */
 const OPENING_HOURS = {
   "@type": "OpeningHoursSpecification",
@@ -31,10 +75,11 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: siteConfig.url,
     logo: `${siteConfig.url}/brand/glanzwerk-logo.png`,
-    telephone: siteConfig.phone,
+    telephone: SCHEMA_TELEPHONE,
     email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
@@ -65,17 +110,24 @@ interface ProfessionalServiceSchemaOptions {
   aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
-/** More specific than the sitewide Organization schema, without inventing ratings. Used on the homepage, Über-uns- und Bewertungen-Seite. */
+/**
+ * Ausführlichere Beschreibung derselben Entity wie `organizationSchema()`
+ * (geteilte `@id`, siehe Datei-Kommentar oben) — mit Geokoordinaten,
+ * Öffnungszeiten, Google-Profil-Verknüpfung und, sofern übergeben, der
+ * echten aktuellen Bewertung. Verwendet auf Homepage, Über-uns- und
+ * Bewertungen-Seite.
+ */
 export function professionalServiceSchema({
   aggregateRating,
 }: ProfessionalServiceSchemaOptions = {}) {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: siteConfig.url,
     image: `${siteConfig.url}/brand/glanzwerk-logo.png`,
-    telephone: siteConfig.phone,
+    telephone: SCHEMA_TELEPHONE,
     email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
@@ -110,9 +162,11 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: siteConfig.name,
     url: siteConfig.url,
     inLanguage: "de-DE",
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -131,12 +185,7 @@ export function serviceSchema({ name, description, path, areaServed = "Berlin" }
     name,
     description,
     url: `${siteConfig.url}${path}`,
-    provider: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      telephone: siteConfig.phone,
-    },
+    provider: { "@id": ORGANIZATION_ID },
     areaServed: {
       "@type": "City",
       name: areaServed,
@@ -152,6 +201,11 @@ interface ArticleSchemaOptions {
   image?: string;
 }
 
+/**
+ * `author` bleibt die Organization, nicht eine Person: `articles.ts` führt
+ * kein Autorenfeld, ein Name wäre erfunden. Sobald das Datenmodell einen
+ * echten Artikel-Autor ausweist, gehört die Unterscheidung hierher.
+ */
 export function articleSchema({ headline, description, path, image }: ArticleSchemaOptions) {
   return {
     "@context": "https://schema.org",
@@ -160,20 +214,8 @@ export function articleSchema({ headline, description, path, image }: ArticleSch
     description,
     url: `${siteConfig.url}${path}`,
     ...(image && { image: `${siteConfig.url}${image}` }),
-    author: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/brand/glanzwerk-logo.png`,
-      },
-    },
+    author: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -188,13 +230,10 @@ export function webPageSchema({ name, description, path, type = "WebPage" }: Web
   return {
     "@context": "https://schema.org",
     "@type": type,
+    "@id": `${siteConfig.url}${path}#webpage`,
     name,
     description,
     url: `${siteConfig.url}${path}`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    isPartOf: { "@id": WEBSITE_ID },
   };
 }
