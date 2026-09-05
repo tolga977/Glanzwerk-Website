@@ -63,6 +63,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
         }`}
       />
       <nav
+        id="mobile-navigation"
         aria-label="Mobile Navigation"
         className={`absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white p-6 shadow-float transition-transform duration-200 ease-out motion-reduce:transition-none ${
           open ? "translate-x-0" : "translate-x-full"

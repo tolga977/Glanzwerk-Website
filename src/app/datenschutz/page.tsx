@@ -84,7 +84,7 @@ export default function DatenschutzPage() {
           </p>
           <p className="mt-2">
             Die Bestätigung „Ich habe die Datenschutzerklärung zur Kenntnis
-            genommen" im Formular ist eine Kenntnisnahme dieser
+            genommen&ldquo; im Formular ist eine Kenntnisnahme dieser
             Datenschutzerklärung, keine gesonderte Einwilligung in eine
             Datenverarbeitung.
           </p>
@@ -204,7 +204,7 @@ export default function DatenschutzPage() {
             Kartenvorschau ein, die zunächst als lokal gespeichertes Bild
             angezeigt wird – ohne dass dabei eine Verbindung zu Google
             hergestellt wird. Erst wenn Sie aktiv auf „Interaktive
-            Google-Maps-Karte laden" klicken, wird der Kartendienst Google
+            Google-Maps-Karte laden&ldquo; klicken, wird der Kartendienst Google
             Maps von Google Ireland Limited (Gordon House, Barrow Street,
             Dublin 4, Irland) geladen und eine direkte Verbindung Ihres
             Browsers zu Google hergestellt.

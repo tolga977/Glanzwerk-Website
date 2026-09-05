@@ -523,6 +523,8 @@ export default function Header() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Menü öffnen"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
             className={`press flex h-12 w-12 items-center justify-center rounded-control text-brand-900 transition-[color,background-color,box-shadow] duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500 ${steuerFlaeche}`}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
