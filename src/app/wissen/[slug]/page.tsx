@@ -42,7 +42,15 @@ export default async function ArticlePage({ params }: Props) {
   const relatedServices = article.relatedServiceSlugs
     .map((s) => getServiceBySlug(s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
-  const moreArticles = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
+  const sharedServices = (a: (typeof articles)[number]) =>
+    a.relatedServiceSlugs.filter((s) => article.relatedServiceSlugs.includes(s)).length;
+  const currentIndex = articles.findIndex((a) => a.slug === article.slug);
+  const distance = (a: (typeof articles)[number]) =>
+    (articles.indexOf(a) - currentIndex + articles.length) % articles.length;
+  const moreArticles = articles
+    .filter((a) => a.slug !== article.slug)
+    .sort((a, b) => sharedServices(b) - sharedServices(a) || distance(a) - distance(b))
+    .slice(0, 3);
 
   return (
     <>

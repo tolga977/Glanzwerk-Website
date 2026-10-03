@@ -6,6 +6,8 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ServiceCard from "@/components/ui/ServiceCard";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
+import FAQ from "@/components/ui/FAQ";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import { districts, getOrtsteil } from "@/data/districts";
 import { getServiceBySlug } from "@/data/services";
@@ -108,10 +110,27 @@ export default async function OrtsteilPage({ params }: Props) {
       {hasLocalContext && (
         <Section background="tint" decor>
           <SectionHeading eyebrow="Vor Ort" title={vorOrtHeading} />
-          <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-            {ortsteilData.localContext!.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              {ortsteilData.localContext!.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+            <EinsatzgebietKarte
+              location={{
+                label: ortsteilData.name,
+                mapsQuery: `${ortsteilData.name}, Berlin, Deutschland`,
+              }}
+            />
+          </div>
+        </Section>
+      )}
+
+      {ortsteilData.faq && ortsteilData.faq.length > 0 && (
+        <Section background="white">
+          <SectionHeading eyebrow="FAQ" title={heading.faqHeading ?? "Häufige Fragen"} align="center" />
+          <div className="mx-auto mt-8 max-w-2xl">
+            <FAQ items={ortsteilData.faq} idPrefix={`ortsteil-${district.slug}-${ortsteilData.slug}`} />
           </div>
         </Section>
       )}

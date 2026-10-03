@@ -6,6 +6,7 @@ import BrandPhoto from "@/components/ui/BrandPhoto";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
+import { LinkGroupsSection } from "@/components/ui/RelatedLinkSections";
 import { districts } from "@/data/districts";
 import { photos } from "@/data/photos";
 import { buildMetadata } from "@/lib/metadata";
@@ -49,6 +50,22 @@ export default function StandortePage() {
           ))}
         </FadeIn>
       </Section>
+
+      <LinkGroupsSection
+        eyebrow="Ortsteile"
+        title="Ortsteile im Überblick"
+        background="muted"
+        groups={districts
+          .filter((district) => district.ortsteile.length > 0)
+          .map((district) => ({
+            heading: district.name,
+            variant: "pills" as const,
+            links: district.ortsteile.map((ortsteil) => ({
+              href: `/standorte/${district.slug}/${ortsteil.slug}`,
+              label: `Gebäudereinigung ${ortsteil.name}`,
+            })),
+          }))}
+      />
 
       <Section background="tint">
         <SectionHeading

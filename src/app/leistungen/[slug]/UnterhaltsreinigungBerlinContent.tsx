@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import { ServiceRelatedLinks } from "@/components/ui/RelatedLinkSections";
 import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
@@ -647,6 +648,8 @@ export default function UnterhaltsreinigungBerlinContent({
           <BerlinEinsatzgebietKarte />
         </div>
       </Section>
+
+      <ServiceRelatedLinks serviceSlug={service.slug} />
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
       <Section background="white">

@@ -8,6 +8,7 @@ import EditorialIntro from "@/components/ui/EditorialIntro";
 import ServiceCard from "@/components/ui/ServiceCard";
 import LocationCard from "@/components/ui/LocationCard";
 import FAQ from "@/components/ui/FAQ";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
@@ -128,13 +129,21 @@ export default async function DistrictPage({ params }: Props) {
       </section>
 
       <Section background="muted">
-        <EditorialIntro title={heading.sectionHeadings[0]}>
-          <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-            {district.localContext.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
-          </div>
-        </EditorialIntro>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <EditorialIntro title={heading.sectionHeadings[0]}>
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              {district.localContext.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </EditorialIntro>
+          <EinsatzgebietKarte
+            location={{
+              label: `Bezirk ${district.name}`,
+              mapsQuery: `Bezirk ${district.name}, Berlin, Deutschland`,
+            }}
+          />
+        </div>
         <div className="mt-10">
           <h3 className="text-lg font-semibold text-brand-900">
             {heading.sectionHeadings[1]}

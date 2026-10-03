@@ -10,6 +10,7 @@ import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import { ServiceRelatedLinks } from "@/components/ui/RelatedLinkSections";
 import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
@@ -579,6 +580,8 @@ export default function GlasUndFensterreinigungBerlinContent({
           <BerlinEinsatzgebietKarte />
         </div>
       </Section>
+
+      <ServiceRelatedLinks serviceSlug={service.slug} />
 
       {/* Berlin-Abschnitt (getrennt vom Einsatzgebiet-Abschnitt oben) */}
       <Section background="muted">

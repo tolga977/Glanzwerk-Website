@@ -11,6 +11,8 @@ export interface Ortsteil {
   localContext?: string[];
   /** Optional: überschreibt die von der Bezirksseite geerbten Leistungskarten, damit Geschwister-Ortsteile nicht identisch aussehen. */
   featuredServiceSlugs?: string[];
+  /** Optional: lokale FAQs mit echtem Bezug zu diesem Ortsteil (Frage und Antwort). Bleibt das Feld leer, rendert die Seite wie zuvor ohne FAQ-Abschnitt. */
+  faq?: DistrictFaqItem[];
 }
 
 export interface DistrictFaqItem {
@@ -91,6 +93,21 @@ export const districts: District[] = [
         answer:
           "Ja, gerade in zentralen Lagen mit hoher Auslastung stimmen wir kurze, feste Zeitfenster außerhalb der Geschäftszeiten mit Ihnen ab.",
       },
+      {
+        question: "Wird bei denkmalgeschützten Gebäuden in Mitte auf besondere Auflagen geachtet?",
+        answer:
+          "Ja, bei Objekten mit denkmalgeschützter Fassade oder historischen Innenräumen prüfen wir vorab, ob besondere Vorgaben für Reinigungsmittel oder Verfahren gelten, bevor der reguläre Rhythmus beginnt.",
+      },
+      {
+        question: "Wirkt sich die Nähe zu Alexanderplatz und Museumsinsel auf den Reinigungsbedarf aus?",
+        answer:
+          "Ja, in publikumsstarken Lagen wie rund um Alexanderplatz oder die Museumsinsel sorgt der hohe Besucher- und Lieferverkehr für stärker beanspruchte Eingangsbereiche, Aufzüge und Flure – hier planen wir häufig einen engeren Reinigungstakt ein als in ruhigeren Randlagen.",
+      },
+      {
+        question: "Werden sowohl historische Altbauten als auch moderne Bürohochhäuser in Mitte gereinigt?",
+        answer:
+          "Ja, die Bausubstanz in Mitte reicht von sanierten Gründerzeitbauten bis zu modernen Glasfassaden – wir wählen Reinigungsmittel und Verfahren jeweils passend zum tatsächlich vorhandenen Material.",
+      },
     ],
     neighborSlugs: ["pankow", "friedrichshain-kreuzberg", "charlottenburg-wilmersdorf", "tempelhof-schoeneberg"],
     ortsteile: [
@@ -114,6 +131,33 @@ export const districts: District[] = [
           "Die Seestraße als weitere wichtige Geschäftsachse verbindet Wedding mit dem angrenzenden Bezirk Reinickendorf und bringt eine Mischung aus Fachgeschäften, Autowerkstätten und kleineren Bürostandorten mit sich.",
         ],
         featuredServiceSlugs: ["kita-und-schulreinigung-berlin", "unterhaltsreinigung-berlin", "praxisreinigung-berlin"],
+        faq: [
+          {
+            question: "Werden auch medizinische Einrichtungen wie das Virchow-Klinikum-Areal berücksichtigt?",
+            answer:
+              "Mit dem Campus Virchow-Klinikum der Charité liegt eines der größten Krankenhausareale Berlins in Wedding – für solche Objekte mit eigenen Hygiene- und Zutrittsanforderungen stimmen wir Verfahren und Rhythmus gesondert ab, statt eine klassische Büro- oder Praxisreinigung anzusetzen.",
+          },
+          {
+            question: "Unterscheidet sich die Reinigung entlang der Müllerstraße von der im Afrikanischen Viertel?",
+            answer:
+              "Ja, entlang der Müllerstraße prägen kleinteiliger Einzelhandel und Fachgeschäfte mit hohem Publikumsverkehr das Bild, während das überwiegend als Wohngebiet genutzte Afrikanische Viertel an den Rändern nur vereinzelte, ruhigere Gewerbeflächen hat.",
+          },
+          {
+            question: "Wird bei Wochenmärkten rund um den Leopoldplatz ein engerer Reinigungstakt eingeplant?",
+            answer:
+              "Ja, an Markttagen tragen Wochenmärkte rund um den Leopoldplatz zusätzlichen Straßenschmutz in angrenzende Gewerbeeingänge, worauf sich die Taktung der Eingangsbereichsreinigung abstimmen lässt.",
+          },
+          {
+            question: "Werden Kitas und Familienzentren in Wedding außerhalb der Betreuungszeiten gereinigt?",
+            answer:
+              "Ja, Kindertagesstätten und Familienzentren sind in Wedding überdurchschnittlich häufig vertreten – wir richten den Reinigungsrhythmus an den jeweiligen Betreuungszeiten aus, statt einen starren Zeitplan unabhängig davon anzusetzen.",
+          },
+          {
+            question: "Sind Reformhäuser oder Lebensmittelgeschäfte entlang der Müllerstraße im Leistungsspektrum?",
+            answer:
+              "Ja, Reformhäuser, Bäckereien und kleinere Lebensmittelgeschäfte entlang der Müllerstraße benötigen aufgrund des Lebensmittelkontakts einen anderen Hygieneanspruch als reine Büro- oder Verkaufsflächen – darauf stellen wir uns bei der Reinigung gesondert ein.",
+          },
+        ],
       },
     ],
   },
@@ -178,6 +222,21 @@ export const districts: District[] = [
         answer:
           "Nein, wir passen Zeitaufwand und Vorgehen an die jeweilige Raumaufteilung an – das besprechen wir bei der ersten Besichtigung.",
       },
+      {
+        question: "Wird bei häufig wechselnden Mietern in Coworking-Spaces und Gewerbehöfen flexibel reagiert?",
+        answer:
+          "Ja, gerade bei kurzfristig vermieteten Einheiten in Gewerbehöfen und Coworking-Spaces stellen wir uns schnell auf neue Ansprechpartner und veränderte Nutzung ein, statt starr an einem einmal festgelegten Konzept festzuhalten.",
+      },
+      {
+        question: "Berücksichtigen Sie den höheren Reinigungsbedarf nach Veranstaltungsabenden?",
+        answer:
+          "Ja, bei Gastronomie- und Kulturbetrieben mit Abendöffnung, wie sie im Bezirk besonders zahlreich vertreten sind, lässt sich eine zusätzliche Reinigung außerhalb des regulären Rhythmus vereinbaren, um am Folgetag wieder einen gepflegten Zustand herzustellen.",
+      },
+      {
+        question: "Werden auch Fahrradabstellräume gereinigt?",
+        answer:
+          "Ja, da Fahrradverkehr den Bezirk besonders stark prägt, gehören Fahrradabstellräume und -flächen bei vielen Objekten inzwischen zur Standardausstattung und lassen sich in den Reinigungsumfang mit aufnehmen.",
+      },
     ],
     neighborSlugs: ["mitte", "lichtenberg", "treptow-koepenick", "neukoelln", "tempelhof-schoeneberg"],
     ortsteile: [
@@ -200,6 +259,33 @@ export const districts: District[] = [
           "Fahrradwerkstätten und kleine Ateliers, die neben Büros und Agenturen im Bezirksteil vorkommen, haben einen anderen Pflegebedarf als reine Verwaltungsflächen – robustere Böden sind hier keine Seltenheit.",
         ],
         featuredServiceSlugs: ["gastronomiereinigung-berlin", "bueroreinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Wird beim RAW-Gelände zwischen Ateliers und Abendbetrieben unterschieden?",
+            answer:
+              "Ja, das RAW-Gelände beherbergt tagsüber ruhige Ateliers und Werkstätten neben Clubs mit Abendbetrieb – für Objekte mit Abendveranstaltungen lässt sich eine zusätzliche Reinigung am Folgetag einplanen, da der Publikumsverkehr deutlich höher ist als bei den Ateliers.",
+          },
+          {
+            question: "Wirkt sich der Tourismus an der East Side Gallery auf den Reinigungsbedarf aus?",
+            answer:
+              "Ja, die East Side Gallery entlang der Mühlenstraße zieht ganzjährig Touristen an, was sich besonders an Wochenenden auf den Publikumsverkehr und Reinigungsbedarf angrenzender Gastronomie- und Einzelhandelsflächen auswirkt.",
+          },
+          {
+            question: "Werden auch die großflächigen Gewerbeeinheiten an der Karl-Marx-Allee betreut?",
+            answer:
+              "Ja, die Karl-Marx-Allee bringt große, zusammenhängende Gewerbeflächen im Erdgeschoss mehrstöckiger Wohnbauten hervor – diese lassen sich effizienter und großflächiger reinigen als die kleinteiligen Ladenlokale am Boxhagener Platz.",
+          },
+          {
+            question: "Wird bei Cafés und Bars rund um den Boxhagener Platz flexibel auf Tages- und Abendgeschäft eingegangen?",
+            answer:
+              "Ja, rund um den Boxhagener Platz und die Simon-Dach-Straße konzentrieren sich kleinere Cafés und Bars, für die wir den Reinigungsrhythmus flexibel an Tages- und Abendgeschäft anpassen.",
+          },
+          {
+            question: "Wirkt sich das Freiluftkino im Volkspark Friedrichshain auf umliegende Gewerbeflächen aus?",
+            answer:
+              "Ja, an Veranstaltungswochenenden mit Freiluftkino oder Konzerten im Volkspark Friedrichshain steigt der Publikumsverkehr in den angrenzenden Cafés und Kiosken spürbar, worauf sich der Reinigungsbedarf entsprechend anpassen lässt.",
+          },
+        ],
       },
     ],
   },
@@ -263,6 +349,21 @@ export const districts: District[] = [
         answer:
           "Ja, wir reinigen Kitas unterschiedlicher Größe und richten uns dabei nach den jeweiligen Betreuungszeiten der Einrichtung.",
       },
+      {
+        question: "Unterscheidet sich die Reinigung zwischen Prenzlauer Berg und den wachsenden Außenlagen wie Buch oder Karow?",
+        answer:
+          "Ja, im dichter bebauten Prenzlauer Berg überwiegen kleinere Gewerbeeinheiten in sanierten Altbauten, während in den wachsenden äußeren Ortsteilen zunehmend neue Wohn- und Geschäftshäuser mit modernerer Gewerbefläche entstehen – wir passen Verfahren und Umfang an die jeweilige Bausubstanz an.",
+      },
+      {
+        question: "Wird bei Gewerbe im Erdgeschoss unter Wohnungen Rücksicht auf die Hausgemeinschaft genommen?",
+        answer:
+          "Ja, in vielen älteren Gebäuden liegt Gewerbe im Erdgeschoss unter Wohnungen in den oberen Etagen. Wir klären vorab, ob der gemeinsame Hausflur zur gewerblichen Reinigung zählt oder separat über die Hausverwaltung organisiert wird.",
+      },
+      {
+        question: "Kann eine Grundreinigung bei Neubezug in einem der neuen Gewerbeobjekte übernommen werden?",
+        answer:
+          "Ja, gerade in den wachsenden Neubaugebieten des Bezirks lässt sich eine einmalige Grundreinigung dem regulären Reinigungsrhythmus voranstellen, um Rückstände aus der Bauphase zu entfernen.",
+      },
     ],
     neighborSlugs: ["mitte", "reinickendorf", "lichtenberg", "friedrichshain-kreuzberg"],
     ortsteile: [
@@ -283,6 +384,33 @@ export const districts: District[] = [
           "Second-Hand-Läden und Concept Stores, die im Ortsteil das Straßenbild prägen, benötigen eine andere Herangehensweise als standardisierte Einzelhandelsketten mit einheitlichem Ladenlayout.",
         ],
         featuredServiceSlugs: ["praxisreinigung-berlin", "kita-und-schulreinigung-berlin", "kanzleireinigung-berlin"],
+        faq: [
+          {
+            question: "Werden Kanzleien und Boutiquen rund um den Kollwitzplatz unterschiedlich behandelt?",
+            answer:
+              "Rund um den Kollwitzplatz und die Kastanienallee reihen sich Cafés, Boutiquen und Kanzleien in gepflegten Gründerzeitbauten aneinander – für Kanzleien legen wir besonderen Wert auf Vertraulichkeit, für Boutiquen auf ein gepflegtes Schaufenster, das direkt auf Kunden wirkt.",
+          },
+          {
+            question: "Wird die Kulturbrauerei mit ihrem hohen Abendpublikum berücksichtigt?",
+            answer:
+              "Ja, die Kulturbrauerei beherbergt Kino, Veranstaltungsflächen und Gastronomie unter einem Dach mit deutlich höherem Publikumsverkehr an Abend- und Wochenendterminen, worauf sich der Reinigungstakt entsprechend anpassen lässt.",
+          },
+          {
+            question: "Wirkt sich der Mauerpark-Flohmarkt auf den Reinigungsbedarf angrenzender Geschäfte aus?",
+            answer:
+              "Ja, der Mauerpark zieht besonders an Wochenenden mit seinem Flohmarkt viele Besucher an, was sich auf den Publikumsverkehr und Reinigungsbedarf angrenzender Gastronomie- und Einzelhandelsflächen auswirkt.",
+          },
+          {
+            question: "Unterscheidet sich die Schönhauser Allee von den ruhigeren Straßen am Helmholtzplatz?",
+            answer:
+              "Ja, die Schönhauser Allee als zentrale Geschäfts- und U-Bahn-Achse bringt größere, publikumsstarke Ladenflächen hervor, während die kleinteiligeren Geschäfte in den ruhigeren Seitenstraßen rund um den Helmholtzplatz einen entsprechend schlankeren Reinigungsumfang benötigen.",
+          },
+          {
+            question: "Wird bei Kinderarzt- und Hebammenpraxen besonders schonend gereinigt?",
+            answer:
+              "Ja, Kinderärzte, Hebammenpraxen und Familienzentren sind in Prenzlauer Berg überdurchschnittlich häufig vertreten – in Wartebereichen achten wir auf einen besonders schonenden Umgang mit Reinigungsmitteln.",
+          },
+        ],
       },
     ],
   },
@@ -351,6 +479,21 @@ export const districts: District[] = [
         answer:
           "Ja, wir stimmen Zutritt und Zeitfenster individuell mit Kanzleien und Praxen im Bezirk ab.",
       },
+      {
+        question: "Werden auch Villenbüros in Grunewald oder Westend anders behandelt als Geschäftshäuser am Kurfürstendamm?",
+        answer:
+          "Ja, in Richtung Grunewald und Westend dominieren umgenutzte Wohnhäuser mit empfindlicheren Böden wie Parkett – dort arbeiten wir mit angepasster Feuchtigkeit und schonenderen Verfahren als in den robusteren Geschäftshäusern der Hauptlagen.",
+      },
+      {
+        question: "Wird die Reinigung von Autohaus-Showrooms an der Kantstraße speziell berücksichtigt?",
+        answer:
+          "Ja, Autohäuser und Showrooms mit großflächiger Verglasung, wie sie insbesondere entlang der Kantstraße vorkommen, haben einen eigenen Reinigungsbedarf rund um Glasflächen und Kundenbereiche, den wir gesondert einplanen.",
+      },
+      {
+        question: "Wirken sich Messezeiten der Messe Berlin auf den Reinigungsbedarf aus?",
+        answer:
+          "Ja, während größerer Veranstaltungen der Messe Berlin steigt der Publikumsverkehr in angrenzenden Büro-, Gastronomie- und Hotelbetrieben saisonal an, worauf sich der Reinigungstakt bei Bedarf anpassen lässt.",
+      },
     ],
     neighborSlugs: ["mitte", "spandau", "reinickendorf", "steglitz-zehlendorf", "tempelhof-schoeneberg"],
     ortsteile: [
@@ -402,6 +545,33 @@ export const districts: District[] = [
           "Die Bleibtreustraße mit ihren inhabergeführten Boutiquen und Galerien bildet einen ruhigeren, aber ebenso repräsentativen Gegenpol zum belebten Kurfürstendamm, mit entsprechend hohem Anspruch an ein gepflegtes Schaufenster.",
         ],
         featuredServiceSlugs: ["autohausreinigung-berlin", "glas-und-fensterreinigung-berlin", "gebaeudereinigung-berlin"],
+        faq: [
+          {
+            question: "Wird der publikumsstarke Bereich rund um den Bahnhof Zoo anders getaktet als ruhigere Lagen?",
+            answer:
+              "Ja, rund um den Bahnhof Zoo und den Kurfürstendamm sorgt der hohe Publikumsverkehr für einen engeren Reinigungstakt bei Eingangsbereichen und Schaufenstern als in den ruhigeren Verwaltungslagen näher an Schloss Charlottenburg.",
+          },
+          {
+            question: "Werden Institutsgebäude der Technischen Universität nach Vorlesungszeiten statt Bürozeiten gereinigt?",
+            answer:
+              "Ja, die Technische Universität und angrenzende Forschungseinrichtungen benötigen einen an Vorlesungszeiten angepassten Reinigungsrhythmus, der sich von dem eines klassischen Bürogebäudes unterscheidet.",
+          },
+          {
+            question: "Wirkt sich die Deutsche Oper auf den Reinigungsbedarf umliegender Gastronomie aus?",
+            answer:
+              "Ja, an Vorstellungsabenden der Deutschen Oper und umliegender Kulturbetriebe steigt der Publikumsverkehr in benachbarten Gastronomie- und Einzelhandelsflächen, worauf sich der Reinigungsbedarf an solchen Tagen entsprechend anpassen lässt.",
+          },
+          {
+            question: "Werden Autohäuser und Restaurants entlang der Kantstraße unterschiedlich gereinigt?",
+            answer:
+              "Ja, entlang der Kantstraße mischen sich Autohäuser, asiatische Restaurants und Fachgeschäfte auf engem Raum – je nach Betriebsart setzen wir unterschiedliche Reinigungskonzepte an, statt ein einheitliches Vorgehen für die gesamte Straße.",
+          },
+          {
+            question: "Wird der Wochenmarkt am Karl-August-Platz bei der Reinigungsplanung berücksichtigt?",
+            answer:
+              "Ja. Der Markt bringt an seinen Markttagen mehr Laufkundschaft in die angrenzenden Geschäfte, und damit steigt dort der Reinigungsbedarf. Den Rhythmus für Ihren Eingang können wir auf diese Tage ausrichten.",
+          },
+        ],
       },
       {
         slug: "wilmersdorf",
@@ -451,6 +621,33 @@ export const districts: District[] = [
           "Second-Hand-Boutiquen und Kunsthandwerksläden, die vereinzelt in den ruhigeren Geschäftsstraßen Wilmersdorfs vorkommen, benötigen bei der Reinigung besondere Vorsicht im Umgang mit handgefertigten Einzelstücken.",
         ],
         featuredServiceSlugs: ["kanzleireinigung-berlin", "praxisreinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Werden Verwaltungsgebäude am Fehrbelliner Platz anders zugänglich gemacht als private Kanzleien?",
+            answer:
+              "Ja, rund um den Fehrbelliner Platz konzentrieren sich Verwaltungsgebäude und Behördenstandorte mit einem anderen Zutritts- und Sicherheitsablauf als die umliegenden privaten Kanzleien und Praxen – wir stimmen das jeweils gesondert ab.",
+          },
+          {
+            question: "Unterscheiden sich die Bürogebäude am Hohenzollerndamm von den Altbauten der Wohnstraßen?",
+            answer:
+              "Ja. Am Hohenzollerndamm stehen größere, meist neuere Bürohäuser mit mehreren Mietparteien, während die Wohnstraßen dahinter kleinteiligere Altbauten haben. Wir planen deshalb Zugang und Rhythmus je nach Gebäudetyp.",
+          },
+          {
+            question: "Ist der Rüdesheimer Platz ruhiger als die übrigen Geschäftslagen Wilmersdorfs?",
+            answer:
+              "Ja, der Rüdesheimer Platz mit seinem kleinstädtischen Charakter und umliegenden Fachgeschäften bildet einen ruhigen Kontrast zu den verkehrsreicheren Hauptstraßen, mit entsprechend geringerem Reinigungsbedarf für Eingangsbereiche.",
+          },
+          {
+            question: "Wird bei Ärztehäusern mit mehreren Fachrichtungen unter einem Dach koordiniert?",
+            answer:
+              "Ja, Ärztehäuser mit mehreren Fachrichtungen, wie sie in Wilmersdorf häufig vorkommen, benötigen für gemeinsame Wartebereiche einen anderen Rhythmus als für die einzelnen Behandlungsräume – das stimmen wir vorab ab.",
+          },
+          {
+            question: "Wirkt sich der Wochenmarkt an der Emser Straße auf den Reinigungsbedarf aus?",
+            answer:
+              "Für Geschäfte in unmittelbarer Nähe ja: Marktbesucher erhöhen an den Markttagen den Publikumsverkehr, und der Eingangsbereich braucht entsprechend mehr Pflege. Das lässt sich im Reinigungsplan für diese Tage berücksichtigen.",
+          },
+        ],
       },
     ],
   },
@@ -522,6 +719,21 @@ export const districts: District[] = [
         answer:
           "Ja, insbesondere bei Autohäusern und größeren Gewerbeobjekten bündeln wir häufig mehrere Teilleistungen in einem Vertrag.",
       },
+      {
+        question: "Unterscheidet sich die Reinigung zwischen der historischen Altstadt und den Gewerbegebieten am Stadtrand?",
+        answer:
+          "Ja, in der historischen Altstadt Spandaus überwiegen kleinere Ladengeschäfte mit schlankerem Reinigungsumfang, während die großzügig geschnittenen Gewerbegebiete am Stadtrand meist größere, zusammenhängende Büro-, Lager- und Ausstellungsflächen in einem Objekt vereinen.",
+      },
+      {
+        question: "Wie wird der Zutritt geregelt, wenn ein Gewerbeobjekt über eine Schranke oder einen Pförtner gesichert ist?",
+        answer:
+          "Bei größeren Gewerbeobjekten am Stadtrand, die über eine Schranke oder einen zentralen Pförtner gesichert sind, stimmen wir die Zugangsregelung für unser Reinigungsteam vorab schriftlich mit der Objektverwaltung ab.",
+      },
+      {
+        question: "Werden auch Gewerbebetriebe mit Wasserzugang an der Havel berücksichtigt?",
+        answer:
+          "Ja, einzelne Gewerbestandorte mit Werften oder wassernahem Zugang an der Havel bringen einen eigenen Pflegebedarf mit sich, den wir gesondert von der klassischen Büroreinigung betrachten.",
+      },
     ],
     neighborSlugs: ["charlottenburg-wilmersdorf", "reinickendorf"],
     ortsteile: [
@@ -541,6 +753,33 @@ export const districts: District[] = [
           "Gastronomiebetriebe entlang der Havelpromenade benötigen einen Reinigungsrhythmus, der sich flexibel an saisonal schwankenden Publikumsverkehr anpassen lässt.",
         ],
         featuredServiceSlugs: ["gebaeudereinigung-berlin", "glas-und-fensterreinigung-berlin", "gastronomiereinigung-berlin"],
+        faq: [
+          {
+            question: "Wirkt sich die Zitadelle Spandau auf den Reinigungsbedarf umliegender Gastronomie aus?",
+            answer:
+              "Ja, die Zitadelle Spandau als gut erhaltene Renaissancefestung zieht ganzjährig Besucher an, was sich auf umliegende Gastronomie- und Einzelhandelsflächen auswirkt.",
+          },
+          {
+            question: "Wird die Carl-Schurz-Straße wegen des hohen Publikumsverkehrs enger getaktet?",
+            answer:
+              "Ja, die Carl-Schurz-Straße als Fußgängerzone der Altstadt bündelt dichten Einzelhandel und Gastronomie mit entsprechend hohem Publikumsverkehr, worauf wir den Reinigungstakt für Eingangsbereiche und Schaufenster abstimmen.",
+          },
+          {
+            question: "Werden die Spandau Arcaden als Einkaufszentrum zentral gereinigt?",
+            answer:
+              "Ja, die Spandau Arcaden direkt am Bahnhof Spandau bringen ein großflächiges Einkaufszentrum mit vielen einzelnen Mietflächen hervor – die Gemeinschaftsflächen lassen sich zentral koordiniert reinigen.",
+          },
+          {
+            question: "Wirkt sich der Pendlerverkehr am Bahnhof Spandau auf angrenzende Gewerbeflächen aus?",
+            answer:
+              "Ja, der Bahnhof Spandau als Fernbahnhof und Endpunkt der U-Bahn-Linie 7 sorgt für einen der höchsten Pendlerverkehre im Bezirk, mit entsprechend engerem Reinigungstakt für angrenzende Gewerbeflächen.",
+          },
+          {
+            question: "Wird an Markttagen auf dem Reformationsplatz mehr gereinigt?",
+            answer:
+              "Auf Wunsch ja. Der Wochenmarkt bringt zusätzlichen Straßenschmutz vor die Eingänge angrenzender Gewerbeflächen; wir können deshalb für diese Tage einen engeren Takt im Eingangsbereich vereinbaren.",
+          },
+        ],
       },
     ],
   },
@@ -609,6 +848,21 @@ export const districts: District[] = [
         answer:
           "Ja, wir reinigen Schulen und Bildungseinrichtungen im Bezirk außerhalb des Unterrichtsbetriebs.",
       },
+      {
+        question: "Wird ein Büro in einer Villa in Zehlendorf anders gereinigt als ein Geschäftshaus an der Schloßstraße?",
+        answer:
+          "Ja, Villenbüros in umgenutzten Wohnhäusern haben oft empfindlichere Böden wie Parkett, während die Geschäftshäuser an der Schloßstraße meist robustere, moderne Materialien mitbringen – wir passen Verfahren und Zeitaufwand entsprechend an.",
+      },
+      {
+        question: "Wie wird bei größeren Facharztzentren mit mehreren Praxen koordiniert?",
+        answer:
+          "Bei Facharztzentren mit mehreren Praxen unter einem Dach klären wir vorab, ob eine zentrale Ansprechperson für die gesamte Einrichtung koordiniert oder jede Fachrichtung separat beauftragt.",
+      },
+      {
+        question: "Wirkt sich die Nähe zu Wannsee oder Schlachtensee auf den Reinigungsbedarf aus?",
+        answer:
+          "In der Regel nicht direkt auf die Innenraumreinigung – saisonal steigender Ausflugsverkehr an Wannsee oder Schlachtensee betrifft vor allem vereinzelte Gastronomie- und Freizeitbetriebe in Ufernähe, nicht die übrigen ruhigen Bürolagen des Bezirks.",
+      },
     ],
     neighborSlugs: ["charlottenburg-wilmersdorf", "tempelhof-schoeneberg"],
     ortsteile: [
@@ -663,6 +917,33 @@ export const districts: District[] = [
           "Kleinere Musikinstrumentenläden mit angeschlossener Werkstatt, wie sie vereinzelt in Steglitz vorkommen, benötigen bei der Reinigung besondere Sorgfalt im Umgang mit ausgestellten Instrumenten und empfindlichen Materialien.",
         ],
         featuredServiceSlugs: ["bueroreinigung-berlin", "kanzleireinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Wird die Schloßstraße wegen der hohen Kundenfrequenz anders getaktet als ruhigere Straßen?",
+            answer:
+              "Ja, die Schloßstraße als zentrale Geschäfts- und Bürolage hat einen deutlich höheren Publikumsverkehr als die ruhigeren Wohnstraßen wie die Albrechtstraße – wir planen den Reinigungstakt für Eingangsbereiche entsprechend enger.",
+          },
+          {
+            question: "Bringt das Rathaus Steglitz zusätzlichen Publikumsverkehr für umliegende Geschäfte mit sich?",
+            answer:
+              "Ja, die Verwaltungsgebäude rund ums Rathaus Steglitz ziehen Besucher in die Umgebung. Davon betroffen sind vor allem die Eingangsbereiche der Geschäftsflächen nebenan, die dadurch häufiger gereinigt werden sollten.",
+          },
+          {
+            question: "Werden Einkaufszentren entlang der Schloßstraße zentral oder einzeln gereinigt?",
+            answer:
+              "Einkaufszentren mit mehreren Mietern unter einem Dach lassen sich zentral für die Gemeinschaftsflächen koordinieren, während einzelne Ladengeschäfte ihren eigenen Rhythmus für die Verkaufsfläche behalten.",
+          },
+          {
+            question: "Wird beim Botanischen Garten anders vorgegangen als bei klassischen Geschäftshäusern?",
+            answer:
+              "Ja, der Botanische Garten und angrenzende Institutsgebäude bringen einen eigenen Gebäudetyp mit sich, der einen an Öffnungszeiten statt Geschäftszeiten angepassten Reinigungsrhythmus benötigt.",
+          },
+          {
+            question: "Wirkt sich der Fußgängerverkehr am Bahnhof Rathaus Steglitz auf die Reinigung aus?",
+            answer:
+              "Ja. Als Verkehrsknotenpunkt lenkt der Bahnhof viele Fußgänger an den Geschäften vorbei, daher brauchen Eingänge in Bahnhofsnähe einen dichteren Reinigungstakt als Läden in den ruhigen Nebenstraßen.",
+          },
+        ],
       },
       {
         slug: "zehlendorf",
@@ -716,6 +997,33 @@ export const districts: District[] = [
           "Kleinere Musikschulen mit Einzelunterricht, wie sie vereinzelt in Zehlendorf vorkommen, benötigen einen an Unterrichtszeiten angepassten Reinigungsrhythmus für Übungsräume und Warteflächen.",
         ],
         featuredServiceSlugs: ["praxisreinigung-berlin", "kita-und-schulreinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Werden Villenbüros in Zehlendorf besonders unauffällig gereinigt?",
+            answer:
+              "Ja, Zehlendorf ist von villenartigen Wohnlagen geprägt, in denen ein unauffälliger, gut in den Tagesablauf des Wohnumfelds eingepasster Reinigungsablauf im Vordergrund steht.",
+          },
+          {
+            question: "Wirkt sich der Ausflugsverkehr an Wannsee oder Schlachtensee auf Gewerbeflächen aus?",
+            answer:
+              "Nur begrenzt – der saisonale Ausflugsverkehr an Wannsee und Schlachtensee betrifft vor allem vereinzelte Gastronomie- und Freizeitbetriebe in Ufernähe, nicht die übrigen ruhigen Wohnlagen des Ortsteils.",
+          },
+          {
+            question: "Wird bei Instituten der Freien Universität nach Vorlesungszeiten statt Bürozeiten gereinigt?",
+            answer:
+              "Ja, die Freie Universität und angrenzende Forschungseinrichtungen benötigen einen an Vorlesungszeiten angepassten Reinigungsrhythmus, der sich von einem klassischen Bürogebäude unterscheidet.",
+          },
+          {
+            question: "Werden internationale Schulen mit Rücksicht auf Spiel- und Pausenbereiche gereinigt?",
+            answer:
+              "Ja, internationale Schulen und Bildungseinrichtungen in den villenartigen Lagen Zehlendorfs benötigen einen an Unterrichtszeiten angepassten Reinigungsrhythmus mit besonderer Rücksicht auf Spiel- und Pausenbereiche.",
+          },
+          {
+            question: "Werden auch Fachgeschäfte rund um den Teltower Damm bedient?",
+            answer:
+              "Ja, rund um den Teltower Damm konzentrieren sich kleinere Fachgeschäfte und Dienstleister, die wir mit einem ähnlichen Reinigungstakt wie andere Einzelhandelsflächen mit vergleichbarem Publikumsverkehr betreuen.",
+          },
+        ],
       },
     ],
   },
@@ -784,6 +1092,21 @@ export const districts: District[] = [
         answer:
           "Ja, das lässt sich in einem gemeinsamen Reinigungskonzept bündeln, insbesondere wenn eine Hausverwaltung mehrere Bereiche koordiniert.",
       },
+      {
+        question: "Unterscheidet sich die Reinigung zwischen Tempelhof und Schöneberg?",
+        answer:
+          "Ja, im Tempelhofer Teil überwiegen größere, oft neuere Gewerbe- und Bürogebäude mit mehreren Mietparteien, während in Schöneberg kompaktere Wohn-Geschäftshäuser mit Kanzleien, Praxen und kleineren Büros dominieren – wir passen Umfang und Rhythmus entsprechend an.",
+      },
+      {
+        question: "Wirkt sich der Publikumsverkehr rund um das Rathaus Schöneberg auf die Reinigung aus?",
+        answer:
+          "Öffentliche Einrichtungen wie das Rathaus Schöneberg bringen zusätzlichen Publikumsverkehr in ihre unmittelbare Umgebung, worauf sich der Reinigungstakt für Eingangsbereiche umliegender Gewerbeflächen anpassen lässt.",
+      },
+      {
+        question: "Werden auch Gewerbeflächen rund um das Tempelhofer Feld betreut?",
+        answer:
+          "Ja, rund um das Gelände des ehemaligen Flughafens Tempelhof haben sich größere Gewerbe- und Bürogebäude angesiedelt, deren großzügige Grundstücksgrößen klar abgegrenzte, gut planbare Reinigungseinsätze erlauben.",
+      },
     ],
     neighborSlugs: ["mitte", "neukoelln", "steglitz-zehlendorf", "charlottenburg-wilmersdorf"],
     ortsteile: [
@@ -839,6 +1162,33 @@ export const districts: District[] = [
           "Kleinere Steuerkanzleien mit digitalem Mandantenportal, wie sie neben klassischen Kanzleien in Tempelhof vorkommen, benötigen dennoch einen unauffälligen Reinigungsablauf für die verbliebenen Beratungsräume.",
         ],
         featuredServiceSlugs: ["treppenhausreinigung-berlin", "gebaeudereinigung-berlin", "bueroreinigung-berlin"],
+        faq: [
+          {
+            question: "Werden Gewerbeflächen rund um das ehemalige Flughafengelände Tempelhof anders betreut als im historischen Dorfkern?",
+            answer:
+              "Ja, rund um das Gelände des ehemaligen Flughafens Tempelhof haben sich größere Gewerbe- und Bürogebäude mit mehreren Mietparteien angesiedelt, während die Alt-Tempelhof als historischer Dorfkern einen kompakteren, ruhigeren Schwerpunkt mit kleineren Fachgeschäften bildet.",
+          },
+          {
+            question: "Wird der Tempelhofer Damm wegen des höheren Publikumsverkehrs enger getaktet?",
+            answer:
+              "In der Regel ja: Einzelhandel, Gastronomie und Dienstleister liegen dort dicht beieinander, und die Eingänge werden stärker beansprucht als in den Nebenstraßen. Den Takt legen wir deshalb für jedes Objekt gesondert fest.",
+          },
+          {
+            question: "Wird bei Ärztehäusern mit mehreren Praxen unter einem Dach koordiniert?",
+            answer:
+              "Ja, Ärztehäuser mit mehreren Praxen, wie sie in den größeren Gewerbegebäuden Tempelhofs vorkommen, benötigen für gemeinsame Wartebereiche einen anderen Rhythmus als für die einzelnen Behandlungsräume.",
+          },
+          {
+            question: "Wirkt sich der Wochenmarkt am Tempelhofer Damm auf den Reinigungsbedarf aus?",
+            answer:
+              "Ja. Wer am Tempelhofer Damm ein Ladengeschäft betreibt, erlebt an den Wochenmarkttagen Spitzen im Kundenverkehr. Den Eingangsbereich können wir für diese Tage engmaschiger einplanen.",
+          },
+          {
+            question: "Werden auch größere Logistik- und Handwerksbetriebe nahe dem Flughafengelände bedient?",
+            answer:
+              "Ja, größere Logistik- und Handwerksbetriebe in den ehemaligen Flughafen-nahen Gewerbeflächen benötigen für Werkstatt- und Lagerbereiche robustere Reinigungsverfahren als für angeschlossene Büroflächen, was wir entsprechend einplanen.",
+          },
+        ],
       },
       {
         slug: "schoeneberg",
@@ -891,6 +1241,33 @@ export const districts: District[] = [
           "Kleinere Töpfereien und Keramikwerkstätten mit angeschlossenem Verkaufsraum, wie sie vereinzelt im Schöneberger Kiez vorkommen, benötigen bei der Reinigung besondere Vorsicht im Umgang mit Ton- und Glasurresten.",
         ],
         featuredServiceSlugs: ["bueroreinigung-berlin", "kanzleireinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Wirkt sich der Wochenmarkt am Winterfeldtplatz auf den Reinigungsbedarf aus?",
+            answer:
+              "Ja, rund um den Winterfeldtplatz mit seinem bekannten Wochenmarkt verzeichnen kleinere Fachgeschäfte und Cafés an Markttagen einen spürbar höheren Publikumsverkehr und damit mehr eingetragenen Schmutz im Eingangsbereich.",
+          },
+          {
+            question: "Wird die Hauptstraße wegen des Publikumsverkehrs anders getaktet als Wohnstraßen?",
+            answer:
+              "Ja, die Hauptstraße als zentrale Geschäftsachse Schönebergs bringt Einzelhandel, Dienstleister und Gastronomie auf engem Raum zusammen, mit einem entsprechend höheren Reinigungsbedarf als in den ruhigeren Wohnstraßen.",
+          },
+          {
+            question: "Bringt das Kammergericht am Kleistpark zusätzlichen Publikumsverkehr für umliegende Kanzleien?",
+            answer:
+              "Ja. Rund um das Kammergericht am Kleistpark entsteht zusätzlicher Besucherverkehr, den Kanzleien und Dienstleister vor Ort an Empfang und Eingang spüren. Den Reinigungsrhythmus dafür stimmen wir mit Ihnen ab.",
+          },
+          {
+            question: "Wird beim Ausgehviertel rund um den Nollendorfplatz auf Abendbetrieb Rücksicht genommen?",
+            answer:
+              "Ja, der Nollendorfplatz und angrenzende Ausgehviertel ziehen abends und am Wochenende deutlich mehr Publikum an als tagsüber, worauf sich der Reinigungsbedarf umliegender Gastronomiebetriebe an solchen Tagen anpassen lässt.",
+          },
+          {
+            question: "Werden Fachgeschäfte in der Goltzstraße mit dem passenden Reinigungstakt bedient?",
+            answer:
+              "Ja. Die Goltzstraße ist kleinteilig und belebt, mit inhabergeführten Fachgeschäften und Cafés. Deren Eingänge brauchen einen engeren Takt als Läden in den ruhigeren Wohnstraßen abseits davon.",
+          },
+        ],
       },
     ],
   },
@@ -959,6 +1336,21 @@ export const districts: District[] = [
         answer:
           "Ja, wir reinigen Studios unterschiedlicher Größe und richten den Rhythmus nach der jeweiligen Frequentierung aus.",
       },
+      {
+        question: "Unterscheidet sich die Reinigung zwischen dem Neuköllner Kern und Rudow?",
+        answer:
+          "Ja, im dicht bebauten Kern rund um Hermannplatz und Sonnenallee überwiegen kleinteilige Gewerbeeinheiten in Altbauten, während im südlichen Rudow großflächige, zusammenhängende Gewerbeparks vorherrschen – kleinere Einheiten benötigen meist eine schlanke Einzelleistung, größere Objekte profitieren von einem gebündelten Vertrag.",
+      },
+      {
+        question: "Wie wird bei Fitnessstudios und Gemeinschaftsbüros mit wechselnden Mitgliedern vorgegangen?",
+        answer:
+          "Bei Fitnessstudios und Gemeinschaftsbüros mit hoher Mitgliederfluktuation lässt sich der Reinigungsumfang in regelmäßigen Abständen neu abstimmen, da sich die tatsächliche Nutzung schneller ändert als bei einem Bürogebäude mit stabiler Mieterstruktur.",
+      },
+      {
+        question: "Profitiert Rudow von der Nähe zum Flughafen BER?",
+        answer:
+          "Ja, die Nähe zum Flughafen BER hat in Rudow zu einer wachsenden Zahl an Gewerbeansiedlungen mit modernen, großzügig geschnittenen Bürogebäuden geführt, die sich baulich von den Altbauten im Bezirkskern unterscheiden.",
+      },
     ],
     neighborSlugs: ["friedrichshain-kreuzberg", "tempelhof-schoeneberg", "treptow-koepenick"],
     ortsteile: [
@@ -1015,6 +1407,33 @@ export const districts: District[] = [
           "Wer in Rudow einen Gewerbepark mit mehreren kleineren Mietern verwaltet, profitiert von einer gebündelten Reinigung der Gemeinschaftsflächen statt separater Einzelverträge je Mieteinheit.",
         ],
         featuredServiceSlugs: ["gebaeudereinigung-berlin", "unterhaltsreinigung-berlin", "bueroreinigung-berlin"],
+        faq: [
+          {
+            question: "Profitiert Rudow von der Nähe zum Flughafen BER?",
+            answer:
+              "Ja, die Nähe zum Flughafen BER hat in Rudow zu einer spürbaren Neuansiedlung von Gewerbebetrieben mit modernen, großzügig geschnittenen Bürogebäuden geführt, die sich baulich deutlich von den Altbauten im Neuköllner Kern unterscheiden.",
+          },
+          {
+            question: "Werden Autohäuser und Baumärkte entlang der Neuköllner Straße effizient gereinigt?",
+            answer:
+              "Ja, entlang der Neuköllner Straße und angrenzender Gewerbeachsen liegen Autohäuser, Baumärkte und Bürostandorte auf großzügig geschnittenen Grundstücken, die eine effizientere, großflächigere Reinigung erlauben als kleinteilige Ladenlokale.",
+          },
+          {
+            question: "Werden Logistik- und Handwerksbetriebe in den Gewerbeparks Rudows anders behandelt als Büroflächen?",
+            answer:
+              "Ja, Logistik- und Handwerksbetriebe in den Gewerbeparks Rudows benötigen für Lager- und Werkstattbereiche robustere Reinigungsverfahren als für angeschlossene Büro- und Empfangsflächen.",
+          },
+          {
+            question: "Wirkt sich der U-Bahnhof Rudow als Linienendpunkt auf angrenzende Geschäfte aus?",
+            answer:
+              "Ja. Als südlicher Endpunkt der U-Bahn-Linie bringt der Bahnhof zusätzliche Kundschaft in die Läden direkt nebenan, deren Eingänge entsprechend häufiger gereinigt werden sollten.",
+          },
+          {
+            question: "Ist der historische Dorfkern rund um die Dorfkirche Rudow auch Teil des Einsatzgebiets?",
+            answer:
+              "Ja, die Dorfkirche Rudow und ihr historischer Dorfanger bilden einen kleinen, ruhigen Kern inmitten der sonst großflächig geprägten Gewerbestruktur des Ortsteils und gehören ebenso zu unserem Einsatzgebiet.",
+          },
+        ],
       },
     ],
   },
@@ -1083,6 +1502,21 @@ export const districts: District[] = [
         answer:
           "Ja, der Ortskern Köpenick gehört zu unserem Einsatzgebiet innerhalb des Bezirks Treptow-Köpenick.",
       },
+      {
+        question: "Werden auch Gewerbeobjekte mit eigenem Bootssteg oder Uferzugang berücksichtigt?",
+        answer:
+          "Ja, die Nähe zu Spree, Dahme und Müggelsee prägt einzelne Gewerbestandorte mit eigenem Bootssteg oder Uferzugang – solche Außenbereiche betrachten wir bei der Reinigungsplanung gesondert von den Innenräumen.",
+      },
+      {
+        question: "Wirken sich die großen Entfernungen im flächenmäßig größten Bezirk auf die Terminplanung aus?",
+        answer:
+          "Bei mehreren nah beieinanderliegenden Objekten im selben Gewerbegebiet lässt sich die Anfahrt für mehrere Teilleistungen zusammenlegen, was die größeren Distanzen im Bezirk in der Gesamtkalkulation ausgleicht.",
+      },
+      {
+        question: "Unterscheidet sich die Reinigung im Ortskern Köpenick von den Gewerbegebieten am Stadtrand?",
+        answer:
+          "Ja, der historische Ortskern Köpenick mit seinen Geschäften und Praxen ist kompakter und fußläufiger erschlossen als die weitläufigeren, oft moderneren Gewerbegebiete am Stadtrand – wir richten uns bei Verfahren und Zeitaufwand nach der jeweiligen Bausubstanz.",
+      },
     ],
     neighborSlugs: ["friedrichshain-kreuzberg", "neukoelln", "lichtenberg", "marzahn-hellersdorf"],
     ortsteile: [
@@ -1138,6 +1572,33 @@ export const districts: District[] = [
           "Kleinere Segel- und Bootsausrüster, die im Umfeld der Uferpromenaden im Ortskern vorkommen, benötigen einen saisonal schwankenden Reinigungsrhythmus für Verkaufs- und Lagerflächen.",
         ],
         featuredServiceSlugs: ["praxisreinigung-berlin", "unterhaltsreinigung-berlin", "glas-und-fensterreinigung-berlin"],
+        faq: [
+          {
+            question: "Wird der historische Ortskern rund um das Rathaus Köpenick anders gereinigt als die Gewerbegebiete am Stadtrand?",
+            answer:
+              "Ja, der historische Ortskern Köpenick ist kompakter und fußläufiger erschlossen als die weitläufigeren Gewerbegebiete am Stadtrand des Bezirks – wir passen Verfahren und Zeitaufwand entsprechend an.",
+          },
+          {
+            question: "Wird die Bahnhofstraße wegen des höheren Publikumsverkehrs enger getaktet?",
+            answer:
+              "Ja. Die Bahnhofstraße ist die zentrale Geschäftsachse, auf der Einzelhandel, Gastronomie und Praxen dicht nebeneinanderliegen. Ihre Eingänge brauchen einen kürzeren Reinigungsabstand als die der Nebenstraßen.",
+          },
+          {
+            question: "Wirkt sich der Zusammenfluss von Spree und Dahme auf den Reinigungsbedarf aus?",
+            answer:
+              "Ja, die Uferpromenaden am Zusammenfluss von Spree und Dahme ziehen saisonal viele Ausflügler an, was sich auf den Publikumsverkehr angrenzender Gastronomiebetriebe auswirken kann.",
+          },
+          {
+            question: "Bringt die Schlossinsel Köpenick touristisches Publikum für umliegende Geschäfte mit sich?",
+            answer:
+              "Ja, vor allem saisonal. Das historische Schloss auf der Schlossinsel zieht Touristen an, was in Gastronomie und Einzelhandel der Umgebung zu mehr Gästen und damit zu mehr Reinigungsbedarf führt.",
+          },
+          {
+            question: "Wird am Wochenmarkt im Ortskern Köpenick ein engerer Reinigungstakt eingeplant?",
+            answer:
+              "Auf Wunsch ja. An Markttagen kommen zusätzliche Kunden in die Geschäfte im Ortskern; den Reinigungstakt für Ihren Eingang können wir daran ausrichten.",
+          },
+        ],
       },
     ],
   },
@@ -1206,6 +1667,21 @@ export const districts: District[] = [
         answer:
           "Ja, wir passen den Umfang an die tatsächliche Größe und Nutzung einer Praxis oder eines kleineren Dienstleisters an.",
       },
+      {
+        question: "Wie wirkt sich die offene Bauweise der Großwohnsiedlungen auf die Reinigung aus?",
+        answer:
+          "Die in den 1970er- und 80er-Jahren errichteten Großwohnsiedlungen wurden mit großzügig und offen geplanten Gewerbeflächen gebaut – das erlaubt effizientere, großflächigere Reinigungsverfahren als in kleinteiligen Altbau-Grundrissen anderer Bezirke.",
+      },
+      {
+        question: "Wird bei Einkaufszentren mit mehreren Mietern zentral koordiniert?",
+        answer:
+          "Bei Einkaufszentren mit mehreren Mietern klären wir vorab, ob eine zentrale Ansprechperson für die gesamte Verwaltung koordiniert oder jeder Mieter separat beauftragt wird.",
+      },
+      {
+        question: "Werden auch Gesundheitszentren mit mehreren Praxen unter einem Dach betreut?",
+        answer:
+          "Ja, medizinische Versorgung ist in den Großwohnsiedlungen teils in eigens errichteten Gesundheitszentren mit mehreren Fachrichtungen gebündelt – für gemeinsame Wartebereiche stimmen wir einen anderen Rhythmus ab als für die einzelnen Behandlungsräume.",
+      },
     ],
     neighborSlugs: ["lichtenberg", "treptow-koepenick", "pankow"],
     ortsteile: [
@@ -1223,6 +1699,33 @@ export const districts: District[] = [
           "Die weitläufige, aufgelockerte Bauweise der Plattenbausiedlungen bedeutet für die Gebäudereinigung meist großzügigere, aber dafür einheitlichere Grundrisse als in den kleinteiligen Altbaulagen der Innenstadtbezirke.",
         ],
         featuredServiceSlugs: ["praxisreinigung-berlin", "kita-und-schulreinigung-berlin", "gebaeudereinigung-berlin"],
+        faq: [
+          {
+            question: "Werden Gewerbeflächen in den Erdgeschosszonen der Plattenbausiedlungen betreut?",
+            answer:
+              "Ja, in den Erdgeschosszonen der großflächigen Plattenbausiedlung aus den 1970er- und 80er-Jahren befinden sich zahlreiche kleinere Gewerbeflächen, Praxen und Dienstleister, die wir mit einem auf die jeweilige Größe abgestimmten Umfang reinigen.",
+          },
+          {
+            question: "Wirken sich die Gärten der Welt auf den Reinigungsbedarf umliegender Gastronomie aus?",
+            answer:
+              "Ja, die Gärten der Welt ziehen mit ihren internationalen Themengärten und der Seilbahn ganzjährig Besucher an, was angrenzenden Gastronomiebetrieben zusätzlichen Publikumsverkehr beschert.",
+          },
+          {
+            question: "Wird die Marzahner Promenade anders getaktet als die weitläufigeren Gewerbeflächen an den Hauptachsen?",
+            answer:
+              "Ja. Die Marzahner Promenade ist als Einkaufsstraße kompakt aufgebaut, mit vielen Läden und Dienstleistern nebeneinander. Weitläufige Gewerbeflächen an den Hauptverkehrsachsen brauchen dagegen einen anderen Zuschnitt, den wir objektbezogen planen.",
+          },
+          {
+            question: "Wird das Ringcenter als Einkaufszentrum zentral gereinigt?",
+            answer:
+              "Ja, das Ringcenter am S-Bahnhof Marzahn bringt ein größeres Einkaufszentrum mit vielen einzelnen Mietflächen hervor, dessen Gemeinschaftsflächen wie Gänge und Eingänge sich zentral koordiniert reinigen lassen.",
+          },
+          {
+            question: "Werden Ärztehäuser in den Wohnblocks mit demselben Hygieneanspruch wie klassische Praxen gereinigt?",
+            answer:
+              "Ja, Ärztehäuser und Facharztzentren in den Erdgeschosszonen der Wohnblocks sind in Marzahn überdurchschnittlich häufig vertreten und benötigen einen ähnlich hohen Hygieneanspruch wie eine klassische Praxis in anderen Bezirksteilen.",
+          },
+        ],
       },
     ],
   },
@@ -1291,6 +1794,21 @@ export const districts: District[] = [
         answer:
           "Ja, offene Flächen ohne feste Raumtrennung reinigen wir ebenso wie klassisch aufgeteilte Büros.",
       },
+      {
+        question: "Profitieren neu gebaute Bürokomplexe in Lichtenberg von speziellen Reinigungsverfahren?",
+        answer:
+          "Ja, viele Neubauten in Lichtenberg entstanden auf ehemaligen Industrieflächen und bringen großflächige Elementfassaden statt einzelner Fensterrahmen mit – das ermöglicht eine effizientere, großflächige Reinigung mit entsprechender Technik.",
+      },
+      {
+        question: "Ist eine Grundreinigung nach Bezug eines neuen Bürokomplexes sinnvoll?",
+        answer:
+          "Ja, nach Bezug eines neuen Bürokomplexes lässt sich eine einmalige Grundreinigung dem laufenden Vertrag voranstellen, um Montagespuren oder Rückstände von Schutzfolien zu entfernen, bevor der reguläre Rhythmus beginnt.",
+      },
+      {
+        question: "Wird bei Bürokomplexen mit mehreren Mietern die Zuständigkeit für Gemeinschaftsflächen geklärt?",
+        answer:
+              "Ja, vorab. Wir sprechen mit der Hausverwaltung ab, welche Gemeinschaftsflächen wie Aufzüge und Empfang zentral abgerechnet werden und was jeder Mieter selbst beauftragt.",
+      },
     ],
     neighborSlugs: ["pankow", "friedrichshain-kreuzberg", "treptow-koepenick", "marzahn-hellersdorf"],
     ortsteile: [
@@ -1307,6 +1825,33 @@ export const districts: District[] = [
           "Kleinere Kanzleien und Praxen in den umgenutzten Villen benötigen bei der Reinigung besondere Rücksicht auf historische Bausubstanz und teils empfindliche Bodenbeläge wie Parkett.",
         ],
         featuredServiceSlugs: ["bueroreinigung-berlin", "praxisreinigung-berlin", "unterhaltsreinigung-berlin"],
+        faq: [
+          {
+            question: "Unterscheidet sich Karlshorst baulich vom übrigen Bezirk Lichtenberg?",
+            answer:
+              "Ja, Karlshorst unterscheidet sich mit seinem Villenviertel und ruhigen, grünen Straßenzügen deutlich vom dichter bebauten übrigen Bezirk Lichtenberg – die Gewerbestruktur ist entsprechend kleinteiliger.",
+          },
+          {
+            question: "Bringt das Deutsch-Russische Museum zusätzlichen Publikumsverkehr für umliegende Betriebe?",
+            answer:
+              "Ja, das Deutsch-Russische Museum Berlin-Karlshorst ist ein bedeutender historischer Standort und zieht regelmäßig Besuchergruppen an, was sich auf den Publikumsverkehr in der Umgebung auswirken kann.",
+          },
+          {
+            question: "Wirkt sich die Trabrennbahn Karlshorst an Renntagen auf die Gastronomie aus?",
+            answer:
+              "Ja, die Trabrennbahn Karlshorst sorgt an Renntagen für saisonal höheren Publikumsverkehr in umliegenden Gastronomiebetrieben, worauf sich der Reinigungsbedarf an solchen Tagen anpassen lässt.",
+          },
+          {
+            question: "Wird die Treskowallee als Geschäftsachse anders getaktet als die Villenstraßen?",
+            answer:
+              "Ja. Auf der Treskowallee liegen Einzelhandel, Gastronomie und Dienstleister auf überschaubarem Raum. Der Publikumsverkehr ist dort geringer als in den Geschäftsstraßen der westlichen Innenstadtbezirke, der Reinigungstakt fällt entsprechend ruhiger aus.",
+          },
+          {
+            question: "Wird bei Kanzleien und Praxen in umgenutzten Villen auf die historische Bausubstanz Rücksicht genommen?",
+            answer:
+              "Ja, kleinere Kanzleien und Praxen in den umgenutzten Villen Karlshorsts benötigen bei der Reinigung besondere Rücksicht auf historische Bausubstanz und teils empfindliche Bodenbeläge wie Parkett.",
+          },
+        ],
       },
     ],
   },
@@ -1374,6 +1919,21 @@ export const districts: District[] = [
         answer:
           "Ja, den Umfang passen wir an die tatsächliche Größe und Nutzung der jeweiligen Praxis oder des Büros an.",
       },
+      {
+        question: "Wird bei kombinierten Büro- und Lagerflächen unterschiedlich gereinigt?",
+        answer:
+          "Ja, Büroflächen mit Teppich oder Laminat benötigen andere Reinigungsverfahren als angeschlossene Lagerflächen mit robusterem Industrieboden – wir stimmen das Vorgehen auf den jeweiligen Bereich ab.",
+      },
+      {
+        question: "Wie wird der Zugang geregelt, wenn ein Gewerbeobjekt über ein Werkstor mit Werkschutz gesichert ist?",
+        answer:
+          "Bei größeren Gewerbeobjekten rund um Tegel, die über ein eigenes Werkstor mit Schranke gesichert sind, stimmen wir die Zugangsregelung für unser Reinigungsteam vorab schriftlich mit der Objektverwaltung oder dem Werkschutz ab.",
+      },
+      {
+        question: "Profitieren Unternehmen von der Umwandlung des ehemaligen Flughafengeländes Tegel?",
+        answer:
+          "Ja, durch die Umwandlung des ehemaligen Flughafengeländes Tegel ist ein wachsender Gewerbestandort für mittelständische Betriebe entstanden, die häufig Büro- und Lagerflächen in einem einzigen Objekt kombinieren.",
+      },
     ],
     neighborSlugs: ["mitte", "pankow", "spandau", "charlottenburg-wilmersdorf"],
     ortsteile: [
@@ -1392,6 +1952,33 @@ export const districts: District[] = [
           "Für Unternehmen, die sich neu auf dem TXL-Gelände ansiedeln, lässt sich eine einmalige Grundreinigung dem regulären Unterhaltsreinigungsvertrag voranstellen, um von Beginn an einen sauberen Ausgangszustand zu schaffen.",
         ],
         featuredServiceSlugs: ["gebaeudereinigung-berlin", "gastronomiereinigung-berlin", "grundreinigung-berlin"],
+        faq: [
+          {
+            question: "Reinigt Glanzwerk auch Unternehmen auf dem ehemaligen Flughafengelände Tegel?",
+            answer:
+              "Ja, Tegel gehört zu unserem Einsatzgebiet in Reinickendorf. Für Unternehmen, die sich auf dem ehemaligen Flughafengelände neu ansiedeln, stimmen wir Umfang und Zeitfenster objektbezogen ab.",
+          },
+          {
+            question: "Wirkt sich der Tegeler See auf den Reinigungsbedarf angrenzender Gastronomie aus?",
+            answer:
+              "Ja, vor allem saisonal. Bei gutem Wetter locken die Uferpromenaden am See viele Besucher an, die auch die Gastronomie in Ufernähe nutzen und deren Reinigungsbedarf erhöhen.",
+          },
+          {
+            question: "Wird das Borsigturm-Zentrum als Einkaufs- und Gewerbezentrum zentral gereinigt?",
+            answer:
+              "Ja, rund um den Borsigturm ist aus der früheren Industrieansiedlung der Borsigwerke ein Einkaufs- und Gewerbezentrum mit vielen einzelnen Mietflächen entstanden, dessen Gemeinschaftsflächen sich zentral koordinieren lassen.",
+          },
+          {
+            question: "Unterscheidet sich Alt-Tegel von den neu entstehenden Gewerbeflächen auf dem TXL-Gelände?",
+            answer:
+              "Ja. Alt-Tegel ist der historische Ortskern rund um den Tegeler Hafen mit kleineren Fachgeschäften, Gastronomie und Dienstleistern – kompakter als die Flächen, die auf dem ehemaligen Flughafen neu entstehen.",
+          },
+          {
+            question: "Wird für neu angesiedelte Unternehmen auf dem TXL-Gelände eine Grundreinigung angeboten?",
+            answer:
+              "Ja. Vor dem regulären Vertrag lässt sich eine einmalige Grundreinigung einplanen, damit neue Räume von Anfang an sauber übergeben werden und die Unterhaltsreinigung darauf aufbaut.",
+          },
+        ],
       },
     ],
   },

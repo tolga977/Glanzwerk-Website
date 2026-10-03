@@ -6,6 +6,7 @@ import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import ParallaxImage from "@/components/ui/ParallaxImage";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -15,6 +16,7 @@ import { siteConfig } from "@/data/site";
 import { serviceSchema } from "@/lib/schema";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 import Button from "@/components/ui/Button";
+import { ComboRelatedLinks } from "@/components/ui/RelatedLinkSections";
 
 /**
  * Eigenständiger, vollständiger Seiteninhalt für /leistungen/gebaeudereinigung-berlin/mitte.
@@ -152,9 +154,9 @@ const faqItems = [
       "Unser Angebot richtet sich unter anderem an Büros, Praxen, Kanzleien, Hausverwaltungen, Autohäuser, Gastronomiebetriebe und weitere gewerbliche Auftraggeber.",
   },
   {
-    question: "Welche Reinigungsleistungen werden angeboten?",
+    question: "Wird bei Gebäuden mit Denkmalschutz in Mitte anders vorgegangen?",
     answer:
-      "Möglich sind unter anderem Gebäude-, Büro-, Praxis-, Kanzlei-, Unterhalts-, Treppenhaus-, Glas-, Fenster- und Grundreinigungen.",
+      "Ja, bei historischer Bausubstanz und Denkmalschutzauflagen prüfen wir vorab, ob für bestimmte Oberflächen besondere Reinigungsvorschriften gelten, die bestimmte Mittel oder Verfahren ausschließen.",
   },
   {
     question: "Sind Reinigungen außerhalb der Geschäftszeiten möglich?",
@@ -166,8 +168,9 @@ const faqItems = [
     answer: "Anfragen aus Mitte, Moabit, Hansaviertel, Tiergarten, Wedding und Gesundbrunnen werden geprüft.",
   },
   {
-    question: "Wie wird der Preis berechnet?",
-    answer: "Der Preis hängt unter anderem von Fläche, Objektart, Nutzung, Intervall, Zugänglichkeit und Leistungsumfang ab.",
+    question: "Wird bei Naturstein-Eingangsbereichen wie an der Friedrichstraße anders gereinigt als bei Fliesenböden?",
+    answer:
+      "Ja, Naturstein-Eingangsbereiche, wie sie bei repräsentativen Bürogebäuden entlang der Friedrichstraße oder am Gendarmenmarkt vorkommen, benötigen andere Pflegemittel als die robusteren Fliesen- oder PVC-Böden in reinen Verwaltungsflächen.",
   },
   {
     question: "Muss das Objekt vorab besichtigt werden?",
@@ -360,24 +363,31 @@ export default function GebaeudereinigungMitteContent({
       {/* 5. Ortsteile und lokale Bezüge */}
       <Section background="white">
         <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[3]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>Unser Einsatzgebiet umfasst den gesamten Bezirk Mitte. Dazu gehören unter anderem:</p>
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div>
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>Unser Einsatzgebiet umfasst den gesamten Bezirk Mitte. Dazu gehören unter anderem:</p>
+            </div>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {ortsteile.map((ortsteil) => (
+                <li
+                  key={ortsteil}
+                  className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
+                >
+                  {ortsteil}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 max-w-2xl text-sm text-ink-soft">
+              Auch Objekte rund um Alexanderplatz, Unter den Linden, Friedrichstraße, Potsdamer
+              Platz, Hauptbahnhof, Turmstraße, Müllerstraße und Osloer Straße können nach Abstimmung
+              betreut werden.
+            </p>
+          </div>
+          <EinsatzgebietKarte
+            location={{ label: "Bezirk Mitte", mapsQuery: "Bezirk Mitte, Berlin, Deutschland" }}
+          />
         </div>
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {ortsteile.map((ortsteil) => (
-            <li
-              key={ortsteil}
-              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
-            >
-              {ortsteil}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 max-w-2xl text-sm text-ink-soft">
-          Auch Objekte rund um Alexanderplatz, Unter den Linden, Friedrichstraße, Potsdamer
-          Platz, Hauptbahnhof, Turmstraße, Müllerstraße und Osloer Straße können nach Abstimmung
-          betreut werden.
-        </p>
       </Section>
 
       {/* 6. Reinigungszeiten */}
@@ -515,6 +525,8 @@ export default function GebaeudereinigungMitteContent({
           ))}
         </FadeIn>
       </Section>
+
+      <ComboRelatedLinks serviceSlug={service.slug} districtSlug={district.slug} />
 
       {/* 11. FAQ */}
       <Section background="white">

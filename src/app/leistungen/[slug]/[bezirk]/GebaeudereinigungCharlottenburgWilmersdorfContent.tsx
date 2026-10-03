@@ -6,6 +6,7 @@ import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import ParallaxImage from "@/components/ui/ParallaxImage";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -15,6 +16,7 @@ import { siteConfig } from "@/data/site";
 import { serviceSchema } from "@/lib/schema";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 import Button from "@/components/ui/Button";
+import { ComboRelatedLinks } from "@/components/ui/RelatedLinkSections";
 
 /**
  * Eigenständiger, vollständiger Seiteninhalt für
@@ -167,8 +169,9 @@ const faqItems = [
     answer: "Reinigungsmittel und Verfahren werden passend zu Material und Verschmutzung ausgewählt.",
   },
   {
-    question: "Wie wird der Preis berechnet?",
-    answer: "Nach Fläche, Nutzung, Intervall, Materialien, Zeitfenster und vereinbartem Umfang.",
+    question: "Werden Autohäuser mit Showroom an der Kantstraße im Leistungsbündel mitgereinigt?",
+    answer:
+      "Autohäuser mit Showroom entlang der Kantstraße haben einen eigenen Reinigungsbedarf rund um Glasflächen und Kundenbereiche – dafür ist die eigenständige Autohausreinigung meist die passendere Wahl als das allgemeine Gebäudereinigungs-Bündel.",
   },
   {
     question: "Ist eine Besichtigung notwendig?",
@@ -341,24 +344,34 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
       {/* 5. Ortsteile */}
       <Section background="white">
         <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[3]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>Anfragen werden aus allen Ortsteilen des Bezirks geprüft:</p>
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div>
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>Anfragen werden aus allen Ortsteilen des Bezirks geprüft:</p>
+            </div>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {ortsteile.map((ortsteil) => (
+                <li
+                  key={ortsteil}
+                  className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
+                >
+                  {ortsteil}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 max-w-2xl text-sm text-ink-soft">
+              Auch Gewerbeobjekte rund um Kurfürstendamm, Savignyplatz, Ernst-Reuter-Platz,
+              Messegelände, Fehrbelliner Platz und Bundesallee können angefragt werden. Die
+              genannten Orte dienen ausschließlich der geografischen Einordnung.
+            </p>
+          </div>
+          <EinsatzgebietKarte
+            location={{
+              label: "Bezirk Charlottenburg-Wilmersdorf",
+              mapsQuery: "Bezirk Charlottenburg-Wilmersdorf, Berlin, Deutschland",
+            }}
+          />
         </div>
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {ortsteile.map((ortsteil) => (
-            <li
-              key={ortsteil}
-              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
-            >
-              {ortsteil}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 max-w-2xl text-sm text-ink-soft">
-          Auch Gewerbeobjekte rund um Kurfürstendamm, Savignyplatz, Ernst-Reuter-Platz,
-          Messegelände, Fehrbelliner Platz und Bundesallee können angefragt werden. Die
-          genannten Orte dienen ausschließlich der geografischen Einordnung.
-        </p>
       </Section>
 
       {/* 6. Einsatzzeiten */}
@@ -505,6 +518,8 @@ export default function GebaeudereinigungCharlottenburgWilmersdorfContent({
           ))}
         </FadeIn>
       </Section>
+
+      <ComboRelatedLinks serviceSlug={service.slug} districtSlug={district.slug} />
 
       {/* 11. FAQ */}
       <Section background="white">

@@ -29,22 +29,76 @@ import { googleBusiness } from "@/data/googleBusiness";
  * Keine Marker für einzelne Bezirke: Glanzwerk hat keine Niederlassungen in
  * einzelnen Stadtteilen, nur diesen einen Firmensitz – alles andere wäre eine
  * erfundene Standortbehauptung.
+ *
+ * ── Optionales `location`-Prop (lokale Bezirks-/Ortsteilseiten) ──────────
+ * Ohne Prop verhält sich die Komponente exakt wie zuvor: Vorschaubild und
+ * Einbettung zeigen den Firmensitz aus `siteConfig.address`. Mit `location`
+ * zeigt dieselbe Click-to-load-Karte stattdessen den übergebenen Bezirk oder
+ * Ortsteil (Suchbegriff, keine erfundenen Koordinaten). Das feste
+ * OSM-Vorschaubild bleibt dem Firmensitz vorbehalten, da es ausschließlich
+ * für diese eine Adresse existiert – für einen Ort zeigt die Vorschau
+ * stattdessen denselben Blauton wie sonst die Abdunkelung über dem Foto,
+ * ohne neue Farbe oder Bildsprache einzuführen.
  */
-export default function EinsatzgebietKarte() {
+interface EinsatzgebietKarteProps {
+  location?: {
+    /** Anzeigename, z. B. "Bezirk Mitte" oder "Wedding" */
+    label: string;
+    /** Suchbegriff für die Maps-Einbettung, z. B. "Bezirk Mitte, Berlin, Deutschland" */
+    mapsQuery: string;
+  };
+}
+
+export default function EinsatzgebietKarte({ location }: EinsatzgebietKarteProps = {}) {
   const [loaded, setLoaded] = useState(false);
   const address = `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`;
-  const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  const mapsTarget = location?.mapsQuery ?? address;
+  const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapsTarget)}&output=embed`;
+  const iframeTitle = location ? `Google Maps – ${location.label}` : `Google Maps – ${siteConfig.name}`;
+  const consentText = location
+    ? `${location.label}, Berlin. Mit Klick verbinden Sie sich zu Google Maps; dabei werden Daten wie Ihre IP-Adresse an Google übertragen und ggf. in den USA verarbeitet. Näheres in unserer`
+    : `${address}. Mit Klick verbinden Sie sich zu Google Maps; dabei werden Daten wie Ihre IP-Adresse an Google übertragen und ggf. in den USA verarbeitet. Näheres in unserer`;
 
   return (
     <div className="overflow-hidden rounded-card border border-line bg-white shadow-raise">
       {loaded ? (
         <iframe
           src={embedSrc}
-          title={`Google Maps – ${siteConfig.name}`}
+          title={iframeTitle}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="h-[320px] w-full border-0"
         />
+      ) : location ? (
+        <div className="relative h-[320px] w-full bg-brand-900">
+          <button
+            type="button"
+            onClick={() => setLoaded(true)}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white"
+          >
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-brand-500 shadow-raise">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                />
+                <circle cx="12" cy="9.5" r="2.4" stroke="currentColor" strokeWidth="1.8" />
+              </svg>
+            </span>
+            <span className="font-display text-base font-medium text-white">
+              Google-Maps-Karte für {location.label} laden
+            </span>
+            <span className="max-w-sm text-sm leading-relaxed text-white/90">
+              {consentText}{" "}
+              <Link href="/datenschutz" className="underline hover:no-underline">
+                Datenschutzerklärung
+              </Link>
+              .
+            </span>
+          </button>
+        </div>
       ) : (
         <div className="relative h-[320px] w-full">
           <Image
@@ -75,8 +129,7 @@ export default function EinsatzgebietKarte() {
               Interaktive Google-Maps-Karte laden
             </span>
             <span className="max-w-sm text-sm leading-relaxed text-white/90">
-              {address}. Mit Klick verbinden Sie sich zu Google Maps; dabei werden Daten wie Ihre
-              IP-Adresse an Google übertragen und ggf. in den USA verarbeitet. Näheres in unserer{" "}
+              {consentText}{" "}
               <Link href="/datenschutz" className="underline hover:no-underline">
                 Datenschutzerklärung
               </Link>

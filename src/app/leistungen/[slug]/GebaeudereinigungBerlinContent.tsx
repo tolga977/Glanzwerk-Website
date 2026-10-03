@@ -10,6 +10,7 @@ import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import BerlinEinsatzgebietKarte from "@/components/ui/BerlinEinsatzgebietKarte";
+import { ServiceRelatedLinks } from "@/components/ui/RelatedLinkSections";
 import GoogleReviewsAuto from "@/components/ui/GoogleReviewsAuto";
 import HygieneFarbcodeSystem from "@/components/ui/HygieneFarbcodeSystem";
 import JsonLd from "@/components/seo/JsonLd";
@@ -624,6 +625,8 @@ export default function GebaeudereinigungBerlinContent({
           <BerlinEinsatzgebietKarte />
         </div>
       </Section>
+
+      <ServiceRelatedLinks serviceSlug={service.slug} />
 
       {/* 10. Kosten */}
       <Section background="warm">

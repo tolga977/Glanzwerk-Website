@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import FAQ from "@/components/ui/FAQ";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import JsonLd from "@/components/seo/JsonLd";
@@ -23,6 +24,7 @@ import GebaeudereinigungCharlottenburgWilmersdorfContent from "./Gebaeudereinigu
 import GebaeudereinigungTempelhofSchoenebergContent from "./GebaeudereinigungTempelhofSchoenebergContent";
 import GebaeudereinigungNeukoellnContent from "./GebaeudereinigungNeukoellnContent";
 import Button from "@/components/ui/Button";
+import { ComboRelatedLinks } from "@/components/ui/RelatedLinkSections";
 
 /** Kombi-Seiten mit eigenständigem, vom generischen Template abweichendem Seiteninhalt. */
 const customContentCombos = {
@@ -176,10 +178,18 @@ export default async function ServiceDistrictPage({ params }: Props) {
       {combo.localAngle && combo.localAngle.length > 0 && (
         <Section background="tint" decor>
           <SectionHeading eyebrow="Vor Ort" title={vorOrtHeading} />
-          <div className="mt-8 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-            {combo.localAngle.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              {combo.localAngle.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+            <EinsatzgebietKarte
+              location={{
+                label: `Bezirk ${district.name}`,
+                mapsQuery: `Bezirk ${district.name}, Berlin, Deutschland`,
+              }}
+            />
           </div>
         </Section>
       )}
@@ -317,6 +327,8 @@ export default async function ServiceDistrictPage({ params }: Props) {
           </div>
         </Section>
       )}
+
+      <ComboRelatedLinks serviceSlug={service.slug} districtSlug={district.slug} />
 
       <Section background={neighborCombos.length > 0 ? "white" : "muted"}>
         <CTASection

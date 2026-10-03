@@ -6,6 +6,7 @@ import FAQ from "@/components/ui/FAQ";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import ParallaxImage from "@/components/ui/ParallaxImage";
+import EinsatzgebietKarte from "@/components/ui/EinsatzgebietKarte";
 import JsonLd from "@/components/seo/JsonLd";
 import type { Service } from "@/data/services";
 import type { District } from "@/data/districts";
@@ -15,6 +16,7 @@ import { siteConfig } from "@/data/site";
 import { serviceSchema } from "@/lib/schema";
 import { renderHighlightedH1 } from "@/lib/renderHeading";
 import Button from "@/components/ui/Button";
+import { ComboRelatedLinks } from "@/components/ui/RelatedLinkSections";
 
 /**
  * Eigenständiger, vollständiger Seiteninhalt für
@@ -162,8 +164,9 @@ const faqItems = [
     answer: "Ja. Der genaue Umfang wird passend zu Betriebsart, Öffnungszeiten und Bereichen abgestimmt.",
   },
   {
-    question: "Wie wird der Preis berechnet?",
-    answer: "Nach Fläche, Nutzung, Reinigungsintervall, Zeitfenster und vereinbartem Leistungsumfang.",
+    question: "Wirkt sich die unterschiedliche Nutzung rund um Warschauer Straße oder Kottbusser Tor auf die Reinigung aus?",
+    answer:
+      "Ja, Friedrichshain-Kreuzberg ist geprägt von Bürostandorten, Agenturen, Praxen, Gastronomie und Kulturstätten – rund um Warschauer Straße, Ostbahnhof, Frankfurter Allee, Moritzplatz, Kottbusser Tor und Mehringdamm unterscheiden sich Nutzung und Besucheraufkommen deutlich, worauf wir Umfang und Rhythmus abstimmen.",
   },
   {
     question: "Ist eine Besichtigung erforderlich?",
@@ -338,24 +341,34 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
       {/* 5. Ortsteile und lokale Einordnung */}
       <Section background="white">
         <SectionHeading eyebrow="Unser Einsatzgebiet" title={heading.sectionHeadings[3]} />
-        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
-          <p>Unser Einsatzgebiet umfasst beide Ortsteile des Bezirks:</p>
+        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
+          <div>
+            <div className="max-w-2xl space-y-4 text-base leading-relaxed text-ink-soft">
+              <p>Unser Einsatzgebiet umfasst beide Ortsteile des Bezirks:</p>
+            </div>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {ortsteile.map((ortsteil) => (
+                <li
+                  key={ortsteil}
+                  className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
+                >
+                  {ortsteil}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 max-w-2xl text-sm text-ink-soft">
+              Anfragen aus Bereichen rund um Boxhagener Platz, Ostkreuz, Warschauer Straße,
+              Oberbaumbrücke, Kottbusser Tor, Bergmannkiez, Mehringdamm, Görlitzer Park und
+              Landwehrkanal können geprüft werden.
+            </p>
+          </div>
+          <EinsatzgebietKarte
+            location={{
+              label: "Bezirk Friedrichshain-Kreuzberg",
+              mapsQuery: "Bezirk Friedrichshain-Kreuzberg, Berlin, Deutschland",
+            }}
+          />
         </div>
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {ortsteile.map((ortsteil) => (
-            <li
-              key={ortsteil}
-              className="rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-brand-900"
-            >
-              {ortsteil}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 max-w-2xl text-sm text-ink-soft">
-          Anfragen aus Bereichen rund um Boxhagener Platz, Ostkreuz, Warschauer Straße,
-          Oberbaumbrücke, Kottbusser Tor, Bergmannkiez, Mehringdamm, Görlitzer Park und
-          Landwehrkanal können geprüft werden.
-        </p>
       </Section>
 
       {/* 6. Reinigungszeiten */}
@@ -513,6 +526,8 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
           ))}
         </FadeIn>
       </Section>
+
+      <ComboRelatedLinks serviceSlug={service.slug} districtSlug={district.slug} />
 
       {/* 11. FAQ */}
       <Section background="white">

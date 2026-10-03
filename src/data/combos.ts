@@ -91,6 +91,11 @@ export const combos: Combo[] = [
           "Ja, das ist in Mitte sogar die Regel: Viele Büros hier haben dicht getaktete Tagesabläufe, deshalb reinigen wir überwiegend früh morgens, abends oder am Wochenende – Zutritt und Zeitfenster stimmen wir vorher mit Ihnen ab.",
       },
       {
+        question: "Werden Bodenmatten im Eingangsbereich häufiger gereinigt als der übrige Boden?",
+        answer:
+              "Ja, in der Regel. Matten und Läufer am Eingang fangen den Schmutz von der Straße ab und sind bei viel Publikumsverkehr schneller verschmutzt als der restliche Boden, deshalb planen wir für sie einen eigenen, engeren Rhythmus ein.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -151,6 +156,16 @@ export const combos: Combo[] = [
         answer: "Ja, bei mehreren Mietparteien im selben Haus stimmen wir Zugang und Zeiten gemeinsam ab.",
       },
       {
+        question: "Werden Kastenfenster in Altbaubüros bei der regulären Reinigung mitgereinigt?",
+        answer:
+          "Für die reguläre Büroreinigung zählen bei den für Gründerzeit-Altbauten typischen Kastenfenstern meist nur die von innen zugänglichen Flächen; die äußere Ebene wird über die separate Glas- und Fensterreinigung abgedeckt.",
+      },
+      {
+        question: "Wird der fehlende Aufzug in vielen Altbaubüros bei der Terminplanung berücksichtigt?",
+        answer:
+          "Ja, in vielen Altbaubüros gibt es keinen Aufzug, weshalb der Transport von Reinigungsgerät in obere Etagen zeitlich eingeplant werden muss – das berücksichtigen wir insbesondere, wenn mehrere Etagen desselben Hauses zum Auftrag gehören.",
+      },
+      {
         question: "Werden Parkett- und Dielenböden anders gereinigt als Fliesen?",
         answer:
           "Ja. Holzböden vertragen keine stehende Nässe und keine aggressiven Mittel – wir arbeiten dort mit angepasster Feuchtigkeit und geeigneten Produkten.",
@@ -207,6 +222,21 @@ export const combos: Combo[] = [
         question: "Werden auch einzelne Büroeinheiten unabhängig von den anderen Mietern gereinigt?",
         answer: "Ja, einzelne Firmen können die Büroreinigung auch unabhängig von den übrigen Mietern im selben Haus beauftragen.",
       },
+      {
+        question: "Werden Gemeinschaftsflächen wie ein gemeinsamer Innenhof mitgereinigt?",
+        answer:
+          "Nicht automatisch – manche Gewerbehöfe im Bezirk haben einen gemeinsamen Innenhof, der von mehreren Firmen als Pausenbereich genutzt wird. Die Pflege dieses Außenbereichs vereinbaren wir bei Bedarf zusätzlich mit der Hausverwaltung.",
+      },
+      {
+        question: "Wird der Reinigungsrhythmus an flexible Arbeitsmodelle mit wenig genutzten Tagen angepasst?",
+        answer:
+          "Ja, viele kleinere Unternehmen im Bezirk arbeiten mit flexiblen oder hybriden Arbeitsmodellen – statt eines starren, gleichmäßig verteilten Plans richten wir den Rhythmus nach Möglichkeit an den tatsächlich genutzten Tagen aus.",
+      },
+      {
+        question: "Wie wird der Zugang zu Gewerbehöfen ohne durchgehend besetzten Empfang geregelt?",
+        answer:
+          "In umgenutzten Gewerbehöfen gibt es häufig keinen durchgehend besetzten Empfang, sondern Zutritt über einen gemeinsamen Hoftorschlüssel oder eine elektronische Torsteuerung – wir stimmen vorab ab, wie unser Team Zugang zum Innenhof und den einzelnen Büroeinheiten erhält.",
+      },
     ],
     ctaSubtitle: "Nennen Sie uns, ob mehrere Unternehmen im selben Gewerbehof beteiligt sind – wir stimmen den Ablauf entsprechend ab.",
   },
@@ -261,6 +291,21 @@ export const combos: Combo[] = [
         question: "Ist auch das Treppenhaus im Leistungsumfang enthalten?",
         answer: "Auf Wunsch ja. Soll ausschließlich das Treppenhaus gereinigt werden, ist die eigenständige Treppenhausreinigung in Tempelhof-Schöneberg die passendere Leistung.",
         relatedLink: { label: "Zur Treppenhausreinigung in Tempelhof-Schöneberg", href: "/leistungen/treppenhausreinigung-berlin/tempelhof-schoeneberg" },
+      },
+      {
+        question: "Unterscheiden sich die Bodenbeläge zwischen Tempelhof und Schöneberg?",
+        answer:
+              "Häufig ja: In neueren Tempelhofer Gewerbebauten liegen oft Fliesen oder Stein, in Schöneberger Altbaubüros eher Teppich oder Parkett. Welches Verfahren passt, klären wir vor dem ersten Termin am Objekt.",
+      },
+      {
+        question: "Wird bei Wohn-Geschäftshäusern in Schöneberg auf die Hausbewohner Rücksicht genommen?",
+        answer:
+          "Ja, Schöneberger Wohn-Geschäftshäuser haben häufig nur einen gemeinsamen Eingang für Wohn- und Gewerbenutzung – wir stimmen bevorzugte Reinigungszeiten mit den übrigen Hausbewohnern ab, besonders wenn das Büro im Erdgeschoss liegt.",
+      },
+      {
+        question: "Werden zentrale Aufzugsanlagen in den Tempelhofer Gewerbeparks mitgereinigt?",
+        answer:
+          "Die Reinigung des Aufzugsinneren wird in modernen Gewerbeparks rund um Tempelhof meist zentral über die Hausverwaltung beauftragt statt einzeln von jeder Mietpartei – das prüfen wir vor Vertragsbeginn.",
       },
     ],
   },
@@ -544,6 +589,21 @@ export const combos: Combo[] = [
       {
         question: "Was, wenn sich die Sprechstundenzeiten kurzfristig ändern?",
         answer: "Sprechen Sie uns an – wir passen den Reinigungstermin nach Möglichkeit an veränderte Praxiszeiten an.",
+      },
+      {
+        question: "Wird medizinischer Sonderabfall wie Kanülen mitentsorgt?",
+        answer:
+          "Nein, medizinischer Sonderabfall unterliegt eigenen Entsorgungsvorschriften und wird über spezialisierte Entsorgungsunternehmen abgeholt – das ist kein Bestandteil der regulären Reinigung.",
+      },
+      {
+        question: "Wird bei mehreren Fachrichtungen im selben Ärztehaus zentral koordiniert?",
+        answer:
+          "Ja, bei mehreren Fachrichtungen im selben Ärztehaus lässt sich die Reinigung von Gemeinschaftsflächen wie Empfang und Fluren zentral bündeln, während einzelne Behandlungsräume separat je Praxis beauftragt werden.",
+      },
+      {
+        question: "Werden erhöhte Sicherheitsvorgaben nahe dem Regierungsviertel berücksichtigt?",
+        answer:
+          "Ja, Praxen in unmittelbarer Nähe zum Regierungsviertel oder größeren Verwaltungsgebäuden haben teils erhöhte Sicherheitsvorgaben für externes Personal – nötige Zutrittsformalitäten klären wir frühzeitig, damit sich ein vereinbarter Termin nicht verschiebt.",
       },
     ],
     ctaSubtitle: "Nennen Sie uns die Sprechstundenzeiten Ihrer Praxis in Mitte – wir schlagen ein passendes Zeitfenster vor.",
@@ -919,6 +979,11 @@ export const combos: Combo[] = [
           "Nein, das ist eine eigene Leistung mit besonderen Datenschutzanforderungen. Die reguläre Reinigung deckt lediglich das Leeren üblicher Papierkörbe ab.",
       },
       {
+        question: "Werden mehrere Sozietäten im selben Bürogebäude gemeinsam betreut?",
+        answer:
+          "Wir klären das vor Vertragsbeginn: Je nach interner Organisation und Sicherheitsvorgaben lässt sich eine gemeinsame Reinigung für das ganze Haus vereinbaren, oder jede Kanzlei wird separat beauftragt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -993,6 +1058,11 @@ export const combos: Combo[] = [
           "Nur die gut erreichbaren unteren Bereiche gehören zum regulären Umfang. Für obere Fächer wäre zusätzliches Gerät nötig, das gesondert vereinbart werden müsste.",
       },
       {
+        question: "Werden Kastenfenster in Altbau-Kanzleien bei der regulären Reinigung mitgereinigt?",
+        answer:
+          "Nur die von innen zugänglichen Fensterebenen gehören zur regulären Kanzleireinigung – die äußere Ebene der für Gründerzeit-Altbauten typischen Kastenfenster wird über die separate Glas- und Fensterreinigung abgedeckt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1056,6 +1126,11 @@ export const combos: Combo[] = [
       {
         question: "Wird die Reinigung mit mehreren Firmen im selben Gewerbehof koordiniert?",
         answer: "Ja, wenn mehrere Mieter dieselben Gemeinschaftsflächen nutzen, stimmen wir Zeiten und Zuständigkeiten gemeinsam ab, etwa über eine Hausverwaltung.",
+      },
+      {
+        question: "Werden Fahrradabstellräume im Reinigungsumfang berücksichtigt?",
+        answer:
+          "Ja, Fahrradabstellräume gehören durch die hohe Zahl an Radfahrenden im Bezirk häufiger zur Gebäudeausstattung als anderswo – wegen des anderen Verschmutzungsbilds mit mehr Staub und Reifenabrieb behandeln wir sie in einem eigenen, meist selteneren Rhythmus.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1127,6 +1202,11 @@ export const combos: Combo[] = [
           "Ja. Villenbüros haben häufig empfindlichere Böden wie Parkett, während Geschäftshäuser meist robusteren Belag bieten. Wir stimmen Verfahren und Zeitaufwand entsprechend ab.",
       },
       {
+        question: "Wird bei Objekten mit mehreren Nutzern unter einem Dach unterschieden?",
+        answer:
+              "Ja. Sitzen zum Beispiel eine Praxis im Erdgeschoss und Büros darüber im selben Haus, klären wir vorher, ob das ganze Haus gemeinsam oder jede Nutzung einzeln beauftragt wird – und legen für jeden Bereich einen passenden Rhythmus fest.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1194,6 +1274,11 @@ export const combos: Combo[] = [
       {
         question: "Wird bei Altbau-Sanierungen anders vorgegangen als bei modernen Gewerbeflächen in Rudow?",
         answer: "Ja, empfindliche Bausubstanz wie Stuckdecken oder Dielenböden erfordert schonendere Verfahren als robuste Neubauflächen mit Fliesen oder Industrieestrich.",
+      },
+      {
+        question: "Werden Souterrain- oder Kellerräume bei der Grundreinigung berücksichtigt?",
+        answer:
+              "Ja, aber gesondert. Kellerräume und Souterrain werden in Altbauten oft als Lager oder Archiv genutzt und sind meist feuchter und staubiger als die Geschäftsräume darüber, deshalb stimmen wir das Verfahren dafür separat ab.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1268,6 +1353,11 @@ export const combos: Combo[] = [
         answer: "Ja, wir richten Termin und Ablauf nach dem vorgegebenen Übergabedatum aus – gerade bei gefragten Bürolagen mit kurzer Leerstandszeit.",
       },
       {
+        question: "Wird bei denkmalgeschützten Altbauten in Mitte auf besondere Auflagen geachtet?",
+        answer:
+              "Ja. Bei der Objektbegehung klären wir, ob für Oberflächen in einem denkmalgeschützten Altbau Auflagen gelten, die bestimmte Reinigungsmittel oder Verfahren ausschließen, bevor die Grundreinigung beginnt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1337,6 +1427,11 @@ export const combos: Combo[] = [
         question: "Wird bei Kitas und Schulen unterschiedlich vorgegangen?",
         answer:
           "Ja, Kitas benötigen besonders schonende Produkte für den Kontakt mit Kleinkindern, während Schulen eher auf höhere Schülerzahlen und größere Gemeinschaftsflächen ausgerichtete Verfahren benötigen.",
+      },
+      {
+        question: "Werden Sandkästen oder Außenspielflächen mitgereinigt?",
+        answer:
+          "Nein, Sandkästen und Außenspielflächen von Kitas sowie Pausenhöfe an Schulen gehören zum Außenbereich und damit nicht zur Innenraumreinigung – die Pflege dieser Flächen liegt in der Regel beim Träger, dem Bezirksamt oder einem separaten Außendienst.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1412,6 +1507,11 @@ export const combos: Combo[] = [
         answer: "Ja, Griffe, Sitzflächen und Bedienelemente werden bei jedem Termin äußerlich gereinigt. Eine technische Wartung der Geräte gehört nicht zum Leistungsumfang.",
       },
       {
+        question: "Werden Saunabereiche mit Holzverkleidung anders gereinigt als Fliesenflächen?",
+        answer:
+              "Ja. Holzverkleidete Saunabereiche brauchen holzverträgliche Pflegemittel, während die Fliesen der übrigen Sanitärbereiche robuster sind und anders behandelt werden.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1481,6 +1581,11 @@ export const combos: Combo[] = [
       {
         question: "Werden auch die ausgestellten Fahrzeuge im Showroom gereinigt?",
         answer: "Nein, die Fahrzeugpflege selbst gehört nicht zum Leistungsumfang. Wir reinigen die umgebenden Flächen wie Boden und Glas rund um die Ausstellungsfahrzeuge.",
+      },
+      {
+        question: "Werden saisonale Spitzenzeiten wie der Reifenwechsel berücksichtigt?",
+        answer:
+          "Ja, rund um die Reifenwechsel-Saison im Frühjahr und Herbst steigt der Kundenverkehr in vielen Autohäusern spürbar an – für solche bekannten Spitzenzeiten lässt sich der Reinigungstakt vorübergehend erhöhen.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1561,6 +1666,11 @@ export const combos: Combo[] = [
         answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
       },
       {
+        question: "Werden mehrere Standorte im Bezirk über einen gemeinsamen Vertrag koordiniert?",
+        answer:
+              "Ja. Betreiben Sie mehrere Standorte im Bezirk, koordiniert ein gemeinsamer Ansprechpartner alle Teilleistungen – Unterhalts-, Fenster- und Grundreinigung – über sämtliche Objekte hinweg.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1627,6 +1737,11 @@ export const combos: Combo[] = [
       {
         question: "Werden Außenflächen wie Höfe oder Zufahrten automatisch mitgereinigt?",
         answer: "Nein, das klären wir vorab gesondert. Außenflächen sind nicht automatisch Teil der Innenraum-Unterhaltsreinigung.",
+      },
+      {
+        question: "Wird die Luftfeuchtigkeit in der Nähe von Spree und Müggelsee bei der Reinigung berücksichtigt?",
+        answer:
+          "Ja, durch die Nähe zu Spree und Müggelsee ist die Luftfeuchtigkeit in manchen Gebäudeteilen etwas höher als in trockeneren Innenstadtlagen – wir achten bei der Reinigung gezielt auf schlecht belüftete Ecken und Sanitärbereiche, um Feuchtigkeitsrückstände nicht unbeachtet zu lassen.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1698,6 +1813,11 @@ export const combos: Combo[] = [
       {
         question: "Wird bei Altbauten im Ortskern Köpenick anders vorgegangen als bei modernen Gewerbehallen am Bezirksrand?",
         answer: "Ja, empfindlichere Böden wie Parkett in Altbauten erfordern schonendere Verfahren als robuste Beläge wie Fliesen oder Industrieestrich in moderneren Hallen.",
+      },
+      {
+        question: "Werden Denkmalschutzauflagen im historischen Ortskern Köpenick berücksichtigt?",
+        answer:
+              "Ja. Im historischen Ortskern prüfen wir bei der Objektbegehung, ob Denkmalschutzauflagen für Oberflächen bestimmte Mittel oder Verfahren ausschließen – anders als bei moderneren Gewerbehallen am Bezirksrand.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1779,6 +1899,11 @@ export const combos: Combo[] = [
       {
         question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
         answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Werden Anlieferzonen hinter den Einkaufszentren automatisch mitgereinigt?",
+        answer:
+              "Nein, nicht automatisch. Anlieferzonen und Ladezonen hinter den Einkaufszentren gehören meist zum Außenbereich und einem separaten Außendienst; im gebündelten Vertrag sind sie nur bei ausdrücklicher Vereinbarung enthalten.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -1919,6 +2044,16 @@ export const combos: Combo[] = [
           "Für Gemeinschaftsflächen meist die Zentrumsverwaltung, für einzelne Behandlungsräume die jeweilige Praxis selbst. Wir klären das vor Vertragsbeginn konkret.",
       },
       {
+        question: "Wird bei kinderärztlichen Praxen im Gesundheitszentrum besonders schonend gereinigt?",
+        answer:
+          "Ja, für Spielbereiche in kinderärztlichen Praxen der Gesundheitszentren gilt eine besondere Sorgfaltspflicht: Spielzeug und Sitzkissen bleiben unangetastet, sofern nicht ausdrücklich eine Reinigung vereinbart wurde, und die umgebenden Flächen behandeln wir mit besonders schonenden, für Kinder geeigneten Mitteln.",
+      },
+      {
+        question: "Wird medizinischer Sonderabfall mitentsorgt?",
+        answer:
+              "Nein. Medizinischer Sonderabfall wie gebrauchte Kanülen unterliegt eigenen Entsorgungsvorschriften und wird von spezialisierten Entsorgern abgeholt – in Einzelpraxen genauso wie in Gesundheitszentren.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Sprechen Sie uns direkt darauf an. Wir prüfen die Beanstandung und bessern in berechtigten Fällen zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -1996,6 +2131,11 @@ export const combos: Combo[] = [
       {
         question: "Kann ich einzelne Teilleistungen auch separat statt im Bündel buchen?",
         answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Glasreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
+      },
+      {
+        question: "Werden Rauchmelder und Fluchtwegbeschilderung im Treppenhaus mitgereinigt?",
+        answer:
+              "Nur oberflächlich: Wir entstauben sie bei der Reinigung, prüfen oder warten sie aber nicht – das bleibt einem zugelassenen Fachbetrieb vorbehalten.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -2179,6 +2319,11 @@ export const combos: Combo[] = [
         answer: "Oft ja, um Montagespuren oder Rückstände von Schutzfolien zu entfernen, bevor ein regelmäßiger Rhythmus beginnt.",
       },
       {
+        question: "Wird bei modernen Bürokomplexen mit zentraler Zutrittskontrolle der Zugang vorab geklärt?",
+        answer:
+          "Ja, bei Bürokomplexen mit zentraler Zutrittskontrolle über Chipkarte oder Code stimmen wir vorab mit der Hausverwaltung ab, wie das Reinigungsteam außerhalb der Bürozeiten Zugang zu den einzelnen Etagen erhält.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -2259,6 +2404,11 @@ export const combos: Combo[] = [
         answer: "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
       },
       {
+        question: "Wird eine Kantine für mehrere Dutzend Mitarbeitende anders getaktet als die übrigen Flächen?",
+        answer:
+              "Ja. Weil in einer Kantine täglich mit Lebensmitteln gearbeitet wird, reinigen wir sie enger getaktet als die Büro- und Lagerflächen im selben Objekt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -2330,6 +2480,16 @@ export const combos: Combo[] = [
           "Nicht zwingend. Lagerflächen mit Industrieboden vertragen robustere Verfahren als Bürobereiche mit Teppich oder Laminat – wir stimmen das nach dem tatsächlichen Belag ab.",
       },
       {
+        question: "Werden Hochregale im Lager vollständig gereinigt?",
+        answer:
+          "Aus Sicherheitsgründen nur im bodennah erreichbaren Bereich – höher gelegene Regalböden gehören nicht zum Leistungsumfang, da hierfür spezielles Hebe- oder Steiggerät sowie eine gesonderte Einweisung nötig wären.",
+      },
+      {
+        question: "Gehören Verladerampen und Rangierflächen zum Reinigungsumfang?",
+        answer:
+          "Nein, Verladerampen und Rangierflächen für Lkw gehören nicht zum Innenraum und damit nicht automatisch zur Unterhaltsreinigung. Wir klären vorab, ob der Übergangsbereich zum Lagerinnenraum zum vereinbarten Umfang zählt.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -2397,6 +2557,16 @@ export const combos: Combo[] = [
       {
         question: "Werden auch kleinere Hausarztpraxen in Wohnnähe bedient?",
         answer: "Ja, dafür kalkulieren wir einen kompakteren, auf die tatsächliche Größe abgestimmten Umfang.",
+      },
+      {
+        question: "Werden Untersuchungskabinen für Hör- oder Sehtests besonders behandelt?",
+        answer:
+          "Ja, arbeitsmedizinische Praxen mit Untersuchungsräumen für Hör- oder Sehtests benötigen häufig verdunkelte oder schallgedämmte Kabinen, deren Ausstattung empfindlicher auf falsche Reinigungsmittel reagieren kann als ein gewöhnlicher Behandlungsraum – das Vorgehen stimmen wir für solche Kabinen gesondert ab.",
+      },
+      {
+        question: "Wird bei Reihenuntersuchungen mit vielen Beschäftigten der Rhythmus angepasst?",
+        answer:
+          "Ja, bei Reihenuntersuchungen mit mehreren Beschäftigten an einem Termin kann der Publikumsverkehr an bestimmten Tagen deutlich höher ausfallen als üblich – wir passen den Reinigungsrhythmus an solche bekannten Stoßzeiten an, statt einen starren Wochenplan vorzugeben.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -2788,6 +2958,16 @@ export const combos: Combo[] = [
         answer:
           "In der Regel nicht, da dort ständig wechselnde Nutzer mit eigenen Gegenständen arbeiten. Der Fokus liegt auf Gemeinschaftsflächen wie Empfang, Küche und Sanitärbereichen.",
       },
+      {
+        question: "Werden Telefonzellen in Gemeinschaftsbüros mitgereinigt?",
+        answer:
+              "Ja, wenn sie zum vereinbarten Umfang gehören. Besonders kleine, viel genutzte Kabinen profitieren von einem kürzeren Reinigungsabstand als größere Räume.",
+      },
+      {
+        question: "Werden Lagerbereiche in Rudower Bürogebäuden anders behandelt als der Bürotrakt?",
+        answer:
+              "Ja. Hängt an einem Rudower Bürogebäude eine Lagerfläche mit robustem Industrieboden, nutzen wir dafür andere Verfahren als im Bürotrakt mit Teppich oder Laminat.",
+      },
     ],
   },
   {
@@ -2846,6 +3026,11 @@ export const combos: Combo[] = [
         question: "Ist eine Reinigung außerhalb der Bürozeiten in Pankow möglich?",
         answer:
           "Ja. Zeitfenster stimmen wir individuell ab – üblich sind früher Morgen, Abend oder Wochenende, jeweils so gewählt, dass weder der Büroalltag noch die Nachbarschaft gestört wird.",
+      },
+      {
+        question: "Wird bei Altbaubüros im Prenzlauer Berg der fehlende Aufzug berücksichtigt?",
+        answer:
+          "Ja, kleine Büros in Altbauten des Prenzlauer Bergs verfügen häufig über keinen Aufzug, was den Transport von Reinigungsgerät in obere Etagen zeitlich einplanen lässt – das berücksichtigen wir bei der Terminplanung, besonders wenn mehrere Etagen desselben Hauses zum Auftrag gehören.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -2911,6 +3096,16 @@ export const combos: Combo[] = [
       {
         question: "Werden Parkett- und Dielenböden schonend behandelt?",
         answer: "Ja, wir arbeiten dort mit angepasster Feuchtigkeit und für Holz geeigneten Produkten statt aggressiver Mittel.",
+      },
+      {
+        question: "Wird der eigene Garten oder die Terrasse eines Villenbüros mitgereinigt?",
+        answer:
+          "Nicht automatisch – Villenbüros verfügen häufig über einen eigenen Garten oder eine Terrasse, die von Mitarbeitenden in den Pausen genutzt wird. Die Reinigung solcher Außenbereiche wird, wenn gewünscht, als eigene Position vereinbart.",
+      },
+      {
+        question: "Werden Kellerräume in umgenutzten Villenbüros mitgereinigt?",
+        answer:
+          "Nur auf ausdrücklichen Wunsch – Kellerräume in umgenutzten Wohnhäusern werden häufig als Archiv oder Lager statt als Technikraum genutzt und deshalb nicht automatisch in die reguläre Büroreinigung einbezogen.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -3015,6 +3210,11 @@ export const combos: Combo[] = [
           "Ja. Wenn Sie nur eine Teilleistung benötigen, etwa die Unterhaltsreinigung, buchen Sie diese direkt über die jeweilige Leistungsseite.",
       },
       {
+        question: "Werden Rangierflächen und Verladerampen automatisch mitgereinigt?",
+        answer:
+              "Nein. Rangierflächen und Verladerampen für Lkw liegen im Außenbereich und kommen nur bei ausdrücklicher Absprache in den Vertrag; standardmäßig reinigen wir die Innenräume.",
+      },
+      {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
         answer:
           "Melden Sie sich direkt bei Ihrem Ansprechpartner. Bei berechtigten Beanstandungen bessern wir zeitnah nach – die Bedingungen dazu finden Sie auf unserer Über-uns-Seite.",
@@ -3081,6 +3281,16 @@ export const combos: Combo[] = [
       {
         question: "Wird Vertraulichkeit unabhängig vom Gebäudetyp gewahrt?",
         answer: "Ja, unabhängig davon, ob es sich um eine Kanzleietage im Geschäftshaus oder eine ganze Villa handelt, werden Unterlagen nicht bewegt und der Zugang individuell abgestimmt.",
+      },
+      {
+        question: "Haben Villenkanzleien einen separaten Mandanteneingang, der besonders beachtet wird?",
+        answer:
+          "Ja, Villenkanzleien mit eigenem Garten oder Vorplatz haben teils einen separaten Mandanteneingang, der besonders gepflegt wirken soll – darauf richten wir Reinigungsintensität und Sichtbarkeit des Ergebnisses gezielt aus.",
+      },
+      {
+        question: "Werden deckenhohe Aktenschränke vollständig gereinigt?",
+        answer:
+          "Nur in den unteren, gut erreichbaren Bereichen – für obere Fächer wäre zusätzliches Gerät nötig, das gesondert vereinbart werden müsste.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
@@ -3152,6 +3362,11 @@ export const combos: Combo[] = [
         question: "Wird medizinischer Sonderabfall mitentsorgt?",
         answer:
           "Nein. Kanülen und kontaminierte Materialien unterliegen eigenen Entsorgungsvorschriften und werden über spezialisierte Entsorger abgeholt, unabhängig von Lage oder Größe der Praxis.",
+      },
+      {
+        question: "Wird bei einer Spielecke im Wartebereich einer Kinderarztpraxis besonders vorsichtig gereinigt?",
+        answer:
+              "Ja. Wir klären vorab, welche Gegenstände mitgereinigt werden und welche unberührt bleiben, und verwenden dort nur Mittel, die für den Kontakt mit kleinen Kindern geeignet sind.",
       },
       {
         question: "Was passiert, wenn ich mit der Reinigung einmal nicht zufrieden bin?",
