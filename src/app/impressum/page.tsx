@@ -33,6 +33,7 @@ export default function ImpressumPage() {
             <br />
             {siteConfig.address.zip} {siteConfig.address.city}
           </p>
+          <p className="mt-2">Rechtsform: Einzelunternehmen</p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">Kontakt</h2>
           <p className="mt-2">
@@ -42,19 +43,21 @@ export default function ImpressumPage() {
           </p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
-            Vertretungsberechtigte Person
+            Inhaber
           </h2>
-          <p className="mt-2">
-            {owner.name}, {owner.role}
-          </p>
+          <p className="mt-2">{owner.name}</p>
 
           <h2 className="mt-8 text-lg font-semibold text-brand-900">
-            Streitschlichtung
+            Zuständige Kammer
+          </h2>
+          <p className="mt-2">Handwerkskammer Berlin</p>
+
+          <h2 className="mt-8 text-lg font-semibold text-brand-900">
+            Verbraucherstreitbeilegung
           </h2>
           <p className="mt-2">
-            Die Europäische Kommission stellt eine Plattform zur
-            Online-Streitbeilegung (OS) bereit. Wir sind nicht verpflichtet
-            und nicht bereit, an Streitbeilegungsverfahren vor einer
+            Wir sind nicht verpflichtet und nicht bereit, an
+            Streitbeilegungsverfahren vor einer
             Verbraucherschlichtungsstelle teilzunehmen.
           </p>
 
