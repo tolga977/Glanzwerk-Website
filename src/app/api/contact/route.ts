@@ -6,6 +6,10 @@ import {
   type ContactRequestValues,
 } from "@/lib/contactRequest";
 import { dispatchContactRequest } from "@/lib/mail/dispatch";
+import { clientIp, createRateLimiter } from "@/lib/rateLimit";
+
+/** Höchstens 6 Mail-auslösende Anfragen je IP in 10 Minuten — großzügig, damit mehrere Personen hinter einer Firmen-IP nicht gesperrt werden. */
+const sendLimiter = createRateLimiter({ limit: 6, windowMs: 10 * 60 * 1000 });
 
 /**
  * Nimmt Anfragen aus `QuoteWizard` und dem Kontakt-Schritt des Preisrechners
@@ -138,6 +142,19 @@ export async function POST(request: Request) {
   const validationErrors = validateContactRequest(values, REQUIRED_FIELDS);
   if (Object.keys(validationErrors).length > 0) {
     return NextResponse.json({ error: "validation_failed" }, { status: 400 });
+  }
+
+  // Nur Anfragen, die tatsächlich eine Mail auslösen würden, zählen — ungültige
+  // und Honeypot-Anfragen kosten nichts und werden oben bereits abgewiesen.
+  const ip = clientIp(request);
+  if (ip) {
+    const verdict = sendLimiter.check(ip);
+    if (!verdict.allowed) {
+      return NextResponse.json(
+        { error: "rate_limited" },
+        { status: 429, headers: { "Retry-After": String(verdict.retryAfterSeconds) } },
+      );
+    }
   }
 
   try {

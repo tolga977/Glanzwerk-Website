@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   emptyContactRequest,
+  RateLimitedError,
   SONSTIGES_SLUG,
   submitContactRequest,
   validateContactRequest,
@@ -151,5 +152,14 @@ describe("submitContactRequest", () => {
       new Response(JSON.stringify({ error: "delivery_unavailable" }), { status: 503 }),
     );
     await expect(submitContactRequest(emptyContactRequest, context)).rejects.toThrow();
+  });
+
+  it("wirft bei HTTP 429 einen RateLimitedError, damit die Oberfläche gezielt reagieren kann", async () => {
+    fetchMock.mockResolvedValue(
+      new Response(JSON.stringify({ error: "rate_limited" }), { status: 429 }),
+    );
+    await expect(submitContactRequest(emptyContactRequest, context)).rejects.toBeInstanceOf(
+      RateLimitedError,
+    );
   });
 });

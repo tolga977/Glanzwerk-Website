@@ -136,6 +136,51 @@ describe("POST /api/contact", () => {
     expect(passedContext.kind).toBeUndefined();
   });
 
+  describe("Rate-Limit", () => {
+    function fromIp(ip: string, body: unknown): Request {
+      return new Request("http://localhost/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-forwarded-for": ip },
+        body: JSON.stringify(body),
+      });
+    }
+    const valid = { values: validValues, context: { source: "/kontakt", honeypot: "" } };
+
+    it("liefert 429 mit Retry-After, sobald dieselbe IP das Limit überschreitet", async () => {
+      vi.mocked(dispatchContactRequest).mockResolvedValue(undefined);
+      for (let i = 0; i < 6; i++) {
+        expect((await POST(fromIp("198.51.100.1", valid))).status).toBe(200);
+      }
+      const blocked = await POST(fromIp("198.51.100.1", valid));
+      expect(blocked.status).toBe(429);
+      expect((await blocked.json()).error).toBe("rate_limited");
+      expect(Number(blocked.headers.get("Retry-After"))).toBeGreaterThan(0);
+      expect(dispatchContactRequest).toHaveBeenCalledTimes(6);
+    });
+
+    it("lässt eine andere IP weiterhin durch", async () => {
+      vi.mocked(dispatchContactRequest).mockResolvedValue(undefined);
+      for (let i = 0; i < 7; i++) await POST(fromIp("198.51.100.2", valid));
+      expect((await POST(fromIp("198.51.100.3", valid))).status).toBe(200);
+    });
+
+    it("zählt ungültige Anfragen und Honeypot-Treffer nicht mit", async () => {
+      vi.mocked(dispatchContactRequest).mockResolvedValue(undefined);
+      for (let i = 0; i < 10; i++) {
+        await POST(fromIp("198.51.100.4", { values: { ...validValues, name: "" }, context: { honeypot: "" } }));
+        await POST(fromIp("198.51.100.4", { values: validValues, context: { honeypot: "bot" } }));
+      }
+      expect((await POST(fromIp("198.51.100.4", valid))).status).toBe(200);
+    });
+
+    it("begrenzt nicht, wenn keine IP bekannt ist", async () => {
+      vi.mocked(dispatchContactRequest).mockResolvedValue(undefined);
+      for (let i = 0; i < 10; i++) {
+        expect((await POST(request(valid))).status).toBe(200);
+      }
+    });
+  });
+
   it("verwirft details-Einträge, die keine Strings sind", async () => {
     vi.mocked(dispatchContactRequest).mockResolvedValue(undefined);
     await POST(

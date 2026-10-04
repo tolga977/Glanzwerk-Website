@@ -7,8 +7,10 @@ import FormField from "@/components/forms/FormField";
 import { FormAlert } from "@/components/forms/FormError";
 import Button from "@/components/ui/Button";
 import { services } from "@/data/services";
+import { siteConfig } from "@/data/site";
 import {
   emptyContactRequest,
+  RateLimitedError,
   SONSTIGES_SLUG,
   submitContactRequest,
   validateContactRequest,
@@ -145,6 +147,7 @@ export default function QuoteWizard() {
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<ContactRequestErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [rateLimited, setRateLimited] = useState(false);
   /** Erst nach dem ersten Schrittwechsel den Fokus setzen — nicht beim Laden. */
   const bewegt = useRef(false);
   const titelRef = useRef<HTMLParagraphElement>(null);
@@ -215,7 +218,8 @@ export default function QuoteWizard() {
       await submitContactRequest(values, { source: pathname ?? "", honeypot });
       bewegt.current = true;
       setStatus("success");
-    } catch {
+    } catch (error) {
+      setRateLimited(error instanceof RateLimitedError);
       setStatus("error");
     }
   }
@@ -476,7 +480,11 @@ export default function QuoteWizard() {
                 {status === "error" && (
                   <FormAlert
                     type="error"
-                    message="Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+                    message={
+                      rateLimited
+                        ? `Es gingen zu viele Anfragen in kurzer Zeit ein. Bitte versuchen Sie es in einigen Minuten erneut oder rufen Sie uns an: ${siteConfig.phone}.`
+                        : "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+                    }
                   />
                 )}
 

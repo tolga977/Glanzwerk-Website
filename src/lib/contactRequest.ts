@@ -183,7 +183,19 @@ export async function submitContactRequest(
     body: JSON.stringify({ values, context }),
   });
 
+  if (response.status === 429) {
+    throw new RateLimitedError();
+  }
+
   if (!response.ok) {
     throw new Error(`Anfrage fehlgeschlagen (${response.status})`);
+  }
+}
+
+/** Die Route hat die Anfrage wegen zu vieler Versuche in kurzer Zeit abgelehnt (HTTP 429). */
+export class RateLimitedError extends Error {
+  constructor() {
+    super("Zu viele Anfragen (429)");
+    this.name = "RateLimitedError";
   }
 }
