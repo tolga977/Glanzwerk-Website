@@ -22,7 +22,7 @@
    * zwei Stellen gebraucht wird — negativer Außenabstand und ausgleichender
    * Innenabstand der Bühne — und beide zwangsläufig gleich bleiben müssen.
    */
-  --header-height: calc(7rem + 1px);
+  --header-height: calc(4.75rem + 1px);
 
   /*
    * Luft über und unter der Hero-Komposition.
@@ -189,6 +189,12 @@
   }
 }
 
+@media (min-width: 768px) {
+  :root {
+    --header-height: calc(7rem + 1px);
+  }
+}
+
 @media (min-width: 1536px) {
   :root {
     --header-height: calc(8rem + 1px);
@@ -336,6 +342,32 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Lange deutsche Komposita (Fitnessstudioreinigung, Treppenhausreinigung,
+ * Gastronomiereinigung …) sind auf schmalen Bildschirmen breiter als ihr
+ * Container und wurden dort abgeschnitten oder ragten in Nachbarflächen.
+ * `overflow-wrap: anywhere` bricht ein Wort erst dann um, wenn es nicht in
+ * die Zeile passt, und verkleinert zugleich die Mindestbreite von Flex- und
+ * Grid-Kindern. `hyphens: auto` (html lang="de") trennt dabei an
+ * Silbengrenzen statt mitten im Wort — in Überschriften immer, im Fließtext
+ * nur unterhalb des Desktop-Breakpoints.
+ */
+@layer base {
+  h1, h2, h3, h4, h5, h6, p, li, dt, dd, a, label, figcaption, blockquote, summary, th, td, button {
+    overflow-wrap: anywhere;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    hyphens: auto;
+  }
+
+  @media (max-width: 1023.98px) {
+    p, li, dd, a, label, figcaption, blockquote {
+      hyphens: auto;
+    }
+  }
 }
 
 /* Signature detail: brand-colored text selection instead of the browser
@@ -1689,7 +1721,7 @@ body {
      * eine sinnvolle Größe, ohne dass er beschnitten wird — die Luft
      * ringsum ist ohnehin weiß und liegt nach der Maske auf null.
      */
-    margin: -8% -14%;
+    margin: -6% 4%;
   }
 
   .hyg-punkt-titel {
@@ -1724,7 +1756,9 @@ body {
     }
     .hyg-buehne {
       grid-column: 1 / -1;
-      margin: -4% 12% 0;
+      /* Nie höher als ~40 % des Fensters: die Szene ist ein Begleitbild. */
+      width: min(100%, 72svh);
+      margin: -4% auto 0;
     }
   }
 
@@ -1747,6 +1781,7 @@ body {
     .hyg-buehne {
       grid-column: 2;
       grid-row: 1 / 3;
+      width: auto;
       margin: 0 -13%;
     }
 
@@ -2015,6 +2050,41 @@ body {
       box-shadow 0.14s var(--ease-signature);
   }
 
+  /*
+   * Telefon: das Gerät ist eine Illustration, kein Bedienelement — es muss
+   * nicht die Spaltenbreite füllen. 15 rem Breite (240 px, ein gutes Drittel
+   * weniger als vorher) und flachere Tasten (1,9 : 1 statt 1,45 : 1) lassen
+   * sie wie ein Taschenrechner in der Hand wirken statt wie ein Bildschirm
+   * im Bildschirm; die Beispielrechnung darunter rückt näher an den Text.
+   */
+  @media (max-width: 1023px) {
+    /* Höhe folgt der Fensterhöhe: das ganze Gerät muss samt Rand auf einen
+       Bildschirm passen — auf dem Tablet ebenso wie auf einem schmalen
+       Browserfenster. 16 rem, aber nie breiter als 52 % der Fensterhöhe
+       (das Gerät ist etwa so hoch wie breit). Als Container, damit die
+       Tastenbeschriftung mit der Gerätebreite skaliert. */
+    .pk {
+      max-width: min(16rem, 52svh);
+      margin-inline: auto;
+      container-type: inline-size;
+    }
+    .pk-taste {
+      aspect-ratio: 2 / 1;
+      min-height: 1.625rem;
+    }
+    .pk-display {
+      min-height: 3.75rem;
+    }
+    /* Beschriftungen wie BERECHNEN müssen auf eine 50-px-Taste passen — sie
+       dürfen nie mitten im Wort umbrechen (die globale Umbruchregel für
+       Schaltflächen greift hier bewusst nicht). */
+    .pk-taste {
+      overflow-wrap: normal;
+      hyphens: manual;
+      white-space: nowrap;
+    }
+  }
+
   .pk-taste[data-druck="ja"] {
     transform: translateY(2px);
     box-shadow:
@@ -2034,6 +2104,16 @@ body {
   /* Beschriftete Tasten sind flacher als Zifferntasten — wie in der Vorlage. */
   .pk-taste-funktion {
     aspect-ratio: 2 / 1;
+  }
+
+  /* Telefon: 240 px breites Gerät, ~50 px je Taste — die Beschriftung muss
+     deshalb kleiner sein als die fließende Standardgröße. */
+  @media (max-width: 1023px) {
+    .pk-taste-funktion,
+    .pk-taste-neben {
+      font-size: 2.9cqw;
+      letter-spacing: 0;
+    }
   }
 
   .pk-taste-gleich {
@@ -2216,6 +2296,16 @@ body {
     width: 100%;
   }
 
+  /* Telefon: der Kalender ist Dekor neben einem Textabschnitt, kein Hauptbild.
+     17 rem Breite statt der vollen Spalte (358 px) — mittig, damit er nicht
+     einseitig an der Textkante hängt. */
+  @media (max-width: 1023px) {
+    .trial-zone {
+      max-width: min(18rem, 60svh);
+      margin-inline: auto;
+    }
+  }
+
   /*
    * Die dunkle Pfütze liegt AUSSERHALB der Maske und reicht über den
    * Bildrand hinaus.
@@ -2257,7 +2347,7 @@ body {
     width: 100%;
     /* Telefon: eigene, flachere Komposition — der Kalender steht näher im
        Bild, die Umgebung wird beschnitten. */
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);

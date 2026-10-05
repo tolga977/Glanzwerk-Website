@@ -43,7 +43,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
           ? "flex-row items-start gap-5"
           : band
             ? "flex-col lg:flex-row lg:items-center lg:gap-14"
-            : "flex-col"
+            : "flex-row items-start gap-4 sm:flex-col sm:gap-0"
       }`}
     >
       <div
@@ -51,10 +51,10 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
           row
             ? "aspect-square w-28 sm:w-32"
             : band
-              ? "aspect-[16/10] w-full lg:aspect-[3/2] lg:w-[54%]"
+              ? "aspect-[2/1] w-full sm:aspect-[16/10] lg:aspect-[3/2] lg:w-[54%]"
               : feature
-                ? "aspect-[3/2]"
-                : "aspect-[16/10]"
+                ? "aspect-[2/1] sm:aspect-[3/2]"
+                : "aspect-square w-24 sm:aspect-[16/10] sm:w-full"
         }`}
       >
         <Image
@@ -68,13 +68,13 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
                 ? "(min-width: 1024px) 40rem, 100vw"
                 : feature
                   ? "(min-width: 1024px) 680px, 100vw"
-                  : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+                  : "(min-width: 1024px) 360px, (min-width: 640px) 50vw, 96px"
           }
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
       </div>
 
-      <div className={`flex flex-1 flex-col ${row ? "" : band ? "pt-6 lg:pt-0" : "pt-5"}`}>
+      <div className={`flex flex-1 flex-col ${row ? "" : band ? "pt-6 lg:pt-0" : "pt-0 sm:pt-5"}`}>
         <div className="flex items-center gap-3">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
             {article.category}
@@ -85,13 +85,13 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
           />
         </div>
         <h3
-          className={`font-display display-lg mt-3 font-medium text-brand-900 transition-colors duration-200 group-hover:text-brand-500 ${
+          className={`font-display display-lg mt-2 font-medium sm:mt-3 text-brand-900 transition-colors duration-200 group-hover:text-brand-500 ${
             lead ? "text-2xl sm:text-3xl" : "text-lg"
           }`}
         >
           {article.title}
         </h3>
-        <p className={`mt-2.5 leading-relaxed text-ink-soft ${lead ? "measure text-base" : "text-sm"}`}>
+        <p className={`mt-2 leading-relaxed text-ink-soft sm:mt-2.5 ${lead ? "measure text-base" : "line-clamp-3 text-sm sm:line-clamp-none"}`}>
           {article.excerpt}
         </p>
         <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-500">

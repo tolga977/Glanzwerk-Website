@@ -102,7 +102,7 @@ export default async function ArticlePage({ params }: Props) {
           </h2>
           <FadeIn className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {relatedServices.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+              <ServiceCard key={service.slug} service={service} variant="compact" />
             ))}
           </FadeIn>
         </Section>

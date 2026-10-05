@@ -156,15 +156,20 @@ export default function ProcessTimeline({ steps }: { steps: TimelineStep[] }) {
         style={{ "--progress": 1 } as React.CSSProperties}
         className="relative lg:pb-[50vh]"
       >
-        {/* Schiene: liegt auf 15 px mobil, auf der Spaltenmitte ab Desktop. */}
+        {/*
+          Schiene. Unterhalb `lg` wie auf der bisherigen Website: eine 4 px
+          starke, abgerundete Spur, in der sich beim Scrollen die helle Linie
+          füllt — deutlich sichtbar statt der früheren Haarlinie. Ab `lg`
+          unverändert die feine Linie auf der Spaltenmitte.
+        */}
         <span
           aria-hidden="true"
-          className="absolute bottom-0 left-[0.9375rem] top-2 w-px bg-white/20 lg:bottom-[50vh] lg:left-[1.4375rem]"
+          className="absolute bottom-0 left-1.5 top-2 w-1 rounded-full bg-white/20 lg:bottom-[50vh] lg:left-[1.4375rem] lg:w-px lg:rounded-none"
         />
         {/* Fortschritt: wächst über scaleY von oben nach unten. */}
         <span
           aria-hidden="true"
-          className="absolute bottom-0 left-[0.9375rem] top-2 w-px origin-top bg-brand-300 lg:bottom-[50vh] lg:left-[1.4375rem]"
+          className="absolute bottom-0 left-1.5 top-2 w-1 origin-top rounded-full bg-brand-300 shadow-[0_0_10px_rgba(147,197,253,0.55)] lg:bottom-[50vh] lg:left-[1.4375rem] lg:w-px lg:rounded-none lg:shadow-none"
           style={{ transform: "scaleY(var(--progress))" }}
         />
 
@@ -173,18 +178,28 @@ export default function ProcessTimeline({ steps }: { steps: TimelineStep[] }) {
             key={step.title}
             data-step
             data-reached="true"
-            className="group relative pb-14 pl-11 last:pb-0 lg:pb-28 lg:pl-20 lg:last:pb-0"
+            className="group relative pb-9 pl-9 last:pb-0 lg:pb-28 lg:pl-20 lg:last:pb-0"
           >
             {/*
-              Markierung auf der Schiene. Der Ring bleibt immer sichtbar, nur
-              die Füllung wechselt — ein Punkt, der erst beim Erreichen
-              erscheint, würde die Schiene beim Scrollen unruhig machen.
+              Markierung auf der Schiene, unterhalb `lg`: ein 16-px-Punkt, der
+              beim Erreichen aufleuchtet — er füllt sich, wächst auf das
+              1,6-Fache und bekommt einen weichen Lichthof. Scrollt man zurück,
+              erlischt er wieder. Die leichte Überschwing-Kurve macht den
+              Moment spürbar, ohne dass etwas ablenkend animiert.
             */}
             <span
               aria-hidden="true"
-              className="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full border border-white/25 bg-brand-900/70 backdrop-blur-sm transition-colors duration-300 ease-out group-data-[reached=true]:border-brand-300/70 lg:h-12 lg:w-12"
+              className="absolute left-0 top-[0.4375rem] h-4 w-4 rounded-full border-[3px] border-white/30 bg-brand-950 transition-[transform,background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-data-[reached=true]:scale-[1.6] group-data-[reached=true]:border-brand-300 group-data-[reached=true]:bg-brand-300 group-data-[reached=true]:shadow-[0_0_0_5px_rgba(147,197,253,0.22)] motion-reduce:transition-none lg:hidden"
+            />
+            {/*
+              Ab `lg` der bisherige Ring: er bleibt immer sichtbar, nur die
+              Füllung wechselt.
+            */}
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-1 hidden h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-brand-900/70 backdrop-blur-sm transition-colors duration-300 ease-out group-data-[reached=true]:border-brand-300/70 lg:flex"
             >
-              <span className="h-2 w-2 rounded-full bg-white/30 transition-colors duration-300 ease-out group-data-[reached=true]:bg-brand-300 lg:h-2.5 lg:w-2.5" />
+              <span className="h-2.5 w-2.5 rounded-full bg-white/30 transition-colors duration-300 ease-out group-data-[reached=true]:bg-brand-300" />
             </span>
 
             {/*
@@ -197,13 +212,13 @@ export default function ProcessTimeline({ steps }: { steps: TimelineStep[] }) {
               Groß — ein zweites, kleines Foto daneben wäre dort eine
               Wiederholung.
             */}
-            <div className="grid gap-6 lg:block">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card shadow-deep ring-1 ring-white/25 lg:hidden">
+            <div className="flex flex-col gap-5 lg:block">
+              <div className="relative order-2 aspect-[3/2] max-h-[34svh] w-full max-w-[18rem] self-start overflow-hidden rounded-card shadow-deep ring-1 ring-white/25 sm:max-w-sm lg:hidden">
                 <Image
                   src={step.photo.src}
                   alt={step.photo.alt}
                   fill
-                  sizes="100vw"
+                  sizes="(min-width: 640px) 24rem, 18rem"
                   className="object-cover"
                 />
                 {/* Gleiche Tonebene wie auf der Fläche, damit die Bilder zur Section gehören. */}
@@ -213,19 +228,26 @@ export default function ProcessTimeline({ steps }: { steps: TimelineStep[] }) {
                 />
               </div>
 
-              <div className="transition-opacity duration-500 ease-out motion-reduce:transition-none lg:group-data-[dim=true]:opacity-40">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-display text-2xl font-medium leading-none tracking-tight text-white/55 sm:text-3xl">
+              <div className="relative order-1 overflow-hidden rounded-card bg-white/[0.07] p-5 ring-1 ring-white/10 transition-opacity duration-500 ease-out motion-reduce:transition-none lg:overflow-visible lg:rounded-none lg:bg-transparent lg:p-0 lg:ring-0 lg:group-data-[dim=true]:opacity-40">
+                {/* Schrittnummer als großes, leises Wasserzeichen — nur auf dem Telefon; ab `lg` steht die Nummer vor der Überschrift. */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-1 right-3 font-display text-7xl font-black leading-none text-white/[0.07] lg:hidden"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="relative flex items-baseline gap-4">
+                  <span className="hidden font-display text-3xl font-medium leading-none tracking-tight text-white/55 lg:inline">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="text-lg font-semibold text-white sm:text-xl">{step.title}</h3>
                 </div>
 
-                <p className="measure mt-4 text-sm leading-relaxed text-brand-100">
+                <p className="measure relative mt-3 text-sm leading-relaxed text-brand-100 lg:mt-4">
                   {step.description}
                 </p>
 
-                <ul className="mt-5 space-y-2.5">
+                <ul className="relative mt-4 space-y-2.5 lg:mt-5">
                   {step.facts.map((fact) => (
                     <li key={fact} className="flex gap-2.5 text-sm leading-relaxed text-white">
                       <svg

@@ -253,29 +253,29 @@ export default function TreppenhausreinigungBerlinContent({
           </div>
         )}
         <div
-          className={`relative z-[1] container-page flex flex-col justify-center py-16 lg:py-20 ${
-            photo ? "min-h-[520px] lg:min-h-[620px]" : ""
+          className={`relative z-[1] container-page flex flex-col justify-center py-8 sm:py-16 lg:py-20 ${
+            photo ? "sm:min-h-[520px] lg:min-h-[620px]" : ""
           }`}
         >
           <div className="max-w-xl">
             <p className="mb-4 inline-flex items-center rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-sm font-semibold text-brand-500">
               Treppenhausreinigung für Wohn- und Gewerbeimmobilien
             </p>
-            <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
+            <h1 className="font-display text-[1.875rem] font-medium min-[400px]:text-4xl leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+            <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">
               Glanzwerk übernimmt die regelmäßige Reinigung von Treppenhäusern, Eingangsbereichen
               und gemeinschaftlich genutzten Flächen in Berliner Immobilien. Reinigungsumfang und
               Intervalle werden passend zur Größe, Nutzung und Besucherfrequenz des Gebäudes
               abgestimmt.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/kontakt">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
               Unverbindliches Angebot anfragen
             </Button>
-            <Button href="/preisrechner" variant="outline">
+            <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
               Preis kostenlos berechnen
             </Button>
           </div>
@@ -322,7 +322,7 @@ export default function TreppenhausreinigungBerlinContent({
           {midPhoto && (
             <ParallaxImage
               photo={midPhoto}
-              aspect="aspect-[16/10]"
+              aspect="aspect-[2/1] sm:aspect-[16/10]"
               sizes="(min-width: 1024px) 560px, 100vw"
               className="shadow-deep"
             />
@@ -462,19 +462,10 @@ export default function TreppenhausreinigungBerlinContent({
                 eine sorgfältige Reinigung, ohne Oberflächen durch ungeeignete Mittel zu belasten.
               </p>
             </div>
-            <Link
-              href="/umwelt-verantwortung"
-              className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
-              Mehr über Umwelt und Verantwortung
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
           <ParallaxImage
             photo={materialschutzPhoto}
-            aspect="aspect-[16/10]"
+            aspect="aspect-[2/1] sm:aspect-[16/10]"
             sizes="(min-width: 1024px) 560px, 100vw"
             className="shadow-deep"
           />

@@ -146,7 +146,7 @@ function ReviewCard({ review }: { review: GoogleReview }) {
             </span>
           )}
           <div className="min-w-0">
-            <p className="truncate font-display text-sm font-medium text-brand-900">{review.author}</p>
+            <p className="font-display text-sm font-medium text-brand-900">{review.author}</p>
             {review.publishedLabel && (
               <p className="text-xs text-ink-soft">{review.publishedLabel}</p>
             )}

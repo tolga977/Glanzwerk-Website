@@ -166,7 +166,7 @@ export default async function DistrictPage({ params }: Props) {
           <SectionHeading eyebrow="Leistungen" title={heading.sectionHeadings[2]} />
           <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featuredServices.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+              <ServiceCard key={service.slug} service={service} variant="compact" />
             ))}
           </FadeIn>
           <div className="mt-6">

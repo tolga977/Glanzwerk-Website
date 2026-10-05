@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { phoneAspect } from "@/lib/phoneAspect";
 
 interface Photo {
   src: string;
@@ -37,7 +38,7 @@ export default function BrandPhoto({
 }: BrandPhotoProps) {
   return (
     <div
-      className={`relative overflow-hidden ${rounded} ${aspect} ${overlay ? "brand-photo-overlay" : ""} ${className}`}
+      className={`relative overflow-hidden ${rounded} ${phoneAspect(aspect)} max-lg:max-h-[42svh] ${overlay ? "brand-photo-overlay" : ""} ${className}`}
     >
       <Image
         src={photo.src}

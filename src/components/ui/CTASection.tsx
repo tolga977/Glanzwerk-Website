@@ -86,7 +86,7 @@ export default function CTASection({
       />
       <GlanzMark className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 opacity-[0.10]" />
       <div className="relative">
-        <h2 className="font-display text-3xl font-medium text-white sm:text-4xl">{title}</h2>
+        <h2 className="font-display text-[1.625rem] font-medium text-white sm:text-4xl">{title}</h2>
         <div className="glanz-divider mx-auto mt-5 max-w-[140px]" />
         <p className={`mx-auto mt-5 max-w-xl ${eco ? "text-eco-100" : "text-brand-200"}`}>{subtitle}</p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

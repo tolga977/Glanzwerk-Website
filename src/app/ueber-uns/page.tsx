@@ -220,7 +220,7 @@ export default async function UeberUnsPage() {
               Räume. Unser Anspruch ist einfach: Vereinbarte Leistungen sollen nachvollziehbar sein,
               Termine sollen funktionieren und Rückfragen sollen schnell geklärt werden können.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/kontakt">
               Unverbindliches Angebot anfragen
             </Button>
@@ -433,27 +433,13 @@ export default async function UeberUnsPage() {
                 Glanzwerk verwendet je nach Anwendungsbereich professionelle Reinigungsprodukte.
                 Die Auswahl richtet sich nach Oberfläche, Verschmutzung und Nutzung. Wo es sinnvoll
                 und im Objekt umsetzbar ist, achten wir auf bedarfsgerechte Dosierung, einen
-                bewussten Wasserverbrauch und die vorhandene Mülltrennung. Welche Hersteller wir
-                konkret einsetzen, steht auf der{" "}
-                <Link href="/umwelt-verantwortung" className="font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
-                  Umwelt-Seite
-                </Link>
-                .
+                bewussten Wasserverbrauch und die vorhandene Mülltrennung.
               </p>
               <p>
                 Desinfektionsmittel werden dort eingesetzt, wo sie vereinbart oder hygienisch
                 erforderlich sind. Auf anderen Flächen genügt häufig eine materialgerechte Reinigung.
               </p>
             </div>
-            <Link
-              href="/umwelt-verantwortung"
-              className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-            >
-              Mehr über Umwelt und Verantwortung
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
           <BrandPhoto photo={photos.cleaningEquipment} className="shadow-deep">
             <div className="absolute bottom-4 left-4 rounded-control bg-white/95 px-3 py-2 shadow-float backdrop-blur">

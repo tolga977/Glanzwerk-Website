@@ -626,9 +626,9 @@ export default async function HomePage() {
           dort weiterhin selbst (`lg:absolute lg:inset-0`) gegenüber der
           Section, unabhängig von dieser Zellenzuordnung.
         */}
-        <div className="container-page grid flex-1 grid-cols-1 pb-12 pt-[calc(var(--header-height)+3rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--hero-panel-width))] lg:items-center lg:gap-12 lg:pb-[var(--hero-gap-bottom)] lg:pt-[calc(var(--header-height)+var(--hero-gap-top))] xl:gap-16">
+        <div className="container-page grid flex-1 grid-cols-1 pb-10 pt-[calc(var(--header-height)+1rem)] sm:pb-12 sm:pt-[calc(var(--header-height)+3rem)] lg:grid-cols-[minmax(0,1fr)_minmax(0,var(--hero-panel-width))] lg:items-center lg:gap-12 lg:pb-[var(--hero-gap-bottom)] lg:pt-[calc(var(--header-height)+var(--hero-gap-top))] xl:gap-16">
           {/* ── 1) Aussage ────────────────────────────────────────────── */}
-          <div className="relative z-20 col-start-1 row-start-1 pb-10 pt-9 sm:pb-12 sm:pt-11 lg:pb-0 lg:pt-0">
+          <div className="relative z-20 col-start-1 row-start-1 pb-8 pt-6 sm:pb-12 sm:pt-11 lg:pb-0 lg:pt-0">
             {/*
               Keine Auszeichnungszeile über der Überschrift. Ein gerundetes
               Etikett mit „Ihre Reinigungsfirma in Berlin" wiederholte nur
@@ -815,7 +815,7 @@ export default async function HomePage() {
             Desktop selbst zu einem dritten Rasterelement und die
             Zweispalten-Zuordnung (Aussage/Anfrage) verschieben.
           */}
-          <div className="relative col-start-1 row-start-1 -mx-4 min-h-[38rem] bg-brand-950 sm:-mx-6 lg:contents lg:mx-0 lg:min-h-0 lg:bg-transparent">
+          <div className="relative col-start-1 row-start-1 -mx-4 min-h-[30rem] bg-brand-950 sm:-mx-6 sm:min-h-[38rem] lg:contents lg:mx-0 lg:min-h-0 lg:bg-transparent">
             {/*
               ── Bleed und Mindesthöhe liegen jetzt hier, nicht in HeroStage ──
               HeroStage bringt sein eigenes Seitenverhältnis mit (moderater
@@ -1021,8 +1021,8 @@ export default async function HomePage() {
           eine leere Bildflaeche waere schlechter als keine.
         */}
         {serviceVehiclePhoto && (
-          <figure className="mt-16 max-w-5xl">
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-panel shadow-deep sm:aspect-[21/9]">
+          <figure className="mt-10 max-w-5xl sm:mt-16">
+            <div className="relative aspect-[2/1] w-full overflow-hidden rounded-panel shadow-deep sm:aspect-[21/9]">
               <Image
                 src={serviceVehiclePhoto.src}
                 alt={serviceVehiclePhoto.alt}
@@ -1369,7 +1369,7 @@ export default async function HomePage() {
           Bereich schreit.
         */}
         <FadeIn>
-          <ul className="mt-12 grid gap-y-8 lg:mt-16 lg:gap-y-12">
+          <ul className="mt-8 grid gap-y-4 sm:mt-12 sm:gap-y-8 lg:mt-16 lg:gap-y-12">
             {featuredServices.map((service) => {
               const photo = servicePhotos[service.slug];
               const { description, linkText } = serviceCopy(service);
@@ -1379,15 +1379,15 @@ export default async function HomePage() {
                 <li key={service.slug}>
                   <Link
                     href={href}
-                    className="press group relative block overflow-hidden rounded-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500"
+                    className="press group relative flex overflow-hidden rounded-card bg-brand-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 sm:block sm:rounded-panel"
                   >
-                    <div className="relative aspect-[4/3] w-full sm:aspect-[2.2/1] lg:aspect-[3.1/1]">
+                    <div className="relative w-28 shrink-0 self-stretch sm:aspect-[2.2/1] sm:w-full sm:self-auto lg:aspect-[3.1/1]">
                       {photo && (
                         <Image
                           src={photo.src}
                           alt={photo.alt}
                           fill
-                          sizes="(min-width: 1024px) 76rem, 100vw"
+                          sizes="(min-width: 1024px) 76rem, (min-width: 640px) 100vw, 112px"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                           /*
                             Ohne diese Angabe schnitt `object-cover` jedes Foto
@@ -1414,18 +1414,18 @@ export default async function HomePage() {
                       */}
                       <div
                         aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-brand-950/92 via-brand-950/55 to-brand-950/10"
+                        className="absolute inset-0 hidden bg-gradient-to-t from-brand-950/92 via-brand-950/55 to-brand-950/10 sm:block"
                       />
                     </div>
 
-                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 lg:p-10">
-                      <h3 className="font-display display-lg text-pretty text-xl font-medium text-white sm:text-2xl lg:text-[2rem]">
+                    <div className="relative min-w-0 flex-1 p-4 sm:absolute sm:inset-x-0 sm:bottom-0 sm:p-8 lg:p-10">
+                      <h3 className="font-display display-lg text-pretty text-[1.0625rem] font-medium text-white sm:text-2xl lg:text-[2rem]">
                         {service.shortTitle}
                       </h3>
-                      <p className="measure mt-3 text-sm leading-relaxed text-brand-100">
+                      <p className="measure mt-1.5 text-[0.8125rem] leading-snug text-brand-100 sm:mt-3 sm:text-sm sm:leading-relaxed">
                         {description}
                       </p>
-                      <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                      <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white sm:mt-5">
                         {linkText}
                         {arrowIcon}
                       </span>
@@ -1460,7 +1460,7 @@ export default async function HomePage() {
           vollstaendigen Verzeichnis bleibt sichtbar, ohne dass eine zweite
           Flaeche entsteht.
         */}
-        <FadeIn className="mt-20 border-t-2 border-brand-900 pt-10">
+        <FadeIn className="mt-14 border-t-2 border-brand-900 pt-8 sm:mt-20 sm:pt-10">
           <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
             <h3 className="font-display display-lg text-xl font-medium text-brand-900 sm:text-2xl">
               Alle weiteren Leistungen

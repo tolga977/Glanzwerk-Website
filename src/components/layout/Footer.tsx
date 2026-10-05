@@ -1,28 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Logo from "@/components/layout/Logo";
 import GlanzMark from "@/components/ui/GlanzMark";
 import { footerServiceLinks, footerLegalLinks } from "@/data/navigation";
 import { districts } from "@/data/districts";
 import { siteConfig } from "@/data/site";
 
-/*
- * Seiteneigene Farbrolle des Fußes — analog zur Kopfzeile (siehe dortiger
- * Kommentar in Header.tsx) und zu `CTASection`s additivem `tone`-Prop.
- * "brand" ist und bleibt die Vorgabe für die gesamte Website; "eco" gilt
- * ausschließlich, solange der aktuelle Pfad mit "/umwelt-verantwortung"
- * beginnt, und hängt an nichts als dem Pfad — kein gespeicherter Zustand,
- * kein Aufblitzen beim Seitenwechsel.
- *
- * Nur vier Rollen genügen, weil der Fuß nur vier unterschiedliche
- * Textgewichte kennt: Fläche, Überschrift (bleibt in beiden Fällen Weiß),
- * Standardlink und die leiseste Stufe (Copyright/Rechtliches). Die
- * Grünpalette hat bewusst nur vier Stufen (siehe Farbrollen-Kommentar in
- * globals.css) — für die leiseste Stufe steht deshalb `eco-100/70` statt
- * einer eigens dafür erfundenen fünften Stufe.
- */
 const footerTone = {
   brand: {
     surface: "bg-brand-900 text-brand-100",
@@ -30,24 +14,17 @@ const footerTone = {
     quiet: "text-brand-300 hover:text-white focus-visible:outline-brand-300",
     quietStatic: "text-brand-300",
   },
-  eco: {
-    surface: "bg-eco-800 text-eco-100",
-    link: "text-eco-100 hover:text-white focus-visible:outline-eco-100",
-    quiet: "text-eco-100/70 hover:text-white focus-visible:outline-eco-100",
-    quietStatic: "text-eco-100/70",
-  },
 } as const;
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const pathname = usePathname();
-  const tone = pathname.startsWith("/umwelt-verantwortung") ? footerTone.eco : footerTone.brand;
+  const tone = footerTone.brand;
 
   return (
     <footer className={`relative overflow-hidden ${tone.surface}`}>
       <div className="glanz-divider absolute inset-x-0 top-0" />
       <GlanzMark className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-[0.12]" />
-      <div className="container-page relative grid gap-10 py-14 md:grid-cols-4">
+      <div className="container-page relative grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo variant="light" height={52} />
           <p className="font-display mt-5 max-w-xs text-base italic leading-relaxed">
@@ -127,11 +104,6 @@ export default function Footer() {
             <li>
               <Link href="/reinigungsfirma-berlin" className={`transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${tone.link}`}>
                 Reinigungsfirma Berlin
-              </Link>
-            </li>
-            <li>
-              <Link href="/umwelt-verantwortung" className={`transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${tone.link}`}>
-                Umwelt &amp; Verantwortung
               </Link>
             </li>
             <li>

@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
 
 /*
@@ -12,6 +12,11 @@ import { siteConfig } from "@/data/site";
  * Handlungswege stehen sonst nur innerhalb der einzelnen Abschnitte. Beim
  * Scrollen durch eine lange Seite ist damit oft kein Weg zum Kontakt sichtbar.
  * Diese Leiste bleibt immer erreichbar, unabhängig von der Scrollposition.
+ *
+ * Zwei Wege, klar gewichtet: links „Anrufen" als ruhige Umrissfläche mit
+ * Beschriftung (ein reines Symbol wird auf dem Telefon leicht übersehen),
+ * rechts der Hauptweg als gefüllte Fläche. Beide 48 px hoch, damit sie sich
+ * mit dem Daumen sicher treffen lassen.
  *
  * `lg:hidden` statt `xl:hidden`: die Kopfzeile zeigt ihre volle Navigation
  * erst ab `xl`, aber ihr "Preis schätzen"-Knopf bereits ab `xl` ebenfalls —
@@ -36,16 +41,14 @@ export default function StickyMobileCTA() {
   }
 
   return (
-    <div
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 shadow-float backdrop-blur-md lg:hidden"
-    >
-      <div className="container-page flex items-center gap-3">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 pb-[max(0.625rem,env(safe-area-inset-bottom))] pt-2.5 shadow-float backdrop-blur-md lg:hidden">
+      <div className="container-page flex items-center gap-2.5">
         <a
           href={siteConfig.phoneHref}
           aria-label={`Anrufen: ${siteConfig.phone}`}
-          className="press flex h-12 w-12 shrink-0 items-center justify-center rounded-control border-2 border-brand-900 text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
+          className="press flex h-12 shrink-0 items-center justify-center gap-2 rounded-control border-2 border-brand-900 px-4 text-sm font-semibold text-brand-900 transition-colors duration-200 ease-out hover:bg-brand-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
         >
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
               d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
               stroke="currentColor"
@@ -53,10 +56,14 @@ export default function StickyMobileCTA() {
               strokeLinejoin="round"
             />
           </svg>
+          <span className="hidden min-[360px]:inline">Anrufen</span>
         </a>
-        <Button href="/preisrechner" size="lg" className="min-h-12 flex-1">
+        <Link
+          href="/preisrechner"
+          className="press shine-sweep flex h-12 min-w-0 flex-1 items-center justify-center rounded-control bg-brand-500 px-3 text-center text-[0.9375rem] font-semibold text-white shadow-float transition-colors duration-200 ease-out hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
+        >
           Kostenlos Preis erhalten
-        </Button>
+        </Link>
       </div>
     </div>
   );

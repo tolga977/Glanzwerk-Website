@@ -235,11 +235,11 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
           </li>
         </FadeIn>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/kontakt">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+          <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
               Unverbindliches Angebot anfragen
             </Button>
-          <Button href="/preisrechner" variant="outline">
+          <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
               Preis kostenlos berechnen
             </Button>
         </div>
@@ -280,7 +280,7 @@ export default function GebaeudereinigungFriedrichshainKreuzbergContent({
           </div>
           <ParallaxImage
             photo={districtPhoto}
-            aspect="aspect-[16/10]"
+            aspect="aspect-[2/1] sm:aspect-[16/10]"
             sizes="(min-width: 1024px) 560px, 100vw"
             className="shadow-deep"
           />

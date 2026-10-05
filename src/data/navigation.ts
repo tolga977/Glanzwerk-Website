@@ -17,7 +17,7 @@ export interface NavItem {
  * "Standorte" stand hier bis August 2026 als eigener Menüpunkt mit
  * Mega-Menü (alle 12 Bezirke + "Standorte ansehen"-Kachel). Auf
  * ausdrücklichen Wunsch des Betreibers entfernt, um die Kopfzeile auf
- * Leistungen/Umweltschutz/Testphase/Wissen/Kontakt zu verkürzen.
+ * Leistungen/Testphase/Wissen/Kontakt zu verkürzen.
  *
  * Kein Linkverlust dadurch: `Footer.tsx` führt weiterhin eine vollständige
  * Standorte-Spalte mit allen 12 Bezirken, und jede Bezirks-/Ortsteil- und
@@ -28,7 +28,7 @@ export interface NavItem {
 /*
  * ── Reihenfolge und Umfang (August 2026) ──────────────────────────────────
  * „Über uns" ist neu aufgenommen und die Reihenfolge folgt jetzt der
- * Entwurfsvorlage für die Startseite: Leistungen, Testphase, Umweltschutz,
+ * Entwurfsvorlage für die Startseite: Leistungen, Testphase,
  * Glanzwerk Wissen, Über uns, Kontakt.
  *
  * `/ueber-uns` ist keine erfundene Adresse — die Seite existiert seit langem
@@ -50,7 +50,6 @@ export const mainNav: NavItem[] = [
     })),
   },
   { label: "Testphase", href: "/3-monate-testen" },
-  { label: "Umweltschutz", href: "/umwelt-verantwortung" },
   { label: "Glanzwerk Wissen", href: "/wissen" },
   { label: "Über uns", href: "/ueber-uns" },
   { label: "Kontakt", href: "/kontakt" },

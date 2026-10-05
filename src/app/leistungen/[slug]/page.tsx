@@ -319,7 +319,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
             <ParallaxImage
               photo={midPhoto}
-              aspect="aspect-[16/10]"
+              aspect="aspect-[2/1] sm:aspect-[16/10]"
               sizes="(min-width: 1024px) 560px, 100vw"
               className={`shadow-deep ${imageLeftOnDesktop ? "lg:order-1" : ""}`}
             />
@@ -467,7 +467,7 @@ export default async function ServicePage({ params }: Props) {
           <SectionHeading eyebrow="Weitere Leistungen" title="Das könnte Sie auch interessieren" />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {relatedServices.map((related) => (
-              <ServiceCard key={related.slug} service={related} />
+              <ServiceCard key={related.slug} service={related} variant="compact" />
             ))}
           </div>
         </Section>

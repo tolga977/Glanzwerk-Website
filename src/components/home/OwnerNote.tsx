@@ -211,7 +211,7 @@ export default function OwnerNote({ heading }: OwnerNoteProps = {}) {
   return (
     <div className={grid}>
       <div
-        className={`relative aspect-[4/5] overflow-hidden rounded-panel lg:aspect-auto lg:h-[38rem] lg:rounded-l-none ${bleedLeft}`}
+        className={`relative aspect-[4/3] overflow-hidden rounded-panel sm:aspect-[4/5] lg:aspect-auto lg:h-[38rem] lg:rounded-l-none ${bleedLeft}`}
       >
         <Image
           src={owner.photo as string}

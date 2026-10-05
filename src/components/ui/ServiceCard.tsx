@@ -43,7 +43,7 @@ export default function ServiceCard({
     <Link
       href={hrefOverride ?? `/leistungen/${service.slug}`}
       className={`lift press group relative flex h-full overflow-hidden rounded-card border border-line bg-white shadow-raise hover:border-brand-200 hover:shadow-float focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
-        compact ? "flex-row sm:flex-col" : "flex-col"
+        compact ? "flex-col min-[360px]:flex-row sm:flex-col" : "flex-col"
       }`}
     >
       {photo && (
@@ -52,7 +52,7 @@ export default function ServiceCard({
             feature
               ? "aspect-[16/10]"
               : compact
-                ? "w-32 shrink-0 sm:aspect-[4/3] sm:w-auto"
+                ? "aspect-[16/9] min-[360px]:aspect-auto min-[360px]:w-28 min-[360px]:shrink-0 sm:aspect-[4/3] sm:w-auto"
                 : "aspect-[4/3]"
           }`}
         >
@@ -74,7 +74,7 @@ export default function ServiceCard({
       )}
       <div
         className={`relative flex flex-1 flex-col ${
-          feature ? "p-7 sm:p-8" : compact ? "p-4 sm:p-6" : "p-6"
+          feature ? "p-7 sm:p-8" : compact ? "p-4 min-[360px]:py-3.5 sm:p-6" : "p-6"
         }`}
       >
         {/*
@@ -100,19 +100,19 @@ export default function ServiceCard({
           <ServiceIcon slug={service.slug} />
         </div>
         <h3
-          className={`font-display display-lg mt-4 font-medium text-brand-900 transition-colors duration-200 group-hover:text-brand-500 ${
-            feature ? "text-xl sm:text-2xl" : "text-lg"
+          className={`font-display display-lg ${compact ? "mt-0 sm:mt-4" : "mt-4"} font-medium text-brand-900 transition-colors duration-200 group-hover:text-brand-500 ${
+            feature ? "text-xl sm:text-2xl" : compact ? "text-[1.0625rem] sm:text-lg" : "text-lg"
           }`}
         >
           {title}
         </h3>
-        <p className={`mt-2.5 leading-relaxed text-ink-soft ${feature ? "text-base" : "text-sm"}`}>
+        <p className={`leading-relaxed text-ink-soft ${compact ? "mt-1.5 text-[0.8125rem] sm:mt-2.5 sm:text-sm" : "mt-2.5"} ${feature ? "text-base" : compact ? "" : "text-sm"}`}>
           {summaryOverride ?? service.summary}
         </p>
         {/* mt-auto hält den Link am Kartenfuß, sodass er in einer Kartenreihe
             auf einer Linie sitzt; der Pfeil läuft im Textfluss mit und steht
             bei zweizeiligen Labels nicht frei daneben. */}
-        <span className="mt-auto block pt-5 text-sm font-semibold text-brand-500">
+        <span className={`mt-auto block text-sm font-semibold text-brand-500 ${compact ? "pt-2.5 sm:pt-5" : "pt-5"}`}>
           {ctaLabelOverride ?? `Zur ${title}`}
           <svg
             width="16"

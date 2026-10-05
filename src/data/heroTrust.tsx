@@ -14,13 +14,8 @@ import { owner } from "@/data/owner";
  * Was NICHT übernommen wurde und warum:
  *
  *   „Umweltfreundliche Reinigungsmittel"
- *     Nicht belegt — und die Umweltseite widerspricht der Formulierung
- *     ausdrücklich: „Wir machen keine Aussagen, die wir nicht nachweisen
- *     können. Unser Fokus liegt auf einem verantwortungsvollen Umgang mit
- *     Wasser, Reinigungsmitteln und Materialien."
- *     (src/app/umwelt-verantwortung/page.tsx). Eine Behauptung, die die
- *     eigene Umweltseite bewusst vermeidet, darf nicht im ersten Bildschirm
- *     stehen. Ersetzt durch die dort tatsächlich getroffene Aussage.
+ *     Nicht belegt und deshalb nicht im ersten Bildschirm. Ersetzt durch
+ *     die tatsächlich getroffene Aussage zur bedarfsgerechten Dosierung.
  *
  *   „Geschultes und festes Team"
  *     Nicht belegt. Die einzige Stelle mit „geschult" im Projekt bezieht sich
@@ -89,7 +84,7 @@ export const heroTrustItems: HeroTrustItem[] = [
     label: "Bedarfsgerechte Dosierung",
     detail: "nach Herstellerangabe",
     quelle:
-      "src/app/umwelt-verantwortung/page.tsx — „Bedarfsgerechte Dosierung: Reinigungsmittel werden entsprechend den Herstellerangaben und dem tatsächlichen Bedarf eingesetzt.“",
+      "src/app/leistungen/[slug]/PraxisreinigungBerlinContent.tsx — „Die Dosierung richtet sich dabei nach Herstellerangaben und tatsächlichem Bedarf“; ebenso Büro-, Gebäude-, Kanzlei- und Treppenhausreinigung.",
     icon: (
       <>
         <path d="M9 3h6M10 3v3.5L6.5 15a4.5 4.5 0 0 0 4.1 6h2.8a4.5 4.5 0 0 0 4.1-6L14 6.5V3" {...stroke} />

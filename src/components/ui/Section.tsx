@@ -282,9 +282,12 @@ const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string>
 };
 
 const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
-  compact: "py-14 sm:py-16",
-  normal: "py-20 sm:py-24",
-  roomy: "py-24 sm:py-32",
+  /* Telefon deutlich knapper als bisher (vorher 56/80/96 px): auf 390 px
+     Breite summierten sich die Abschnittsränder der Startseite auf mehrere
+     Bildschirmhöhen reinen Leerraum. Ab 640 px unverändert. */
+  compact: "py-10 sm:py-16",
+  normal: "py-14 sm:py-24",
+  roomy: "py-16 sm:py-32",
 };
 
 export default function Section({

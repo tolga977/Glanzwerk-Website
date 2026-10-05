@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { phoneAspect } from "@/lib/phoneAspect";
 
 interface Photo {
   src: string;
@@ -87,7 +88,7 @@ export default function ParallaxImage({
   return (
     <div
       ref={containerRef}
-      className={`brand-photo-overlay relative overflow-hidden ${rounded} ${aspect} ${className}`}
+      className={`brand-photo-overlay relative overflow-hidden ${rounded} ${phoneAspect(aspect)} max-lg:max-h-[42svh] ${className}`}
     >
       <div
         className="absolute -inset-4 will-change-transform"

@@ -244,11 +244,11 @@ export default function GebaeudereinigungMitteContent({
           </li>
         </FadeIn>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/kontakt">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+          <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
               Unverbindliches Angebot anfragen
             </Button>
-          <Button href="/preisrechner" variant="outline">
+          <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
               Preis kostenlos berechnen
             </Button>
         </div>
@@ -291,7 +291,7 @@ export default function GebaeudereinigungMitteContent({
           </div>
           <ParallaxImage
             photo={districtPhoto}
-            aspect="aspect-[16/10]"
+            aspect="aspect-[2/1] sm:aspect-[16/10]"
             sizes="(min-width: 1024px) 560px, 100vw"
             className="shadow-deep"
           />
@@ -499,15 +499,6 @@ export default function GebaeudereinigungMitteContent({
             Nebenkostenabrechnung der Hausverwaltung läuft.
           </p>
         </div>
-        <Link
-          href="/umwelt-verantwortung"
-          className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
-        >
-          Mehr über Umwelt und Verantwortung
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Link>
       </Section>
 
       {/* 10. Benachbarte Bezirke */}

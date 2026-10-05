@@ -30,7 +30,7 @@ import {
  * eine zweite, andersartige Formularästhetik soll es nicht mehr geben.
  * Deshalb der Umzug hierher und die Umbenennung. Eingebettet ist die
  * Komponente unverändert an ihren bisherigen Stellen (Hero der Startseite,
- * deren mobiler Zweitweg in `MobileContactSection`, /umwelt-verantwortung)
+ * deren mobiler Zweitweg in `MobileContactSection`)
  * und neu auf /kontakt, wo sie das bisherige, andersartige `ContactForm`
  * ersetzt.
  *

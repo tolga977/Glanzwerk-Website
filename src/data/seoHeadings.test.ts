@@ -9,7 +9,6 @@ const centralPaths = [
   "/",
   "/leistungen",
   "/standorte",
-  "/umwelt-verantwortung",
   "/3-monate-testen",
   "/ueber-uns",
   "/bewertungen",

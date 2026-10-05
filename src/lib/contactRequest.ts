@@ -5,7 +5,7 @@
  * Es gibt jetzt genau eine Formularkomponente für normale Anfragen
  * (`QuoteWizard`, `src/components/forms/QuoteWizard.tsx`), eingebettet an
  * vier Stellen der Website: Hero der Startseite, deren mobiler Zweitweg
- * (`MobileContactSection`), /umwelt-verantwortung und /kontakt. Alle vier
+ * (`MobileContactSection`) und /kontakt. Alle vier
  * teilen dasselbe Datenmodell, dieselbe Prüfung und denselben Versand —
  * das liegt hier. Vorher gab es daneben noch `ContactForm` mit einem
  * eigenen, etwas anderen Feldsatz (u. a. „Firma" und „Art des Objekts" als

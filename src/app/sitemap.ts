@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/preisrechner"), changeFrequency: "monthly", priority: 0.9 },
     { url: url("/kontakt"), changeFrequency: "yearly", priority: 0.6 },
     { url: url("/ueber-uns"), changeFrequency: "yearly", priority: 0.5 },
-    { url: url("/umwelt-verantwortung"), changeFrequency: "yearly", priority: 0.6 },
     { url: url("/3-monate-testen"), changeFrequency: "monthly", priority: 0.8 },
     { url: url("/bewertungen"), changeFrequency: "monthly", priority: 0.4 },
     { url: url("/wissen"), changeFrequency: "monthly", priority: 0.6 },

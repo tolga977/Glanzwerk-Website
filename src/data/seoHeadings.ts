@@ -105,24 +105,6 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     mostSimilarUrl: "/leistungen",
     differentiation: "Navigiert nach Standort statt nach Leistung – eigenständige Suchintention.",
   },
-  "/umwelt-verantwortung": {
-    h1: "Verantwortung beginnt bei jeder Reinigung",
-    sectionHeadings: [
-      "Nachhaltigkeit bedeutet für uns verantwortungsbewusstes Arbeiten",
-      "Professionelle Reinigungsmittel mit gezieltem Einsatz",
-      "Wasser bewusst einsetzen",
-      "Mülltrennung gehört zum Arbeitsalltag",
-      "Desinfektion dort, wo sie sinnvoll ist",
-      "Verantwortung endet nicht beim Reinigungsmittel",
-    ],
-    faqHeading: "Fragen zu Umwelt und Reinigungsmitteln",
-    ctaHeading: "Sie suchen eine Gebäudereinigung mit klaren Abläufen?",
-    metaTitle: "Umwelt & Verantwortung | Glanzwerk Reinigungsservice Berlin",
-    mainTopic: "Konkrete, unbelegt-nachvollziehbare Nachhaltigkeitspraxis im Reinigungsalltag",
-    mostSimilarUrl: "/ueber-uns",
-    differentiation:
-      "Vertieft ausschließlich das Umweltthema; Über-uns behandelt Arbeitsweise und Absicherung allgemein.",
-  },
   "/3-monate-testen": {
     h1: "Gebäudereinigung 3 Monate flexibel testen",
     h1Highlight: "3 Monate flexibel testen",
@@ -1760,7 +1742,7 @@ export const seoHeadings: Record<string, SeoHeadingSet> = {
     relatedServicesHeading: "Leistungen mit ressourcenschonender Praxis",
     moreArticlesHeading: "Weitere Artikel zu Reinigungsplanung und Ressourcen",
     mainTopic: "Konkrete, nachvollziehbare Nachhaltigkeitshebel in der gewerblichen Reinigung",
-    mostSimilarUrl: "/umwelt-verantwortung",
+    mostSimilarUrl: "/leistungen/unterhaltsreinigung-berlin",
     differentiation: "Ratgeberperspektive mit Prüffragen für jeden Anbieter statt Selbstdarstellung von Glanzwerk.",
   },
   "/wissen/reinigungsdienstleister-auswaehlen": {

@@ -105,15 +105,6 @@ export default function Header() {
    */
   const stagePage = pathname === "/";
 
-  /*
-   * Seiteneigene Farbrolle: ausschließlich auf "Umwelt & Verantwortung"
-   * wechselt der primäre Kopfzeilen-Knopf von Markenblau auf das Grün der
-   * Seite (`eco-600`/`eco-800`, dieselben Werte wie `Button`-Variante
-   * "eco"). Verlässt man die Seite, greift wieder die normale Farbe — der
-   * Zustand hängt ausschließlich am aktuellen Pfad, es gibt keinen
-   * darüber hinaus gespeicherten Zustand.
-   */
-  const ecoPage = pathname.startsWith("/umwelt-verantwortung");
 
   /*
    * `true`, solange die Kopfzeile noch über der Bühne liegt.
@@ -237,6 +228,7 @@ export default function Header() {
    * Schatten keine Fläche, von der er abfallen könnte.
    */
   return (
+    <>
     <header
       ref={headerRef}
       data-header-state={imBuehnenzustand ? "stage" : "solid"}
@@ -273,7 +265,7 @@ export default function Header() {
         zu verteilen. Genau diese Gleichverteilung ließ die Navigation mittig
         und damit beliebig wirken.
       */}
-      <div className="container-page flex h-28 items-center gap-4 2xl:h-32 2xl:gap-6">
+      <div className="container-page flex h-[4.75rem] items-center gap-4 md:h-28 2xl:h-32 2xl:gap-6">
         {/*
           Die dunkle Logovariante in beiden Zuständen — die Bühne ist links
           weiß. Damit wird beim Zustandswechsel keine Bilddatei getauscht und
@@ -281,7 +273,7 @@ export default function Header() {
         */}
         <Logo
           variant="dark"
-          heightClassName="h-[5.5rem] 2xl:h-24"
+          heightClassName="h-[3.75rem] md:h-[5.5rem] 2xl:h-24"
           className="mr-auto shrink-0"
         />
 
@@ -353,7 +345,7 @@ export default function Header() {
                        * Kontrastführung.
                        */
                       className={`absolute left-1/2 top-full z-10 -translate-x-1/2 rounded-card border border-line bg-white p-5 shadow-float transition-all duration-200 ease-out motion-reduce:transition-none ${
-                        isMega ? "w-[560px]" : "w-64"
+                        isMega ? "w-[640px]" : "w-64"
                       } ${
                         openDropdown === item.label
                           ? "visible translate-y-0 scale-100 opacity-100"
@@ -361,30 +353,36 @@ export default function Header() {
                       }`}
                     >
                       {item.label === "Leistungen" && (
-                        <div className="grid grid-cols-[1fr_auto] gap-5">
-                          <ul className="grid grid-cols-2 gap-1">
+                        <div className="flex flex-col gap-4">
+                          {/* Zwei gleich breite Spalten über die volle
+                              Panelbreite: bei 640 px bleiben je Eintrag rund
+                              230 px Text, „Fitnessstudioreinigung" braucht
+                              etwa 150. Die Kachel steht als Leiste darunter —
+                              neben den Spalten nahm sie 160 px weg und ließ
+                              den Einträgen nur ~105 px. */}
+                          <ul className="grid grid-cols-2 gap-x-2 gap-y-1">
                             {services.map((service) => (
                               <li key={service.slug}>
                                 <Link
                                   href={`/leistungen/${service.slug}`}
-                                  className="flex items-center gap-2.5 rounded-control px-3 py-2 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
+                                  className="flex items-center gap-3 rounded-control px-3 py-2 text-sm text-ink-soft transition-colors duration-200 ease-out hover:bg-brand-50 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-500"
                                 >
-                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
+                                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-brand-50 text-brand-500">
                                     <ServiceIcon slug={service.slug} className="h-4 w-4" />
                                   </span>
-                                  {service.shortTitle}
+                                  <span className="min-w-0 whitespace-nowrap">{service.shortTitle}</span>
                                 </Link>
                               </li>
                             ))}
                           </ul>
                           <Link
                             href="/preisrechner"
-                            className="lift flex w-40 flex-col justify-between rounded-control bg-gradient-to-br from-brand-900 to-brand-800 p-4 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                            className="lift flex items-center justify-between gap-4 rounded-control bg-gradient-to-br from-brand-900 to-brand-800 px-4 py-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
                           >
                             <span className="text-sm font-semibold">
                               Nicht sicher, was Sie brauchen?
                             </span>
-                            <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-200">
+                            <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-brand-200">
                               Preis berechnen {chevron}
                             </span>
                           </Link>
@@ -494,11 +492,7 @@ export default function Header() {
           */}
           <Link
             href="/preisrechner"
-            className={`press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-              ecoPage
-                ? "bg-eco-600 hover:bg-eco-800 focus-visible:outline-eco-800"
-                : "bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900"
-            }`}
+            className={`press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900`}
           >
             Preis schätzen
           </Link>
@@ -534,7 +528,9 @@ export default function Header() {
         </div>
       </div>
 
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
+    {/* Außerhalb des <header>: dessen backdrop-filter würde `position: fixed` auf die Kopfzeilenhöhe begrenzen. */}
+    <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} />
+    </>
   );
 }

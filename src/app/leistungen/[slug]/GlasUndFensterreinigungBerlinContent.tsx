@@ -241,25 +241,25 @@ export default function GlasUndFensterreinigungBerlinContent({
           </div>
         )}
         <div
-          className={`relative z-[1] container-page flex flex-col justify-center py-16 lg:py-20 ${
-            photo ? "min-h-[520px] lg:min-h-[620px]" : ""
+          className={`relative z-[1] container-page flex flex-col justify-center py-8 sm:py-16 lg:py-20 ${
+            photo ? "sm:min-h-[520px] lg:min-h-[620px]" : ""
           }`}
         >
           <div className="max-w-xl">
-            <h1 className="font-display text-4xl font-medium leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
+            <h1 className="font-display text-[1.875rem] font-medium min-[400px]:text-4xl leading-[1.15] tracking-tight text-brand-900 sm:text-5xl">
               {renderHighlightedH1(heading.h1, heading.h1Highlight)}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+            <p className="mt-4 text-base leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">
               Glanzwerk reinigt Fenster, Rahmen, Glastüren, Trennwände, Schaufenster und weitere
               erreichbare Glasflächen in Berliner Gewerbeobjekten. Umfang, Zugänglichkeit und
               Reinigungsintervalle werden vor Beginn abgestimmt.
             </p>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/kontakt">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
               Angebot anfragen
             </Button>
-            <Button href="/preisrechner" variant="outline">
+            <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
               Preis kostenlos berechnen
             </Button>
           </div>
@@ -296,7 +296,7 @@ export default function GlasUndFensterreinigungBerlinContent({
           {midPhoto && (
             <ParallaxImage
               photo={midPhoto}
-              aspect="aspect-[16/10]"
+              aspect="aspect-[2/1] sm:aspect-[16/10]"
               sizes="(min-width: 1024px) 560px, 100vw"
               className="shadow-deep"
             />
@@ -350,7 +350,7 @@ export default function GlasUndFensterreinigungBerlinContent({
           </div>
           <ParallaxImage
             photo={rahmenreinigungPhoto}
-            aspect="aspect-[16/10]"
+            aspect="aspect-[2/1] sm:aspect-[16/10]"
             sizes="(min-width: 1024px) 560px, 100vw"
             className="shadow-deep"
           />
@@ -492,7 +492,7 @@ export default function GlasUndFensterreinigungBerlinContent({
           </div>
           <ParallaxImage
             photo={aussenreinigungPhoto}
-            aspect="aspect-[16/10]"
+            aspect="aspect-[2/1] sm:aspect-[16/10]"
             sizes="(min-width: 1024px) 560px, 100vw"
             className="shadow-deep"
           />

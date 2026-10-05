@@ -67,10 +67,10 @@ export default function EinsatzgebietKarte({ location }: EinsatzgebietKarteProps
           title={iframeTitle}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="h-[320px] w-full border-0"
+          className="h-[230px] sm:h-[320px] w-full border-0"
         />
       ) : location ? (
-        <div className="relative h-[320px] w-full bg-brand-900">
+        <div className="relative h-[230px] sm:h-[320px] w-full bg-brand-900">
           <button
             type="button"
             onClick={() => setLoaded(true)}
@@ -100,7 +100,7 @@ export default function EinsatzgebietKarte({ location }: EinsatzgebietKarteProps
           </button>
         </div>
       ) : (
-        <div className="relative h-[320px] w-full">
+        <div className="relative h-[230px] sm:h-[320px] w-full">
           <Image
             src="/images/karte/einsatzgebiet-vorschau.png"
             alt={`Lageplan – ${address}`}
