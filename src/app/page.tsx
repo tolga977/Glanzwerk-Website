@@ -221,7 +221,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Kostenlos und unverbindlich",
       "Antwort innerhalb von 2 Stunden während der Geschäftszeiten",
     ],
-    photo: photos.lawOfficeReception,
+    photo: photos.processRequest,
     cta: { label: "Anfrage jetzt stellen", href: "/kontakt" },
   },
   {
@@ -232,7 +232,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Flächen, Intervalle und Reinigungszeiten werden festgelegt",
       "Besichtigungstermin bei größeren Objekten",
     ],
-    photo: photos.medicalPracticeInterior,
+    photo: photos.processRequirements,
   },
   {
     title: "Angebot erhalten",
@@ -242,7 +242,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Leistungen und Termine schriftlich festgehalten",
       `Wiederkehrende Reinigung ab ${pricingConfig.minimumMonthlyOrderNet} € netto im Monat`,
     ],
-    photo: photos.businessHandshake,
+    photo: photos.processOffer,
   },
   {
     title: "Reinigung starten",
@@ -252,7 +252,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Fester Ansprechpartner, der Ihr Objekt kennt",
       "Auf Wunsch drei Monate testen, ohne automatische Verlängerung",
     ],
-    photo: photos.windowCleaning,
+    photo: photos.processCleaning,
   },
 ];
 

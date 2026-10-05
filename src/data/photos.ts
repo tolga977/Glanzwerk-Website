@@ -55,6 +55,22 @@ export const photos = {
     src: "/images/startseite/reinigungsteam-abstimmung.webp",
     alt: "Zwei Reinigungskräfte stimmen sich in einem Büroflur anhand eines Tablets ab, daneben steht ein Reinigungswagen",
   },
+  processRequest: {
+    src: "/images/startseite/prozess-01-anfrage.webp",
+    alt: "Mann telefoniert in einem hellen Büro, daneben Symbole für Anfrage, Telefon, E-Mail und Nachricht",
+  },
+  processRequirements: {
+    src: "/images/startseite/prozess-02-anforderungen.webp",
+    alt: "Mitarbeiter mit Tablet bespricht mit einer Kundin in einem Büro die zu reinigenden Flächen",
+  },
+  processOffer: {
+    src: "/images/startseite/prozess-03-angebot.webp",
+    alt: "Zwei Personen besprechen ein Reinigungsangebot auf einem Tablet",
+  },
+  processCleaning: {
+    src: "/images/startseite/prozess-04-reinigung.webp",
+    alt: "Reinigungskraft wischt in Arbeitskleidung einen Schreibtisch, im Hintergrund reinigt ein Kollege den Boden mit einer Maschine",
+  },
   medicalPracticeInterior: {
     src: pexels("6812461/pexels-photo-6812461.jpeg"),
     alt: "Modernes, helles Behandlungszimmer einer Arztpraxis",

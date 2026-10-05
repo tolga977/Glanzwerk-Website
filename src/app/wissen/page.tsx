@@ -13,8 +13,8 @@ import { renderHighlightedH1 } from "@/lib/renderHeading";
 const heading = seoHeadings["/wissen"];
 
 const wissenHeroPhoto = {
-  src: "/images/wissen/hero-wissen.webp",
-  alt: "Reinigungsmittel und Reinigungstuch an einem gepflegten Arbeitsplatz",
+  src: "/images/wissen/wissen-hero-neu.webp",
+  alt: "Mitarbeiterin prüft an einem Schreibtisch Unterlagen zu Hygiene und Reinigung, im Hintergrund der Berliner Fernsehturm",
 };
 
 const description =
@@ -46,7 +46,13 @@ export default function WissenPage() {
               für Büros, Praxen, Kanzleien und Unternehmen in Berlin.
             </p>
           </div>
-          <BrandPhoto photo={wissenHeroPhoto} priority className="shadow-deep" />
+          <BrandPhoto
+            photo={wissenHeroPhoto}
+            aspect="aspect-[16/9]"
+            overlay={false}
+            priority
+            className="shadow-deep ring-1 ring-brand-900/10"
+          />
         </div>
       </Section>
 
