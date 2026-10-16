@@ -28,7 +28,7 @@ interface CTASectionProps {
 export default function CTASection({
   title = "Bereit für ein unverbindliches Angebot?",
   subtitle = "Fordern Sie in wenigen Minuten ein individuelles Angebot für Ihr Objekt an.",
-  primaryLabel = "Angebot anfragen",
+  primaryLabel = "Angebot erhalten",
   primaryHref = "/kontakt",
   secondaryLabel,
   secondaryHref,

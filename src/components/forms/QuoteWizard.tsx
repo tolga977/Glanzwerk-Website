@@ -299,7 +299,7 @@ export default function QuoteWizard() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-display text-lg font-medium text-brand-900">
-            Kostenloses Angebot anfordern
+            Angebot erhalten
           </p>
           <p className="mt-0.5 text-xs text-ink-soft">Unverbindlich in 4 Schritten</p>
         </div>

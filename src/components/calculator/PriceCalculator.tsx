@@ -758,7 +758,7 @@ function ResultView({
 
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Button href="/kontakt">
-              Angebot anfragen
+              Angebot erhalten
             </Button>
         <Button type="button" variant="outline" onClick={onRestart}>
           Neue Berechnung

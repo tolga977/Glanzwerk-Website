@@ -222,7 +222,7 @@ export default async function UeberUnsPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/kontakt">
-              Unverbindliches Angebot anfragen
+              Angebot erhalten
             </Button>
               <Button href="/leistungen" variant="outline">
               Unsere Leistungen ansehen
@@ -487,9 +487,9 @@ export default async function UeberUnsPage() {
         <CTASection
           title={heading.ctaHeading}
           subtitle="Nennen Sie uns Objektart, Standort, ungefähre Fläche und den gewünschten Reinigungsrhythmus. Auf dieser Grundlage klären wir die nächsten Schritte und prüfen, ob eine Besichtigung sinnvoll ist."
-          primaryLabel="Unverbindliches Angebot anfragen"
+          primaryLabel="Angebot erhalten"
           primaryHref="/kontakt"
-          secondaryLabel="Preis kostenlos berechnen"
+          secondaryLabel="Preis berechnen"
           secondaryHref="/preisrechner"
         />
         <p className="mt-6 text-center text-sm text-ink-soft">

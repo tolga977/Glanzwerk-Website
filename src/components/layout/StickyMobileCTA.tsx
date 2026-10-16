@@ -59,10 +59,10 @@ export default function StickyMobileCTA() {
           <span className="hidden min-[360px]:inline">Anrufen</span>
         </a>
         <Link
-          href="/preisrechner"
+          href="/kontakt"
           className="press shine-sweep flex h-12 min-w-0 flex-1 items-center justify-center rounded-control bg-brand-500 px-3 text-center text-[0.9375rem] font-semibold text-white shadow-float transition-colors duration-200 ease-out hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
         >
-          Kostenlos Preis erhalten
+          Angebot erhalten
         </Link>
       </div>
     </div>

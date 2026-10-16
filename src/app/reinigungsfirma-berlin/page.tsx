@@ -164,7 +164,7 @@ export default function ReinigungsfirmaBerlinPage() {
               Preis berechnen
             </Button>
               <Button href="/kontakt" variant="outline">
-              Angebot anfragen
+              Angebot erhalten
             </Button>
             </div>
           </div>

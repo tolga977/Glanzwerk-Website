@@ -160,7 +160,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
               Preis berechnen
             </Button>
           <Button href="/kontakt" variant="outline">
-              Angebot anfragen
+              Angebot erhalten
             </Button>
         </div>
 
@@ -337,7 +337,7 @@ export default async function ServiceDistrictPage({ params }: Props) {
             combo.ctaSubtitle ??
             "Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
           }
-          primaryLabel="Reinigung anfragen"
+          primaryLabel="Angebot erhalten"
         />
       </Section>
     </>

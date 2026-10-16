@@ -257,10 +257,10 @@ export default function GlasUndFensterreinigungBerlinContent({
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
-              Angebot anfragen
+              Angebot erhalten
             </Button>
             <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
-              Preis kostenlos berechnen
+              Preis berechnen
             </Button>
           </div>
         </div>
@@ -546,10 +546,10 @@ export default function GlasUndFensterreinigungBerlinContent({
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button href="/preisrechner">
-              Preis kostenlos berechnen
+              Preis berechnen
             </Button>
           <Button href="/kontakt" variant="outline">
-              Angebot anfragen
+              Angebot erhalten
             </Button>
         </div>
       </Section>
@@ -636,9 +636,9 @@ export default function GlasUndFensterreinigungBerlinContent({
         <CTASection
           title={heading.ctaHeading}
           subtitle="Teilen Sie uns Anzahl, Größe und Zugänglichkeit der Glasflächen mit. Wir prüfen die Angaben und erstellen ein passendes Angebot."
-          primaryLabel="Angebot anfragen"
+          primaryLabel="Angebot erhalten"
           primaryHref="/kontakt"
-          secondaryLabel="Preis kostenlos berechnen"
+          secondaryLabel="Preis berechnen"
           secondaryHref="/preisrechner"
           backgroundImage={contentPhotos?.ctaUnten}
         />

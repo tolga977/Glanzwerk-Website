@@ -27,7 +27,7 @@ export default function MobileCTAStrip({ heading }: { heading: string }) {
         <p className="font-display text-balance text-[1.375rem] font-medium leading-snug">{heading}</p>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button href="/kontakt" size="lg" className="min-h-14 w-full sm:w-auto">
-            Kostenlos anfragen
+            Angebot erhalten
           </Button>
           <Button
             href={siteConfig.phoneHref}

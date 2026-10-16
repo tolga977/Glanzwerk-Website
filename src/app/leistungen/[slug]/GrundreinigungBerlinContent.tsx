@@ -232,10 +232,10 @@ export default function GrundreinigungBerlinContent({
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <Button href="/kontakt" size="lg" className="w-full sm:w-auto">
-              Unverbindliches Angebot anfragen
+              Angebot erhalten
             </Button>
             <Button href="/preisrechner" variant="outline" size="lg" className="w-full sm:w-auto">
-              Preis kostenlos berechnen
+              Preis berechnen
             </Button>
           </div>
         </div>
@@ -510,10 +510,10 @@ export default function GrundreinigungBerlinContent({
         </ul>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Button href="/preisrechner">
-              Preis kostenlos berechnen
+              Preis berechnen
             </Button>
           <Button href="/kontakt" variant="outline">
-              Individuelles Angebot anfragen
+              Angebot erhalten
             </Button>
         </div>
         <p className="mt-6 text-sm text-ink-soft">
@@ -606,9 +606,9 @@ export default function GrundreinigungBerlinContent({
         <CTASection
           title={heading.ctaHeading}
           subtitle="Beschreiben Sie kurz Fläche, Material, Verschmutzung und Anlass. Wir prüfen die Angaben und klären, ob eine Besichtigung erforderlich ist."
-          primaryLabel="Unverbindliches Angebot anfragen"
+          primaryLabel="Angebot erhalten"
           primaryHref="/kontakt"
-          secondaryLabel="Preis kostenlos berechnen"
+          secondaryLabel="Preis berechnen"
           secondaryHref="/preisrechner"
           backgroundImage={contentPhotos?.ctaUnten}
         />

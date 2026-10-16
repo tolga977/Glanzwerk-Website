@@ -222,7 +222,7 @@ const homeProcessSteps: TimelineStep[] = [
       "Antwort innerhalb von 2 Stunden während der Geschäftszeiten",
     ],
     photo: photos.processRequest,
-    cta: { label: "Anfrage jetzt stellen", href: "/kontakt" },
+    cta: { label: "Angebot erhalten", href: "/kontakt" },
   },
   {
     title: "Anforderungen besprechen",
@@ -758,45 +758,55 @@ export default async function HomePage() {
               lesbar, ein kompensierender transparenter Rahmen wäre ein Trick,
               den beim nächsten Lesen niemand einordnen kann.
             */}
+            {/*
+              Rangfolge der Handlungswege (statt zweier gleich schwerer
+              Knöpfe): „Angebot erhalten" führt zum Kontaktformular und ist der
+              einzige gefüllte Knopf — das ist das Ziel der Seite. „Preis
+              berechnen" bleibt gut sichtbar, aber als Umrissfläche: wer erst
+              eine Größenordnung will, findet ihn sofort, er konkurriert aber
+              nicht mit dem Hauptweg. Der Anruf ist ein ruhiger Textlink
+              darunter (auf dem Telefon steht er zusätzlich in der festen
+              Leiste am unteren Rand).
+            */}
             <div className="mt-8 flex flex-col items-stretch gap-3 sm:mt-9 sm:flex-row sm:items-center">
               <Button
-                href="/preisrechner"
+                href="/kontakt"
                 size="lg"
-                className="min-h-14 w-full sm:w-auto"
+                className="min-h-14 w-full sm:w-auto sm:px-10"
               >
-                Preis schätzen
+                Angebot erhalten
               </Button>
-              {/*
-                `outline` zeichnet dunklen Rahmen auf hellem Grund — genau
-                verkehrt über dem Foto. `onMedia` ist die Variante, die
-                Button.tsx eigens für Text-über-Bewegtbild mitbringt (siehe
-                dortiger Kommentar zur früheren Kollision zweier
-                gleich-spezifischer Klassen). Zwei Instanzen statt einer
-                Farbkorrektur per Zusatzklasse, aus genau diesem Grund.
-              */}
               <span className="lg:hidden">
                 <Button
-                  href={siteConfig.phoneHref}
+                  href="/preisrechner"
                   variant="onMedia"
                   size="lg"
                   className="min-h-14 w-full"
                 >
-                  {phoneIcon}
-                  Jetzt anrufen
+                  Preis berechnen
                 </Button>
               </span>
               <span className="hidden lg:inline-flex">
                 <Button
-                  href={siteConfig.phoneHref}
+                  href="/preisrechner"
                   variant="outline"
                   size="lg"
                   className="min-h-14 w-full sm:w-auto"
                 >
-                  {phoneIcon}
-                  Jetzt anrufen
+                  Preis berechnen
                 </Button>
               </span>
             </div>
+            <p className="mt-4 text-sm text-brand-100 lg:text-ink-soft">
+              Oder direkt anrufen:{" "}
+              <a
+                href={siteConfig.phoneHref}
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-control font-semibold text-white underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:text-brand-900 lg:focus-visible:outline-brand-900"
+              >
+                {phoneIcon}
+                {siteConfig.phone}
+              </a>
+            </p>
           </div>
 
           {/*
@@ -2003,15 +2013,15 @@ export default async function HomePage() {
               Besichtigungstermin ab.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button href="/preisrechner" variant="primary" size="lg">
-                Preisrechner nutzen
+              <Button href="/kontakt" variant="primary" size="lg">
+                Angebot erhalten
               </Button>
               <Button
-                href="/kontakt"
+                href="/preisrechner"
                 variant="onMedia"
                 size="lg"
               >
-                Kontakt aufnehmen
+                Preis berechnen
               </Button>
             </div>
             <div className="mt-9 flex flex-col gap-1 sm:flex-row sm:gap-8">

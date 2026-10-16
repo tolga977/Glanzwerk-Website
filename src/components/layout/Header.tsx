@@ -494,7 +494,7 @@ export default function Header() {
             href="/preisrechner"
             className={`press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900`}
           >
-            Preis schätzen
+            Preis berechnen
           </Link>
         </div>
 

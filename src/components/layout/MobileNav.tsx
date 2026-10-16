@@ -199,11 +199,11 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
 
         <div className="shrink-0 border-t border-line bg-white px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 shadow-[0_-8px_24px_-12px_rgba(10,22,52,0.18)]">
           <Link
-            href="/preisrechner"
+            href="/kontakt"
             onClick={onClose}
             className="press shine-sweep flex min-h-14 w-full items-center justify-center rounded-control bg-brand-500 px-5 text-base font-semibold text-white shadow-float hover:bg-brand-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-900"
           >
-            Kostenlos Preis erhalten
+            Angebot erhalten
           </Link>
           <a
             href={siteConfig.phoneHref}
@@ -212,6 +212,13 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
             {phoneIcon}
             {siteConfig.phone}
           </a>
+          <Link
+            href="/preisrechner"
+            onClick={onClose}
+            className="mt-1 flex min-h-12 w-full items-center justify-center text-base font-semibold text-brand-500 hover:text-brand-600"
+          >
+            Preis berechnen
+          </Link>
         </div>
       </nav>
     </div>

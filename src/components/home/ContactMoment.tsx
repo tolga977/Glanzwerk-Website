@@ -173,7 +173,7 @@ export default function ContactMoment() {
               */}
               <div className="mt-9">
                 <Button href="/kontakt" size="xl">
-                  Angebot anfragen
+                  Angebot erhalten
                 </Button>
               </div>
             </div>

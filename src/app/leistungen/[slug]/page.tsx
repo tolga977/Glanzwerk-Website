@@ -204,7 +204,7 @@ export default async function ServicePage({ params }: Props) {
           */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/kontakt" size="lg">
-              Reinigung anfragen
+              Angebot erhalten
             </Button>
             <Button href="/preisrechner" variant="outline" size="lg" className="bg-white/70 backdrop-blur-sm">
               Preis berechnen
@@ -492,7 +492,7 @@ export default async function ServicePage({ params }: Props) {
           <CTASection
             title={heading.ctaHeading ?? "Überzeugen Sie sich selbst"}
             subtitle={`Fordern Sie ein kostenloses Angebot für die ${service.shortTitle} an – unverbindlich und in wenigen Minuten.`}
-            primaryLabel="Kostenloses Angebot anfordern"
+            primaryLabel="Angebot erhalten"
             primaryHref="/kontakt"
             secondaryLabel="Preis berechnen"
             secondaryHref="/preisrechner"
@@ -502,7 +502,7 @@ export default async function ServicePage({ params }: Props) {
           <CTASection
             title={heading.ctaHeading ?? `Angebot für ${service.shortTitle} anfragen`}
             subtitle="Beschreiben Sie kurz Ihr Objekt – wir melden uns mit einem individuellen Angebot."
-            primaryLabel="Reinigung anfragen"
+            primaryLabel="Angebot erhalten"
           />
         )}
       </Section>
