@@ -87,7 +87,13 @@ const headerSurface = {
    * während `imBuehnenzustand` true ist.
    */
   stage: "lg:border-transparent lg:bg-transparent lg:shadow-none lg:backdrop-blur-none lg:backdrop-saturate-100",
-  solid: "border-line bg-white/85 shadow-raise backdrop-blur-xl backdrop-saturate-150",
+  /*
+   * Vollständig deckendes Weiß (vorher 85 % mit Unschärfe): Beim Scrollen
+   * schimmerten die Farben der Abschnitte darunter durch — über den dunklen
+   * Flächen wurde die Kopfzeile bläulich-grau und wirkte wie ein Fehler.
+   * Außerhalb der Hero-Bühne bleibt sie jetzt immer rein weiß.
+   */
+  solid: "border-line bg-white shadow-raise",
 };
 
 export default function Header() {
@@ -172,7 +178,15 @@ export default function Header() {
   }, [stagePage, pathname]);
 
   /** Der eine abgeleitete Wert, an dem der Flächenwechsel hängt. */
-  const imBuehnenzustand = stagePage && ueberBuehne;
+  /*
+   * Hero unter der Kopfzeile (28.10.2026): Der neue Hero liegt als
+   * abgerundete Bildkarte UNTER einer immer weißen Kopfzeile, nicht mehr
+   * dahinter. Der transparente Bühnenzustand ist damit abgeschaltet. Die
+   * Logik bleibt erhalten, damit sich der frühere Hero rückstandsfrei
+   * wiederherstellen lässt (Schalter auf false setzen).
+   */
+  const HERO_UNTER_KOPFZEILE = true;
+  const imBuehnenzustand = !HERO_UNTER_KOPFZEILE && stagePage && ueberBuehne;
 
   /*
    * Die beiden Symbolknöpfe brauchen über der Bühne eine eigene Fläche —
@@ -229,6 +243,32 @@ export default function Header() {
    */
   return (
     <>
+    {/*
+      Schmale Kontaktleiste über der Kopfzeile — nur ab `xl`, wo die volle
+      Navigation steht. Öffnungszeiten (Mo–Sa 08:00–18:00, vom Betreiber
+      bestätigt, siehe Footer und openingHoursSpecification), Telefon und
+      E-Mail sind damit schon vor dem ersten Scrollen sichtbar. Sie scrollt
+      mit weg; nur die Kopfzeile selbst bleibt angeheftet.
+    */}
+    <div className="hidden border-b border-line bg-white text-ink-soft xl:block">
+      <div className="container-page flex h-9 items-center justify-between text-xs font-medium tracking-wide">
+        <span className="inline-flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0 text-brand-500">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Mo–Sa 08:00–18:00 Uhr
+        </span>
+        <span className="inline-flex items-center gap-6">
+          <a href={siteConfig.phoneHref} className="transition-colors duration-200 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+            {siteConfig.phone}
+          </a>
+          <a href={`mailto:${siteConfig.email}`} className="transition-colors duration-200 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">
+            {siteConfig.email}
+          </a>
+        </span>
+      </div>
+    </div>
     <header
       ref={headerRef}
       data-header-state={imBuehnenzustand ? "stage" : "solid"}
@@ -271,11 +311,33 @@ export default function Header() {
           weiß. Damit wird beim Zustandswechsel keine Bilddatei getauscht und
           es kann nichts aufblitzen. Die Größe ist unverändert.
         */}
-        <Logo
-          variant="dark"
-          heightClassName="h-[3.75rem] md:h-[5.5rem] 2xl:h-24"
-          className="mr-auto shrink-0"
-        />
+        {/*
+          Neuer dunkler Hero (Test 28.10.2026): Ab `lg` liegt die Kopfzeile im
+          Bühnenzustand transparent über einem dunklen Foto — dort steht das
+          weiße Logo und die Navigation in Weiß. Unterhalb von `lg` bleibt die
+          Kopfzeile weiß mit dunklem Logo. Beide Logos stehen nur im
+          Bühnenzustand nebeneinander im Markup; sonst gibt es nur das dunkle.
+        */}
+        {imBuehnenzustand ? (
+          <>
+            <Logo
+              variant="dark"
+              heightClassName="h-[3.75rem] md:h-[5.5rem] 2xl:h-24"
+              className="mr-auto shrink-0 lg:hidden"
+            />
+            <Logo
+              variant="light"
+              heightClassName="h-[3.75rem] md:h-[5.5rem] 2xl:h-24"
+              className="mr-auto shrink-0 max-lg:hidden"
+            />
+          </>
+        ) : (
+          <Logo
+            variant="dark"
+            heightClassName="h-[3.75rem] md:h-[5.5rem] 2xl:h-24"
+            className="mr-auto shrink-0"
+          />
+        )}
 
         <nav aria-label="Hauptnavigation" className="hidden xl:block">
           <ul className="flex items-center gap-1">
@@ -308,7 +370,13 @@ export default function Header() {
                        Farben in beiden Kopfzeilen-Zuständen gleich — siehe
                        die Begründung an `headerSurface`. */
                     className={`flex min-h-11 items-center gap-1 whitespace-nowrap rounded-control px-2.5 py-3 text-sm font-medium 2xl:px-3 transition-colors duration-200 ease-out hover:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${
-                      isActive(item.href) ? "bg-brand-50 text-brand-500" : "text-brand-900"
+                      isActive(item.href)
+                        ? imBuehnenzustand
+                          ? "bg-brand-50 text-brand-500 lg:bg-white/15 lg:text-white"
+                          : "bg-brand-50 text-brand-500"
+                        : imBuehnenzustand
+                          ? "text-brand-900 lg:text-white lg:hover:bg-white/10"
+                          : "text-brand-900"
                     }`}
                   >
                     {item.label}
@@ -451,7 +519,7 @@ export default function Header() {
           */}
           <span
             aria-hidden="true"
-            className="h-7 w-px shrink-0 rotate-[36.87deg] rounded-full bg-line-strong"
+            className={`h-7 w-px shrink-0 rotate-[36.87deg] rounded-full ${imBuehnenzustand ? "bg-line-strong lg:bg-white/35" : "bg-line-strong"}`}
           />
           {/*
             Öffnungszeiten stehen hier weiterhin NICHT.
@@ -464,7 +532,7 @@ export default function Header() {
           */}
           <a
             href={siteConfig.phoneHref}
-            className="flex min-h-11 items-center gap-2 whitespace-nowrap rounded-control px-1 text-base font-semibold text-brand-900 transition-colors duration-200 ease-out hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            className={`flex min-h-11 items-center gap-2 whitespace-nowrap rounded-control px-1 text-base font-semibold transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 ${imBuehnenzustand ? "text-brand-900 hover:text-brand-500 lg:text-white lg:hover:text-brand-200" : "text-brand-900 hover:text-brand-500"}`}
           >
             <svg
               width="18"
@@ -472,7 +540,7 @@ export default function Header() {
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden="true"
-              className="shrink-0 text-brand-500"
+              className={`shrink-0 ${imBuehnenzustand ? "text-brand-500 lg:text-brand-300" : "text-brand-500"}`}
             >
               <path
                 d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11.4 21 3 12.6 3 3c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.2 2.2z"
@@ -491,10 +559,10 @@ export default function Header() {
             ohnehin als primaere Handlung im ersten Bildschirm.
           */}
           <Link
-            href="/preisrechner"
+            href="/kontakt"
             className={`press inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-control px-5 text-sm font-semibold text-white transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-brand-500 hover:bg-brand-600 focus-visible:outline-brand-900`}
           >
-            Preis berechnen
+            Angebot erhalten
           </Link>
         </div>
 

@@ -214,7 +214,9 @@ export default function GoogleReviewsSection({
   return (
     <section
       aria-label="Bewertungen aus dem Google-Unternehmensprofil"
-      className="border-b border-line bg-white py-10 sm:py-12"
+      data-tone="paper"
+      data-pad="strip"
+      className="flow-section relative border-b border-line bg-white py-10 sm:py-12"
     >
       <div className="container-page">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">

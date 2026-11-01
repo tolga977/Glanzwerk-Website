@@ -76,7 +76,7 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
 
       <div className={`flex flex-1 flex-col ${row ? "" : band ? "pt-6 lg:pt-0" : "pt-0 sm:pt-5"}`}>
         <div className="flex items-center gap-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-600">
             {article.category}
           </p>
           <span

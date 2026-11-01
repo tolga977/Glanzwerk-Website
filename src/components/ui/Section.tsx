@@ -46,7 +46,7 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={`mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] ${
-            light ? "text-brand-200" : "text-brand-500"
+            light ? "text-brand-200" : "text-brand-600"
           } ${centered ? "justify-center" : ""}`}
         >
           {/*
@@ -75,7 +75,7 @@ export function SectionHeading({
           Heading === "h1"
             ? "text-3xl sm:text-4xl"
             : scale === "editorial"
-              ? "text-[1.875rem] sm:text-4xl lg:text-5xl"
+              ? "text-[1.5rem] uppercase tracking-[0.005em] sm:text-[2rem] lg:text-[2.75rem]"
               : "text-2xl sm:text-3xl"
         }`}
       >
@@ -103,7 +103,7 @@ interface SectionProps {
    * brand: bold mid-blue gradient block, white text.
    * navy: darkest brand block, white text.
    */
-  background?: "white" | "muted" | "tint" | "brand" | "warm" | "navy";
+  background?: "white" | "paper" | "muted" | "tint" | "brand" | "warm" | "navy";
   id?: string;
   /**
    * Zurückhaltende Tiefenebene: eine feine Lichtkante an der Oberkante und
@@ -230,6 +230,16 @@ interface SectionProps {
    * `ProcessTimeline`). Für jede andere Fläche bleibt "overflow" richtig.
    */
   clip?: "overflow" | "clip-path";
+  /**
+   * Leises Foto am unteren Rand einer HELLEN Fläche.
+   *
+   * Ein Motiv aus dem Reinigungsalltag liegt entsättigt und mit geringer
+   * Deckung am Fuß des Abschnitts und läuft nach oben auf null aus — wie auf
+   * der Vorlage-Seite, wo Bilder nur als Textur im Hintergrund auftauchen.
+   * Es trägt nie Text: der Inhalt liegt darüber, und die Maske lässt die
+   * obere Hälfte des Abschnitts völlig frei. Kein Einfluss auf Kontrast.
+   */
+  bottomPhoto?: { src: string; objectPosition?: string };
 }
 
 /*
@@ -273,7 +283,13 @@ interface SectionProps {
  * rund 240, dunkler Text darauf bleibt weit ueber AA.
  */
 const backgroundClasses: Record<NonNullable<SectionProps["background"]>, string> = {
-  white: "bg-gradient-to-b from-white via-white to-graphite-50",
+  /* Nicht mehr reines Weiß über die ganze Höhe: oben weiß, nach unten in ein
+     sehr helles Blau auslaufend. Der Betreiber empfand die Seite als „zu weiß“. */
+  white: "bg-gradient-to-b from-white via-brand-50/40 to-brand-50",
+  /* Reines Weiß, durchgehend. Nur für Flächen, auf denen ein Bild mit
+     weißem Hintergrund steht (Hygiene-Organismus) — dort würde jeder Farbton
+     den Bildrand sichtbar machen. */
+  paper: "bg-white",
   muted: "bg-gradient-to-b from-brand-50 via-brand-50 to-brand-100/70",
   tint: "bg-gradient-to-b from-brand-100 via-brand-100 to-brand-50",
   brand: "bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 text-white",
@@ -302,14 +318,50 @@ export default function Section({
   backdrop,
   markCorner = "top-right",
   clip = "overflow",
+  bottomPhoto,
 }: SectionProps) {
-  const dark = background === "navy" || background === "brand";
-  const showBackdrop = Boolean(backdrop) && (dark || background === "tint");
+  /*
+   * Zwei-Farben-Test (27.10.2026): Es gibt nur noch zwei Flächen — eine helle
+   * (Weiß, nach unten in ein sehr helles Blau auslaufend) und eine dunkle
+   * (Nachtblau). `muted`, `tint`, `warm` werden zur hellen, `brand` zur
+   * dunklen Fläche. Die Props bleiben bestehen, damit sich der Test
+   * rückstandsfrei zurücknehmen lässt.
+   */
+  const surfaceTone: "white" | "paper" | "navy" =
+    background === "brand" || background === "navy"
+      ? "navy"
+      : background === "paper"
+        ? "paper"
+        : "white";
+  const dark = surfaceTone === "navy";
+  const showBackdrop = Boolean(backdrop) && dark;
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 ${clip === "clip-path" ? "[clip-path:inset(0)]" : "overflow-hidden"} ${backgroundClasses[background]} ${spacingClasses[spacing]}`}
+      data-tone={surfaceTone}
+      data-dark={dark ? "true" : undefined}
+      data-pad={spacing}
+      className={`flow-section relative scroll-mt-24 ${clip === "clip-path" ? "[clip-path:inset(0)]" : "overflow-hidden"} ${backgroundClasses[surfaceTone]} ${spacingClasses[spacing]}`}
     >
+      {bottomPhoto && !dark && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[46%] sm:h-[52%]"
+          style={{
+            maskImage: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%)",
+          }}
+        >
+          <Image
+            src={bottomPhoto.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-[0.14] saturate-[0.5] contrast-[0.95]"
+            style={bottomPhoto.objectPosition ? { objectPosition: bottomPhoto.objectPosition } : undefined}
+          />
+        </div>
+      )}
       {showBackdrop && backdrop && (
         <>
           <Image
@@ -351,7 +403,7 @@ export default function Section({
             className={`pointer-events-none absolute inset-0 ${
               backdrop.tone === "carry"
                 ? "backdrop-carry"
-                : background === "navy"
+                : dark
                   ? "bg-gradient-to-br from-brand-900/92 via-brand-900/88 to-brand-950/94"
                   : background === "tint"
                     ? "bg-gradient-to-r from-brand-100 via-brand-100/88 to-brand-50/70"

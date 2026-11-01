@@ -141,8 +141,16 @@ function leistungLabel(values: ContactRequestValues): string {
   return services.find((s) => s.slug === values.service)?.shortTitle ?? "—";
 }
 
-export default function QuoteWizard() {
+/**
+ * `layout="bar"` (Hero, ab `lg`): Im ersten Schritt steht die Leistungswahl
+ * und „Weiter" in EINER flachen Zeile (rund 100 px statt 330 px) — damit das
+ * Formular samt Hero in den ersten Bildschirm passt. Ab Schritt 2 und auf dem
+ * Handy ist es dieselbe Karte wie sonst. Felder, Prüfung, Schritte und
+ * Versand sind unverändert.
+ */
+export default function QuoteWizard({ layout = "card" }: { layout?: "card" | "bar" }) {
   const [schritt, setSchritt] = useState(0);
+  const barStart = layout === "bar" && schritt === 0;
   const [values, setValues] = useState<ContactRequestValues>(emptyContactRequest);
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<ContactRequestErrors>({});
@@ -265,7 +273,7 @@ export default function QuoteWizard() {
    */
   if (status === "success") {
     return (
-      <div className="rounded-[1rem] border border-white/80 bg-white p-5 shadow-float ring-1 ring-brand-900/[0.04] sm:p-6">
+      <div className={`rounded-[1rem] border border-white/80 bg-white p-5 shadow-float ring-1 ring-brand-900/[0.04] sm:p-6 ${layout === "bar" ? "lg:p-4" : ""}`}>
         <p
           ref={titelRef}
           tabIndex={-1}
@@ -296,7 +304,7 @@ export default function QuoteWizard() {
   return (
     <div className="rounded-[1rem] border border-white/80 bg-white p-5 shadow-float ring-1 ring-brand-900/[0.04] sm:p-6">
       {/* Kopf: Titel links, Fortschritt rechts. */}
-      <div className="flex items-start justify-between gap-4">
+      <div className={`flex items-start justify-between gap-4 ${barStart ? "lg:hidden" : ""}`}>
         <div>
           <p className="font-display text-lg font-medium text-brand-900">
             Angebot erhalten
@@ -316,7 +324,7 @@ export default function QuoteWizard() {
         `aria-hidden`, weil die Zeile darüber denselben Stand als Text nennt:
         die Information darf nicht nur in der Farbe liegen.
       */}
-      <div aria-hidden="true" className="mt-3 flex gap-1.5">
+      <div aria-hidden="true" className={`mt-3 flex gap-1.5 ${barStart ? "lg:hidden" : ""}`}>
         {Array.from({ length: SCHRITTE }, (_, i) => (
           <span
             key={i}
@@ -327,7 +335,7 @@ export default function QuoteWizard() {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} noValidate className="mt-5">
+      <form onSubmit={handleSubmit} noValidate className={`mt-5 ${barStart ? "lg:mt-0 lg:flex lg:items-end lg:gap-4" : ""}`}>
         {/*
           Bot-Falle: für Menschen unsichtbar (Position außerhalb des
           sichtbaren Bereichs, nicht per Tastatur erreichbar), Bots füllen
@@ -353,19 +361,19 @@ export default function QuoteWizard() {
           auslösen. Ohne den Schlüssel bliebe das Element dasselbe und die
           Animation liefe nur einmal.
         */}
-        <div key={schritt} className="panel-reveal motion-reduce:animate-none">
+        <div key={schritt} className={`panel-reveal motion-reduce:animate-none ${barStart ? "lg:min-w-0 lg:flex-1" : ""}`}>
           <p
             ref={titelRef}
             tabIndex={-1}
-            className="font-display text-base font-medium text-brand-900 focus:outline-none"
+            className={`font-display text-base font-medium text-brand-900 focus:outline-none ${barStart ? "lg:sr-only" : ""}`}
           >
             {schritt + 1}. {aktuell.titel}
           </p>
-          <p className="mt-1 text-sm text-ink-soft" id={`${panelId}-frage`}>
+          <p className={`mt-1 text-sm text-ink-soft ${barStart ? "lg:sr-only" : ""}`} id={`${panelId}-frage`}>
             {aktuell.frage}
           </p>
 
-          <div className="mt-4 space-y-3.5">
+          <div className={`space-y-3.5 ${barStart ? "lg:mt-0" : "mt-4"}`}>
             {schritt === 0 && (
               <>
                 <FormField
@@ -580,7 +588,7 @@ export default function QuoteWizard() {
           Schaltflächen. „Zurück" erscheint erst ab Schritt 2 — im ersten
           Schritt hätte es kein Ziel und wäre nur ein toter Knopf.
         */}
-        <div className="mt-5 flex items-center gap-3">
+        <div className={`mt-5 flex items-center gap-3 ${barStart ? "lg:mt-0 lg:w-56 lg:shrink-0" : ""}`}>
           {schritt > 0 && (
             <button
               type="button"

@@ -208,7 +208,7 @@ export default async function UeberUnsPage() {
       <Section background="white" className="pt-12">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="max-w-xl">
-            <p className="mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+            <p className="mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
               Glanzwerk Reinigungsservice Berlin
             </p>
             <h1 className="text-3xl font-display font-medium tracking-tight text-brand-900 sm:text-4xl">

@@ -97,7 +97,9 @@ export default function HeroBrandStrip() {
   return (
     <section
       aria-labelledby="marken-titel"
-      className="border-y border-line bg-white py-12 sm:py-14"
+      data-tone="paper"
+      data-pad="strip"
+      className="flow-section relative border-y border-line bg-white py-12 sm:py-14"
     >
       <div className="container-page">
         <h2

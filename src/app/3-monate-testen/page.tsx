@@ -227,7 +227,7 @@ export default function DreiMonateTestenPage() {
 
       <Section background="warm">
         <div className="mx-auto max-w-3xl rounded-card border border-line bg-white p-6 shadow-raise sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
             Wichtig zu wissen
           </p>
           <p className="mt-3 text-base leading-relaxed text-ink-soft">

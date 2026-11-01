@@ -47,7 +47,7 @@ export default function CTASection({
       style={
         backgroundImageUrl
           ? {
-              backgroundImage: `linear-gradient(to bottom right, rgb(11 30 61 / 0.92), rgb(11 30 61 / 0.88)), url(${backgroundImageUrl})`,
+              backgroundImage: `linear-gradient(to bottom right, rgb(23 50 109 / 0.92), rgb(23 50 109 / 0.88)), url(${backgroundImageUrl})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }
@@ -100,7 +100,7 @@ export default function CTASection({
             mitbringt — Größe, Farbe, Text, Funktion und
             Hover/Active/Focus-Zustände bleiben unverändert.
           */}
-          <Button href={primaryHref} variant={eco ? "eco" : "primary"} size="lg">
+          <Button href={primaryHref} variant={eco ? "eco" : "inverse"} size="lg">
             {primaryLabel}
           </Button>
           <Button

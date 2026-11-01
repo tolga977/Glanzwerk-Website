@@ -214,10 +214,18 @@
   --font-display: var(--font-display);
 
   /* Brand: Glanzwerk Reinigungsservice Berlin */
-  --color-brand-950: #060d20;
-  --color-brand-900: #0d1b3d;
-  --color-brand-800: #14295c;
-  --color-brand-700: #1a3c86;
+  /* Farbabstimmung 2 (27.10.2026, Wunsch des Betreibers): Die Dunkelflächen
+     waren fast schwarz (950: #0a1735, Testphase-Abschnitt sogar #030816 durch
+     fest eingetragene Verläufe), die hellen Flächen zu blass. Jetzt ein
+     mittleres Nachtblau als dunkler Anker (900: #17326d) und kräftigere
+     Hellblautöne (100: #c6dbf7, 50: #dce9fb).
+       950 #0f2250 · 900 #17326d · 800 #1d3f86 · 700 #1f4894
+     Weiß auf 900 = 11,6:1. Brand-500 auf brand-100 = 4,4:1 — deshalb stehen
+     kleine Beschriftungen auf Hellblau in brand-600 (5,5:1). */
+  --color-brand-950: #0f2250;
+  --color-brand-900: #17326d;
+  --color-brand-800: #1d3f86;
+  --color-brand-700: #1f4894;
   --color-brand-600: #1a4ea8;
   /* Markenblau nach Vorgabe: #1e5bc6 statt des vorherigen Tuerkis #00799c.
      Gemessen 6,23:1 auf Weiss und damit besser als der alte Wert (4,98:1) —
@@ -228,8 +236,8 @@
   --color-brand-400: #3b82e8;
   --color-brand-300: #4fa3ff;
   --color-brand-200: #a5cdff;
-  --color-brand-100: #deebff;
-  --color-brand-50: #f2f7ff;
+  --color-brand-100: #c6dbf7;
+  --color-brand-50: #dce9fb;
 
   --color-ink: #14181f;
   --color-ink-soft: #414a58;
@@ -253,8 +261,8 @@
      than an off-the-shelf template. */
   --color-graphite-950: #14141a;
   --color-graphite-900: #1e1e26;
-  --color-graphite-100: #f4f3f1;
-  --color-graphite-50: #faf9f7;
+  --color-graphite-100: #eaeff7; /* kühles Hellgrau-Blau statt warmem Graubeige */
+  --color-graphite-50: #f4f7fc;
 
   /*
    * ── Semantische Rollen ────────────────────────────────────────────────
@@ -2225,13 +2233,13 @@ body {
     background:
       linear-gradient(
         to bottom,
-        rgb(6 13 32 / 0.55) 0%,
-        rgb(6 13 32 / 0) 14%,
-        rgb(6 13 32 / 0) 84%,
-        rgb(6 13 32 / 0.5) 100%
+        rgb(15 34 80 / 0.55) 0%,
+        rgb(15 34 80 / 0) 14%,
+        rgb(15 34 80 / 0) 84%,
+        rgb(15 34 80 / 0.5) 100%
       ),
-      linear-gradient(to right, rgb(4 9 24 / 0.62) 0%, rgb(4 9 24 / 0) 22%),
-      linear-gradient(to left, rgb(4 9 24 / 0.4) 0%, rgb(4 9 24 / 0) 46%);
+      linear-gradient(to right, rgb(12 28 66 / 0.62) 0%, rgb(12 28 66 / 0) 22%),
+      linear-gradient(to left, rgb(12 28 66 / 0.4) 0%, rgb(12 28 66 / 0) 46%);
   }
 
   /*
@@ -2254,14 +2262,14 @@ body {
       background:
         linear-gradient(
           to bottom,
-          rgb(6 13 32 / 0.86) 0%,
-          rgb(6 13 32 / 0.62) 30%,
-          rgb(6 13 32 / 0.18) 55%,
-          rgb(6 13 32 / 0) 72%,
-          rgb(6 13 32 / 0.5) 100%
+          rgb(15 34 80 / 0.86) 0%,
+          rgb(15 34 80 / 0.62) 30%,
+          rgb(15 34 80 / 0.18) 55%,
+          rgb(15 34 80 / 0) 72%,
+          rgb(15 34 80 / 0.5) 100%
         ),
-        linear-gradient(to right, rgb(4 9 24 / 0.5) 0%, rgb(4 9 24 / 0) 18%),
-        linear-gradient(to left, rgb(4 9 24 / 0.35) 0%, rgb(4 9 24 / 0) 40%);
+        linear-gradient(to right, rgb(12 28 66 / 0.5) 0%, rgb(12 28 66 / 0) 18%),
+        linear-gradient(to left, rgb(12 28 66 / 0.35) 0%, rgb(12 28 66 / 0) 40%);
     }
   }
 
@@ -2283,6 +2291,9 @@ body {
    */
   .trial-backdrop {
     object-position: 58% 50%;
+    /* Farbabstimmung 2: das Nachtbüro-Foto war die dunkelste Fläche der Seite.
+       Aufhellen und leicht sättigen, damit es zum mittleren Nachtblau passt. */
+    filter: brightness(1.55) saturate(1.15);
   }
 
   @media (min-width: 1024px) {
@@ -2311,7 +2322,7 @@ body {
    * Bildrand hinaus.
    *
    * Gemessen sind die Bildränder #01050e bis #070f1d — deutlich dunkler als
-   * brand-900 (#0d1b3d), auf dem der Abschnitt steht. Ohne Zwischenstufe
+   * brand-900 (#17326d), auf dem der Abschnitt steht. Ohne Zwischenstufe
    * bleibt selbst eine weich auslaufende Aufnahme als dunklerer Fleck
    * sichtbar: das Ausblenden endet ja nicht im Bildton, sondern in einem
    * helleren. Die Pfütze zieht die Fläche ringsum auf den Bildton herunter,
@@ -2322,12 +2333,12 @@ body {
     position: absolute;
     inset: -14%;
     pointer-events: none;
-    background: radial-gradient(
-      62% 60% at 50% 50%,
-      rgb(3 8 22 / 0.82) 0%,
-      rgb(3 8 22 / 0.48) 55%,
-      rgb(3 8 22 / 0) 80%
-    );
+    /* Farbabstimmung 2: Die dunkle Pfütze entfällt. Sie war nötig, solange die
+       Fläche fast schwarz war und die Aufnahme (Ränder #01050e) dort
+       hineinlaufen musste. Auf dem mittleren Nachtblau wäre sie ein sichtbarer
+       dunkler Fleck. Stattdessen läuft das Bild selbst über `.trial-shade`
+       in die Farbe der Fläche aus. */
+    background: none;
   }
 
   /*
@@ -2349,15 +2360,15 @@ body {
        Bild, die Umgebung wird beschnitten. */
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
   }
 
   .trial-veil {
     position: absolute;
     inset: 0;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 11%, #000 89%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 11%, #000 89%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
   }
 
   /*
@@ -2388,6 +2399,8 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
+    /* gleiche Anhebung wie beim Hintergrundfoto, damit Kalenderraum und Fläche zusammenpassen */
+    filter: brightness(1.25) saturate(1.1);
   }
 
   /*
@@ -2411,13 +2424,16 @@ body {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    /* Rand der Aufnahme geht in die Farbe der Fläche über (≈ brand-900/800),
+       nicht mehr in ein Fast-Schwarz: so bleibt keine Kante gegen den
+       Hintergrund stehen. */
     background: radial-gradient(
       60% 74% at 45% 52%,
-      rgb(4 9 22 / 0) 0%,
-      rgb(4 9 22 / 0) 50%,
-      rgb(4 9 22 / 0.5) 72%,
-      rgb(4 9 22 / 0.9) 90%,
-      rgb(4 9 22 / 0.97) 100%
+      rgb(26 56 120 / 0) 0%,
+      rgb(26 56 120 / 0) 46%,
+      rgb(26 56 120 / 0.55) 68%,
+      rgb(26 56 120 / 0.92) 86%,
+      rgb(26 56 120 / 1) 100%
     );
   }
 
@@ -2778,4 +2794,87 @@ body {
   .trial-signature {
     display: none;
   }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Fließende Abschnittsübergänge
+ *
+ * Problem (Betreiber, 27.10.2026): Beim Scrollen endet ein Thema mit einem
+ * harten Schnitt, und darunter beginnt eine Fläche in einer anderen Farbe.
+ *
+ * Lösung: Jeder Abschnitt trägt `data-tone` (seine Grundfarbe). Am unteren
+ * Rand legt er einen Farbverlauf in die Anfangsfarbe des NÄCHSTEN Abschnitts —
+ * erkannt über `:has(+ [data-tone=…])`. Am Übergang haben beide Flächen damit
+ * dieselbe Farbe; die Kante verschwindet.
+ *
+ * Korrektur (Betreiber, 27.10.2026, Runde 2): Der erste Verlauf war zu lang
+ * und zu kräftig — nahe am Rand wurden Texte schlecht lesbar. Jetzt gilt:
+ *  - Die Höhe ist an den unteren Innenabstand des Abschnitts gekoppelt
+ *    (`data-pad`) und bleibt immer KLEINER als dieser. Der Verlauf liegt damit
+ *    ausschließlich im leeren Rand, nie unter Text.
+ *  - Die Kurve bleibt lange fast unsichtbar und zieht erst im letzten Drittel
+ *    an. Die Kante ist weg, die Farbe wandert trotzdem gleitend.
+ * ────────────────────────────────────────────────────────────────────────── */
+.flow-section {
+  /* Höhe des Verlaufs; je nach unterem Innenabstand überschrieben. */
+  --flow-h: 1.75rem;
+}
+.flow-section[data-pad="compact"] { --flow-h: 1.75rem; }
+.flow-section[data-pad="normal"] { --flow-h: 2.5rem; }
+.flow-section[data-pad="roomy"] { --flow-h: 3rem; }
+.flow-section[data-pad="strip"] { --flow-h: 1.5rem; }
+
+@media (min-width: 640px) {
+  .flow-section[data-pad="compact"] { --flow-h: 3rem; }
+  .flow-section[data-pad="normal"] { --flow-h: 4.5rem; }
+  .flow-section[data-pad="roomy"] { --flow-h: 6rem; }
+  .flow-section[data-pad="strip"] { --flow-h: 2rem; }
+}
+
+.flow-section::after {
+  content: "";
+  display: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--flow-h);
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--flow-rgb, 255 255 255) / 0) 0%,
+    rgb(var(--flow-rgb, 255 255 255) / 0.08) 40%,
+    rgb(var(--flow-rgb, 255 255 255) / 0.4) 72%,
+    rgb(var(--flow-rgb, 255 255 255) / 1) 100%
+  );
+}
+
+.flow-section:has(+ [data-tone])::after {
+  display: block;
+}
+
+/* Anfangsfarbe des nächsten Abschnitts (RGB-Tripel). */
+.flow-section:has(+ [data-tone="white"]),
+.flow-section:has(+ [data-tone="paper"]) { --flow-rgb: 255 255 255; }
+.flow-section:has(+ [data-tone="muted"]) { --flow-rgb: 220 233 251; }
+.flow-section:has(+ [data-tone="tint"]) { --flow-rgb: 198 219 247; }
+.flow-section:has(+ [data-tone="warm"]) { --flow-rgb: 234 239 247; }
+.flow-section:has(+ [data-tone="navy"]) { --flow-rgb: 23 50 109; }
+.flow-section:has(+ [data-tone="brand"]) { --flow-rgb: 28 76 163; }
+.flow-section:has(+ [data-tone="ink"]) { --flow-rgb: 15 34 80; }
+
+/* Ab `lg` ist das Kontaktband (data-mobile-only) ausgeblendet: der Abschnitt
+   davor blendet dann in den Abschnitt NACH dem Band über, nicht in dessen Farbe. */
+@media (min-width: 1024px) {
+  .flow-section:has(+ [data-mobile-only])::after { display: none; }
+
+  .flow-section:has(+ [data-mobile-only] + [data-tone])::after { display: block; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="white"]),
+  .flow-section:has(+ [data-mobile-only] + [data-tone="paper"]) { --flow-rgb: 255 255 255; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="muted"]) { --flow-rgb: 220 233 251; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="tint"]) { --flow-rgb: 198 219 247; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="warm"]) { --flow-rgb: 234 239 247; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="navy"]) { --flow-rgb: 23 50 109; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="brand"]) { --flow-rgb: 28 76 163; }
+  .flow-section:has(+ [data-mobile-only] + [data-tone="ink"]) { --flow-rgb: 15 34 80; }
 }

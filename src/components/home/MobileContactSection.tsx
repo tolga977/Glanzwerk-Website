@@ -36,7 +36,7 @@ export default function MobileContactSection() {
   return (
     <section className="border-y border-line bg-gradient-to-b from-graphite-100 via-graphite-100 to-graphite-50 py-14 lg:hidden">
       <div className="container-page">
-        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
           <span aria-hidden="true" className="brand-tick text-brand-400" />
           Direkt anfragen
         </p>

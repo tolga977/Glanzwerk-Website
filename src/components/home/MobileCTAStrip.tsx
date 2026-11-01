@@ -22,11 +22,17 @@ import { siteConfig } from "@/data/site";
  */
 export default function MobileCTAStrip({ heading }: { heading: string }) {
   return (
-    <section className="bg-gradient-to-br from-brand-900 to-brand-950 py-9 text-white lg:hidden">
+    <section
+      data-tone="navy"
+      data-dark="true"
+      data-mobile-only=""
+      data-pad="strip"
+      className="flow-section relative bg-gradient-to-br from-brand-900 to-brand-950 py-9 text-white lg:hidden"
+    >
       <div className="container-page flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-display text-balance text-[1.375rem] font-medium leading-snug">{heading}</p>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button href="/kontakt" size="lg" className="min-h-14 w-full sm:w-auto">
+          <Button href="/kontakt" variant="inverse" size="lg" className="min-h-14 w-full sm:w-auto">
             Angebot erhalten
           </Button>
           <Button

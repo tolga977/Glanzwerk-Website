@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import ServiceCard from "@/components/ui/ServiceCard";
+import ServiceTiles from "@/components/ui/ServiceTiles";
 import CTASection from "@/components/ui/CTASection";
 import FadeIn from "@/components/ui/FadeIn";
 import { services } from "@/data/services";
@@ -22,17 +22,15 @@ export default function LeistungenPage() {
     <>
       <Breadcrumb items={[{ label: "Leistungen" }]} />
 
-      <Section background="white" className="pt-12">
+      <Section background="paper" className="pt-12">
         <SectionHeading
           as="h1"
           eyebrow="Leistungen"
           title={heading.h1}
           subtitle="Von der laufenden Unterhaltsreinigung bis zur einmaligen Grundreinigung – wählen Sie die passende Leistung für Ihr Objekt."
         />
-        <FadeIn className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.slug} service={service} variant="compact" />
-          ))}
+        <FadeIn className="mt-10">
+          <ServiceTiles services={services} />
         </FadeIn>
       </Section>
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost" | "onMedia" | "eco";
+type Variant = "primary" | "secondary" | "outline" | "ghost" | "onMedia" | "eco" | "inverse";
 type Size = "md" | "lg" | "xl";
 
 /*
@@ -21,6 +21,14 @@ type Size = "md" | "lg" | "xl";
  * wirkt auf einer seriösen Dienstleisterseite wie eine Spielerei.
  */
 const variantClasses: Record<Variant, string> = {
+  /*
+   * Primärweg auf dunklen Flächen (Zwei-Farben-Test, 27.10.2026): Blau auf
+   * Nachtblau hebt sich kaum ab. Weiß mit Marken-Navy als Schrift ist der
+   * stärkste Kontrast, den die Palette hergibt (Navy auf Weiß 11,6:1) und
+   * bleibt innerhalb von Weiß und Blau.
+   */
+  inverse:
+    "bg-white text-brand-900 shadow-float hover:bg-brand-50 hover:shadow-deep focus-visible:outline-white",
   /* Ruheschatten von shadow-raise auf shadow-float angehoben: die primäre
      Schaltfläche liegt jetzt sichtbar über der Fläche statt bündig darauf.
      Das ist der Unterschied zwischen "da ist ein Button" und "da ist der

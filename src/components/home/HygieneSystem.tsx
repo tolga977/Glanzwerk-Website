@@ -51,12 +51,12 @@ export default function HygieneSystem() {
   return (
     <div className="hyg">
       <div className="hyg-kopf">
-        <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+        <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
           <span aria-hidden="true" className="brand-tick text-brand-400" />
           Was im Reinigungsplan zusammenkommt
         </p>
         {/* Absatz, keine Überschrift — Begründung im Kopf dieser Datei. */}
-        <p className="font-display display-lg mt-5 text-pretty text-[1.875rem] font-medium text-brand-900 sm:text-4xl lg:text-[2.75rem]">
+        <p className="font-display display-lg mt-5 text-pretty text-[1.5rem] font-medium uppercase tracking-[0.005em] text-brand-900 sm:text-[2rem] lg:text-[2.5rem]">
           Sauberkeit entsteht nicht zufällig
         </p>
         <p className="measure mt-5 text-base leading-relaxed text-ink-soft">

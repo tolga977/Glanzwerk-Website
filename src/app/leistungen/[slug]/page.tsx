@@ -417,7 +417,7 @@ export default async function ServicePage({ params }: Props) {
       */}
       <Section background="warm" spacing="compact">
         <div className="mx-auto max-w-3xl border-l border-line-strong pl-6 sm:pl-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">Nachhaltigkeit</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">Nachhaltigkeit</p>
           <p className="mt-3 text-base leading-relaxed text-ink-soft">
             Bei der {service.shortTitle} setzen wir auf hochwertige, materialschonende Reinigungsmittel
             und dosieren sie nach Herstellerangabe statt pauschal maximal. Wo möglich kommt

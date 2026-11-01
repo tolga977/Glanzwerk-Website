@@ -123,7 +123,7 @@ export default function ReviewMarquee({ reviews }: { reviews: GoogleReview[] }) 
         }}
       />
       <div className="container-page flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
-        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-500">
+        <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
           <span aria-hidden="true" className="brand-tick text-brand-400" />
           Was Kunden bei Google schreiben
         </p>
